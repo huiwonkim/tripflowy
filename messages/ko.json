@@ -6,6 +6,7 @@
   "nav": {
     "itineraries": "여행 일정",
     "planner": "빠른 추천",
+    "courses": "코스",
     "tours": "투어",
     "hotels": "숙소",
     "planMyTrip": "여행 계획하기",
@@ -99,6 +100,16 @@
     "bookFirstTour": "첫 투어 예약",
     "checkHotels": "숙소 확인",
     "day": "일차"
+  },
+  "courses": {
+    "label": "일정의 기본 단위",
+    "heading": "1일 코스",
+    "subheading": "개별 1일 코스 — 나만의 여행 일정을 만드는 기본 블록입니다.",
+    "all": "모든 도시",
+    "noCourses": "이 도시의 코스가 아직 없습니다.",
+    "viewAll": "전체 코스 보기",
+    "allCourses": "전체 코스",
+    "timeline": "타임라인"
   },
   "budget": {
     "heading": "예상 비용",

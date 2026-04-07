@@ -18,20 +18,50 @@ export type ActivityType =
   | "beach"
   | "shopping";
 
-export type Activity = {
-  time?: string;
+// ── GPS ────────────────────────────────────────────
+export type Coordinates = {
+  lat: number;
+  lng: number;
+};
+
+// ── 1일 코스 (atomic content unit) ─────────────────
+export type DayActivity = {
+  time: string;
   title: LocaleString;
   description: LocaleString;
   type: ActivityType;
+  location?: Coordinates;
 };
 
-export type DayPlan = {
-  day: number;
+export type DayCourse = {
+  id: string;
+  city: string;
   title: LocaleString;
-  subtitle?: LocaleString;
-  activities: Activity[];
+  summary: LocaleString;
+  styles: TravelStyle[];
+  travelerTypes: TravelerType[];
+  activities: DayActivity[];
+  center: Coordinates;
+  tags: string[];
+  coverGradient: string;
 };
 
+// ── 생성된 일정 (조합 결과) ────────────────────────
+export type GeneratedDay = {
+  dayNumber: number;
+  course: DayCourse;
+  city: string;
+};
+
+export type GeneratedItinerary = {
+  days: GeneratedDay[];
+  cities: string[];
+  duration: number;
+  style: TravelStyle;
+  travelerType: TravelerType;
+};
+
+// ── 도시 정보 ──────────────────────────────────────
 export type BudgetItem = {
   category: LocaleString;
   min: number;
@@ -45,30 +75,13 @@ export type FAQ = {
   answer: LocaleString;
 };
 
-export type Itinerary = {
-  id: string;
-  slug: string;
-  title: LocaleString;
-  summary: LocaleString;
-  destination: string;
-  destinationLabel: LocaleString;
-  countryCode: string;
-  duration: number; // nights
-  travelerType: TravelerType[];
-  style: TravelStyle;
-  bestFor: LocaleString[];
-  notIdealFor: LocaleString[];
-  overview: LocaleString;
-  days: DayPlan[];
-  tourIds: string[];
-  hotelIds: string[];
-  coverGradient: string;
-  featured: boolean;
-  tags: string[];
-  budget?: BudgetItem[];
-  faq?: FAQ[];
+export type CityInfo = {
+  cityId: string;
+  budget: BudgetItem[];
+  faq: FAQ[];
 };
 
+// ── 호텔 / 투어 ───────────────────────────────────
 export type Hotel = {
   id: string;
   slug: string;
@@ -104,6 +117,7 @@ export type Tour = {
   reviewCount: number;
 };
 
+// ── 플래너 입력 ────────────────────────────────────
 export type PlannerInput = {
   destinations: string[];
   duration: string;
@@ -111,6 +125,7 @@ export type PlannerInput = {
   style: TravelStyle | "";
 };
 
+// ── 여행지 구조 ────────────────────────────────────
 export type Destination = {
   id: string;
   label: LocaleString;

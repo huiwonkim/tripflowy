@@ -1,5 +1,4 @@
-import type { Itinerary, Hotel, Tour, Locale, LocaleString, PlannerInput, TravelerType, TravelStyle } from "@/types";
-import { itineraries } from "@/data/itineraries";
+import type { Locale, LocaleString, TravelerType, TravelStyle } from "@/types";
 
 export function t(str: LocaleString, locale: Locale = "en"): string {
   return str[locale] ?? str.en;
@@ -7,24 +6,6 @@ export function t(str: LocaleString, locale: Locale = "en"): string {
 
 export function cn(...classes: (string | undefined | null | false)[]): string {
   return classes.filter(Boolean).join(" ");
-}
-
-export function filterItineraries(input: Partial<PlannerInput>): Itinerary[] {
-  return itineraries.filter((itin) => {
-    if (input.destinations?.length && !input.destinations.includes(itin.destination)) return false;
-    if (input.duration && itin.duration !== Number(input.duration)) return false;
-    if (input.travelerType && !itin.travelerType.includes(input.travelerType as TravelerType)) return false;
-    if (input.style && itin.style !== input.style) return false;
-    return true;
-  });
-}
-
-export function getItineraryBySlug(slug: string): Itinerary | undefined {
-  return itineraries.find((i) => i.slug === slug);
-}
-
-export function getFeaturedItineraries(): Itinerary[] {
-  return itineraries.filter((i) => i.featured);
 }
 
 export function durationLabel(nights: number, locale: Locale = "en"): string {

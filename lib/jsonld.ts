@@ -1,28 +1,34 @@
-import type { Itinerary, FAQ, Locale } from "@/types";
+import type { DayCourse, FAQ, Locale, GeneratedItinerary, CityInfo } from "@/types";
 
-export function generateItineraryJsonLd(itin: Itinerary, locale: Locale) {
-  const totalBudgetMin = itin.budget?.reduce((s, b) => s + b.min, 0);
-  const totalBudgetMax = itin.budget?.reduce((s, b) => s + b.max, 0);
+export function generateCourseJsonLd(course: DayCourse, locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    name: course.title[locale],
+    description: course.summary[locale],
+    touristType: course.travelerTypes.join(", "),
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: course.activities.map((a, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: a.title[locale],
+        description: a.description[locale],
+      })),
+    },
+  };
+}
 
+export function generateItineraryJsonLd(itinerary: GeneratedItinerary, locale: Locale, cityNames: string[]) {
   return {
     "@context": "https://schema.org",
     "@type": "TravelAction",
-    name: itin.title[locale],
-    description: itin.summary[locale],
-    location: {
+    name: `${cityNames.join(" + ")} ${itinerary.duration}-Day Itinerary`,
+    description: `Auto-generated ${itinerary.duration}-day itinerary for ${cityNames.join(", ")}`,
+    location: cityNames.map((name) => ({
       "@type": "Place",
-      name: itin.destinationLabel[locale],
-    },
-    ...(totalBudgetMin && totalBudgetMax
-      ? {
-          offers: {
-            "@type": "AggregateOffer",
-            lowPrice: totalBudgetMin,
-            highPrice: totalBudgetMax,
-            priceCurrency: itin.budget?.[0]?.currency ?? "USD",
-          },
-        }
-      : {}),
+      name,
+    })),
   };
 }
 

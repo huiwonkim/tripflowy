@@ -3,9 +3,7 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { MapPin, Clock, Users, Zap, Search, ArrowRight, Check } from "lucide-react";
-import { ItineraryCard } from "@/components/itinerary/ItineraryCard";
-import { itineraries } from "@/data/itineraries";
+import { MapPin, Clock, Users, Zap, Search, Check } from "lucide-react";
 import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 import type { PlannerInput, TravelerType, TravelStyle, Locale } from "@/types";
 
@@ -16,7 +14,6 @@ export default function PlannerPage() {
   const locale = useLocale() as Locale;
   const t = useTranslations("planner");
   const [input, setInput] = useState<PlannerInput>(emptyInput);
-  const [searched, setSearched] = useState(false);
 
   function toggleCity(cityId: string) {
     setInput((p) => ({
@@ -27,19 +24,14 @@ export default function PlannerPage() {
     }));
   }
 
-  const results = searched
-    ? itineraries.filter((itin) => {
-        if (input.destinations.length > 0 && !input.destinations.includes(itin.destination)) return false;
-        if (input.duration && itin.duration !== Number(input.duration)) return false;
-        if (input.travelerType && !itin.travelerType.includes(input.travelerType as TravelerType)) return false;
-        if (input.style && itin.style !== input.style) return false;
-        return true;
-      })
-    : [];
-
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
-    setSearched(true);
+    const params = new URLSearchParams();
+    if (input.destinations.length) params.set("destinations", input.destinations.join(","));
+    if (input.duration) params.set("duration", input.duration);
+    if (input.travelerType) params.set("travelerType", input.travelerType);
+    if (input.style) params.set("style", input.style);
+    router.push(`/itineraries?${params.toString()}` as never);
   }
 
   const optionBase = "flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all text-left";
@@ -151,30 +143,6 @@ export default function PlannerPage() {
           {inputComplete ? t("findMyItinerary") : t("selectAllOptions")}
         </button>
       </form>
-
-      {searched && (
-        <div className="mt-12">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">
-            {results.length > 0 ? t("matchCount", { count: results.length }) : t("noMatch")}
-          </h2>
-          {results.length === 0 && (
-            <p className="text-gray-500 text-sm">{t("noMatchHint")}{" "}
-              <button onClick={() => router.push("/itineraries" as never)} className="text-blue-600 underline">{t("browseAll")}</button>.
-            </p>
-          )}
-          {results.length > 0 && (
-            <div className="space-y-4">
-              {results.map((itin) => <ItineraryCard key={itin.id} itinerary={itin} />)}
-              <div className="pt-4 text-center">
-                <button onClick={() => router.push("/itineraries" as never)}
-                  className="inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
-                  {t("seeAllItineraries")} <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      )}
     </div>
   );
 }

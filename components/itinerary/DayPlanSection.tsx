@@ -1,5 +1,12 @@
 import { Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee } from "lucide-react";
-import type { DayPlan, Activity, ActivityType, Locale } from "@/types";
+import type { DayActivity, ActivityType, Locale, LocaleString } from "@/types";
+
+type DayPlanCompat = {
+  day: number;
+  title: LocaleString;
+  subtitle?: LocaleString;
+  activities: DayActivity[];
+};
 import { cn } from "@/lib/utils";
 
 const activityIcons: Record<ActivityType, React.FC<{ className?: string }>> = {
@@ -24,7 +31,7 @@ const activityColors: Record<ActivityType, string> = {
   shopping: "bg-pink-100 text-pink-600",
 };
 
-function ActivityItem({ activity, locale }: { activity: Activity; locale: Locale }) {
+function ActivityItem({ activity, locale }: { activity: DayActivity; locale: Locale }) {
   const Icon = activityIcons[activity.type] ?? MapPin;
   const colorClass = activityColors[activity.type] ?? "bg-gray-100 text-gray-500";
 
@@ -52,7 +59,7 @@ function ActivityItem({ activity, locale }: { activity: Activity; locale: Locale
 }
 
 interface DayPlanSectionProps {
-  day: DayPlan;
+  day: DayPlanCompat;
   locale: Locale;
   defaultOpen?: boolean;
 }

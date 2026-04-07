@@ -2,8 +2,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, CheckCircle, Zap, Map, Hotel } from "lucide-react";
 import { QuickPlanner } from "@/components/planner/QuickPlanner";
-import { ItineraryCard } from "@/components/itinerary/ItineraryCard";
-import { getFeaturedItineraries } from "@/lib/utils";
+import { CourseCard } from "@/components/course/CourseCard";
+import { dayCourses } from "@/data/day-courses";
 import { countries } from "@/data/destinations";
 import type { Locale } from "@/types";
 
@@ -16,7 +16,9 @@ export default async function HomePage({ params }: PageProps) {
   setRequestLocale(locale);
   const t = await getTranslations();
   const loc = locale as Locale;
-  const featured = getFeaturedItineraries();
+
+  // Show a sample of courses from different cities
+  const featuredCourses = dayCourses.slice(0, 6);
 
   return (
     <div>
@@ -56,24 +58,22 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Featured Itineraries */}
+      {/* Featured Courses */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <p className="text-sm font-medium text-blue-600 mb-1">{t("featured.label")}</p>
-            <h2 className="text-2xl font-bold text-gray-900">{t("featured.heading")}</h2>
+            <p className="text-sm font-medium text-emerald-600 mb-1">{t("courses.label")}</p>
+            <h2 className="text-2xl font-bold text-gray-900">{t("courses.heading")}</h2>
           </div>
-          <Link
-            href="/itineraries"
-            className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
-          >
-            {t("featured.seeAll")} <ArrowRight className="w-4 h-4" />
+          <Link href="/courses"
+            className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
+            {t("courses.viewAll")} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {featured.map((itin) => (
-            <ItineraryCard key={itin.id} itinerary={itin} />
+          {featuredCourses.map((course) => (
+            <CourseCard key={course.id} course={course} />
           ))}
         </div>
       </section>
@@ -112,15 +112,13 @@ export default async function HomePage({ params }: PageProps) {
       {/* Browse by destination */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-8">{t("browseByDestination")}</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
           {countries.map((c) => (
-            <Link
-              key={c.id}
-              href={`/itineraries?country=${c.id}`}
-              className="bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl p-5 text-white flex flex-col items-center gap-2 hover:opacity-90 transition-opacity"
-            >
+            <Link key={c.id} href={`/courses?city=${c.cities[0]?.id ?? ""}`}
+              className="bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl p-5 text-white flex flex-col items-center gap-2 hover:opacity-90 transition-opacity">
               <span className="text-2xl">{c.emoji}</span>
               <span className="text-sm font-semibold">{c.label[loc]}</span>
+              <span className="text-xs text-slate-400">{c.cities.length} {loc === "ko" ? "도시" : `cit${c.cities.length === 1 ? "y" : "ies"}`}</span>
             </Link>
           ))}
         </div>
@@ -133,10 +131,8 @@ export default async function HomePage({ params }: PageProps) {
             <h2 className="text-2xl font-bold mb-2">{t("cta.heading")}</h2>
             <p className="text-blue-100">{t("cta.subheading")}</p>
           </div>
-          <Link
-            href="/planner"
-            className="flex-shrink-0 bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors flex items-center gap-2"
-          >
+          <Link href="/planner"
+            className="flex-shrink-0 bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors flex items-center gap-2">
             {t("cta.button")} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

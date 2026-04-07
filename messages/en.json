@@ -6,6 +6,7 @@
   "nav": {
     "itineraries": "Itineraries",
     "planner": "Planner",
+    "courses": "Courses",
     "tours": "Tours",
     "hotels": "Hotels",
     "planMyTrip": "Plan My Trip",
@@ -99,6 +100,16 @@
     "bookFirstTour": "Book First Tour",
     "checkHotels": "Check Hotels",
     "day": "Day"
+  },
+  "courses": {
+    "label": "Building blocks",
+    "heading": "Day Courses",
+    "subheading": "Individual 1-day itineraries — the building blocks for your custom trip.",
+    "all": "All cities",
+    "noCourses": "No courses available for this city yet.",
+    "viewAll": "View all courses",
+    "allCourses": "All Courses",
+    "timeline": "Timeline"
   },
   "budget": {
     "heading": "Estimated Budget",
