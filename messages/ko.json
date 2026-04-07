@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "title": "Tripflowy — 일정 중심 여행 계획",
+    "description": "몇 초 만에 여행을 계획하세요. 여행지, 기간, 스타일을 알려주시면 완벽한 여행 루트를 추천해드립니다."
+  },
+  "nav": {
+    "itineraries": "여행 일정",
+    "planner": "빠른 추천",
+    "tours": "투어",
+    "hotels": "숙소",
+    "planMyTrip": "여행 계획하기",
+    "language": "KO"
+  },
+  "hero": {
+    "badge": "일정 중심 여행 계획",
+    "heading": "여행지는 정했는데 어떻게 돌아야 할지 모르겠다면,",
+    "headingHighlight": "당신에게 맞는 여행 루트를 추천해드립니다.",
+    "subheading": "여행지, 기간, 여행 스타일을 선택하면 바로 사용할 수 있는 일정을 추천해드립니다.",
+    "findItinerary": "일정 찾기:",
+    "destinations": "3개 여행지 이용 가능",
+    "dayByDay": "일자별 상세 일정",
+    "affiliate": "투어 & 숙소 예약 포함"
+  },
+  "featured": {
+    "label": "바로 사용 가능",
+    "heading": "추천 여행 일정",
+    "seeAll": "전체 보기"
+  },
+  "howItWorks": {
+    "heading": "Tripflowy 사용법",
+    "subheading": "3단계로 나에게 맞는 여행 일정을 찾으세요. 회원가입 없이, 기다림 없이.",
+    "step1Title": "조건 선택",
+    "step1Desc": "여행지, 기간, 동행자, 여행 스타일을 선택하세요.",
+    "step2Title": "맞춤 일정 추천",
+    "step2Desc": "입력한 조건에 맞는 일정을 즉시 보여드립니다. 블로그 글이 아닌 실제 여행 일정.",
+    "step3Title": "투어 & 숙소 예약",
+    "step3Desc": "각 일정에 맞는 투어와 숙소가 함께 추천됩니다."
+  },
+  "browseByDestination": "여행지별 일정 보기",
+  "cta": {
+    "heading": "어디서부터 시작해야 할지 모르겠다면?",
+    "subheading": "플래너를 사용해서 30초 안에 나에게 맞는 일정을 찾아보세요.",
+    "button": "플래너 열기"
+  },
+  "planner": {
+    "badge": "빠른 추천",
+    "heading": "나에게 맞는 일정 찾기",
+    "subheading": "4가지 질문에 답하면 맞춤 여행 일정을 추천해드립니다.",
+    "destination": "여행지",
+    "duration": "기간",
+    "whosTraveling": "누구와 함께?",
+    "travelStyle": "여행 스타일",
+    "whereGoing": "어디로 가시나요?",
+    "howLong": "얼마나 머무르시나요?",
+    "findMyItinerary": "일정 찾기",
+    "selectAllOptions": "위의 모든 옵션을 선택하세요",
+    "matchCount": "선호에 맞는 {count}개 일정을 찾았습니다",
+    "noMatch": "정확히 일치하는 일정이 없습니다",
+    "noMatchHint": "조건을 변경하거나",
+    "browseAll": "전체 일정 보기",
+    "seeAllItineraries": "전체 일정 보기"
+  },
+  "itineraries": {
+    "browseAll": "전체 보기",
+    "heading": "여행 일정",
+    "subheading": "스타일, 기간, 동행자에 맞춰 필터링된 일자별 여행 일정입니다.",
+    "filterLabel": "일정 필터",
+    "clearFilters": "필터 초기화",
+    "allDestinations": "모든 여행지",
+    "anyDuration": "모든 기간",
+    "anyTraveler": "모든 여행자",
+    "anyStyle": "모든 스타일",
+    "found": "개 찾음",
+    "forFilters": "필터 결과",
+    "itinerary": "개 일정",
+    "itineraries2": "개 일정",
+    "noMatch": "필터 조건에 맞는 일정이 없습니다.",
+    "tryBroadening": "검색 범위를 넓혀보거나",
+    "clearAll": "필터를 초기화하세요",
+    "viewPlan": "일정 보기"
+  },
+  "detail": {
+    "allItineraries": "전체 일정",
+    "overview": "개요",
+    "bestFor": "이런 분에게 추천",
+    "notIdealFor": "이런 분에게는 비추천",
+    "dayByDayPlan": "일자별 일정",
+    "tripSummary": "여행 요약",
+    "destination": "여행지",
+    "duration": "기간",
+    "style": "스타일",
+    "bestForLabel": "추천 대상",
+    "toursLabel": "이 일정에 추천하는 투어",
+    "toursHeading": "투어 & 액티비티",
+    "hotelsLabel": "이 루트와 스타일에 맞는 숙소",
+    "hotelsHeading": "추천 숙소",
+    "ctaHeading": "이 여행을 예약할 준비가 되셨나요?",
+    "ctaSubheading": "위의 모든 투어와 숙소는 이 루트와 스타일에 맞게 선별되었습니다. 예약 링크를 클릭하여 시작하세요.",
+    "bookFirstTour": "첫 투어 예약",
+    "checkHotels": "숙소 확인",
+    "day": "일차"
+  },
+  "budget": {
+    "heading": "예상 비용",
+    "label": "1인 기준 예상 비용",
+    "category": "항목",
+    "range": "비용 범위",
+    "total": "예상 총 비용",
+    "disclaimer": "가격은 시즌, 예약 시기, 개인 취향에 따라 달라질 수 있습니다."
+  },
+  "faq": {
+    "heading": "자주 묻는 질문",
+    "label": "출발 전 확인사항"
+  },
+  "compare": {
+    "heading": "일정 비교",
+    "subheading": "나란히 비교하여 나에게 맞는 여행을 선택하세요.",
+    "addMore": "비교할 일정을 추가하세요",
+    "browseItineraries": "일정 둘러보기",
+    "noItems": "비교하려면 2개 이상의 일정을 선택하세요.",
+    "duration": "기간",
+    "style": "스타일",
+    "travelerType": "여행자 유형",
+    "budgetRange": "예상 비용",
+    "bestFor": "추천 대상",
+    "notIdealFor": "비추천 대상",
+    "viewFullPlan": "전체 일정 보기",
+    "compareBar": "{count}개 일정 비교하기",
+    "compare": "비교"
+  },
+  "tours": {
+    "label": "엄선된 체험",
+    "heading": "투어 & 액티비티",
+    "subheading": "일정에 맞는 투어를 직접 선별했습니다. 운영사를 통해 직접 예약하세요.",
+    "allDestinations": "모든 여행지",
+    "noTours": "이 여행지의 투어가 아직 없습니다.",
+    "viewAll": "전체 투어 보기",
+    "bookThisTour": "투어 예약",
+    "from": "부터"
+  },
+  "hotels": {
+    "label": "일정에 맞는 숙소",
+    "heading": "추천 숙소",
+    "subheading": "일반적인 호텔 순위가 아닙니다. 각 숙소는 특정 루트, 스타일, 여행자 유형에 맞게 추천됩니다.",
+    "all": "전체",
+    "infoCallout": "최적의 결과를 위해 특정 일정 페이지를 열어보세요 — 해당 루트와 스타일에 맞는 숙소가 표시되어 선택이 더 쉬워집니다.",
+    "noHotels": "이 필터에 맞는 숙소가 없습니다.",
+    "viewAll": "전체 숙소 보기",
+    "checkAvailability": "예약 확인"
+  },
+  "footer": {
+    "tagline": "일정 중심 여행 계획. 스타일을 알려주시면 루트를 짜드립니다.",
+    "itineraries": "여행 일정",
+    "tools": "도구",
+    "tripPlanner": "여행 플래너",
+    "allItineraries": "전체 일정",
+    "toursActivities": "투어 & 액티비티",
+    "whereToStay": "숙소",
+    "travelStyles": "여행 스타일",
+    "relaxed": "여유롭게",
+    "efficient": "알차게",
+    "activityFocused": "액티비티 중심",
+    "hotelFocused": "숙소 중심",
+    "copyright": "© {year} Tripflowy. All rights reserved.",
+    "affiliateDisclosure": "제휴 공개: 일부 링크를 통해 소정의 수수료를 받을 수 있으며, 이용자에게 추가 비용은 없습니다."
+  }
+}

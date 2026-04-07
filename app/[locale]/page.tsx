@@ -1,0 +1,146 @@
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import { ArrowRight, CheckCircle, Zap, Map, Hotel } from "lucide-react";
+import { QuickPlanner } from "@/components/planner/QuickPlanner";
+import { ItineraryCard } from "@/components/itinerary/ItineraryCard";
+import { getFeaturedItineraries } from "@/lib/utils";
+import { countries } from "@/data/destinations";
+import type { Locale } from "@/types";
+
+interface PageProps {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function HomePage({ params }: PageProps) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations();
+  const loc = locale as Locale;
+  const featured = getFeaturedItineraries();
+
+  return (
+    <div>
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-12 md:pt-24 md:pb-16">
+          <div className="max-w-2xl mb-10">
+            <div className="inline-flex items-center gap-2 bg-white/10 text-blue-200 text-xs font-medium px-3 py-1.5 rounded-full mb-6">
+              <Zap className="w-3.5 h-3.5" />
+              {t("hero.badge")}
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4">
+              {t("hero.heading")}
+              <br />
+              <span className="text-blue-400">{t("hero.headingHighlight")}</span>
+            </h1>
+            <p className="text-slate-400 text-lg leading-relaxed">
+              {t("hero.subheading")}
+            </p>
+          </div>
+
+          <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-5 max-w-3xl">
+            <p className="text-sm font-medium text-slate-300 mb-4">
+              {t("hero.findItinerary")}
+            </p>
+            <QuickPlanner compact />
+          </div>
+
+          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-slate-400">
+            {[t("hero.destinations"), t("hero.dayByDay"), t("hero.affiliate")].map((s) => (
+              <span key={s} className="flex items-center gap-1.5">
+                <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0" />
+                {s}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Itineraries */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <p className="text-sm font-medium text-blue-600 mb-1">{t("featured.label")}</p>
+            <h2 className="text-2xl font-bold text-gray-900">{t("featured.heading")}</h2>
+          </div>
+          <Link
+            href="/itineraries"
+            className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors"
+          >
+            {t("featured.seeAll")} <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {featured.map((itin) => (
+            <ItineraryCard key={itin.id} itinerary={itin} />
+          ))}
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="bg-white border-y border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("howItWorks.heading")}</h2>
+            <p className="text-gray-500 max-w-lg mx-auto">{t("howItWorks.subheading")}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { step: "01", icon: Map, title: t("howItWorks.step1Title"), desc: t("howItWorks.step1Desc") },
+              { step: "02", icon: Zap, title: t("howItWorks.step2Title"), desc: t("howItWorks.step2Desc") },
+              { step: "03", icon: Hotel, title: t("howItWorks.step3Title"), desc: t("howItWorks.step3Desc") },
+            ].map(({ step, icon: Icon, title, desc }) => (
+              <div key={step} className="flex gap-5">
+                <div className="flex-shrink-0">
+                  <div className="w-11 h-11 bg-blue-50 rounded-xl flex items-center justify-center">
+                    <Icon className="w-5 h-5 text-blue-600" />
+                  </div>
+                </div>
+                <div>
+                  <p className="text-xs font-mono text-gray-400 mb-1">{step}</p>
+                  <h3 className="font-semibold text-gray-900 mb-2">{title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Browse by destination */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <h2 className="text-2xl font-bold text-gray-900 mb-8">{t("browseByDestination")}</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+          {countries.map((c) => (
+            <Link
+              key={c.id}
+              href={`/itineraries?country=${c.id}`}
+              className="bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl p-5 text-white flex flex-col items-center gap-2 hover:opacity-90 transition-opacity"
+            >
+              <span className="text-2xl">{c.emoji}</span>
+              <span className="text-sm font-semibold">{c.label[loc]}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-blue-600 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h2 className="text-2xl font-bold mb-2">{t("cta.heading")}</h2>
+            <p className="text-blue-100">{t("cta.subheading")}</p>
+          </div>
+          <Link
+            href="/planner"
+            className="flex-shrink-0 bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors flex items-center gap-2"
+          >
+            {t("cta.button")} <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+}

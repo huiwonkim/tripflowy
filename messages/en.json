@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "title": "Tripflowy — Itinerary-First Travel Planning",
+    "description": "Plan your trip in seconds. Tell us your destination, duration, and travel style — we'll recommend the perfect itinerary."
+  },
+  "nav": {
+    "itineraries": "Itineraries",
+    "planner": "Planner",
+    "tours": "Tours",
+    "hotels": "Hotels",
+    "planMyTrip": "Plan My Trip",
+    "language": "EN"
+  },
+  "hero": {
+    "badge": "Itinerary-first travel planning",
+    "heading": "Plan your trip in seconds.",
+    "headingHighlight": "We handle the route.",
+    "subheading": "Tell us your destination, how long you're traveling, and your style — we'll recommend a ready-to-use itinerary.",
+    "findItinerary": "Find your itinerary:",
+    "destinations": "3 destinations available",
+    "dayByDay": "Day-by-day plans",
+    "affiliate": "Affiliate tours & hotels included"
+  },
+  "featured": {
+    "label": "Ready to use",
+    "heading": "Featured Itineraries",
+    "seeAll": "See all"
+  },
+  "howItWorks": {
+    "heading": "How Tripflowy works",
+    "subheading": "From choice to full itinerary in three steps. No accounts, no forms, no waiting.",
+    "step1Title": "Set your parameters",
+    "step1Desc": "Pick destination, duration, who you're traveling with, and your travel style.",
+    "step2Title": "Get matched itineraries",
+    "step2Desc": "We instantly show itineraries that fit your inputs — no generic blog posts.",
+    "step3Title": "Book tours & hotels in context",
+    "step3Desc": "Each itinerary links to the right tours and hotels for that specific route."
+  },
+  "browseByDestination": "Browse by destination",
+  "cta": {
+    "heading": "Not sure where to start?",
+    "subheading": "Use our planner and find the right itinerary in 30 seconds.",
+    "button": "Open the Planner"
+  },
+  "planner": {
+    "badge": "Quick Recommendation",
+    "heading": "Find your itinerary",
+    "subheading": "Answer 4 questions and we'll recommend the right travel plan for you.",
+    "destination": "Destination",
+    "duration": "Duration",
+    "whosTraveling": "Who's traveling?",
+    "travelStyle": "Travel style",
+    "whereGoing": "Where are you going?",
+    "howLong": "How long are you traveling?",
+    "findMyItinerary": "Find My Itinerary",
+    "selectAllOptions": "Select all options above",
+    "matchCount": "{count} {count, plural, one {itinerary matches} other {itineraries match}} your preferences",
+    "noMatch": "No exact match found",
+    "noMatchHint": "Try adjusting your filters or",
+    "browseAll": "browse all itineraries",
+    "seeAllItineraries": "See all itineraries"
+  },
+  "itineraries": {
+    "browseAll": "Browse all",
+    "heading": "Itineraries",
+    "subheading": "Day-by-day travel plans filtered to your style, duration, and travel group.",
+    "filterLabel": "Filter itineraries",
+    "clearFilters": "Clear filters",
+    "allDestinations": "All destinations",
+    "anyDuration": "Any duration",
+    "anyTraveler": "Any traveler",
+    "anyStyle": "Any style",
+    "found": "found",
+    "forFilters": "for your filters",
+    "itinerary": "itinerary",
+    "itineraries2": "itineraries",
+    "noMatch": "No itineraries match your filters.",
+    "tryBroadening": "Try broadening your search or",
+    "clearAll": "clear all filters",
+    "viewPlan": "View plan"
+  },
+  "detail": {
+    "allItineraries": "All Itineraries",
+    "overview": "Overview",
+    "bestFor": "Best for",
+    "notIdealFor": "Not ideal for",
+    "dayByDayPlan": "Day-by-Day Plan",
+    "tripSummary": "Trip Summary",
+    "destination": "Destination",
+    "duration": "Duration",
+    "style": "Style",
+    "bestForLabel": "Best for",
+    "toursLabel": "Recommended for this itinerary",
+    "toursHeading": "Tours & Activities",
+    "hotelsLabel": "Best for this route & style",
+    "hotelsHeading": "Where to Stay",
+    "ctaHeading": "Ready to book this trip?",
+    "ctaSubheading": "All tours and hotels above are hand-selected for this specific route and style. Click any booking link to get started.",
+    "bookFirstTour": "Book First Tour",
+    "checkHotels": "Check Hotels",
+    "day": "Day"
+  },
+  "budget": {
+    "heading": "Estimated Budget",
+    "label": "Per person estimate",
+    "category": "Category",
+    "range": "Range",
+    "total": "Estimated Total",
+    "disclaimer": "Prices are approximate and may vary by season, booking time, and personal preferences."
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "label": "Before you go"
+  },
+  "compare": {
+    "heading": "Compare Itineraries",
+    "subheading": "Side-by-side comparison to help you choose the right trip.",
+    "addMore": "Add more itineraries to compare",
+    "browseItineraries": "Browse itineraries",
+    "noItems": "Select at least 2 itineraries to compare.",
+    "duration": "Duration",
+    "style": "Style",
+    "travelerType": "Traveler Type",
+    "budgetRange": "Budget Range",
+    "bestFor": "Best for",
+    "notIdealFor": "Not ideal for",
+    "viewFullPlan": "View Full Plan",
+    "compareBar": "Compare {count} itineraries",
+    "compare": "Compare"
+  },
+  "tours": {
+    "label": "Curated experiences",
+    "heading": "Tours & Activities",
+    "subheading": "Hand-picked tours that pair with our itineraries. Book directly with the operator.",
+    "allDestinations": "All destinations",
+    "noTours": "No tours available for this destination yet.",
+    "viewAll": "View all tours",
+    "bookThisTour": "Book This Tour",
+    "from": "from"
+  },
+  "hotels": {
+    "label": "Itinerary-matched",
+    "heading": "Where to Stay",
+    "subheading": "Hotels aren't ranked generically here. Each property is recommended because it fits a specific route, style, or traveler type.",
+    "all": "All",
+    "infoCallout": "For best results, open a specific itinerary page — hotels are shown in the context of that route and style, making it easier to choose the right one for your trip.",
+    "noHotels": "No hotels found for this filter.",
+    "viewAll": "View all hotels",
+    "checkAvailability": "Check Availability"
+  },
+  "footer": {
+    "tagline": "Itinerary-first travel planning. Tell us your style, we'll build your route.",
+    "itineraries": "Itineraries",
+    "tools": "Tools",
+    "tripPlanner": "Trip Planner",
+    "allItineraries": "All Itineraries",
+    "toursActivities": "Tours & Activities",
+    "whereToStay": "Where to Stay",
+    "travelStyles": "Travel Styles",
+    "relaxed": "Relaxed",
+    "efficient": "Efficient",
+    "activityFocused": "Activity-Focused",
+    "hotelFocused": "Hotel-Focused",
+    "copyright": "© {year} Tripflowy. All rights reserved.",
+    "affiliateDisclosure": "Affiliate disclosure: some links earn a small commission at no extra cost to you."
+  }
+}
