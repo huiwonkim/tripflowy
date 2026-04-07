@@ -15,6 +15,7 @@ export function Header() {
 
   const nav = [
     { href: "/planner" as const, label: t("planner") },
+    { href: "/posts" as const, label: t("guides") },
     { href: "/tours" as const, label: t("tours") },
     { href: "/hotels" as const, label: t("hotels") },
   ];

@@ -29,9 +29,11 @@ const typeLabels: Record<ActivityType, { en: string; ko: string }> = {
 interface ItineraryMapProps {
   days: GeneratedDay[];
   locale: Locale;
+  mapId?: string;
+  height?: number;
 }
 
-export function ItineraryMap({ days, locale }: ItineraryMapProps) {
+export function ItineraryMap({ days, locale, mapId = "main", height = 400 }: ItineraryMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
 
@@ -134,7 +136,7 @@ export function ItineraryMap({ days, locale }: ItineraryMapProps) {
         mapInstanceRef.current = null;
       }
     };
-  }, [days, locale]);
+  }, [days, locale, mapId]);
 
   // Collect legend types
   const usedTypes = new Set<ActivityType>();
@@ -147,7 +149,7 @@ export function ItineraryMap({ days, locale }: ItineraryMapProps) {
   return (
     <div className="space-y-3">
       {/* Map */}
-      <div ref={mapRef} className="w-full h-[400px] rounded-2xl overflow-hidden border border-gray-200 z-0" />
+      <div ref={mapRef} style={{ height: `${height}px` }} className="w-full rounded-2xl overflow-hidden border border-gray-200 z-0" />
 
       {/* Legend */}
       <div className="flex flex-wrap gap-3 px-1">

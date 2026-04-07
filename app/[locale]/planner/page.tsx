@@ -14,6 +14,7 @@ import { FAQSection } from "@/components/itinerary/FAQSection";
 import { TourCard } from "@/components/tours/TourCard";
 import { HotelCard } from "@/components/hotels/HotelCard";
 import { ItineraryMap } from "@/components/map/ItineraryMap";
+import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
 import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary } from "@/types";
 
 const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", style: "" };
@@ -229,18 +230,10 @@ export default function PlannerPage() {
               </p>
             </div>
 
-            {/* Map */}
-            <section>
-              <h2 className="text-lg font-bold text-gray-900 mb-3">
-                {locale === "ko" ? "동선 지도" : "Route Map"}
-              </h2>
-              <ItineraryMap days={itinerary.days} locale={locale} />
-            </section>
-
-            {/* Day-by-day */}
+            {/* Day-by-day with per-day maps */}
             <section>
               <h2 className="text-lg font-bold text-gray-900 mb-4">{tDetail("dayByDayPlan")}</h2>
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {itinerary.days.map((day) => {
                   const cityLabel = allCities.find((c) => c.id === day.city)?.label[locale] ?? day.city;
                   const prevCity = day.dayNumber > 1 ? itinerary.days[day.dayNumber - 2]?.city : null;
@@ -255,10 +248,14 @@ export default function PlannerPage() {
                           </span>
                         </div>
                       )}
-                      <DayPlanSection
-                        day={{ day: day.dayNumber, title: day.course.title, subtitle: { en: cityLabel, ko: cityLabel }, activities: day.course.activities }}
-                        locale={locale}
-                      />
+                      {/* Per-day map */}
+                      <ItineraryMap days={[day]} locale={locale} mapId={`day-${day.dayNumber}`} height={280} />
+                      <div className="mt-3">
+                        <DayPlanSection
+                          day={{ day: day.dayNumber, title: day.course.title, subtitle: { en: cityLabel, ko: cityLabel }, activities: day.course.activities }}
+                          locale={locale}
+                        />
+                      </div>
                     </div>
                   );
                 })}
@@ -299,6 +296,11 @@ export default function PlannerPage() {
                   {matchedHotels.map((h) => <HotelCard key={h.id} hotel={h} locale={locale} />)}
                 </div>
               </section>
+            )}
+
+            {/* Booking Checklist */}
+            {itinerary && (
+              <BookingChecklist itinerary={itinerary} locale={locale} />
             )}
 
             {/* CTA */}

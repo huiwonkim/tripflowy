@@ -136,6 +136,21 @@ export type Tour = {
   reviewCount: number;
 };
 
+// ── 블로그 포스트 (코스 상세 후기) ──────────────────
+export type BlogPost = {
+  slug: string;
+  courseId?: string;       // 연결된 DayCourse ID (있으면 코스에서 링크)
+  title: LocaleString;
+  excerpt: LocaleString;   // 목록에서 보이는 짧은 요약
+  content: LocaleString;   // 마크다운 본문
+  city: string;
+  coverImage?: string;     // /images/posts/xxx.jpg
+  coverGradient: string;
+  tags: string[];
+  publishedAt: string;     // ISO date
+  updatedAt?: string;
+};
+
 // ── 플래너 입력 ────────────────────────────────────
 export type PlannerInput = {
   destinations: string[];

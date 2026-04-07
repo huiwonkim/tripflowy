@@ -1,16 +1,18 @@
 import type { MetadataRoute } from "next";
 import { dayCourses } from "@/data/day-courses";
+import { posts } from "@/data/posts";
 
 const BASE_URL = "https://tripflowy.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     { path: "", priority: 1.0 },
-    { path: "/itineraries", priority: 0.9 },
-    { path: "/planner", priority: 0.8 },
-    { path: "/courses", priority: 0.8 },
+    { path: "/planner", priority: 0.9 },
+    { path: "/posts", priority: 0.8 },
     { path: "/tours", priority: 0.7 },
     { path: "/hotels", priority: 0.7 },
+    { path: "/courses", priority: 0.6 },
+    { path: "/itineraries", priority: 0.6 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = staticPages.map(({ path, priority }) => ({
@@ -20,6 +22,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority,
     alternates: {
       languages: { en: `${BASE_URL}${path}`, ko: `${BASE_URL}/ko${path}` },
+    },
+  }));
+
+  const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${BASE_URL}/posts/${post.slug}`,
+    lastModified: new Date(post.updatedAt ?? post.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+    alternates: {
+      languages: {
+        en: `${BASE_URL}/posts/${post.slug}`,
+        ko: `${BASE_URL}/ko/posts/${post.slug}`,
+      },
     },
   }));
 
@@ -36,5 +51,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
-  return [...staticEntries, ...courseEntries];
+  return [...staticEntries, ...postEntries, ...courseEntries];
 }

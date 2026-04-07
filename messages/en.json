@@ -7,6 +7,7 @@
     "itineraries": "Itineraries",
     "planner": "Planner",
     "courses": "Courses",
+    "guides": "Guides",
     "tours": "Tours",
     "hotels": "Hotels",
     "planMyTrip": "Plan My Trip",
@@ -110,6 +111,11 @@
     "viewAll": "View all courses",
     "allCourses": "All Courses",
     "timeline": "Timeline"
+  },
+  "booking": {
+    "label": "Ready to book?",
+    "heading": "Booking Checklist",
+    "subheading": "Select what you need, then book everything at once."
   },
   "budget": {
     "heading": "Estimated Budget",
