@@ -1,5 +1,29 @@
 import type { FlightEstimate, HotelEstimate } from "@/types";
 
+// ── Live price fetcher (from /api/prices → Vercel KV) ──
+
+interface LivePriceData {
+  updatedAt: string;
+  flights: { fsc: { min: number; max: number }; lcc: { min: number; max: number } } | null;
+  hotels: { budget: { min: number; max: number }; standard: { min: number; max: number }; luxury: { min: number; max: number } } | null;
+}
+
+/**
+ * Try to fetch live prices from the API (which reads from Vercel KV).
+ * Returns null if unavailable — caller should fallback to static estimates.
+ */
+export async function fetchLivePrices(cityId: string): Promise<LivePriceData | null> {
+  try {
+    const res = await fetch(`/api/prices?destination=${cityId}`, { next: { revalidate: 3600 } });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+// ── Static fallback estimates ──────────────────────────
+
 /**
  * Flight price estimates by destination city.
  * Prices in KRW (from Seoul/Incheon).
