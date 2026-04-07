@@ -3,7 +3,8 @@
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { useState } from "react";
-import { Menu, X, Globe, MapPin } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, Globe } from "lucide-react";
 
 export function Header() {
   const locale = useLocale();
@@ -27,11 +28,8 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900 tracking-tight">
-            <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center">
-              <MapPin className="w-4 h-4 text-white" strokeWidth={2.5} />
-            </div>
-            <span>Tripflowy</span>
+          <Link href="/" className="flex items-center">
+            <Image src="/logo-full.png" alt="Tripflowy" width={160} height={40} className="h-8 w-auto" priority />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">

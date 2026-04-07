@@ -29,13 +29,19 @@ export async function generateMetadata({
       template: "%s | Tripflowy",
     },
     description: t("description"),
+    icons: {
+      icon: "/logo-square-color.png",
+      apple: "/logo-square-color.png",
+    },
     openGraph: {
       siteName: "Tripflowy",
       type: "website",
       locale: locale === "ko" ? "ko_KR" : "en_US",
+      images: [{ url: "/logo-square-dark.png", width: 512, height: 512, alt: "Tripflowy" }],
     },
     twitter: {
       card: "summary_large_image",
+      images: ["/logo-square-dark.png"],
     },
     alternates: {
       canonical: "/",

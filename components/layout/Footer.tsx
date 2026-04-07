@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { MapPin } from "lucide-react";
+import Image from "next/image";
 
 export async function Footer() {
   const t = await getTranslations("footer");
@@ -40,11 +40,8 @@ export async function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
-            <Link href="/" className="flex items-center gap-2 text-white font-bold text-lg mb-4">
-              <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center">
-                <MapPin className="w-4 h-4 text-white" strokeWidth={2.5} />
-              </div>
-              Tripflowy
+            <Link href="/" className="flex items-center mb-4">
+              <Image src="/logo-full.png" alt="Tripflowy" width={140} height={35} className="h-7 w-auto brightness-0 invert" />
             </Link>
             <p className="text-sm leading-relaxed">{t("tagline")}</p>
           </div>
