@@ -45,7 +45,7 @@ export function QuickPlanner({ compact = false }: QuickPlannerProps) {
     if (input.duration) params.set("duration", input.duration);
     if (input.travelerType) params.set("travelerType", input.travelerType);
     if (input.style) params.set("style", input.style);
-    router.push(`/itineraries?${params.toString()}` as never);
+    router.push(`/planner?${params.toString()}` as never);
   }
 
   const selectBase =

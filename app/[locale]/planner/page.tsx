@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { Suspense, useState, useRef, useEffect, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink } from "lucide-react";
@@ -20,12 +21,34 @@ import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerar
 const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", style: "" };
 
 export default function PlannerPage() {
+  return (
+    <Suspense fallback={<div className="max-w-3xl mx-auto px-4 py-12 text-gray-400">Loading...</div>}>
+      <PlannerContent />
+    </Suspense>
+  );
+}
+
+function PlannerContent() {
   const locale = useLocale() as Locale;
   const t = useTranslations("planner");
   const tDetail = useTranslations("detail");
+  const searchParams = useSearchParams();
   const [input, setInput] = useState<PlannerInput>(emptyInput);
   const [searched, setSearched] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
+
+  // Read URL params on mount (from homepage QuickPlanner redirect)
+  useEffect(() => {
+    const destinations = searchParams.get("destinations")?.split(",").filter(Boolean) ?? [];
+    const duration = searchParams.get("duration") ?? "";
+    const travelerType = (searchParams.get("travelerType") as TravelerType) ?? "";
+    const style = (searchParams.get("style") as TravelStyle) ?? "";
+    if (destinations.length > 0 || duration) {
+      setInput({ destinations, duration, travelerType, style });
+      setSearched(true);
+      setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 300);
+    }
+  }, [searchParams]);
 
   // Destination multi-select dropdown
   const [destOpen, setDestOpen] = useState(false);
