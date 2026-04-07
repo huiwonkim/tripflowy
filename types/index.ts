@@ -95,9 +95,26 @@ export type FAQ = {
   answer: LocaleString;
 };
 
+export type MonthlyClimate = {
+  tempHigh: number[];  // 12 months, °C
+  tempLow: number[];   // 12 months, °C
+  rain: number[];      // 12 months, mm
+};
+
+export type CityBasicInfo = {
+  visa: LocaleString;
+  timezone: LocaleString;
+  currency: LocaleString;
+  language: LocaleString;
+  voltage: LocaleString;
+  climate: MonthlyClimate;
+  bestMonths: number[];  // e.g. [3,4,5,10,11]
+};
+
 export type CityInfo = {
   cityId: string;
   faq: FAQ[];
+  info?: CityBasicInfo;
 };
 
 // ── 호텔 / 투어 ───────────────────────────────────

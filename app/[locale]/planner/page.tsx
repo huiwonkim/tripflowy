@@ -16,6 +16,7 @@ import { TourCard } from "@/components/tours/TourCard";
 import { HotelCard } from "@/components/hotels/HotelCard";
 import { ItineraryMap } from "@/components/map/ItineraryMap";
 import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
+import { CityInfoCard } from "@/components/itinerary/CityInfoCard";
 import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary } from "@/types";
 
 const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", style: "" };
@@ -289,6 +290,13 @@ function PlannerContent() {
             {itinerary && (
               <BudgetSection itinerary={itinerary} locale={locale} nights={Number(input.duration)} />
             )}
+
+            {/* City Info */}
+            {cityInfos.map((ci) => {
+              if (!ci?.info) return null;
+              const cityLabel = allCities.find((c) => c.id === ci.cityId)?.label[locale] ?? ci.cityId;
+              return <CityInfoCard key={ci.cityId} info={ci.info} cityName={cityLabel} locale={locale} />;
+            })}
 
             {/* FAQ */}
             {cityInfos.length > 0 && cityInfos[0] && cityInfos[0].faq.length > 0 && (
