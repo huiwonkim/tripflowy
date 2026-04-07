@@ -225,6 +225,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
+  // Determine update type from query param
+  const updateType = request.nextUrl.searchParams.get("type") ?? "all";
+  const doFlights = updateType === "flights" || updateType === "all";
+  const doHotels = updateType === "hotels" || updateType === "all";
+
   // Calculate dates: 30 days from now
   const now = new Date();
   const departureDate = new Date(now);
@@ -236,51 +241,63 @@ export async function GET(request: NextRequest) {
   const checkInStr = depStr;
   const checkOutStr = checkOutDate.toISOString().split("T")[0];
 
-  console.log(`[cron] Starting price update — departure: ${depStr}`);
+  console.log(`[cron] Starting ${updateType} update — departure: ${depStr}`);
 
-  // Get Amadeus token
+  // Get Amadeus token (only if updating flights)
   let amadeusToken: string | null = null;
-  try {
-    if (process.env.AMADEUS_API_KEY && process.env.AMADEUS_API_SECRET) {
-      amadeusToken = await getAmadeusToken();
+  if (doFlights) {
+    try {
+      if (process.env.AMADEUS_API_KEY && process.env.AMADEUS_API_SECRET) {
+        amadeusToken = await getAmadeusToken();
+      }
+    } catch (err) {
+      console.error("[cron] Amadeus auth failed:", err);
     }
-  } catch (err) {
-    console.error("[cron] Amadeus auth failed:", err);
   }
 
   const results: Record<string, string> = {};
 
   for (const cityId of allCityIds) {
-    console.log(`[cron] Processing ${cityId}...`);
+    console.log(`[cron] Processing ${cityId} (${updateType})...`);
 
-    // Fetch flights
-    let flights: FlightResult | null = null;
-    if (amadeusToken) {
-      flights = await fetchFlights(amadeusToken, cityId, depStr);
-      // Rate limit: 1 request per second for Amadeus free tier
+    // Load existing data from KV to merge partial updates
+    let existing: { flights?: FlightResult | null; hotels?: HotelResult | null } = {};
+    try {
+      const raw = await kv.get<string>(`prices:${cityId}`);
+      if (raw) {
+        existing = typeof raw === "string" ? JSON.parse(raw) : raw;
+      }
+    } catch { /* ignore */ }
+
+    // Fetch flights (daily)
+    let flights: FlightResult | null = existing.flights ?? null;
+    if (doFlights && amadeusToken) {
+      const result = await fetchFlights(amadeusToken, cityId, depStr);
+      if (result && (result.fsc.min > 0 || result.lcc.min > 0)) {
+        flights = result;
+      }
       await new Promise((r) => setTimeout(r, 1200));
     }
 
-    // Fetch hotels
-    let hotels: HotelResult | null = null;
-    if (process.env.SERPAPI_KEY) {
-      hotels = await fetchHotels(cityId, checkInStr, checkOutStr);
-      // SerpAPI rate limit
+    // Fetch hotels (weekly)
+    let hotels: HotelResult | null = existing.hotels ?? null;
+    if (doHotels && process.env.SERPAPI_KEY) {
+      const result = await fetchHotels(cityId, checkInStr, checkOutStr);
+      if (result) {
+        hotels = result;
+      }
       await new Promise((r) => setTimeout(r, 1500));
     }
 
-    // Build price data
+    // Save merged data to KV
     const priceData = {
       updatedAt: now.toISOString(),
-      flights: flights && (flights.fsc.min > 0 || flights.lcc.min > 0)
-        ? flights
-        : null,
-      hotels: hotels ?? null,
+      flights,
+      hotels,
     };
 
-    // Save to KV
     try {
-      await kv.set(`prices:${cityId}`, JSON.stringify(priceData), { ex: 86400 * 2 }); // 2-day TTL
+      await kv.set(`prices:${cityId}`, JSON.stringify(priceData), { ex: 86400 * 8 }); // 8-day TTL (covers weekly hotel cycle)
       results[cityId] = "ok";
     } catch (err) {
       console.error(`[cron] KV save failed for ${cityId}:`, err);
@@ -288,10 +305,11 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  console.log("[cron] Price update complete");
+  console.log(`[cron] ${updateType} update complete`);
 
   return NextResponse.json({
     success: true,
+    type: updateType,
     updated: Object.keys(results).length,
     results,
     departureDate: depStr,
