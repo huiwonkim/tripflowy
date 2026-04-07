@@ -41,7 +41,7 @@ export async function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
             <Link href="/" className="flex items-center mb-4">
-              <Image src="/logo-full.png" alt="Tripflowy" width={140} height={35} className="h-7 w-auto brightness-0 invert" />
+              <Image src="/logo-full.png" alt="Tripflowy" width={180} height={44} className="h-10 w-auto brightness-0 invert" />
             </Link>
             <p className="text-sm leading-relaxed">{t("tagline")}</p>
           </div>
