@@ -2,7 +2,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, CheckCircle, Zap, Map, Hotel } from "lucide-react";
 import { QuickPlanner } from "@/components/planner/QuickPlanner";
-import { CourseCard } from "@/components/course/CourseCard";
 import { dayCourses } from "@/data/day-courses";
 import { countries } from "@/data/destinations";
 import type { Locale } from "@/types";
@@ -58,22 +57,35 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Featured Courses */}
+      {/* Popular destinations */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <p className="text-sm font-medium text-emerald-600 mb-1">{t("courses.label")}</p>
-            <h2 className="text-2xl font-bold text-gray-900">{t("courses.heading")}</h2>
+            <p className="text-sm font-medium text-blue-600 mb-1">{t("featured.label")}</p>
+            <h2 className="text-2xl font-bold text-gray-900">{t("featured.heading")}</h2>
           </div>
-          <Link href="/courses"
+          <Link href="/planner"
             className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
-            {t("courses.viewAll")} <ArrowRight className="w-4 h-4" />
+            {t("featured.seeAll")} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {featuredCourses.map((course) => (
-            <CourseCard key={course.id} course={course} />
+            <div key={course.id} className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-all">
+              <div className={`h-36 bg-gradient-to-br ${course.coverGradient} relative flex items-end p-4`}>
+                <div className="absolute inset-0 bg-black/20" />
+                <div className="relative z-10 flex flex-wrap gap-1.5">
+                  {course.tags.slice(0, 3).map((tag) => (
+                    <span key={tag} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2 py-0.5 rounded-full">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="p-4">
+                <h3 className="font-semibold text-gray-900 text-sm mb-1">{course.title[loc]}</h3>
+                <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">{course.summary[loc]}</p>
+              </div>
+            </div>
           ))}
         </div>
       </section>

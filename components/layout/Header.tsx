@@ -13,8 +13,6 @@ export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const nav = [
-    { href: "/itineraries" as const, label: t("itineraries") },
-    { href: "/courses" as const, label: t("courses") },
     { href: "/planner" as const, label: t("planner") },
     { href: "/tours" as const, label: t("tours") },
     { href: "/hotels" as const, label: t("hotels") },
