@@ -5,6 +5,7 @@ import { APIProvider, Map, useMap, useMapsLibrary } from "@vis.gl/react-google-m
 import type { GeneratedDay, ActivityType, Locale } from "@/types";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
+const MAP_ID = process.env.NEXT_PUBLIC_GOOGLE_MAP_ID ?? "fc366bd3a2a403e93f8f124f";
 
 const typeColors: Record<ActivityType, string> = {
   transport: "#6B7280",
@@ -197,7 +198,7 @@ export function ItineraryMap({ days, locale, mapId = "main", height = 400 }: Iti
           defaultZoom={12}
           gestureHandling="cooperative"
           disableDefaultUI={false}
-          mapId={mapId}
+          mapId={MAP_ID}
         >
           <MapContent points={points} locale={locale} />
         </Map>
