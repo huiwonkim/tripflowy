@@ -114,10 +114,22 @@
   "budget": {
     "heading": "Estimated Budget",
     "label": "Per person estimate",
-    "category": "Category",
-    "range": "Range",
-    "total": "Estimated Total",
-    "disclaimer": "Prices are approximate and may vary by season, booking time, and personal preferences."
+    "flights": "Flights (round trip)",
+    "flightsNote": "1 month ahead est.",
+    "hotels": "Accommodation (per night)",
+    "perNight": "per night",
+    "hotelBudget": "Budget",
+    "hotelStandard": "Standard",
+    "hotelLuxury": "Luxury",
+    "localCosts": "Local Expenses",
+    "food": "Food & drinks",
+    "activity": "Tours & activities",
+    "transport": "Local transport",
+    "etc": "Other",
+    "grandTotal": "Estimated Total",
+    "budgetTier": "Budget trip",
+    "luxuryTier": "Luxury trip",
+    "disclaimer": "Prices are approximate and may vary by season, booking time, and exchange rates."
   },
   "faq": {
     "heading": "Frequently Asked Questions",

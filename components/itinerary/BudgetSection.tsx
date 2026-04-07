@@ -1,23 +1,69 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import type { BudgetItem, Locale } from "@/types";
-import { DollarSign } from "lucide-react";
+import { Plane, Building2, MapPinned, DollarSign } from "lucide-react";
+import { displayPriceRange, displayPrice, convertToDisplay, formatCurrency } from "@/lib/currency";
+import { getFlightEstimate, getHotelEstimate } from "@/lib/price-api";
+import type { Locale, GeneratedItinerary } from "@/types";
+import { sumLocalCosts } from "@/lib/itinerary-builder";
 
 interface BudgetSectionProps {
-  items: BudgetItem[];
+  itinerary: GeneratedItinerary;
   locale: Locale;
-  nights?: number;
+  nights: number;
 }
 
-export function BudgetSection({ items, locale, nights }: BudgetSectionProps) {
+export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps) {
   const t = useTranslations("budget");
-  const totalMin = items.reduce((sum, item) => sum + item.min, 0);
-  const totalMax = items.reduce((sum, item) => sum + item.max, 0);
-  const currency = items[0]?.currency ?? "USD";
 
-  // If nights provided, multiply per-night/per-day items
-  const multiplier = nights ?? 1;
+  // Flight — use first city as primary destination
+  const primaryCity = itinerary.cities[0];
+  const flight = getFlightEstimate(primaryCity);
+
+  // Hotel — use first city (user stays longest here per allocation)
+  const hotel = getHotelEstimate(primaryCity);
+
+  // Local costs — summed from all courses
+  const localCosts = sumLocalCosts(itinerary);
+
+  // Convert everything to display currency
+  const flightFsc = flight ? displayPriceRange(flight.fsc.min, flight.fsc.max, flight.currency, locale) : null;
+  const flightLcc = flight ? displayPriceRange(flight.lcc.min, flight.lcc.max, flight.currency, locale) : null;
+
+  const hotelBudget = hotel ? displayPriceRange(hotel.budget.min, hotel.budget.max, hotel.currency, locale) : null;
+  const hotelStd = hotel ? displayPriceRange(hotel.standard.min, hotel.standard.max, hotel.currency, locale) : null;
+  const hotelLux = hotel ? displayPriceRange(hotel.luxury.min, hotel.luxury.max, hotel.currency, locale) : null;
+
+  // Local costs total
+  let localTotal = 0;
+  const localRows = localCosts.map((lc) => {
+    const total = lc.food + lc.activity + lc.transport + lc.etc;
+    const converted = convertToDisplay(total, lc.currency, locale);
+    localTotal += converted;
+    return {
+      food: displayPrice(lc.food, lc.currency, locale),
+      activity: displayPrice(lc.activity, lc.currency, locale),
+      transport: displayPrice(lc.transport, lc.currency, locale),
+      etc: displayPrice(lc.etc, lc.currency, locale),
+      total: formatCurrency(converted, locale),
+    };
+  });
+
+  // Grand total estimates (budget / luxury tier)
+  const calcTotal = (flightRange: { min: number; max: number } | undefined, hotelRange: { min: number; max: number } | undefined, flightCur: string, hotelCur: string) => {
+    if (!flightRange || !hotelRange) return null;
+    const fMin = convertToDisplay(flightRange.min, flightCur, locale);
+    const fMax = convertToDisplay(flightRange.max, flightCur, locale);
+    const hMin = convertToDisplay(hotelRange.min * nights, hotelCur, locale);
+    const hMax = convertToDisplay(hotelRange.max * nights, hotelCur, locale);
+    return {
+      min: fMin + hMin + localTotal,
+      max: fMax + hMax + localTotal,
+    };
+  };
+
+  const totalBudget = flight && hotel ? calcTotal(flight.lcc, hotel.budget, flight.currency, hotel.currency) : null;
+  const totalLuxury = flight && hotel ? calcTotal(flight.fsc, hotel.luxury, flight.currency, hotel.currency) : null;
 
   return (
     <section className="mt-10">
@@ -26,37 +72,119 @@ export function BudgetSection({ items, locale, nights }: BudgetSectionProps) {
         <h2 className="text-xl font-bold text-gray-900">{t("heading")}</h2>
       </div>
 
-      <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
-        <div className="divide-y divide-gray-100">
-          <div className="grid grid-cols-2 px-5 py-3 bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wide">
-            <span>{t("category")}</span>
-            <span className="text-right">{t("range")}</span>
-          </div>
-
-          {items.map((item, i) => (
-            <div key={i} className="grid grid-cols-2 px-5 py-4 items-center">
-              <div>
-                <p className="text-sm font-medium text-gray-900">{item.category[locale]}</p>
-                {item.note && <p className="text-xs text-gray-400 mt-0.5">{item.note[locale]}</p>}
+      <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm divide-y divide-gray-100">
+        {/* Flights */}
+        {flight && (
+          <div className="p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <Plane className="w-4 h-4 text-blue-500" />
+              <h3 className="text-sm font-semibold text-gray-900">{t("flights")}</h3>
+              <span className="text-xs text-gray-400 ml-auto">{t("flightsNote")}</span>
+            </div>
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <div>
+                  <span className="text-sm text-gray-700">FSC</span>
+                  <span className="text-xs text-gray-400 ml-1.5">{locale === "ko" ? "(대한항공, 아시아나 등)" : "(Korean Air, Asiana, etc.)"}</span>
+                </div>
+                <span className="text-sm font-semibold text-gray-900">{flightFsc}</span>
               </div>
-              <p className="text-sm font-semibold text-gray-900 text-right">
-                ${item.min} — ${item.max}
-              </p>
+              <div className="flex justify-between items-center">
+                <div>
+                  <span className="text-sm text-gray-700">LCC</span>
+                  <span className="text-xs text-gray-400 ml-1.5">{locale === "ko" ? "(진에어, 티웨이 등)" : "(Jin Air, T'way, etc.)"}</span>
+                </div>
+                <span className="text-sm font-semibold text-gray-900">{flightLcc}</span>
+              </div>
             </div>
-          ))}
-
-          <div className="grid grid-cols-2 px-5 py-4 bg-emerald-50 items-center">
-            <div className="flex items-center gap-2">
-              <DollarSign className="w-4 h-4 text-emerald-600" />
-              <span className="text-sm font-bold text-emerald-800">{t("total")}</span>
-            </div>
-            <p className="text-base font-bold text-emerald-800 text-right">
-              ${totalMin} — ${totalMax} {currency}
-            </p>
           </div>
-        </div>
+        )}
 
-        <p className="px-5 py-3 text-xs text-gray-400 bg-gray-50 border-t border-gray-100">
+        {/* Hotels */}
+        {hotel && (
+          <div className="p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <Building2 className="w-4 h-4 text-purple-500" />
+              <h3 className="text-sm font-semibold text-gray-900">{t("hotels")}</h3>
+              <span className="text-xs text-gray-400 ml-auto">{t("perNight")}</span>
+            </div>
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700">{t("hotelBudget")}</span>
+                <span className="text-sm font-semibold text-gray-900">{hotelBudget}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700">{t("hotelStandard")}</span>
+                <span className="text-sm font-semibold text-gray-900">{hotelStd}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700">{t("hotelLuxury")}</span>
+                <span className="text-sm font-semibold text-gray-900">{hotelLux}</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Local costs */}
+        {localRows.length > 0 && (
+          <div className="p-5">
+            <div className="flex items-center gap-2 mb-3">
+              <MapPinned className="w-4 h-4 text-emerald-500" />
+              <h3 className="text-sm font-semibold text-gray-900">{t("localCosts")}</h3>
+              <span className="text-xs text-gray-400 ml-auto">{itinerary.duration}{locale === "ko" ? "일 합산" : "-day total"}</span>
+            </div>
+            {localRows.map((row, i) => (
+              <div key={i} className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-700">{t("food")}</span>
+                  <span className="text-sm font-semibold text-gray-900">{row.food}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-700">{t("activity")}</span>
+                  <span className="text-sm font-semibold text-gray-900">{row.activity}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-700">{t("transport")}</span>
+                  <span className="text-sm font-semibold text-gray-900">{row.transport}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-gray-700">{t("etc")}</span>
+                  <span className="text-sm font-semibold text-gray-900">{row.etc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Grand total */}
+        {(totalBudget || totalLuxury) && (
+          <div className="p-5 bg-emerald-50">
+            <div className="flex items-center gap-2 mb-3">
+              <DollarSign className="w-4 h-4 text-emerald-600" />
+              <h3 className="text-sm font-bold text-emerald-800">{t("grandTotal")}</h3>
+            </div>
+            <div className="space-y-2">
+              {totalBudget && (
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-emerald-700">{t("budgetTier")}</span>
+                  <span className="text-sm font-bold text-emerald-800">
+                    {formatCurrency(totalBudget.min, locale)} ~ {formatCurrency(totalBudget.max, locale)}
+                  </span>
+                </div>
+              )}
+              {totalLuxury && (
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-emerald-700">{t("luxuryTier")}</span>
+                  <span className="text-sm font-bold text-emerald-800">
+                    {formatCurrency(totalLuxury.min, locale)} ~ {formatCurrency(totalLuxury.max, locale)}
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        <p className="px-5 py-3 text-xs text-gray-400 bg-gray-50">
           {t("disclaimer")}
         </p>
       </div>

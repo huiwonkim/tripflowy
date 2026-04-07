@@ -266,8 +266,8 @@ export default function PlannerPage() {
             </section>
 
             {/* Budget */}
-            {cityInfos.length > 0 && cityInfos[0] && (
-              <BudgetSection items={cityInfos[0].budget} locale={locale} />
+            {itinerary && (
+              <BudgetSection itinerary={itinerary} locale={locale} nights={Number(input.duration)} />
             )}
 
             {/* FAQ */}

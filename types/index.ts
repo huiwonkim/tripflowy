@@ -7,7 +7,6 @@ export type LocaleString = {
 
 export type TravelerType = "couple" | "solo" | "family" | "friends";
 export type TravelStyle = "relaxed" | "efficient" | "activity-focused" | "hotel-focused";
-export type PriceRange = "$" | "$$" | "$$$" | "$$$$";
 export type ActivityType =
   | "transport"
   | "sightseeing"
@@ -33,6 +32,14 @@ export type DayActivity = {
   location?: Coordinates;
 };
 
+export type DayCostBreakdown = {
+  food: number;
+  activity: number;
+  transport: number;
+  etc: number;
+  currency: string; // "VND", "THB", "JPY", "EUR", "USD", "CNY", "TRY", "GBP", "IDR"
+};
+
 export type DayCourse = {
   id: string;
   city: string;
@@ -44,6 +51,27 @@ export type DayCourse = {
   center: Coordinates;
   tags: string[];
   coverGradient: string;
+  costs?: DayCostBreakdown;
+};
+
+// ── 항공/숙소 가격 추정 ────────────────────────────
+export type PriceRange = "$" | "$$" | "$$$" | "$$$$";
+
+export type FlightEstimate = {
+  fsc: { min: number; max: number };
+  lcc: { min: number; max: number };
+  currency: string;
+  source: "api" | "estimate";
+  updatedAt?: string;
+};
+
+export type HotelEstimate = {
+  budget: { min: number; max: number };
+  standard: { min: number; max: number };
+  luxury: { min: number; max: number };
+  currency: string;
+  source: "api" | "estimate";
+  updatedAt?: string;
 };
 
 // ── 생성된 일정 (조합 결과) ────────────────────────
@@ -62,14 +90,6 @@ export type GeneratedItinerary = {
 };
 
 // ── 도시 정보 ──────────────────────────────────────
-export type BudgetItem = {
-  category: LocaleString;
-  min: number;
-  max: number;
-  currency: string;
-  note?: LocaleString;
-};
-
 export type FAQ = {
   question: LocaleString;
   answer: LocaleString;
@@ -77,7 +97,6 @@ export type FAQ = {
 
 export type CityInfo = {
   cityId: string;
-  budget: BudgetItem[];
   faq: FAQ[];
 };
 

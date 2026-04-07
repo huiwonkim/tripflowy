@@ -1,8 +1,9 @@
-import type { DayCourse, GeneratedItinerary, TravelStyle, TravelerType, GeneratedDay } from "@/types";
+import type { DayCourse, DayCostBreakdown, GeneratedItinerary, TravelStyle, TravelerType, GeneratedDay } from "@/types";
 import { dayCourses } from "@/data/day-courses";
 import { tours } from "@/data/tours";
 import { hotels } from "@/data/hotels";
 import { sortByProximity } from "./geo";
+import { getDefaultCosts } from "@/data/course-costs";
 
 interface BuildInput {
   destinations: string[];
@@ -118,4 +119,27 @@ export function getMatchedTours(itinerary: GeneratedItinerary) {
 export function getMatchedHotels(itinerary: GeneratedItinerary) {
   const cities = new Set(itinerary.cities);
   return hotels.filter((h) => cities.has(h.destination));
+}
+
+/** Get costs for a course — prefer course-level costs, fallback to city default */
+export function getCourseCosts(course: DayCourse): DayCostBreakdown | undefined {
+  return course.costs ?? getDefaultCosts(course.city);
+}
+
+/** Sum all local costs for a generated itinerary (in each currency) */
+export function sumLocalCosts(itinerary: GeneratedItinerary): { food: number; activity: number; transport: number; etc: number; currency: string }[] {
+  const byCurrency = new Map<string, { food: number; activity: number; transport: number; etc: number }>();
+
+  for (const day of itinerary.days) {
+    const costs = getCourseCosts(day.course);
+    if (!costs) continue;
+    const existing = byCurrency.get(costs.currency) ?? { food: 0, activity: 0, transport: 0, etc: 0 };
+    existing.food += costs.food;
+    existing.activity += costs.activity;
+    existing.transport += costs.transport;
+    existing.etc += costs.etc;
+    byCurrency.set(costs.currency, existing);
+  }
+
+  return Array.from(byCurrency.entries()).map(([currency, totals]) => ({ ...totals, currency }));
 }

@@ -227,9 +227,9 @@ function ItinerariesContent() {
             );
           })}
 
-          {/* Budget — merge city infos */}
-          {cityInfos.length > 0 && cityInfos[0] && (
-            <BudgetSection items={cityInfos[0].budget} locale={locale} />
+          {/* Budget */}
+          {itinerary && (
+            <BudgetSection itinerary={itinerary} locale={locale} nights={Number(duration)} />
           )}
 
           {/* FAQ */}
