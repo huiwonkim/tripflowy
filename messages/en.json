@@ -13,14 +13,14 @@
     "language": "EN"
   },
   "hero": {
-    "badge": "Itinerary-first travel planning",
-    "heading": "Plan your trip in seconds.",
-    "headingHighlight": "We handle the route.",
-    "subheading": "Tell us your destination, how long you're traveling, and your style — we'll recommend a ready-to-use itinerary.",
-    "findItinerary": "Find your itinerary:",
-    "destinations": "3 destinations available",
-    "dayByDay": "Day-by-day plans",
-    "affiliate": "Affiliate tours & hotels included"
+    "badge": "Routes designed with reason",
+    "heading": "Destination decided,\nbut stuck on the route?",
+    "headingHighlight": "We design it — down to the why.",
+    "subheading": "Ready-to-go itineraries. No thinking required.",
+    "findItinerary": "Build My Route",
+    "destinations": "Optimized routes, verified",
+    "dayByDay": "Complete day-by-day plans",
+    "affiliate": "Bookings connected in one place"
   },
   "featured": {
     "label": "Ready to use",
@@ -53,7 +53,7 @@
     "travelStyle": "Travel style",
     "whereGoing": "Where are you going?",
     "howLong": "How long are you traveling?",
-    "findMyItinerary": "Find My Itinerary",
+    "findMyItinerary": "Build My Route",
     "selectAllOptions": "Select all options above",
     "matchCount": "{count} {count, plural, one {itinerary matches} other {itineraries match}} your preferences",
     "noMatch": "No exact match found",

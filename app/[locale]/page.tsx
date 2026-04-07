@@ -29,11 +29,12 @@ export default async function HomePage({ params }: PageProps) {
               <Zap className="w-3.5 h-3.5" />
               {t("hero.badge")}
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4 whitespace-pre-line">
               {t("hero.heading")}
-              <br />
-              <span className="text-blue-400">{t("hero.headingHighlight")}</span>
             </h1>
+            <p className="text-blue-400 text-2xl sm:text-3xl font-bold mb-4">
+              {t("hero.headingHighlight")}
+            </p>
             <p className="text-slate-400 text-lg leading-relaxed">
               {t("hero.subheading")}
             </p>

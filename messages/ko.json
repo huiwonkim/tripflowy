@@ -13,14 +13,14 @@
     "language": "KO"
   },
   "hero": {
-    "badge": "일정 중심 여행 계획",
-    "heading": "여행지는 정했는데 어떻게 돌아야 할지 모르겠다면,",
-    "headingHighlight": "당신에게 맞는 여행 루트를 추천해드립니다.",
-    "subheading": "여행지, 기간, 여행 스타일을 선택하면 바로 사용할 수 있는 일정을 추천해드립니다.",
-    "findItinerary": "일정 찾기:",
-    "destinations": "3개 여행지 이용 가능",
-    "dayByDay": "일자별 상세 일정",
-    "affiliate": "투어 & 숙소 예약 포함"
+    "badge": "이유 있는 여행 동선",
+    "heading": "여행지는 정했는데,\n동선이 막막하다면",
+    "headingHighlight": "이유까지 설계해드립니다",
+    "subheading": "생각할 필요 없이 바로 떠날 수 있는 일정",
+    "findItinerary": "내 여행 루트 만들기",
+    "destinations": "검증된 최적 동선",
+    "dayByDay": "날짜별 완성된 일정",
+    "affiliate": "예약까지 한 번에 연결"
   },
   "featured": {
     "label": "바로 사용 가능",
@@ -53,7 +53,7 @@
     "travelStyle": "여행 스타일",
     "whereGoing": "어디로 가시나요?",
     "howLong": "얼마나 머무르시나요?",
-    "findMyItinerary": "일정 찾기",
+    "findMyItinerary": "내 여행 루트 만들기",
     "selectAllOptions": "위의 모든 옵션을 선택하세요",
     "matchCount": "선호에 맞는 {count}개 일정을 찾았습니다",
     "noMatch": "정확히 일치하는 일정이 없습니다",
