@@ -73,37 +73,59 @@ export function CityInfoCard({ info, cityName, locale }: CityInfoCardProps) {
             </div>
 
             {/* Bar + line chart */}
-            <div className="flex items-end gap-1 h-32">
-              {months.map((month, i) => {
-                const rainPct = (info.climate.rain[i] / maxRain) * 100;
-                const tempPct = ((info.climate.tempHigh[i] + 10) / (maxTemp + 20)) * 100; // offset for below-zero
-                const isBest = info.bestMonths.includes(i + 1);
-
-                return (
-                  <div key={i} className="flex-1 flex flex-col items-center gap-1 relative group">
-                    {/* Tooltip */}
-                    <div className="absolute bottom-full mb-1 bg-gray-800 text-white text-[10px] px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
-                      {info.climate.tempHigh[i]}° / {info.climate.tempLow[i]}° · {info.climate.rain[i]}mm
-                    </div>
-                    {/* Rain bar */}
-                    <div className="w-full flex justify-center">
+            <div className="relative" style={{ height: "160px" }}>
+              {/* Rain bars */}
+              <div className="absolute inset-0 flex items-end gap-1 pb-5">
+                {months.map((month, i) => {
+                  const barH = Math.max((info.climate.rain[i] / maxRain) * 120, 3);
+                  const isBest = info.bestMonths.includes(i + 1);
+                  return (
+                    <div key={i} className="flex-1 flex flex-col items-center justify-end group relative">
+                      {/* Tooltip */}
+                      <div className="absolute bottom-full mb-1 bg-gray-800 text-white text-[10px] px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10">
+                        {info.climate.tempHigh[i]}° / {info.climate.tempLow[i]}°C · {info.climate.rain[i]}mm
+                      </div>
                       <div
-                        className={`w-full max-w-[18px] rounded-t-sm ${isBest ? "bg-blue-500" : "bg-blue-300"}`}
-                        style={{ height: `${Math.max(rainPct, 2)}%` }}
+                        className={`w-3 sm:w-4 rounded-t-sm ${isBest ? "bg-blue-500" : "bg-blue-300"}`}
+                        style={{ height: `${barH}px` }}
                       />
                     </div>
-                    {/* Temp dot */}
-                    <div
-                      className="absolute w-2 h-2 rounded-full bg-red-400 border border-white"
-                      style={{ bottom: `${tempPct}%` }}
-                    />
-                    {/* Month label */}
-                    <span className={`text-[9px] mt-1 ${isBest ? "text-emerald-600 font-bold" : "text-gray-400"}`}>
-                      {month}
-                    </span>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+
+              {/* Temp line (SVG overlay) */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox={`0 0 ${12 * 30} 160`} preserveAspectRatio="none">
+                <polyline
+                  fill="none"
+                  stroke="#F87171"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  points={info.climate.tempHigh.map((t, i) => {
+                    const x = i * 30 + 15;
+                    const y = 130 - ((t + 10) / (maxTemp + 20)) * 120;
+                    return `${x},${y}`;
+                  }).join(" ")}
+                />
+                {info.climate.tempHigh.map((t, i) => {
+                  const x = i * 30 + 15;
+                  const y = 130 - ((t + 10) / (maxTemp + 20)) * 120;
+                  return <circle key={i} cx={x} cy={y} r="3" fill="#F87171" stroke="white" strokeWidth="1.5" />;
+                })}
+              </svg>
+
+              {/* Month labels */}
+              <div className="absolute bottom-0 left-0 right-0 flex gap-1">
+                {months.map((month, i) => {
+                  const isBest = info.bestMonths.includes(i + 1);
+                  return (
+                    <div key={i} className="flex-1 text-center">
+                      <span className={`text-[9px] ${isBest ? "text-emerald-600 font-bold" : "text-gray-400"}`}>{month}</span>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
