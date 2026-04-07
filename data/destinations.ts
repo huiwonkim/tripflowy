@@ -7,7 +7,7 @@ export const countries: Country[] = [
     emoji: "🇻🇳",
     cities: [
       { id: "danang", label: { en: "Da Nang", ko: "다낭" }, countryId: "vietnam" },
-      { id: "hochiminh", label: { en: "Ho Chi Minh City", ko: "호치민" }, countryId: "vietnam" },
+      { id: "nhatrang", label: { en: "Nha Trang", ko: "나트랑" }, countryId: "vietnam" },
       { id: "hanoi", label: { en: "Hanoi", ko: "하노이" }, countryId: "vietnam" },
     ],
   },
@@ -17,6 +17,7 @@ export const countries: Country[] = [
     emoji: "🇹🇭",
     cities: [
       { id: "bangkok", label: { en: "Bangkok", ko: "방콕" }, countryId: "thailand" },
+      { id: "pattaya", label: { en: "Pattaya", ko: "파타야" }, countryId: "thailand" },
       { id: "chiangmai", label: { en: "Chiang Mai", ko: "치앙마이" }, countryId: "thailand" },
       { id: "phuket", label: { en: "Phuket", ko: "푸켓" }, countryId: "thailand" },
     ],
@@ -27,7 +28,6 @@ export const countries: Country[] = [
     emoji: "🇮🇩",
     cities: [
       { id: "bali", label: { en: "Bali", ko: "발리" }, countryId: "indonesia" },
-      { id: "jakarta", label: { en: "Jakarta", ko: "자카르타" }, countryId: "indonesia" },
     ],
   },
   {
@@ -38,6 +38,8 @@ export const countries: Country[] = [
       { id: "tokyo", label: { en: "Tokyo", ko: "도쿄" }, countryId: "japan" },
       { id: "osaka", label: { en: "Osaka", ko: "오사카" }, countryId: "japan" },
       { id: "kyoto", label: { en: "Kyoto", ko: "교토" }, countryId: "japan" },
+      { id: "nagoya", label: { en: "Nagoya", ko: "나고야" }, countryId: "japan" },
+      { id: "fukuoka", label: { en: "Fukuoka", ko: "후쿠오카" }, countryId: "japan" },
     ],
   },
   {
@@ -49,11 +51,60 @@ export const countries: Country[] = [
     ],
   },
   {
-    id: "singapore",
-    label: { en: "Singapore", ko: "싱가포르" },
-    emoji: "🇸🇬",
+    id: "italy",
+    label: { en: "Italy", ko: "이탈리아" },
+    emoji: "🇮🇹",
     cities: [
-      { id: "singapore", label: { en: "Singapore", ko: "싱가포르" }, countryId: "singapore" },
+      { id: "rome", label: { en: "Rome", ko: "로마" }, countryId: "italy" },
+      { id: "florence", label: { en: "Florence", ko: "피렌체" }, countryId: "italy" },
+      { id: "venice", label: { en: "Venice", ko: "베네치아" }, countryId: "italy" },
+    ],
+  },
+  {
+    id: "uk",
+    label: { en: "United Kingdom", ko: "영국" },
+    emoji: "🇬🇧",
+    cities: [
+      { id: "london", label: { en: "London", ko: "런던" }, countryId: "uk" },
+    ],
+  },
+  {
+    id: "spain",
+    label: { en: "Spain", ko: "스페인" },
+    emoji: "🇪🇸",
+    cities: [
+      { id: "barcelona", label: { en: "Barcelona", ko: "바르셀로나" }, countryId: "spain" },
+    ],
+  },
+  {
+    id: "china",
+    label: { en: "China", ko: "중국" },
+    emoji: "🇨🇳",
+    cities: [
+      { id: "shanghai", label: { en: "Shanghai", ko: "상하이" }, countryId: "china" },
+      { id: "beijing", label: { en: "Beijing", ko: "베이징" }, countryId: "china" },
+    ],
+  },
+  {
+    id: "usa",
+    label: { en: "United States", ko: "미국" },
+    emoji: "🇺🇸",
+    cities: [
+      { id: "la", label: { en: "Los Angeles", ko: "LA" }, countryId: "usa" },
+      { id: "lasvegas", label: { en: "Las Vegas", ko: "라스베가스" }, countryId: "usa" },
+      { id: "newyork", label: { en: "New York", ko: "뉴욕" }, countryId: "usa" },
+      { id: "seattle", label: { en: "Seattle", ko: "시애틀" }, countryId: "usa" },
+      { id: "boston", label: { en: "Boston", ko: "보스턴" }, countryId: "usa" },
+    ],
+  },
+  {
+    id: "turkiye",
+    label: { en: "Türkiye", ko: "튀르키예" },
+    emoji: "🇹🇷",
+    cities: [
+      { id: "istanbul", label: { en: "Istanbul", ko: "이스탄불" }, countryId: "turkiye" },
+      { id: "cappadocia", label: { en: "Cappadocia", ko: "카파도키아" }, countryId: "turkiye" },
+      { id: "antalya", label: { en: "Antalya", ko: "안탈리아" }, countryId: "turkiye" },
     ],
   },
 ];

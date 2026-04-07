@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { MapPin, Clock, Users, Zap, Search, ArrowRight } from "lucide-react";
+import { MapPin, Clock, Users, Zap, Search, ArrowRight, Check } from "lucide-react";
 import { ItineraryCard } from "@/components/itinerary/ItineraryCard";
 import { itineraries } from "@/data/itineraries";
 import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 import type { PlannerInput, TravelerType, TravelStyle, Locale } from "@/types";
 
-const emptyInput: PlannerInput = { destination: "", duration: "", travelerType: "", style: "" };
+const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", style: "" };
 
 export default function PlannerPage() {
   const router = useRouter();
@@ -18,9 +18,18 @@ export default function PlannerPage() {
   const [input, setInput] = useState<PlannerInput>(emptyInput);
   const [searched, setSearched] = useState(false);
 
+  function toggleCity(cityId: string) {
+    setInput((p) => ({
+      ...p,
+      destinations: p.destinations.includes(cityId)
+        ? p.destinations.filter((d) => d !== cityId)
+        : [...p.destinations, cityId],
+    }));
+  }
+
   const results = searched
     ? itineraries.filter((itin) => {
-        if (input.destination && itin.destination !== input.destination) return false;
+        if (input.destinations.length > 0 && !input.destinations.includes(itin.destination)) return false;
         if (input.duration && itin.duration !== Number(input.duration)) return false;
         if (input.travelerType && !itin.travelerType.includes(input.travelerType as TravelerType)) return false;
         if (input.style && itin.style !== input.style) return false;
@@ -33,10 +42,10 @@ export default function PlannerPage() {
     setSearched(true);
   }
 
-  const optionBase = "flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all text-left";
+  const optionBase = "flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all text-left";
   const optionSelected = "border-blue-600 bg-blue-50";
   const optionDefault = "border-gray-200 bg-white hover:border-gray-300";
-  const inputComplete = input.destination && input.duration && input.travelerType && input.style;
+  const inputComplete = input.destinations.length > 0 && input.duration && input.travelerType && input.style;
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-12">
@@ -49,22 +58,37 @@ export default function PlannerPage() {
       </div>
 
       <form onSubmit={handleSearch} className="space-y-8">
-        {/* Destination */}
+        {/* Destination — multi-select by country */}
         <div className="flex flex-col gap-3">
           <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
             <MapPin className="w-4 h-4 text-blue-600" />{t("whereGoing")}
           </label>
-          <div className="space-y-4">
+          {input.destinations.length > 0 && (
+            <p className="text-xs text-blue-600 font-medium">
+              {input.destinations.length} {locale === "ko" ? "개 도시 선택됨" : `cit${input.destinations.length === 1 ? "y" : "ies"} selected`}
+            </p>
+          )}
+          <div className="space-y-4 max-h-[400px] overflow-y-auto pr-1">
             {countries.map((country) => (
               <div key={country.id}>
-                <p className="text-xs font-medium text-gray-400 mb-2">{country.emoji} {country.label[locale]}</p>
+                <p className="text-xs font-medium text-gray-400 mb-2 sticky top-0 bg-[#f8fafc] py-1">
+                  {country.emoji} {country.label[locale]}
+                </p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                  {country.cities.map((city) => (
-                    <button key={city.id} type="button" onClick={() => setInput((p) => ({ ...p, destination: city.id }))}
-                      className={`${optionBase} ${input.destination === city.id ? optionSelected : optionDefault} flex-col items-center text-center py-3`}>
-                      <span className="text-sm font-medium text-gray-900">{city.label[locale]}</span>
-                    </button>
-                  ))}
+                  {country.cities.map((city) => {
+                    const selected = input.destinations.includes(city.id);
+                    return (
+                      <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
+                        className={`${optionBase} ${selected ? optionSelected : optionDefault} justify-center py-3 relative`}>
+                        {selected && (
+                          <div className="absolute top-1.5 right-1.5 w-4 h-4 bg-blue-600 rounded-full flex items-center justify-center">
+                            <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
+                          </div>
+                        )}
+                        <span className="text-sm font-medium text-gray-900">{city.label[locale]}</span>
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             ))}
@@ -79,7 +103,7 @@ export default function PlannerPage() {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
             {durationOptions.map((d) => (
               <button key={d.value} type="button" onClick={() => setInput((p) => ({ ...p, duration: d.value }))}
-                className={`${optionBase} ${input.duration === d.value ? optionSelected : optionDefault} flex-col items-center text-center py-4`}>
+                className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all text-left ${input.duration === d.value ? optionSelected : optionDefault} flex-col items-center text-center py-4`}>
                 <span className="text-lg font-bold text-gray-900">{d.value}N</span>
                 <span className="text-xs text-gray-500">{d.label[locale]}</span>
               </button>
@@ -95,7 +119,7 @@ export default function PlannerPage() {
           <div className="grid grid-cols-2 gap-2.5">
             {travelerTypeOptions.map((tt) => (
               <button key={tt.value} type="button" onClick={() => setInput((p) => ({ ...p, travelerType: tt.value as TravelerType }))}
-                className={`${optionBase} ${input.travelerType === tt.value ? optionSelected : optionDefault} py-4`}>
+                className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all text-left ${input.travelerType === tt.value ? optionSelected : optionDefault} py-4`}>
                 <span className="text-xl">{tt.emoji}</span>
                 <p className="text-sm font-medium text-gray-900">{tt.label[locale]}</p>
               </button>
@@ -111,7 +135,7 @@ export default function PlannerPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {styleOptions.map((s) => (
               <button key={s.value} type="button" onClick={() => setInput((p) => ({ ...p, style: s.value as TravelStyle }))}
-                className={`${optionBase} ${input.style === s.value ? optionSelected : optionDefault}`}>
+                className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all text-left ${input.style === s.value ? optionSelected : optionDefault}`}>
                 <div>
                   <p className="text-sm font-semibold text-gray-900">{s.label[locale]}</p>
                   <p className="text-xs text-gray-500 mt-0.5">{s.description[locale]}</p>

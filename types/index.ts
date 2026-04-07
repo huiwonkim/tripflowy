@@ -105,7 +105,7 @@ export type Tour = {
 };
 
 export type PlannerInput = {
-  destination: string;
+  destinations: string[];
   duration: string;
   travelerType: TravelerType | "";
   style: TravelStyle | "";

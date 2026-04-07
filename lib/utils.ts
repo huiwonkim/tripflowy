@@ -11,7 +11,7 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
 
 export function filterItineraries(input: Partial<PlannerInput>): Itinerary[] {
   return itineraries.filter((itin) => {
-    if (input.destination && itin.destination !== input.destination) return false;
+    if (input.destinations?.length && !input.destinations.includes(itin.destination)) return false;
     if (input.duration && itin.duration !== Number(input.duration)) return false;
     if (input.travelerType && !itin.travelerType.includes(input.travelerType as TravelerType)) return false;
     if (input.style && itin.style !== input.style) return false;
