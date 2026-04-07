@@ -137,6 +137,12 @@ export type Tour = {
 };
 
 // ── 블로그 포스트 (코스 상세 후기) ──────────────────
+export type PostImage = {
+  src: string;             // /images/posts/xxx.jpg
+  alt: LocaleString;
+  caption?: LocaleString;
+};
+
 export type BlogPost = {
   slug: string;
   courseId?: string;       // 연결된 DayCourse ID (있으면 코스에서 링크)
@@ -146,7 +152,9 @@ export type BlogPost = {
   city: string;
   coverImage?: string;     // /images/posts/xxx.jpg
   coverGradient: string;
+  images?: PostImage[];    // 본문 중간에 삽입할 이미지들
   tags: string[];
+  faq?: FAQ[];             // 포스트 하단 FAQ (SEO용)
   publishedAt: string;     // ISO date
   updatedAt?: string;
 };

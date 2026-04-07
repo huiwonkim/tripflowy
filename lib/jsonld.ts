@@ -1,4 +1,4 @@
-import type { DayCourse, FAQ, Locale, GeneratedItinerary, CityInfo } from "@/types";
+import type { DayCourse, FAQ, Locale, GeneratedItinerary, CityInfo, BlogPost } from "@/types";
 
 export function generateCourseJsonLd(course: DayCourse, locale: Locale) {
   return {
@@ -44,6 +44,39 @@ export function generateBreadcrumbJsonLd(
       name: item.name,
       ...(item.url ? { item: item.url } : {}),
     })),
+  };
+}
+
+export function generateArticleJsonLd(post: BlogPost, locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title[locale],
+    description: post.excerpt[locale],
+    author: {
+      "@type": "Organization",
+      name: "Tripflowy",
+      url: "https://tripflowy.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Tripflowy",
+      url: "https://tripflowy.com",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://tripflowy.com/logo-square-color.png",
+      },
+    },
+    datePublished: post.publishedAt,
+    ...(post.updatedAt ? { dateModified: post.updatedAt } : {}),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://tripflowy.com/${locale === "ko" ? "ko/" : ""}posts/${post.slug}`,
+    },
+    ...(post.coverImage
+      ? { image: { "@type": "ImageObject", url: `https://tripflowy.com${post.coverImage}` } }
+      : {}),
+    inLanguage: locale === "ko" ? "ko-KR" : "en-US",
   };
 }
 

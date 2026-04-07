@@ -93,6 +93,11 @@ Ba Na Hills is one of Da Nang's most popular attractions, and for good reason. T
     city: "danang",
     coverGradient: "from-violet-500 to-purple-700",
     tags: ["guide", "must-read", "golden-bridge", "cable-car"],
+    faq: [
+      { question: { en: "How much is the Ba Na Hills ticket?", ko: "바나힐 입장료는 얼마인가요?" }, answer: { en: "Adult tickets are 900,000 VND (~$36) including cable car and all attractions.", ko: "성인 티켓은 90만 동 (~5만 원)이며 케이블카와 모든 어트랙션이 포함됩니다." } },
+      { question: { en: "How long do you need at Ba Na Hills?", ko: "바나힐에서 얼마나 시간이 필요하나요?" }, answer: { en: "Plan for 5-6 hours minimum. Arrive by 8:30 AM for the best experience.", ko: "최소 5~6시간을 계획하세요. 오전 8시 30분까지 도착하면 가장 좋습니다." } },
+      { question: { en: "Is Ba Na Hills suitable for children?", ko: "바나힐은 아이들에게 적합한가요?" }, answer: { en: "Yes, Fantasy Park has rides for all ages. The cable car ride itself is exciting for kids.", ko: "네, 판타지 파크에 전 연령대 놀이기구가 있고 케이블카도 아이들이 좋아합니다." } },
+    ],
     publishedAt: "2026-04-07",
   },
   {
