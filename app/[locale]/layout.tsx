@@ -30,8 +30,8 @@ export async function generateMetadata({
     },
     description: t("description"),
     icons: {
-      icon: "/logo-square-color.png",
-      apple: "/logo-square-color.png",
+      icon: "/logo-square-dark.png",
+      apple: "/logo-square-dark.png",
     },
     openGraph: {
       siteName: "Tripflowy",
