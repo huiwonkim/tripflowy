@@ -1,18 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
+import { APIProvider, Map, useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import type { GeneratedDay, ActivityType, Locale } from "@/types";
 
-// Activity type → marker color mapping
+const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
+
 const typeColors: Record<ActivityType, string> = {
-  transport: "#6B7280",   // gray
-  sightseeing: "#2563EB", // blue
-  dining: "#F59E0B",      // amber
-  accommodation: "#8B5CF6", // purple
-  tour: "#10B981",        // green
-  free: "#EC4899",        // pink
-  beach: "#06B6D4",       // cyan
-  shopping: "#F97316",    // orange
+  transport: "#6B7280",
+  sightseeing: "#2563EB",
+  dining: "#F59E0B",
+  accommodation: "#8B5CF6",
+  tour: "#10B981",
+  free: "#EC4899",
+  beach: "#06B6D4",
+  shopping: "#F97316",
 };
 
 const typeLabels: Record<ActivityType, { en: string; ko: string }> = {
@@ -33,112 +35,152 @@ interface ItineraryMapProps {
   height?: number;
 }
 
-export function ItineraryMap({ days, locale, mapId = "main", height = 400 }: ItineraryMapProps) {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const mapInstanceRef = useRef<L.Map | null>(null);
+interface Point {
+  lat: number;
+  lng: number;
+  label: string;
+  type: ActivityType;
+  dayNum: number;
+  order: number;
+}
+
+function collectPoints(days: GeneratedDay[], locale: Locale): Point[] {
+  const points: Point[] = [];
+  let order = 1;
+  for (const day of days) {
+    for (const activity of day.course.activities) {
+      if (activity.location) {
+        points.push({
+          lat: activity.location.lat,
+          lng: activity.location.lng,
+          label: activity.title[locale],
+          type: activity.type,
+          dayNum: day.dayNumber,
+          order: order++,
+        });
+      }
+    }
+  }
+  return points;
+}
+
+/** Inner component that uses the map instance */
+function MapContent({ points, locale }: { points: Point[]; locale: Locale }) {
+  const map = useMap();
+  const coreLib = useMapsLibrary("core");
+  const markerLib = useMapsLibrary("marker");
+  const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
+  const polylineRef = useRef<google.maps.Polyline | null>(null);
 
   useEffect(() => {
-    if (!mapRef.current || mapInstanceRef.current) return;
+    if (!map || !coreLib || !markerLib || points.length === 0) return;
 
-    // Dynamically import leaflet to avoid SSR issues
-    import("leaflet").then((L) => {
-      // Fix default icon path issue
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      delete (L.Icon.Default.prototype as any)._getIconUrl;
-      L.Icon.Default.mergeOptions({
-        iconRetinaUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon-2x.png",
-        iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-icon.png",
-        shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/images/marker-shadow.png",
+    // Clean up previous markers
+    markersRef.current.forEach((m) => (m.map = null));
+    markersRef.current = [];
+    if (polylineRef.current) {
+      polylineRef.current.setMap(null);
+      polylineRef.current = null;
+    }
+
+    const bounds = new coreLib.LatLngBounds();
+    const path: google.maps.LatLngLiteral[] = [];
+
+    for (const pt of points) {
+      const pos = { lat: pt.lat, lng: pt.lng };
+      bounds.extend(pos);
+      path.push(pos);
+
+      const color = typeColors[pt.type] ?? "#6B7280";
+      const el = document.createElement("div");
+      el.style.cssText = `
+        background: ${color};
+        color: white;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: 700;
+        border: 2px solid white;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        cursor: pointer;
+      `;
+      el.textContent = String(pt.order);
+
+      const marker = new markerLib.AdvancedMarkerElement({
+        map,
+        position: pos,
+        content: el,
+        title: `${pt.order}. ${pt.label}`,
       });
 
-      // Collect all activity locations with GPS
-      const points: { lat: number; lng: number; label: string; type: ActivityType; dayNum: number; order: number }[] = [];
-      let globalOrder = 1;
-      for (const day of days) {
-        for (const activity of day.course.activities) {
-          if (activity.location) {
-            points.push({
-              lat: activity.location.lat,
-              lng: activity.location.lng,
-              label: activity.title[locale],
-              type: activity.type,
-              dayNum: day.dayNumber,
-              order: globalOrder++,
-            });
-          }
-        }
-      }
-
-      if (points.length === 0) return;
-
-      // Create map
-      const map = L.map(mapRef.current!, {
-        scrollWheelZoom: false,
+      // Info window on click
+      const typeLabel = typeLabels[pt.type]?.[locale] ?? pt.type;
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<div style="font-size:13px;max-width:200px"><b>${pt.order}. ${pt.label}</b><br/><span style="color:${color};font-weight:600">${typeLabel}</span><br/>Day ${pt.dayNum}</div>`,
       });
-      mapInstanceRef.current = map;
+      marker.addListener("click", () => {
+        infoWindow.open({ anchor: marker, map });
+      });
 
-      // OpenStreetMap tiles
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 18,
-      }).addTo(map);
+      markersRef.current.push(marker);
+    }
 
-      // Add markers
-      const latLngs: L.LatLngExpression[] = [];
-      for (const pt of points) {
-        const color = typeColors[pt.type] ?? "#6B7280";
-        const icon = L.divIcon({
-          className: "custom-marker",
-          html: `<div style="
-            background: ${color};
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
-            border: 2px solid white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-          ">${pt.order}</div>`,
-          iconSize: [28, 28],
-          iconAnchor: [14, 14],
-        });
+    // Polyline
+    if (path.length > 1) {
+      polylineRef.current = new google.maps.Polyline({
+        path,
+        strokeColor: "#2563EB",
+        strokeWeight: 2,
+        strokeOpacity: 0.5,
+        geodesic: true,
+        map,
+      });
+    }
 
-        const typeLabel = typeLabels[pt.type]?.[locale] ?? pt.type;
-        L.marker([pt.lat, pt.lng], { icon })
-          .addTo(map)
-          .bindPopup(`<b>${pt.order}. ${pt.label}</b><br/><span style="color:${color};font-weight:600">${typeLabel}</span><br/>Day ${pt.dayNum}`);
-
-        latLngs.push([pt.lat, pt.lng]);
-      }
-
-      // Draw route polyline
-      if (latLngs.length > 1) {
-        L.polyline(latLngs, {
-          color: "#2563EB",
-          weight: 2,
-          opacity: 0.5,
-          dashArray: "8, 8",
-        }).addTo(map);
-      }
-
-      // Fit bounds
-      const bounds = L.latLngBounds(latLngs);
-      map.fitBounds(bounds, { padding: [40, 40] });
-    });
+    // Fit bounds
+    if (points.length === 1) {
+      map.setCenter(path[0]);
+      map.setZoom(14);
+    } else {
+      map.fitBounds(bounds, { top: 40, right: 40, bottom: 40, left: 40 });
+    }
 
     return () => {
-      if (mapInstanceRef.current) {
-        mapInstanceRef.current.remove();
-        mapInstanceRef.current = null;
+      markersRef.current.forEach((m) => (m.map = null));
+      markersRef.current = [];
+      if (polylineRef.current) {
+        polylineRef.current.setMap(null);
+        polylineRef.current = null;
       }
     };
-  }, [days, locale, mapId]);
+  }, [map, coreLib, markerLib, points, locale]);
 
-  // Collect legend types
+  return null;
+}
+
+export function ItineraryMap({ days, locale, mapId = "main", height = 400 }: ItineraryMapProps) {
+  const points = collectPoints(days, locale);
+
+  if (!API_KEY) {
+    // Fallback: no API key — show placeholder
+    return (
+      <div style={{ height: `${height}px` }} className="w-full rounded-2xl border border-gray-200 bg-gray-50 flex items-center justify-center">
+        <p className="text-sm text-gray-400">
+          {locale === "ko" ? "지도를 표시하려면 Google Maps API 키가 필요합니다" : "Google Maps API key required"}
+        </p>
+      </div>
+    );
+  }
+
+  if (points.length === 0) return null;
+
+  const center = { lat: points[0].lat, lng: points[0].lng };
+
+  // Collect used types for legend
   const usedTypes = new Set<ActivityType>();
   for (const day of days) {
     for (const a of day.course.activities) {
@@ -148,17 +190,24 @@ export function ItineraryMap({ days, locale, mapId = "main", height = 400 }: Iti
 
   return (
     <div className="space-y-3">
-      {/* Map */}
-      <div ref={mapRef} style={{ height: `${height}px` }} className="w-full rounded-2xl overflow-hidden border border-gray-200 z-0" />
+      <APIProvider apiKey={API_KEY}>
+        <Map
+          style={{ width: "100%", height: `${height}px`, borderRadius: "16px" }}
+          defaultCenter={center}
+          defaultZoom={12}
+          gestureHandling="cooperative"
+          disableDefaultUI={false}
+          mapId={mapId}
+        >
+          <MapContent points={points} locale={locale} />
+        </Map>
+      </APIProvider>
 
       {/* Legend */}
       <div className="flex flex-wrap gap-3 px-1">
         {Array.from(usedTypes).map((type) => (
           <div key={type} className="flex items-center gap-1.5 text-xs text-gray-600">
-            <span
-              className="w-3 h-3 rounded-full inline-block"
-              style={{ backgroundColor: typeColors[type] }}
-            />
+            <span className="w-3 h-3 rounded-full inline-block" style={{ backgroundColor: typeColors[type] }} />
             {typeLabels[type]?.[locale] ?? type}
           </div>
         ))}
