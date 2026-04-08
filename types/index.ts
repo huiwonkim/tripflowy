@@ -24,12 +24,24 @@ export type Coordinates = {
 };
 
 // ── 1일 코스 (atomic content unit) ─────────────────
+export type BookingLinks = {
+  klook?: string;
+  agoda?: string;
+  mrt?: string;
+  direct?: string;
+};
+
 export type DayActivity = {
   time: string;
   title: LocaleString;
   description: LocaleString;
+  tips?: LocaleString[];         // 팁 (여러 줄)
   type: ActivityType;
   location?: Coordinates;
+  duration?: number;              // 체류 시간 (분)
+  photo?: string;                 // /images/courses/xxx.jpg
+  postSlug?: string;              // 가이드 포스트 연결
+  bookingLinks?: BookingLinks;    // 어필리에이트 링크
 };
 
 export type DayCostBreakdown = {
@@ -37,7 +49,7 @@ export type DayCostBreakdown = {
   activity: number;
   transport: number;
   etc: number;
-  currency: string; // "VND", "THB", "JPY", "EUR", "USD", "CNY", "TRY", "GBP", "IDR"
+  currency: string;
 };
 
 export type DayCourse = {
@@ -45,6 +57,8 @@ export type DayCourse = {
   city: string;
   title: LocaleString;
   summary: LocaleString;
+  whyThisCourse?: LocaleString;   // 이 코스를 가야 하는 이유
+  courseType?: LocaleString[];    // 태그 (한/영)
   styles: TravelStyle[];
   travelerTypes: TravelerType[];
   activities: DayActivity[];

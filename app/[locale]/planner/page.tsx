@@ -276,7 +276,15 @@ function PlannerContent() {
                       <ItineraryMap days={[day]} locale={locale} mapId={`day-${day.dayNumber}`} height={280} />
                       <div className="mt-3">
                         <DayPlanSection
-                          day={{ day: day.dayNumber, title: day.course.title, subtitle: { en: cityLabel, ko: cityLabel }, activities: day.course.activities }}
+                          day={{
+                            day: day.dayNumber,
+                            title: day.course.title,
+                            subtitle: { en: cityLabel, ko: cityLabel },
+                            activities: day.course.activities,
+                            whyThisCourse: day.course.whyThisCourse,
+                            courseType: day.course.courseType,
+                            costs: day.course.costs,
+                          }}
                           locale={locale}
                         />
                       </div>
