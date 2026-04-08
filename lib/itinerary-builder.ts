@@ -1,4 +1,4 @@
-import type { DayCourse, DayCostBreakdown, GeneratedItinerary, TravelStyle, TravelerType, GeneratedDay } from "@/types";
+import type { DayCourse, DayCostBreakdown, GeneratedItinerary, TravelStyle, TravelerType, GeneratedDay, Locale } from "@/types";
 import { dayCourses } from "@/data/day-courses";
 import { tours } from "@/data/tours";
 import { hotels } from "@/data/hotels";
@@ -126,20 +126,19 @@ export function getCourseCosts(course: DayCourse): DayCostBreakdown | undefined 
   return course.costs ?? getDefaultCosts(course.city);
 }
 
-/** Sum all local costs for a generated itinerary (in each currency) */
-export function sumLocalCosts(itinerary: GeneratedItinerary): { food: number; activity: number; transport: number; etc: number; currency: string }[] {
-  const byCurrency = new Map<string, { food: number; activity: number; transport: number; etc: number }>();
+/** Sum all local costs, converting to display currency (KRW or USD) */
+export function sumLocalCosts(itinerary: GeneratedItinerary, locale: Locale): { food: number; activity: number; transport: number; etc: number } {
+  const { convertToDisplay } = require("@/lib/currency");
+  const totals = { food: 0, activity: 0, transport: 0, etc: 0 };
 
   for (const day of itinerary.days) {
     const costs = getCourseCosts(day.course);
     if (!costs) continue;
-    const existing = byCurrency.get(costs.currency) ?? { food: 0, activity: 0, transport: 0, etc: 0 };
-    existing.food += costs.food;
-    existing.activity += costs.activity;
-    existing.transport += costs.transport;
-    existing.etc += costs.etc;
-    byCurrency.set(costs.currency, existing);
+    totals.food += convertToDisplay(costs.food, costs.currency, locale);
+    totals.activity += convertToDisplay(costs.activity, costs.currency, locale);
+    totals.transport += convertToDisplay(costs.transport, costs.currency, locale);
+    totals.etc += convertToDisplay(costs.etc, costs.currency, locale);
   }
 
-  return Array.from(byCurrency.entries()).map(([currency, totals]) => ({ ...totals, currency }));
+  return totals;
 }

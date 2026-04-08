@@ -115,10 +115,8 @@ export const dayCourses: DayCourse[] = [
       {
         time: "19:00", title: { en: "Lotte Mart Shopping", ko: "롯데마트" },
         description: { en: "One-stop shop for Da Nang souvenirs — nuts, snacks, Vietnamese beer.", ko: "다낭 쇼핑리스트는 롯데마트에서 모두 해결. 견과류, 과자, 베트남 맥주를 주로 사 가고 있어요!" },
-        tips: [
-          { en: "Check out our full shopping list guide.", ko: "자세한 쇼핑리스트 살펴보기" },
-        ],
         type: "shopping", location: { lat: 16.0410, lng: 108.2180 },
+        postSlug: "danang-lotte-mart-shopping-list",
         duration: 60,
       },
       {

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee } from "lucide-react";
+import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map } from "lucide-react";
 import type { DayActivity, ActivityType, Locale, LocaleString, DayCostBreakdown } from "@/types";
 import { cn } from "@/lib/utils";
 import { displayPrice } from "@/lib/currency";
@@ -53,7 +53,7 @@ function ActivityItem({ activity, locale, index }: { activity: DayActivity; loca
         {activity.tips && activity.tips.length > 0 && (
           <div className="mt-2 space-y-1">
             {activity.tips.map((tip, i) => (
-              <div key={i} className="flex items-start gap-1.5 text-xs text-amber-700 bg-amber-50 rounded-lg px-3 py-1.5">
+              <div key={i} className="flex items-start gap-1.5 text-xs text-amber-700 bg-amber-50 rounded-lg px-3 py-1.5 max-w-lg">
                 <Lightbulb className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-amber-500" />
                 <span>{tip[locale]}</span>
               </div>
@@ -169,6 +169,26 @@ export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
           <ActivityItem key={i} activity={activity} locale={locale} index={i + 1} />
         ))}
       </div>
+
+      {/* Google Maps button */}
+      {(() => {
+        const locations = day.activities.filter((a) => a.location).map((a) => a.location!);
+        if (locations.length === 0) return null;
+        // Google Maps directions URL with waypoints
+        const origin = `${locations[0].lat},${locations[0].lng}`;
+        const dest = `${locations[locations.length - 1].lat},${locations[locations.length - 1].lng}`;
+        const waypoints = locations.slice(1, -1).map((l) => `${l.lat},${l.lng}`).join("|");
+        const url = `https://www.google.com/maps/dir/${locations.map((l) => `${l.lat},${l.lng}`).join("/")}`;
+        return (
+          <div className="px-5 mb-4">
+            <a href={url} target="_blank" rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 text-sm font-medium py-2.5 px-4 rounded-xl transition-colors">
+              <Map className="w-4 h-4 text-blue-500" />
+              {locale === "ko" ? "구글 지도에서 보기" : "Open in Google Maps"}
+            </a>
+          </div>
+        );
+      })()}
 
       {/* Per-day cost summary */}
       {day.costs && (

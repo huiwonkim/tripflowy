@@ -23,8 +23,8 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
   // Hotel — use first city (user stays longest here per allocation)
   const hotel = getHotelEstimate(primaryCity);
 
-  // Local costs — summed from all courses
-  const localCosts = sumLocalCosts(itinerary);
+  // Local costs — summed and converted to display currency
+  const localCosts = sumLocalCosts(itinerary, locale);
 
   // Convert everything to display currency
   const flightFsc = flight ? displayPriceRange(flight.fsc.min, flight.fsc.max, flight.currency, locale) : null;
@@ -34,20 +34,8 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
   const hotelStd = hotel ? displayPriceRange(hotel.standard.min, hotel.standard.max, hotel.currency, locale) : null;
   const hotelLux = hotel ? displayPriceRange(hotel.luxury.min, hotel.luxury.max, hotel.currency, locale) : null;
 
-  // Local costs total
-  let localTotal = 0;
-  const localRows = localCosts.map((lc) => {
-    const total = lc.food + lc.activity + lc.transport + lc.etc;
-    const converted = convertToDisplay(total, lc.currency, locale);
-    localTotal += converted;
-    return {
-      food: displayPrice(lc.food, lc.currency, locale),
-      activity: displayPrice(lc.activity, lc.currency, locale),
-      transport: displayPrice(lc.transport, lc.currency, locale),
-      etc: displayPrice(lc.etc, lc.currency, locale),
-      total: formatCurrency(converted, locale),
-    };
-  });
+  // Local costs — already converted to display currency
+  const localTotal = localCosts.food + localCosts.activity + localCosts.transport + localCosts.etc;
 
   // Grand total estimates (budget / luxury tier)
   const calcTotal = (flightRange: { min: number; max: number } | undefined, hotelRange: { min: number; max: number } | undefined, flightCur: string, hotelCur: string) => {
@@ -126,33 +114,31 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
         )}
 
         {/* Local costs */}
-        {localRows.length > 0 && (
+        {localTotal > 0 && (
           <div className="p-5">
             <div className="flex items-center gap-2 mb-3">
               <MapPinned className="w-4 h-4 text-emerald-500" />
               <h3 className="text-sm font-semibold text-gray-900">{t("localCosts")}</h3>
               <span className="text-xs text-gray-400 ml-auto">{itinerary.duration}{locale === "ko" ? "일 합산" : "-day total"}</span>
             </div>
-            {localRows.map((row, i) => (
-              <div key={i} className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-700">{t("food")}</span>
-                  <span className="text-sm font-semibold text-gray-900">{row.food}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-700">{t("activity")}</span>
-                  <span className="text-sm font-semibold text-gray-900">{row.activity}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-700">{t("transport")}</span>
-                  <span className="text-sm font-semibold text-gray-900">{row.transport}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-700">{t("etc")}</span>
-                  <span className="text-sm font-semibold text-gray-900">{row.etc}</span>
-                </div>
+            <div className="space-y-2">
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700">{t("food")}</span>
+                <span className="text-sm font-semibold text-gray-900">{formatCurrency(localCosts.food, locale)}</span>
               </div>
-            ))}
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700">{t("activity")}</span>
+                <span className="text-sm font-semibold text-gray-900">{formatCurrency(localCosts.activity, locale)}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700">{t("transport")}</span>
+                <span className="text-sm font-semibold text-gray-900">{formatCurrency(localCosts.transport, locale)}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-sm text-gray-700">{t("etc")}</span>
+                <span className="text-sm font-semibold text-gray-900">{formatCurrency(localCosts.etc, locale)}</span>
+              </div>
+            </div>
           </div>
         )}
 
