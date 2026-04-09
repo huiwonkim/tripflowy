@@ -4,7 +4,7 @@ import { Suspense, useState, useRef, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw } from "lucide-react";
+import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw, ArrowUp, ArrowDown } from "lucide-react";
 import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 import { buildItinerary, getMatchedTours, getMatchedHotels } from "@/lib/itinerary-builder";
 import { getCityInfo } from "@/data/city-info";
@@ -18,7 +18,7 @@ import { ItineraryMap } from "@/components/map/ItineraryMap";
 import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
 import { CityInfoCard } from "@/components/itinerary/CityInfoCard";
 import { OverviewMap } from "@/components/map/OverviewMap";
-import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary } from "@/types";
+import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary, GeneratedDay } from "@/types";
 
 const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", styles: [] };
 
@@ -39,6 +39,7 @@ function PlannerContent() {
   const [searched, setSearched] = useState(false);
   const [lockedDays, setLockedDays] = useState<Map<number, { courseId: string; city: string }>>(new Map());
   const [refreshKey, setRefreshKey] = useState(0);
+  const [dayOrder, setDayOrder] = useState<GeneratedDay[]>([]);
   const resultRef = useRef<HTMLDivElement>(null);
 
   // Read URL params on mount (from homepage QuickPlanner redirect)
@@ -88,6 +89,26 @@ function PlannerContent() {
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searched, input, refreshKey]);
+
+  // Sync dayOrder when itinerary changes
+  useEffect(() => {
+    if (itinerary) {
+      setDayOrder(itinerary.days.map((d, i) => ({ ...d, dayNumber: i + 1 })));
+    }
+  }, [itinerary]);
+
+  function swapDays(indexA: number, indexB: number) {
+    setDayOrder((prev) => {
+      const next = [...prev];
+      [next[indexA], next[indexB]] = [next[indexB], next[indexA]];
+      // Renumber
+      return next.map((d, i) => ({ ...d, dayNumber: i + 1 }));
+    });
+    // Update locked days to match new positions
+    setLockedDays(new Map());
+  }
+
+  const displayDays = dayOrder.length > 0 ? dayOrder : (itinerary?.days ?? []);
 
   const matchedTours = itinerary ? getMatchedTours(itinerary) : [];
   const matchedHotels = itinerary ? getMatchedHotels(itinerary) : [];
@@ -303,7 +324,7 @@ function PlannerContent() {
             </div>
 
             {/* Overview map — day zones */}
-            <OverviewMap days={itinerary.days} locale={locale} />
+            <OverviewMap days={displayDays} locale={locale} />
 
             {/* Itinerary overview */}
             <section className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
@@ -316,11 +337,24 @@ function PlannerContent() {
                 </h2>
               </div>
               <div className="divide-y divide-gray-100">
-                {itinerary.days.map((day) => {
+                {displayDays.map((day, idx) => {
                   const cityLabel = allCities.find((c) => c.id === day.city)?.label[locale] ?? day.city;
                   const isLocked = lockedDays.has(day.dayNumber);
+                  const isFirst = idx === 0;
+                  const isLast = idx === displayDays.length - 1;
                   return (
-                    <div key={day.dayNumber} className="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-colors">
+                    <div key={day.dayNumber} className="flex items-center gap-2 px-5 py-3 hover:bg-gray-50 transition-colors">
+                      {/* Reorder arrows */}
+                      <div className="flex flex-col gap-0.5 flex-shrink-0">
+                        <button onClick={() => !isFirst && swapDays(idx, idx - 1)} disabled={isFirst}
+                          className={`w-5 h-5 flex items-center justify-center rounded ${isFirst ? "text-gray-200" : "text-gray-400 hover:bg-gray-200 hover:text-gray-600"}`}>
+                          <ArrowUp className="w-3 h-3" />
+                        </button>
+                        <button onClick={() => !isLast && swapDays(idx, idx + 1)} disabled={isLast}
+                          className={`w-5 h-5 flex items-center justify-center rounded ${isLast ? "text-gray-200" : "text-gray-400 hover:bg-gray-200 hover:text-gray-600"}`}>
+                          <ArrowDown className="w-3 h-3" />
+                        </button>
+                      </div>
                       {/* Lock toggle */}
                       <button
                         onClick={() => {
@@ -342,7 +376,7 @@ function PlannerContent() {
                         {isLocked ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
                       </button>
                       <a href={`#day-${day.dayNumber}`} className="flex-1 min-w-0 cursor-pointer">
-                        <p className="text-sm font-medium text-gray-900 truncate">{day.course.title[locale]}</p>
+                        <p className="text-sm font-medium text-gray-900 truncate">Day {day.dayNumber} · {day.course.title[locale]}</p>
                         <p className="text-xs text-gray-400 truncate">{day.course.summary[locale]}</p>
                       </a>
                       <span className="text-xs text-gray-300 flex-shrink-0">{cityLabel}</span>
@@ -352,7 +386,7 @@ function PlannerContent() {
               </div>
 
               {/* Refresh unlocked */}
-              {lockedDays.size > 0 && lockedDays.size < itinerary.days.length && (
+              {lockedDays.size > 0 && lockedDays.size < displayDays.length && (
                 <div className="px-5 py-3 border-t border-gray-100">
                   <button
                     onClick={() => setRefreshKey((k) => k + 1)}
@@ -360,8 +394,8 @@ function PlannerContent() {
                   >
                     <RefreshCw className="w-4 h-4" />
                     {locale === "ko"
-                      ? `마음에 안 드는 ${itinerary.days.length - lockedDays.size}개 일정만 다시 추천받기`
-                      : `Reshuffle ${itinerary.days.length - lockedDays.size} unlocked days`}
+                      ? `마음에 안 드는 ${displayDays.length - lockedDays.size}개 일정만 다시 추천받기`
+                      : `Reshuffle ${displayDays.length - lockedDays.size} unlocked days`}
                   </button>
                 </div>
               )}
@@ -371,9 +405,9 @@ function PlannerContent() {
             <section>
               <h2 className="text-lg font-bold text-gray-900 mb-4">{tDetail("dayByDayPlan")}</h2>
               <div className="space-y-6">
-                {itinerary.days.map((day) => {
+                {displayDays.map((day, idx) => {
                   const cityLabel = allCities.find((c) => c.id === day.city)?.label[locale] ?? day.city;
-                  const prevCity = day.dayNumber > 1 ? itinerary.days[day.dayNumber - 2]?.city : null;
+                  const prevCity = idx > 0 ? displayDays[idx - 1]?.city : null;
                   const isCityChange = prevCity && prevCity !== day.city;
                   return (
                     <div key={day.dayNumber} id={`day-${day.dayNumber}`} className="scroll-mt-20">
