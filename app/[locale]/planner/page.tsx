@@ -17,6 +17,7 @@ import { HotelCard } from "@/components/hotels/HotelCard";
 import { ItineraryMap } from "@/components/map/ItineraryMap";
 import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
 import { CityInfoCard } from "@/components/itinerary/CityInfoCard";
+import { OverviewMap } from "@/components/map/OverviewMap";
 import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary } from "@/types";
 
 const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", styles: [] };
@@ -292,6 +293,9 @@ function PlannerContent() {
                 {locale === "ko" ? `${itinerary.duration}개 코스 자동 조합` : `${itinerary.duration} courses auto-assembled`}
               </p>
             </div>
+
+            {/* Overview map — day zones */}
+            <OverviewMap days={itinerary.days} locale={locale} />
 
             {/* Itinerary overview */}
             <section className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
