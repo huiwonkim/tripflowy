@@ -7,6 +7,7 @@ import { Link } from "@/i18n/navigation";
 import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw, ArrowUp, ArrowDown } from "lucide-react";
 import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 import { buildItinerary, getMatchedTours, getMatchedHotels } from "@/lib/itinerary-builder";
+import { dayCourses } from "@/data/day-courses";
 import { getCityInfo } from "@/data/city-info";
 import { durationLabel, styleLabel, travelerLabel } from "@/lib/utils";
 import { DayPlanSection } from "@/components/itinerary/DayPlanSection";
@@ -99,9 +100,8 @@ function PlannerContent() {
     if (!itinerary) return;
     if (savedCoursesParam) {
       const courseIds = savedCoursesParam.split(",").filter(Boolean);
-      const { dayCourses: allDayCourses } = require("@/data/day-courses");
-      const restored = courseIds.map((id: string, i: number) => {
-        const course = allDayCourses.find((c: any) => c.id === id);
+      const restored = courseIds.map((id, i) => {
+        const course = dayCourses.find((c) => c.id === id);
         return course ? { dayNumber: i + 1, course, city: course.city } as GeneratedDay : null;
       }).filter((d): d is GeneratedDay => d !== null);
       if (restored.length > 0) {
