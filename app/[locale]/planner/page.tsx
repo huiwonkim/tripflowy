@@ -341,7 +341,7 @@ function PlannerContent() {
             {/* Save itinerary button */}
             <div className="flex flex-wrap items-center gap-3">
               <SaveItineraryButton locale={locale} days={displayDays} />
-              <DownloadPDFButton locale={locale} days={displayDays} duration={input.duration} />
+              <DownloadPDFButton locale={locale} days={displayDays} duration={input.duration} itinerary={itinerary} />
             </div>
 
             {/* Overview map — day zones */}
