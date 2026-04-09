@@ -228,6 +228,9 @@ export default async function PostPage({ params }: PageProps) {
           {/* Content */}
           <div>{renderContent(content, post, loc)}</div>
 
+          {/* Share */}
+          <ShareButton locale={loc} />
+
           {/* FAQ */}
           {post.faq && post.faq.length > 0 && (
             <section className="mt-16 pt-10 border-t border-gray-100">
@@ -259,8 +262,6 @@ export default async function PostPage({ params }: PageProps) {
             </div>
           )}
 
-          {/* Share button */}
-          <ShareButton locale={loc} />
         </div>
 
         {/* Desktop sticky TOC */}
