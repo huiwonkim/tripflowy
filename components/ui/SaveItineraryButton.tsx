@@ -1,14 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Bookmark, Check, Link2 } from "lucide-react";
-import type { Locale } from "@/types";
+import { Check, Link2 } from "lucide-react";
+import type { Locale, GeneratedDay } from "@/types";
 
-export function SaveItineraryButton({ locale }: { locale: Locale }) {
+interface SaveItineraryButtonProps {
+  locale: Locale;
+  days: GeneratedDay[];
+}
+
+export function SaveItineraryButton({ locale, days }: SaveItineraryButtonProps) {
   const [copied, setCopied] = useState(false);
 
   function handleCopy() {
-    navigator.clipboard.writeText(window.location.href);
+    // Build URL with current course order
+    const params = new URLSearchParams(window.location.search);
+    params.set("courses", days.map((d) => d.course.id).join(","));
+    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+    navigator.clipboard.writeText(url);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   }

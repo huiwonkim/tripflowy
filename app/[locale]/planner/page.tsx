@@ -106,13 +106,10 @@ function PlannerContent() {
       }).filter((d): d is GeneratedDay => d !== null);
       if (restored.length > 0) {
         setDayOrder(restored);
-        updateUrlWithCourses(restored);
         return;
       }
     }
-    const days = itinerary.days.map((d, i) => ({ ...d, dayNumber: i + 1 }));
-    setDayOrder(days);
-    updateUrlWithCourses(days);
+    setDayOrder(itinerary.days.map((d, i) => ({ ...d, dayNumber: i + 1 })));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itinerary]);
 
@@ -120,19 +117,9 @@ function PlannerContent() {
     setDayOrder((prev) => {
       const next = [...prev];
       [next[indexA], next[indexB]] = [next[indexB], next[indexA]];
-      const reordered = next.map((d, i) => ({ ...d, dayNumber: i + 1 }));
-      updateUrlWithCourses(reordered);
-      return reordered;
+      return next.map((d, i) => ({ ...d, dayNumber: i + 1 }));
     });
     setLockedDays(new Map());
-  }
-
-  function updateUrlWithCourses(days: GeneratedDay[]) {
-    if (days.length > 0) {
-      const params = new URLSearchParams(window.location.search);
-      params.set("courses", days.map((d) => d.course.id).join(","));
-      window.history.replaceState(null, "", `?${params.toString()}`);
-    }
   }
 
   const displayDays = dayOrder.length > 0 ? dayOrder : (itinerary?.days ?? []);
@@ -351,7 +338,7 @@ function PlannerContent() {
             </div>
 
             {/* Save itinerary button */}
-            <SaveItineraryButton locale={locale} />
+            <SaveItineraryButton locale={locale} days={displayDays} />
 
             {/* Overview map — day zones */}
             <OverviewMap days={displayDays} locale={locale} />
