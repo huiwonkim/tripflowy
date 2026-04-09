@@ -241,8 +241,9 @@ function PlannerContent() {
             {durationOptions.map((d) => (
               <button key={d.value} type="button" onClick={() => setInput((p) => ({ ...p, duration: d.value }))}
                 className={`flex flex-col items-center gap-1 p-3 rounded-xl border-2 cursor-pointer transition-all ${input.duration === d.value ? optionSelected : optionDefault}`}>
-                <span className="text-lg font-bold text-gray-900">{d.value}N</span>
-                <span className="text-[11px] text-gray-500">{d.label[locale]}</span>
+                <span className="text-base font-bold text-gray-900">
+                  {locale === "ko" ? `${d.value}박 ${Number(d.value) + 1}일` : `${Number(d.value) + 1} days`}
+                </span>
               </button>
             ))}
           </div>
