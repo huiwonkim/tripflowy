@@ -14,7 +14,6 @@ export function QuickPlanner() {
   const locale = useLocale() as Locale;
   const t = useTranslations("planner");
   const [input, setInput] = useState<PlannerInput>(emptyInput);
-  const [activeCountry, setActiveCountry] = useState(countries[0]?.id ?? "");
 
   const allCities = countries.flatMap((c) => c.cities);
 
@@ -56,47 +55,25 @@ export function QuickPlanner() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      {/* Destination — country tabs + city chips */}
+      {/* Destination — inline country + city chips */}
       <div>
-        <p className="text-xs text-gray-400 mb-2">{t("destination")}</p>
-        <div className="flex gap-2 mb-2">
-          {countries.map((c) => {
-            const hasSelected = c.cities.some((city) => input.destinations.includes(city.id));
-            return (
-              <button key={c.id} type="button" onClick={() => setActiveCountry(c.id)}
-                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
-                  activeCountry === c.id ? "bg-white/20 text-white" : "text-gray-400 hover:text-gray-200"
-                }`}>
-                {c.emoji} {c.label[locale]}
-                {hasSelected && <span className="w-1.5 h-1.5 bg-blue-400 rounded-full" />}
-              </button>
-            );
-          })}
+        <p className="text-xs text-gray-400 mb-2.5">{t("destination")}</p>
+        <div className="space-y-2">
+          {countries.map((c) => (
+            <div key={c.id} className="flex items-center gap-2 flex-wrap">
+              <span className="text-sm flex-shrink-0 w-16">{c.emoji} {c.label[locale]}</span>
+              {c.cities.map((city) => {
+                const selected = input.destinations.includes(city.id);
+                return (
+                  <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
+                    className={`${chipBase} ${selected ? chipSelected : chipDefault}`}>
+                    {city.label[locale]}
+                  </button>
+                );
+              })}
+            </div>
+          ))}
         </div>
-        <div className="flex flex-wrap gap-1.5">
-          {countries.find((c) => c.id === activeCountry)?.cities.map((city) => {
-            const selected = input.destinations.includes(city.id);
-            return (
-              <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
-                className={`${chipBase} ${selected ? chipSelected : chipDefault}`}>
-                {city.label[locale]}
-              </button>
-            );
-          })}
-        </div>
-        {input.destinations.length > 0 && (
-          <div className="flex flex-wrap gap-1 mt-2">
-            {input.destinations.map((id) => {
-              const city = allCities.find((c) => c.id === id);
-              return city ? (
-                <span key={id} className="inline-flex items-center gap-1 bg-blue-500/20 text-blue-200 text-xs font-medium px-2 py-0.5 rounded-full">
-                  {city.label[locale]}
-                  <button type="button" onClick={() => toggleCity(id)}><X className="w-2.5 h-2.5" /></button>
-                </span>
-              ) : null;
-            })}
-          </div>
-        )}
       </div>
 
       {/* Duration */}
