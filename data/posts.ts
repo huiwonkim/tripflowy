@@ -114,75 +114,45 @@ Ba Na Hills is one of Da Nang's most popular attractions, and for good reason. T
     content: {
       en: `## Shibuya Sky — Tokyo's Best Observation Deck
 
-Shibuya Sky is the rooftop observatory on top of Shibuya Scramble Square, directly connected to Shibuya Station. I've been here 3+ times and it's my favorite viewpoint in Tokyo.
+Shibuya Sky is the rooftop observatory on top of Shibuya Scramble Square, directly connected to Shibuya Station. It's one of the few places in Tokyo where you can enjoy a full 360° panoramic view from an outdoor rooftop — a must-visit on any Tokyo itinerary.
 
 ### How to Get There
 
-The observatory entrance is on the 14th floor of Shibuya Scramble Square. There's a direct elevator on the outside of the building that goes straight to the 14th floor.
-
-If you arrive early, check out the Starbucks and Tsutaya bookstore on the 11th floor, or the restaurants on floors 12-13.
+The observatory entrance is on the 14th floor of Shibuya Scramble Square. A direct elevator on the outside of the building takes you straight up. If you arrive early, the Starbucks and Tsutaya bookstore on the 11th floor and restaurants on floors 12-13 are worth checking out.
 
 ![Shibuya Sky building exterior](0)
 
-### Booking Tickets — The Most Important Part
+### Booking Tickets & Prices
 
-Walk-in tickets are essentially impossible to get. Evening time slots sell out immediately when they open, and even daytime slots are gone within days.
+Walk-in tickets are essentially impossible to get. Evening time slots sell out immediately when they open, and even daytime slots are gone within days. Daytime (10:00-15:00) costs ¥3,000, while sunset and evening (15:00-21:00) is ¥3,700.
 
-**Prices:**
-- Daytime (10:00-15:00): ¥3,000
-- Sunset & evening (15:00-21:00): ¥3,700
+Klook is the fastest and most reliable booking platform — better than the official site. Tickets open **2 weeks before** your visit date at **midnight (00:00 JST)**. Sunset and night slots sell out within minutes, so set an alarm.
 
-**How to book:**
-- Use Klook — faster and more reliable than the official site
-- Tickets open **2 weeks before** your visit date at **midnight (00:00)**
-- Set an alarm — sunset/night slots sell out within minutes
+### The Experience
 
-![Booking screen](1)
+After checking in, store your belongings in free lockers (selfie sticks, hats, umbrellas must be left behind due to wind). The escalator ride up already offers incredible views.
 
-### The Rooftop Experience
+![Daytime panoramic view from the rooftop](3)
 
-After checking in, you'll store your belongings in lockers (selfie sticks, hats, umbrellas must be left behind due to wind). Then take the escalator up to the open-air rooftop.
+The rooftop is a wide, open-air space with panoramic views in every direction. Compared to Tokyo Skytree, the outdoor feel and openness here are far superior. A staff photo spot is available but expect queues — photos are paid.
 
-![Escalator view going up](2)
+The Tokyo Tower side features a dedicated seating area with sofas and tables. In the evening, a drink purchase is required to access this section, but the view is absolutely worth it. There's also a hammock-net area for relaxing.
 
-The rooftop is wide and open with panoramic views. Compared to Tokyo Skytree, I actually prefer Shibuya Sky — the outdoor experience and 360° views are unmatched.
+![Tokyo Tower view from Shibuya Sky](4)
 
-![Daytime panoramic view](3)
+The indoor observatory one floor below has clean glass and fewer crowds — ideal for photography on windy days.
 
-There's a photo spot where staff take your picture, but expect a queue. The photos are paid.
+Night views are strongly recommended. Tokyo's dense skyline lit up is stunning, and the Shibuya commercial district adds extra brilliance. That said, daytime views are still impressive if evening tickets are sold out.
 
-### Tokyo Tower View Area
+![Shibuya Sky night panorama](7)
 
-On one side there's a seating area with sofas and tables facing Tokyo Tower. During evening hours, you **must purchase a drink** to access this section — but the view is worth it.
+### Tripflowy Tips
 
-![Tokyo Tower view](4)
-
-There's also a hammock-net area where you can relax and look up at the sky.
-
-![Hammock net area](5)
-
-### Indoor Observatory
-
-One floor down from the rooftop is the indoor observatory and gift shop. The glass is surprisingly clean and it's less crowded — great for photos on windy days.
-
-![Indoor observatory](6)
-
-### Day vs Night — Which Is Better?
-
-Night wins. Tokyo's skyline with all the buildings lit up is stunning. The Shibuya area is especially bright since it's a major commercial district.
-
-![Night view panorama](7)
-
-![Night view close-up](8)
-
-### Tips from 3+ Visits
-
-- Book on Klook, not the official site — it's faster
-- Set alarm for midnight, 2 weeks before your visit for sunset/night slots
-- The Tokyo Tower side has sofas — head there first
-- Rooftop closes in bad weather — check forecast
-- Store belongings in free lockers (no coins needed anymore)
-- If you miss evening tickets, daytime is still beautiful
+- Book on **Klook**, not the official site — it's faster and more reliable
+- Set alarm for **midnight, 2 weeks before** your visit for sunset/night slots
+- Head to the **Tokyo Tower side sofas** first after entering
+- Rooftop closes in bad weather — check the forecast
+- Lockers are free (no coins needed anymore)
 `,
       ko: `## 시부야스카이 — 도쿄에서 가장 추천하는 전망대
 
@@ -190,62 +160,33 @@ Night wins. Tokyo's skyline with all the buildings lit up is stunning. The Shibu
 
 ### 위치 및 가는 법
 
-시부야 스크램블 스퀘어 14층에 전망대 입구가 있습니다. 건물 바깥의 직행 엘리베이터를 이용하면 바로 올라갈 수 있습니다.
-
-일찍 도착했다면 11층 스타벅스와 츠타야 서점, 12~13층 식당가를 함께 둘러보는 것을 추천합니다.
+시부야 스크램블 스퀘어 14층에 전망대 입구가 있습니다. 건물 바깥의 직행 엘리베이터를 이용하면 바로 올라갈 수 있습니다. 일찍 도착했다면 11층 스타벅스와 츠타야 서점, 12~13층 식당가를 함께 둘러보는 것을 추천합니다.
 
 ![시부야 스크램블 스퀘어 외관](0)
 
-### 예약 — 가장 중요한 부분
+### 예약 방법과 가격
 
-시부야스카이는 현장 구매가 사실상 불가능합니다. 특히 저녁 시간대는 오픈과 동시에 매진되며, 낮 시간대도 며칠 전에 소진됩니다.
+시부야스카이는 현장 구매가 사실상 불가능합니다. 특히 저녁 시간대는 오픈과 동시에 매진되며, 낮 시간대도 며칠 전에 소진됩니다. 낮 시간대(10시~15시)는 3,000엔, 일몰~저녁 시간대(15시~21시)는 3,700엔입니다.
 
-**가격:**
-- 낮 시간대 (10시~15시): 3,000엔
-- 일몰~저녁 시간대 (15시~21시): 3,700엔
+예약은 공식 홈페이지보다 클룩에서 하는 것이 가장 빠르고 안정적입니다. 방문일 **2주 전 자정(00시)**에 오픈되며, 일몰과 야경 시간대는 오픈 직후 매진되므로 반드시 알람을 맞춰두세요.
 
-**예약 꿀팁:**
-- 클룩에서 예약하는 것이 가장 빠르고 안정적입니다 (공식 홈페이지보다 수월)
-- 방문일 **2주 전 자정(00시)**에 오픈됩니다
-- 일몰/야경 시간대는 오픈 직후 매진되므로, 반드시 알람을 맞춰두세요
+### 전망대 즐기기
 
-![예약 화면](1)
+입장 후 셀카봉, 모자, 우산 등은 반드시 무료 락커에 보관해야 합니다. 에스컬레이터를 타고 올라가는 순간부터 전망이 시작됩니다.
 
-### 루프탑 전망대
+![루프탑 전망대 낮 파노라마](3)
 
-입장 후 셀카봉, 모자, 우산 등은 반드시 무료 락커에 보관해야 합니다 (바람 때문에 반입 불가). 에스컬레이터를 타고 올라가는 순간부터 전망이 시작됩니다.
+루프탑은 넓은 야외 공간으로 360도 파노라마 전망을 제공합니다. 도쿄 스카이트리 전망대보다 개방감이 뛰어나며, 야외에서 보는 느낌이 확실히 다릅니다. 포토존에서 직원이 사진을 찍어주지만, 대기 줄이 길고 사진은 유료입니다.
 
-![에스컬레이터에서 보는 전망](2)
-
-루프탑은 넓은 야외 공간으로 360도 파노라마 전망을 제공합니다. 도쿄 스카이트리 전망대보다 개방감이 뛰어나며, 야외에서 보는 느낌이 확실히 다릅니다.
-
-![낮 파노라마 전망](3)
-
-포토존에서 직원이 사진을 찍어주지만, 대기 줄이 길고 사진은 유료 구매입니다.
-
-### 도쿄타워 전망 구역
-
-도쿄타워 방향에 소파와 테이블이 있는 전용 구역이 있습니다. 저녁 시간대에는 음료 구매가 필수이지만, 도쿄타워를 정면으로 바라보는 이 전망은 그만한 가치가 있습니다.
+도쿄타워 방향에는 소파와 테이블이 있는 전용 구역이 있습니다. 저녁 시간대에는 음료 구매가 필수이지만, 도쿄타워를 정면으로 바라보는 이 전망은 그만한 가치가 있습니다. 중간에는 그물 해먹에서 하늘을 바라보며 쉴 수 있는 공간도 마련되어 있습니다.
 
 ![도쿄타워 전망 구역](4)
 
-중간에는 그물 해먹에서 하늘을 바라보며 쉴 수 있는 공간도 마련되어 있습니다.
+루프탑 한 층 아래 실내 전망대는 유리가 깨끗하고 사람이 적어, 바람이 강한 날이나 사진 촬영에 적합합니다.
 
-![해먹 그물 공간](5)
+야경을 강력 추천합니다. 도쿄는 고층 빌딩이 밀집해 있어 야경이 특히 화려하며, 시부야 주변 번화가의 불빛이 더해져 압도적인 전망을 자랑합니다. 야경 예약에 실패하더라도 낮 전망도 충분히 만족스럽습니다.
 
-### 실내 전망대
-
-루프탑 한 층 아래 실내 전망대는 유리가 깨끗하고 사람이 적어, 바람이 강한 날이나 사진 촬영에 적합합니다. 기념품 숍도 함께 둘러볼 수 있습니다.
-
-![실내 전망대](6)
-
-### 낮 vs 야경 — 어떤 시간대가 좋을까?
-
-야경을 강력 추천합니다. 도쿄는 고층 빌딩이 밀집해 있어 야경이 특히 화려하며, 시부야 주변 번화가의 불빛이 더해져 압도적인 전망을 자랑합니다.
-
-![야경 파노라마](7)
-
-![야경 클로즈업](8)
+![시부야스카이 야경 파노라마](7)
 
 ### Tripflowy 추천 꿀팁
 
@@ -254,7 +195,6 @@ Night wins. Tokyo's skyline with all the buildings lit up is stunning. The Shibu
 - 입장하면 **도쿄타워 방향 소파 구역**으로 먼저 이동하세요
 - 루프탑은 악천후 시 폐쇄될 수 있으니 날씨 확인 필수
 - 락커는 무료 (더 이상 100엔 동전 불필요)
-- 야경 예약에 실패해도 낮 전망도 충분히 만족스럽습니다
 `,
     },
     city: "tokyo",
@@ -266,10 +206,7 @@ Night wins. Tokyo's skyline with all the buildings lit up is stunning. The Shibu
       { src: "/images/posts/sibuya-sky-3.jpg", alt: { en: "Escalator view going up to rooftop", ko: "에스컬레이터에서 보는 전망" } },
       { src: "/images/posts/sibuya-sky-4.jpg", alt: { en: "Daytime panoramic view from Shibuya Sky", ko: "시부야스카이 낮 파노라마 전망" } },
       { src: "/images/posts/sibuya-sky-5.jpg", alt: { en: "Tokyo Tower view from Shibuya Sky", ko: "시부야스카이에서 본 도쿄타워" } },
-      { src: "/images/posts/sibuya-sky-6.jpg", alt: { en: "Hammock net relaxation area", ko: "해먹 그물 휴식 공간" } },
-      { src: "/images/posts/sibuya-sky-8.jpg", alt: { en: "Indoor observatory with clean glass", ko: "유리가 깨끗한 실내 전망대" } },
       { src: "/images/posts/sibuya-sky-9.jpg", alt: { en: "Night view panorama from Shibuya Sky", ko: "시부야스카이 야경 파노라마" } },
-      { src: "/images/posts/sibuya-sky-10.jpg", alt: { en: "Night view close-up of Tokyo skyline", ko: "도쿄 스카이라인 야경 클로즈업" } },
     ],
     tags: ["guide", "must-read", "observatory", "night-view", "shibuya", "booking-tips"],
     faq: [
