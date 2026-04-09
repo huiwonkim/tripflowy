@@ -19,6 +19,7 @@ import { ItineraryMap } from "@/components/map/ItineraryMap";
 import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
 import { CityInfoCard } from "@/components/itinerary/CityInfoCard";
 import { SaveItineraryButton } from "@/components/ui/SaveItineraryButton";
+import { DownloadPDFButton } from "@/components/ui/DownloadPDFButton";
 import { OverviewMap } from "@/components/map/OverviewMap";
 import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary, GeneratedDay } from "@/types";
 
@@ -338,7 +339,10 @@ function PlannerContent() {
             </div>
 
             {/* Save itinerary button */}
-            <SaveItineraryButton locale={locale} days={displayDays} />
+            <div className="flex flex-wrap items-center gap-3">
+              <SaveItineraryButton locale={locale} days={displayDays} />
+              <DownloadPDFButton locale={locale} days={displayDays} duration={input.duration} />
+            </div>
 
             {/* Overview map — day zones */}
             <OverviewMap days={displayDays} locale={locale} />
