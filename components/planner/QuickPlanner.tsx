@@ -1,33 +1,22 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { Search, MapPin, Clock, Users, X, ChevronDown } from "lucide-react";
-import type { PlannerInput, Locale } from "@/types";
-import { countries, durationOptions, travelerTypeOptions } from "@/data/destinations";
+import { Search, X } from "lucide-react";
+import type { PlannerInput, Locale, TravelStyle, TravelerType } from "@/types";
+import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 
 const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", styles: [] };
 
-interface QuickPlannerProps {
-  compact?: boolean;
-}
-
-export function QuickPlanner({ compact = false }: QuickPlannerProps) {
+export function QuickPlanner() {
   const router = useRouter();
   const locale = useLocale() as Locale;
   const t = useTranslations("planner");
   const [input, setInput] = useState<PlannerInput>(emptyInput);
-  const [destOpen, setDestOpen] = useState(false);
-  const destRef = useRef<HTMLDivElement>(null);
+  const [activeCountry, setActiveCountry] = useState(countries[0]?.id ?? "");
 
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (destRef.current && !destRef.current.contains(e.target as Node)) setDestOpen(false);
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
+  const allCities = countries.flatMap((c) => c.cities);
 
   function toggleCity(cityId: string) {
     setInput((p) => ({
@@ -35,6 +24,15 @@ export function QuickPlanner({ compact = false }: QuickPlannerProps) {
       destinations: p.destinations.includes(cityId)
         ? p.destinations.filter((d) => d !== cityId)
         : [...p.destinations, cityId],
+    }));
+  }
+
+  function toggleStyle(style: TravelStyle) {
+    setInput((p) => ({
+      ...p,
+      styles: p.styles.includes(style)
+        ? p.styles.filter((s) => s !== style)
+        : p.styles.length < 4 ? [...p.styles, style] : p.styles,
     }));
   }
 
@@ -48,112 +46,120 @@ export function QuickPlanner({ compact = false }: QuickPlannerProps) {
     router.push(`/planner?${params.toString()}` as never);
   }
 
-  const selectBase =
-    "w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-800 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition cursor-pointer";
-
-  // Get label for selected destinations
-  const allCities = countries.flatMap((c) => c.cities);
-  const selectedLabels = input.destinations.map((id) => allCities.find((c) => c.id === id)?.label[locale] ?? id);
-
-  // Duration validation
   const selectedDuration = durationOptions.find((d) => d.value === input.duration);
   const minCities = selectedDuration?.minCities ?? 1;
   const needMoreCities = input.duration && input.destinations.length > 0 && input.destinations.length < minCities;
 
+  const chipBase = "px-3 py-1.5 rounded-lg text-sm font-medium border transition-all cursor-pointer";
+  const chipSelected = "border-blue-500 bg-blue-50 text-blue-700";
+  const chipDefault = "border-gray-200 bg-white/10 text-gray-300 hover:border-gray-300 hover:text-white";
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div className={`grid gap-3 ${compact ? "grid-cols-2 md:grid-cols-4" : "grid-cols-1 sm:grid-cols-2"}`}>
-        {/* Destination — multi-select dropdown */}
-        <div className="relative" ref={destRef}>
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none z-10"><MapPin className="w-4 h-4" /></div>
-          <button
-            type="button"
-            onClick={() => setDestOpen((o) => !o)}
-            className={`${selectBase} pl-10 pr-8 text-left flex items-center gap-1 min-h-[44px]`}
-          >
-            {input.destinations.length === 0 ? (
-              <span className="text-gray-400">{t("destination")}</span>
-            ) : (
-              <span className="truncate">{selectedLabels.join(", ")}</span>
-            )}
-          </button>
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-            <ChevronDown className={`w-4 h-4 transition-transform ${destOpen ? "rotate-180" : ""}`} />
-          </div>
-
-          {destOpen && (
-            <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-lg z-50 max-h-64 overflow-y-auto">
-              {countries.map((c) => (
-                <div key={c.id}>
-                  <p className="px-3 py-1.5 text-xs font-medium text-gray-400 bg-gray-50 sticky top-0">
-                    {c.emoji} {c.label[locale]}
-                  </p>
-                  {c.cities.map((city) => {
-                    const checked = input.destinations.includes(city.id);
-                    return (
-                      <label key={city.id} className="flex items-center gap-2.5 px-3 py-2 hover:bg-blue-50 cursor-pointer text-sm">
-                        <input
-                          type="checkbox"
-                          checked={checked}
-                          onChange={() => toggleCity(city.id)}
-                          className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                        />
-                        <span className={checked ? "font-medium text-gray-900" : "text-gray-700"}>{city.label[locale]}</span>
-                      </label>
-                    );
-                  })}
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Duration */}
-        <div className="relative">
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><Clock className="w-4 h-4" /></div>
-          <select className={`${selectBase} pl-10`} value={input.duration} onChange={(e) => setInput((p) => ({ ...p, duration: e.target.value }))}>
-            <option value="">{t("duration")}</option>
-            {durationOptions.map((d) => (<option key={d.value} value={d.value}>{d.label[locale]}</option>))}
-          </select>
-        </div>
-
-        {/* Traveler type */}
-        <div className="relative">
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><Users className="w-4 h-4" /></div>
-          <select className={`${selectBase} pl-10`} value={input.travelerType} onChange={(e) => setInput((p) => ({ ...p, travelerType: e.target.value as PlannerInput["travelerType"] }))}>
-            <option value="">{t("whosTraveling")}</option>
-            {travelerTypeOptions.map((tt) => (<option key={tt.value} value={tt.value}>{tt.emoji} {tt.label[locale]}</option>))}
-          </select>
-        </div>
-
-        {/* Style removed from compact — selected on planner page */}
-      </div>
-
-      {/* Selected cities chips */}
-      {input.destinations.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mt-2">
-          {input.destinations.map((id) => {
-            const city = allCities.find((c) => c.id === id);
-            if (!city) return null;
+    <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Destination — country tabs + city chips */}
+      <div>
+        <p className="text-xs text-gray-400 mb-2">{t("destination")}</p>
+        <div className="flex gap-2 mb-2">
+          {countries.map((c) => {
+            const hasSelected = c.cities.some((city) => input.destinations.includes(city.id));
             return (
-              <span key={id} className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 text-xs font-medium px-2.5 py-1 rounded-full">
-                {city.label[locale]}
-                <button type="button" onClick={() => toggleCity(id)} className="hover:text-blue-900"><X className="w-3 h-3" /></button>
-              </span>
+              <button key={c.id} type="button" onClick={() => setActiveCountry(c.id)}
+                className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium transition-colors ${
+                  activeCountry === c.id ? "bg-white/20 text-white" : "text-gray-400 hover:text-gray-200"
+                }`}>
+                {c.emoji} {c.label[locale]}
+                {hasSelected && <span className="w-1.5 h-1.5 bg-blue-400 rounded-full" />}
+              </button>
             );
           })}
         </div>
-      )}
+        <div className="flex flex-wrap gap-1.5">
+          {countries.find((c) => c.id === activeCountry)?.cities.map((city) => {
+            const selected = input.destinations.includes(city.id);
+            return (
+              <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
+                className={`${chipBase} ${selected ? chipSelected : chipDefault}`}>
+                {city.label[locale]}
+              </button>
+            );
+          })}
+        </div>
+        {input.destinations.length > 0 && (
+          <div className="flex flex-wrap gap-1 mt-2">
+            {input.destinations.map((id) => {
+              const city = allCities.find((c) => c.id === id);
+              return city ? (
+                <span key={id} className="inline-flex items-center gap-1 bg-blue-500/20 text-blue-200 text-xs font-medium px-2 py-0.5 rounded-full">
+                  {city.label[locale]}
+                  <button type="button" onClick={() => toggleCity(id)}><X className="w-2.5 h-2.5" /></button>
+                </span>
+              ) : null;
+            })}
+          </div>
+        )}
+      </div>
+
+      {/* Duration */}
+      <div>
+        <p className="text-xs text-gray-400 mb-2">{t("duration")}</p>
+        <div className="flex flex-wrap gap-1.5">
+          {durationOptions.map((d) => (
+            <button key={d.value} type="button" onClick={() => setInput((p) => ({ ...p, duration: d.value }))}
+              className={`${chipBase} ${input.duration === d.value ? chipSelected : chipDefault}`}>
+              {locale === "ko" ? `${d.value}박${Number(d.value)+1}일` : `${Number(d.value)+1} days`}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Traveler + Style in one row on desktop */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {/* Traveler type */}
+        <div>
+          <p className="text-xs text-gray-400 mb-2">{t("whosTraveling")}</p>
+          <div className="flex flex-wrap gap-1.5">
+            {travelerTypeOptions.map((tt) => (
+              <button key={tt.value} type="button"
+                onClick={() => setInput((p) => ({ ...p, travelerType: tt.value as TravelerType }))}
+                className={`${chipBase} ${input.travelerType === tt.value ? chipSelected : chipDefault}`}>
+                {tt.emoji} {tt.label[locale]}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Style */}
+        <div>
+          <p className="text-xs text-gray-400 mb-2">
+            {locale === "ko" ? "스타일" : "Style"}
+            {input.styles.length > 0 && <span className="ml-1 text-blue-400">({input.styles.length}/4)</span>}
+          </p>
+          <div className="flex flex-wrap gap-1.5">
+            {styleOptions.slice(0, 6).map((s) => {
+              const selected = input.styles.includes(s.value as TravelStyle);
+              const disabled = !selected && input.styles.length >= 4;
+              return (
+                <button key={s.value} type="button" disabled={disabled}
+                  onClick={() => toggleStyle(s.value as TravelStyle)}
+                  className={`${chipBase} ${selected ? chipSelected : disabled ? "border-gray-700 text-gray-600 cursor-not-allowed" : chipDefault}`}>
+                  {s.label[locale]}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
       {needMoreCities && (
-        <p className="mt-2 text-xs text-red-400 text-center">
+        <p className="text-xs text-red-400 text-center">
           {locale === "ko"
             ? `${input.duration}박 이상은 2개 도시 이상 선택이 필요합니다`
             : `${input.duration}+ nights requires at least 2 cities`}
         </p>
       )}
 
-      <button type="submit" disabled={!!needMoreCities} className="mt-3 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3.5 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">
+      <button type="submit" disabled={!!needMoreCities}
+        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white font-semibold py-3.5 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">
         <Search className="w-4 h-4" />{t("findMyItinerary")}
       </button>
     </form>

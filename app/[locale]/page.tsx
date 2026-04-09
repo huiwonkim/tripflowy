@@ -44,7 +44,7 @@ export default async function HomePage({ params }: PageProps) {
             <p className="text-sm font-medium text-slate-300 mb-4">
               {t("hero.findItinerary")}
             </p>
-            <QuickPlanner compact />
+            <QuickPlanner />
           </div>
 
           <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-slate-400">
