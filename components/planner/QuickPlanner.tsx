@@ -60,17 +60,19 @@ export function QuickPlanner() {
         <p className="text-xs text-gray-400 mb-2.5">{t("destination")}</p>
         <div className="space-y-2">
           {countries.map((c) => (
-            <div key={c.id} className="flex items-center gap-2 flex-wrap">
-              <span className="text-sm flex-shrink-0 w-16">{c.emoji} {c.label[locale]}</span>
-              {c.cities.map((city) => {
-                const selected = input.destinations.includes(city.id);
-                return (
-                  <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
-                    className={`${chipBase} ${selected ? chipSelected : chipDefault}`}>
-                    {city.label[locale]}
-                  </button>
-                );
-              })}
+            <div key={c.id} className="flex gap-2">
+              <span className="text-sm flex-shrink-0 w-16 pt-1.5">{c.emoji} {c.label[locale]}</span>
+              <div className="flex flex-wrap gap-1.5">
+                {c.cities.map((city) => {
+                  const selected = input.destinations.includes(city.id);
+                  return (
+                    <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
+                      className={`${chipBase} ${selected ? chipSelected : chipDefault}`}>
+                      {city.label[locale]}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           ))}
         </div>
