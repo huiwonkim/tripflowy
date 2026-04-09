@@ -4,7 +4,7 @@ import { Suspense, useState, useRef, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink } from "lucide-react";
+import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw } from "lucide-react";
 import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 import { buildItinerary, getMatchedTours, getMatchedHotels } from "@/lib/itinerary-builder";
 import { getCityInfo } from "@/data/city-info";
@@ -37,6 +37,8 @@ function PlannerContent() {
   const searchParams = useSearchParams();
   const [input, setInput] = useState<PlannerInput>(emptyInput);
   const [searched, setSearched] = useState(false);
+  const [lockedDays, setLockedDays] = useState<Map<number, { courseId: string; city: string }>>(new Map());
+  const [refreshKey, setRefreshKey] = useState(0);
   const resultRef = useRef<HTMLDivElement>(null);
 
   // Read URL params on mount (from homepage QuickPlanner redirect)
@@ -74,13 +76,18 @@ function PlannerContent() {
 
   const itinerary = useMemo<GeneratedItinerary | null>(() => {
     if (!searched || !input.destinations.length || !input.duration) return null;
+    const locked = lockedDays.size > 0
+      ? Array.from(lockedDays.entries()).map(([dayNumber, { courseId, city }]) => ({ dayNumber, courseId, city }))
+      : undefined;
     return buildItinerary({
       destinations: input.destinations,
       duration: Number(input.duration) + 1,
       styles: input.styles.length > 0 ? input.styles : undefined,
       travelerType: input.travelerType || undefined,
+      lockedDays: locked,
     });
-  }, [searched, input]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searched, input, refreshKey]);
 
   const matchedTours = itinerary ? getMatchedTours(itinerary) : [];
   const matchedHotels = itinerary ? getMatchedHotels(itinerary) : [];
@@ -91,6 +98,7 @@ function PlannerContent() {
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     setSearched(true);
+    setLockedDays(new Map());
     // Update URL so back button preserves results
     const params = new URLSearchParams();
     if (input.destinations.length) params.set("destinations", input.destinations.join(","));
@@ -307,21 +315,53 @@ function PlannerContent() {
               <div className="divide-y divide-gray-100">
                 {itinerary.days.map((day) => {
                   const cityLabel = allCities.find((c) => c.id === day.city)?.label[locale] ?? day.city;
+                  const isLocked = lockedDays.has(day.dayNumber);
                   return (
-                    <a key={day.dayNumber} href={`#day-${day.dayNumber}`}
-                      className="flex items-center gap-4 px-5 py-3 hover:bg-gray-50 transition-colors cursor-pointer">
-                      <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <span className="text-white text-xs font-bold">{day.dayNumber}</span>
-                      </div>
-                      <div className="flex-1 min-w-0">
+                    <div key={day.dayNumber} className="flex items-center gap-3 px-5 py-3 hover:bg-gray-50 transition-colors">
+                      {/* Lock toggle */}
+                      <button
+                        onClick={() => {
+                          setLockedDays((prev) => {
+                            const next = new Map(prev);
+                            if (next.has(day.dayNumber)) {
+                              next.delete(day.dayNumber);
+                            } else {
+                              next.set(day.dayNumber, { courseId: day.course.id, city: day.city });
+                            }
+                            return next;
+                          });
+                        }}
+                        className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors ${
+                          isLocked ? "bg-blue-600 text-white" : "bg-gray-100 text-gray-400 hover:bg-gray-200"
+                        }`}
+                        title={isLocked ? (locale === "ko" ? "고정 해제" : "Unlock") : (locale === "ko" ? "이 코스 고정" : "Lock this course")}
+                      >
+                        {isLocked ? <Lock className="w-3.5 h-3.5" /> : <Unlock className="w-3.5 h-3.5" />}
+                      </button>
+                      <a href={`#day-${day.dayNumber}`} className="flex-1 min-w-0 cursor-pointer">
                         <p className="text-sm font-medium text-gray-900 truncate">{day.course.title[locale]}</p>
                         <p className="text-xs text-gray-400 truncate">{day.course.summary[locale]}</p>
-                      </div>
+                      </a>
                       <span className="text-xs text-gray-300 flex-shrink-0">{cityLabel}</span>
-                    </a>
+                    </div>
                   );
                 })}
               </div>
+
+              {/* Refresh unlocked */}
+              {lockedDays.size > 0 && lockedDays.size < itinerary.days.length && (
+                <div className="px-5 py-3 border-t border-gray-100">
+                  <button
+                    onClick={() => setRefreshKey((k) => k + 1)}
+                    className="w-full flex items-center justify-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium py-2.5 px-4 rounded-xl transition-colors"
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                    {locale === "ko"
+                      ? `마음에 안 드는 ${itinerary.days.length - lockedDays.size}개 일정만 다시 추천받기`
+                      : `Reshuffle ${itinerary.days.length - lockedDays.size} unlocked days`}
+                  </button>
+                </div>
+              )}
             </section>
 
             {/* Day-by-day with per-day maps */}

@@ -5,11 +5,18 @@ import { hotels } from "@/data/hotels";
 import { sortByProximity } from "./geo";
 import { getDefaultCosts } from "@/data/course-costs";
 
+interface LockedDay {
+  dayNumber: number;
+  courseId: string;
+  city: string;
+}
+
 interface BuildInput {
   destinations: string[];
   duration: number; // total days (nights + 1)
   styles?: TravelStyle[];
   travelerType?: TravelerType;
+  lockedDays?: LockedDay[];
 }
 
 /**
@@ -22,9 +29,65 @@ interface BuildInput {
  * 5. Chain cities in order
  */
 export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
-  const { destinations, duration, styles, travelerType } = input;
+  const { destinations, duration, styles, travelerType, lockedDays } = input;
 
   if (destinations.length === 0 || duration <= 0) return null;
+
+  // If we have locked days, fill only the unlocked slots
+  if (lockedDays && lockedDays.length > 0) {
+    const lockedCourseIds = new Set(lockedDays.map((d) => d.courseId));
+    const unlockedCount = duration - lockedDays.length;
+
+    // Get available courses excluding locked ones
+    const available = dayCourses.filter((c) => {
+      if (lockedCourseIds.has(c.id)) return false;
+      if (!destinations.includes(c.city)) return false;
+      if (styles && styles.length > 0 && !styles.some((s) => c.styles.includes(s))) return false;
+      if (travelerType && !c.travelerTypes.includes(travelerType)) return false;
+      return true;
+    });
+
+    // Fallback: city-only filter if strict gives too few
+    const fallback = available.length >= unlockedCount ? available : dayCourses.filter((c) =>
+      !lockedCourseIds.has(c.id) && destinations.includes(c.city)
+    );
+
+    // Score and pick
+    const scored = fallback.map((c) => {
+      let score = 0;
+      if (styles && styles.length > 0) score += styles.filter((s) => c.styles.includes(s)).length * 2;
+      if (travelerType && c.travelerTypes.includes(travelerType)) score += 2;
+      score += Math.random();
+      return { course: c, score };
+    });
+    scored.sort((a, b) => b.score - a.score);
+    const picked = scored.slice(0, unlockedCount).map((s) => s.course);
+
+    // Assemble: locked days stay in place, unlocked filled in order
+    const days: GeneratedDay[] = [];
+    let unlockedIdx = 0;
+    for (let dayNum = 1; dayNum <= duration; dayNum++) {
+      const locked = lockedDays.find((d) => d.dayNumber === dayNum);
+      if (locked) {
+        const course = dayCourses.find((c) => c.id === locked.courseId);
+        if (course) {
+          days.push({ dayNumber: dayNum, course, city: locked.city });
+        }
+      } else if (unlockedIdx < picked.length) {
+        days.push({ dayNumber: dayNum, course: picked[unlockedIdx], city: picked[unlockedIdx].city });
+        unlockedIdx++;
+      }
+    }
+
+    const cityList = [...new Set(days.map((d) => d.city))];
+    return {
+      days,
+      cities: cityList,
+      duration: days.length,
+      style: (styles && styles.length > 0 ? styles[0] : "relax") as TravelStyle,
+      travelerType: travelerType || "couple",
+    };
+  }
 
   // Step 1: Filter
   const coursesByCity = new Map<string, DayCourse[]>();
