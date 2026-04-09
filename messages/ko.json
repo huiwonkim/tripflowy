@@ -23,9 +23,9 @@
     "dayByDay": "시간대별 완성된 일정",
     "affiliate": "맛집, 투어, 예약까지 한 번에"
   },
-  "featured": {
-    "label": "바로 사용 가능",
-    "heading": "추천 여행 일정",
+  "guides": {
+    "label": "깊이 있는 가이드",
+    "heading": "인기 여행 가이드",
     "seeAll": "전체 보기"
   },
   "howItWorks": {

@@ -23,9 +23,9 @@
     "dayByDay": "Complete day-by-day plans",
     "affiliate": "Restaurants, tours & bookings included"
   },
-  "featured": {
-    "label": "Ready to use",
-    "heading": "Featured Itineraries",
+  "guides": {
+    "label": "In-depth guides",
+    "heading": "Popular Guides",
     "seeAll": "See all"
   },
   "howItWorks": {

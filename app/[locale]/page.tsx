@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ArrowRight, CheckCircle, Zap, Map, Hotel } from "lucide-react";
 import { QuickPlanner } from "@/components/planner/QuickPlanner";
-import { dayCourses } from "@/data/day-courses";
+import { posts } from "@/data/posts";
 import { countries, comingSoonCountries } from "@/data/destinations";
 import type { Locale } from "@/types";
 
@@ -16,8 +16,7 @@ export default async function HomePage({ params }: PageProps) {
   const t = await getTranslations();
   const loc = locale as Locale;
 
-  // Show a sample of courses from different cities
-  const featuredCourses = dayCourses.slice(0, 6);
+  const allCities = countries.flatMap((c) => c.cities);
 
   return (
     <div>
@@ -58,38 +57,50 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Popular destinations */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        <div className="flex items-end justify-between mb-8">
-          <div>
-            <p className="text-sm font-medium text-blue-600 mb-1">{t("featured.label")}</p>
-            <h2 className="text-2xl font-bold text-gray-900">{t("featured.heading")}</h2>
-          </div>
-          <Link href="/planner"
-            className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
-            {t("featured.seeAll")} <ArrowRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {featuredCourses.map((course) => (
-            <div key={course.id} className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-all">
-              <div className={`h-36 bg-gradient-to-br ${course.coverGradient} relative flex items-end p-4`}>
-                <div className="absolute inset-0 bg-black/20" />
-                <div className="relative z-10 flex flex-wrap gap-1.5">
-                  {course.tags.slice(0, 3).map((tag) => (
-                    <span key={tag} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2 py-0.5 rounded-full">{tag}</span>
-                  ))}
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold text-gray-900 text-sm mb-1">{course.title[loc]}</h3>
-                <p className="text-gray-500 text-xs leading-relaxed line-clamp-2">{course.summary[loc]}</p>
-              </div>
+      {/* Popular guides */}
+      {posts.length > 0 && (
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <p className="text-sm font-medium text-blue-600 mb-1">{t("guides.label")}</p>
+              <h2 className="text-2xl font-bold text-gray-900">{t("guides.heading")}</h2>
             </div>
-          ))}
-        </div>
-      </section>
+            <Link href="/posts"
+              className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
+              {t("guides.seeAll")} <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {posts.map((post) => {
+              const cityLabel = allCities.find((c) => c.id === post.city)?.label[loc] ?? post.city;
+              return (
+                <Link key={post.slug} href={`/posts/${post.slug}`}
+                  className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-all">
+                  <div className={`h-40 bg-gradient-to-br ${post.coverGradient} relative flex items-end p-4`}>
+                    <div className="absolute inset-0 bg-black/15" />
+                    <div className="relative z-10 flex items-center gap-2">
+                      <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full">{cityLabel}</span>
+                      {post.tags.slice(0, 2).map((tag) => (
+                        <span key={tag} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2 py-0.5 rounded-full">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-semibold text-gray-900 text-base leading-snug group-hover:text-blue-700 transition-colors mb-2">
+                      {post.title[loc]}
+                    </h3>
+                    <p className="text-gray-500 text-sm leading-relaxed line-clamp-2 mb-3">{post.excerpt[loc]}</p>
+                    <span className="flex items-center gap-1 text-blue-600 text-xs font-medium group-hover:gap-2 transition-all">
+                      {loc === "ko" ? "자세히 보기" : "Read guide"} <ArrowRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* How it works */}
       <section className="bg-white border-y border-gray-100">
