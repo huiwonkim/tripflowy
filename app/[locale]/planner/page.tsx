@@ -40,6 +40,7 @@ function PlannerContent() {
   const [input, setInput] = useState<PlannerInput>(emptyInput);
   const [searched, setSearched] = useState(false);
   const [lockedDays, setLockedDays] = useState<Map<number, { courseId: string; city: string }>>(new Map());
+  const [activeCountry, setActiveCountry] = useState(countries[0]?.id ?? "");
   const [refreshKey, setRefreshKey] = useState(0);
   const [dayOrder, setDayOrder] = useState<GeneratedDay[]>([]);
   const resultRef = useRef<HTMLDivElement>(null);
@@ -60,16 +61,6 @@ function PlannerContent() {
   }, [searchParams]);
 
 
-  // Destination multi-select dropdown
-  const [destOpen, setDestOpen] = useState(false);
-  const destDropdownRef = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (destDropdownRef.current && !destDropdownRef.current.contains(e.target as Node)) setDestOpen(false);
-    }
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, []);
 
   function toggleCity(cityId: string) {
     setInput((p) => ({
@@ -168,7 +159,7 @@ function PlannerContent() {
       </div>
 
       <form onSubmit={handleSearch} className="space-y-8">
-        {/* Destination — multi-select with dropdown */}
+        {/* Destination — country tabs + city chips */}
         <div className="flex flex-col gap-3">
           <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
             <MapPin className="w-4 h-4 text-blue-600" />{t("whereGoing")}
@@ -185,38 +176,48 @@ function PlannerContent() {
             </p>
           )}
 
-          <div className="relative" ref={destDropdownRef}>
-            <button type="button" onClick={() => setDestOpen((o) => !o)}
-              className="w-full bg-white border-2 border-gray-200 rounded-xl px-4 py-3 text-sm text-left flex items-center justify-between hover:border-gray-300 transition min-h-[48px]">
-              {input.destinations.length === 0 ? (
-                <span className="text-gray-400">{t("destination")}</span>
-              ) : (
-                <span className="text-gray-800 font-medium">{selectedLabels.join(", ")}</span>
-              )}
-              <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${destOpen ? "rotate-180" : ""}`} />
-            </button>
-
-            {destOpen && (
-              <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 max-h-72 overflow-y-auto">
-                {countries.map((c) => (
-                  <div key={c.id}>
-                    <p className="px-4 py-2 text-xs font-semibold text-gray-400 bg-gray-50 sticky top-0">{c.emoji} {c.label[locale]}</p>
-                    {c.cities.map((city) => {
-                      const checked = input.destinations.includes(city.id);
-                      return (
-                        <label key={city.id} className="flex items-center gap-3 px-4 py-2.5 hover:bg-blue-50 cursor-pointer text-sm">
-                          <input type="checkbox" checked={checked} onChange={() => toggleCity(city.id)}
-                            className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
-                          <span className={checked ? "font-medium text-gray-900" : "text-gray-700"}>{city.label[locale]}</span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                ))}
-              </div>
-            )}
+          {/* Country tabs */}
+          <div className="flex gap-2 border-b border-gray-100 pb-2">
+            {countries.map((c) => {
+              const hasSelected = c.cities.some((city) => input.destinations.includes(city.id));
+              return (
+                <button key={c.id} type="button"
+                  onClick={() => setActiveCountry(c.id)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
+                    activeCountry === c.id
+                      ? "bg-blue-50 text-blue-700"
+                      : hasSelected ? "bg-gray-100 text-gray-800" : "text-gray-500 hover:bg-gray-50"
+                  }`}>
+                  <span>{c.emoji}</span>
+                  <span>{c.label[locale]}</span>
+                  {hasSelected && <span className="w-1.5 h-1.5 bg-blue-500 rounded-full" />}
+                </button>
+              );
+            })}
           </div>
 
+          {/* City chips for active country */}
+          {(() => {
+            const country = countries.find((c) => c.id === activeCountry);
+            if (!country) return null;
+            return (
+              <div className="flex flex-wrap gap-2">
+                {country.cities.map((city) => {
+                  const selected = input.destinations.includes(city.id);
+                  return (
+                    <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
+                      className={`px-4 py-2 rounded-xl text-sm font-medium border-2 transition-all ${
+                        selected ? "border-blue-600 bg-blue-50 text-blue-700" : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
+                      }`}>
+                      {city.label[locale]}
+                    </button>
+                  );
+                })}
+              </div>
+            );
+          })()}
+
+          {/* Selected chips */}
           {input.destinations.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
               {input.destinations.map((id) => {
