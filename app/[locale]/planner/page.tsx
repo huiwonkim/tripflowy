@@ -44,7 +44,7 @@ function PlannerContent() {
   const [dayOrder, setDayOrder] = useState<GeneratedDay[]>([]);
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const savedCoursesParam = searchParams.get("courses");
+  const [initialCoursesParam] = useState(() => searchParams.get("courses"));
 
   // Read URL params on mount (from homepage QuickPlanner redirect)
   useEffect(() => {
@@ -95,21 +95,24 @@ function PlannerContent() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searched, input, refreshKey]);
 
-  // Sync dayOrder when itinerary changes, or restore from URL
+  // Sync dayOrder when itinerary changes, or restore from URL (once)
   useEffect(() => {
     if (!itinerary) return;
-    if (savedCoursesParam) {
-      const courseIds = savedCoursesParam.split(",").filter(Boolean);
+    if (initialCoursesParam) {
+      const courseIds = initialCoursesParam.split(",").filter(Boolean);
       const restored = courseIds.map((id, i) => {
         const course = dayCourses.find((c) => c.id === id);
         return course ? { dayNumber: i + 1, course, city: course.city } as GeneratedDay : null;
       }).filter((d): d is GeneratedDay => d !== null);
       if (restored.length > 0) {
         setDayOrder(restored);
+        updateUrlWithCourses(restored);
         return;
       }
     }
-    setDayOrder(itinerary.days.map((d, i) => ({ ...d, dayNumber: i + 1 })));
+    const days = itinerary.days.map((d, i) => ({ ...d, dayNumber: i + 1 }));
+    setDayOrder(days);
+    updateUrlWithCourses(days);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itinerary]);
 
@@ -117,19 +120,20 @@ function PlannerContent() {
     setDayOrder((prev) => {
       const next = [...prev];
       [next[indexA], next[indexB]] = [next[indexB], next[indexA]];
-      return next.map((d, i) => ({ ...d, dayNumber: i + 1 }));
+      const reordered = next.map((d, i) => ({ ...d, dayNumber: i + 1 }));
+      updateUrlWithCourses(reordered);
+      return reordered;
     });
     setLockedDays(new Map());
   }
 
-  // Update URL when dayOrder changes (so link copy captures the order)
-  useEffect(() => {
-    if (dayOrder.length > 0 && searched) {
+  function updateUrlWithCourses(days: GeneratedDay[]) {
+    if (days.length > 0) {
       const params = new URLSearchParams(window.location.search);
-      params.set("courses", dayOrder.map((d) => d.course.id).join(","));
+      params.set("courses", days.map((d) => d.course.id).join(","));
       window.history.replaceState(null, "", `?${params.toString()}`);
     }
-  }, [dayOrder, searched]);
+  }
 
   const displayDays = dayOrder.length > 0 ? dayOrder : (itinerary?.days ?? []);
 
