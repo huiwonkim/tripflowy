@@ -7,7 +7,7 @@ export const hotels: Hotel[] = [
     name: "Fusion Maia Da Nang",
     destination: "danang",
     destinationLabel: { en: "Da Nang", ko: "다낭" },
-    style: ["relaxed", "hotel-focused"],
+    style: ["relax", "hotel"],
     priceRange: "$$$",
     description: {
       en: "All-spa-inclusive resort on My Khe Beach. Every room includes two spa treatments per day — ideal for couples who want to truly unwind.",
@@ -29,7 +29,7 @@ export const hotels: Hotel[] = [
     name: "Pullman Da Nang Beach Resort",
     destination: "danang",
     destinationLabel: { en: "Da Nang", ko: "다낭" },
-    style: ["relaxed", "efficient"],
+    style: ["relax", "efficient"],
     priceRange: "$$",
     description: {
       en: "Modern 4-star beachfront resort with a large pool complex, multiple dining options, and direct My Khe Beach access.",
@@ -51,7 +51,7 @@ export const hotels: Hotel[] = [
     name: "Mandarin Oriental Bangkok",
     destination: "bangkok",
     destinationLabel: { en: "Bangkok", ko: "방콕" },
-    style: ["hotel-focused", "relaxed"],
+    style: ["hotel", "relax"],
     priceRange: "$$$$",
     description: {
       en: "Bangkok's most legendary hotel on the Chao Phraya River. Old-world colonial elegance meets modern luxury. A destination in itself.",
@@ -95,7 +95,7 @@ export const hotels: Hotel[] = [
     name: "Alaya Resort Ubud",
     destination: "bali",
     destinationLabel: { en: "Bali", ko: "발리" },
-    style: ["activity-focused", "relaxed"],
+    style: ["activity", "relax"],
     priceRange: "$$",
     description: {
       en: "Boutique resort in the heart of Ubud surrounded by jungle. Stunning infinity pool, daily yoga, and 10-minute walk to Ubud's center.",
@@ -117,7 +117,7 @@ export const hotels: Hotel[] = [
     name: "Potato Head Studios",
     destination: "bali",
     destinationLabel: { en: "Bali", ko: "발리" },
-    style: ["activity-focused", "efficient"],
+    style: ["activity", "efficient"],
     priceRange: "$$$",
     description: {
       en: "Iconic Seminyak beach club and hotel. Minimalist design, rooftop pool, and direct beach access. The go-to for stylish, active couples.",

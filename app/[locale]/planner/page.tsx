@@ -19,7 +19,7 @@ import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
 import { CityInfoCard } from "@/components/itinerary/CityInfoCard";
 import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary } from "@/types";
 
-const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", style: "" };
+const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", styles: [] };
 
 export default function PlannerPage() {
   return (
@@ -43,9 +43,9 @@ function PlannerContent() {
     const destinations = searchParams.get("destinations")?.split(",").filter(Boolean) ?? [];
     const duration = searchParams.get("duration") ?? "";
     const travelerType = (searchParams.get("travelerType") as TravelerType) ?? "";
-    const style = (searchParams.get("style") as TravelStyle) ?? "";
+    const styles = searchParams.get("styles")?.split(",").filter(Boolean) as TravelStyle[] ?? [];
     if (destinations.length > 0 || duration) {
-      setInput({ destinations, duration, travelerType, style });
+      setInput({ destinations, duration, travelerType, styles });
       setSearched(true);
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 300);
     }
@@ -76,7 +76,7 @@ function PlannerContent() {
     return buildItinerary({
       destinations: input.destinations,
       duration: Number(input.duration) + 1,
-      style: input.style || undefined,
+      styles: input.styles.length > 0 ? input.styles : undefined,
       travelerType: input.travelerType || undefined,
     });
   }, [searched, input]);
@@ -90,10 +90,23 @@ function PlannerContent() {
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
     setSearched(true);
+    // Update URL so back button preserves results
+    const params = new URLSearchParams();
+    if (input.destinations.length) params.set("destinations", input.destinations.join(","));
+    if (input.duration) params.set("duration", input.duration);
+    if (input.travelerType) params.set("travelerType", input.travelerType);
+    if (input.styles.length) params.set("styles", input.styles.join(","));
+    window.history.replaceState(null, "", `?${params.toString()}`);
     setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
   }
 
-  const inputComplete = input.destinations.length > 0 && input.duration && input.travelerType && input.style;
+  // Duration validation
+  const selectedDuration = durationOptions.find((d) => d.value === input.duration);
+  const minCities = selectedDuration?.minCities ?? 1;
+  const needMoreCities = input.duration && input.destinations.length < minCities;
+  const tooFewStyles = input.styles.length > 0 && input.styles.length < 2;
+  const tooManyStyles = input.styles.length > 4;
+  const inputComplete = input.destinations.length > 0 && input.duration && input.travelerType && input.styles.length >= 2 && input.styles.length <= 4 && !needMoreCities;
 
   const optionBase = "flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all text-left";
   const optionSelected = "border-blue-600 bg-blue-50";
@@ -115,7 +128,18 @@ function PlannerContent() {
         <div className="flex flex-col gap-3">
           <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
             <MapPin className="w-4 h-4 text-blue-600" />{t("whereGoing")}
+            <span className="text-xs font-normal text-gray-400 ml-2">
+              {locale === "ko" ? "복수 선택 가능" : "Multiple cities allowed"}
+            </span>
           </label>
+
+          {needMoreCities && (
+            <p className="text-xs text-red-500 font-medium">
+              {locale === "ko"
+                ? `${input.duration}박 이상은 ${minCities}개 도시 이상 선택이 필요합니다`
+                : `${input.duration}+ nights requires at least ${minCities} cities`}
+            </p>
+          )}
 
           <div className="relative" ref={destDropdownRef}>
             <button type="button" onClick={() => setDestOpen((o) => !o)}
@@ -196,22 +220,37 @@ function PlannerContent() {
           </div>
         </div>
 
-        {/* Style */}
+        {/* Style — multi select 2~4 */}
         <div className="flex flex-col gap-3">
           <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
             <Zap className="w-4 h-4 text-blue-600" />{t("travelStyle")}
+            <span className="text-xs font-normal text-gray-400">
+              {locale === "ko" ? `${input.styles.length}/4 선택 (2~4개)` : `${input.styles.length}/4 selected (2-4)`}
+            </span>
           </label>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-            {styleOptions.map((s) => (
-              <button key={s.value} type="button" onClick={() => setInput((p) => ({ ...p, style: s.value as TravelStyle }))}
-                className={`${optionBase} ${input.style === s.value ? optionSelected : optionDefault}`}>
-                <div>
-                  <p className="text-sm font-semibold text-gray-900">{s.label[locale]}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{s.description[locale]}</p>
-                </div>
-              </button>
-            ))}
+          <div className="flex flex-wrap gap-2">
+            {styleOptions.map((s) => {
+              const selected = input.styles.includes(s.value as TravelStyle);
+              const disabled = !selected && input.styles.length >= 4;
+              return (
+                <button key={s.value} type="button" disabled={disabled}
+                  onClick={() => setInput((p) => ({
+                    ...p,
+                    styles: selected
+                      ? p.styles.filter((st) => st !== s.value)
+                      : [...p.styles, s.value as TravelStyle],
+                  }))}
+                  className={`px-3.5 py-2 rounded-full text-sm font-medium border-2 transition-all ${
+                    selected ? "border-blue-600 bg-blue-50 text-blue-700" : disabled ? "border-gray-100 bg-gray-50 text-gray-300 cursor-not-allowed" : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
+                  }`}>
+                  {s.label[locale]}
+                </button>
+              );
+            })}
           </div>
+          {tooFewStyles && (
+            <p className="text-xs text-red-500">{locale === "ko" ? "최소 2개 스타일을 선택하세요" : "Select at least 2 styles"}</p>
+          )}
         </div>
 
         <button type="submit" disabled={!inputComplete}
@@ -242,7 +281,7 @@ function PlannerContent() {
                   return <span key={c} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{city?.label[locale] ?? c}</span>;
                 })}
                 <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{durationLabel(Number(input.duration), locale)}</span>
-                {input.style && <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{styleLabel(input.style as TravelStyle, locale)}</span>}
+                {input.styles.map((s) => <span key={s} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{styleLabel(s, locale)}</span>)}
               </div>
               <h2 className="text-xl sm:text-2xl font-bold mb-1">
                 {locale === "ko"
@@ -280,10 +319,12 @@ function PlannerContent() {
                             day: day.dayNumber,
                             title: day.course.title,
                             subtitle: { en: cityLabel, ko: cityLabel },
+                            summary: day.course.summary,
                             activities: day.course.activities,
                             whyThisCourse: day.course.whyThisCourse,
                             courseType: day.course.courseType,
                             costs: day.course.costs,
+                            googleMapsUrl: day.course.googleMapsUrl,
                           }}
                           locale={locale}
                         />

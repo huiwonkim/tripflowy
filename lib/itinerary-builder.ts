@@ -8,7 +8,7 @@ import { getDefaultCosts } from "@/data/course-costs";
 interface BuildInput {
   destinations: string[];
   duration: number; // total days (nights + 1)
-  style?: TravelStyle;
+  styles?: TravelStyle[];
   travelerType?: TravelerType;
 }
 
@@ -22,7 +22,7 @@ interface BuildInput {
  * 5. Chain cities in order
  */
 export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
-  const { destinations, duration, style, travelerType } = input;
+  const { destinations, duration, styles, travelerType } = input;
 
   if (destinations.length === 0 || duration <= 0) return null;
 
@@ -31,7 +31,7 @@ export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
   for (const city of destinations) {
     const filtered = dayCourses.filter((c) => {
       if (c.city !== city) return false;
-      if (style && !c.styles.includes(style)) return false;
+      if (styles && styles.length > 0 && !styles.some((s) => c.styles.includes(s))) return false;
       if (travelerType && !c.travelerTypes.includes(travelerType)) return false;
       return true;
     });
@@ -77,9 +77,12 @@ export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
     // Score courses by style/traveler match
     const scored = available.map((c) => {
       let score = 0;
-      if (style && c.styles.includes(style)) score += 2;
+      if (styles && styles.length > 0) {
+        const matchCount = styles.filter((s) => c.styles.includes(s)).length;
+        score += matchCount * 2; // more style matches = higher score
+      }
       if (travelerType && c.travelerTypes.includes(travelerType)) score += 2;
-      score += Math.random(); // tie-breaking randomness
+      score += Math.random();
       return { course: c, score };
     });
 
@@ -104,7 +107,7 @@ export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
     days,
     cities: cityList,
     duration: days.length,
-    style: style || "relaxed",
+    style: (styles && styles.length > 0 ? styles[0] : "relax") as TravelStyle,
     travelerType: travelerType || "couple",
   };
 }

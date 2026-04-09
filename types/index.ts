@@ -6,7 +6,7 @@ export type LocaleString = {
 };
 
 export type TravelerType = "couple" | "solo" | "family" | "friends";
-export type TravelStyle = "relaxed" | "efficient" | "activity-focused" | "hotel-focused";
+export type TravelStyle = "relax" | "efficient" | "activity" | "hotel" | "food" | "photo" | "budget" | "culture" | "nature" | "nightlife" | "shopping" | "local";
 export type ActivityType =
   | "transport"
   | "sightseeing"
@@ -57,7 +57,7 @@ export type DayCourse = {
   city: string;
   title: LocaleString;
   summary: LocaleString;
-  whyThisCourse?: LocaleString;   // 이 코스를 가야 하는 이유
+  whyThisCourse?: LocaleString[];  // 이 코스를 가야 하는 이유 (불릿 포인트)
   courseType?: LocaleString[];    // 태그 (한/영)
   styles: TravelStyle[];
   travelerTypes: TravelerType[];
@@ -66,6 +66,7 @@ export type DayCourse = {
   tags: string[];
   coverGradient: string;
   costs?: DayCostBreakdown;
+  googleMapsUrl?: string;        // 수동 입력한 Google Maps 경로/리스트 링크
 };
 
 // ── 항공/숙소 가격 추정 ────────────────────────────
@@ -195,7 +196,7 @@ export type PlannerInput = {
   destinations: string[];
   duration: string;
   travelerType: TravelerType | "";
-  style: TravelStyle | "";
+  styles: TravelStyle[];
 };
 
 // ── 여행지 구조 ────────────────────────────────────

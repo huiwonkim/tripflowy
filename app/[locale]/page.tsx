@@ -3,7 +3,7 @@ import { Link } from "@/i18n/navigation";
 import { ArrowRight, CheckCircle, Zap, Map, Hotel } from "lucide-react";
 import { QuickPlanner } from "@/components/planner/QuickPlanner";
 import { dayCourses } from "@/data/day-courses";
-import { countries } from "@/data/destinations";
+import { countries, comingSoonCountries } from "@/data/destinations";
 import type { Locale } from "@/types";
 
 interface PageProps {
@@ -125,9 +125,11 @@ export default async function HomePage({ params }: PageProps) {
       {/* Browse by destination */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <h2 className="text-2xl font-bold text-gray-900 mb-8">{t("browseByDestination")}</h2>
+
+        {/* Active destinations */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
           {countries.map((c) => (
-            <Link key={c.id} href={`/courses?city=${c.cities[0]?.id ?? ""}`}
+            <Link key={c.id} href={`/planner`}
               className="bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl p-5 text-white flex flex-col items-center gap-2 hover:opacity-90 transition-opacity">
               <span className="text-2xl">{c.emoji}</span>
               <span className="text-sm font-semibold">{c.label[loc]}</span>
@@ -135,6 +137,22 @@ export default async function HomePage({ params }: PageProps) {
             </Link>
           ))}
         </div>
+
+        {/* Coming Soon */}
+        {comingSoonCountries.length > 0 && (
+          <div className="mt-6">
+            <p className="text-sm font-medium text-gray-400 mb-3">{loc === "ko" ? "오픈 예정" : "Coming Soon"}</p>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
+              {comingSoonCountries.map((c) => (
+                <div key={c.id}
+                  className="bg-gray-100 rounded-xl p-3 flex flex-col items-center gap-1.5 opacity-60">
+                  <span className="text-lg">{c.emoji}</span>
+                  <span className="text-xs font-medium text-gray-500">{c.label[loc]}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* CTA */}

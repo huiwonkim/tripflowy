@@ -14,14 +14,14 @@
     "language": "EN"
   },
   "hero": {
-    "badge": "Routes designed with reason",
-    "heading": "Destination decided,\nbut stuck on the route?",
-    "headingHighlight": "We design it — down to the why.",
-    "subheading": "Ready-to-go itineraries. No thinking required.",
+    "badge": "Built by real travelers, not algorithms",
+    "heading": "Stop scrolling blogs,\nYouTube, and guidebooks.",
+    "headingHighlight": "Plan your trip right here.",
+    "subheading": "Every route was walked and tested in person. Just follow along.",
     "findItinerary": "Build My Route",
-    "destinations": "Optimized routes, verified",
+    "destinations": "Field-tested routes",
     "dayByDay": "Complete day-by-day plans",
-    "affiliate": "Bookings connected in one place"
+    "affiliate": "Restaurants, tours & bookings included"
   },
   "featured": {
     "label": "Ready to use",
@@ -186,7 +186,7 @@
     "toursActivities": "Tours & Activities",
     "whereToStay": "Where to Stay",
     "travelStyles": "Travel Styles",
-    "relaxed": "Relaxed",
+    "relax": "Relaxed",
     "efficient": "Efficient",
     "activityFocused": "Activity-Focused",
     "hotelFocused": "Hotel-Focused",

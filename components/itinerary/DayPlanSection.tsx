@@ -112,10 +112,12 @@ type DayPlanCompat = {
   day: number;
   title: LocaleString;
   subtitle?: LocaleString;
+  summary?: LocaleString;
   activities: DayActivity[];
-  whyThisCourse?: LocaleString;
+  whyThisCourse?: LocaleString[];
   courseType?: LocaleString[];
   costs?: DayCostBreakdown;
+  googleMapsUrl?: string;
 };
 
 interface DayPlanSectionProps {
@@ -142,13 +144,25 @@ export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
         </div>
       </div>
 
+      {/* Summary */}
+      {day.summary && (
+        <p className="px-5 mt-3 text-sm text-gray-500 leading-relaxed">{day.summary[locale]}</p>
+      )}
+
       {/* Why this course */}
-      {day.whyThisCourse && (
+      {day.whyThisCourse && day.whyThisCourse.length > 0 && (
         <div className="mx-5 mt-4 bg-blue-50 border border-blue-100 rounded-xl px-4 py-3">
-          <p className="text-xs font-semibold text-blue-700 mb-1">
+          <p className="text-xs font-semibold text-blue-700 mb-2">
             {locale === "ko" ? "이 코스를 가야 하는 이유" : "Why this course?"}
           </p>
-          <p className="text-sm text-blue-600 leading-relaxed">{day.whyThisCourse[locale]}</p>
+          <ul className="space-y-1">
+            {day.whyThisCourse.map((point, i) => (
+              <li key={i} className="flex items-start gap-2 text-sm text-blue-600 leading-relaxed">
+                <span className="text-blue-400 mt-0.5">•</span>
+                <span>{point[locale]}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
@@ -171,24 +185,15 @@ export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
       </div>
 
       {/* Google Maps button */}
-      {(() => {
-        const locations = day.activities.filter((a) => a.location).map((a) => a.location!);
-        if (locations.length === 0) return null;
-        // Google Maps directions URL with waypoints
-        const origin = `${locations[0].lat},${locations[0].lng}`;
-        const dest = `${locations[locations.length - 1].lat},${locations[locations.length - 1].lng}`;
-        const waypoints = locations.slice(1, -1).map((l) => `${l.lat},${l.lng}`).join("|");
-        const url = `https://www.google.com/maps/dir/${locations.map((l) => `${l.lat},${l.lng}`).join("/")}`;
-        return (
-          <div className="px-5 mb-4">
-            <a href={url} target="_blank" rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 text-sm font-medium py-2.5 px-4 rounded-xl transition-colors">
-              <Map className="w-4 h-4 text-blue-500" />
-              {locale === "ko" ? "구글 지도에서 보기" : "Open in Google Maps"}
-            </a>
-          </div>
-        );
-      })()}
+      {day.googleMapsUrl && (
+        <div className="px-5 mb-4">
+          <a href={day.googleMapsUrl} target="_blank" rel="noopener noreferrer"
+            className="w-full flex items-center justify-center gap-2 bg-white border border-gray-200 hover:bg-gray-50 text-gray-700 text-sm font-medium py-2.5 px-4 rounded-xl transition-colors">
+            <Map className="w-4 h-4 text-blue-500" />
+            {locale === "ko" ? "구글 지도에서 보기" : "Open in Google Maps"}
+          </a>
+        </div>
+      )}
 
       {/* Per-day cost summary */}
       {day.costs && (

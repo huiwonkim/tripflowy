@@ -27,10 +27,10 @@ export async function Footer() {
     {
       heading: t("travelStyles"),
       links: [
-        { href: "/itineraries?style=relaxed" as const, label: t("relaxed") },
-        { href: "/itineraries?style=efficient" as const, label: t("efficient") },
-        { href: "/itineraries?style=activity-focused" as const, label: t("activityFocused") },
-        { href: "/itineraries?style=hotel-focused" as const, label: t("hotelFocused") },
+        { href: "/planner?style=relax" as const, label: t("relax") },
+        { href: "/planner?style=efficient" as const, label: t("efficient") },
+        { href: "/planner?style=activity" as const, label: t("activityFocused") },
+        { href: "/planner?style=hotel" as const, label: t("hotelFocused") },
       ],
     },
   ];

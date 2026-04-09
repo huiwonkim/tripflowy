@@ -3,11 +3,11 @@
 import { useState, useRef, useEffect } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { Search, MapPin, Clock, Users, Zap, X, ChevronDown } from "lucide-react";
+import { Search, MapPin, Clock, Users, X, ChevronDown } from "lucide-react";
 import type { PlannerInput, Locale } from "@/types";
-import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
+import { countries, durationOptions, travelerTypeOptions } from "@/data/destinations";
 
-const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", style: "" };
+const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", styles: [] };
 
 interface QuickPlannerProps {
   compact?: boolean;
@@ -44,7 +44,7 @@ export function QuickPlanner({ compact = false }: QuickPlannerProps) {
     if (input.destinations.length) params.set("destinations", input.destinations.join(","));
     if (input.duration) params.set("duration", input.duration);
     if (input.travelerType) params.set("travelerType", input.travelerType);
-    if (input.style) params.set("style", input.style);
+    if (input.styles.length) params.set("styles", input.styles.join(","));
     router.push(`/planner?${params.toString()}` as never);
   }
 
@@ -54,6 +54,11 @@ export function QuickPlanner({ compact = false }: QuickPlannerProps) {
   // Get label for selected destinations
   const allCities = countries.flatMap((c) => c.cities);
   const selectedLabels = input.destinations.map((id) => allCities.find((c) => c.id === id)?.label[locale] ?? id);
+
+  // Duration validation
+  const selectedDuration = durationOptions.find((d) => d.value === input.duration);
+  const minCities = selectedDuration?.minCities ?? 1;
+  const needMoreCities = input.duration && input.destinations.length > 0 && input.destinations.length < minCities;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -121,14 +126,7 @@ export function QuickPlanner({ compact = false }: QuickPlannerProps) {
           </select>
         </div>
 
-        {/* Style */}
-        <div className="relative">
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"><Zap className="w-4 h-4" /></div>
-          <select className={`${selectBase} pl-10`} value={input.style} onChange={(e) => setInput((p) => ({ ...p, style: e.target.value as PlannerInput["style"] }))}>
-            <option value="">{t("travelStyle")}</option>
-            {styleOptions.map((s) => (<option key={s.value} value={s.value}>{s.label[locale]}</option>))}
-          </select>
-        </div>
+        {/* Style removed from compact — selected on planner page */}
       </div>
 
       {/* Selected cities chips */}
@@ -147,7 +145,15 @@ export function QuickPlanner({ compact = false }: QuickPlannerProps) {
         </div>
       )}
 
-      <button type="submit" className="mt-3 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">
+      {needMoreCities && (
+        <p className="mt-2 text-xs text-red-400 text-center">
+          {locale === "ko"
+            ? `${input.duration}박 이상은 2개 도시 이상 선택이 필요합니다`
+            : `${input.duration}+ nights requires at least 2 cities`}
+        </p>
+      )}
+
+      <button type="submit" disabled={!!needMoreCities} className="mt-3 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-3.5 px-6 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm">
         <Search className="w-4 h-4" />{t("findMyItinerary")}
       </button>
     </form>

@@ -10,7 +10,7 @@ export const tours: Tour[] = [
     durationLabel: { en: "Full day (8 hrs)", ko: "종일 (8시간)" },
     price: 35,
     currency: "USD",
-    style: ["relaxed", "efficient"],
+    style: ["relax", "efficient"],
     description: {
       en: "Guided day trip from Da Nang to Hoi An Ancient Town with a local guide. Includes boat ride, old town tour, and free time for shopping.",
       ko: "현지 가이드와 함께하는 다낭 → 호이안 당일 투어. 보트 탑승, 구시가지 투어, 쇼핑 자유 시간 포함.",
@@ -34,7 +34,7 @@ export const tours: Tour[] = [
     durationLabel: { en: "Full day (9 hrs)", ko: "종일 (9시간)" },
     price: 45,
     currency: "USD",
-    style: ["relaxed", "efficient"],
+    style: ["relax", "efficient"],
     description: {
       en: "Hotel pickup included. Cable car, Golden Bridge, French Village, and Fantasy Park all covered in one day.",
       ko: "호텔 픽업 포함. 케이블카, 골든 브릿지, 프랑스 마을, 판타지 파크를 하루에 모두 경험하세요.",
@@ -58,7 +58,7 @@ export const tours: Tour[] = [
     durationLabel: { en: "Half day (4 hrs)", ko: "반나절 (4시간)" },
     price: 30,
     currency: "USD",
-    style: ["efficient", "relaxed"],
+    style: ["efficient", "relax"],
     description: {
       en: "Guided tour of Bangkok's most iconic temples: Grand Palace, Wat Phra Kaew, and Wat Pho. Includes river boat transfer and temple entry fees.",
       ko: "방콕 3대 사원 투어: 왕궁, 왓 프라깨우, 왓 포. 강 이동 보트와 입장료 포함.",
@@ -82,7 +82,7 @@ export const tours: Tour[] = [
     durationLabel: { en: "2 hours", ko: "2시간" },
     price: 55,
     currency: "USD",
-    style: ["relaxed", "hotel-focused"],
+    style: ["relax", "hotel"],
     description: {
       en: "Elegant dinner cruise along the Chao Phraya River. Live Thai music, buffet dinner, and stunning views of illuminated temples.",
       ko: "짜오프라야강을 따라 이동하는 우아한 디너 크루즈. 태국 라이브 음악, 뷔페, 사원 야경 감상.",
@@ -106,7 +106,7 @@ export const tours: Tour[] = [
     durationLabel: { en: "2 hours", ko: "2시간" },
     price: 25,
     currency: "USD",
-    style: ["activity-focused"],
+    style: ["activity"],
     description: {
       en: "Perfect for first-timers. Certified instructors, foam boards, and a guaranteed stand-up experience on Kuta Beach.",
       ko: "처음 서핑을 배우는 분에게 완벽합니다. 공인 강사, 폼 보드, 쿠타 해변에서 기립 보장.",
@@ -130,7 +130,7 @@ export const tours: Tour[] = [
     durationLabel: { en: "8 hours (incl. transfer)", ko: "8시간 (이동 포함)" },
     price: 65,
     currency: "USD",
-    style: ["activity-focused", "efficient"],
+    style: ["activity", "efficient"],
     description: {
       en: "Pre-dawn pickup, guided 2-hour hike to the summit of an active volcano, sunrise breakfast at the top, and hot spring recovery after descent.",
       ko: "새벽 픽업, 활화산 정상까지 가이드 하이킹 2시간, 정상 선라이즈 아침 식사, 하산 후 온천 회복.",

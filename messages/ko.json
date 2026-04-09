@@ -14,14 +14,14 @@
     "language": "KO"
   },
   "hero": {
-    "badge": "이유 있는 여행 동선",
-    "heading": "여행지는 정했는데,\n동선이 막막하다면",
-    "headingHighlight": "여행코스의 존재 이유까지 설계해드립니다",
-    "subheading": "생각할 필요 없이 바로 떠날 수 있는 일정",
+    "badge": "직접 다녀온 사람이 만든 여행 동선",
+    "heading": "블로그, 유튜브, 가이드북\n그만 보세요.",
+    "headingHighlight": "여기서 여행 계획 끝내세요.",
+    "subheading": "직접 걸어보고 만든 코스, 바로 따라가면 됩니다.",
     "findItinerary": "내 여행 루트 만들기",
-    "destinations": "검증된 최적 동선",
-    "dayByDay": "날짜별 완성된 일정",
-    "affiliate": "예약까지 한 번에 연결"
+    "destinations": "현지에서 직접 검증한 동선",
+    "dayByDay": "시간대별 완성된 일정",
+    "affiliate": "맛집, 투어, 예약까지 한 번에"
   },
   "featured": {
     "label": "바로 사용 가능",
@@ -186,7 +186,7 @@
     "toursActivities": "투어 & 액티비티",
     "whereToStay": "숙소",
     "travelStyles": "여행 스타일",
-    "relaxed": "여유롭게",
+    "relax": "여유롭게",
     "efficient": "알차게",
     "activityFocused": "액티비티 중심",
     "hotelFocused": "숙소 중심",
