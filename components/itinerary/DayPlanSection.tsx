@@ -93,11 +93,11 @@ function ActivityItem({ activity, locale, index }: { activity: DayActivity; loca
               </a>
             )}
             {activity.postSlug && (
-              <Link href={`/posts/${activity.postSlug}`}
+              <a href={`/${locale === "ko" ? "ko/" : ""}posts/${activity.postSlug}`} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 bg-violet-50 hover:bg-violet-100 text-violet-700 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
                 <BookOpen className="w-3 h-3" />
                 {locale === "ko" ? "꿀팁 자세히 보기" : "Read Full Guide"}
-              </Link>
+              </a>
             )}
           </div>
         )}
