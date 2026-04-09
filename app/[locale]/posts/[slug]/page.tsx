@@ -2,10 +2,9 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { ArrowLeft, Calendar, Clock, List } from "lucide-react";
-import { posts, getPostBySlug } from "@/data/posts";
+import { ArrowLeft, Calendar, Clock, ChevronRight } from "lucide-react";
+import { posts, getPostBySlug, getPostsByCity } from "@/data/posts";
 import { countries } from "@/data/destinations";
-import { Badge } from "@/components/ui/Badge";
 import { generateBreadcrumbJsonLd, generateArticleJsonLd, generateFaqJsonLd } from "@/lib/jsonld";
 import type { Metadata } from "next";
 import type { Locale, BlogPost } from "@/types";
@@ -26,10 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: post.title[loc],
     description: post.excerpt[loc],
-    alternates: {
-      canonical: `/posts/${slug}`,
-      languages: { en: `/posts/${slug}`, ko: `/ko/posts/${slug}` },
-    },
+    alternates: { canonical: `/posts/${slug}`, languages: { en: `/posts/${slug}`, ko: `/ko/posts/${slug}` } },
     openGraph: {
       title: post.title[loc],
       description: post.excerpt[loc],
@@ -38,26 +34,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ...(post.updatedAt ? { modifiedTime: post.updatedAt } : {}),
       ...(post.coverImage ? { images: [{ url: post.coverImage }] } : {}),
     },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title[loc],
-      description: post.excerpt[loc],
-    },
+    twitter: { card: "summary_large_image", title: post.title[loc], description: post.excerpt[loc] },
   };
 }
 
-/** Extract h2/h3 headings for table of contents */
 function extractTOC(content: string): { level: number; text: string; id: string }[] {
   const toc: { level: number; text: string; id: string }[] = [];
   for (const line of content.split("\n")) {
     const trimmed = line.trim();
-    if (trimmed.startsWith("### ")) {
-      const text = trimmed.slice(4);
-      toc.push({ level: 3, text, id: slugify(text) });
-    } else if (trimmed.startsWith("## ")) {
-      const text = trimmed.slice(3);
-      toc.push({ level: 2, text, id: slugify(text) });
-    }
+    if (trimmed.startsWith("### ")) toc.push({ level: 3, text: trimmed.slice(4), id: slugify(trimmed.slice(4)) });
+    else if (trimmed.startsWith("## ")) toc.push({ level: 2, text: trimmed.slice(3), id: slugify(trimmed.slice(3)) });
   }
   return toc;
 }
@@ -66,30 +52,25 @@ function slugify(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9가-힣]+/g, "-").replace(/^-|-$/g, "");
 }
 
-/** Render markdown-like content with image support */
 function renderContent(content: string, post: BlogPost, locale: Locale) {
   const lines = content.split("\n");
   const elements: React.ReactNode[] = [];
-  let imageIndex = 0;
 
   for (let i = 0; i < lines.length; i++) {
     const trimmed = lines[i].trim();
+    if (!trimmed) { elements.push(<div key={i} className="h-4" />); continue; }
 
-    if (!trimmed) {
-      elements.push(<div key={i} className="h-2" />);
-      continue;
-    }
-
-    // Image placeholder: ![alt](index)
+    // Image: ![alt](index)
     const imgMatch = trimmed.match(/^!\[(.+?)\]\((\d+)\)$/);
     if (imgMatch && post.images) {
       const idx = Number(imgMatch[2]);
       const img = post.images[idx];
       if (img) {
         elements.push(
-          <figure key={i} className="my-6">
-            <Image src={img.src} alt={img.alt[locale]} width={800} height={500} className="rounded-xl w-full h-auto" />
-            {img.caption && <figcaption className="text-center text-xs text-gray-400 mt-2">{img.caption[locale]}</figcaption>}
+          <figure key={i} className="my-8 -mx-4 sm:mx-0">
+            <Image src={img.src} alt={img.alt[locale]} width={800} height={450}
+              className="w-full h-auto rounded-2xl" />
+            {img.caption && <figcaption className="text-center text-sm text-gray-400 mt-3">{img.caption[locale]}</figcaption>}
           </figure>
         );
         continue;
@@ -98,25 +79,23 @@ function renderContent(content: string, post: BlogPost, locale: Locale) {
 
     if (trimmed.startsWith("## ")) {
       const text = trimmed.slice(3);
-      elements.push(<h2 key={i} id={slugify(text)} className="text-xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20">{text}</h2>);
+      elements.push(<h2 key={i} id={slugify(text)} className="text-[22px] sm:text-[26px] font-bold text-gray-900 mt-14 mb-5 scroll-mt-24">{text}</h2>);
     } else if (trimmed.startsWith("### ")) {
       const text = trimmed.slice(4);
-      elements.push(<h3 key={i} id={slugify(text)} className="text-lg font-bold text-gray-900 mt-8 mb-3 scroll-mt-20">{text}</h3>);
+      elements.push(<h3 key={i} id={slugify(text)} className="text-[18px] sm:text-[20px] font-bold text-gray-900 mt-10 mb-4 scroll-mt-24">{text}</h3>);
+    } else if (trimmed.startsWith("**") && trimmed.endsWith("**")) {
+      elements.push(<p key={i} className="text-[17px] font-bold text-gray-900 leading-relaxed mb-2">{trimmed.slice(2, -2)}</p>);
     } else if (trimmed.startsWith("- **")) {
       const match = trimmed.match(/^- \*\*(.+?)\*\*:?\s*(.*)$/);
-      if (match) {
-        elements.push(<li key={i} className="list-disc ml-5 text-gray-600 leading-relaxed"><strong className="text-gray-900">{match[1]}</strong>{match[2] ? `: ${match[2]}` : ""}</li>);
-      }
+      if (match) elements.push(<li key={i} className="list-disc ml-5 text-[17px] text-gray-600 leading-[1.8] mb-1"><strong className="text-gray-900">{match[1]}</strong>{match[2] ? `: ${match[2]}` : ""}</li>);
     } else if (trimmed.startsWith("- ")) {
-      elements.push(<li key={i} className="list-disc ml-5 text-gray-600 leading-relaxed">{trimmed.slice(2)}</li>);
+      elements.push(<li key={i} className="list-disc ml-5 text-[17px] text-gray-600 leading-[1.8] mb-1">{trimmed.slice(2)}</li>);
     } else if (/^\d+\.\s/.test(trimmed)) {
-      const text = trimmed.replace(/^\d+\.\s/, "");
-      elements.push(<li key={i} className="list-decimal ml-5 text-gray-600 leading-relaxed">{text}</li>);
+      elements.push(<li key={i} className="list-decimal ml-5 text-[17px] text-gray-600 leading-[1.8] mb-1">{trimmed.replace(/^\d+\.\s/, "")}</li>);
     } else {
-      elements.push(<p key={i} className="text-gray-600 leading-relaxed mb-4">{trimmed}</p>);
+      elements.push(<p key={i} className="text-[17px] text-gray-600 leading-[1.8] mb-5">{trimmed}</p>);
     }
   }
-
   return elements;
 }
 
@@ -134,10 +113,12 @@ export default async function PostPage({ params }: PageProps) {
 
   const wordCount = content.split(/\s+/).length;
   const readingMin = Math.max(1, Math.ceil(wordCount / 200));
-
   const toc = extractTOC(content);
 
-  // JSON-LD: Article + Breadcrumb + FAQ
+  // Related posts — same city, exclude current
+  const relatedPosts = getPostsByCity(post.city).filter((p) => p.slug !== post.slug);
+
+  // JSON-LD
   const jsonLd: Record<string, unknown>[] = [
     generateArticleJsonLd(post, loc),
     generateBreadcrumbJsonLd([
@@ -146,114 +127,155 @@ export default async function PostPage({ params }: PageProps) {
       { name: post.title[loc] },
     ]),
   ];
-  if (post.faq?.length) {
-    jsonLd.push(generateFaqJsonLd(post.faq, loc));
-  }
+  if (post.faq?.length) jsonLd.push(generateFaqJsonLd(post.faq, loc));
 
   return (
-    <article className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+    <article>
       {jsonLd.map((ld, i) => (
         <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
       ))}
 
-      <Link href="/posts" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-6">
-        <ArrowLeft className="w-4 h-4" /> {loc === "ko" ? "전체 가이드" : "All Guides"}
-      </Link>
-
-      {/* Hero */}
+      {/* ── Hero ── */}
       {post.coverImage ? (
-        <div className="relative rounded-3xl overflow-hidden mb-8">
-          <Image src={post.coverImage} alt={post.title[loc]} width={1200} height={600} className="w-full h-64 sm:h-80 object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-8">
-            <div className="flex flex-wrap gap-2 mb-3">
+        <div className="relative w-full h-[50vh] min-h-[360px] max-h-[520px]">
+          <Image src={post.coverImage} alt={post.title[loc]} fill className="object-cover" priority />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 max-w-[680px] mx-auto">
+            <div className="flex items-center gap-2 mb-3">
               <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{cityLabel}</span>
-              {post.tags.slice(0, 3).map((tag) => (
-                <span key={tag} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{tag}</span>
-              ))}
+              <span className="text-white/60 text-xs flex items-center gap-1"><Calendar className="w-3 h-3" />{post.publishedAt}</span>
+              <span className="text-white/60 text-xs flex items-center gap-1"><Clock className="w-3 h-3" />{readingMin}min</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-2">{post.title[loc]}</h1>
-            <div className="flex gap-4 text-sm text-white/70">
-              <span className="flex items-center gap-1"><Calendar className="w-4 h-4" />{post.publishedAt}</span>
-              <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{readingMin} min</span>
-            </div>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">{post.title[loc]}</h1>
           </div>
         </div>
       ) : (
-        <div className={`bg-gradient-to-br ${post.coverGradient} rounded-3xl p-8 sm:p-12 text-white mb-8 relative overflow-hidden`}>
-          <div className="absolute inset-0 bg-black/20" />
-          <div className="relative z-10">
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{cityLabel}</span>
-              {post.tags.slice(0, 3).map((tag) => (
-                <span key={tag} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{tag}</span>
-              ))}
+        <div className={`bg-gradient-to-br ${post.coverGradient} py-16 sm:py-24`}>
+          <div className="max-w-[680px] mx-auto px-5">
+            <div className="flex items-center gap-2 mb-4">
+              <span className="bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">{cityLabel}</span>
+              <span className="text-white/60 text-xs">{post.publishedAt}</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-bold leading-tight mb-3">{post.title[loc]}</h1>
-            <p className="text-white/80 text-base leading-relaxed">{post.excerpt[loc]}</p>
-            <div className="flex gap-4 mt-4 text-sm text-white/60">
-              <span className="flex items-center gap-1"><Calendar className="w-4 h-4" />{post.publishedAt}</span>
-              <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{readingMin} min</span>
-            </div>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">{post.title[loc]}</h1>
           </div>
         </div>
       )}
 
-      {/* Table of Contents */}
-      {toc.length > 2 && (
-        <nav className="bg-gray-50 border border-gray-100 rounded-2xl p-5 mb-8">
-          <div className="flex items-center gap-2 mb-3">
-            <List className="w-4 h-4 text-gray-500" />
-            <h2 className="text-sm font-semibold text-gray-700">{loc === "ko" ? "목차" : "Table of Contents"}</h2>
-          </div>
-          <ul className="space-y-1.5">
-            {toc.map((item) => (
-              <li key={item.id} className={item.level === 3 ? "ml-4" : ""}>
-                <a href={`#${item.id}`} className="text-sm text-blue-600 hover:text-blue-800 hover:underline transition-colors">
-                  {item.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      )}
+      {/* ── Body ── */}
+      <div className="max-w-[900px] mx-auto px-5 py-10 lg:flex lg:gap-12">
 
-      {/* Content */}
-      <div className="max-w-none">
-        {renderContent(content, post, loc)}
+        {/* Main content */}
+        <div className="max-w-[680px] flex-1">
+          {/* Back */}
+          <Link href="/posts" className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-700 transition-colors mb-8">
+            <ArrowLeft className="w-4 h-4" /> {loc === "ko" ? "전체 가이드" : "All Guides"}
+          </Link>
+
+          {/* Excerpt */}
+          <p className="text-[17px] text-gray-500 leading-[1.8] mb-10 border-l-4 border-blue-200 pl-4">
+            {post.excerpt[loc]}
+          </p>
+
+          {/* Mobile TOC */}
+          {toc.length > 2 && (
+            <details className="lg:hidden mb-10 bg-gray-50 rounded-xl overflow-hidden">
+              <summary className="px-5 py-3 text-sm font-semibold text-gray-700 cursor-pointer">
+                {loc === "ko" ? "목차 보기" : "Table of Contents"}
+              </summary>
+              <ul className="px-5 pb-4 space-y-1.5">
+                {toc.map((item) => (
+                  <li key={item.id} className={item.level === 3 ? "ml-4" : ""}>
+                    <a href={`#${item.id}`} className="text-sm text-gray-500 hover:text-blue-600 transition-colors">{item.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          )}
+
+          {/* Content */}
+          <div>{renderContent(content, post, loc)}</div>
+
+          {/* FAQ */}
+          {post.faq && post.faq.length > 0 && (
+            <section className="mt-16 pt-10 border-t border-gray-100">
+              <h2 className="text-[22px] font-bold text-gray-900 mb-6">{loc === "ko" ? "자주 묻는 질문" : "FAQ"}</h2>
+              <div className="space-y-3">
+                {post.faq.map((item, i) => (
+                  <details key={i} className="bg-gray-50 rounded-xl overflow-hidden group">
+                    <summary className="px-5 py-4 cursor-pointer text-[15px] font-medium text-gray-900 hover:bg-gray-100 transition-colors list-none flex items-center justify-between">
+                      {item.question[loc]}
+                      <ChevronRight className="w-4 h-4 text-gray-400 group-open:rotate-90 transition-transform" />
+                    </summary>
+                    <div className="px-5 pb-4 text-[15px] text-gray-600 leading-[1.8]">{item.answer[loc]}</div>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Related course */}
+          {post.courseId && (
+            <div className="mt-12 bg-blue-50 rounded-2xl p-6 text-center">
+              <p className="text-sm text-blue-700 mb-3">
+                {loc === "ko" ? "이 장소가 포함된 1일 코스 보기" : "View the day course including this spot"}
+              </p>
+              <Link href={`/courses/${post.courseId}`}
+                className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">
+                {loc === "ko" ? "코스 보기" : "View Course"}
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Desktop sticky TOC */}
+        {toc.length > 2 && (
+          <aside className="hidden lg:block w-[180px] flex-shrink-0">
+            <nav className="sticky top-24">
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">
+                {loc === "ko" ? "목차" : "Contents"}
+              </p>
+              <ul className="space-y-2 border-l border-gray-200">
+                {toc.map((item) => (
+                  <li key={item.id} className={item.level === 3 ? "ml-3" : ""}>
+                    <a href={`#${item.id}`}
+                      className="block pl-3 py-0.5 text-[13px] text-gray-400 hover:text-blue-600 hover:border-l-2 hover:border-blue-600 hover:-ml-px transition-colors leading-snug">
+                      {item.text}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </aside>
+        )}
       </div>
 
-      {/* FAQ section */}
-      {post.faq && post.faq.length > 0 && (
-        <section className="mt-12 border-t border-gray-100 pt-8">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">{loc === "ko" ? "자주 묻는 질문" : "FAQ"}</h2>
-          <div className="space-y-4">
-            {post.faq.map((item, i) => (
-              <details key={i} className="bg-white border border-gray-100 rounded-xl overflow-hidden group">
-                <summary className="px-5 py-4 cursor-pointer text-sm font-medium text-gray-900 hover:bg-gray-50 transition-colors list-none flex items-center justify-between">
-                  {item.question[loc]}
-                  <span className="text-gray-400 group-open:rotate-180 transition-transform">&#9662;</span>
-                </summary>
-                <div className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">
-                  {item.answer[loc]}
-                </div>
-              </details>
-            ))}
+      {/* ── Related Posts ── */}
+      {relatedPosts.length > 0 && (
+        <section className="bg-gray-50 border-t border-gray-100 py-14">
+          <div className="max-w-[900px] mx-auto px-5">
+            <h2 className="text-xl font-bold text-gray-900 mb-6">
+              {loc === "ko" ? `${cityLabel}의 다른 가이드` : `More guides for ${cityLabel}`}
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {relatedPosts.slice(0, 3).map((rp) => (
+                <Link key={rp.slug} href={`/posts/${rp.slug}`}
+                  className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-all">
+                  {rp.coverImage ? (
+                    <Image src={rp.coverImage} alt={rp.title[loc]} width={400} height={225} className="w-full h-40 object-cover" />
+                  ) : (
+                    <div className={`h-40 bg-gradient-to-br ${rp.coverGradient}`} />
+                  )}
+                  <div className="p-4">
+                    <h3 className="font-semibold text-sm text-gray-900 group-hover:text-blue-600 transition-colors leading-snug mb-1">
+                      {rp.title[loc]}
+                    </h3>
+                    <p className="text-xs text-gray-400 line-clamp-2">{rp.excerpt[loc]}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
-      )}
-
-      {/* Related course */}
-      {post.courseId && (
-        <div className="mt-12 bg-blue-50 border border-blue-100 rounded-2xl p-6 text-center">
-          <p className="text-sm text-blue-700 mb-3">
-            {loc === "ko" ? "이 장소가 포함된 1일 코스 보기" : "View the day course including this spot"}
-          </p>
-          <Link href={`/courses/${post.courseId}`}
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">
-            {loc === "ko" ? "코스 보기" : "View Course"}
-          </Link>
-        </div>
       )}
     </article>
   );
