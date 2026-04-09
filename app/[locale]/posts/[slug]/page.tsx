@@ -52,6 +52,35 @@ function slugify(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9가-힣]+/g, "-").replace(/^-|-$/g, "");
 }
 
+/** Parse inline markdown: **bold**, ==highlight== */
+function parseInline(text: string): React.ReactNode[] {
+  const parts: React.ReactNode[] = [];
+  // Match **bold** and ==highlight==
+  const regex = /\*\*(.+?)\*\*|==(.+?)==/g;
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(text)) !== null) {
+    // Text before match
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    if (match[1]) {
+      // **bold**
+      parts.push(<strong key={match.index} className="font-bold text-gray-900">{match[1]}</strong>);
+    } else if (match[2]) {
+      // ==highlight==
+      parts.push(<mark key={match.index} className="bg-blue-50 text-blue-700 px-1 py-0.5 rounded font-medium" style={{ textDecoration: "none" }}>{match[2]}</mark>);
+    }
+    lastIndex = match.index + match[0].length;
+  }
+  // Remaining text
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts.length > 0 ? parts : [text];
+}
+
 function renderContent(content: string, post: BlogPost, locale: Locale) {
   const lines = content.split("\n");
   const elements: React.ReactNode[] = [];
@@ -83,17 +112,14 @@ function renderContent(content: string, post: BlogPost, locale: Locale) {
     } else if (trimmed.startsWith("### ")) {
       const text = trimmed.slice(4);
       elements.push(<h3 key={i} id={slugify(text)} className="text-[18px] sm:text-[20px] font-bold text-gray-900 mt-10 mb-4 scroll-mt-24">{text}</h3>);
-    } else if (trimmed.startsWith("**") && trimmed.endsWith("**")) {
-      elements.push(<p key={i} className="text-[17px] font-bold text-gray-900 leading-relaxed mb-2">{trimmed.slice(2, -2)}</p>);
-    } else if (trimmed.startsWith("- **")) {
-      const match = trimmed.match(/^- \*\*(.+?)\*\*:?\s*(.*)$/);
-      if (match) elements.push(<li key={i} className="list-disc ml-5 text-[17px] text-gray-600 leading-[1.8] mb-1"><strong className="text-gray-900">{match[1]}</strong>{match[2] ? `: ${match[2]}` : ""}</li>);
     } else if (trimmed.startsWith("- ")) {
-      elements.push(<li key={i} className="list-disc ml-5 text-[17px] text-gray-600 leading-[1.8] mb-1">{trimmed.slice(2)}</li>);
+      const content = trimmed.slice(2);
+      elements.push(<li key={i} className="list-disc ml-5 text-[17px] text-gray-600 leading-[1.8] mb-1">{parseInline(content)}</li>);
     } else if (/^\d+\.\s/.test(trimmed)) {
-      elements.push(<li key={i} className="list-decimal ml-5 text-[17px] text-gray-600 leading-[1.8] mb-1">{trimmed.replace(/^\d+\.\s/, "")}</li>);
+      const content = trimmed.replace(/^\d+\.\s/, "");
+      elements.push(<li key={i} className="list-decimal ml-5 text-[17px] text-gray-600 leading-[1.8] mb-1">{parseInline(content)}</li>);
     } else {
-      elements.push(<p key={i} className="text-[17px] text-gray-600 leading-[1.8] mb-5">{trimmed}</p>);
+      elements.push(<p key={i} className="text-[17px] text-gray-600 leading-[1.8] mb-5">{parseInline(trimmed)}</p>);
     }
   }
   return elements;

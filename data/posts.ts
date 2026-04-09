@@ -126,7 +126,7 @@ The observatory entrance is on the 14th floor of Shibuya Scramble Square. A dire
 
 Walk-in tickets are essentially impossible to get. Evening time slots sell out immediately when they open, and even daytime slots are gone within days. Daytime (10:00-15:00) costs ¥3,000, while sunset and evening (15:00-21:00) is ¥3,700.
 
-Klook is the fastest and most reliable booking platform — better than the official site. Tickets open **2 weeks before** your visit date at **midnight (00:00 JST)**. Sunset and night slots sell out within minutes, so set an alarm.
+==Klook is the fastest and most reliable== booking platform — better than the official site. Tickets open ==2 weeks before your visit date at midnight (00:00 JST)==. Sunset and night slots sell out within minutes, so set an alarm.
 
 ### The Experience
 
@@ -174,9 +174,9 @@ Night views are strongly recommended. Tokyo's dense skyline lit up is stunning, 
 - 온라인 사전 예매: 성인 2,200엔 / 중고생 1,700엔 / 초등생 1,000엔 / 3~5세 600엔
 - 현장 구매: 성인 2,500엔 / 중고생 2,000엔 / 초등생 1,200엔 / 3~5세 700엔
 
-온라인이 최대 300엔 저렴하니 사전 예매는 필수예요. 공식 홈페이지, 클룩, KKday 등 여러 플랫폼이 있는데, 직접 다 써본 결과 클룩이 가장 빠르고 안정적이었습니다.
+온라인이 최대 300엔 저렴하니 ==사전 예매는 필수==예요. 공식 홈페이지, 클룩, KKday 등 여러 플랫폼이 있는데, 직접 다 써본 결과 ==클룩이 가장 빠르고 안정적==이었습니다.
 
-예매 오픈은 방문일 **2주 전 자정(00시)**. 일몰과 야경 시간대(17시~20시)는 오픈 후 몇 분이면 끝나니까, 알람을 꼭 맞춰두세요. 평일 저녁도 당일 매진이 흔하거든요. 여행 일정이 잡히면 그날 바로 예약하는 게 좋습니다.
+예매 오픈은 방문일 ==2주 전 자정(00시)==. 일몰과 야경 시간대(17시~20시)는 오픈 후 몇 분이면 끝나니까, 알람을 꼭 맞춰두세요. 평일 저녁도 당일 매진이 흔하거든요. 여행 일정이 잡히면 그날 바로 예약하는 게 좋습니다.
 
 입장은 20분 단위로 나뉘어요. 정해진 시간에만 들어갈 수 있어서, 일찍 도착해도 먼저 입장은 안 됩니다. 시간 맞춰서 가는 게 핵심이에요.
 
@@ -196,7 +196,7 @@ Night views are strongly recommended. Tokyo's dense skyline lit up is stunning, 
 
 한 층 아래(45층)에는 실내 전망대와 기념품 숍이 있어요. 유리가 깨끗하고 사람도 적어서 바람 센 날이나 사진 찍기엔 오히려 여기가 나을 수 있습니다. 루프탑이 날씨 때문에 닫혀도 실내 전망대는 이용할 수 있는데, 이 경우에도 환불은 안 되니 날씨 체크는 꼭 하세요.
 
-그리고 야경. 강력 추천합니다. 도쿄는 고층 빌딩이 빽빽하게 들어서 있어 야경이 정말 화려해요. 시부야 주변이 번화가라 불빛이 특히 밝고, 낮과는 완전히 다른 분위기를 느낄 수 있습니다. 야경 예약에 실패했더라도 괜찮아요 — 낮 전망도 충분히 만족스럽거든요. 가장 좋은 타이밍은 일몰 전후 1시간. 낮과 야경을 동시에 볼 수 있는 골든 타임입니다.
+그리고 야경. ==강력 추천==합니다. 도쿄는 고층 빌딩이 빽빽하게 들어서 있어 야경이 정말 화려해요. 시부야 주변이 번화가라 불빛이 특히 밝고, 낮과는 완전히 다른 분위기를 느낄 수 있습니다. 야경 예약에 실패했더라도 괜찮아요 — 낮 전망도 충분히 만족스럽거든요. 가장 좋은 타이밍은 ==일몰 전후 1시간==. 낮과 야경을 동시에 볼 수 있는 골든 타임입니다.
 
 ![시부야스카이 야경 파노라마](5)
 
