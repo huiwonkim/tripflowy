@@ -17,6 +17,7 @@ import { HotelCard } from "@/components/hotels/HotelCard";
 import { ItineraryMap } from "@/components/map/ItineraryMap";
 import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
 import { CityInfoCard } from "@/components/itinerary/CityInfoCard";
+import { SaveItineraryButton } from "@/components/ui/SaveItineraryButton";
 import { OverviewMap } from "@/components/map/OverviewMap";
 import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary, GeneratedDay } from "@/types";
 
@@ -42,6 +43,8 @@ function PlannerContent() {
   const [dayOrder, setDayOrder] = useState<GeneratedDay[]>([]);
   const resultRef = useRef<HTMLDivElement>(null);
 
+  const savedCoursesParam = searchParams.get("courses");
+
   // Read URL params on mount (from homepage QuickPlanner redirect)
   useEffect(() => {
     const destinations = searchParams.get("destinations")?.split(",").filter(Boolean) ?? [];
@@ -54,6 +57,7 @@ function PlannerContent() {
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 300);
     }
   }, [searchParams]);
+
 
   // Destination multi-select dropdown
   const [destOpen, setDestOpen] = useState(false);
@@ -90,23 +94,42 @@ function PlannerContent() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searched, input, refreshKey]);
 
-  // Sync dayOrder when itinerary changes
+  // Sync dayOrder when itinerary changes, or restore from URL
   useEffect(() => {
-    if (itinerary) {
-      setDayOrder(itinerary.days.map((d, i) => ({ ...d, dayNumber: i + 1 })));
+    if (!itinerary) return;
+    if (savedCoursesParam) {
+      const courseIds = savedCoursesParam.split(",").filter(Boolean);
+      const { dayCourses: allDayCourses } = require("@/data/day-courses");
+      const restored = courseIds.map((id: string, i: number) => {
+        const course = allDayCourses.find((c: any) => c.id === id);
+        return course ? { dayNumber: i + 1, course, city: course.city } as GeneratedDay : null;
+      }).filter((d): d is GeneratedDay => d !== null);
+      if (restored.length > 0) {
+        setDayOrder(restored);
+        return;
+      }
     }
+    setDayOrder(itinerary.days.map((d, i) => ({ ...d, dayNumber: i + 1 })));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itinerary]);
 
   function swapDays(indexA: number, indexB: number) {
     setDayOrder((prev) => {
       const next = [...prev];
       [next[indexA], next[indexB]] = [next[indexB], next[indexA]];
-      // Renumber
       return next.map((d, i) => ({ ...d, dayNumber: i + 1 }));
     });
-    // Update locked days to match new positions
     setLockedDays(new Map());
   }
+
+  // Update URL when dayOrder changes (so link copy captures the order)
+  useEffect(() => {
+    if (dayOrder.length > 0 && searched) {
+      const params = new URLSearchParams(window.location.search);
+      params.set("courses", dayOrder.map((d) => d.course.id).join(","));
+      window.history.replaceState(null, "", `?${params.toString()}`);
+    }
+  }, [dayOrder, searched]);
 
   const displayDays = dayOrder.length > 0 ? dayOrder : (itinerary?.days ?? []);
 
@@ -322,6 +345,9 @@ function PlannerContent() {
                 {locale === "ko" ? `${itinerary.duration}개 코스 자동 조합` : `${itinerary.duration} courses auto-assembled`}
               </p>
             </div>
+
+            {/* Save itinerary button */}
+            <SaveItineraryButton locale={locale} />
 
             {/* Overview map — day zones */}
             <OverviewMap days={displayDays} locale={locale} />
