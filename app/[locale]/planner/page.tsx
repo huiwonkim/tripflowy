@@ -293,6 +293,33 @@ function PlannerContent() {
               </p>
             </div>
 
+            {/* Itinerary overview */}
+            <section className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+              <div className="px-5 py-4 bg-gray-50 border-b border-gray-100">
+                <h2 className="text-sm font-semibold text-gray-900">
+                  {locale === "ko" ? "📋 전체 일정 요약" : "📋 Itinerary Overview"}
+                </h2>
+              </div>
+              <div className="divide-y divide-gray-100">
+                {itinerary.days.map((day) => {
+                  const cityLabel = allCities.find((c) => c.id === day.city)?.label[locale] ?? day.city;
+                  return (
+                    <a key={day.dayNumber} href={`#day-${day.dayNumber}`}
+                      className="flex items-center gap-4 px-5 py-3 hover:bg-gray-50 transition-colors cursor-pointer">
+                      <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <span className="text-white text-xs font-bold">{day.dayNumber}</span>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-gray-900 truncate">{day.course.title[locale]}</p>
+                        <p className="text-xs text-gray-400 truncate">{day.course.summary[locale]}</p>
+                      </div>
+                      <span className="text-xs text-gray-300 flex-shrink-0">{cityLabel}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </section>
+
             {/* Day-by-day with per-day maps */}
             <section>
               <h2 className="text-lg font-bold text-gray-900 mb-4">{tDetail("dayByDayPlan")}</h2>
@@ -302,7 +329,7 @@ function PlannerContent() {
                   const prevCity = day.dayNumber > 1 ? itinerary.days[day.dayNumber - 2]?.city : null;
                   const isCityChange = prevCity && prevCity !== day.city;
                   return (
-                    <div key={day.dayNumber}>
+                    <div key={day.dayNumber} id={`day-${day.dayNumber}`} className="scroll-mt-20">
                       {isCityChange && (
                         <div className="flex items-center gap-3 mb-3 py-2.5 px-4 bg-amber-50 border border-amber-100 rounded-xl">
                           <MapPin className="w-4 h-4 text-amber-600" />
