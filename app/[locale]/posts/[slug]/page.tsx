@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ArrowLeft, Calendar, Clock, ChevronRight } from "lucide-react";
 import { posts, getPostBySlug, getPostsByCity } from "@/data/posts";
+import { ShareButton } from "@/components/ui/ShareButton";
 import { countries } from "@/data/destinations";
 import { generateBreadcrumbJsonLd, generateArticleJsonLd, generateFaqJsonLd } from "@/lib/jsonld";
 import type { Metadata } from "next";
@@ -141,8 +142,14 @@ export default async function PostPage({ params }: PageProps) {
   const readingMin = Math.max(1, Math.ceil(wordCount / 200));
   const toc = extractTOC(content);
 
-  // Related posts — same city, exclude current
-  const relatedPosts = getPostsByCity(post.city).filter((p) => p.slug !== post.slug);
+  // Related posts — same city first, then same country, max 3
+  const sameCityPosts = getPostsByCity(post.city).filter((p) => p.slug !== post.slug);
+  const country = countries.find((c) => c.cities.some((city) => city.id === post.city));
+  const sameCountryPosts = country
+    ? country.cities.flatMap((city) => getPostsByCity(city.id)).filter((p) => p.slug !== post.slug && !sameCityPosts.some((sp) => sp.slug === p.slug))
+    : [];
+  const relatedPosts = [...sameCityPosts, ...sameCountryPosts].slice(0, 3);
+  const countryLabel = country?.label[loc] ?? cityLabel;
 
   // JSON-LD
   const jsonLd: Record<string, unknown>[] = [
@@ -251,6 +258,9 @@ export default async function PostPage({ params }: PageProps) {
               </Link>
             </div>
           )}
+
+          {/* Share button */}
+          <ShareButton locale={loc} />
         </div>
 
         {/* Desktop sticky TOC */}
@@ -275,30 +285,34 @@ export default async function PostPage({ params }: PageProps) {
         )}
       </div>
 
-      {/* ── Related Posts ── */}
+      {/* ── Related Posts (Toss style) ── */}
       {relatedPosts.length > 0 && (
-        <section className="bg-gray-50 border-t border-gray-100 py-14">
-          <div className="max-w-[900px] mx-auto px-5">
-            <h2 className="text-xl font-bold text-gray-900 mb-6">
-              {loc === "ko" ? `${cityLabel}의 다른 가이드` : `More guides for ${cityLabel}`}
+        <section className="border-t border-gray-100 py-14">
+          <div className="max-w-[680px] mx-auto px-5">
+            <h2 className="text-lg font-bold text-gray-900 mb-6">
+              {loc === "ko" ? `${countryLabel}의 다른 글` : `More from ${countryLabel}`}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {relatedPosts.slice(0, 3).map((rp) => (
-                <Link key={rp.slug} href={`/posts/${rp.slug}`}
-                  className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-all">
-                  {rp.coverImage ? (
-                    <Image src={rp.coverImage} alt={rp.title[loc]} width={400} height={225} className="w-full h-40 object-cover" />
-                  ) : (
-                    <div className={`h-40 bg-gradient-to-br ${rp.coverGradient}`} />
-                  )}
-                  <div className="p-4">
-                    <h3 className="font-semibold text-sm text-gray-900 group-hover:text-blue-600 transition-colors leading-snug mb-1">
-                      {rp.title[loc]}
-                    </h3>
-                    <p className="text-xs text-gray-400 line-clamp-2">{rp.excerpt[loc]}</p>
-                  </div>
-                </Link>
-              ))}
+            <div className="space-y-4">
+              {relatedPosts.map((rp) => {
+                const rpCity = allCities.find((c) => c.id === rp.city)?.label[loc] ?? rp.city;
+                return (
+                  <Link key={rp.slug} href={`/posts/${rp.slug}`}
+                    className="group flex items-center gap-4 p-4 bg-gray-50 hover:bg-gray-100 rounded-2xl transition-colors">
+                    {rp.coverImage ? (
+                      <Image src={rp.coverImage} alt={rp.title[loc]} width={80} height={80}
+                        className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover flex-shrink-0" />
+                    ) : (
+                      <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-gradient-to-br ${rp.coverGradient} flex-shrink-0`} />
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-[15px] text-gray-900 group-hover:text-blue-600 transition-colors leading-snug mb-1 line-clamp-2">
+                        {rp.title[loc]}
+                      </h3>
+                      <p className="text-xs text-gray-400">{rp.publishedAt}</p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
