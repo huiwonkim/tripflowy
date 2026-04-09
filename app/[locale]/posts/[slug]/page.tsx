@@ -216,22 +216,6 @@ export default async function PostPage({ params }: PageProps) {
             {post.excerpt[loc]}
           </p>
 
-          {/* Mobile TOC */}
-          {toc.length > 2 && (
-            <details className="lg:hidden mb-10 bg-gray-50 rounded-xl overflow-hidden">
-              <summary className="px-5 py-3 text-sm font-semibold text-gray-700 cursor-pointer">
-                {loc === "ko" ? "목차 보기" : "Table of Contents"}
-              </summary>
-              <ul className="px-5 pb-4 space-y-1.5">
-                {toc.map((item) => (
-                  <li key={item.id} className={item.level === 3 ? "ml-4" : ""}>
-                    <a href={`#${item.id}`} className="text-sm text-gray-500 hover:text-blue-600 transition-colors">{item.text}</a>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          )}
-
           {/* Content */}
           <div>{renderContent(content, post, loc)}</div>
 
