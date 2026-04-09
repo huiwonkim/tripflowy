@@ -310,6 +310,9 @@ function PlannerContent() {
               <div className="px-5 py-4 bg-gray-50 border-b border-gray-100">
                 <h2 className="text-sm font-semibold text-gray-900">
                   {locale === "ko" ? "📋 전체 일정 요약" : "📋 Itinerary Overview"}
+                  <span className="text-xs font-normal text-gray-400 ml-2">
+                    {locale === "ko" ? "마음에 드는 코스는 고정해 보세요" : "Lock the courses you like"}
+                  </span>
                 </h2>
               </div>
               <div className="divide-y divide-gray-100">
