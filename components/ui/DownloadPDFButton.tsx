@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { FileDown, Loader2 } from "lucide-react";
+import { FileDown } from "lucide-react";
 import type { Locale, GeneratedDay } from "@/types";
 import { countries } from "@/data/destinations";
 
@@ -12,149 +11,96 @@ interface DownloadPDFButtonProps {
 }
 
 export function DownloadPDFButton({ locale, days, duration }: DownloadPDFButtonProps) {
-  const [loading, setLoading] = useState(false);
 
-  async function handleDownload() {
-    setLoading(true);
-    try {
-      const { jsPDF } = await import("jspdf");
-      const allCities = countries.flatMap((c) => c.cities);
+  function handlePrint() {
+    const allCities = countries.flatMap((c) => c.cities);
+    const cityNames = [...new Set(days.map((d) => {
+      const city = allCities.find((c) => c.id === d.city);
+      return city?.label[locale] ?? d.city;
+    }))].join(" + ");
 
-      const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
-      const pageWidth = doc.internal.pageSize.getWidth();
-      const margin = 15;
-      const contentWidth = pageWidth - margin * 2;
-      let y = 20;
+    const title = locale === "ko"
+      ? `${cityNames} ${duration}박${Number(duration) + 1}일 여행 일정`
+      : `${cityNames} ${Number(duration) + 1}-Day Itinerary`;
 
-      // Title
-      doc.setFontSize(20);
-      doc.setFont("helvetica", "bold");
-      const cityNames = [...new Set(days.map((d) => {
-        const city = allCities.find((c) => c.id === d.city);
-        return city?.label[locale] ?? d.city;
-      }))].join(" + ");
-      const title = locale === "ko"
-        ? `${cityNames} ${duration}박${Number(duration) + 1}일 여행 일정`
-        : `${cityNames} ${Number(duration) + 1}-Day Itinerary`;
-      doc.text(title, margin, y);
-      y += 10;
+    // Build printable HTML
+    let html = `<!DOCTYPE html><html><head><meta charset="utf-8">
+      <title>${title}</title>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, "Malgun Gothic", "맑은 고딕", sans-serif; color: #1a1a1a; padding: 40px; max-width: 800px; margin: 0 auto; font-size: 14px; line-height: 1.7; }
+        h1 { font-size: 22px; margin-bottom: 4px; }
+        .subtitle { color: #999; font-size: 11px; margin-bottom: 24px; }
+        .divider { border: none; border-top: 1px solid #eee; margin: 20px 0; }
+        .day-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+        .day-num { background: #2563EB; color: white; font-weight: 700; font-size: 12px; width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .day-title { font-size: 16px; font-weight: 700; }
+        .day-city { color: #aaa; font-size: 11px; margin-bottom: 12px; }
+        .activity { margin-bottom: 10px; padding-left: 12px; }
+        .act-time { font-weight: 700; color: #444; font-size: 13px; }
+        .act-title { font-weight: 700; font-size: 13px; }
+        .act-desc { color: #666; font-size: 12px; }
+        .tip { color: #b45309; font-size: 11px; margin-top: 2px; }
+        .cost-row { background: #f9fafb; padding: 8px 12px; border-radius: 8px; font-size: 11px; color: #666; margin-top: 8px; }
+        .footer { color: #ccc; font-size: 10px; margin-top: 32px; text-align: center; }
+        @media print { body { padding: 20px; } .no-print { display: none; } }
+      </style>
+    </head><body>`;
 
-      // Subtitle
-      doc.setFontSize(10);
-      doc.setFont("helvetica", "normal");
-      doc.setTextColor(120, 120, 120);
-      doc.text(`Tripflowy — tripflowy.com`, margin, y);
-      y += 10;
+    html += `<h1>${title}</h1>`;
+    html += `<p class="subtitle">Tripflowy — tripflowy.com</p>`;
+    html += `<hr class="divider">`;
 
-      doc.setDrawColor(230, 230, 230);
-      doc.line(margin, y, pageWidth - margin, y);
-      y += 8;
+    for (const day of days) {
+      const cityLabel = allCities.find((c) => c.id === day.city)?.label[locale] ?? day.city;
+      html += `<div style="margin-bottom: 28px;">`;
+      html += `<div class="day-header"><div class="day-num">${day.dayNumber}</div><div class="day-title">${day.course.title[locale]}</div></div>`;
+      html += `<div class="day-city">${cityLabel}</div>`;
 
-      // Days
-      for (const day of days) {
-        // Check page overflow
-        if (y > 260) {
-          doc.addPage();
-          y = 20;
-        }
-
-        const cityLabel = allCities.find((c) => c.id === day.city)?.label[locale] ?? day.city;
-
-        // Day header
-        doc.setFontSize(14);
-        doc.setFont("helvetica", "bold");
-        doc.setTextColor(37, 99, 235); // blue
-        doc.text(`Day ${day.dayNumber}`, margin, y);
-        doc.setTextColor(30, 30, 30);
-        doc.text(`  ${day.course.title[locale]}`, margin + 18, y);
-        y += 5;
-
-        doc.setFontSize(9);
-        doc.setTextColor(150, 150, 150);
-        doc.text(cityLabel, margin, y);
-        y += 6;
-
-        // Activities
-        for (const act of day.course.activities) {
-          if (y > 270) {
-            doc.addPage();
-            y = 20;
+      for (const act of day.course.activities) {
+        html += `<div class="activity">`;
+        html += `<span class="act-time">${act.time}</span> <span class="act-title">${act.title[locale]}</span><br>`;
+        html += `<span class="act-desc">${act.description[locale]}</span>`;
+        if (act.tips) {
+          for (const tip of act.tips) {
+            html += `<div class="tip">💡 ${tip[locale]}</div>`;
           }
-
-          doc.setFontSize(10);
-          doc.setFont("helvetica", "bold");
-          doc.setTextColor(60, 60, 60);
-          doc.text(`${act.time}  ${act.title[locale]}`, margin + 2, y);
-          y += 5;
-
-          doc.setFont("helvetica", "normal");
-          doc.setFontSize(9);
-          doc.setTextColor(100, 100, 100);
-          const descLines = doc.splitTextToSize(act.description[locale], contentWidth - 10);
-          doc.text(descLines, margin + 4, y);
-          y += descLines.length * 4 + 2;
-
-          // Tips
-          if (act.tips) {
-            for (const tip of act.tips) {
-              if (y > 270) { doc.addPage(); y = 20; }
-              doc.setTextColor(180, 120, 0);
-              doc.setFontSize(8);
-              const tipLines = doc.splitTextToSize(`💡 ${tip[locale]}`, contentWidth - 12);
-              doc.text(tipLines, margin + 6, y);
-              y += tipLines.length * 3.5 + 1;
-            }
-          }
-          y += 2;
         }
-
-        // Cost summary
-        if (day.course.costs) {
-          if (y > 265) { doc.addPage(); y = 20; }
-          doc.setFontSize(8);
-          doc.setTextColor(100, 100, 100);
-          const c = day.course.costs;
-          const costText = locale === "ko"
-            ? `식비 ${c.food.toLocaleString()}${c.currency === "KRW" ? "원" : c.currency} | 투어 ${c.activity.toLocaleString()} | 교통 ${c.transport.toLocaleString()} | 기타 ${c.etc.toLocaleString()}`
-            : `Food ${c.food} | Tour ${c.activity} | Transport ${c.transport} | Etc ${c.etc} (${c.currency})`;
-          doc.text(costText, margin, y);
-          y += 6;
-        }
-
-        // Divider
-        doc.setDrawColor(240, 240, 240);
-        doc.line(margin, y, pageWidth - margin, y);
-        y += 8;
+        html += `</div>`;
       }
 
-      // Footer
-      if (y > 270) { doc.addPage(); y = 20; }
-      doc.setFontSize(8);
-      doc.setTextColor(180, 180, 180);
-      doc.text(`Generated by Tripflowy — tripflowy.com`, margin, y);
+      if (day.course.costs) {
+        const c = day.course.costs;
+        const costText = locale === "ko"
+          ? `식비 ${c.food.toLocaleString()}원 · 투어 ${c.activity.toLocaleString()}원 · 교통 ${c.transport.toLocaleString()}원 · 기타 ${c.etc.toLocaleString()}원`
+          : `Food ${c.food} · Tour ${c.activity} · Transport ${c.transport} · Etc ${c.etc} (${c.currency})`;
+        html += `<div class="cost-row">${costText}</div>`;
+      }
 
-      // Save
-      const filename = locale === "ko"
-        ? `${cityNames}_${duration}박${Number(duration) + 1}일_여행일정.pdf`
-        : `${cityNames}_${Number(duration) + 1}day_itinerary.pdf`;
-      doc.save(filename);
-    } catch (err) {
-      console.error("PDF generation failed:", err);
-    } finally {
-      setLoading(false);
+      html += `</div><hr class="divider">`;
+    }
+
+    html += `<p class="footer">Generated by Tripflowy — tripflowy.com</p>`;
+    html += `</body></html>`;
+
+    // Open print window
+    const printWindow = window.open("", "_blank");
+    if (printWindow) {
+      printWindow.document.write(html);
+      printWindow.document.close();
+      printWindow.onload = () => {
+        printWindow.print();
+      };
     }
   }
 
   return (
     <button
-      onClick={handleDownload}
-      disabled={loading}
-      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50"
+      onClick={handlePrint}
+      className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors"
     >
-      {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <FileDown className="w-4 h-4" />}
-      {loading
-        ? (locale === "ko" ? "PDF 생성 중..." : "Generating...")
-        : (locale === "ko" ? "PDF 다운로드" : "Download PDF")}
+      <FileDown className="w-4 h-4" />
+      {locale === "ko" ? "PDF 다운로드" : "Download PDF"}
     </button>
   );
 }
