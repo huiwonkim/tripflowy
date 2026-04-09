@@ -175,6 +175,14 @@ export type PostImage = {
   caption?: LocaleString;
 };
 
+export type PostCTA = {
+  label: LocaleString;           // "시부야스카이 입장권 예약하기"
+  url: string;                   // 어필리에이트 링크
+  provider: string;              // "Klook", "Agoda" 등
+  price?: LocaleString;          // "2,200엔~"
+  note?: LocaleString;           // "온라인 예매 시 300엔 할인"
+};
+
 export type BlogPost = {
   slug: string;
   courseId?: string;       // 연결된 DayCourse ID (있으면 코스에서 링크)
@@ -187,6 +195,7 @@ export type BlogPost = {
   images?: PostImage[];    // 본문 중간에 삽입할 이미지들
   tags: string[];
   faq?: FAQ[];             // 포스트 하단 FAQ (SEO용)
+  cta?: PostCTA;           // 어필리에이트 CTA
   publishedAt: string;     // ISO date
   updatedAt?: string;
 };

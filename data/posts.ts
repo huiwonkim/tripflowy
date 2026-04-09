@@ -126,7 +126,11 @@ The observatory entrance is on the 14th floor of Shibuya Scramble Square. A dire
 
 Walk-in tickets are essentially impossible to get. Evening time slots sell out immediately when they open, and even daytime slots are gone within days. Daytime (10:00-15:00) costs ¥3,000, while sunset and evening (15:00-21:00) is ¥3,700.
 
-==Klook is the fastest and most reliable== booking platform — better than the official site. Tickets open ==2 weeks before your visit date at midnight (00:00 JST)==. Sunset and night slots sell out within minutes, so set an alarm.
+==Klook is the fastest and most reliable== booking platform — better than the official site.
+
+{{cta}}
+
+Tickets open ==2 weeks before your visit date at midnight (00:00 JST)==. Sunset and night slots sell out within minutes, so set an alarm.
 
 ### The Experience
 
@@ -175,6 +179,8 @@ Night views are strongly recommended. Tokyo's dense skyline lit up is stunning, 
 - 현장 구매: 성인 2,500엔 / 중고생 2,000엔 / 초등생 1,200엔 / 3~5세 700엔
 
 온라인이 최대 300엔 저렴하니 ==사전 예매는 필수==예요. 공식 홈페이지, 클룩, KKday 등 여러 플랫폼이 있는데, 직접 다 써본 결과 ==클룩이 가장 빠르고 안정적==이었습니다.
+
+{{cta}}
 
 예매 오픈은 방문일 ==2주 전 자정(00시)==. 일몰과 야경 시간대(17시~20시)는 오픈 후 몇 분이면 끝나니까, 알람을 꼭 맞춰두세요. 평일 저녁도 당일 매진이 흔하거든요. 여행 일정이 잡히면 그날 바로 예약하는 게 좋습니다.
 
@@ -229,6 +235,13 @@ Night views are strongly recommended. Tokyo's dense skyline lit up is stunning, 
       { question: { en: "When do Shibuya Sky tickets go on sale?", ko: "시부야스카이 예약은 언제 열리나요?" }, answer: { en: "2 weeks before your visit date at midnight (00:00 JST). Set an alarm — sunset/night slots sell out within minutes.", ko: "방문일 2주 전 자정(00시)에 오픈됩니다. 알람을 맞춰놓으세요 — 일몰/야경 시간대는 몇 분 안에 매진됩니다." } },
       { question: { en: "Day or night — which is better?", ko: "낮 vs 야경 어떤 게 더 좋나요?" }, answer: { en: "Night is significantly better. Tokyo's skyline lit up is stunning. But if you can't get evening tickets, daytime is still worth it.", ko: "야경이 압도적으로 좋습니다. 하지만 저녁 티켓을 못 잡으면 낮도 충분히 좋아요." } },
     ],
+    cta: {
+      label: { en: "Book Shibuya Sky Tickets", ko: "시부야스카이 입장권 예약하기" },
+      url: "https://www.klook.com/activity/70672-shibuya-sky-tokyo/",
+      provider: "Klook",
+      price: { en: "From ¥2,200", ko: "2,200엔~" },
+      note: { en: "Online booking saves up to ¥300 vs walk-in", ko: "온라인 예매 시 현장보다 최대 300엔 저렴" },
+    },
     publishedAt: "2026-04-09",
   },
 ];

@@ -5,6 +5,7 @@ import { Link } from "@/i18n/navigation";
 import { ArrowLeft, Calendar, Clock, ChevronRight } from "lucide-react";
 import { posts, getPostBySlug, getPostsByCity } from "@/data/posts";
 import { ShareButton } from "@/components/ui/ShareButton";
+import { PostCTA } from "@/components/ui/PostCTA";
 import { countries } from "@/data/destinations";
 import { generateBreadcrumbJsonLd, generateArticleJsonLd, generateFaqJsonLd } from "@/lib/jsonld";
 import type { Metadata } from "next";
@@ -89,6 +90,12 @@ function renderContent(content: string, post: BlogPost, locale: Locale) {
   for (let i = 0; i < lines.length; i++) {
     const trimmed = lines[i].trim();
     if (!trimmed) { elements.push(<div key={i} className="h-4" />); continue; }
+
+    // CTA placeholder: {{cta}}
+    if (trimmed === "{{cta}}" && post.cta) {
+      elements.push(<PostCTA key={i} cta={post.cta} locale={locale} variant="inline" />);
+      continue;
+    }
 
     // Image: ![alt](index)
     const imgMatch = trimmed.match(/^!\[(.+?)\]\((\d+)\)$/);
@@ -228,6 +235,9 @@ export default async function PostPage({ params }: PageProps) {
           {/* Content */}
           <div>{renderContent(content, post, loc)}</div>
 
+          {/* CTA card */}
+          {post.cta && <PostCTA cta={post.cta} locale={loc} variant="card" />}
+
           {/* Share */}
           <ShareButton locale={loc} />
 
@@ -318,6 +328,8 @@ export default async function PostPage({ params }: PageProps) {
           </div>
         </section>
       )}
+      {/* Mobile sticky CTA bar */}
+      {post.cta && <PostCTA cta={post.cta} locale={loc} variant="sticky" />}
     </article>
   );
 }
