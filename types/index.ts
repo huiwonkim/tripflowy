@@ -1,3 +1,5 @@
+import type { CategoryId } from "@/data/categories";
+
 export type Locale = "en" | "ko";
 
 export type LocaleString = {
@@ -194,6 +196,7 @@ export type BlogPost = {
   coverGradient: string;
   images?: PostImage[];    // 본문 중간에 삽입할 이미지들
   tags: string[];
+  categories?: CategoryId[];
   faq?: FAQ[];             // 포스트 하단 FAQ (SEO용)
   cta?: PostCTA;           // 어필리에이트 CTA
   publishedAt: string;     // ISO date

@@ -1,9 +1,11 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 import { ArrowRight, CheckCircle, Zap, Map, Hotel } from "lucide-react";
 import { QuickPlanner } from "@/components/planner/QuickPlanner";
 import { posts } from "@/data/posts";
 import { countries, comingSoonCountries } from "@/data/destinations";
+import { getCategoryById } from "@/data/categories";
 import type { Locale } from "@/types";
 
 interface PageProps {
@@ -77,13 +79,19 @@ export default async function HomePage({ params }: PageProps) {
               return (
                 <Link key={post.slug} href={`/posts/${post.slug}`}
                   className="group bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-all">
-                  <div className={`h-40 bg-gradient-to-br ${post.coverGradient} relative flex items-end p-4`}>
+                  <div className={`h-40 ${!post.coverImage ? `bg-gradient-to-br ${post.coverGradient}` : ""} relative flex items-end p-4`}>
+                    {post.coverImage && (
+                      <Image src={post.coverImage} alt={post.title[loc]} fill className="object-cover" />
+                    )}
                     <div className="absolute inset-0 bg-black/15" />
                     <div className="relative z-10 flex items-center gap-2">
                       <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full">{cityLabel}</span>
-                      {post.tags.slice(0, 2).map((tag) => (
-                        <span key={tag} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2 py-0.5 rounded-full">{tag}</span>
-                      ))}
+                      {post.categories?.slice(0, 2).map((catId) => {
+                        const cat = getCategoryById(catId);
+                        return cat ? (
+                          <span key={catId} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2 py-0.5 rounded-full">{cat.label[loc]}</span>
+                        ) : null;
+                      })}
                     </div>
                   </div>
                   <div className="p-5">

@@ -1,9 +1,10 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import Image from "next/image";
 import { posts } from "@/data/posts";
 import { countries } from "@/data/destinations";
 import { ArrowRight, Calendar } from "lucide-react";
-import { Badge } from "@/components/ui/Badge";
+import { CategoryBadge } from "@/components/ui/CategoryBadge";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
 
@@ -46,7 +47,10 @@ export default async function PostsPage({ params }: PageProps) {
           return (
             <Link key={post.slug} href={`/posts/${post.slug}`}
               className="group flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all">
-              <div className={`sm:w-48 h-32 sm:h-auto bg-gradient-to-br ${post.coverGradient} relative flex-shrink-0`}>
+              <div className={`sm:w-48 h-32 sm:h-auto ${!post.coverImage ? `bg-gradient-to-br ${post.coverGradient}` : ""} relative flex-shrink-0`}>
+                {post.coverImage && (
+                  <Image src={post.coverImage} alt={post.title[loc]} fill className="object-cover" />
+                )}
                 <div className="absolute inset-0 bg-black/15" />
                 <div className="absolute bottom-3 left-3">
                   <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full">{cityLabel}</span>
@@ -61,7 +65,9 @@ export default async function PostsPage({ params }: PageProps) {
                   <div className="flex items-center gap-2">
                     <Calendar className="w-3.5 h-3.5 text-gray-400" />
                     <span className="text-xs text-gray-400">{post.publishedAt}</span>
-                    {post.tags.slice(0, 2).map((tag) => <Badge key={tag} variant="outline">{tag}</Badge>)}
+                    {post.categories?.slice(0, 2).map((catId) => (
+                      <CategoryBadge key={catId} id={catId} locale={loc} />
+                    ))}
                   </div>
                   <span className="flex items-center gap-1 text-blue-600 text-xs font-medium group-hover:gap-2 transition-all">
                     {loc === "ko" ? "읽기" : "Read"} <ArrowRight className="w-3.5 h-3.5" />

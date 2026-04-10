@@ -93,6 +93,7 @@ Ba Na Hills is one of Da Nang's most popular attractions, and for good reason. T
     city: "danang",
     coverGradient: "from-violet-500 to-purple-700",
     tags: ["guide", "must-read", "golden-bridge", "cable-car"],
+    categories: ["sightseeing", "complete-guide", "tips"],
     faq: [
       { question: { en: "How much is the Ba Na Hills ticket?", ko: "바나힐 입장료는 얼마인가요?" }, answer: { en: "Adult tickets are 900,000 VND (~$36) including cable car and all attractions.", ko: "성인 티켓은 90만 동 (~5만 원)이며 케이블카와 모든 어트랙션이 포함됩니다." } },
       { question: { en: "How long do you need at Ba Na Hills?", ko: "바나힐에서 얼마나 시간이 필요하나요?" }, answer: { en: "Plan for 5-6 hours minimum. Arrive by 8:30 AM for the best experience.", ko: "최소 5~6시간을 계획하세요. 오전 8시 30분까지 도착하면 가장 좋습니다." } },
@@ -230,6 +231,7 @@ Night views are strongly recommended. Tokyo's dense skyline lit up is stunning, 
       { src: "/images/posts/sibuya-sky-9.jpg", alt: { en: "Night view panorama from Shibuya Sky observatory", ko: "시부야스카이 야경 파노라마 전망" } },
     ],
     tags: ["guide", "must-read", "observatory", "night-view", "shibuya", "booking-tips"],
+    categories: ["nightview", "complete-guide", "booking", "tips"],
     faq: [
       { question: { en: "Can I buy Shibuya Sky tickets on the spot?", ko: "시부야스카이 현장 구매 가능한가요?" }, answer: { en: "Practically impossible. Evening tickets sell out instantly when released, and daytime often sells out days in advance.", ko: "사실상 불가능합니다. 저녁 시간대는 오픈 즉시 매진되고, 낮 시간대도 며칠 전에 대부분 매진됩니다." } },
       { question: { en: "When do Shibuya Sky tickets go on sale?", ko: "시부야스카이 예약은 언제 열리나요?" }, answer: { en: "2 weeks before your visit date at midnight (00:00 JST). Set an alarm — sunset/night slots sell out within minutes.", ko: "방문일 2주 전 자정(00시)에 오픈됩니다. 알람을 맞춰놓으세요 — 일몰/야경 시간대는 몇 분 안에 매진됩니다." } },
