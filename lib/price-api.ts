@@ -1,20 +1,25 @@
-import type { FlightEstimate, HotelEstimate } from "@/types";
+import type { FlightEstimate, HotelEstimate, Locale } from "@/types";
 
 // ── Live price fetcher (from /api/prices → Vercel KV) ──
 
-interface LivePriceData {
+export interface LivePriceData {
   updatedAt: string;
   flights: { fsc: { min: number; max: number }; lcc: { min: number; max: number } } | null;
   hotels: { budget: { min: number; max: number }; standard: { min: number; max: number }; luxury: { min: number; max: number } } | null;
+  mylinks?: { flight?: string; hotel?: string };
 }
 
 /**
  * Try to fetch live prices from the API (which reads from Vercel KV).
  * Returns null if unavailable — caller should fallback to static estimates.
+ *
+ * For `locale="ko"` the API reads MyRealTrip data and may include `mylinks`
+ * for affiliate booking buttons. For other locales it reads the legacy
+ * Amadeus/SerpAPI cache and returns price data only.
  */
-export async function fetchLivePrices(cityId: string): Promise<LivePriceData | null> {
+export async function fetchLivePrices(cityId: string, locale: Locale = "en"): Promise<LivePriceData | null> {
   try {
-    const res = await fetch(`/api/prices?destination=${cityId}`, { next: { revalidate: 3600 } });
+    const res = await fetch(`/api/prices?destination=${cityId}&locale=${locale}`, { next: { revalidate: 3600 } });
     if (!res.ok) return null;
     return await res.json();
   } catch {

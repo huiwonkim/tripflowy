@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { kv } from "@vercel/kv";
 import { cityToAirport, allCityIds } from "@/lib/airports";
+import { fetchMrtCityData } from "@/lib/myrealtrip";
+import { mrtCityCodes } from "@/lib/myrealtrip-cities";
 
 const ORIGIN = "ICN"; // Incheon
 
@@ -229,6 +231,7 @@ export async function GET(request: NextRequest) {
   const updateType = request.nextUrl.searchParams.get("type") ?? "all";
   const doFlights = updateType === "flights" || updateType === "all";
   const doHotels = updateType === "hotels" || updateType === "all";
+  const doMrt = (updateType === "mrt" || updateType === "all") && !!process.env.MYREALTRIP_API_KEY;
 
   // Calculate dates: 30 days from now
   const now = new Date();
@@ -302,6 +305,26 @@ export async function GET(request: NextRequest) {
     } catch (err) {
       console.error(`[cron] KV save failed for ${cityId}:`, err);
       results[cityId] = "kv_error";
+    }
+
+    // ── MyRealTrip (ko locale) ──────────────────────
+    if (doMrt && mrtCityCodes[cityId]) {
+      try {
+        const mrt = await fetchMrtCityData(cityId, checkInStr, checkOutStr);
+        const mrtData = {
+          updatedAt: now.toISOString(),
+          flights: mrt.flights,
+          hotels: mrt.hotels,
+          mylinks: mrt.mylinks,
+        };
+        await kv.set(`prices:ko:${cityId}`, JSON.stringify(mrtData), { ex: 86400 * 8 });
+        results[`${cityId}:ko`] = mrt.flights || mrt.hotels ? "ok" : "empty";
+      } catch (err) {
+        console.error(`[cron] MRT failed for ${cityId}:`, err);
+        results[`${cityId}:ko`] = "mrt_error";
+      }
+      // Rate-limit pacing for MRT (60/min limit, ~4 req per city)
+      await new Promise((r) => setTimeout(r, 800));
     }
   }
 

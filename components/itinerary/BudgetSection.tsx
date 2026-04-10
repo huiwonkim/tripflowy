@@ -1,10 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Plane, Building2, MapPinned, DollarSign } from "lucide-react";
+import { Plane, Building2, MapPinned, DollarSign, ExternalLink } from "lucide-react";
 import { displayPriceRange, displayPrice, convertToDisplay, formatCurrency } from "@/lib/currency";
-import { getFlightEstimate, getHotelEstimate } from "@/lib/price-api";
-import type { Locale, GeneratedItinerary } from "@/types";
+import { getFlightEstimate, getHotelEstimate, fetchLivePrices, type LivePriceData } from "@/lib/price-api";
+import type { Locale, GeneratedItinerary, FlightEstimate, HotelEstimate } from "@/types";
 import { sumLocalCosts } from "@/lib/itinerary-builder";
 
 interface BudgetSectionProps {
@@ -18,17 +19,44 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
 
   // Flight — use first city as primary destination
   const primaryCity = itinerary.cities[0];
-  const flight = getFlightEstimate(primaryCity);
+  const staticFlight = getFlightEstimate(primaryCity);
+  const staticHotel = getHotelEstimate(primaryCity);
 
-  // Hotel — use first city (user stays longest here per allocation)
-  const hotel = getHotelEstimate(primaryCity);
+  // For ko locale, try to fetch live MyRealTrip data and MyLink affiliate URLs.
+  // Falls back to static estimates if fetch fails or locale !== "ko".
+  const [liveData, setLiveData] = useState<LivePriceData | null>(null);
+  useEffect(() => {
+    if (locale !== "ko") return;
+    let cancelled = false;
+    fetchLivePrices(primaryCity, locale).then((data) => {
+      if (!cancelled) setLiveData(data);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [primaryCity, locale]);
+
+  const flight: FlightEstimate | null = liveData?.flights && staticFlight
+    ? { ...staticFlight, fsc: liveData.flights.fsc, lcc: liveData.flights.lcc, source: "api" }
+    : staticFlight;
+
+  const hotel: HotelEstimate | null = liveData?.hotels && staticHotel
+    ? { ...staticHotel, budget: liveData.hotels.budget, standard: liveData.hotels.standard, luxury: liveData.hotels.luxury, source: "api" }
+    : staticHotel;
+
+  const flightBookUrl = liveData?.mylinks?.flight;
+  const hotelBookUrl = liveData?.mylinks?.hotel;
 
   // Local costs — summed and converted to display currency
   const localCosts = sumLocalCosts(itinerary, locale);
 
+  // Check which flight carrier types have real data (range > 0)
+  const hasFsc = !!flight && (flight.fsc.min > 0 || flight.fsc.max > 0);
+  const hasLcc = !!flight && (flight.lcc.min > 0 || flight.lcc.max > 0);
+
   // Convert everything to display currency
-  const flightFsc = flight ? displayPriceRange(flight.fsc.min, flight.fsc.max, flight.currency, locale) : null;
-  const flightLcc = flight ? displayPriceRange(flight.lcc.min, flight.lcc.max, flight.currency, locale) : null;
+  const flightFsc = flight && hasFsc ? displayPriceRange(flight.fsc.min, flight.fsc.max, flight.currency, locale) : null;
+  const flightLcc = flight && hasLcc ? displayPriceRange(flight.lcc.min, flight.lcc.max, flight.currency, locale) : null;
 
   const hotelBudget = hotel ? displayPriceRange(hotel.budget.min, hotel.budget.max, hotel.currency, locale) : null;
   const hotelStd = hotel ? displayPriceRange(hotel.standard.min, hotel.standard.max, hotel.currency, locale) : null;
@@ -50,8 +78,12 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
     };
   };
 
-  const totalBudget = flight && hotel ? calcTotal(flight.lcc, hotel.budget, flight.currency, hotel.currency) : null;
-  const totalLuxury = flight && hotel ? calcTotal(flight.fsc, hotel.luxury, flight.currency, hotel.currency) : null;
+  // For totals: prefer LCC for budget tier and FSC for luxury tier, but fall back
+  // to the other carrier type if one is missing (only one result class available).
+  const budgetFlightRange = hasLcc ? flight?.lcc : hasFsc ? flight?.fsc : undefined;
+  const luxuryFlightRange = hasFsc ? flight?.fsc : hasLcc ? flight?.lcc : undefined;
+  const totalBudget = flight && hotel ? calcTotal(budgetFlightRange, hotel.budget, flight.currency, hotel.currency) : null;
+  const totalLuxury = flight && hotel ? calcTotal(luxuryFlightRange, hotel.luxury, flight.currency, hotel.currency) : null;
 
   return (
     <section className="mt-10">
@@ -70,21 +102,35 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
               <span className="text-xs text-gray-400 ml-auto">{t("flightsNote")}</span>
             </div>
             <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <div>
-                  <span className="text-sm text-gray-700">FSC</span>
-                  <span className="text-xs text-gray-400 ml-1.5">{locale === "ko" ? "(대한항공, 아시아나 등)" : "(Korean Air, Asiana, etc.)"}</span>
+              {hasFsc && (
+                <div className="flex justify-between items-center">
+                  <div>
+                    <span className="text-sm text-gray-700">FSC</span>
+                    <span className="text-xs text-gray-400 ml-1.5">{locale === "ko" ? "(대한항공, 아시아나 등)" : "(Korean Air, Asiana, etc.)"}</span>
+                  </div>
+                  <span className="text-sm font-semibold text-gray-900">{flightFsc}</span>
                 </div>
-                <span className="text-sm font-semibold text-gray-900">{flightFsc}</span>
-              </div>
-              <div className="flex justify-between items-center">
-                <div>
-                  <span className="text-sm text-gray-700">LCC</span>
-                  <span className="text-xs text-gray-400 ml-1.5">{locale === "ko" ? "(진에어, 티웨이 등)" : "(Jin Air, T'way, etc.)"}</span>
+              )}
+              {hasLcc && (
+                <div className="flex justify-between items-center">
+                  <div>
+                    <span className="text-sm text-gray-700">LCC</span>
+                    <span className="text-xs text-gray-400 ml-1.5">{locale === "ko" ? "(진에어, 티웨이 등)" : "(Jin Air, T'way, etc.)"}</span>
+                  </div>
+                  <span className="text-sm font-semibold text-gray-900">{flightLcc}</span>
                 </div>
-                <span className="text-sm font-semibold text-gray-900">{flightLcc}</span>
-              </div>
+              )}
             </div>
+            {flightBookUrl && (
+              <a
+                href={flightBookUrl}
+                target="_blank"
+                rel="noopener sponsored"
+                className="mt-4 flex items-center justify-center gap-1.5 w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                마이리얼트립에서 항공권 보기 <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
           </div>
         )}
 
@@ -110,6 +156,16 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
                 <span className="text-sm font-semibold text-gray-900">{hotelLux}</span>
               </div>
             </div>
+            {hotelBookUrl && (
+              <a
+                href={hotelBookUrl}
+                target="_blank"
+                rel="noopener sponsored"
+                className="mt-4 flex items-center justify-center gap-1.5 w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors"
+              >
+                마이리얼트립에서 숙소 보기 <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
           </div>
         )}
 
