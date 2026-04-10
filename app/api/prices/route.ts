@@ -22,10 +22,20 @@ function getDefaultDates() {
 export async function GET(request: NextRequest) {
   const destination = request.nextUrl.searchParams.get("destination");
   const locale = request.nextUrl.searchParams.get("locale");
+  const debug = request.nextUrl.searchParams.get("debug") === "1";
 
   if (!destination) {
     return NextResponse.json({ error: "Missing destination parameter" }, { status: 400 });
   }
+
+  // Diagnostic info (returned only when ?debug=1)
+  const diag = {
+    locale,
+    destination,
+    hasMrtKey: !!process.env.MYREALTRIP_API_KEY,
+    hasCityMap: !!mrtCityCodes[destination],
+    cityKeysCount: Object.keys(mrtCityCodes).length,
+  };
 
   // ── ko locale: fetch live MyRealTrip data on-demand ──
   if (locale === "ko" && process.env.MYREALTRIP_API_KEY && mrtCityCodes[destination]) {
@@ -39,6 +49,7 @@ export async function GET(request: NextRequest) {
           flights: mrt.flights,
           hotels: mrt.hotels,
           mylinks: mrt.mylinks,
+          ...(debug ? { _diag: diag } : {}),
         },
         {
           headers: {
@@ -48,27 +59,39 @@ export async function GET(request: NextRequest) {
       );
     } catch (err) {
       console.error(`MRT fetch error for ${destination}:`, err);
-      return NextResponse.json({ error: "MRT fetch failed", destination }, { status: 500 });
+      return NextResponse.json(
+        { error: "MRT fetch failed", destination, message: err instanceof Error ? err.message : String(err), ...(debug ? { _diag: diag } : {}) },
+        { status: 500 },
+      );
     }
   }
 
-  // ── Other locales: fall back to legacy KV cache (Amadeus/SerpAPI) ──
+  // ── Other locales (or missing MRT setup): fall back to legacy KV cache ──
   try {
     const raw = await kv.get<string>(`prices:${destination}`);
 
     if (!raw) {
-      return NextResponse.json({ error: "No price data available", destination }, { status: 404 });
+      return NextResponse.json(
+        { error: "No price data available", destination, ...(debug ? { _diag: diag } : {}) },
+        { status: 404 },
+      );
     }
 
     const data = typeof raw === "string" ? JSON.parse(raw) : raw;
 
-    return NextResponse.json(data, {
-      headers: {
-        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200",
+    return NextResponse.json(
+      { ...data, ...(debug ? { _diag: diag } : {}) },
+      {
+        headers: {
+          "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=7200",
+        },
       },
-    });
+    );
   } catch (err) {
     console.error(`Price fetch error for ${destination}:`, err);
-    return NextResponse.json({ error: "Internal error" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Internal error", message: err instanceof Error ? err.message : String(err), ...(debug ? { _diag: diag } : {}) },
+      { status: 500 },
+    );
   }
 }
