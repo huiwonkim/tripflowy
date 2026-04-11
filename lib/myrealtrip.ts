@@ -199,65 +199,74 @@ export async function fetchMrtFlightLowest(cityId: string): Promise<MrtFlightRes
 // ── Accommodation search ───────────────────────────
 
 /**
- * Fetch accommodation price tiers plus the top hotel's itemId for
- * direct-deep-linking. topItemId = highest-reviewed or first item in the
- * response (MRT's ordering — we trust it and take items[0]).
+ * Fetch price min/max for a specific star-rated tier in a city.
+ * Returns `{min:0, max:0}` when the API returns no matching items so the
+ * BudgetSection hides that row gracefully.
+ *
+ * `max` uses the 80th percentile to trim extreme outliers (e.g. presidential
+ * suites) that would otherwise blow out the displayed range.
  */
-export async function fetchMrtAccommodation(
-  cityId: string,
+async function fetchHotelTier(
+  cityKeyword: string,
   checkIn: string,
   checkOut: string,
-): Promise<{ result: MrtHotelResult; topItemId: number | null } | null> {
-  const city = getMrtCity(cityId);
-  if (!city) return null;
-
+  starRating: "threestar" | "fourstar" | "fivestar",
+): Promise<{ min: number; max: number }> {
   const data = await mrtPost<MrtAccommodationData>(
     "/v1/products/accommodation/search",
     {
-      keyword: city.keyword,
+      keyword: cityKeyword,
       checkIn,
       checkOut,
       adultCount: 2,
       size: 50,
       page: 0,
+      starRating,
     },
   );
 
-  if (!data?.items?.length) return null;
+  const prices = (data?.items ?? [])
+    .map((i) => i.salePrice)
+    .filter((p) => p > 0);
 
-  // Per-night basis: divide total salePrice by 1 (1-night search).
-  const sortedBySalePrice = [...data.items].sort((a, b) => a.salePrice - b.salePrice);
-  const prices = sortedBySalePrice.map((i) => i.salePrice).filter((p) => p > 0);
-
-  if (prices.length === 0) return null;
-
-  const len = prices.length;
-  const q25 = prices[Math.floor(len * 0.25)] ?? prices[0];
-  const q65 = prices[Math.floor(len * 0.65)] ?? prices[Math.floor(len * 0.5)];
-  const q75 = prices[Math.floor(len * 0.75)] ?? prices[Math.floor(len * 0.5)];
-
-  // Pick a sensible "top" hotel for deep-linking: the first item in the
-  // original (MRT-ranked) response with a non-zero price. MRT returns items
-  // sorted by relevance by default, so items[0] is a reasonable pick.
-  const topItem = data.items.find((i) => i.salePrice > 0) ?? null;
+  if (prices.length === 0) return { min: 0, max: 0 };
 
   return {
-    result: {
-      budget: {
-        min: prices[0],
-        max: q25,
-      },
-      standard: {
-        min: q25,
-        max: q65,
-      },
-      luxury: {
-        min: q75,
-        max: prices[len - 1],
-      },
-    },
-    topItemId: topItem?.itemId ?? null,
+    min: Math.min(...prices),
+    max: percentile(prices, 80),
   };
+}
+
+/**
+ * Fetch accommodation prices grouped by star rating (3/4/5 stars) so that
+ * the budget / standard / luxury tiers shown in BudgetSection actually
+ * correspond to real hotel classes instead of arbitrary percentile buckets
+ * across a single popularity-ordered search.
+ *
+ * Makes 3 parallel API calls (one per tier). Results are cached by the
+ * caller via `unstable_cache` so repeat visits don't hit MRT again.
+ */
+export async function fetchMrtAccommodation(
+  cityId: string,
+  checkIn: string,
+  checkOut: string,
+): Promise<MrtHotelResult | null> {
+  const city = getMrtCity(cityId);
+  if (!city) return null;
+
+  const [budget, standard, luxury] = await Promise.all([
+    fetchHotelTier(city.keyword, checkIn, checkOut, "threestar"),
+    fetchHotelTier(city.keyword, checkIn, checkOut, "fourstar"),
+    fetchHotelTier(city.keyword, checkIn, checkOut, "fivestar"),
+  ]);
+
+  // If every tier returned zero items, consider the whole fetch a failure
+  // so the caller can fall back to static estimates.
+  if (budget.max === 0 && standard.max === 0 && luxury.max === 0) {
+    return null;
+  }
+
+  return { budget, standard, luxury };
 }
 
 // ── Flight fare-query landing URL ───────────────────
@@ -433,7 +442,7 @@ export async function fetchMrtCityData(
 
   return {
     flights,
-    hotels: accommodation?.result ?? null,
+    hotels: accommodation,
     mylinks: {
       flight: flightMylink ?? undefined,
       hotel: hotelMylink ?? undefined,
@@ -449,6 +458,6 @@ export const getCachedMrtCityData = unstable_cache(
   async (cityId: string, checkIn: string, checkOut: string, tripNights: number): Promise<MrtCityData> => {
     return fetchMrtCityData(cityId, checkIn, checkOut, tripNights);
   },
-  ["mrt-city-data-v6"], // v6: fare-query-landing-url + real accommodation.myrealtrip.com union/products URL
+  ["mrt-city-data-v7"], // v7: hotel tiers from starRating-filtered searches (real 3/4/5-star ranges)
   { revalidate: 3600, tags: ["mrt"] },
 );
