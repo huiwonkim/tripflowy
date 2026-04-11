@@ -1,12 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 import { APIProvider, Map, useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import type { GeneratedDay, Locale } from "@/types";
 import { countries } from "@/data/destinations";
 
 const API_KEY = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY ?? "";
 const MAP_ID = process.env.NEXT_PUBLIC_GOOGLE_MAP_ID ?? "fc366bd3a2a403e93f8f124f";
+
+// Computed once at module load; previously recomputed inside MapContent on
+// every render which caused its useEffect to re-run (even when days/locale
+// hadn't actually changed), clearing and redrawing markers each time.
+const ALL_CITIES = countries.flatMap((c) => c.cities);
 
 const dayColors = [
   "#2563EB", // blue
@@ -32,8 +37,6 @@ function MapContent({ days, locale }: { days: GeneratedDay[]; locale: Locale }) 
   const markerLib = useMapsLibrary("marker");
   const circlesRef = useRef<google.maps.Circle[]>([]);
   const markersRef = useRef<google.maps.marker.AdvancedMarkerElement[]>([]);
-
-  const allCities = countries.flatMap((c) => c.cities);
 
   useEffect(() => {
     if (!map || !coreLib || !markerLib) return;
@@ -82,7 +85,7 @@ function MapContent({ days, locale }: { days: GeneratedDay[]; locale: Locale }) 
       circlesRef.current.push(circle);
 
       // Day label marker
-      const cityLabel = allCities.find((c) => c.id === day.city)?.label[locale] ?? day.city;
+      const cityLabel = ALL_CITIES.find((c) => c.id === day.city)?.label[locale] ?? day.city;
       const el = document.createElement("div");
       el.style.cssText = `
         background: ${color};
@@ -121,7 +124,7 @@ function MapContent({ days, locale }: { days: GeneratedDay[]; locale: Locale }) 
       markersRef.current.forEach((m) => (m.map = null));
       markersRef.current = [];
     };
-  }, [map, coreLib, markerLib, days, locale, allCities]);
+  }, [map, coreLib, markerLib, days, locale]);
 
   return null;
 }
@@ -136,7 +139,7 @@ function haversineMeters(a: { lat: number; lng: number }, b: { lat: number; lng:
   return R * 2 * Math.atan2(Math.sqrt(h), Math.sqrt(1 - h));
 }
 
-export function OverviewMap({ days, locale }: OverviewMapProps) {
+function OverviewMapInner({ days, locale }: OverviewMapProps) {
   if (!API_KEY) {
     return (
       <div className="w-full h-[300px] rounded-2xl border border-gray-200 bg-gray-50 flex items-center justify-center">
@@ -177,3 +180,8 @@ export function OverviewMap({ days, locale }: OverviewMapProps) {
     </div>
   );
 }
+
+// Memoized so parent re-renders (e.g. user editing form fields) don't force
+// the map to re-initialize markers / fitBounds when `days` and `locale` are
+// still referentially stable.
+export const OverviewMap = memo(OverviewMapInner);
