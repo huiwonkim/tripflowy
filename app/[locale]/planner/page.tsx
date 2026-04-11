@@ -10,7 +10,7 @@ import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@
 import { buildItinerary, getMatchedTours, getMatchedHotels } from "@/lib/itinerary-builder";
 import { dayCourses } from "@/data/day-courses";
 import { getCityInfo } from "@/data/city-info";
-import { durationLabel, styleLabel, travelerLabel } from "@/lib/utils";
+import { styleLabel, travelerLabel } from "@/lib/utils";
 import { DayPlanSection } from "@/components/itinerary/DayPlanSection";
 import { BudgetSection } from "@/components/itinerary/BudgetSection";
 import { FAQSection } from "@/components/itinerary/FAQSection";
@@ -332,23 +332,66 @@ function PlannerContent() {
         {itinerary && (
           <div className="mt-12 space-y-8">
             {/* Summary banner */}
-            <div className="bg-gradient-to-br from-blue-600 to-blue-800 rounded-3xl p-6 sm:p-8 text-white">
-              <div className="flex flex-wrap gap-2 mb-3">
-                {itinerary.cities.map((c) => {
-                  const city = allCities.find((ci) => ci.id === c);
-                  return <span key={c} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{city?.label[locale] ?? c}</span>;
-                })}
-                <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{durationLabel(Number(committedInput.duration), locale)}</span>
-                {committedInput.styles.map((s) => <span key={s} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{styleLabel(s, locale)}</span>)}
+            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-blue-700 to-violet-800 text-white p-8 sm:p-10">
+              {/* Decorative blobs */}
+              <div aria-hidden="true" className="pointer-events-none absolute -top-24 -right-20 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl" />
+              <div aria-hidden="true" className="pointer-events-none absolute -bottom-28 -left-16 w-64 h-64 bg-violet-500/25 rounded-full blur-3xl" />
+              {/* Subtle dot pattern overlay */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-[0.08]"
+                style={{
+                  backgroundImage: "radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)",
+                  backgroundSize: "18px 18px",
+                }}
+              />
+
+              <div className="relative z-10">
+                {/* Small top label */}
+                <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-6 border border-white/15">
+                  <Zap className="w-3.5 h-3.5" />
+                  {locale === "ko" ? "나만의 여행 일정" : "Your Itinerary"}
+                </div>
+
+                {/* Hero — city names */}
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-2">
+                  {itinerary.cities.map((c) => allCities.find((ci) => ci.id === c)?.label[locale] ?? c).join(" + ")}
+                </h2>
+
+                {/* Duration big subtitle */}
+                <p className="text-lg sm:text-xl font-semibold text-blue-100 mb-5">
+                  {locale === "ko"
+                    ? `${committedInput.duration}박 ${Number(committedInput.duration) + 1}일`
+                    : `${itinerary.duration}-Day Trip`}
+                </p>
+
+                {/* Metadata icon row */}
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-blue-100/90 mb-5">
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-4 h-4" />
+                    {locale === "ko"
+                      ? `${itinerary.cities.length}개 도시`
+                      : `${itinerary.cities.length} ${itinerary.cities.length === 1 ? "city" : "cities"}`}
+                  </span>
+                  {committedInput.travelerType && (
+                    <span className="flex items-center gap-1.5">
+                      <Users className="w-4 h-4" />
+                      {travelerLabel(committedInput.travelerType as TravelerType, locale)}
+                    </span>
+                  )}
+                </div>
+
+                {/* Style chips */}
+                {committedInput.styles.length > 0 && (
+                  <div className="flex flex-wrap gap-1.5">
+                    {committedInput.styles.map((s) => (
+                      <span key={s} className="bg-white/15 backdrop-blur-sm border border-white/15 text-white text-xs font-medium px-3 py-1 rounded-full">
+                        {styleLabel(s, locale)}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
-              <h2 className="text-xl sm:text-2xl font-bold mb-1">
-                {locale === "ko"
-                  ? `${itinerary.cities.map((c) => allCities.find((ci) => ci.id === c)?.label.ko ?? c).join(" + ")} ${committedInput.duration}박${Number(committedInput.duration) + 1}일`
-                  : `${itinerary.cities.map((c) => allCities.find((ci) => ci.id === c)?.label.en ?? c).join(" + ")} ${itinerary.duration}-Day Trip`}
-              </h2>
-              <p className="text-blue-200 text-sm">
-                {locale === "ko" ? `${itinerary.duration}개 코스 자동 조합` : `${itinerary.duration} courses auto-assembled`}
-              </p>
             </div>
 
             {/* Overview map — day zones */}
