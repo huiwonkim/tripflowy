@@ -504,17 +504,23 @@ function PlannerContent() {
                 })}
               </div>
 
-              {/* Refresh unlocked */}
-              {lockedDays.size > 0 && lockedDays.size < displayDays.length && (
+              {/* Refresh unlocked — shown from the start so users can
+                  reshuffle without needing to lock a day first. Hidden only
+                  when every day is already locked. */}
+              {lockedDays.size < displayDays.length && (
                 <div className="px-5 py-3 border-t border-gray-100">
                   <button
                     onClick={() => setRefreshKey((k) => k + 1)}
                     className="w-full flex items-center justify-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium py-2.5 px-4 rounded-xl transition-colors"
                   >
                     <RefreshCw className="w-4 h-4" />
-                    {locale === "ko"
-                      ? `마음에 안 드는 ${displayDays.length - lockedDays.size}개 일정만 다시 추천받기`
-                      : `Reshuffle ${displayDays.length - lockedDays.size} unlocked days`}
+                    {lockedDays.size === 0
+                      ? locale === "ko"
+                        ? "전체 일정 다시 추천받기"
+                        : "Reshuffle all days"
+                      : locale === "ko"
+                        ? `마음에 안 드는 ${displayDays.length - lockedDays.size}개 일정만 다시 추천받기`
+                        : `Reshuffle ${displayDays.length - lockedDays.size} unlocked days`}
                   </button>
                 </div>
               )}
