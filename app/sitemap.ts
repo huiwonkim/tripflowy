@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { dayCourses } from "@/data/day-courses";
 import { posts } from "@/data/posts";
 
-const BASE_URL = "https://tripflowy.com";
+const BASE_URL = "https://www.tripflowy.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [

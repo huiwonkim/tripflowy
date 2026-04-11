@@ -8,5 +8,5 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
-Sitemap: https://tripflowy.com/sitemap.xml
-Sitemap: https://tripflowy.com/rss.xml
+Sitemap: https://www.tripflowy.com/sitemap.xml
+Sitemap: https://www.tripflowy.com/rss.xml

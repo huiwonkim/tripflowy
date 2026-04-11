@@ -1,6 +1,6 @@
 import { posts } from "@/data/posts";
 
-const BASE_URL = "https://tripflowy.com";
+const BASE_URL = "https://www.tripflowy.com";
 const FEED_TITLE = "Tripflowy — 여행 가이드";
 const FEED_DESCRIPTION = "몇 초 만에 여행을 계획하세요. 여행지, 기간, 스타일을 알려주시면 완벽한 여행 루트를 추천해드립니다.";
 
