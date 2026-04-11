@@ -2,8 +2,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { TourCard } from "@/components/tours/TourCard";
 import { tours } from "@/data/tours";
 import { countries } from "@/data/destinations";
+import { generateBreadcrumbJsonLd } from "@/lib/jsonld";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
+
+const BASE_URL = "https://www.tripflowy.com";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -16,7 +19,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: t("heading"),
     description: t("subheading"),
-    alternates: { canonical: "/tours", languages: { en: "/tours", ko: "/ko/tours" } },
+    alternates: {
+      canonical: locale === "ko" ? "/ko/tours" : "/tours",
+      languages: { en: "/tours", ko: "/ko/tours", "x-default": "/tours" },
+    },
   };
 }
 
@@ -29,8 +35,17 @@ export default async function ToursPage({ params, searchParams }: PageProps) {
 
   const filtered = destination ? tours.filter((tour) => tour.destination === destination) : tours;
 
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: loc === "ko" ? "홈" : "Home", url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}` },
+    { name: t("heading"), url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}/tours` },
+  ]);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mb-8">
         <p className="text-sm font-medium text-amber-600 mb-1">{t("label")}</p>
         <h1 className="text-3xl font-bold text-gray-900">{t("heading")}</h1>

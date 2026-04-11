@@ -5,7 +5,9 @@ import { ArrowLeft, MapPin, Clock } from "lucide-react";
 import { dayCourses } from "@/data/day-courses";
 import { Badge } from "@/components/ui/Badge";
 import { styleLabel, travelerLabel } from "@/lib/utils";
-import { generateCourseJsonLd } from "@/lib/jsonld";
+import { generateCourseJsonLd, generateBreadcrumbJsonLd } from "@/lib/jsonld";
+
+const BASE_URL = "https://www.tripflowy.com";
 import type { Metadata } from "next";
 import type { Locale, DayActivity } from "@/types";
 
@@ -25,7 +27,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: course.title[loc],
     description: course.summary[loc],
-    alternates: { canonical: `/courses/${id}`, languages: { en: `/courses/${id}`, ko: `/ko/courses/${id}` } },
+    alternates: {
+      canonical: loc === "ko" ? `/ko/courses/${id}` : `/courses/${id}`,
+      languages: {
+        en: `/courses/${id}`,
+        ko: `/ko/courses/${id}`,
+        "x-default": `/courses/${id}`,
+      },
+    },
   };
 }
 
@@ -75,12 +84,21 @@ export default async function CourseDetailPage({ params }: PageProps) {
   if (!course) notFound();
 
   const courseJsonLd = generateCourseJsonLd(course, loc);
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: loc === "ko" ? "홈" : "Home", url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}` },
+    { name: t("allCourses"), url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}/courses` },
+    { name: course.title[loc], url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}/courses/${course.id}` },
+  ]);
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Link href="/courses" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-6">
         <ArrowLeft className="w-4 h-4" /> {t("allCourses")}

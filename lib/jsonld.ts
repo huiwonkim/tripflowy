@@ -88,6 +88,37 @@ export function generateBreadcrumbJsonLd(
   };
 }
 
+/**
+ * CollectionPage schema — use on listing pages (e.g. /posts, /courses)
+ * to help Google understand the page lists multiple items.
+ */
+export function generateCollectionPageJsonLd(params: {
+  name: string;
+  description: string;
+  url: string;
+  locale: Locale;
+  items: { name: string; url: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: params.name,
+    description: params.description,
+    url: params.url,
+    inLanguage: params.locale === "ko" ? "ko-KR" : "en-US",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: params.items.length,
+      itemListElement: params.items.map((item, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: item.name,
+        url: item.url,
+      })),
+    },
+  };
+}
+
 export function generateArticleJsonLd(post: BlogPost, locale: Locale) {
   return {
     "@context": "https://schema.org",

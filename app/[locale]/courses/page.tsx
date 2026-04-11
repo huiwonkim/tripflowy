@@ -2,8 +2,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CourseCard } from "@/components/course/CourseCard";
 import { dayCourses } from "@/data/day-courses";
 import { countries } from "@/data/destinations";
+import { generateCollectionPageJsonLd, generateBreadcrumbJsonLd } from "@/lib/jsonld";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
+
+const BASE_URL = "https://www.tripflowy.com";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -16,7 +19,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: t("heading"),
     description: t("subheading"),
-    alternates: { canonical: "/courses", languages: { en: "/courses", ko: "/ko/courses" } },
+    alternates: {
+      canonical: locale === "ko" ? "/ko/courses" : "/courses",
+      languages: { en: "/courses", ko: "/ko/courses", "x-default": "/courses" },
+    },
   };
 }
 
@@ -33,8 +39,36 @@ export default async function CoursesPage({ params, searchParams }: PageProps) {
   const citiesWithCourses = [...new Set(dayCourses.map((c) => c.city))];
   const allCities = countries.flatMap((c) => c.cities);
 
+  const pageUrl = `${BASE_URL}${loc === "ko" ? "/ko" : ""}/courses`;
+  const pageName = t("heading");
+  const pageDescription = t("subheading");
+
+  const collectionJsonLd = generateCollectionPageJsonLd({
+    name: pageName,
+    description: pageDescription,
+    url: pageUrl,
+    locale: loc,
+    items: dayCourses.map((course) => ({
+      name: course.title[loc],
+      url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}/courses/${course.id}`,
+    })),
+  });
+
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: loc === "ko" ? "홈" : "Home", url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}` },
+    { name: pageName, url: pageUrl },
+  ]);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mb-8">
         <p className="text-sm font-medium text-emerald-600 mb-1">{t("label")}</p>
         <h1 className="text-3xl font-bold text-gray-900">{t("heading")}</h1>

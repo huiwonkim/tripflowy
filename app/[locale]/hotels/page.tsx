@@ -2,8 +2,11 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { HotelCard } from "@/components/hotels/HotelCard";
 import { hotels } from "@/data/hotels";
 import { countries } from "@/data/destinations";
+import { generateBreadcrumbJsonLd } from "@/lib/jsonld";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
+
+const BASE_URL = "https://www.tripflowy.com";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -16,7 +19,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: t("heading"),
     description: t("subheading"),
-    alternates: { canonical: "/hotels", languages: { en: "/hotels", ko: "/ko/hotels" } },
+    alternates: {
+      canonical: locale === "ko" ? "/ko/hotels" : "/hotels",
+      languages: { en: "/hotels", ko: "/ko/hotels", "x-default": "/hotels" },
+    },
   };
 }
 
@@ -33,8 +39,17 @@ export default async function HotelsPage({ params, searchParams }: PageProps) {
     return true;
   });
 
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: loc === "ko" ? "홈" : "Home", url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}` },
+    { name: t("heading"), url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}/hotels` },
+  ]);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mb-8">
         <p className="text-sm font-medium text-blue-600 mb-1">{t("label")}</p>
         <h1 className="text-3xl font-bold text-gray-900">{t("heading")}</h1>

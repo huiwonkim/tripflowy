@@ -4,6 +4,20 @@ import { posts } from "@/data/posts";
 
 const BASE_URL = "https://www.tripflowy.com";
 
+/**
+ * "Site freshness" proxy for static pages: use the newest post's publish/update
+ * date so search engines see a meaningful lastModified instead of `new Date()`,
+ * which would tell crawlers every static page was modified on every fetch.
+ * Falls back to a fixed site-launch date if there are no posts.
+ */
+const SITE_FRESHNESS: Date = (() => {
+  const postDates = posts
+    .map((p) => new Date(p.updatedAt ?? p.publishedAt).getTime())
+    .filter((t) => Number.isFinite(t));
+  if (postDates.length === 0) return new Date("2026-04-01");
+  return new Date(Math.max(...postDates));
+})();
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
     { path: "", priority: 1.0 },
@@ -17,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticEntries: MetadataRoute.Sitemap = staticPages.map(({ path, priority }) => ({
     url: `${BASE_URL}${path}`,
-    lastModified: new Date(),
+    lastModified: SITE_FRESHNESS,
     changeFrequency: "weekly" as const,
     priority,
     alternates: {
@@ -40,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const courseEntries: MetadataRoute.Sitemap = dayCourses.map((course) => ({
     url: `${BASE_URL}/courses/${course.id}`,
-    lastModified: new Date(),
+    lastModified: SITE_FRESHNESS,
     changeFrequency: "weekly" as const,
     priority: 0.7,
     alternates: {

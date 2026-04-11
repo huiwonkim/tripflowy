@@ -5,8 +5,11 @@ import { posts } from "@/data/posts";
 import { countries } from "@/data/destinations";
 import { ArrowRight, Calendar } from "lucide-react";
 import { CategoryBadge } from "@/components/ui/CategoryBadge";
+import { generateCollectionPageJsonLd, generateBreadcrumbJsonLd } from "@/lib/jsonld";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
+
+const BASE_URL = "https://www.tripflowy.com";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -17,7 +20,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: locale === "ko" ? "여행 가이드 & 후기" : "Travel Guides & Reviews",
     description: locale === "ko" ? "인기 여행지의 상세 가이드와 방문 후기" : "In-depth guides and reviews for popular destinations",
-    alternates: { canonical: "/posts", languages: { en: "/posts", ko: "/ko/posts" } },
+    alternates: {
+      canonical: locale === "ko" ? "/ko/posts" : "/posts",
+      languages: { en: "/posts", ko: "/ko/posts", "x-default": "/posts" },
+    },
   };
 }
 
@@ -27,8 +33,36 @@ export default async function PostsPage({ params }: PageProps) {
   const loc = locale as Locale;
   const allCities = countries.flatMap((c) => c.cities);
 
+  const pageUrl = `${BASE_URL}${loc === "ko" ? "/ko" : ""}/posts`;
+  const pageName = loc === "ko" ? "여행 가이드 & 후기" : "Travel Guides & Reviews";
+  const pageDescription = loc === "ko" ? "인기 여행지의 상세 가이드와 방문 후기" : "In-depth guides and reviews for popular destinations";
+
+  const collectionJsonLd = generateCollectionPageJsonLd({
+    name: pageName,
+    description: pageDescription,
+    url: pageUrl,
+    locale: loc,
+    items: posts.map((post) => ({
+      name: post.title[loc],
+      url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}/posts/${post.slug}`,
+    })),
+  });
+
+  const breadcrumbJsonLd = generateBreadcrumbJsonLd([
+    { name: loc === "ko" ? "홈" : "Home", url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}` },
+    { name: pageName, url: pageUrl },
+  ]);
+
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <div className="mb-8">
         <p className="text-sm font-medium text-violet-600 mb-1">
           {loc === "ko" ? "깊이 있는 정보" : "In-depth info"}
