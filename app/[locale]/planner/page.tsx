@@ -38,6 +38,11 @@ function PlannerContent() {
   const tDetail = useTranslations("detail");
   const searchParams = useSearchParams();
   const [input, setInput] = useState<PlannerInput>(emptyInput);
+  // committedInput is the "submitted" snapshot of input that the itinerary is
+  // actually built from. Updating `input` via form edits no longer rebuilds
+  // the itinerary — the user has to click the search button (which copies
+  // input → committedInput) to apply changes.
+  const [committedInput, setCommittedInput] = useState<PlannerInput>(emptyInput);
   const [searched, setSearched] = useState(false);
   const [lockedDays, setLockedDays] = useState<Map<number, { courseId: string; city: string }>>(new Map());
   const [activeCountry, setActiveCountry] = useState(countries[0]?.id ?? "");
@@ -54,7 +59,9 @@ function PlannerContent() {
     const travelerType = (searchParams.get("travelerType") as TravelerType) ?? "";
     const styles = searchParams.get("styles")?.split(",").filter(Boolean) as TravelStyle[] ?? [];
     if (destinations.length > 0 || duration) {
-      setInput({ destinations, duration, travelerType, styles });
+      const next = { destinations, duration, travelerType, styles };
+      setInput(next);
+      setCommittedInput(next);
       setSearched(true);
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 300);
     }
@@ -72,19 +79,19 @@ function PlannerContent() {
   }
 
   const itinerary = useMemo<GeneratedItinerary | null>(() => {
-    if (!searched || !input.destinations.length || !input.duration) return null;
+    if (!searched || !committedInput.destinations.length || !committedInput.duration) return null;
     const locked = lockedDays.size > 0
       ? Array.from(lockedDays.entries()).map(([dayNumber, { courseId, city }]) => ({ dayNumber, courseId, city }))
       : undefined;
     return buildItinerary({
-      destinations: input.destinations,
-      duration: Number(input.duration) + 1,
-      styles: input.styles.length > 0 ? input.styles : undefined,
-      travelerType: input.travelerType || undefined,
+      destinations: committedInput.destinations,
+      duration: Number(committedInput.duration) + 1,
+      styles: committedInput.styles.length > 0 ? committedInput.styles : undefined,
+      travelerType: committedInput.travelerType || undefined,
       lockedDays: locked,
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searched, input, refreshKey]);
+  }, [searched, committedInput, refreshKey]);
 
   // Sync dayOrder when itinerary changes, or restore from URL (once)
   useEffect(() => {
@@ -123,8 +130,13 @@ function PlannerContent() {
 
   function handleSearch(e: React.FormEvent) {
     e.preventDefault();
+    // Commit the current form state — this is the snapshot the itinerary
+    // is rebuilt from. Further form edits won't touch the itinerary until
+    // the user clicks search again.
+    setCommittedInput(input);
     setSearched(true);
     setLockedDays(new Map());
+    setDayOrder([]); // clear prior day ordering so the new committed input rebuilds freshly
     // Update URL so back button preserves results
     const params = new URLSearchParams();
     if (input.destinations.length) params.set("destinations", input.destinations.join(","));
@@ -326,12 +338,12 @@ function PlannerContent() {
                   const city = allCities.find((ci) => ci.id === c);
                   return <span key={c} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{city?.label[locale] ?? c}</span>;
                 })}
-                <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{durationLabel(Number(input.duration), locale)}</span>
-                {input.styles.map((s) => <span key={s} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{styleLabel(s, locale)}</span>)}
+                <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{durationLabel(Number(committedInput.duration), locale)}</span>
+                {committedInput.styles.map((s) => <span key={s} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{styleLabel(s, locale)}</span>)}
               </div>
               <h2 className="text-xl sm:text-2xl font-bold mb-1">
                 {locale === "ko"
-                  ? `${itinerary.cities.map((c) => allCities.find((ci) => ci.id === c)?.label.ko ?? c).join(" + ")} ${input.duration}박${Number(input.duration) + 1}일`
+                  ? `${itinerary.cities.map((c) => allCities.find((ci) => ci.id === c)?.label.ko ?? c).join(" + ")} ${committedInput.duration}박${Number(committedInput.duration) + 1}일`
                   : `${itinerary.cities.map((c) => allCities.find((ci) => ci.id === c)?.label.en ?? c).join(" + ")} ${itinerary.duration}-Day Trip`}
               </h2>
               <p className="text-blue-200 text-sm">
@@ -417,7 +429,7 @@ function PlannerContent() {
               )}
 
               {/* Save itinerary */}
-              <SaveItineraryDropdown locale={locale} days={displayDays} duration={input.duration} itinerary={itinerary} />
+              <SaveItineraryDropdown locale={locale} days={displayDays} duration={committedInput.duration} itinerary={itinerary} />
             </section>
 
             {/* Day-by-day with per-day maps */}
@@ -483,7 +495,7 @@ function PlannerContent() {
 
             {/* Budget */}
             {itinerary && (
-              <BudgetSection itinerary={itinerary} locale={locale} nights={Number(input.duration)} />
+              <BudgetSection itinerary={itinerary} locale={locale} nights={Number(committedInput.duration)} />
             )}
 
             {/* City Info */}
