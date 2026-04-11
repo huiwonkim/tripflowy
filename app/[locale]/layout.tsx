@@ -1,11 +1,15 @@
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
+import Script from "next/script";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+
+const GA_MEASUREMENT_ID = "G-3Y8XB545M3";
+const ADSENSE_CLIENT_ID = "ca-pub-1445087798097280";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -62,6 +66,7 @@ export async function generateMetadata({
     verification: {
       other: {
         "naver-site-verification": "49a63fc5aa8b8b14b2e9a62ea493b057f70bae1c",
+        "google-adsense-account": ADSENSE_CLIENT_ID,
       },
     },
   };
@@ -83,6 +88,20 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${geist.variable} h-full`}>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-geist)] antialiased bg-[#f8fafc] text-[#0f172a]">
+        {/* Google Analytics 4 (gtag.js) */}
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-1">{children}</main>
