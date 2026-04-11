@@ -122,6 +122,24 @@ function PlannerContent() {
 
   const displayDays = dayOrder.length > 0 ? dayOrder : (itinerary?.days ?? []);
 
+  // Primary city (most days) drives the banner hero image — matches BudgetSection.
+  const primaryCityId = useMemo(() => {
+    if (displayDays.length === 0) return null;
+    const counts: Record<string, number> = {};
+    for (const d of displayDays) counts[d.city] = (counts[d.city] ?? 0) + 1;
+    return Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null;
+  }, [displayDays]);
+
+  const heroImageUrl = primaryCityId
+    ? countries.flatMap((c) => c.cities).find((c) => c.id === primaryCityId)?.heroImage
+    : undefined;
+  const [heroImageFailed, setHeroImageFailed] = useState(false);
+  // Reset the failed flag whenever the target URL changes so a new city gets a fresh try.
+  useEffect(() => {
+    setHeroImageFailed(false);
+  }, [heroImageUrl]);
+  const showHeroImage = Boolean(heroImageUrl) && !heroImageFailed;
+
   const matchedTours = itinerary ? getMatchedTours(itinerary) : [];
   const matchedHotels = itinerary ? getMatchedHotels(itinerary) : [];
   const cityInfos = itinerary ? [...new Set(itinerary.cities)].map(getCityInfo).filter(Boolean) : [];
@@ -333,6 +351,27 @@ function PlannerContent() {
           <div className="mt-12 space-y-8">
             {/* Summary banner */}
             <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 via-blue-700 to-violet-800 text-white px-5 py-5 sm:px-7 sm:py-6">
+              {/* Hero city image (primary city). Silently falls back to the
+                  gradient-only design when the image file is missing.
+                  Uses a plain <img> instead of next/image so that onError
+                  fires cleanly for 404s without engaging the optimizer. */}
+              {showHeroImage && heroImageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={heroImageUrl}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover"
+                  onError={() => setHeroImageFailed(true)}
+                  aria-hidden="true"
+                />
+              )}
+              {/* Dark gradient overlay over the image so the title stays readable */}
+              {showHeroImage && (
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-900/85 via-blue-900/75 to-violet-900/85"
+                />
+              )}
               {/* Decorative blobs (smaller, tighter) */}
               <div aria-hidden="true" className="pointer-events-none absolute -top-16 -right-12 w-48 h-48 bg-blue-400/20 rounded-full blur-3xl" />
               <div aria-hidden="true" className="pointer-events-none absolute -bottom-16 -left-10 w-40 h-40 bg-violet-500/25 rounded-full blur-3xl" />

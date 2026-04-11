@@ -220,6 +220,8 @@ export type Destination = {
   id: string;
   label: LocaleString;
   countryId: string;
+  /** Hero/banner image shown behind the summary banner on the planner. */
+  heroImage?: string;
 };
 
 export type Country = {

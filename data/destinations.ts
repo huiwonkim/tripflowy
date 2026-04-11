@@ -1,16 +1,18 @@
 import type { Country, Destination, LocaleString } from "@/types";
 
 // ── MVP 활성 도시 (7개) ──────────────────────────────
+// heroImage points to public/images/city-heroes/{cityId}.jpg. If the file
+// is missing the planner banner falls back to the gradient-only background.
 export const countries: Country[] = [
   {
     id: "japan",
     label: { en: "Japan", ko: "일본" },
     emoji: "🇯🇵",
     cities: [
-      { id: "tokyo", label: { en: "Tokyo", ko: "도쿄" }, countryId: "japan" },
-      { id: "osaka", label: { en: "Osaka", ko: "오사카" }, countryId: "japan" },
-      { id: "kyoto", label: { en: "Kyoto", ko: "교토" }, countryId: "japan" },
-      { id: "fukuoka", label: { en: "Fukuoka", ko: "후쿠오카" }, countryId: "japan" },
+      { id: "tokyo", label: { en: "Tokyo", ko: "도쿄" }, countryId: "japan", heroImage: "/images/city-heroes/tokyo.jpg" },
+      { id: "osaka", label: { en: "Osaka", ko: "오사카" }, countryId: "japan", heroImage: "/images/city-heroes/osaka.jpg" },
+      { id: "kyoto", label: { en: "Kyoto", ko: "교토" }, countryId: "japan", heroImage: "/images/city-heroes/kyoto.jpg" },
+      { id: "fukuoka", label: { en: "Fukuoka", ko: "후쿠오카" }, countryId: "japan", heroImage: "/images/city-heroes/fukuoka.jpg" },
     ],
   },
   {
@@ -18,8 +20,8 @@ export const countries: Country[] = [
     label: { en: "Vietnam", ko: "베트남" },
     emoji: "🇻🇳",
     cities: [
-      { id: "danang", label: { en: "Da Nang", ko: "다낭" }, countryId: "vietnam" },
-      { id: "nhatrang", label: { en: "Nha Trang", ko: "나트랑" }, countryId: "vietnam" },
+      { id: "danang", label: { en: "Da Nang", ko: "다낭" }, countryId: "vietnam", heroImage: "/images/city-heroes/danang.jpg" },
+      { id: "nhatrang", label: { en: "Nha Trang", ko: "나트랑" }, countryId: "vietnam", heroImage: "/images/city-heroes/nhatrang.jpg" },
     ],
   },
   {
@@ -27,7 +29,7 @@ export const countries: Country[] = [
     label: { en: "China", ko: "중국" },
     emoji: "🇨🇳",
     cities: [
-      { id: "shanghai", label: { en: "Shanghai", ko: "상하이" }, countryId: "china" },
+      { id: "shanghai", label: { en: "Shanghai", ko: "상하이" }, countryId: "china", heroImage: "/images/city-heroes/shanghai.jpg" },
     ],
   },
 ];
