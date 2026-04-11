@@ -69,6 +69,10 @@ export type DayCourse = {
   coverGradient: string;
   costs?: DayCostBreakdown;
   googleMapsUrl?: string;        // 수동 입력한 Google Maps 경로/리스트 링크
+  mapImage?: {                   // 로케일별 캡처 지도 이미지 (public/ 경로)
+    en: string;
+    ko: string;
+  };
 };
 
 // ── 항공/숙소 가격 추정 ────────────────────────────

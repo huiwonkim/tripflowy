@@ -3,8 +3,9 @@
 import { Suspense, useState, useRef, useEffect, useMemo } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw, ArrowUp, ArrowDown } from "lucide-react";
+import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw, ArrowUp, ArrowDown, Map as MapIcon } from "lucide-react";
 import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 import { buildItinerary, getMatchedTours, getMatchedHotels } from "@/lib/itinerary-builder";
 import { dayCourses } from "@/data/day-courses";
@@ -15,7 +16,6 @@ import { BudgetSection } from "@/components/itinerary/BudgetSection";
 import { FAQSection } from "@/components/itinerary/FAQSection";
 import { TourCard } from "@/components/tours/TourCard";
 import { HotelCard } from "@/components/hotels/HotelCard";
-import { ItineraryMap } from "@/components/map/ItineraryMap";
 import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
 import { CityInfoCard } from "@/components/itinerary/CityInfoCard";
 import { SaveItineraryDropdown } from "@/components/ui/SaveItineraryDropdown";
@@ -438,8 +438,27 @@ function PlannerContent() {
                           </span>
                         </div>
                       )}
-                      {/* Per-day map */}
-                      <ItineraryMap days={[day]} locale={locale} mapId={`day-${day.dayNumber}`} height={280} />
+                      {/* Per-day map (user-uploaded, locale-specific). Falls back to a placeholder. */}
+                      {day.course.mapImage?.[locale] ? (
+                        <div className="relative w-full rounded-xl overflow-hidden border border-gray-100" style={{ aspectRatio: "800 / 280" }}>
+                          <Image
+                            src={day.course.mapImage[locale]}
+                            alt={locale === "ko" ? `Day ${day.dayNumber} ${day.course.title.ko} 지도` : `Day ${day.dayNumber} ${day.course.title.en} map`}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 800px"
+                            className="object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="h-[200px] rounded-xl bg-gray-50 border border-dashed border-gray-200 flex items-center justify-center">
+                          <div className="text-center px-4">
+                            <MapIcon className="w-7 h-7 text-gray-300 mx-auto mb-1.5" />
+                            <p className="text-sm text-gray-400">
+                              {locale === "ko" ? "일자별 지도 준비 중" : "Day map coming soon"}
+                            </p>
+                          </div>
+                        </div>
+                      )}
                       <div className="mt-3">
                         <DayPlanSection
                           day={{

@@ -82,7 +82,8 @@ export function DownloadPDFButton({ locale, days, duration, itinerary }: Downloa
         .overview-num { background: #2563EB; color: white; font-weight: 700; font-size: 10px; width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .overview-title { font-size: 13px; font-weight: 600; }
         .overview-summary { font-size: 11px; color: #999; }
-        @media print { body { padding: 20px; } }
+        img { max-width: 100%; height: auto; }
+        @media print { body { padding: 20px; } img { page-break-inside: avoid; } }
       </style>
     </head><body>`;
 
@@ -104,10 +105,18 @@ export function DownloadPDFButton({ locale, days, duration, itinerary }: Downloa
 
     // Day details
     html += `<h2>${locale === "ko" ? "📍 일자별 상세 일정" : "📍 Day-by-Day Details"}</h2>`;
+    const origin = typeof window !== "undefined" ? window.location.origin : "";
     for (const day of days) {
       const cityLabel = allCities.find((c) => c.id === day.city)?.label[locale] ?? day.city;
       html += `<div class="day-header"><div class="day-num">${day.dayNumber}</div><div class="day-title">${day.course.title[locale]}</div></div>`;
       html += `<div class="day-city">${cityLabel}</div>`;
+
+      // Day map image (locale-specific, if uploaded)
+      const mapImagePath = day.course.mapImage?.[locale];
+      if (mapImagePath) {
+        const absoluteUrl = mapImagePath.startsWith("http") ? mapImagePath : `${origin}${mapImagePath}`;
+        html += `<img src="${absoluteUrl}" style="width: 100%; max-width: 700px; border-radius: 8px; margin: 8px 0; border: 1px solid #eee;" />`;
+      }
 
       for (const act of day.course.activities) {
         html += `<div class="activity">`;

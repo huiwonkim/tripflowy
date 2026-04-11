@@ -96,8 +96,18 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
   function openAll() {
     const selected = items.filter((item) => checked.has(item.id));
     if (selected.length === 0) return;
+    // Browsers block multiple sequential window.open() calls as popups.
+    // Create temporary anchor elements and synchronously click them while
+    // still inside the user-gesture event handler — most browsers treat
+    // each anchor click as a valid user navigation and allow all tabs to open.
     for (const item of selected) {
-      window.open(item.url, "_blank", "noopener,noreferrer");
+      const a = document.createElement("a");
+      a.href = item.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer sponsored";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   }
 
