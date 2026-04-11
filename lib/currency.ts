@@ -3,13 +3,13 @@ import type { Locale } from "@/types";
 /** City → local currency code */
 export const cityToCurrency: Record<string, string> = {
   // Vietnam
-  danang: "VND", nhatrang: "VND", hanoi: "VND",
+  danang: "VND", nhatrang: "VND",
   // Thailand
   bangkok: "THB", pattaya: "THB", chiangmai: "THB", phuket: "THB",
   // Indonesia
   bali: "IDR",
   // Japan
-  tokyo: "JPY", osaka: "JPY", kyoto: "JPY", nagoya: "JPY", fukuoka: "JPY",
+  tokyo: "JPY", osaka: "JPY", kyoto: "JPY", fukuoka: "JPY",
   // Europe
   paris: "EUR", rome: "EUR", florence: "EUR", venice: "EUR",
   barcelona: "EUR",

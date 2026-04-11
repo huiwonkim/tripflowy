@@ -1,6 +1,6 @@
 import type { Country, Destination, LocaleString } from "@/types";
 
-// ── MVP 활성 도시 (9개) ──────────────────────────────
+// ── MVP 활성 도시 (7개) ──────────────────────────────
 export const countries: Country[] = [
   {
     id: "japan",
@@ -10,7 +10,6 @@ export const countries: Country[] = [
       { id: "tokyo", label: { en: "Tokyo", ko: "도쿄" }, countryId: "japan" },
       { id: "osaka", label: { en: "Osaka", ko: "오사카" }, countryId: "japan" },
       { id: "kyoto", label: { en: "Kyoto", ko: "교토" }, countryId: "japan" },
-      { id: "nagoya", label: { en: "Nagoya", ko: "나고야" }, countryId: "japan" },
       { id: "fukuoka", label: { en: "Fukuoka", ko: "후쿠오카" }, countryId: "japan" },
     ],
   },
@@ -21,7 +20,6 @@ export const countries: Country[] = [
     cities: [
       { id: "danang", label: { en: "Da Nang", ko: "다낭" }, countryId: "vietnam" },
       { id: "nhatrang", label: { en: "Nha Trang", ko: "나트랑" }, countryId: "vietnam" },
-      { id: "hanoi", label: { en: "Hanoi", ko: "하노이" }, countryId: "vietnam" },
     ],
   },
   {
@@ -44,6 +42,8 @@ export type ComingSoonCountry = {
 export const comingSoonCountries: ComingSoonCountry[] = [
   { id: "thailand", label: { en: "Thailand", ko: "태국" }, emoji: "🇹🇭" },
   { id: "indonesia", label: { en: "Indonesia", ko: "인도네시아" }, emoji: "🇮🇩" },
+  { id: "hongkong", label: { en: "Hong Kong", ko: "홍콩" }, emoji: "🇭🇰" },
+  { id: "macau", label: { en: "Macau", ko: "마카오" }, emoji: "🇲🇴" },
   { id: "france", label: { en: "France", ko: "프랑스" }, emoji: "🇫🇷" },
   { id: "italy", label: { en: "Italy", ko: "이탈리아" }, emoji: "🇮🇹" },
   { id: "spain", label: { en: "Spain", ko: "스페인" }, emoji: "🇪🇸" },

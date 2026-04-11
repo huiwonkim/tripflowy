@@ -3,7 +3,6 @@ export const cityToAirport: Record<string, string> = {
   // Vietnam
   danang: "DAD",
   nhatrang: "CXR",
-  hanoi: "HAN",
   // Thailand
   bangkok: "BKK",
   pattaya: "BKK",    // uses Bangkok airport
@@ -15,7 +14,6 @@ export const cityToAirport: Record<string, string> = {
   tokyo: "NRT",
   osaka: "KIX",
   kyoto: "KIX",      // uses Osaka airport
-  nagoya: "NGO",
   fukuoka: "FUK",
   // France
   paris: "CDG",

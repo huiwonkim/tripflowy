@@ -38,7 +38,6 @@ export const mrtCityCodes: Record<string, MrtCityInfo> = {
   // Vietnam — Vietnamese carriers
   danang:    { cityCode: "DAD", keyword: "다낭",     localAirlines: ["VN", "VJ", "BL", "QH"] },
   nhatrang:  { cityCode: "CXR", keyword: "나트랑",   localAirlines: ["VN", "VJ", "BL", "QH"] },
-  hanoi:     { cityCode: "HAN", keyword: "하노이",   localAirlines: ["VN", "VJ", "BL", "QH"] },
   // Thailand — Thai carriers (WE/Thai Smile operates direct ICN-BKK)
   bangkok:   { cityCode: "BKK", keyword: "방콕",     localAirlines: ["TG", "FD", "SL", "XJ", "WE"] },
   pattaya:   { cityCode: "BKK", keyword: "파타야",   localAirlines: ["TG", "FD", "SL", "XJ", "WE"] },
@@ -50,7 +49,6 @@ export const mrtCityCodes: Record<string, MrtCityInfo> = {
   tokyo:     { cityCode: "NRT", keyword: "도쿄",     localAirlines: ["JL", "NH", "MM", "APJ", "GK", "ZG"] },
   osaka:     { cityCode: "KIX", keyword: "오사카",   localAirlines: ["JL", "NH", "MM", "APJ", "GK", "ZG"] },
   kyoto:     { cityCode: "KIX", keyword: "교토",     localAirlines: ["JL", "NH", "MM", "APJ", "GK", "ZG"] },
-  nagoya:    { cityCode: "NGO", keyword: "나고야",   localAirlines: ["JL", "NH", "GK"] },
   fukuoka:   { cityCode: "FUK", keyword: "후쿠오카", localAirlines: ["JL", "NH", "APJ"] },
   // Europe — European flag carriers (some transit is unavoidable long-haul)
   paris:     { cityCode: "CDG", keyword: "파리",     localAirlines: ["AF"] },

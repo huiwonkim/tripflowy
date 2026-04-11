@@ -374,43 +374,6 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 12.1910, lng: 109.2217 }, tags: ["diving", "marine", "adventure"], coverGradient: "from-blue-500 to-indigo-700" },
 
   // ════════════════════════════════════════════════════
-  // HANOI (5 courses)
-  // ════════════════════════════════════════════════════
-  { id: "hanoi-old-quarter", city: "hanoi", title: { en: "Old Quarter & Hoan Kiem Lake", ko: "구시가지 & 호안끼엠 호수" }, summary: { en: "Walk the 36 streets, visit the lake temple, and eat pho.", ko: "36거리 산책, 호수 사원 방문, 쌀국수." }, styles: ["relax", "efficient"], travelerTypes: ["solo", "couple", "friends"], activities: [
-    { time: "08:00", title: { en: "Pho breakfast at Pho Gia Truyen", ko: "포 자 트루옌에서 아침 쌀국수" }, description: { en: "Hanoi's most famous pho shop. Arrive early.", ko: "하노이에서 가장 유명한 쌀국수 맛집." }, type: "dining", location: { lat: 21.0355, lng: 105.8530 } },
-    { time: "09:30", title: { en: "Old Quarter walking tour", ko: "구시가지 도보 투어" }, description: { en: "Explore the historic 36 streets — each named after its trade.", ko: "각 거리가 거래 품목으로 이름 붙은 36거리 탐방." }, type: "sightseeing", location: { lat: 21.0340, lng: 105.8510 } },
-    { time: "12:00", title: { en: "Hoan Kiem Lake & Ngoc Son Temple", ko: "호안끼엠 호수 & 옥산 사원" }, description: { en: "Red bridge to the island temple in the lake.", ko: "호수 위 섬 사원으로 이어지는 빨간 다리." }, type: "sightseeing", location: { lat: 21.0288, lng: 105.8525 } },
-    { time: "14:00", title: { en: "Egg coffee at Cafe Giang", ko: "카페 장에서 에그 커피" }, description: { en: "Hanoi's iconic egg coffee — creamy and unique.", ko: "하노이의 상징적인 에그 커피." }, type: "dining", location: { lat: 21.0335, lng: 105.8520 } },
-  ], center: { lat: 21.0330, lng: 105.8521 }, tags: ["old-quarter", "cultural", "food"], coverGradient: "from-yellow-500 to-amber-600" },
-
-  { id: "hanoi-ho-chi-minh-mausoleum", city: "hanoi", title: { en: "Ho Chi Minh Complex & Temple of Literature", ko: "호치민 묘소 & 문묘" }, summary: { en: "Vietnam's political heart and the country's first university.", ko: "베트남 정치의 중심과 최초의 대학." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family"], activities: [
-    { time: "08:00", title: { en: "Ho Chi Minh Mausoleum", ko: "호치민 묘소" }, description: { en: "Open mornings only. Queue can be long — arrive by 7:30.", ko: "오전에만 개방. 줄이 길 수 있어 7:30까지 도착하세요." }, type: "sightseeing", location: { lat: 21.0369, lng: 105.8345 } },
-    { time: "10:00", title: { en: "One Pillar Pagoda", ko: "일주사" }, description: { en: "Tiny pagoda on a single stone pillar — iconic symbol.", ko: "하나의 돌 기둥 위 작은 탑 — 상징적 건축물." }, type: "sightseeing", location: { lat: 21.0360, lng: 105.8340 } },
-    { time: "11:30", title: { en: "Temple of Literature", ko: "문묘" }, description: { en: "Vietnam's first university (1070). Beautiful traditional architecture.", ko: "베트남 최초 대학(1070년). 전통 건축의 아름다움." }, type: "sightseeing", location: { lat: 21.0275, lng: 105.8355 } },
-    { time: "13:30", title: { en: "Bun cha lunch", ko: "분짜 점심" }, description: { en: "Hanoi's other iconic dish — grilled pork with noodles.", ko: "하노이의 또 다른 명물 — 구운 돼지고기와 국수." }, type: "dining", location: { lat: 21.0300, lng: 105.8400 } },
-  ], center: { lat: 21.0326, lng: 105.8360 }, tags: ["history", "cultural", "political"], coverGradient: "from-red-500 to-rose-700" },
-
-  { id: "hanoi-west-lake", city: "hanoi", title: { en: "West Lake & Tay Ho Cafes", ko: "서호 & 떠이호 카페" }, summary: { en: "Cycle around Hanoi's largest lake, visit Tran Quoc Pagoda.", ko: "하노이 최대 호수 자전거, 쩐꾸옥 사원 방문." }, styles: ["relax"], travelerTypes: ["couple", "solo"], activities: [
-    { time: "09:00", title: { en: "Cycle around West Lake", ko: "서호 자전거" }, description: { en: "17km lakeside cycling path. Rent a bike nearby.", ko: "17km 호수 자전거 도로. 근처에서 자전거 대여." }, type: "free", location: { lat: 21.0580, lng: 105.8230 } },
-    { time: "11:00", title: { en: "Tran Quoc Pagoda", ko: "쩐꾸옥 사원" }, description: { en: "Hanoi's oldest pagoda (6th century) on a tiny lake island.", ko: "하노이에서 가장 오래된 사원(6세기)." }, type: "sightseeing", location: { lat: 21.0480, lng: 105.8360 } },
-    { time: "13:00", title: { en: "Lakeside cafe lunch", ko: "호수 카페 점심" }, description: { en: "Trendy cafes along the eastern shore of West Lake.", ko: "서호 동쪽 해안의 트렌디한 카페." }, type: "dining", location: { lat: 21.0550, lng: 105.8350 } },
-  ], center: { lat: 21.0537, lng: 105.8313 }, tags: ["lake", "cycling", "pagoda", "cafe"], coverGradient: "from-emerald-400 to-teal-600" },
-
-  { id: "hanoi-street-food-night", city: "hanoi", title: { en: "Hanoi Street Food Evening", ko: "하노이 길거리 음식 저녁" }, summary: { en: "Evening food crawl through the best street food stalls.", ko: "최고의 길거리 음식 노점을 돌아보는 저녁." }, styles: ["efficient", "activity"], travelerTypes: ["solo", "friends"], activities: [
-    { time: "17:00", title: { en: "Banh mi & beer corner", ko: "반미 & 맥주 코너" }, description: { en: "Start with Vietnam's famous sandwich and bia hoi (draft beer).", ko: "베트남 유명 샌드위치와 비아 호이(생맥주)로 시작." }, type: "dining", location: { lat: 21.0340, lng: 105.8500 } },
-    { time: "18:30", title: { en: "Bun bo Nam Bo", ko: "분보남보" }, description: { en: "Dry noodle salad with beef — unique to Hanoi.", ko: "소고기 비빔 국수 — 하노이 특유의 요리." }, type: "dining", location: { lat: 21.0330, lng: 105.8530 } },
-    { time: "20:00", title: { en: "Night market walk", ko: "야시장 산책" }, description: { en: "Friday-Sunday night market in the Old Quarter.", ko: "금~일 구시가지 야시장." }, type: "shopping", location: { lat: 21.0350, lng: 105.8520 } },
-    { time: "21:00", title: { en: "Water puppet show", ko: "수상 인형극" }, description: { en: "Traditional Vietnamese water puppetry at Thang Long Theatre.", ko: "탕롱 극장에서 전통 수상 인형극." }, type: "tour", location: { lat: 21.0295, lng: 105.8535 } },
-  ], center: { lat: 21.0329, lng: 105.8521 }, tags: ["street-food", "night-market", "culture"], coverGradient: "from-orange-500 to-red-600" },
-
-  { id: "hanoi-ninh-binh-daytrip", city: "hanoi", title: { en: "Ninh Binh Day Trip", ko: "닌빈 당일 여행" }, summary: { en: "Boat through Tam Coc's rice paddies and limestone karsts.", ko: "땀꼭 논과 석회암 카르스트 보트 투어." }, styles: ["activity", "efficient"], travelerTypes: ["couple", "solo", "friends"], activities: [
-    { time: "07:00", title: { en: "Drive to Ninh Binh", ko: "닌빈으로 이동" }, description: { en: "2-hour drive south from Hanoi.", ko: "하노이에서 남쪽으로 2시간 운전." }, type: "transport", location: { lat: 21.0285, lng: 105.8542 } },
-    { time: "09:30", title: { en: "Tam Coc boat ride", ko: "땀꼭 보트 투어" }, description: { en: "Row through caves and rice paddies — 'Ha Long Bay on land'.", ko: "동굴과 논 사이로 보트 — '육지의 하롱베이'." }, type: "tour", location: { lat: 20.2150, lng: 105.9380 } },
-    { time: "13:00", title: { en: "Goat meat lunch", ko: "염소 고기 점심" }, description: { en: "Ninh Binh's specialty — grilled goat with herbs.", ko: "닌빈 특산물 — 허브와 구운 염소 고기." }, type: "dining", location: { lat: 20.2530, lng: 105.9750 } },
-    { time: "14:30", title: { en: "Mua Cave viewpoint", ko: "무아 동굴 전망대" }, description: { en: "500 steps to the top for panoramic karst views.", ko: "500계단 올라가면 파노라마 카르스트 전경." }, type: "sightseeing", location: { lat: 20.2180, lng: 105.9400 } },
-  ], center: { lat: 20.2265, lng: 105.9455 }, tags: ["boat", "karst", "nature", "day-trip"], coverGradient: "from-lime-500 to-green-700" },
-
-  // ════════════════════════════════════════════════════
   // PATTAYA (4 courses)
   // ════════════════════════════════════════════════════
   { id: "pattaya-beach-walking-street", city: "pattaya", title: { en: "Beach Day & Walking Street", ko: "해변 & 워킹 스트리트" }, summary: { en: "Pattaya Beach by day, famous Walking Street by night.", ko: "낮에는 파타야 해변, 밤에는 워킹 스트리트." }, styles: ["relax", "activity"], travelerTypes: ["solo", "friends"], activities: [
@@ -628,27 +591,6 @@ export const dayCourses: DayCourse[] = [
     { time: "14:00", title: { en: "Gojo-zaka pottery street", ko: "고조자카 도자기 거리" }, description: { en: "Browse and buy Kiyomizu-yaki ceramics.", ko: "기요미즈야키 도자기 감상과 구매." }, type: "shopping", location: { lat: 34.9960, lng: 135.7820 } },
     { time: "16:00", title: { en: "Kodai-ji Temple evening", ko: "고다이지 사원 저녁" }, description: { en: "Zen temple with beautiful moss garden.", ko: "아름다운 이끼 정원이 있는 선 사원." }, type: "sightseeing", location: { lat: 35.0003, lng: 135.7805 } },
   ], center: { lat: 34.9983, lng: 135.7809 }, tags: ["pottery", "traditional", "stone-streets"], coverGradient: "from-slate-400 to-gray-600" },
-
-  // ════════════════════════════════════════════════════
-  // NAGOYA (3 courses)
-  // ════════════════════════════════════════════════════
-  { id: "nagoya-castle-osu", city: "nagoya", title: { en: "Nagoya Castle & Osu District", ko: "나고야 성 & 오스 지구" }, summary: { en: "Gold shachi castle and Nagoya's retro shopping district.", ko: "금빛 샤치 성과 나고야 레트로 상가." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family"], activities: [
-    { time: "09:00", title: { en: "Nagoya Castle", ko: "나고야 성" }, description: { en: "Tokugawa's castle with golden dolphins on the roof.", ko: "지붕 위 금빛 돌고래가 있는 도쿠가와의 성." }, type: "sightseeing", location: { lat: 35.1856, lng: 136.8997 } },
-    { time: "12:00", title: { en: "Misokatsu lunch", ko: "미소카쓰 점심" }, description: { en: "Nagoya's signature red miso pork cutlet.", ko: "나고야 명물 빨간 미소 돈까스." }, type: "dining", location: { lat: 35.1700, lng: 136.9020 } },
-    { time: "14:00", title: { en: "Osu Shopping District", ko: "오스 상가" }, description: { en: "Retro arcade, vintage shops, and street food.", ko: "레트로 오락실, 빈티지 숍, 길거리 음식." }, type: "shopping", location: { lat: 35.1580, lng: 136.9010 } },
-  ], center: { lat: 35.1712, lng: 136.9009 }, tags: ["castle", "shopping", "retro"], coverGradient: "from-yellow-500 to-amber-600" },
-
-  { id: "nagoya-atsuta-sakae", city: "nagoya", title: { en: "Atsuta Shrine & Sakae Nightlife", ko: "아쓰타 신궁 & 사카에" }, summary: { en: "Sacred shrine, then Nagoya's entertainment district.", ko: "신성한 신궁 후 나고야 번화가." }, styles: ["relax", "efficient"], travelerTypes: ["solo", "friends"], activities: [
-    { time: "09:00", title: { en: "Atsuta Shrine", ko: "아쓰타 신궁" }, description: { en: "One of Japan's most sacred Shinto shrines.", ko: "일본에서 가장 신성한 신토 신궁 중 하나." }, type: "sightseeing", location: { lat: 35.1283, lng: 136.9084 } },
-    { time: "11:30", title: { en: "Hitsumabushi eel lunch", ko: "히쓰마부시 장어 점심" }, description: { en: "Nagoya-style grilled eel — eat it three ways.", ko: "나고야식 장어구이 — 3가지 방법으로." }, type: "dining", location: { lat: 35.1290, lng: 136.9090 } },
-    { time: "15:00", title: { en: "Sakae & Oasis 21", ko: "사카에 & 오아시스 21" }, description: { en: "Futuristic glass roof building and shopping.", ko: "미래형 유리 지붕 건물과 쇼핑." }, type: "shopping", location: { lat: 35.1706, lng: 136.9079 } },
-  ], center: { lat: 35.1426, lng: 136.9084 }, tags: ["shrine", "eel", "nightlife"], coverGradient: "from-indigo-400 to-blue-600" },
-
-  { id: "nagoya-legoland-port", city: "nagoya", title: { en: "Legoland & Port Area", ko: "레고랜드 & 항구 지역" }, summary: { en: "Legoland Japan and the port's aquarium.", ko: "레고랜드 재팬과 항구 수족관." }, styles: ["activity"], travelerTypes: ["family", "friends"], activities: [
-    { time: "09:00", title: { en: "Legoland Japan", ko: "레고랜드 재팬" }, description: { en: "40+ rides and shows for families.", ko: "40개 이상 놀이기구와 공연." }, type: "tour", location: { lat: 35.0450, lng: 136.8430 } },
-    { time: "14:00", title: { en: "Sea Life Nagoya", ko: "시라이프 나고야" }, description: { en: "Adjacent aquarium with tunnel tanks.", ko: "인접한 수족관과 터널 수조." }, type: "sightseeing", location: { lat: 35.0455, lng: 136.8440 } },
-    { time: "16:00", title: { en: "Maker's Pier shopping", ko: "메이커스 피어 쇼핑" }, description: { en: "Waterfront shopping and dining complex.", ko: "해변 쇼핑 및 다이닝 단지." }, type: "shopping", location: { lat: 35.0460, lng: 136.8420 } },
-  ], center: { lat: 35.0455, lng: 136.8430 }, tags: ["legoland", "family", "aquarium"], coverGradient: "from-yellow-400 to-red-500" },
 
   // ════════════════════════════════════════════════════
   // FUKUOKA (3 courses)

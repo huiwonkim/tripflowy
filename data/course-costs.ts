@@ -9,7 +9,6 @@ export const defaultCostsByCity: Record<string, DayCostBreakdown> = {
   // Vietnam (VND) - 1 USD ≈ 25,000 VND
   danang:    { food: 350000, activity: 400000, transport: 100000, etc: 50000, currency: "VND" },
   nhatrang:  { food: 300000, activity: 450000, transport: 80000, etc: 50000, currency: "VND" },
-  hanoi:     { food: 300000, activity: 350000, transport: 80000, etc: 50000, currency: "VND" },
 
   // Thailand (THB) - 1 USD ≈ 35 THB
   bangkok:   { food: 500, activity: 600, transport: 200, etc: 100, currency: "THB" },
@@ -24,7 +23,6 @@ export const defaultCostsByCity: Record<string, DayCostBreakdown> = {
   tokyo:     { food: 3000, activity: 2500, transport: 1000, etc: 500, currency: "JPY" },
   osaka:     { food: 2500, activity: 2000, transport: 800, etc: 500, currency: "JPY" },
   kyoto:     { food: 2500, activity: 2500, transport: 600, etc: 500, currency: "JPY" },
-  nagoya:    { food: 2500, activity: 2000, transport: 700, etc: 500, currency: "JPY" },
   fukuoka:   { food: 2000, activity: 1500, transport: 600, etc: 400, currency: "JPY" },
 
   // France/Italy/Spain (EUR)
