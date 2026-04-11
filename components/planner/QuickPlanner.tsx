@@ -114,7 +114,7 @@ export function QuickPlanner() {
             {input.styles.length > 0 && <span className="ml-1 text-blue-400">({input.styles.length}/4)</span>}
           </p>
           <div className="flex flex-wrap gap-1.5">
-            {styleOptions.slice(0, 6).map((s) => {
+            {styleOptions.slice(0, 8).map((s) => {
               const selected = input.styles.includes(s.value as TravelStyle);
               const disabled = !selected && input.styles.length >= 4;
               return (

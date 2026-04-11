@@ -65,16 +65,16 @@ export function getCountryByCity(cityId: string): Country | undefined {
 export const durationOptions = [
   { value: "3", label: { en: "3 nights / 4 days", ko: "3박 4일" }, minCities: 1 },
   { value: "4", label: { en: "4 nights / 5 days", ko: "4박 5일" }, minCities: 1 },
-  { value: "5", label: { en: "5 nights / 6 days", ko: "5박 6일" }, minCities: 1 },
+  { value: "6", label: { en: "6 nights / 7 days", ko: "6박 7일" }, minCities: 1 },
   { value: "7", label: { en: "7 nights / 8 days", ko: "7박 8일" }, minCities: 2 },
-  { value: "10", label: { en: "10 nights / 11 days", ko: "10박 11일" }, minCities: 2 },
+  { value: "9", label: { en: "9 nights / 10 days", ko: "9박 10일" }, minCities: 2 },
 ];
 
 export const travelerTypeOptions = [
-  { value: "couple", label: { en: "Couple", ko: "커플" }, emoji: "💑" },
   { value: "solo", label: { en: "Solo", ko: "혼자" }, emoji: "🧳" },
-  { value: "family", label: { en: "Family", ko: "가족" }, emoji: "👨‍👩‍👧‍👦" },
   { value: "friends", label: { en: "Friends", ko: "친구" }, emoji: "👯" },
+  { value: "couple", label: { en: "Couple", ko: "커플" }, emoji: "💑" },
+  { value: "family", label: { en: "Family", ko: "가족" }, emoji: "👨‍👩‍👧‍👦" },
 ];
 
 export const styleOptions = [
