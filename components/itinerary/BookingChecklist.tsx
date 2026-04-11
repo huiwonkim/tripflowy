@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ExternalLink, Check, Plane, Building2, Compass, ShoppingBag, AlertTriangle } from "lucide-react";
 import type { Locale, GeneratedItinerary } from "@/types";
 import { countries } from "@/data/destinations";
+import { fetchLivePrices, type LivePriceData } from "@/lib/price-api";
 
 interface BookingItem {
   id: string;
@@ -37,6 +38,8 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
   const t = useTranslations("booking");
   const [checked, setChecked] = useState<Set<string>>(new Set());
   const [blockedItems, setBlockedItems] = useState<BookingItem[]>([]);
+  // Korean-locale MyRealTrip mylinks, fetched per unique city in the itinerary.
+  const [mrtPrices, setMrtPrices] = useState<Record<string, LivePriceData | null>>({});
 
   const allCities = countries.flatMap((c) => c.cities);
 
@@ -49,28 +52,54 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
     return sorted[0]?.[0] ?? itinerary.cities[0];
   })();
 
+  // For ko locale, fetch MyRealTrip mylinks for each unique city so the
+  // flight / hotel items below can deep-link into MRT's own booking flow
+  // (preserves affiliate tracking). en locale keeps the existing
+  // Skyscanner / Agoda / Klook providers.
+  useEffect(() => {
+    if (locale !== "ko") return;
+    const uniqueCities = Array.from(new Set(itinerary.cities));
+    let cancelled = false;
+    Promise.all(
+      uniqueCities.map((c) => fetchLivePrices(c, "ko", itinerary.duration)),
+    ).then((results) => {
+      if (cancelled) return;
+      const map: Record<string, LivePriceData | null> = {};
+      uniqueCities.forEach((c, i) => {
+        map[c] = results[i];
+      });
+      setMrtPrices(map);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [itinerary.cities, itinerary.duration, locale]);
+
   // Generate booking items from itinerary
   const items: BookingItem[] = [];
 
-  // Flight
+  // Flight — for ko locale, use the primary city's MRT flight mylink;
+  // otherwise fall back to Skyscanner.
   const cityLabel = allCities.find((c) => c.id === primaryCity)?.label[locale] ?? primaryCity;
+  const flightMylink = locale === "ko" ? mrtPrices[primaryCity]?.mylinks?.flight : undefined;
   items.push({
     id: "flight",
     category: "flight",
     label: locale === "ko" ? `✈️ ${cityLabel} 항공권` : `✈️ Flights to ${cityLabel}`,
-    url: `https://www.skyscanner.co.kr/transport/flights/ICN/${primaryCity.toUpperCase()}/`,
-    provider: "Skyscanner",
+    url: flightMylink ?? `https://www.skyscanner.co.kr/transport/flights/ICN/${primaryCity.toUpperCase()}/`,
+    provider: flightMylink ? "MyRealTrip" : "Skyscanner",
   });
 
-  // Hotels per city
+  // Hotels per city — for ko locale, use each city's MRT hotel mylink.
   for (const city of itinerary.cities) {
     const label = allCities.find((c) => c.id === city)?.label[locale] ?? city;
+    const hotelMylink = locale === "ko" ? mrtPrices[city]?.mylinks?.hotel : undefined;
     items.push({
       id: `hotel-${city}`,
       category: "hotel",
       label: locale === "ko" ? `🏨 ${label} 숙소` : `🏨 ${label} Hotels`,
-      url: `https://www.agoda.com/search?city=${city}`,
-      provider: "Agoda",
+      url: hotelMylink ?? `https://www.agoda.com/search?city=${city}`,
+      provider: hotelMylink ? "MyRealTrip" : "Agoda",
     });
   }
 
@@ -162,7 +191,6 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
                 >
                   {item.label}
                 </a>
-                <span className="text-xs text-gray-400">{item.provider}</span>
               </div>
             );
           })}
