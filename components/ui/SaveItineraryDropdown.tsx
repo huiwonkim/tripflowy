@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { Bookmark, Link2, FileDown, Check, ChevronDown } from "lucide-react";
-import type { Locale, GeneratedDay, GeneratedItinerary } from "@/types";
+import type { Locale, GeneratedDay, GeneratedItinerary, FlightEstimate, HotelEstimate } from "@/types";
 import { countries } from "@/data/destinations";
 import { getCityInfo } from "@/data/city-info";
-import { getFlightEstimate, getHotelEstimate } from "@/lib/price-api";
+import { getFlightEstimate, getHotelEstimate, fetchLivePrices } from "@/lib/price-api";
 import { sumLocalCosts } from "@/lib/itinerary-builder";
 import { formatCurrency, convertToDisplay } from "@/lib/currency";
 
@@ -29,7 +29,7 @@ export function SaveItineraryDropdown({ locale, days, duration, itinerary }: Pro
     setTimeout(() => { setCopied(false); setOpen(false); }, 1500);
   }
 
-  function handlePDF() {
+  async function handlePDF() {
     setOpen(false);
     const allCities = countries.flatMap((c) => c.cities);
     const cityNames = [...new Set(days.map((d) => allCities.find((c) => c.id === d.city)?.label[locale] ?? d.city))].join(" + ");
@@ -37,9 +37,28 @@ export function SaveItineraryDropdown({ locale, days, duration, itinerary }: Pro
       ? `${cityNames} ${duration}박${Number(duration) + 1}일 여행 일정`
       : `${cityNames} ${Number(duration) + 1}-Day Itinerary`;
 
-    const primaryCity = itinerary.cities[0];
-    const flight = getFlightEstimate(primaryCity);
-    const hotel = getHotelEstimate(primaryCity);
+    // Primary city = city that appears on the most days (matches BudgetSection)
+    const counts: Record<string, number> = {};
+    for (const d of days) counts[d.city] = (counts[d.city] ?? 0) + 1;
+    const primaryCity = Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0] ?? itinerary.cities[0];
+
+    // For ko locale, try to fetch live MyRealTrip prices so the PDF budget
+    // section matches the numbers users see in BudgetSection. Falls back to
+    // static estimates on fetch failure or non-ko locale.
+    const nights = Number(duration);
+    const live = locale === "ko" ? await fetchLivePrices(primaryCity, locale, nights) : null;
+
+    const staticFlight = getFlightEstimate(primaryCity);
+    const staticHotel = getHotelEstimate(primaryCity);
+    const flight: FlightEstimate | null = live?.flights && staticFlight
+      ? { ...staticFlight, fsc: live.flights.fsc, lcc: live.flights.lcc, source: "api" }
+      : staticFlight;
+    const hotel: HotelEstimate | null = live?.hotels && staticHotel
+      ? { ...staticHotel, budget: live.hotels.budget, standard: live.hotels.standard, luxury: live.hotels.luxury, source: "api" }
+      : staticHotel;
+    const hasFsc = !!flight && (flight.fsc.min > 0 || flight.fsc.max > 0);
+    const hasLcc = !!flight && (flight.lcc.min > 0 || flight.lcc.max > 0);
+
     const localCosts = sumLocalCosts(itinerary, locale);
     const cityInfos = [...new Set(itinerary.cities)].map(getCityInfo).filter(Boolean);
     const tourNames = new Set<string>();
@@ -70,7 +89,11 @@ export function SaveItineraryDropdown({ locale, days, duration, itinerary }: Pro
 
     // Budget
     html += `<h2>${locale==="ko"?"💰 예상 경비":"💰 Budget"}</h2><div class="section-box">`;
-    if (flight) { html += `<h3>✈️ ${locale==="ko"?"항공권":"Flights"}</h3><div class="budget-row"><span class="budget-label">FSC</span><span class="budget-value">${formatCurrency(convertToDisplay(flight.fsc.min,flight.currency,locale),locale)}~${formatCurrency(convertToDisplay(flight.fsc.max,flight.currency,locale),locale)}</span></div><div class="budget-row"><span class="budget-label">LCC</span><span class="budget-value">${formatCurrency(convertToDisplay(flight.lcc.min,flight.currency,locale),locale)}~${formatCurrency(convertToDisplay(flight.lcc.max,flight.currency,locale),locale)}</span></div>`; }
+    if (flight && (hasFsc || hasLcc)) {
+      html += `<h3>✈️ ${locale==="ko"?"항공권":"Flights"}</h3>`;
+      if (hasFsc) html += `<div class="budget-row"><span class="budget-label">FSC</span><span class="budget-value">${formatCurrency(convertToDisplay(flight.fsc.min,flight.currency,locale),locale)}~${formatCurrency(convertToDisplay(flight.fsc.max,flight.currency,locale),locale)}</span></div>`;
+      if (hasLcc) html += `<div class="budget-row"><span class="budget-label">LCC</span><span class="budget-value">${formatCurrency(convertToDisplay(flight.lcc.min,flight.currency,locale),locale)}~${formatCurrency(convertToDisplay(flight.lcc.max,flight.currency,locale),locale)}</span></div>`;
+    }
     if (hotel) { html += `<h3>🏨 ${locale==="ko"?"숙소 (1박)":"Hotels"}</h3><div class="budget-row"><span class="budget-label">${locale==="ko"?"가성비":"Budget"}</span><span class="budget-value">${formatCurrency(convertToDisplay(hotel.budget.min,hotel.currency,locale),locale)}~${formatCurrency(convertToDisplay(hotel.budget.max,hotel.currency,locale),locale)}</span></div><div class="budget-row"><span class="budget-label">${locale==="ko"?"일반":"Standard"}</span><span class="budget-value">${formatCurrency(convertToDisplay(hotel.standard.min,hotel.currency,locale),locale)}~${formatCurrency(convertToDisplay(hotel.standard.max,hotel.currency,locale),locale)}</span></div><div class="budget-row"><span class="budget-label">${locale==="ko"?"럭셔리":"Luxury"}</span><span class="budget-value">${formatCurrency(convertToDisplay(hotel.luxury.min,hotel.currency,locale),locale)}~${formatCurrency(convertToDisplay(hotel.luxury.max,hotel.currency,locale),locale)}</span></div>`; }
     const lt = localCosts.food+localCosts.activity+localCosts.transport+localCosts.etc;
     if (lt>0) { html += `<h3>🗺️ ${locale==="ko"?"현지 경비":"Local"}</h3><div class="budget-row"><span class="budget-label">${locale==="ko"?"식비":"Food"}</span><span class="budget-value">${formatCurrency(localCosts.food,locale)}</span></div><div class="budget-row"><span class="budget-label">${locale==="ko"?"투어":"Tours"}</span><span class="budget-value">${formatCurrency(localCosts.activity,locale)}</span></div><div class="budget-row"><span class="budget-label">${locale==="ko"?"교통":"Transport"}</span><span class="budget-value">${formatCurrency(localCosts.transport,locale)}</span></div><div class="budget-row"><span class="budget-label">${locale==="ko"?"기타":"Etc"}</span><span class="budget-value">${formatCurrency(localCosts.etc,locale)}</span></div>`; }
