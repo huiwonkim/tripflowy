@@ -61,7 +61,19 @@ export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
       return { course: c, score };
     });
     scored.sort((a, b) => b.score - a.score);
-    const picked = scored.slice(0, unlockedCount).map((s) => s.course);
+
+    // Always fill `unlockedCount` slots, cycling through scored courses if
+    // the pool is smaller than the requested number of unlocked days. This
+    // mirrors the non-locked branch's "allowing repeats only if necessary"
+    // behaviour. Previously this used scored.slice(0, unlockedCount), which
+    // silently dropped days when the filtered pool was too small — the user
+    // would see a 7-day trip turn into 6 days after a reshuffle.
+    const picked: DayCourse[] = [];
+    if (scored.length > 0) {
+      for (let i = 0; i < unlockedCount; i++) {
+        picked.push(scored[i % scored.length].course);
+      }
+    }
 
     // Assemble: locked days stay in place, unlocked filled in order
     const days: GeneratedDay[] = [];
