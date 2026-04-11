@@ -8,7 +8,7 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
-const GA_MEASUREMENT_ID = "G-3Y8XB545M3";
+const GA_MEASUREMENT_ID = "G-3Y0XB545M3";
 const ADSENSE_CLIENT_ID = "ca-pub-1445087798097280";
 
 const geist = Geist({
