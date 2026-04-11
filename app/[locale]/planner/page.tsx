@@ -365,15 +365,26 @@ function PlannerContent() {
                   aria-hidden="true"
                 />
               )}
-              {/* Dark gradient overlay over the image so the title stays readable */}
+              {/* Left-weighted dark gradient — strong behind the text area,
+                  fading out toward the right so the city photo stays visible.
+                  Only applied when a hero image is actually showing; without
+                  the image we fall back to the outer div's full gradient. */}
               {showHeroImage && (
                 <div
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-900/85 via-blue-900/75 to-violet-900/85"
+                  className="pointer-events-none absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to right, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.7) 30%, rgba(15, 23, 42, 0.25) 65%, rgba(15, 23, 42, 0) 100%)",
+                  }}
                 />
               )}
-              {/* Decorative blobs (smaller, tighter) */}
-              <div aria-hidden="true" className="pointer-events-none absolute -top-16 -right-12 w-48 h-48 bg-blue-400/20 rounded-full blur-3xl" />
+              {/* Bottom-left violet accent — enhances the text zone without
+                  bleeding into the photo on the right. The old top-right
+                  blob was removed because it covered the image. */}
+              {!showHeroImage && (
+                <div aria-hidden="true" className="pointer-events-none absolute -top-16 -right-12 w-48 h-48 bg-blue-400/20 rounded-full blur-3xl" />
+              )}
               <div aria-hidden="true" className="pointer-events-none absolute -bottom-16 -left-10 w-40 h-40 bg-violet-500/25 rounded-full blur-3xl" />
               {/* Subtle dot pattern overlay */}
               <div
