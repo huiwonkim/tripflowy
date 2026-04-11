@@ -298,15 +298,35 @@ export async function createMrtMylink(targetUrl: string): Promise<string | null>
 // ── URL builders ───────────────────────────────────
 
 /**
- * Build a MyRealTrip search URL biased toward hotels for a destination city.
- * Appends "호텔" to the keyword so MRT's search surfaces hotel products first.
+ * Build a MyRealTrip hotel search URL that lands on the actual "N hotels in
+ * <city>" results page on the accommodation subdomain. Uses the real URL
+ * pattern MRT's own frontend uses (observed at
+ * https://www.myrealtrip.com/main/unionstay?stayType=overseas).
+ *
+ * Dates are optional — without them MRT falls back to its own defaults.
+ * `isDomestic` is always false since every city currently in the MVP is
+ * overseas from Korea.
  */
-export function buildMrtHotelSearchUrl(cityId: string): string {
+export function buildMrtHotelSearchUrl(
+  cityId: string,
+  dates?: { checkIn: string; checkOut: string },
+): string {
   const city = getMrtCity(cityId);
-  const keyword = city?.keyword ?? cityId;
-  // Adding "호텔" (hotel) to the keyword biases MRT search toward hotel results.
-  const q = encodeURIComponent(`${keyword} 호텔`);
-  return `https://www.myrealtrip.com/search?keyword=${q}`;
+  if (!city) return "https://www.myrealtrip.com/main/unionstay?stayType=overseas";
+
+  const params = new URLSearchParams({
+    adultCount: "2",
+    childCount: "0",
+    childAges: "",
+    keyword: city.keyword,
+    roomCount: "1",
+    isDomestic: "false",
+  });
+  if (dates) {
+    params.set("checkIn", dates.checkIn);
+    params.set("checkOut", dates.checkOut);
+  }
+  return `https://accommodation.myrealtrip.com/union/products?${params.toString()}`;
 }
 
 /**
@@ -368,9 +388,9 @@ export interface MrtCityData {
  *    (may get its params stripped by MRT's redirect chain).
  *
  * Hotel mylink target:
- *  - First choice: `https://www.myrealtrip.com/offers/{topItemId}` — the top
- *    hotel from the accommodation search API. Guarantees real hotel content.
- *  - Fallback: keyword search URL (works but mixes categories).
+ *  - `accommodation.myrealtrip.com/union/products?keyword=<city>&checkIn=...`
+ *    — the real URL pattern MRT's own hotel search uses. Lands on a proper
+ *    "N hotels in <city>" results page.
  */
 export async function fetchMrtCityData(
   cityId: string,
@@ -403,10 +423,8 @@ export async function fetchMrtCityData(
   }
   await new Promise((r) => setTimeout(r, 300));
 
-  // ── Hotel URL ──
-  const hotelUrl = accommodation?.topItemId
-    ? `https://www.myrealtrip.com/offers/${accommodation.topItemId}`
-    : buildMrtHotelSearchUrl(cityId);
+  // ── Hotel URL (real unionstay results page) ──
+  const hotelUrl = buildMrtHotelSearchUrl(cityId, { checkIn, checkOut });
 
   const [flightMylink, hotelMylink] = await Promise.all([
     createMrtMylink(flightUrl),
@@ -431,6 +449,6 @@ export const getCachedMrtCityData = unstable_cache(
   async (cityId: string, checkIn: string, checkOut: string, tripNights: number): Promise<MrtCityData> => {
     return fetchMrtCityData(cityId, checkIn, checkOut, tripNights);
   },
-  ["mrt-city-data-v5"], // v5: fare-query-landing-url + top hotel offer direct link
+  ["mrt-city-data-v6"], // v6: fare-query-landing-url + real accommodation.myrealtrip.com union/products URL
   { revalidate: 3600, tags: ["mrt"] },
 );
