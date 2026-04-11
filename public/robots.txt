@@ -9,3 +9,4 @@ User-agent: Yeti
 Allow: /
 
 Sitemap: https://tripflowy.com/sitemap.xml
+Sitemap: https://tripflowy.com/rss.xml
