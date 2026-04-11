@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
+import { Mail } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { countries } from "@/data/destinations";
 import type { Locale } from "@/types";
@@ -28,7 +29,14 @@ export async function Footer() {
             <Link href="/" className="flex items-center mb-4">
               <span className="text-white font-bold text-xl tracking-tight">Tripflowy</span>
             </Link>
-            <p className="text-sm leading-relaxed">{t("tagline")}</p>
+            <p className="text-sm leading-relaxed mb-4">{t("tagline")}</p>
+            <a
+              href="mailto:hello@tripflowy.com"
+              className="inline-flex items-center gap-1.5 text-sm text-gray-300 hover:text-white transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+              hello@tripflowy.com
+            </a>
           </div>
 
           <div>
