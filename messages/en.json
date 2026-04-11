@@ -179,17 +179,7 @@
   },
   "footer": {
     "tagline": "Itinerary-first travel planning. Tell us your style, we'll build your route.",
-    "itineraries": "Itineraries",
-    "tools": "Tools",
-    "tripPlanner": "Trip Planner",
-    "allItineraries": "All Itineraries",
-    "toursActivities": "Tours & Activities",
-    "whereToStay": "Where to Stay",
-    "travelStyles": "Travel Styles",
-    "relax": "Relaxed",
-    "efficient": "Efficient",
-    "activityFocused": "Activity-Focused",
-    "hotelFocused": "Hotel-Focused",
+    "popularDestinations": "Popular Destinations",
     "copyright": "© {year} Tripflowy. All rights reserved.",
     "affiliateDisclosure": "Affiliate disclosure: some links earn a small commission at no extra cost to you."
   }

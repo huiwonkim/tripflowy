@@ -1,44 +1,28 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import Image from "next/image";
+import { countries } from "@/data/destinations";
+import type { Locale } from "@/types";
 
 export async function Footer() {
   const t = await getTranslations("footer");
+  const tNav = await getTranslations("nav");
+  const locale = (await getLocale()) as Locale;
 
-  const columns = [
-    {
-      heading: t("itineraries"),
-      links: [
-        { href: "/itineraries?destination=danang" as const, label: "Da Nang" },
-        { href: "/itineraries?destination=bangkok" as const, label: "Bangkok" },
-        { href: "/itineraries?destination=bali" as const, label: "Bali" },
-        { href: "/itineraries?destination=tokyo" as const, label: "Tokyo" },
-      ],
-    },
-    {
-      heading: t("tools"),
-      links: [
-        { href: "/planner" as const, label: t("tripPlanner") },
-        { href: "/itineraries" as const, label: t("allItineraries") },
-        { href: "/tours" as const, label: t("toursActivities") },
-        { href: "/hotels" as const, label: t("whereToStay") },
-      ],
-    },
-    {
-      heading: t("travelStyles"),
-      links: [
-        { href: "/planner?style=relax" as const, label: t("relax") },
-        { href: "/planner?style=efficient" as const, label: t("efficient") },
-        { href: "/planner?style=activity" as const, label: t("activityFocused") },
-        { href: "/planner?style=hotel" as const, label: t("hotelFocused") },
-      ],
-    },
+  const cities = countries.flatMap((c) => c.cities);
+
+  const navLinks = [
+    { href: "/planner" as const, label: tNav("planner") },
+    { href: "/posts" as const, label: tNav("guides") },
+    { href: "/courses" as const, label: tNav("courses") },
+    { href: "/tours" as const, label: tNav("tours") },
+    { href: "/hotels" as const, label: tNav("hotels") },
   ];
 
   return (
     <footer className="bg-gray-900 text-gray-400 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        {/* Brand + destinations */}
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-10 md:gap-16">
           <div>
             <Link href="/" className="flex items-center mb-4">
               <span className="text-white font-bold text-xl tracking-tight">Tripflowy</span>
@@ -46,21 +30,33 @@ export async function Footer() {
             <p className="text-sm leading-relaxed">{t("tagline")}</p>
           </div>
 
-          {columns.map((col) => (
-            <div key={col.heading}>
-              <h4 className="text-white text-sm font-semibold mb-4">{col.heading}</h4>
-              <ul className="space-y-2">
-                {col.links.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className="text-sm hover:text-white transition-colors">{link.label}</Link>
-                  </li>
-                ))}
-              </ul>
+          <div>
+            <h4 className="text-white text-sm font-semibold mb-4">{t("popularDestinations")}</h4>
+            <div className="flex flex-wrap gap-2">
+              {cities.map((city) => (
+                <Link
+                  key={city.id}
+                  href={`/courses?city=${city.id}`}
+                  className="px-3 py-1.5 rounded-full text-sm bg-gray-800 hover:bg-gray-700 hover:text-white transition-colors"
+                >
+                  {city.label[locale]}
+                </Link>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
+        {/* Nav row */}
+        <nav className="mt-10 pt-8 border-t border-gray-800 flex flex-wrap gap-x-6 gap-y-3 text-sm">
+          {navLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="hover:text-white transition-colors">
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Bottom row */}
+        <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
           <p>{t("copyright", { year: new Date().getFullYear() })}</p>
           <p className="text-gray-500">{t("affiliateDisclosure")}</p>
         </div>
