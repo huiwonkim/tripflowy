@@ -6,10 +6,33 @@ import { QuickPlanner } from "@/components/planner/QuickPlanner";
 import { posts } from "@/data/posts";
 import { countries, comingSoonCountries } from "@/data/destinations";
 import { getCategoryById } from "@/data/categories";
+import { generateOrganizationJsonLd, generateWebSiteJsonLd } from "@/lib/jsonld";
 import type { Locale } from "@/types";
+import type { Metadata } from "next";
 
 interface PageProps {
   params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  const isKo = locale === "ko";
+  return {
+    title: isKo
+      ? "여행 일정 자동 생성 | Tripflowy — 일본·베트남·유럽 여행 플래너"
+      : "Tripflowy — AI Travel Itinerary Planner for Japan, Vietnam & Europe",
+    description: isKo
+      ? "출발 도시, 기간, 여행 스타일만 선택하면 자동으로 맞춤 여행 일정을 만들어드립니다. 직접 걸어보고 만든 하루 코스와 상세 가이드까지 — 블로그 검색 그만, Tripflowy 하나로 끝."
+      : "Plan your perfect trip in seconds. Tell us your destination, duration, and style — we auto-generate day-by-day itineraries with curated courses for 30+ cities in Asia and Europe.",
+    alternates: {
+      canonical: isKo ? "/ko" : "/",
+      languages: {
+        en: "/",
+        ko: "/ko",
+        "x-default": "/",
+      },
+    },
+  };
 }
 
 export default async function HomePage({ params }: PageProps) {
@@ -20,8 +43,21 @@ export default async function HomePage({ params }: PageProps) {
 
   const allCities = countries.flatMap((c) => c.cities);
 
+  const organizationJsonLd = generateOrganizationJsonLd();
+  const websiteJsonLd = generateWebSiteJsonLd(loc);
+
   return (
     <div>
+      {/* JSON-LD — Organization + WebSite (brand knowledge panel + sitelinks search box) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-12 md:pt-24 md:pb-16">

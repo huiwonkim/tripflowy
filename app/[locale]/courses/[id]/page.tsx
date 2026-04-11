@@ -5,6 +5,7 @@ import { ArrowLeft, MapPin, Clock } from "lucide-react";
 import { dayCourses } from "@/data/day-courses";
 import { Badge } from "@/components/ui/Badge";
 import { styleLabel, travelerLabel } from "@/lib/utils";
+import { generateCourseJsonLd } from "@/lib/jsonld";
 import type { Metadata } from "next";
 import type { Locale, DayActivity } from "@/types";
 
@@ -73,8 +74,14 @@ export default async function CourseDetailPage({ params }: PageProps) {
   const course = dayCourses.find((c) => c.id === id);
   if (!course) notFound();
 
+  const courseJsonLd = generateCourseJsonLd(course, loc);
+
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(courseJsonLd) }}
+      />
       <Link href="/courses" className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 transition-colors mb-6">
         <ArrowLeft className="w-4 h-4" /> {t("allCourses")}
       </Link>

@@ -24,6 +24,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
   return {
+    metadataBase: new URL("https://www.tripflowy.com"),
     title: {
       default: t("title"),
       template: "%s | Tripflowy",
