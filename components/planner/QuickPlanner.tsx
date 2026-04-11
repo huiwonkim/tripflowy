@@ -61,7 +61,7 @@ export function QuickPlanner() {
         <div className="space-y-2">
           {countries.map((c) => (
             <div key={c.id} className="flex gap-2">
-              <span className="text-sm flex-shrink-0 w-16 pt-1.5">{c.emoji} {c.label[locale]}</span>
+              <span className="text-sm flex-shrink-0 w-20 pt-1.5 whitespace-nowrap">{c.emoji} {c.label[locale]}</span>
               <div className="flex flex-wrap gap-1.5">
                 {c.cities.map((city) => {
                   const selected = input.destinations.includes(city.id);
