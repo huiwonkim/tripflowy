@@ -27,6 +27,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: course.title[loc],
     description: course.summary[loc],
+    // Proprietary content — noindex/nofollow so search engines don't crawl
+    // the day-course catalog. Direct URLs still render the page.
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: { index: false, follow: false },
+    },
     alternates: {
       canonical: loc === "ko" ? `/ko/courses/${id}` : `/courses/${id}`,
       languages: {

@@ -1,12 +1,24 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
 
 User-agent: Googlebot
 Allow: /
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
 
 User-agent: Yeti
 Allow: /
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
 
 Sitemap: https://www.tripflowy.com/sitemap.xml
 Sitemap: https://www.tripflowy.com/rss.xml

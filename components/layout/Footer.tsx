@@ -10,10 +10,11 @@ export async function Footer() {
 
   const cities = countries.flatMap((c) => c.cities);
 
+  // Courses intentionally excluded — the day-course catalog is proprietary
+  // content we don't want browsable or indexed.
   const navLinks = [
     { href: "/planner" as const, label: tNav("planner") },
     { href: "/posts" as const, label: tNav("guides") },
-    { href: "/courses" as const, label: tNav("courses") },
     { href: "/tours" as const, label: tNav("tours") },
     { href: "/hotels" as const, label: tNav("hotels") },
   ];
@@ -36,7 +37,7 @@ export async function Footer() {
               {cities.map((city) => (
                 <Link
                   key={city.id}
-                  href={`/courses?city=${city.id}`}
+                  href={`/planner?destinations=${city.id}`}
                   className="px-3 py-1.5 rounded-full text-sm bg-gray-800 hover:bg-gray-700 hover:text-white transition-colors"
                 >
                   {city.label[locale]}

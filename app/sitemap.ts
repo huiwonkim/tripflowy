@@ -1,5 +1,4 @@
 import type { MetadataRoute } from "next";
-import { dayCourses } from "@/data/day-courses";
 import { posts } from "@/data/posts";
 
 const BASE_URL = "https://www.tripflowy.com";
@@ -19,13 +18,15 @@ const SITE_FRESHNESS: Date = (() => {
 })();
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // /courses and /courses/[id] are intentionally excluded from the sitemap
+  // because the day-course catalog is proprietary content; we don't want
+  // search engines indexing or browsing it.
   const staticPages = [
     { path: "", priority: 1.0 },
     { path: "/planner", priority: 0.9 },
     { path: "/posts", priority: 0.8 },
     { path: "/tours", priority: 0.7 },
     { path: "/hotels", priority: 0.7 },
-    { path: "/courses", priority: 0.6 },
     { path: "/itineraries", priority: 0.6 },
   ];
 
@@ -52,18 +53,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
-  const courseEntries: MetadataRoute.Sitemap = dayCourses.map((course) => ({
-    url: `${BASE_URL}/courses/${course.id}`,
-    lastModified: SITE_FRESHNESS,
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-    alternates: {
-      languages: {
-        en: `${BASE_URL}/courses/${course.id}`,
-        ko: `${BASE_URL}/ko/courses/${course.id}`,
-      },
-    },
-  }));
-
-  return [...staticEntries, ...postEntries, ...courseEntries];
+  return [...staticEntries, ...postEntries];
 }

@@ -19,6 +19,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: t("heading"),
     description: t("subheading"),
+    // Proprietary content — do not expose to search engines or public
+    // navigation. The page itself still resolves for direct-link use.
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: { index: false, follow: false },
+    },
     alternates: {
       canonical: locale === "ko" ? "/ko/courses" : "/courses",
       languages: { en: "/courses", ko: "/ko/courses", "x-default": "/courses" },

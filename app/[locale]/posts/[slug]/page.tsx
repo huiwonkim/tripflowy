@@ -250,15 +250,17 @@ export default async function PostPage({ params }: PageProps) {
             </section>
           )}
 
-          {/* Related course */}
-          {post.courseId && (
+          {/* Plan-a-trip CTA — we used to link to the full day course detail
+              page, but the course catalog is now private. Redirect readers
+              into the planner pre-filled with this city instead. */}
+          {post.city && (
             <div className="mt-12 bg-blue-50 rounded-2xl p-6 text-center">
               <p className="text-sm text-blue-700 mb-3">
-                {loc === "ko" ? "이 장소가 포함된 1일 코스 보기" : "View the day course including this spot"}
+                {loc === "ko" ? "이 여행지로 일정 만들어 보기" : "Plan a trip to this destination"}
               </p>
-              <Link href={`/courses/${post.courseId}`}
+              <Link href={`/planner?destinations=${post.city}`}
                 className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm">
-                {loc === "ko" ? "코스 보기" : "View Course"}
+                {loc === "ko" ? "여행 계획 시작하기" : "Start Planning"}
               </Link>
             </div>
           )}
