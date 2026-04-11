@@ -17,24 +17,33 @@ interface BudgetSectionProps {
 export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps) {
   const t = useTranslations("budget");
 
-  // Flight — use first city as primary destination
-  const primaryCity = itinerary.cities[0];
+  // Primary city = the city that appears on the most days in the itinerary.
+  // Falls back to the first listed city when days aren't available.
+  const primaryCity = (() => {
+    if (!itinerary.days || itinerary.days.length === 0) return itinerary.cities[0];
+    const counts: Record<string, number> = {};
+    for (const d of itinerary.days) counts[d.city] = (counts[d.city] ?? 0) + 1;
+    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    return sorted[0]?.[0] ?? itinerary.cities[0];
+  })();
+
   const staticFlight = getFlightEstimate(primaryCity);
   const staticHotel = getHotelEstimate(primaryCity);
 
   // For ko locale, try to fetch live MyRealTrip data and MyLink affiliate URLs.
   // Falls back to static estimates if fetch fails or locale !== "ko".
+  // Passes `nights` so the flight MyLink has matching return date.
   const [liveData, setLiveData] = useState<LivePriceData | null>(null);
   useEffect(() => {
     if (locale !== "ko") return;
     let cancelled = false;
-    fetchLivePrices(primaryCity, locale).then((data) => {
+    fetchLivePrices(primaryCity, locale, nights).then((data) => {
       if (!cancelled) setLiveData(data);
     });
     return () => {
       cancelled = true;
     };
-  }, [primaryCity, locale]);
+  }, [primaryCity, locale, nights]);
 
   const flight: FlightEstimate | null = liveData?.flights && staticFlight
     ? { ...staticFlight, fsc: liveData.flights.fsc, lcc: liveData.flights.lcc, source: "api" }

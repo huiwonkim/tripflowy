@@ -263,24 +263,55 @@ export async function createMrtMylink(targetUrl: string): Promise<string | null>
 // ── URL builders ───────────────────────────────────
 
 /**
- * Build a MyRealTrip search URL for a destination city (used as MyLink target).
- * Falls back to the generic offers search if the city is unknown.
+ * Build a MyRealTrip search URL biased toward hotels for a destination city.
+ * Appends "호텔" to the keyword so MRT's search surfaces hotel products first.
  */
 export function buildMrtHotelSearchUrl(cityId: string): string {
   const city = getMrtCity(cityId);
-  const q = encodeURIComponent(city?.keyword ?? cityId);
+  const keyword = city?.keyword ?? cityId;
+  // Adding "호텔" (hotel) to the keyword biases MRT search toward hotel results.
+  const q = encodeURIComponent(`${keyword} 호텔`);
   return `https://www.myrealtrip.com/search?keyword=${q}`;
 }
 
 /**
- * Build a MyRealTrip flight search URL (best-effort).
- * Uses the flights subdomain with airport codes.
+ * Build a MyRealTrip flight search URL pre-filled with departure/return dates.
+ * Both dates are YYYY-MM-DD strings. Returns a plain fallback URL when the
+ * city is unknown.
  */
-export function buildMrtFlightSearchUrl(cityId: string): string {
+export function buildMrtFlightSearchUrl(
+  cityId: string,
+  dates?: { depart: string; return: string },
+): string {
   const city = getMrtCity(cityId);
   if (!city) return "https://flights.myrealtrip.com/";
-  // Use a generic landing URL with from/to codes
-  return `https://flights.myrealtrip.com/?from=${MRT_ORIGIN}&to=${city.cityCode}`;
+
+  const params = new URLSearchParams({
+    from: MRT_ORIGIN,
+    to: city.cityCode,
+  });
+  if (dates) {
+    params.set("depdt", dates.depart);
+    params.set("arrdt", dates.return);
+    params.set("adult", "1");
+    params.set("tripTypeCd", "RT");
+  }
+  return `https://flights.myrealtrip.com/?${params.toString()}`;
+}
+
+/**
+ * Compute default flight dates: depart is 1 month from today,
+ * return is `tripNights` days after depart. Returns YYYY-MM-DD strings.
+ */
+export function computeFlightDates(tripNights: number): { depart: string; return: string } {
+  const depart = new Date();
+  depart.setDate(depart.getDate() + 30);
+  const ret = new Date(depart);
+  ret.setDate(ret.getDate() + tripNights);
+  return {
+    depart: depart.toISOString().split("T")[0],
+    return: ret.toISOString().split("T")[0],
+  };
 }
 
 // ── Fetch all (convenience for cron) ────────────────
@@ -293,12 +324,14 @@ export interface MrtCityData {
 
 /**
  * Fetch all MRT data for a single city: flight prices, hotel prices, and mylinks.
+ * Flight MyLink embeds depart/return dates derived from `tripNights`.
  * Rate-limit pacing is applied between sub-requests.
  */
 export async function fetchMrtCityData(
   cityId: string,
   checkIn: string,
   checkOut: string,
+  tripNights: number,
 ): Promise<MrtCityData> {
   const flights = await fetchMrtFlightLowest(cityId);
   await new Promise((r) => setTimeout(r, 300));
@@ -306,7 +339,8 @@ export async function fetchMrtCityData(
   const hotels = await fetchMrtAccommodation(cityId, checkIn, checkOut);
   await new Promise((r) => setTimeout(r, 300));
 
-  const flightUrl = buildMrtFlightSearchUrl(cityId);
+  const flightDates = computeFlightDates(tripNights);
+  const flightUrl = buildMrtFlightSearchUrl(cityId, flightDates);
   const hotelUrl = buildMrtHotelSearchUrl(cityId);
 
   const [flightMylink, hotelMylink] = await Promise.all([
@@ -325,14 +359,13 @@ export async function fetchMrtCityData(
 }
 
 /**
- * Cached version of fetchMrtCityData. Results are cached per (cityId, checkIn, checkOut)
- * for 1 hour using Next.js `unstable_cache`. Use this from API routes and Server
- * Components to avoid hammering the MRT API on every request.
+ * Cached version of fetchMrtCityData. Cache key includes tripNights so flight
+ * MyLinks regenerate when the user's trip length changes. Cache TTL 1 hour.
  */
 export const getCachedMrtCityData = unstable_cache(
-  async (cityId: string, checkIn: string, checkOut: string): Promise<MrtCityData> => {
-    return fetchMrtCityData(cityId, checkIn, checkOut);
+  async (cityId: string, checkIn: string, checkOut: string, tripNights: number): Promise<MrtCityData> => {
+    return fetchMrtCityData(cityId, checkIn, checkOut, tripNights);
   },
-  ["mrt-city-data-v3"], // v3: /window endpoint + direct filter + p75 max
+  ["mrt-city-data-v4"], // v4: flight dates in mylink + hotel "호텔" keyword
   { revalidate: 3600, tags: ["mrt"] },
 );

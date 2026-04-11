@@ -310,7 +310,7 @@ export async function GET(request: NextRequest) {
     // ── MyRealTrip (ko locale) ──────────────────────
     if (doMrt && mrtCityCodes[cityId]) {
       try {
-        const mrt = await fetchMrtCityData(cityId, checkInStr, checkOutStr);
+        const mrt = await fetchMrtCityData(cityId, checkInStr, checkOutStr, 5);
         const mrtData = {
           updatedAt: now.toISOString(),
           flights: mrt.flights,

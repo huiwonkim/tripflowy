@@ -22,6 +22,12 @@ function getDefaultDates() {
 export async function GET(request: NextRequest) {
   const destination = request.nextUrl.searchParams.get("destination");
   const locale = request.nextUrl.searchParams.get("locale");
+  const rawNights = request.nextUrl.searchParams.get("nights");
+  // Clamp tripNights to [1, 30] and default to 5 if missing/invalid
+  const parsedNights = Number(rawNights);
+  const tripNights = Number.isFinite(parsedNights) && parsedNights > 0
+    ? Math.min(30, Math.round(parsedNights))
+    : 5;
 
   if (!destination) {
     return NextResponse.json({ error: "Missing destination parameter" }, { status: 400 });
@@ -31,7 +37,7 @@ export async function GET(request: NextRequest) {
   if (locale === "ko" && process.env.MYREALTRIP_API_KEY && mrtCityCodes[destination]) {
     try {
       const { checkIn, checkOut } = getDefaultDates();
-      const mrt = await getCachedMrtCityData(destination, checkIn, checkOut);
+      const mrt = await getCachedMrtCityData(destination, checkIn, checkOut, tripNights);
 
       return NextResponse.json(
         {

@@ -14,12 +14,18 @@ export interface LivePriceData {
  * Returns null if unavailable — caller should fallback to static estimates.
  *
  * For `locale="ko"` the API reads MyRealTrip data and may include `mylinks`
- * for affiliate booking buttons. For other locales it reads the legacy
- * Amadeus/SerpAPI cache and returns price data only.
+ * for affiliate booking buttons. The optional `nights` param lets the server
+ * embed the correct return date in the flight MyLink.
  */
-export async function fetchLivePrices(cityId: string, locale: Locale = "en"): Promise<LivePriceData | null> {
+export async function fetchLivePrices(
+  cityId: string,
+  locale: Locale = "en",
+  nights?: number,
+): Promise<LivePriceData | null> {
   try {
-    const res = await fetch(`/api/prices?destination=${cityId}&locale=${locale}`, { next: { revalidate: 3600 } });
+    const params = new URLSearchParams({ destination: cityId, locale });
+    if (nights && nights > 0) params.set("nights", String(nights));
+    const res = await fetch(`/api/prices?${params.toString()}`, { next: { revalidate: 3600 } });
     if (!res.ok) return null;
     return await res.json();
   } catch {
