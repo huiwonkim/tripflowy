@@ -198,11 +198,16 @@ export async function fetchMrtFlightLowest(cityId: string): Promise<MrtFlightRes
 
 // ── Accommodation search ───────────────────────────
 
+/**
+ * Fetch accommodation price tiers plus the top hotel's itemId for
+ * direct-deep-linking. topItemId = highest-reviewed or first item in the
+ * response (MRT's ordering — we trust it and take items[0]).
+ */
 export async function fetchMrtAccommodation(
   cityId: string,
   checkIn: string,
   checkOut: string,
-): Promise<MrtHotelResult | null> {
+): Promise<{ result: MrtHotelResult; topItemId: number | null } | null> {
   const city = getMrtCity(cityId);
   if (!city) return null;
 
@@ -221,10 +226,8 @@ export async function fetchMrtAccommodation(
   if (!data?.items?.length) return null;
 
   // Per-night basis: divide total salePrice by 1 (1-night search).
-  const prices = data.items
-    .map((i) => i.salePrice)
-    .filter((p) => p > 0)
-    .sort((a, b) => a - b);
+  const sortedBySalePrice = [...data.items].sort((a, b) => a.salePrice - b.salePrice);
+  const prices = sortedBySalePrice.map((i) => i.salePrice).filter((p) => p > 0);
 
   if (prices.length === 0) return null;
 
@@ -233,20 +236,52 @@ export async function fetchMrtAccommodation(
   const q65 = prices[Math.floor(len * 0.65)] ?? prices[Math.floor(len * 0.5)];
   const q75 = prices[Math.floor(len * 0.75)] ?? prices[Math.floor(len * 0.5)];
 
+  // Pick a sensible "top" hotel for deep-linking: the first item in the
+  // original (MRT-ranked) response with a non-zero price. MRT returns items
+  // sorted by relevance by default, so items[0] is a reasonable pick.
+  const topItem = data.items.find((i) => i.salePrice > 0) ?? null;
+
   return {
-    budget: {
-      min: prices[0],
-      max: q25,
+    result: {
+      budget: {
+        min: prices[0],
+        max: q25,
+      },
+      standard: {
+        min: q25,
+        max: q65,
+      },
+      luxury: {
+        min: q75,
+        max: prices[len - 1],
+      },
     },
-    standard: {
-      min: q25,
-      max: q65,
-    },
-    luxury: {
-      min: q75,
-      max: prices[len - 1],
-    },
+    topItemId: topItem?.itemId ?? null,
   };
+}
+
+// ── Flight fare-query landing URL ───────────────────
+
+/**
+ * Call MRT's official landing-URL API to get a flight search URL that
+ * preserves departure/arrival dates through its internal redirects.
+ * Returns null on failure — caller should fall back to a manual URL.
+ */
+export async function fetchMrtFlightLandingUrl(
+  depAirportCd: string,
+  arrAirportCd: string,
+  depDate: string,
+  arrDate: string,
+): Promise<string | null> {
+  const data = await mrtPost<string>("/v1/products/flight/fare-query-landing-url", {
+    depAirportCd,
+    arrAirportCd,
+    tripTypeCd: "RT",
+    depDate,
+    arrDate,
+    adult: 1,
+  });
+  return typeof data === "string" && data.length > 0 ? data : null;
 }
 
 // ── MyLink (affiliate tracking) ─────────────────────
@@ -324,8 +359,18 @@ export interface MrtCityData {
 
 /**
  * Fetch all MRT data for a single city: flight prices, hotel prices, and mylinks.
- * Flight MyLink embeds depart/return dates derived from `tripNights`.
- * Rate-limit pacing is applied between sub-requests.
+ *
+ * Flight mylink target:
+ *  - First choice: `/v1/products/flight/fare-query-landing-url` API — returns
+ *    a URL with a `gid` that MRT preserves through its internal redirects,
+ *    so the actual flight results page opens with the correct dates.
+ *  - Fallback: manually constructed `flights.myrealtrip.com/?from=...&to=...`
+ *    (may get its params stripped by MRT's redirect chain).
+ *
+ * Hotel mylink target:
+ *  - First choice: `https://www.myrealtrip.com/offers/{topItemId}` — the top
+ *    hotel from the accommodation search API. Guarantees real hotel content.
+ *  - Fallback: keyword search URL (works but mixes categories).
  */
 export async function fetchMrtCityData(
   cityId: string,
@@ -333,15 +378,35 @@ export async function fetchMrtCityData(
   checkOut: string,
   tripNights: number,
 ): Promise<MrtCityData> {
+  const city = getMrtCity(cityId);
+
   const flights = await fetchMrtFlightLowest(cityId);
   await new Promise((r) => setTimeout(r, 300));
 
-  const hotels = await fetchMrtAccommodation(cityId, checkIn, checkOut);
+  const accommodation = await fetchMrtAccommodation(cityId, checkIn, checkOut);
   await new Promise((r) => setTimeout(r, 300));
 
+  // ── Flight URL ──
   const flightDates = computeFlightDates(tripNights);
-  const flightUrl = buildMrtFlightSearchUrl(cityId, flightDates);
-  const hotelUrl = buildMrtHotelSearchUrl(cityId);
+  let flightUrl: string | null = null;
+  if (city) {
+    flightUrl = await fetchMrtFlightLandingUrl(
+      MRT_ORIGIN,
+      city.cityCode,
+      flightDates.depart,
+      flightDates.return,
+    );
+  }
+  if (!flightUrl) {
+    // Fallback to manually constructed URL if the API failed
+    flightUrl = buildMrtFlightSearchUrl(cityId, flightDates);
+  }
+  await new Promise((r) => setTimeout(r, 300));
+
+  // ── Hotel URL ──
+  const hotelUrl = accommodation?.topItemId
+    ? `https://www.myrealtrip.com/offers/${accommodation.topItemId}`
+    : buildMrtHotelSearchUrl(cityId);
 
   const [flightMylink, hotelMylink] = await Promise.all([
     createMrtMylink(flightUrl),
@@ -350,7 +415,7 @@ export async function fetchMrtCityData(
 
   return {
     flights,
-    hotels,
+    hotels: accommodation?.result ?? null,
     mylinks: {
       flight: flightMylink ?? undefined,
       hotel: hotelMylink ?? undefined,
@@ -366,6 +431,6 @@ export const getCachedMrtCityData = unstable_cache(
   async (cityId: string, checkIn: string, checkOut: string, tripNights: number): Promise<MrtCityData> => {
     return fetchMrtCityData(cityId, checkIn, checkOut, tripNights);
   },
-  ["mrt-city-data-v4"], // v4: flight dates in mylink + hotel "호텔" keyword
+  ["mrt-city-data-v5"], // v5: fare-query-landing-url + top hotel offer direct link
   { revalidate: 3600, tags: ["mrt"] },
 );
