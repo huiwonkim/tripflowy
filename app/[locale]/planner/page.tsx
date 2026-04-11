@@ -332,50 +332,48 @@ function PlannerContent() {
         {itinerary && (
           <div className="mt-12 space-y-8">
             {/* Summary banner */}
-            <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-600 via-blue-700 to-violet-800 text-white p-8 sm:p-10">
-              {/* Decorative blobs */}
-              <div aria-hidden="true" className="pointer-events-none absolute -top-24 -right-20 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl" />
-              <div aria-hidden="true" className="pointer-events-none absolute -bottom-28 -left-16 w-64 h-64 bg-violet-500/25 rounded-full blur-3xl" />
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 via-blue-700 to-violet-800 text-white px-5 py-5 sm:px-7 sm:py-6">
+              {/* Decorative blobs (smaller, tighter) */}
+              <div aria-hidden="true" className="pointer-events-none absolute -top-16 -right-12 w-48 h-48 bg-blue-400/20 rounded-full blur-3xl" />
+              <div aria-hidden="true" className="pointer-events-none absolute -bottom-16 -left-10 w-40 h-40 bg-violet-500/25 rounded-full blur-3xl" />
               {/* Subtle dot pattern overlay */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 opacity-[0.08]"
+                className="pointer-events-none absolute inset-0 opacity-[0.07]"
                 style={{
                   backgroundImage: "radial-gradient(rgba(255,255,255,0.9) 1px, transparent 1px)",
-                  backgroundSize: "18px 18px",
+                  backgroundSize: "16px 16px",
                 }}
               />
 
               <div className="relative z-10">
                 {/* Small top label */}
-                <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-[11px] font-semibold uppercase tracking-[0.14em] px-3 py-1.5 rounded-full mb-6 border border-white/15">
-                  <Zap className="w-3.5 h-3.5" />
+                <div className="inline-flex items-center gap-1 bg-white/15 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full border border-white/15 mb-3">
+                  <Zap className="w-3 h-3" />
                   {locale === "ko" ? "나만의 여행 일정" : "Your Itinerary"}
                 </div>
 
-                {/* Hero — city names */}
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-2">
+                {/* Title + duration inline (cities first, duration after) */}
+                <h2 className="text-2xl sm:text-3xl font-bold leading-tight tracking-tight mb-2">
                   {itinerary.cities.map((c) => allCities.find((ci) => ci.id === c)?.label[locale] ?? c).join(" + ")}
+                  <span className="text-blue-100 font-semibold ml-2">
+                    {locale === "ko"
+                      ? `${committedInput.duration}박 ${Number(committedInput.duration) + 1}일`
+                      : `· ${itinerary.duration}-Day Trip`}
+                  </span>
                 </h2>
 
-                {/* Duration big subtitle */}
-                <p className="text-lg sm:text-xl font-semibold text-blue-100 mb-5">
-                  {locale === "ko"
-                    ? `${committedInput.duration}박 ${Number(committedInput.duration) + 1}일`
-                    : `${itinerary.duration}-Day Trip`}
-                </p>
-
                 {/* Metadata icon row */}
-                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-blue-100/90 mb-5">
-                  <span className="flex items-center gap-1.5">
-                    <MapPin className="w-4 h-4" />
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-blue-100/90 mb-3">
+                  <span className="flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5" />
                     {locale === "ko"
                       ? `${itinerary.cities.length}개 도시`
                       : `${itinerary.cities.length} ${itinerary.cities.length === 1 ? "city" : "cities"}`}
                   </span>
                   {committedInput.travelerType && (
-                    <span className="flex items-center gap-1.5">
-                      <Users className="w-4 h-4" />
+                    <span className="flex items-center gap-1">
+                      <Users className="w-3.5 h-3.5" />
                       {travelerLabel(committedInput.travelerType as TravelerType, locale)}
                     </span>
                   )}
@@ -383,9 +381,9 @@ function PlannerContent() {
 
                 {/* Style chips */}
                 {committedInput.styles.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1">
                     {committedInput.styles.map((s) => (
-                      <span key={s} className="bg-white/15 backdrop-blur-sm border border-white/15 text-white text-xs font-medium px-3 py-1 rounded-full">
+                      <span key={s} className="bg-white/15 backdrop-blur-sm border border-white/15 text-white text-[11px] font-medium px-2.5 py-0.5 rounded-full">
                         {styleLabel(s, locale)}
                       </span>
                     ))}
