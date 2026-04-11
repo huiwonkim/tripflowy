@@ -203,8 +203,11 @@ export async function fetchMrtFlightLowest(cityId: string): Promise<MrtFlightRes
  * Returns `{min:0, max:0}` when the API returns no matching items so the
  * BudgetSection hides that row gracefully.
  *
- * `max` uses the 80th percentile to trim extreme outliers (e.g. presidential
- * suites) that would otherwise blow out the displayed range.
+ * MRT occasionally mis-classifies low-priced residence/budget properties
+ * under `fivestar`, which pulled the luxury min into the ₩60k range.
+ * To guard against this we drop anything below 50% of the tier's median
+ * before computing min. `max` uses the 80th percentile to trim extreme
+ * outliers on the other side (presidential suites, etc.).
  */
 async function fetchHotelTier(
   cityKeyword: string,
@@ -227,13 +230,21 @@ async function fetchHotelTier(
 
   const prices = (data?.items ?? [])
     .map((i) => i.salePrice)
-    .filter((p) => p > 0);
+    .filter((p) => p > 0)
+    .sort((a, b) => a - b);
 
   if (prices.length === 0) return { min: 0, max: 0 };
 
+  // Median-based lower-bound trim: drop prices less than half the median,
+  // which catches MRT star-rating mis-classifications without affecting
+  // legitimate cheap-but-real options.
+  const median = prices[Math.floor(prices.length / 2)];
+  const trimmed = prices.filter((p) => p >= median * 0.5);
+  const effective = trimmed.length > 0 ? trimmed : prices;
+
   return {
-    min: Math.min(...prices),
-    max: percentile(prices, 80),
+    min: effective[0],
+    max: percentile(effective, 80),
   };
 }
 
@@ -458,6 +469,6 @@ export const getCachedMrtCityData = unstable_cache(
   async (cityId: string, checkIn: string, checkOut: string, tripNights: number): Promise<MrtCityData> => {
     return fetchMrtCityData(cityId, checkIn, checkOut, tripNights);
   },
-  ["mrt-city-data-v7"], // v7: hotel tiers from starRating-filtered searches (real 3/4/5-star ranges)
+  ["mrt-city-data-v8"], // v8: hotel tiers drop below-half-median outliers for more realistic min
   { revalidate: 3600, tags: ["mrt"] },
 );
