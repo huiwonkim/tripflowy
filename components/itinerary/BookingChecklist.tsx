@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { ExternalLink, Check, Plane, Building2, Compass, ShoppingBag } from "lucide-react";
+import { ExternalLink, Check, Plane, Building2, Compass, ShoppingBag, AlertTriangle } from "lucide-react";
 import type { Locale, GeneratedItinerary } from "@/types";
 import { countries } from "@/data/destinations";
 
@@ -36,14 +36,23 @@ const categoryColors = {
 export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
   const t = useTranslations("booking");
   const [checked, setChecked] = useState<Set<string>>(new Set());
+  const [blockedItems, setBlockedItems] = useState<BookingItem[]>([]);
 
   const allCities = countries.flatMap((c) => c.cities);
+
+  // Primary city = city that appears on the most days (matches BudgetSection).
+  const primaryCity = (() => {
+    if (!itinerary.days || itinerary.days.length === 0) return itinerary.cities[0];
+    const counts: Record<string, number> = {};
+    for (const d of itinerary.days) counts[d.city] = (counts[d.city] ?? 0) + 1;
+    const sorted = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+    return sorted[0]?.[0] ?? itinerary.cities[0];
+  })();
 
   // Generate booking items from itinerary
   const items: BookingItem[] = [];
 
   // Flight
-  const primaryCity = itinerary.cities[0];
   const cityLabel = allCities.find((c) => c.id === primaryCity)?.label[locale] ?? primaryCity;
   items.push({
     id: "flight",
@@ -91,24 +100,27 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
       else next.add(id);
       return next;
     });
+    // Clear any blocked-items fallback panel when the user changes selection.
+    setBlockedItems([]);
   }
 
   function openAll() {
     const selected = items.filter((item) => checked.has(item.id));
     if (selected.length === 0) return;
-    // Browsers block multiple sequential window.open() calls as popups.
-    // Create temporary anchor elements and synchronously click them while
-    // still inside the user-gesture event handler — most browsers treat
-    // each anchor click as a valid user navigation and allow all tabs to open.
+
+    const blocked: BookingItem[] = [];
+    // Open each item sequentially within the user gesture. window.open
+    // returns null (or a window with closed=true) when the popup is blocked.
     for (const item of selected) {
-      const a = document.createElement("a");
-      a.href = item.url;
-      a.target = "_blank";
-      a.rel = "noopener noreferrer sponsored";
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      const w = window.open(item.url, "_blank", "noopener,noreferrer");
+      if (!w || w.closed || typeof w.closed === "undefined") {
+        blocked.push(item);
+      }
     }
+
+    // Any items the browser refused to open are surfaced as a fallback list
+    // the user can click individually — each click is its own user gesture.
+    setBlockedItems(blocked);
   }
 
   const selectedCount = checked.size;
@@ -129,7 +141,7 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
             const isChecked = checked.has(item.id);
 
             return (
-              <label key={item.id} className="flex items-center gap-3 px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors">
+              <div key={item.id} className="flex items-center gap-3 px-5 py-3.5 hover:bg-gray-50 transition-colors">
                 <button
                   type="button"
                   onClick={() => toggle(item.id)}
@@ -140,11 +152,18 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
                   {isChecked && <Check className="w-3 h-3 text-white" strokeWidth={3} />}
                 </button>
                 <Icon className={`w-4 h-4 ${color} flex-shrink-0`} />
-                <span className={`text-sm flex-1 ${isChecked ? "text-gray-400 line-through" : "text-gray-900"}`}>
+                {/* Make the row itself a direct-open link so users can always
+                    click a single row without relying on the bulk open flow. */}
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className={`text-sm flex-1 ${isChecked ? "text-gray-400 line-through" : "text-gray-900 hover:text-blue-600"} cursor-pointer`}
+                >
                   {item.label}
-                </span>
+                </a>
                 <span className="text-xs text-gray-400">{item.provider}</span>
-              </label>
+              </div>
             );
           })}
         </div>
@@ -162,6 +181,34 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
               : (locale === "ko" ? "예약할 항목을 선택하세요" : "Select items to book")}
           </button>
         </div>
+
+        {/* Popup-blocker fallback: show items the browser refused to open */}
+        {blockedItems.length > 0 && (
+          <div className="px-5 py-4 border-t border-amber-100 bg-amber-50">
+            <div className="flex items-start gap-2 mb-3">
+              <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+              <p className="text-xs text-amber-800 leading-relaxed">
+                {locale === "ko"
+                  ? "브라우저가 일부 탭 열기를 차단했습니다. 아래 링크를 각각 클릭해 주세요."
+                  : "Your browser blocked some tabs from opening. Please click each link below."}
+              </p>
+            </div>
+            <div className="space-y-1.5">
+              {blockedItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer sponsored"
+                  className="flex items-center gap-2 text-sm text-amber-900 hover:text-amber-700 hover:underline"
+                >
+                  <ExternalLink className="w-3.5 h-3.5 flex-shrink-0" />
+                  {item.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
