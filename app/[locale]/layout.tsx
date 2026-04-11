@@ -47,8 +47,10 @@ export async function generateMetadata({
       canonical: "/",
       languages: { en: "/", ko: "/ko" },
     },
-    other: {
-      "naver-site-verification": "PLACEHOLDER",
+    verification: {
+      other: {
+        "naver-site-verification": "49a63fc5aa8b8b14b2e9a62ea493b057f70bae1c",
+      },
     },
   };
 }
