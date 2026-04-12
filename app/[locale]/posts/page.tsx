@@ -20,6 +20,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: locale === "ko" ? "여행 가이드 & 후기" : "Travel Guides & Reviews",
     description: locale === "ko" ? "인기 여행지의 상세 가이드와 방문 후기" : "In-depth guides and reviews for popular destinations",
+    keywords: locale === "ko"
+      ? "여행 가이드, 여행 후기, 여행 정보, 트플, TripFlowy"
+      : "travel guide, travel review, destination guide, TripFlowy",
+    openGraph: {
+      title: locale === "ko" ? "여행 가이드 & 후기 | TripFlowy" : "Travel Guides & Reviews | TripFlowy",
+      description: locale === "ko" ? "인기 여행지의 상세 가이드와 방문 후기" : "In-depth guides and reviews for popular destinations",
+    },
     alternates: {
       canonical: locale === "ko" ? "/ko/posts" : "/posts",
       languages: { en: "/posts", ko: "/ko/posts", "x-default": "/posts" },

@@ -1,4 +1,4 @@
-import type { DayCourse, FAQ, Locale, GeneratedItinerary, BlogPost } from "@/types";
+import type { DayCourse, FAQ, Locale, GeneratedItinerary, BlogPost, Tour, Hotel } from "@/types";
 
 const BASE_URL = "https://www.tripflowy.com";
 
@@ -10,10 +10,21 @@ export function generateOrganizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Tripflowy",
+    name: "TripFlowy",
+    alternateName: "트플",
     url: BASE_URL,
     logo: `${BASE_URL}/logo-square-color.png`,
-    description: "Itinerary-first travel planning for Asia, Europe, and beyond — courses curated by real travelers.",
+    description: "Verified travel itinerary templates built from on-site experience across Asia, Europe, and beyond.",
+    email: "hello@tripflowy.com",
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "hello@tripflowy.com",
+      contactType: "customer service",
+      availableLanguage: ["English", "Korean"],
+    },
+    sameAs: [
+      "https://www.tripflowy.com",
+    ],
   };
 }
 
@@ -25,9 +36,14 @@ export function generateWebSiteJsonLd(locale: Locale) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Tripflowy",
+    name: "TripFlowy",
+    alternateName: "트플",
     url: BASE_URL,
     inLanguage: locale === "ko" ? "ko-KR" : "en-US",
+    description: locale === "ko"
+      ? "도시, 기간, 스타일만 선택하면 자동으로 여행 일정을 만들어주는 여행 플래너"
+      : "Auto-generate day-by-day travel itineraries by choosing your destination, duration, and travel style",
+    publisher: { "@type": "Organization", name: "TripFlowy", url: BASE_URL },
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -119,7 +135,7 @@ export function generateCollectionPageJsonLd(params: {
   };
 }
 
-export function generateArticleJsonLd(post: BlogPost, locale: Locale) {
+export function generateArticleJsonLd(post: BlogPost, locale: Locale, cityLabel?: string, wordCount?: number) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -127,12 +143,12 @@ export function generateArticleJsonLd(post: BlogPost, locale: Locale) {
     description: post.excerpt[locale],
     author: {
       "@type": "Organization",
-      name: "Tripflowy",
+      name: "TripFlowy",
       url: BASE_URL,
     },
     publisher: {
       "@type": "Organization",
-      name: "Tripflowy",
+      name: "TripFlowy",
       url: BASE_URL,
       logo: {
         "@type": "ImageObject",
@@ -149,6 +165,8 @@ export function generateArticleJsonLd(post: BlogPost, locale: Locale) {
       ? { image: { "@type": "ImageObject", url: `${BASE_URL}${post.coverImage}` } }
       : {}),
     inLanguage: locale === "ko" ? "ko-KR" : "en-US",
+    ...(cityLabel ? { about: { "@type": "Place", name: cityLabel } } : {}),
+    ...(wordCount ? { wordCount, timeRequired: `PT${Math.max(1, Math.ceil(wordCount / 200))}M` } : {}),
   };
 }
 
@@ -164,5 +182,161 @@ export function generateFaqJsonLd(faqs: FAQ[], locale: Locale) {
         text: faq.answer[locale],
       },
     })),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [".faq-question", ".faq-answer"],
+    },
+  };
+}
+
+/**
+ * HowTo schema — "How TripFlowy works" 3-step process on homepage.
+ * Helps Google show rich results and AI engines understand the workflow.
+ */
+export function generateHowToJsonLd(locale: Locale, steps: { name: string; text: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: locale === "ko" ? "TripFlowy로 여행 일정 만드는 법" : "How to plan a trip with TripFlowy",
+    description: locale === "ko"
+      ? "도시, 기간, 스타일을 선택하면 자동으로 하루 코스 기반 여행 일정을 만들어줍니다."
+      : "Choose your destination, duration, and travel style to auto-generate a day-by-day itinerary.",
+    step: steps.map((s, i) => ({
+      "@type": "HowToStep",
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+}
+
+/**
+ * ItemList schema for destinations — helps search engines and AI understand
+ * which cities/countries TripFlowy covers.
+ */
+export function generateDestinationItemListJsonLd(
+  destinations: { name: string; url: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "TripFlowy Destinations",
+    numberOfItems: destinations.length,
+    itemListElement: destinations.map((d, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: d.name,
+      url: d.url,
+    })),
+  };
+}
+
+/**
+ * WebApplication schema — planner page. Helps AI engines classify the tool.
+ */
+export function generateWebApplicationJsonLd(locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: "TripFlowy Trip Planner",
+    alternateName: "트플 여행 플래너",
+    url: `${BASE_URL}${locale === "ko" ? "/ko" : ""}/planner`,
+    applicationCategory: "TravelApplication",
+    operatingSystem: "Any",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    description: locale === "ko"
+      ? "도시, 기간, 여행 스타일을 선택하면 자동으로 맞춤 일정을 생성합니다. 항공·숙소·현지 비용 견적까지 한 번에."
+      : "Select your destination, duration, and travel style to auto-generate a personalized day-by-day itinerary with flight, hotel, and local cost estimates.",
+    inLanguage: locale === "ko" ? "ko-KR" : "en-US",
+    provider: { "@type": "Organization", name: "TripFlowy", url: BASE_URL },
+  };
+}
+
+/**
+ * Product schema for individual tours — enables Google rich results
+ * with price, rating, and availability.
+ */
+export function generateTourJsonLd(tour: Tour, locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: tour.title[locale],
+    description: tour.description[locale],
+    brand: { "@type": "Organization", name: "TripFlowy" },
+    offers: {
+      "@type": "Offer",
+      price: tour.price,
+      priceCurrency: tour.currency,
+      availability: "https://schema.org/InStock",
+      url: tour.affiliateUrl,
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: tour.rating,
+      reviewCount: tour.reviewCount,
+      bestRating: 5,
+    },
+  };
+}
+
+/**
+ * LodgingBusiness schema for individual hotels — enables Google rich results
+ * with rating and location.
+ */
+export function generateHotelJsonLd(hotel: Hotel, locale: Locale) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    name: hotel.name,
+    description: hotel.description[locale],
+    url: hotel.affiliateUrl,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: hotel.destinationLabel[locale],
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: hotel.rating,
+      reviewCount: hotel.reviewCount,
+      bestRating: 5,
+    },
+    priceRange: hotel.priceRange,
+  };
+}
+
+/**
+ * Trip schema for planner results — helps AI engines extract structured
+ * itinerary data from the planner output.
+ */
+export function generateTripJsonLd(itinerary: GeneratedItinerary, locale: Locale, cityLabels: string[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Trip",
+    name: locale === "ko"
+      ? `${cityLabels.join(" + ")} ${itinerary.duration}일 여행`
+      : `${cityLabels.join(" + ")} ${itinerary.duration}-Day Trip`,
+    description: locale === "ko"
+      ? `${cityLabels.join(", ")} ${itinerary.duration}일 맞춤 여행 일정`
+      : `Personalized ${itinerary.duration}-day itinerary for ${cityLabels.join(", ")}`,
+    numberOfDays: itinerary.duration,
+    itinerary: {
+      "@type": "ItemList",
+      numberOfItems: itinerary.days.length,
+      itemListElement: itinerary.days.map((day) => ({
+        "@type": "ListItem",
+        position: day.dayNumber,
+        item: {
+          "@type": "TouristTrip",
+          name: day.course.title[locale],
+          description: day.course.summary[locale],
+          touristType: itinerary.travelerType,
+        },
+      })),
+    },
+    provider: { "@type": "Organization", name: "TripFlowy", url: BASE_URL },
   };
 }

@@ -31,7 +31,7 @@ export async function generateMetadata({
     metadataBase: new URL("https://www.tripflowy.com"),
     title: {
       default: t("title"),
-      template: "%s | Tripflowy",
+      template: "%s | TripFlowy",
     },
     description: t("description"),
     robots: {
@@ -50,10 +50,10 @@ export async function generateMetadata({
       apple: "/logo-square-dark.png",
     },
     openGraph: {
-      siteName: "Tripflowy",
+      siteName: "TripFlowy",
       type: "website",
       locale: locale === "ko" ? "ko_KR" : "en_US",
-      images: [{ url: "/logo-square-dark.png", width: 512, height: 512, alt: "Tripflowy" }],
+      images: [{ url: "/logo-square-dark.png", width: 512, height: 512, alt: "TripFlowy" }],
     },
     twitter: {
       card: "summary_large_image",
@@ -87,6 +87,9 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${geist.variable} h-full`}>
+      <head>
+        <link rel="alternate" type="application/rss+xml" title="Tripflowy" href="/rss.xml" />
+      </head>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-geist)] antialiased bg-[#f8fafc] text-[#0f172a]">
         {/* Google Analytics 4 (gtag.js) */}
         <Script

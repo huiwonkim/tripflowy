@@ -4,6 +4,8 @@ import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import { ArrowLeft, Calendar, Clock, ChevronRight } from "lucide-react";
 import { posts, getPostBySlug, getPostsByCity } from "@/data/posts";
+import { tours } from "@/data/tours";
+import { hotels } from "@/data/hotels";
 import { ShareButton } from "@/components/ui/ShareButton";
 import { PostCTA } from "@/components/ui/PostCTA";
 import { countries } from "@/data/destinations";
@@ -41,7 +43,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
       publishedTime: post.publishedAt,
       ...(post.updatedAt ? { modifiedTime: post.updatedAt } : {}),
-      ...(post.coverImage ? { images: [{ url: post.coverImage }] } : {}),
+      images: [post.coverImage
+        ? { url: post.coverImage, width: 1200, height: 630 }
+        : { url: "/logo-square-dark.png", width: 512, height: 512 }],
     },
     twitter: { card: "summary_large_image", title: post.title[loc], description: post.excerpt[loc] },
   };
@@ -165,9 +169,21 @@ export default async function PostPage({ params }: PageProps) {
   const relatedPosts = [...sameCityPosts, ...sameCountryPosts].slice(0, 3);
   const countryLabel = country?.label[loc] ?? cityLabel;
 
+  // Related tours & hotels for this city
+  const cityTours = tours.filter((t) => t.destination === post.city).slice(0, 3);
+  const cityHotels = hotels.filter((h) => h.destination === post.city).slice(0, 3);
+
   // JSON-LD
+  const articleLd = generateArticleJsonLd(post, loc, cityLabel, wordCount);
+  // Enrich with mentions of related tours/hotels for GEO/AEO
+  const mentions = [
+    ...cityTours.map((t) => ({ "@type": "Product" as const, name: t.title[loc], url: t.affiliateUrl })),
+    ...cityHotels.map((h) => ({ "@type": "LodgingBusiness" as const, name: h.name, url: h.affiliateUrl })),
+  ];
+  if (mentions.length > 0) (articleLd as Record<string, unknown>).mentions = mentions;
+
   const jsonLd: Record<string, unknown>[] = [
-    generateArticleJsonLd(post, loc),
+    articleLd,
     generateBreadcrumbJsonLd([
       { name: "Home", url: "https://tripflowy.com" },
       { name: loc === "ko" ? "가이드" : "Guides", url: "https://tripflowy.com/posts" },
@@ -239,20 +255,61 @@ export default async function PostPage({ params }: PageProps) {
               <div className="space-y-3">
                 {post.faq.map((item, i) => (
                   <details key={i} className="bg-gray-50 rounded-xl overflow-hidden group">
-                    <summary className="px-5 py-4 cursor-pointer text-[15px] font-medium text-gray-900 hover:bg-gray-100 transition-colors list-none flex items-center justify-between">
+                    <summary className="faq-question px-5 py-4 cursor-pointer text-[15px] font-medium text-gray-900 hover:bg-gray-100 transition-colors list-none flex items-center justify-between">
                       {item.question[loc]}
                       <ChevronRight className="w-4 h-4 text-gray-400 group-open:rotate-90 transition-transform" />
                     </summary>
-                    <div className="px-5 pb-4 text-[15px] text-gray-600 leading-[1.8]">{item.answer[loc]}</div>
+                    <div className="faq-answer px-5 pb-4 text-[15px] text-gray-600 leading-[1.8]">{item.answer[loc]}</div>
                   </details>
                 ))}
               </div>
             </section>
           )}
 
-          {/* Plan-a-trip CTA — we used to link to the full day course detail
-              page, but the course catalog is now private. Redirect readers
-              into the planner pre-filled with this city instead. */}
+          {/* Related tours & hotels for this city */}
+          {(cityTours.length > 0 || cityHotels.length > 0) && (
+            <section className="mt-14 pt-10 border-t border-gray-100">
+              <h2 className="text-[20px] font-bold text-gray-900 mb-5">
+                {loc === "ko" ? `${cityLabel} 추천 투어 & 숙소` : `Tours & Hotels in ${cityLabel}`}
+              </h2>
+              {cityTours.length > 0 && (
+                <div className="mb-4">
+                  <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide mb-3">{loc === "ko" ? "투어" : "Tours"}</p>
+                  <div className="space-y-2">
+                    {cityTours.map((t) => (
+                      <a key={t.id} href={t.affiliateUrl} target="_blank" rel="noopener noreferrer sponsored"
+                        className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors">
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">{t.title[loc]}</p>
+                          <p className="text-xs text-gray-400">{t.durationLabel[loc]}</p>
+                        </div>
+                        <span className="text-sm font-semibold text-amber-600">${t.price}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {cityHotels.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-3">{loc === "ko" ? "숙소" : "Hotels"}</p>
+                  <div className="space-y-2">
+                    {cityHotels.map((h) => (
+                      <a key={h.id} href={h.affiliateUrl} target="_blank" rel="noopener noreferrer sponsored"
+                        className="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 rounded-xl transition-colors">
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">{h.name}</p>
+                          <p className="text-xs text-gray-400">{h.location[loc]}</p>
+                        </div>
+                        <span className="text-sm font-semibold text-blue-600">{h.priceRange}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* Plan-a-trip CTA */}
           {post.city && (
             <div className="mt-12 bg-blue-50 rounded-2xl p-6 text-center">
               <p className="text-sm text-blue-700 mb-3">

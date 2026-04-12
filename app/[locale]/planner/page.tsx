@@ -20,6 +20,7 @@ import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
 import { CityInfoCard } from "@/components/itinerary/CityInfoCard";
 import { SaveItineraryDropdown } from "@/components/ui/SaveItineraryDropdown";
 import { OverviewMap } from "@/components/map/OverviewMap";
+import { generateTripJsonLd } from "@/lib/jsonld";
 import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary, GeneratedDay } from "@/types";
 
 const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", styles: [] };
@@ -144,6 +145,26 @@ function PlannerContent() {
   const matchedHotels = itinerary ? getMatchedHotels(itinerary) : [];
   const cityInfos = itinerary ? [...new Set(itinerary.cities)].map(getCityInfo).filter(Boolean) : [];
   const allCities = countries.flatMap((c) => c.cities);
+
+  // Inject Trip JSON-LD when itinerary is available (client-side)
+  useEffect(() => {
+    const id = "tripflowy-trip-jsonld";
+    const existing = document.getElementById(id);
+    if (!itinerary) {
+      existing?.remove();
+      return;
+    }
+    const cityLabels = [...new Set(itinerary.cities)].map(
+      (cId) => allCities.find((c) => c.id === cId)?.label[locale] ?? cId,
+    );
+    const jsonLd = generateTripJsonLd(itinerary, locale as "en" | "ko", cityLabels);
+    const script = (existing as HTMLScriptElement | null) ?? document.createElement("script");
+    script.id = id;
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(jsonLd);
+    if (!existing) document.head.appendChild(script);
+    return () => { document.getElementById(id)?.remove(); };
+  }, [itinerary, locale, allCities]);
   const selectedLabels = input.destinations.map((id) => allCities.find((c) => c.id === id)?.label[locale] ?? id);
 
   function handleSearch(e: React.FormEvent) {

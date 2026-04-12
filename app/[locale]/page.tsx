@@ -6,7 +6,7 @@ import { QuickPlanner } from "@/components/planner/QuickPlanner";
 import { posts } from "@/data/posts";
 import { countries, comingSoonCountries } from "@/data/destinations";
 import { getCategoryById } from "@/data/categories";
-import { generateOrganizationJsonLd, generateWebSiteJsonLd } from "@/lib/jsonld";
+import { generateOrganizationJsonLd, generateWebSiteJsonLd, generateHowToJsonLd, generateDestinationItemListJsonLd } from "@/lib/jsonld";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
 
@@ -19,11 +19,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const isKo = locale === "ko";
   return {
     title: isKo
-      ? "여행 일정 자동 생성 | Tripflowy — 일본·베트남·유럽 여행 플래너"
-      : "Tripflowy — AI Travel Itinerary Planner for Japan, Vietnam & Europe",
+      ? "TripFlowy | 트플 — 검증된 여행 일정 템플릿"
+      : "TripFlowy — Verified Travel Itinerary Templates",
     description: isKo
       ? "출발 도시, 기간, 여행 스타일만 선택하면 자동으로 맞춤 여행 일정을 만들어드립니다. 직접 걸어보고 만든 하루 코스와 상세 가이드까지 — 블로그 검색 그만, Tripflowy 하나로 끝."
       : "Plan your perfect trip in seconds. Tell us your destination, duration, and style — we auto-generate day-by-day itineraries with curated courses for 30+ cities in Asia and Europe.",
+    keywords: isKo
+      ? "여행 일정, 여행 플래너, 여행 루트, 트플, TripFlowy, 여행 템플릿, 여행 코스"
+      : "travel itinerary, trip planner, travel route, TripFlowy, itinerary template, travel planner",
     alternates: {
       canonical: isKo ? "/ko" : "/",
       languages: {
@@ -45,10 +48,21 @@ export default async function HomePage({ params }: PageProps) {
 
   const organizationJsonLd = generateOrganizationJsonLd();
   const websiteJsonLd = generateWebSiteJsonLd(loc);
+  const howToJsonLd = generateHowToJsonLd(loc, [
+    { name: t("howItWorks.step1Title"), text: t("howItWorks.step1Desc") },
+    { name: t("howItWorks.step2Title"), text: t("howItWorks.step2Desc") },
+    { name: t("howItWorks.step3Title"), text: t("howItWorks.step3Desc") },
+  ]);
+  const destinationJsonLd = generateDestinationItemListJsonLd(
+    allCities.map((city) => ({
+      name: city.label[loc],
+      url: `https://www.tripflowy.com${loc === "ko" ? "/ko" : ""}/planner?destinations=${city.id}`,
+    })),
+  );
 
   return (
     <div>
-      {/* JSON-LD — Organization + WebSite (brand knowledge panel + sitelinks search box) */}
+      {/* JSON-LD — Organization + WebSite + HowTo + Destinations */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
@@ -56,6 +70,14 @@ export default async function HomePage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationJsonLd) }}
       />
 
       {/* Hero */}

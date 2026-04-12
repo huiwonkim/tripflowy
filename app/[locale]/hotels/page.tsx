@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { HotelCard } from "@/components/hotels/HotelCard";
 import { hotels } from "@/data/hotels";
 import { countries } from "@/data/destinations";
-import { generateBreadcrumbJsonLd } from "@/lib/jsonld";
+import { generateBreadcrumbJsonLd, generateCollectionPageJsonLd, generateHotelJsonLd } from "@/lib/jsonld";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
 
@@ -19,6 +19,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: t("heading"),
     description: t("subheading"),
+    keywords: locale === "ko"
+      ? "여행 숙소, 호텔 추천, 숙소 예약, 트플, TripFlowy"
+      : "travel hotels, hotel recommendations, accommodation, TripFlowy",
+    openGraph: {
+      title: `${t("heading")} | TripFlowy`,
+      description: t("subheading"),
+    },
     alternates: {
       canonical: locale === "ko" ? "/ko/hotels" : "/hotels",
       languages: { en: "/hotels", ko: "/ko/hotels", "x-default": "/hotels" },
@@ -39,10 +46,21 @@ export default async function HotelsPage({ params, searchParams }: PageProps) {
     return true;
   });
 
+  const pageUrl = `${BASE_URL}${loc === "ko" ? "/ko" : ""}/hotels`;
   const breadcrumbJsonLd = generateBreadcrumbJsonLd([
     { name: loc === "ko" ? "홈" : "Home", url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}` },
-    { name: t("heading"), url: `${BASE_URL}${loc === "ko" ? "/ko" : ""}/hotels` },
+    { name: t("heading"), url: pageUrl },
   ]);
+  const collectionJsonLd = generateCollectionPageJsonLd({
+    name: t("heading"),
+    description: t("subheading"),
+    url: pageUrl,
+    locale: loc,
+    items: filtered.map((hotel) => ({
+      name: hotel.name,
+      url: hotel.affiliateUrl,
+    })),
+  });
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
@@ -50,6 +68,14 @@ export default async function HotelsPage({ params, searchParams }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
+      />
+      {filtered.map((hotel) => (
+        <script key={hotel.id} type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateHotelJsonLd(hotel, loc)) }} />
+      ))}
       <div className="mb-8">
         <p className="text-sm font-medium text-blue-600 mb-1">{t("label")}</p>
         <h1 className="text-3xl font-bold text-gray-900">{t("heading")}</h1>
