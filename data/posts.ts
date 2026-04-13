@@ -1165,9 +1165,9 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
 - **노선:** 도쿄 시내 주요 지역 ↔ 나리타공항 (1·2·3터미널)
 - **소요 시간:** 지역별 다름 — 긴자 약 1시간 40분, 신주쿠 약 1시간 45분, 도쿄역 약 1시간 20분
 - **가격:** 클룩 기준 편도 약 28,000원 / 공식 약 3,200엔 (2026년 기준)
-- **예약:** 클룩에서 사전 예약 추천 (현장 구매는 현금만 가능하고 자리 보장 안 됨)
+- **예약:** ==클룩에서 사전 예약 추천== (현장 구매는 현금만 가능하고 자리 보장 안 됨)
 - **좌석:** 자유석 (선착순)
-- **편의시설:** 무료 Wi-Fi, 110V 콘센트, 화장실 (버스 뒤쪽)
+- **편의시설:** ==무료 Wi-Fi==, 110V 콘센트, 화장실 (버스 뒤쪽)
 
 ### 리무진 버스 vs 스카이라이너 vs NEX
 
@@ -1188,11 +1188,11 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
 - 단점: 배차 간격 넓음
 - 추천: 도쿄역 근처 숙소
 
-저는 공항→시내는 스카이라이너, 시내→공항은 리무진 버스로 조합하는 게 가장 좋았습니다. 공항 도착 시간은 비행기 지연 때문에 예측이 어렵지만, 돌아갈 때는 시간을 미리 정할 수 있으니까요.
+저는 ==공항→시내는 스카이라이너, 시내→공항은 리무진 버스==로 조합하는 게 가장 좋았습니다. 공항 도착 시간은 비행기 지연 때문에 예측이 어렵지만, 돌아갈 때는 시간을 미리 정할 수 있으니까요.
 
 ### 예약 방법
 
-클룩에서 미리 예약하는 게 가장 편합니다. 현장에서도 탈 수 있지만 현금만 가능하고, 자리가 보장되지 않아요. 실제로 현금 없는 외국인이 못 타고 돌아가는 걸 본 적도 있습니다.
+==클룩에서 미리 예약하는 게 가장 편합니다.== 현장에서도 탈 수 있지만 현금만 가능하고, 자리가 보장되지 않아요. 실제로 현금 없는 외국인이 못 타고 돌아가는 걸 본 적도 있습니다.
 
 {{cta}}
 
@@ -1214,7 +1214,7 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
 
 ![클룩 QR코드 바우처](2)
 
-나리타공항은 **3터미널 → 2터미널 → 1터미널** 순으로 정차합니다. 내릴 터미널을 기사님에게 미리 말하세요.
+나리타공항은 ==3터미널 → 2터미널 → 1터미널== 순으로 정차합니다. 내릴 터미널을 기사님에게 미리 말하세요.
 
 ### 버스 내부
 
@@ -1248,11 +1248,11 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
 - 클룩에서 미리 예약 — 현장은 현금만, 자리 보장 안 됨
 - QR코드 바우처 캡처해두면 프린트 불필요
 - 짐 많거나 부모님/가족과 함께라면 지하철보다 훨씬 편함
-- 교통 체증 고려해서 **비행기 3시간 전** 도착 시간으로 예약
+- 교통 체증 고려해서 ==비행기 3시간 전== 도착 시간으로 예약
 - 좌석 자유석이라 일찍 타면 좋은 자리 가능
 - 나리타공항 3→2→1 순 하차 — 본인 터미널 미리 확인
 
-도쿄 여행 일정을 짜고 있다면 TripFlowy 플래너에서 공항 이동까지 포함한 전체 코스를 조합해 볼 수 있습니다.
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 공항 이동까지 포함한 전체 코스를 조합해 볼 수 있습니다.
 `,
       en: `## Narita Airport Limousine Bus — The Easiest Way From Tokyo to the Airport
 
@@ -1267,9 +1267,9 @@ I've taken this bus 3+ times across multiple Tokyo trips. For getting from the a
 - **Routes:** Major Tokyo areas ↔ Narita Airport (Terminals 1, 2, 3)
 - **Travel time:** Varies by area — Ginza ~1hr 40min, Shinjuku ~1hr 45min, Tokyo Station ~1hr 20min
 - **Fare:** ~$20 on Klook / ~¥3,200 official (2026)
-- **Booking:** Pre-book on Klook recommended (walk-up is cash-only, no seat guarantee)
+- **Booking:** ==Pre-book on Klook recommended== (walk-up is cash-only, no seat guarantee)
 - **Seats:** Free seating (first come, first served)
-- **Amenities:** Free Wi-Fi, 110V outlet, restroom (rear of bus)
+- **Amenities:** ==Free Wi-Fi==, 110V outlet, restroom (rear of bus)
 
 ### Limousine Bus vs Skyliner vs NEX
 
@@ -1290,11 +1290,11 @@ Three main options from central Tokyo to Narita Airport:
 - Cons: Less frequent departures
 - Best for: Staying near Tokyo Station
 
-My go-to combination: Skyliner from airport to city, limousine bus from city back to airport. Arrival time from flights is unpredictable, but departure day timing is in your control.
+My go-to combination: ==Skyliner from airport to city, limousine bus from city back to airport.== Arrival time from flights is unpredictable, but departure day timing is in your control.
 
 ### How to Book
 
-Pre-booking on Klook is the easiest option. Walk-up boarding exists but is cash-only with no seat guarantee. I've seen tourists turned away because they had no cash.
+==Pre-booking on Klook is the easiest option.== Walk-up boarding exists but is cash-only with no seat guarantee. I've seen tourists turned away because they had no cash.
 
 {{cta}}
 
@@ -1316,7 +1316,7 @@ Ticket check varies by stop. Sometimes they check when you board, sometimes a st
 
 ![Klook QR code voucher](2)
 
-Narita Airport stops go: **Terminal 3 → Terminal 2 → Terminal 1**. Tell the driver your terminal when boarding.
+Narita Airport stops go: ==Terminal 3 → Terminal 2 → Terminal 1==. Tell the driver your terminal when boarding.
 
 ### On the Bus
 
@@ -1350,11 +1350,11 @@ Approximate times to Narita Airport:
 - Pre-book on Klook — walk-up is cash-only, no guaranteed seat
 - Screenshot QR voucher — no printing needed
 - Much easier than subway with heavy luggage or elderly family
-- Book for **3 hours before flight** to account for traffic
+- Book for ==3 hours before flight== to account for traffic
 - Free seating — board early for window seat
 - Narita stops: Terminal 3→2→1 — know your terminal in advance
 
-If you're building a Tokyo itinerary, try the TripFlowy planner to map out your full trip including airport transfers.
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to map out your full trip including airport transfers.
 `,
     },
     city: "tokyo",
