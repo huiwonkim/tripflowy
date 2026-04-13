@@ -10,9 +10,14 @@ interface PostCTAProps {
 }
 
 export function PostCTA({ cta, locale, variant = "inline" }: PostCTAProps) {
+  // Klook URLs: insert /ko/ for Korean locale, remove for English
+  const url = locale === "ko"
+    ? cta.url.replace("klook.com/activity/", "klook.com/ko/activity/")
+    : cta.url.replace("klook.com/ko/activity/", "klook.com/activity/");
+
   if (variant === "inline") {
     return (
-      <a href={cta.url} target="_blank" rel="noopener noreferrer sponsored"
+      <a href={url} target="_blank" rel="noopener noreferrer sponsored"
         className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors my-4">
         {cta.label[locale]}
         <ExternalLink className="w-3.5 h-3.5" />
@@ -31,7 +36,7 @@ export function PostCTA({ cta, locale, variant = "inline" }: PostCTAProps) {
           </div>
           <p className="text-xs text-gray-400 mt-1">via {cta.provider}</p>
         </div>
-        <a href={cta.url} target="_blank" rel="noopener noreferrer sponsored"
+        <a href={url} target="_blank" rel="noopener noreferrer sponsored"
           className="flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors flex items-center gap-2 text-sm whitespace-nowrap">
           {locale === "ko" ? "예약하기" : "Book Now"}
           <ExternalLink className="w-3.5 h-3.5" />
@@ -48,7 +53,7 @@ export function PostCTA({ cta, locale, variant = "inline" }: PostCTAProps) {
           <p className="text-xs font-medium text-gray-900 truncate">{cta.label[locale]}</p>
           {cta.price && <p className="text-xs font-bold text-blue-600">{cta.price[locale]}</p>}
         </div>
-        <a href={cta.url} target="_blank" rel="noopener noreferrer sponsored"
+        <a href={url} target="_blank" rel="noopener noreferrer sponsored"
           className="flex-shrink-0 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-xl transition-colors text-sm flex items-center gap-1.5">
           {locale === "ko" ? "예약" : "Book"}
           <ExternalLink className="w-3 h-3" />

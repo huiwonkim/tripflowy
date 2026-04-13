@@ -326,7 +326,7 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
     ],
     cta: {
       label: { en: "Book Shibuya Sky Tickets", ko: "시부야스카이 입장권 예약하기" },
-      url: "https://www.klook.com/ko/activity/70672-shibuya-sky-tokyo/?aid=118462",
+      url: "https://www.klook.com/activity/70672-shibuya-sky-tokyo/?aid=118462",
       provider: "Klook",
       price: { en: "From ¥2,200", ko: "2,200엔~" },
       note: { en: "Online booking saves up to ¥300 vs walk-in", ko: "온라인 예매 시 현장보다 최대 300엔 저렴" },
@@ -745,7 +745,7 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
     ],
     cta: {
       label: { en: "Book Tokyo Disneyland Tickets", ko: "도쿄 디즈니랜드 티켓 예약하기" },
-      url: "https://www.klook.com/ko/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=118462",
+      url: "https://www.klook.com/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=118462",
       provider: "Klook",
       price: { en: "From ¥9,400", ko: "85,000원~" },
       note: { en: "Klook often cheaper than official site", ko: "클룩이 공식보다 저렴한 경우 많음" },
@@ -1134,7 +1134,7 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
     ],
     cta: {
       label: { en: "Book Tokyo DisneySea Tickets", ko: "도쿄 디즈니씨 티켓 예약하기" },
-      url: "https://www.klook.com/ko/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=118462",
+      url: "https://www.klook.com/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=118462",
       provider: "Klook",
       price: { en: "From ¥9,400", ko: "85,000원~" },
       note: { en: "Klook often cheaper than official site", ko: "클룩이 공식보다 저렴한 경우 많음" },
@@ -1387,10 +1387,257 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
     ],
     cta: {
       label: { en: "Book Narita Limousine Bus", ko: "나리타공항 리무진 버스 예약하기" },
-      url: "https://www.klook.com/ko/activity/2274-narita-airport-limousine-bus-tokyo/?aid=118462",
+      url: "https://www.klook.com/activity/2274-narita-airport-limousine-bus-tokyo/?aid=118462",
       provider: "Klook",
       price: { en: "From ~$20", ko: "28,000원~" },
       note: { en: "Pre-booking recommended — walk-up is cash only", ko: "사전 예약 추천 — 현장은 현금만 가능" },
+    },
+    publishedAt: "2026-04-13",
+  },
+  {
+    slug: "tokyo-skytree-observatory-guide",
+    title: {
+      en: "Tokyo Skytree Guide — Tickets, Night View & Observatory Tips (2026)",
+      ko: "도쿄 스카이트리 전망대 가이드 — 티켓, 야경, 꿀팁 총정리 (2026)",
+    },
+    excerpt: {
+      en: "Tokyo Skytree tickets, 350m vs 450m decks, best time for night views, and how it compares to Shibuya Sky. Tips from visiting Japan's tallest tower.",
+      ko: "도쿄 스카이트리 전망대 티켓 예약, 350m vs 450m 비교, 야경 시간, 시부야스카이와 차이까지. 직접 다녀온 후기와 꿀팁.",
+    },
+    content: {
+      ko: `## 도쿄 스카이트리 전망대 — 일본에서 가장 높은 곳에서 보는 도쿄
+
+도쿄 스카이트리(Tokyo Skytree)는 도쿄 스미다구 오시아게에 있는 높이 634m 전파탑입니다. 2012년 완공 당시 세계에서 가장 높은 타워였고, 지금도 일본에서 가장 높은 건축물이에요. 내부에 350m 덴보데크와 450m 갤러리아, 두 개의 전망대가 있습니다.
+
+도쿄 전망대 하면 시부야스카이가 1순위인데, 시부야스카이는 야경 시간대 예약이 2주 전 자정 오픈런이라 잡기가 어려워요. 반면 ==스카이트리는 당일 예약도 가능==하고, 얼리버드로 미리 사면 할인도 받을 수 있습니다.
+
+### 핵심 정보
+
+- **위치:** 도쿄 스미다구 오시아게 1-1-2 (아사쿠사 근처)
+- **높이:** 타워 634m / 전망대 최고 450m (갤러리아)
+- **운영 시간:** 10:00~21:00 (마지막 입장 20:00)
+- **가는 법:** 도쿄 스카이트리역 또는 오시아게역 하차 → 도보 연결
+- **공식 입장료:** 날짜별 변동제 — ==덴보데크+갤러리아 3,000~4,400엔== / 덴보데크만 1,800~2,700엔 (주말·공휴일이 비쌈)
+- **클룩 가격:** 덴보데크+갤러리아 27,900원~ / 덴보데크만 16,700원~
+
+### 가는 법
+
+도쿄 스카이트리역(토부 스카이트리 라인) 또는 오시아게역(한조몬선·아사쿠사선)에서 내리면 바로 연결됩니다. 지하철 출구에서 "스카이트리 타운" 표지판을 따라가면 돼요.
+
+센소지가 있는 아사쿠사와 가까워서 같은 날 묶어서 가기 좋습니다. 역에서 내려 4층으로 올라가면 매표소가 있습니다.
+
+![스카이트리 메인 입구](0)
+
+### 티켓 예약
+
+시부야스카이와 달리 ==당일 현장 구매도 가능==합니다. 하지만 클룩에서 미리 사면 얼리버드 할인이 있어서 더 저렴해요.
+
+{{cta}}
+
+**예약 팁:**
+- 클룩에서 구매 → 현장 키오스크에서 QR코드 스캔 → 실물 티켓 교환
+
+![키오스크 티켓 교환](1)
+
+- ==450m 갤러리아까지 가는 티켓을 추천== — 100m 차이지만 전망 차이가 큼
+- 공식 가격은 날짜별 변동제라 평일이 저렴하고, 주말·공휴일이 비쌈
+- [스카이트리 공식 사이트](https://ko.tokyo-skytree.jp/)에서 날짜별 가격 확인 가능
+
+### 350m 덴보데크
+
+엘리베이터를 타고 350m에 도착하면 파노라마 형태로 도쿄 시내를 볼 수 있습니다. 340m, 345m, 350m 3개 층으로 되어 있어요.
+
+![층 안내도](2)
+
+![350m 덴보데크 낮 전망](3)
+
+시부야스카이보다 예약이 쉬운 만큼 ==내부에 사람이 더 많습니다.== 공간이 넓은 편은 아니라서 창가 자리 경쟁이 있어요.
+
+내부에 카페도 있는데 커피 한 잔 600엔 정도로 비싼 편. 한쪽에 한국어 안내 자료도 있어서 각 방향에 어떤 건물이 있는지 확인할 수 있습니다.
+
+한 층 아래(340m)에는 바닥 투명 유리가 있는데, 안쪽에 공간을 두고 유리가 이중이라 다른 타워만큼 무섭지는 않았어요.
+
+![바닥 투명 유리](7)
+
+### 450m 갤러리아
+
+350m에서 엘리베이터를 한 번 더 타고 445m까지 올라간 뒤, 경사로를 따라 걸어가면 최고 높이 ==451.2m==에 도착합니다.
+
+![갤러리아 경사로](4)
+
+아래층보다 좁은 만큼 사람이 적어서 전망을 보기 편합니다. 난간에 구름 모양 쿠션이 설치되어 있어서 엎드려서 편하게 볼 수 있는 게 좋았어요.
+
+![구름 쿠션에서 전망 보기](5)
+
+350m와 100m 차이라 비슷할 줄 알았는데, ==실제로 올라가면 시야 차이가 꽤 큽니다.== 처음 가신다면 갤러리아까지 올라가는 걸 추천해요. 무료 사진 촬영도 있어서 기념사진 하나 남기기 좋습니다.
+
+다만 갤러리아 올라가는 엘리베이터 대기가 긴 편이라, ==야경 시간대 전에 미리 올라가는 게 좋습니다.==
+
+### 야경 시간
+
+일몰 전후가 가장 좋습니다. ==당일 일몰 시간보다 40분~1시간 전에 입장==하면 낮 전망에서 야경으로 바뀌는 과정을 볼 수 있어요. 가시는 날 일몰 시간은 미리 검색해두세요.
+
+날이 좋으면 후지산까지 보이고, 아사쿠사 방향 스미다강, 시부야/신주쿠 방향 고층 빌딩까지 한눈에 들어옵니다. 야경은 시부야스카이 못지않게 좋았습니다.
+
+![스카이트리 야경](6)
+
+### 시부야스카이 vs 스카이트리
+
+- **높이:** 스카이트리 450m > 시부야스카이 230m
+- **형태:** 스카이트리는 ==실내 유리== 전망 / 시부야스카이는 ==야외 루프탑==
+- **예약:** 스카이트리는 당일도 가능 / 시부야스카이는 2주 전 오픈런 필요
+- **분위기:** 스카이트리는 넓은 시야 + 높이감 / 시부야스카이는 바람 + 개방감
+- **추천:** 야외에서 바람 맞으며 보고 싶다면 시부야스카이, 높은 곳에서 넓게 보고 싶다면 스카이트리
+
+둘 다 가능하면 두 곳 다 가보세요. 느낌이 완전히 다릅니다.
+
+### 다녀온 사람의 꿀팁
+
+- 클룩 얼리버드로 사면 ==2만원대==부터 가능
+- ==450m 갤러리아 티켓 추천== — 가격 차이 대비 전망 차이 큼
+- 일몰 40분~1시간 전 입장이 베스트 타이밍
+- 갤러리아 엘리베이터 대기 있으니 야경 시간 전에 미리 올라가기
+- 시부야스카이 야경 예약에 실패했다면 스카이트리가 좋은 대안
+- 아사쿠사(센소지)와 같은 날 묶어서 동선 짜기
+- 건물 아래에 식당가 있어서 저녁 식사하기도 좋음
+- ==공식 가격이 날짜별로 다르니== [공식 사이트](https://ko.tokyo-skytree.jp/) 확인 추천
+
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 스카이트리와 아사쿠사를 하루 코스로 조합해 볼 수 있습니다.
+`,
+      en: `## Tokyo Skytree Observatory — Views From Japan's Tallest Structure
+
+Tokyo Skytree is a 634m broadcasting tower in Oshiage, Sumida City, Tokyo, Japan. When completed in 2012, it was the tallest tower in the world. It's still the tallest structure in Japan. Inside, there are two observation decks: the Tembo Deck at 350m and the Tembo Galleria at 450m.
+
+Shibuya Sky is the go-to Tokyo observation deck, but getting night view tickets there requires an opening-day rush 2 weeks in advance. ==Skytree sells same-day tickets== and offers early-bird discounts on Klook — much easier to plan around.
+
+### Key Info
+
+- **Location:** 1-1-2 Oshiage, Sumida City, Tokyo (near Asakusa)
+- **Height:** Tower 634m / highest deck 450m (Galleria)
+- **Hours:** 10:00–21:00 (last entry 20:00)
+- **Getting there:** Tokyo Skytree Station or Oshiage Station — direct walk
+- **Official prices:** Date-based pricing — ==Deck + Galleria ¥3,000–4,400== / Deck only ¥1,800–2,700 (weekends/holidays cost more)
+- **Klook prices:** Deck + Galleria ~$20 / Deck only ~$12
+
+### Getting There
+
+Get off at Tokyo Skytree Station (Tobu Skytree Line) or Oshiage Station (Hanzomon/Asakusa Line) — both connect directly to the building. Follow signs for "Skytree Town."
+
+It's close to Asakusa's Senso-ji temple, so you can combine both in one day. Take the elevator to the 4th floor for the ticket counter.
+
+![Tokyo Skytree main entrance](0)
+
+### Tickets
+
+Unlike Shibuya Sky, ==same-day walk-up tickets are available.== But booking on Klook in advance gets you early-bird discounts.
+
+{{cta}}
+
+**Booking tips:**
+- Buy on Klook → scan QR at kiosk on-site → receive physical ticket
+
+![Ticket exchange kiosks](1)
+
+- ==Get the 450m Galleria ticket== — the 100m difference in view is significant
+- Official prices vary by date — weekdays are cheaper, weekends/holidays cost more
+- Check the [official Skytree site](https://www.tokyo-skytree.jp/en/) for date-specific pricing
+
+### 350m Tembo Deck
+
+The elevator takes you to 350m, where three floors (340m, 345m, 350m) offer panoramic views of Tokyo.
+
+![Floor guide](2)
+
+![350m Tembo Deck daytime view](3)
+
+Easier booking means ==more people inside than Shibuya Sky.== Window spots fill up, especially near sunset.
+
+There's a small cafe (coffee ~¥600) and Korean/English information boards showing which buildings are in each direction. One floor down (340m), there's a glass floor section — double-layered glass with a gap, so less scary than you'd expect.
+
+![Glass floor at 340m](7)
+
+### 450m Tembo Galleria
+
+From 350m, take another elevator to 445m, then walk up a ramp to the highest point: ==451.2m.==
+
+![Galleria ramp to 450m](4)
+
+Smaller than the deck below, which means fewer people and better views. The railings have cloud-shaped cushions so you can lean forward comfortably.
+
+![Cloud cushions for viewing](5) Free photo spot available.
+
+I expected 100m difference to feel similar — ==it's noticeably different.== If it's your first visit, the Galleria ticket is worth it.
+
+The elevator queue for Galleria gets long, especially near sunset. ==Go up before the evening rush.==
+
+### Night View
+
+Best time: ==40 minutes to 1 hour before sunset.== You'll catch the transition from daytime to night view. Check sunset time for your visit date in advance.
+
+On clear days, you can see Mt. Fuji. The Sumida River toward Asakusa, high-rises in Shibuya/Shinjuku — everything is visible from here. The night view was just as impressive as Shibuya Sky.
+
+![Tokyo night view from Skytree](6)
+
+### Shibuya Sky vs Skytree
+
+- **Height:** Skytree 450m > Shibuya Sky 230m
+- **Style:** Skytree = ==indoor glass viewing== / Shibuya Sky = ==outdoor rooftop==
+- **Booking:** Skytree takes same-day tickets / Shibuya Sky needs 2-week advance rush
+- **Feel:** Skytree = wider view + height / Shibuya Sky = wind + openness
+- **Recommendation:** Want outdoor wind-in-your-face? Shibuya Sky. Want the highest view in Tokyo? Skytree
+
+If you can, visit both. They feel completely different.
+
+### Tips From Visiting
+
+- Klook early-bird tickets from ==~$20== (Deck + Galleria)
+- ==Get the 450m Galleria ticket== — worth the extra cost vs 350m only
+- Enter 40min–1hr before sunset for the best timing
+- Galleria elevator has a queue — go up before the evening rush
+- If Shibuya Sky night tickets are sold out, Skytree is a strong alternative
+- Combine with Asakusa (Senso-ji) on the same day
+- Restaurants below the tower are good for dinner after
+- ==Prices vary by date== — check the [official site](https://www.tokyo-skytree.jp/en/)
+
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Skytree and Asakusa into a full day.
+`,
+    },
+    city: "tokyo",
+    coverImage: "/images/posts/Tokyo-Skytree-Tower-Observatory-7.jpg",
+    coverGradient: "from-violet-500 to-indigo-700",
+    images: [
+      // 0 — 메인 입구
+      { src: "/images/posts/Tokyo-Skytree-Tower-Observatory-1.jpg", alt: { en: "Tokyo Skytree main entrance", ko: "도쿄 스카이트리 메인 입구" } },
+      // 1 — 키오스크 티켓 교환
+      { src: "/images/posts/Tokyo-Skytree-Tower-Observatory-2.jpg", alt: { en: "Tokyo Skytree ticket exchange kiosks", ko: "스카이트리 티켓 교환 키오스크" } },
+      // 2 — 층 안내도
+      { src: "/images/posts/Tokyo-Skytree-Tower-Observatory-6.jpg", alt: { en: "Tokyo Skytree floor guide showing 350m deck and 450m galleria", ko: "스카이트리 층 안내도 (350m 덴보데크, 450m 갤러리아)" } },
+      // 3 — 350m 낮 전망
+      { src: "/images/posts/Tokyo-Skytree-Tower-Observatory-3.jpg", alt: { en: "Daytime panoramic view from Tokyo Skytree 350m Tembo Deck", ko: "스카이트리 350m 덴보데크 낮 전망" } },
+      // 4 — 갤러리아 경사로
+      { src: "/images/posts/Tokyo-Skytree-Tower-Observatory-4.jpg", alt: { en: "Tokyo Skytree 450m Tembo Galleria ramp with visitors", ko: "스카이트리 450m 갤러리아 경사로" } },
+      // 5 — 구름 쿠션
+      { src: "/images/posts/Tokyo-Skytree-Tower-Observatory-5.jpg", alt: { en: "Cloud cushions at Tokyo Skytree Galleria for leaning and viewing", ko: "스카이트리 갤러리아 구름 쿠션에서 전망 보는 모습" } },
+      // 6 — 야경
+      { src: "/images/posts/Tokyo-Skytree-Tower-Observatory-7.jpg", alt: { en: "Tokyo night view from Skytree observatory", ko: "스카이트리 전망대에서 본 도쿄 야경" } },
+      // 7 — 바닥 투명 유리
+      { src: "/images/posts/Tokyo-Skytree-Tower-Observatory-8.jpg", alt: { en: "Glass floor at Tokyo Skytree 340m observation deck", ko: "스카이트리 340m 바닥 투명 유리" } },
+    ],
+    tags: ["guide", "observatory", "night-view", "skytree", "booking-tips"],
+    categories: ["nightview", "complete-guide", "booking", "tips"],
+    faq: [
+      { question: { en: "How much does Tokyo Skytree cost?", ko: "도쿄 스카이트리 입장료는 얼마인가요?" }, answer: { en: "Date-based pricing. Deck + Galleria: ¥3,000–4,400. Deck only: ¥1,800–2,700. Weekdays are cheaper. Klook early-bird from ~$12–20.", ko: "날짜별 변동제입니다. 덴보데크+갤러리아 3,000~4,400엔, 덴보데크만 1,800~2,700엔. 평일이 저렴합니다. 클룩 얼리버드로 16,700원~27,900원." } },
+      { question: { en: "Can I buy Tokyo Skytree tickets on the same day?", ko: "스카이트리 당일 티켓 구매 가능한가요?" }, answer: { en: "Yes. Unlike Shibuya Sky, same-day walk-up tickets are available at Tokyo Skytree. But Klook early-bird is cheaper, so pre-booking is recommended.", ko: "네, 가능합니다. 시부야스카이와 달리 당일 현장 구매가 됩니다. 다만 클룩 얼리버드가 더 저렴하니 미리 예약하는 게 좋아요." } },
+      { question: { en: "Tokyo Skytree 350m or 450m — which ticket should I buy?", ko: "스카이트리 350m vs 450m 어떤 티켓을 사야 하나요?" }, answer: { en: "The 450m Galleria ticket. The view difference is bigger than the 100m gap suggests, and there are fewer people up top. Worth the extra cost.", ko: "450m 갤러리아 티켓을 추천합니다. 100m 차이라 비슷할 것 같지만 실제로 시야 차이가 큽니다. 사람도 적어서 추가 비용 가치가 있어요." } },
+      { question: { en: "Shibuya Sky or Tokyo Skytree — which is better?", ko: "시부야스카이 vs 스카이트리 어디가 나은가요?" }, answer: { en: "Different experiences. Skytree is taller (450m vs 230m) but indoor glass viewing. Shibuya Sky is outdoor rooftop with wind and open air. Skytree is easier to book; Shibuya Sky needs 2-week advance tickets for night slots.", ko: "느낌이 완전히 다릅니다. 스카이트리가 더 높지만(450m vs 230m) 실내 유리 전망. 시부야스카이는 야외 루프탑. 스카이트리가 예약이 쉽고, 시부야스카이는 야경 예약 2주 전 오픈런 필요." } },
+      { question: { en: "What time is best for Tokyo Skytree night view?", ko: "스카이트리 야경 몇 시에 가야 하나요?" }, answer: { en: "Enter 40 minutes to 1 hour before sunset. You'll see both the daytime view and the transition to night lights. Check the sunset time for your visit date.", ko: "일몰 40분~1시간 전에 입장하세요. 낮 전망에서 야경으로 바뀌는 걸 볼 수 있습니다. 방문일 일몰 시간을 미리 검색해두세요." } },
+    ],
+    cta: {
+      label: { en: "Book Tokyo Skytree Tickets", ko: "도쿄 스카이트리 티켓 예약하기" },
+      url: "https://www.klook.com/activity/41352-tokyo-skytree/?aid=118462",
+      provider: "Klook",
+      price: { en: "From ~$12", ko: "16,700원~" },
+      note: { en: "Early-bird discount available on Klook", ko: "클룩 얼리버드 할인 가능" },
     },
     publishedAt: "2026-04-13",
   },

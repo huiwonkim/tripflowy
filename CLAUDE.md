@@ -43,6 +43,12 @@ The goal is practical, experience-based travel information. NOT poetry, NOT emot
 - Bad: "When we visited, we found that the ticket was about $30"
 - Good: "Tickets cost ~$30 (2026). We bought ours online for a discount."
 
+### Affiliate Link Rules
+- Klook CTA URLs: always store WITHOUT `/ko/` (English base URL)
+  - The PostCTA component auto-inserts `/ko/` for Korean locale
+  - Good: `https://www.klook.com/activity/12345-...?aid=118462`
+  - Bad: `https://www.klook.com/ko/activity/12345-...?aid=118462`
+
 ### Currency Rules
 - **Korean version:** 원(KRW) + 현지 통화 (엔, 동, 바트 등)
 - **English version:** USD + 현지 통화만. KRW 절대 사용 금지
