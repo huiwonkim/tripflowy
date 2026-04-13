@@ -1692,6 +1692,17 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 
 공식 가격과 운영 시간은 [워너 브라더스 스튜디오 투어 도쿄 공식 사이트](https://www.wbstudiotour.jp/en/)에서 확인하세요.
 
+### 짐 보관 & 입장 전 알아둘 것
+
+큰 짐은 건물 안에 들고 갈 수 없습니다. 보관 방법은 2가지:
+
+- **야외 코인 락커** — 무료 (100엔 보증금, 반환됨). 셀프 서비스. 보안 검사 없음
+- **실내 클로크룸** — 무료. 직원 보관. 혼잡 시 대기 있을 수 있음. 보안 검사 있음
+
+락커 크기: L 930×350×555mm / M 775×350×575mm / S 290×350×555mm. 캐리어는 L사이즈에 들어갑니다. ==환전 서비스는 없으니== 현금이 필요하면 미리 준비하세요.
+
+그리고 ==예약 시간보다 1시간 일찍 입장 가능==합니다. 로비에 Frog Cafe와 Food Hall이 있어서 일찍 도착해도 음료나 간식을 먹으며 기다릴 수 있어요.
+
 ### 투어 구성
 
 투어는 크게 1부(실내) → 중간 야외 구역 → 2부(실내) → 기념품 숍 순서로 진행됩니다. 가이드 투어가 아니라 ==셀프 관람==이에요 — 처음에 짧은 가이드 안내만 있고 이후 자유롭게 돌아다닙니다.
@@ -1733,7 +1744,14 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 
 컵은 옆에 씻는 공간이 있어서 ==씻어서 기념품으로 가져갈 수 있습니다.==
 
-투어 시작/끝 지점에 식당도 있어서 점심 시간에 맞추면 식사도 가능합니다.
+### 식당
+
+파크 내 식당은 3곳:
+- **Food Hall** — 투어 시작 전 로비. 샐러드, 버거, 파스타, 피자, 디저트
+- **Frog Cafe** — 로비. 간단한 음료와 스낵
+- **Backlot Cafe** — ==투어 중간 지점== (야외 구역). 핫밀, 샌드위치, 버터비어
+
+Backlot Cafe가 버터비어를 파는 곳이에요. 실내/야외 좌석 모두 있습니다. Food Hall과 Frog Cafe는 입장 전에도 이용 가능합니다.
 
 ### 기념품 숍
 
@@ -1761,6 +1779,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 - 지팡이 살 분들은 레일웨이 숍도 꼭 들리기 (메인 숍에 없는 것 있음)
 - 버터비어 컵은 씻어서 가져갈 수 있음
 - 이케부쿠로에서 세이부 철도 ==17분== — 시내에서 접근 편함
+- ==예약 시간 1시간 전부터 입장 가능== — 로비 카페에서 대기 가능
+- 큰 짐은 야외 코인 락커(무료)나 실내 클로크룸에 보관
 - 해리포터 시리즈를 안 봤으면 재미가 반감 — 가기 전에 영화 복습 추천
 
 도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 해리포터 스튜디오와 이케부쿠로를 하루 코스로 조합해 볼 수 있습니다.
@@ -1805,6 +1825,17 @@ Timed entry means ==advance booking is required.== Weekends and holidays sell ou
 
 Check official prices and hours on the [Warner Bros. Studio Tour Tokyo site](https://www.wbstudiotour.jp/en/).
 
+### Luggage Storage & Before Entry
+
+You can't bring large bags inside. Two storage options:
+
+- **Outdoor coin lockers** — free (¥100 refundable deposit). Self-service. No security check
+- **Indoor cloakroom** — free. Staff-assisted. May have a wait when crowded. Security check required
+
+Locker sizes: L 930×350×555mm / M 775×350×575mm / S 290×350×555mm. A carry-on suitcase fits in the L size. ==No currency exchange on site== — bring cash if needed.
+
+Also: ==you can enter the studio 1 hour before your booking time.== The lobby has Frog Cafe and Food Hall, so arriving early is fine — grab a drink while you wait.
+
 ### Tour Structure
 
 The tour flows: Part 1 (indoor) → outdoor area → Part 2 (indoor) → gift shop. It's ==self-guided== — a brief guided intro at the start, then you explore freely.
@@ -1846,7 +1877,14 @@ Available at the outdoor Butterbeer Bar for ==¥1,250 per glass==. Not actual be
 
 The cup can be ==washed and kept as a souvenir== — there's a washing station right next to the bar.
 
-There's also a restaurant at the start/end of the tour for lunch if your timing works out.
+### Food & Drink
+
+Three dining spots inside:
+- **Food Hall** — in the lobby before the tour. Salads, burgers, pastas, pizza, desserts
+- **Frog Cafe** — lobby area. Drinks and light snacks
+- **Backlot Cafe** — ==halfway through the tour== (outdoor area). Hot meals, sandwiches, butterbeer
+
+Backlot Cafe is where you get butterbeer. Indoor and outdoor seating available. Food Hall and Frog Cafe are accessible before your tour time.
 
 ### Gift Shop
 
@@ -1874,6 +1912,8 @@ Wands cost ==¥4,600 each==. There's a touch-screen display that shows which cha
 - Check the Railway Shop near King's Cross area — has exclusive items the main shop doesn't
 - Butterbeer cup is a keepable souvenir (wash it at the station)
 - ==17 minutes from Ikebukuro== via Seibu Railway — easy from central Tokyo
+- ==You can enter 1 hour before your booking time== — lobby cafes are open
+- Store large bags in free outdoor coin lockers or the indoor cloakroom
 - If you haven't seen the Harry Potter films, the experience loses a lot — watch them before going
 
 If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Harry Potter Studio Tour with Ikebukuro into a full day.
