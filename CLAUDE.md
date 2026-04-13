@@ -43,6 +43,12 @@ The goal is practical, experience-based travel information. NOT poetry, NOT emot
 - Bad: "When we visited, we found that the ticket was about $30"
 - Good: "Tickets cost ~$30 (2026). We bought ours online for a discount."
 
+### Currency Rules
+- **Korean version:** 원(KRW) + 현지 통화 (엔, 동, 바트 등)
+- **English version:** USD + 현지 통화만. KRW 절대 사용 금지
+  - Good: "~$60–65 on Klook / ¥9,400 official"
+  - Bad: "~85,000–90,000 KRW on Klook"
+
 ### GEO Rules (Generative Engine Optimization)
 - First mention of any place: full name + city + country (e.g., "Golden Bridge at Ba Na Hills, Da Nang, Vietnam")
 - Include 2–3 verifiable facts (altitude, records, distances) — AI models cite articles with specific data
