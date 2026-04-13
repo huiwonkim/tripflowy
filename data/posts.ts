@@ -1164,7 +1164,7 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
 
 - **노선:** 도쿄 시내 주요 지역 ↔ 나리타공항 (1·2·3터미널)
 - **소요 시간:** 지역별 다름 — 긴자 약 1시간 40분, 신주쿠 약 1시간 45분, 도쿄역 약 1시간 20분
-- **가격:** 클룩 기준 편도 약 34,000원 / 공식 약 3,200엔 (2026년 기준)
+- **가격:** 클룩 기준 편도 약 28,000원 / 공식 약 3,200엔 (2026년 기준)
 - **예약:** 클룩에서 사전 예약 추천 (현장 구매는 현금만 가능하고 자리 보장 안 됨)
 - **좌석:** 자유석 (선착순)
 - **편의시설:** 무료 Wi-Fi, 110V 콘센트, 화장실 (버스 뒤쪽)
@@ -1266,7 +1266,7 @@ I've taken this bus 3+ times across multiple Tokyo trips. For getting from the a
 
 - **Routes:** Major Tokyo areas ↔ Narita Airport (Terminals 1, 2, 3)
 - **Travel time:** Varies by area — Ginza ~1hr 40min, Shinjuku ~1hr 45min, Tokyo Station ~1hr 20min
-- **Fare:** ~$23 on Klook / ~¥3,200 official (2026)
+- **Fare:** ~$20 on Klook / ~¥3,200 official (2026)
 - **Booking:** Pre-book on Klook recommended (walk-up is cash-only, no seat guarantee)
 - **Seats:** Free seating (first come, first served)
 - **Amenities:** Free Wi-Fi, 110V outlet, restroom (rear of bus)
@@ -1358,7 +1358,7 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to map out your 
 `,
     },
     city: "tokyo",
-    coverImage: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-1.jpg",
+    coverImage: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-2.jpg",
     coverGradient: "from-sky-400 to-blue-600",
     images: [
       // 0 — 정류장 표지판
@@ -1379,7 +1379,7 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to map out your 
     tags: ["guide", "transport", "airport", "narita", "bus", "booking-tips"],
     categories: ["tips", "booking", "complete-guide"],
     faq: [
-      { question: { en: "How much is the Narita Airport Limousine Bus?", ko: "나리타공항 리무진 버스 가격은 얼마인가요?" }, answer: { en: "About $23 one-way on Klook, or ~¥3,200 at the official rate (2026). Klook is slightly cheaper and easier to book in English.", ko: "클룩 기준 편도 약 34,000원, 공식 약 3,200엔입니다 (2026년 기준). 클룩이 조금 더 저렴하고 예약도 편해요." } },
+      { question: { en: "How much is the Narita Airport Limousine Bus?", ko: "나리타공항 리무진 버스 가격은 얼마인가요?" }, answer: { en: "About $20 one-way on Klook, or ~¥3,200 at the official rate (2026). Klook is slightly cheaper and easier to book in English.", ko: "클룩 기준 편도 약 28,000원, 공식 약 3,200엔입니다 (2026년 기준). 클룩이 조금 더 저렴하고 예약도 편해요." } },
       { question: { en: "Do I need to book the limousine bus in advance?", ko: "리무진 버스 미리 예약해야 하나요?" }, answer: { en: "Strongly recommended. Walk-up is cash-only with no seat guarantee. I've seen tourists turned away. Book on Klook for QR code instant entry.", ko: "강력 추천합니다. 현장 구매는 현금만 가능하고 좌석 보장도 안 돼요. 현금 없어서 못 탄 외국인도 봤습니다. 클룩에서 미리 예약하세요." } },
       { question: { en: "How long does the limousine bus take from Tokyo to Narita?", ko: "리무진 버스 소요 시간이 얼마나 걸리나요?" }, answer: { en: "Depends on your stop. Tokyo Station ~1hr 20min, Ginza ~1hr 40min, Shinjuku ~1hr 45min. Traffic can add 10–20 minutes.", ko: "정류장에 따라 다릅니다. 도쿄역 약 1시간 20분, 긴자 약 1시간 40분, 신주쿠 약 1시간 45분. 교통 체증 시 10~20분 추가될 수 있어요." } },
       { question: { en: "Limousine bus or Skyliner — which is better for Narita?", ko: "리무진 버스 vs 스카이라이너 뭐가 나은가요?" }, answer: { en: "Skyliner is faster (36 min from Ueno) but you need to get to the station with luggage. Limousine bus is slower but picks up near your hotel with no transfers. Best combo: Skyliner to city, bus back to airport.", ko: "스카이라이너가 빠르지만(우에노에서 36분) 역까지 짐 끌고 가야 합니다. 리무진은 느리지만 숙소 근처에서 바로 탑승. 최고 조합: 공항→시내는 스카이라이너, 시내→공항은 리무진." } },
@@ -1389,7 +1389,7 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to map out your 
       label: { en: "Book Narita Limousine Bus", ko: "나리타공항 리무진 버스 예약하기" },
       url: "https://www.klook.com/ko/activity/2274-narita-airport-limousine-bus-tokyo/?aid=118462",
       provider: "Klook",
-      price: { en: "From ~$23", ko: "34,000원~" },
+      price: { en: "From ~$20", ko: "28,000원~" },
       note: { en: "Pre-booking recommended — walk-up is cash only", ko: "사전 예약 추천 — 현장은 현금만 가능" },
     },
     publishedAt: "2026-04-13",
