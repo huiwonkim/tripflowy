@@ -1641,6 +1641,283 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
     },
     publishedAt: "2026-04-13",
   },
+  {
+    slug: "tokyo-harry-potter-studio-tour-guide",
+    title: {
+      en: "Tokyo Harry Potter Studio Tour Guide — Tickets, Tips & What to Expect (2026)",
+      ko: "도쿄 해리포터 스튜디오 가이드 — 티켓, 꿀팁, 후기 총정리 (2026)",
+    },
+    excerpt: {
+      en: "Warner Bros. Studio Tour Tokyo tickets, how to get there, what's inside, butterbeer, wand shop, and tips from someone who's been to both Tokyo and London.",
+      ko: "도쿄 해리포터 스튜디오 티켓 예약, 가는 법, 내부 후기, 버터비어, 지팡이, 런던과 비교까지. 직접 다녀온 꿀팁 총정리.",
+    },
+    content: {
+      ko: `## 도쿄 해리포터 스튜디오 — 런던보다 볼 게 많았다
+
+워너 브라더스 스튜디오 투어 도쿄(Warner Bros. Studio Tour Tokyo - The Making of Harry Potter)는 도쿄 네리마구 도시마엔에 있는 해리포터 체험형 전시 시설입니다. 2023년 6월에 오픈했고, 런던에 이어 세계에서 두 번째로 만들어진 해리포터 스튜디오예요.
+
+저는 올해 런던 스튜디오도 다녀왔는데, 도쿄가 ==더 최근에 만들어져서 시설이 깨끗하고 볼 거리도 더 많았습니다.== 해리포터 시리즈를 1편 마법사의 돌부터 마지막 죽음의 성물 파트 2까지 본 분이라면 거의 모든 세트장을 알아볼 수 있어요.
+
+단순히 구경만 하는 게 아니라 촬영 체험, 크로마키 영상, 빗자루 탑승 체험 등 직접 해볼 수 있는 것도 많습니다. 천천히 보면 ==최소 3시간==은 필요합니다.
+
+### 핵심 정보
+
+- **위치:** 도쿄 네리마구 도시마엔 (이케부쿠로에서 세이부 철도 17분 → 도시마엔역 도보 2분)
+- **운영 시간:** 시간대별 입장 — 오전 9시~오후 타임 (날짜별 다름)
+- **소요 시간:** 약 3~4시간
+- **공식 가격 (날짜별 변동):** 성인 ==¥6,300~== / 중고생 ¥5,200~ / 어린이 ¥3,800~
+- **클룩 가격:** 58,500원~ (eSIM 포함 패키지)
+- **예약:** ==시간대별 입장이라 사전 예약 필수== — 인기 날짜는 빨리 매진
+
+### 가는 법
+
+이케부쿠로역에서 세이부 철도를 타고 도시마엔역까지 ==17분==. 역에서 나와 도보 2분이면 입구에 도착합니다. 출구에 표지판이 있어서 헤맬 일 없어요.
+
+도쿄 시내에서 접근성이 좋은 편이라 오전에 다녀와서 오후에 다른 일정을 넣기도 좋습니다.
+
+![해리포터 스튜디오 입구](0)
+
+### 티켓 예약
+
+시간대별 입장제라 ==사전 예약 필수==입니다. 인기 있는 주말/공휴일은 빨리 매진돼요.
+
+{{cta}}
+
+**가격 (2026년 기준):**
+- 공식 Standard: 성인 ¥6,300~ / 중고생 ¥5,200~ / 어린이 ¥3,800~ (날짜별 변동)
+- 공식 Package (디지털 가이드+가이드북 포함): 성인 ¥9,780~
+- 클룩: 58,500원~ (eSIM 포함 패키지)
+
+==오전 타임을 추천합니다.== 오전에는 비교적 관람객이 적어서 사진 찍기도 편하고 체험 대기도 짧아요. 나중에 나올 때쯤 되면 사람이 확 많아집니다.
+
+공식 가격과 운영 시간은 [워너 브라더스 스튜디오 투어 도쿄 공식 사이트](https://www.wbstudiotour.jp/en/)에서 확인하세요.
+
+### 투어 구성
+
+투어는 크게 1부(실내) → 중간 야외 구역 → 2부(실내) → 기념품 숍 순서로 진행됩니다. 가이드 투어가 아니라 ==셀프 관람==이에요 — 처음에 짧은 가이드 안내만 있고 이후 자유롭게 돌아다닙니다.
+
+**1부 하이라이트:**
+- ==호그와트 연회장== — 실제 영화 세트 그대로 재현. 투어의 첫 공간
+
+![호그와트 연회장](1)
+
+- 덤블도어의 방 — 영화에서 많이 나온 공간, 사진 필수
+
+![덤블도어의 방](2)
+- 크로마키 체험 — 빗자루 탑승, 워프 이동 등 영화 장면처럼 영상/사진 촬영
+- 의상·분장·음악 제작 과정 전시
+
+**야외 구역:**
+- 해리가 살았던 고모부 집 (더즐리 가) 재현
+
+![더즐리 가 내부](3)
+
+- 호그와트 다리 — 직접 걸어볼 수 있음 (바닥이 울퉁불퉁하게 재현)
+- ==버터비어 바== — 여기서 버터비어 구매 가능
+
+**2부 하이라이트:**
+- 킹스크로스역 9¾ 플랫폼 — 카트 밀고 사진 찍기 (런던보다 대기 짧음)
+- 호그와트 익스프레스 열차 내부 관람
+
+![호그와트 익스프레스](4)
+- ==워프 체험== — 초록색 연기와 함께 영화처럼 촬영 가능 (가장 인상 깊었음)
+- 호그와트 성 미니어처 — 투어 마지막, 영화 속 성 축소 모형
+
+![호그와트 성 미니어처](6)
+
+### 버터비어
+
+야외 구역에 있는 버터비어 바에서 ==1잔 1,250엔==에 구매할 수 있습니다. 맥주가 아니라 소다맛 음료 위에 달달한 크림이 올라간 형태예요.
+
+![버터비어](5)
+
+컵은 옆에 씻는 공간이 있어서 ==씻어서 기념품으로 가져갈 수 있습니다.==
+
+투어 시작/끝 지점에 식당도 있어서 점심 시간에 맞추면 식사도 가능합니다.
+
+### 기념품 숍
+
+기념품 숍은 ==2곳==이 있습니다.
+
+- **레일웨이 숍** (킹스크로스역 구역) — 메인 숍에 없는 한정 아이템 있음, 지나치지 마세요
+- **메인 기념품 숍** (투어 출구) — 지팡이, 에코백, 인형, 옷 등 전체 라인업
+
+지팡이는 ==개당 4,600엔==. 지팡이를 손으로 잡으면 화면에 누구 지팡이인지 나오는 시스템이 재밌어요.
+
+![기념품 숍](7)
+
+### 런던 vs 도쿄 스튜디오
+
+- **시설:** 도쿄가 2023년 오픈으로 더 새롭고 깨끗함
+- **규모:** 도쿄가 체험 시설이 더 많음
+- **대기:** 킹스크로스역 사진 촬영은 런던이 훨씬 긴 줄, 도쿄는 여유로움
+- **가격:** 비슷한 수준 (도쿄 ¥6,300~ / 런던 £55~)
+- **결론:** 둘 다 가봤는데 ==도쿄가 더 좋았습니다==
+
+### 다녀온 사람의 꿀팁
+
+- ==오전 타임 예약 추천== — 관람객 적고, 사진/체험 대기 짧음
+- 천천히 보면 3~4시간 필요 — 시간 여유 두고 가기
+- 지팡이 살 분들은 레일웨이 숍도 꼭 들리기 (메인 숍에 없는 것 있음)
+- 버터비어 컵은 씻어서 가져갈 수 있음
+- 이케부쿠로에서 세이부 철도 ==17분== — 시내에서 접근 편함
+- 해리포터 시리즈를 안 봤으면 재미가 반감 — 가기 전에 영화 복습 추천
+
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 해리포터 스튜디오와 이케부쿠로를 하루 코스로 조합해 볼 수 있습니다.
+`,
+      en: `## Tokyo Harry Potter Studio Tour — Newer and Better Than London
+
+Warner Bros. Studio Tour Tokyo - The Making of Harry Potter is a Harry Potter exhibition and experience facility in Toshimaen, Nerima, Tokyo, Japan. It opened in June 2023 as the second Harry Potter studio tour in the world, after London.
+
+I've been to the London studio earlier this year. ==Tokyo is newer, the facilities are cleaner, and there's more to see and do.== If you've watched the Harry Potter series from Philosopher's Stone to Deathly Hallows Part 2, you'll recognize nearly every set piece.
+
+It's not just looking — there are hands-on experiences like broomstick riding, green screen filming, and Floo Powder teleportation. Budget ==at least 3 hours== for the full tour.
+
+### Key Info
+
+- **Location:** Toshimaen, Nerima, Tokyo (17 min from Ikebukuro via Seibu Railway → 2 min walk from Toshimaen Station)
+- **Hours:** Timed entry — morning to afternoon slots (varies by date)
+- **Duration:** ~3–4 hours
+- **Official prices (vary by date):** Adults ==¥6,300~== / Junior ¥5,200~ / Child ¥3,800~
+- **Klook price:** ~$42 (includes eSIM package)
+- **Booking:** ==Timed entry — advance booking required.== Popular dates sell out fast
+
+### Getting There
+
+Take the Seibu Railway from Ikebukuro Station to Toshimaen Station — ==17 minutes==. From the station exit, it's a 2-minute walk with clear signage.
+
+Easy access from central Tokyo. You can do the morning tour and still have the afternoon free for other plans.
+
+![Harry Potter Studio entrance](0)
+
+### Tickets
+
+Timed entry means ==advance booking is required.== Weekends and holidays sell out quickly.
+
+{{cta}}
+
+**Prices (2026):**
+- Official Standard: Adults ¥6,300~ / Junior ¥5,200~ / Child ¥3,800~ (varies by date)
+- Official Package (digital guide + guidebook): Adults ¥9,780~
+- Klook: ~$42 (includes eSIM package)
+
+==Morning slots recommended.== Fewer visitors, shorter queues for photo spots and experiences. It gets noticeably more crowded by the time you leave.
+
+Check official prices and hours on the [Warner Bros. Studio Tour Tokyo site](https://www.wbstudiotour.jp/en/).
+
+### Tour Structure
+
+The tour flows: Part 1 (indoor) → outdoor area → Part 2 (indoor) → gift shop. It's ==self-guided== — a brief guided intro at the start, then you explore freely.
+
+**Part 1 highlights:**
+- ==Hogwarts Great Hall== — actual film set recreation. First major space
+
+![Hogwarts Great Hall](1)
+
+- Dumbledore's office — iconic set piece, must-photograph
+
+![Dumbledore's office](2)
+- Green screen experiences — broomstick flying, teleportation scenes filmed with you
+- Costume, makeup, and music production exhibits
+
+**Outdoor area:**
+- Dursley house (4 Privet Drive) recreation
+
+![Dursley house interior](3)
+
+- Hogwarts bridge — walk across it (floor is intentionally uneven)
+- ==Butterbeer bar== — buy butterbeer here
+
+**Part 2 highlights:**
+- King's Cross Station Platform 9¾ — push the cart for photos (shorter queue than London)
+- Hogwarts Express train interior walkthrough
+
+![Hogwarts Express](4)
+- ==Floo Powder experience== — green smoke effects make it feel like the movie (most impressive)
+- Hogwarts Castle miniature — final exhibit, scaled-down film model
+
+![Hogwarts Castle miniature](6)
+
+### Butterbeer
+
+Available at the outdoor Butterbeer Bar for ==¥1,250 per glass==. Not actual beer — it's a cream-topped soda drink.
+
+![Butterbeer](5)
+
+The cup can be ==washed and kept as a souvenir== — there's a washing station right next to the bar.
+
+There's also a restaurant at the start/end of the tour for lunch if your timing works out.
+
+### Gift Shop
+
+Two shops to know:
+
+- **Railway Shop** (King's Cross area) — carries items ==not available in the main shop==. Don't walk past it
+- **Main Gift Shop** (tour exit) — wands, tote bags, plushies, robes. Full lineup
+
+Wands cost ==¥4,600 each==. There's a touch-screen display that shows which character's wand you're holding — fun to browse.
+
+![Gift shop](7)
+
+### London vs Tokyo Studio
+
+- **Facilities:** Tokyo opened 2023 — newer and cleaner
+- **Scale:** Tokyo has more interactive experiences
+- **Queues:** King's Cross photo spot has a much shorter line in Tokyo vs London
+- **Price:** Similar range (Tokyo ¥6,300~ / London £55~)
+- **Verdict:** Visited both — ==Tokyo was better==
+
+### Tips From Visiting
+
+- ==Book a morning slot== — fewer crowds, shorter waits for experiences
+- Allow 3–4 hours for the full tour
+- Check the Railway Shop near King's Cross area — has exclusive items the main shop doesn't
+- Butterbeer cup is a keepable souvenir (wash it at the station)
+- ==17 minutes from Ikebukuro== via Seibu Railway — easy from central Tokyo
+- If you haven't seen the Harry Potter films, the experience loses a lot — watch them before going
+
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Harry Potter Studio Tour with Ikebukuro into a full day.
+`,
+    },
+    city: "tokyo",
+    coverImage: "/images/posts/Tokyo-Harrypotter-Studiotour-3.jpg",
+    coverGradient: "from-amber-700 to-red-900",
+    images: [
+      // 0 — 입구 외관
+      { src: "/images/posts/Tokyo-Harrypotter-Studiotour-1.jpg", alt: { en: "Warner Bros. Studio Tour Tokyo Harry Potter entrance", ko: "도쿄 해리포터 스튜디오 입구 외관" } },
+      // 1 — 호그와트 연회장
+      { src: "/images/posts/Tokyo-Harrypotter-Studiotour-2.jpg", alt: { en: "Hogwarts Great Hall set at Tokyo Harry Potter Studio", ko: "도쿄 해리포터 스튜디오 호그와트 연회장 세트" } },
+      // 2 — 덤블도어의 방
+      { src: "/images/posts/Tokyo-Harrypotter-Studiotour-3.jpg", alt: { en: "Dumbledore's office set at Tokyo Harry Potter Studio", ko: "도쿄 해리포터 스튜디오 덤블도어의 방" } },
+      // 3 — 더즐리 가
+      { src: "/images/posts/Tokyo-Harrypotter-Studiotour-5.jpg", alt: { en: "Dursley house interior at Tokyo Harry Potter Studio", ko: "해리포터 스튜디오 더즐리 가 내부" } },
+      // 4 — 호그와트 익스프레스
+      { src: "/images/posts/Tokyo-Harrypotter-Studiotour-6.jpg", alt: { en: "Hogwarts Express train at Tokyo Harry Potter Studio", ko: "해리포터 스튜디오 호그와트 익스프레스 열차" } },
+      // 5 — 버터비어
+      { src: "/images/posts/Tokyo-Harrypotter-Studiotour-4.jpg", alt: { en: "Butterbeer at Tokyo Harry Potter Studio Tour", ko: "해리포터 스튜디오 버터비어" } },
+      // 6 — 호그와트 성 미니어처
+      { src: "/images/posts/Tokyo-Harrypotter-Studiotour-7.jpg", alt: { en: "Hogwarts Castle miniature model at Tokyo Harry Potter Studio", ko: "해리포터 스튜디오 호그와트 성 미니어처" } },
+      // 7 — 기념품 숍
+      { src: "/images/posts/Tokyo-Harrypotter-Studiotour-8.jpg", alt: { en: "Harry Potter Studio Tour Tokyo gift shop", ko: "해리포터 스튜디오 기념품 숍" } },
+    ],
+    tags: ["guide", "complete-guide", "harry-potter", "studio-tour", "booking-tips"],
+    categories: ["sightseeing", "complete-guide", "booking", "tips"],
+    faq: [
+      { question: { en: "How much are Harry Potter Studio Tour Tokyo tickets?", ko: "도쿄 해리포터 스튜디오 입장료는 얼마인가요?" }, answer: { en: "Standard tickets start from ¥6,300 for adults (varies by date). Klook packages from ~$42. Package tickets with digital guide start from ¥9,780.", ko: "공식 Standard 기준 성인 6,300엔부터 (날짜별 변동). 클룩 패키지 58,500원부터. 디지털 가이드 포함 패키지는 9,780엔부터입니다." } },
+      { question: { en: "How long does Harry Potter Studio Tour Tokyo take?", ko: "해리포터 스튜디오 관람 시간이 얼마나 걸리나요?" }, answer: { en: "About 3–4 hours if you take your time with photos and experiences. Rushing through is possible in 2 hours but not recommended.", ko: "사진 찍고 체험까지 하면 3~4시간 정도 걸립니다. 빠르게 돌면 2시간도 가능하지만 추천하지 않아요." } },
+      { question: { en: "How do I get to Harry Potter Studio Tour Tokyo?", ko: "해리포터 스튜디오 가는 법이 어떻게 되나요?" }, answer: { en: "Seibu Railway from Ikebukuro Station to Toshimaen Station — 17 minutes. Then a 2-minute walk from the station exit. Clear signage all the way.", ko: "이케부쿠로역에서 세이부 철도로 도시마엔역까지 17분. 역에서 도보 2분. 표지판이 잘 되어 있어서 헤맬 일 없습니다." } },
+      { question: { en: "Is Harry Potter Studio Tokyo better than London?", ko: "도쿄 해리포터 스튜디오가 런던보다 나은가요?" }, answer: { en: "Yes, in my experience. Tokyo opened in 2023 so everything is newer. More interactive experiences, shorter queues for photo spots like Platform 9¾. Similar price range.", ko: "직접 둘 다 가본 결과, 도쿄가 더 좋았습니다. 2023년 오픈이라 시설이 새롭고 체험도 더 많아요. 킹스크로스 사진 대기도 훨씬 짧습니다." } },
+      { question: { en: "Do I need to book Harry Potter Studio Tokyo in advance?", ko: "해리포터 스튜디오 사전 예약이 필요한가요?" }, answer: { en: "Yes, required. It's a timed-entry system. Popular dates sell out weeks in advance, especially weekends. Book on Klook or the official site as soon as your dates are set.", ko: "네, 필수입니다. 시간대별 입장제라 인기 있는 주말은 몇 주 전에 매진돼요. 일정이 잡히면 클룩이나 공식 사이트에서 바로 예약하세요." } },
+    ],
+    cta: {
+      label: { en: "Book Harry Potter Studio Tour Tokyo", ko: "도쿄 해리포터 스튜디오 예약하기" },
+      url: "https://www.klook.com/activity/84374-warner-bros-studio-tour-tokyo-making-harry-potter/?aid=118462",
+      provider: "Klook",
+      price: { en: "From ~$42", ko: "58,500원~" },
+      note: { en: "Includes free eSIM package", ko: "무료 eSIM 포함 패키지" },
+    },
+    publishedAt: "2026-04-13",
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
