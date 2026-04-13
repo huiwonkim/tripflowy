@@ -263,17 +263,10 @@ export function generateWebApplicationJsonLd(locale: Locale) {
 export function generateTourJsonLd(tour: Tour, locale: Locale) {
   return {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "TouristAttraction",
     name: tour.title[locale],
     description: tour.description[locale],
-    brand: { "@type": "Organization", name: "TripFlowy" },
-    offers: {
-      "@type": "Offer",
-      price: tour.price,
-      priceCurrency: tour.currency,
-      availability: "https://schema.org/InStock",
-      url: tour.affiliateUrl,
-    },
+    url: tour.affiliateUrl,
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: tour.rating,

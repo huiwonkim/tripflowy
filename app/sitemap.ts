@@ -27,7 +27,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/posts", priority: 0.8 },
     { path: "/tours", priority: 0.7 },
     { path: "/hotels", priority: 0.7 },
-    { path: "/itineraries", priority: 0.6 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = staticPages.map(({ path, priority }) => ({
