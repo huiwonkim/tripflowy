@@ -330,6 +330,424 @@ Can't get evening tickets? Daytime on a clear day still delivers — you see det
     publishedAt: "2026-04-09",
     updatedAt: "2026-04-13",
   },
+  {
+    slug: "tokyo-disneyland-guide",
+    title: {
+      en: "Tokyo Disneyland Guide — Tickets, DPA, Rides & Parade Tips (2026)",
+      ko: "도쿄 디즈니랜드 가이드 — 티켓, DPA, 놀이기구, 퍼레이드 꿀팁 (2026)",
+    },
+    excerpt: {
+      en: "Tokyo Disneyland tickets, DPA vs Priority Pass, top rides, and parade tips from multiple visits. Everything you need before your first trip.",
+      ko: "도쿄 디즈니랜드 티켓 예약, DPA와 프라이어티 패스 차이, 인기 놀이기구, 퍼레이드 명당까지. 여러 번 다녀온 후기 총정리.",
+    },
+    content: {
+      ko: `## 도쿄 디즈니랜드 — 가기 전에 꼭 알아야 할 것들
+
+도쿄 디즈니랜드(Tokyo Disneyland)는 일본 치바현 우라야스시 마이하마에 있는 테마파크입니다. 바로 옆에 디즈니씨가 있지만 완전히 별개의 파크이고 티켓도 따로 끊어야 해요.
+
+저는 홍콩, LA, 파리 등 여러 곳의 디즈니랜드를 가봤는데, 도쿄가 분위기가 가장 좋았습니다. 일본 사람들이 애니메이션 캐릭터 문화를 진심으로 즐기는 나라라 그런지, 퍼레이드 때 관객 반응이 다른 곳과 확실히 다릅니다.
+
+1983년 개장 이후 연간 방문객 약 1,700만 명으로 아시아에서 가장 방문객이 많은 테마파크입니다. 놀이기구보다 퍼레이드와 캐릭터 분위기가 핵심인 파크라서, 스릴을 기대하는 성인보다는 가족 여행이나 캐릭터 좋아하는 분들에게 맞습니다. 스릴 놀이기구를 원하면 디즈니씨가 더 나아요.
+
+### 핵심 정보
+
+- **위치:** 치바현 우라야스시 마이하마 1-1 (도쿄역에서 JR 약 25분)
+- **운영 시간:** 09:00~21:00 (시즌에 따라 변동, 실제 개장은 공식 시간보다 약 30분 빠름)
+- **입장료:** 클룩 기준 85,000~90,000원 / 공식 9,400엔 (2026년 4월 기준, 날짜별 변동)
+- **가는 법:** JR 마이하마(Maihama)역 하차 → 도보 바로 연결
+- **필수 준비:** 도쿄 디즈니리조트 공식 앱 설치 + MyDisney 계정 가입
+
+### 가는 법
+
+도쿄역에서 JR 게이요선(京葉線)을 타고 마이하마역에서 내리면 됩니다. 약 25분 소요. 디즈니랜드는 마이하마역에서 바로 걸어갈 수 있어요. 디즈니씨는 역에서 모노레일을 한 번 더 타야 하지만, 디즈니랜드는 그럴 필요 없습니다.
+
+![마이하마역 표지판](0)
+
+오픈런을 할 생각이면 오전 7시 전에 역에 도착하는 게 좋아요. 공식 개장이 9시인데 보통 8시 30분쯤 입장이 시작됩니다. 8시 반에 도착해도 이미 긴 줄이 서 있었습니다.
+
+![디즈니랜드 정문](1)
+
+### 티켓 예약
+
+입장권 가격은 날짜마다 다릅니다. 성수기/주말이 비싸고, 평일/비수기가 저렴해요.
+
+**가격 (2026년 4월 기준):**
+- 클룩: 성인 85,000~90,000원 (날짜별 변동)
+- 공식 홈페이지: 성인 9,400엔
+
+클룩에서 사면 공식보다 조금 저렴하고, 바우처를 디즈니 앱에 등록하면 바로 입장권으로 쓸 수 있습니다. 인기 있는 날은 티켓이 매진되기도 하니 ==일정이 잡히면 바로 예매==하세요.
+
+{{cta}}
+
+입장권만 사면 내부 놀이기구는 모두 무료입니다. 추가 비용이 드는 건 DPA(유료 익스프레스)뿐이에요.
+
+사전에 꼭 해야 할 것: **도쿄 디즈니리조트 공식 앱**(영어)을 설치하고 MyDisney 계정에 가입하세요. DPA 구매, 프라이어티 패스 취득, 퍼레이드 시간 확인 등 모든 걸 앱에서 합니다. 운영 시간과 퍼레이드 스케줄은 [도쿄 디즈니리조트 공식 사이트](https://www.tokyodisneyresort.jp/kr/tdl/)에서도 확인 가능합니다.
+
+![디즈니 앱 대기시간 화면](2)
+
+### DPA와 프라이어티 패스 — 이게 헷갈리는 핵심
+
+디즈니랜드에는 줄을 빠르게 서는 방법이 2가지 있습니다. 처음 가면 헷갈리기 쉬운데, 차이는 단순합니다.
+
+### 프라이어티 패스 (무료)
+
+앱에서 무료로 발급받는 시간 지정 패스입니다. 시간은 직접 고를 수 없고, 시스템이 배정한 시간대에 가서 짧은 대기로 탑승합니다.
+
+**대상 어트랙션 (디즈니랜드 5개):**
+- 빅 선더 마운틴
+- 푸의 허니 헌트
+- 혼티드 맨션
+- 스타투어즈: 더 어드벤처즈 컨티뉴
+- 몬스터 주식회사 "라이드&고 시크!"
+
+자세한 규칙은 [프라이어티 패스 공식 안내](https://www.tokyodisneyresort.jp/kr/tdr/guide/app_service/prioritypass.html)를 참고하세요.
+
+**사용법:**
+- **Step 1:** 파크 입장 후 앱에서 "40주년 기념 프라이어티 패스" 선택
+- **Step 2:** 이용자 전원의 파크 티켓 인증
+- **Step 3:** 원하는 어트랙션 선택 → 배정된 시간 확인 → 해당 시간에 방문
+- 1인 1개만 보유 가능 — 사용하거나 시간이 지나야 다음 패스 취득 가능
+- 시간 선택은 불가, 취소는 가능 (앱에서)
+- 한정 수량이라 인기 어트랙션은 오전에 소진됨
+
+### DPA — 디즈니 프리미어 액세스 (유료)
+
+원하는 시간을 직접 골라서 예약하는 유료 익스프레스입니다. 앱에서 신용카드로 결제합니다.
+
+**대상 어트랙션 (디즈니랜드):**
+- ==미녀와 야수 '마법 이야기' — 2,000엔/회== (가장 추천)
+- 베이맥스의 해피 라이드 — 1,500엔/회
+- 스플래시 마운틴 — 1,500엔/회
+
+**대상 퍼레이드/공연:**
+- 디즈니 하모니 인 컬러 — 2,500엔/회
+- 일렉트리컬 퍼레이드 드림라이츠 — 2,500엔/회
+- Reach for the Stars — 2,500엔/회
+- 미키의 매지컬 뮤직 월드 — 2,500엔/회
+- 잇츠 어 스위츠풀 타임! — 2,500엔/회
+
+자세한 규칙은 [DPA 공식 안내](https://www.tokyodisneyresort.jp/kr/tdr/guide/app_service/disneypremieraccess.html)를 참고하세요.
+
+**사용법:**
+- **Step 1:** 파크 입장 후 앱에서 "디즈니 프리미어 액세스" 선택
+- **Step 2:** 원하는 어트랙션/공연 + 시간대 선택 → 결제
+- **Step 3:** 해당 시간에 방문하여 전용 라인으로 입장
+- 구매 후 60분 또는 이용 시작 시간 중 빠른 쪽이 지나면 다음 DPA 구매 가능
+- 어트랙션 DPA와 퍼레이드 DPA는 동시에 보유 가능
+- ==한정 수량이라 오전에 매진됨== — 오픈런 후 바로 구매하는 게 중요
+- 구매 후 취소/환불 불가
+
+**DPA vs 프라이어티 패스 요약:**
+- 프라이어티 패스 = 무료, 시간 못 고름, 대상 5개
+- DPA = 유료, 시간 고를 수 있음, 대상 3개(어트랙션) + 5개(공연)
+- 둘 다 한정 수량이라 오전에 빨리 잡는 게 핵심
+
+미녀와 야수는 일반 대기 2시간 이상이 기본이라 DPA 2,000엔 내고 타는 게 시간 대비 훨씬 낫습니다. DPA를 1개만 산다면 미녀와 야수를 사세요.
+
+![미녀와 야수 성 입구](3)
+
+### 인기 놀이기구
+
+디즈니씨에 비하면 전체적으로 스릴이 낮은 편입니다. 어린아이들과 함께 타기 좋은 어트랙션이 많아요.
+
+**대기 긴 인기 어트랙션:**
+- **미녀와 야수 '마법 이야기'** — 약 8분, 대형 세트에 음악과 연출이 공연 수준. 대기 2시간+ 기본. DPA 강력 추천
+- **푸의 허니 헌트** — 약 4~5분, 트랙 없이 움직이는 게 특징. 대기 1시간+
+
+![푸의 허니헌트 입구](4)
+- **스페이스 마운틴** — 롯데월드 혜성특급 비슷한 실내 롤러코스터
+- **스플래시 마운틴** — 후룸라이드. 다른 곳보다 물이 덜 튀는 편
+- **몬스터 주식회사** — 트램 타고 손전등으로 몬스터 찾는 체험형
+
+**대기 짧은 어트랙션:**
+- 소인국 같은 잔잔한 어트랙션은 대기 거의 없음
+- 파크 내부 이동용 기차도 놀이기구처럼 탈 수 있음
+
+놀이기구를 중점적으로 타려면 오픈런 + DPA 조합이 필수입니다. 그냥 분위기 즐기러 간다면 놀이기구는 1~2개만 타고 퍼레이드에 집중하는 게 더 나을 수 있어요.
+
+### 퍼레이드 — 디즈니랜드의 진짜 하이라이트
+
+디즈니랜드에서 놀이기구보다 중요한 게 퍼레이드입니다. 디즈니씨는 호수 위에서 멀리 보는 형태인데, 디즈니랜드는 도로에서 바로 눈앞으로 지나갑니다. 캐릭터가 가까이 다가와서 하이파이브도 해줘요.
+
+![퍼레이드 토이스토리 캐릭터](5)
+
+**주요 퍼레이드 (2026년 기준):**
+- **디즈니 하모니 인 컬러** — 메인 낮 퍼레이드, 약 45분
+- **일렉트리컬 퍼레이드 드림라이츠** — 야간 퍼레이드
+- 시즌별 특별 퍼레이드 (크리스마스, 이벤트 등)
+
+![디즈니 성 배경 퍼레이드](6)
+
+퍼레이드 시작 시간은 매일 달라집니다. ==반드시 당일 앱에서 시간을 확인==하세요.
+
+**퍼레이드 명당 꿀팁:**
+- 좋은 자리에서 보려면 ==최소 30분~1시간 전에 자리 잡기==
+- 디즈니 성을 등지고 서세요 — 성 방향이 남쪽이라 해가 있어서 역광
+- 정문 반대편 도로가 사진 찍기 좋은 방향
+- 퍼레이드 DPA(2,500엔)를 사면 지정 구역에서 볼 수 있지만, 위치만 잘 잡으면 없어도 충분
+
+### 캐릭터 그리팅 & 기념품
+
+입구 근처와 파크 곳곳에서 캐릭터 분장 배우들을 만날 수 있습니다. 미키마우스 같은 인기 캐릭터는 사진 찍는 데 50분~2시간 대기가 필요해요.
+
+기념품은 각 어트랙션 출구에 관련 캐릭터 굿즈숍이 있고, 입구 근처에 모든 캐릭터를 모아놓은 대형 기념품 숍도 있습니다. 인형은 작은 게 2,000엔, 큰 건 5,000엔 정도.
+
+![기념품 숍](7)
+
+### 식사
+
+파크 내부 식당은 어디든 웨이팅이 있습니다. 팝콘도 5분, 점심은 10분 이상 기다려야 해요.
+
+칠면조 다리(Turkey Leg)가 유명한데, 크기는 크지만 꽤 질기고 손으로 잡고 먹어야 해서 불편합니다. 그래도 양이 많아서 하나 먹으면 오후 내내 배가 안 고파요.
+
+### 디즈니씨와 차이점
+
+- **놀이기구:** 디즈니랜드는 스릴 낮음 (가족 중심), 디즈니씨는 스릴 있는 어트랙션 많음 (성인 중심)
+- **퍼레이드:** 디즈니랜드가 훨씬 가까이서 볼 수 있고, 종류도 많음
+- **대기 시간:** 디즈니씨보다 전체적으로 짧은 편
+- **디즈니 성:** 디즈니랜드에만 있음 — 사진 찍기 좋음
+
+![디즈니 성 전경](8)
+- **추천:** 아이들/가족 → 디즈니랜드, 성인/스릴 → 디즈니씨
+
+### 여러 번 다녀온 사람의 꿀팁
+
+- 티켓은 ==클룩==에서 사면 공식보다 저렴
+- 공식 앱 필수 — DPA, 프라이어티 패스, 퍼레이드 시간 전부 앱에서
+- DPA를 1개만 산다면 **미녀와 야수** (대기 2시간+ 절약)
+- 오픈런 하려면 **오전 7시 전** 마이하마역 도착 — 실제 개장은 8시 30분쯤
+- 퍼레이드 자리는 **30분~1시간 전**에 잡기 — 디즈니 성 등지고 서기
+- 놀이기구보다 **퍼레이드에 시간 투자**하는 게 만족도 높음
+- 겨울에 가면 얇은 패딩 필수 — 야외 대기 시간이 길어 춥다
+- 운영 시간은 시즌별로 다르니 **앱에서 당일 확인**
+
+도쿄 여행 일정을 짜고 있다면 TripFlowy 플래너에서 도쿄 코스를 자동으로 조합해 보세요. 시부야스카이 같은 전망대와 디즈니를 함께 넣은 일정도 만들 수 있습니다.
+`,
+      en: `## Tokyo Disneyland — What You Need to Know Before Going
+
+Tokyo Disneyland is a theme park in Maihama, Urayasu, Chiba Prefecture, Japan — about 25 minutes from Tokyo Station by JR train. It sits next to Tokyo DisneySea, but they're completely separate parks with separate tickets.
+
+I've been to Disney parks in Hong Kong, LA, Paris, and Tokyo. Tokyo had the best atmosphere by far. Japan takes animation culture seriously, and it shows — the crowd energy during parades is on a different level compared to other locations.
+
+Opened in 1983, Tokyo Disneyland draws roughly 17 million visitors per year — the most-visited theme park in Asia. This is a park where parades and character experiences matter more than rides. If you want thrilling rides, DisneySea is the better choice. Disneyland is better for families, kids, and people who love Disney characters.
+
+### Key Info
+
+- **Location:** 1-1 Maihama, Urayasu, Chiba 279-0031, Japan (25 min from Tokyo Station by JR)
+- **Hours:** 09:00–21:00 (varies by season; actual gate opening ~30 min before official time)
+- **Tickets:** ~85,000–90,000 KRW on Klook / ¥9,400 official (Apr 2026, varies by date)
+- **Getting there:** JR Maihama Station — direct walk to entrance
+- **Must-do before visit:** Install Tokyo Disney Resort app + create MyDisney account
+
+### Getting There
+
+Take the JR Keiyo Line from Tokyo Station to Maihama Station. About 25 minutes. Disneyland is walkable directly from the station — no monorail needed (DisneySea requires a monorail transfer, Disneyland doesn't).
+
+![JR Maihama Station sign](0)
+
+If you're planning to arrive at opening, get to the station by 7am. Official opening is 9am, but they usually start letting people in around 8:30. Even at 8:30, the line was already massive.
+
+![Tokyo Disneyland main entrance](1)
+
+### Tickets
+
+Ticket prices vary by date. Peak days and weekends cost more, weekdays and off-season are cheaper.
+
+**Prices (April 2026):**
+- Klook: ~85,000–90,000 KRW (varies by date)
+- Official site: ¥9,400 (adults)
+
+Klook is slightly cheaper than the official site. The voucher can be registered in the Disney app and used directly as your park ticket. ==Popular dates sell out — book as soon as your travel dates are confirmed.==
+
+{{cta}}
+
+Once you buy the entry ticket, all rides inside the park are free. The only extra cost is DPA (paid express access).
+
+Before your visit: install the **Tokyo Disney Resort app** (English version) and sign up for a MyDisney account. DPA purchases, Priority Pass, parade times — everything happens in the app. You can also check hours and parade schedules on the [official Tokyo Disney Resort site](https://www.tokyodisneyresort.jp/en/tdl/).
+
+![Disney Resort app showing wait times](2)
+
+### DPA vs Priority Pass — The Key System to Understand
+
+There are two ways to skip the lines at Tokyo Disneyland. First-timers often get confused, but the difference is simple.
+
+### Priority Pass (Free)
+
+A free time-assigned pass you claim through the app. You don't choose the time — the system assigns a window, and you show up during that window for a shorter wait.
+
+**Available Attractions (Disneyland, 5 total):**
+- Big Thunder Mountain
+- Pooh's Honey Hunt
+- Haunted Mansion
+- Star Tours: The Adventures Continue
+- Monsters, Inc. Ride & Go Seek!
+
+See the [official Priority Pass page](https://www.tokyodisneyresort.jp/en/tdr/guide/app_service/prioritypass.html) for full rules.
+
+**How to use:**
+- **Step 1:** After entering the park, open the app → "40th Anniversary Priority Pass"
+- **Step 2:** Scan park tickets for all members
+- **Step 3:** Select attraction → get assigned time → show up at that time
+- One pass per person at a time — use it or wait for the time to expire before getting another
+- You can't choose the time. You can cancel (in the app)
+- Limited supply — popular attractions run out by mid-morning
+
+### DPA — Disney Premier Access (Paid)
+
+A paid express pass where you pick your preferred time slot. Purchase through the app with a credit card.
+
+**Attractions (Disneyland):**
+- ==Beauty and the Beast "Enchanted Tale" — ¥2,000/ride== (most recommended)
+- Baymax's Happy Ride — ¥1,500/ride
+- Splash Mountain — ¥1,500/ride
+
+**Parades/Shows:**
+- Disney Harmony in Color — ¥2,500/show
+- Electrical Parade Dreamlights — ¥2,500/show
+- Reach for the Stars — ¥2,500/show
+- Mickey's Magical Music World — ¥2,500/show
+- It's a Sweetsful Time! — ¥2,500/show
+
+See the [official DPA page](https://www.tokyodisneyresort.jp/en/tdr/guide/app_service/disneypremieraccess.html) for full rules.
+
+**How to use:**
+- **Step 1:** After entering, open app → "Disney Premier Access"
+- **Step 2:** Choose attraction/show + time slot → pay
+- **Step 3:** Go at your selected time → use the express lane
+- Next DPA available after 60 min or your booking start time, whichever comes first
+- You can hold an attraction DPA and parade DPA at the same time
+- ==Limited quantity — sells out in the morning.== Buy right after entering
+- No cancellation or refund
+
+**DPA vs Priority Pass summary:**
+- Priority Pass = free, can't choose time, 5 attractions
+- DPA = paid, choose your time, 3 attractions + 5 shows
+- Both are limited supply — grab them early in the morning
+
+Beauty and the Beast has a standard wait of 2+ hours. Paying ¥2,000 for DPA saves massive time. If you buy only one DPA, make it this one.
+
+![Beauty and the Beast castle entrance](3)
+
+### Top Rides
+
+Compared to DisneySea, Disneyland rides are less thrilling overall. They're designed more for families and younger kids.
+
+**Popular (long waits):**
+- **Beauty and the Beast "Enchanted Tale"** — ~8 min ride, elaborate sets with music. Wait: 2hr+. DPA strongly recommended
+- **Pooh's Honey Hunt** — ~4-5 min, trackless ride system. Wait: 1hr+
+
+![Pooh's Honey Hunt entrance](4)
+- **Space Mountain** — indoor roller coaster, similar to indoor coasters at other parks
+- **Splash Mountain** — log flume. Less splash than other parks
+- **Monsters, Inc. Ride & Go Seek!** — ride a tram with a flashlight to find hidden monsters
+
+**Short waits:**
+- Gentle attractions like It's a Small World have almost no wait
+- The park train works as both transportation and a ride
+
+If rides are your priority: early arrival + DPA combo is essential. If you're there for the atmosphere, ride 1-2 things and spend your time on parades instead.
+
+### Parades — The Real Highlight
+
+Parades matter more than rides at Disneyland. DisneySea's shows are on a lake (viewed from a distance), but Disneyland parades come down the street right in front of you. Characters walk up close, give high-fives, and interact with the crowd.
+
+![Toy Story characters in parade](5)
+
+**Main parades (2026):**
+- **Disney Harmony in Color** — main daytime parade, ~45 min
+- **Electrical Parade Dreamlights** — nighttime parade
+- Seasonal parades (Christmas, special events)
+
+![Parade with castle backdrop](6)
+
+Parade times change daily. ==Always check the app on the day of your visit.==
+
+**Parade viewing tips:**
+- For a good spot, ==arrive 30 min to 1 hour early==
+- Face away from the castle (the castle is to the south — you'll be shooting into the sun if you face it)
+- The road on the opposite side of the main entrance is better for photos
+- Parade DPA (¥2,500) gets you a designated area, but with good positioning, you don't need it
+
+### Character Greetings & Souvenirs
+
+You'll find costumed characters near the entrance and throughout the park. Popular characters like Mickey Mouse have 50-min to 2-hour waits for photos.
+
+Gift shops are at each attraction exit (themed to that ride's characters) plus a large general shop near the entrance. Small plushies ~¥2,000, large ones ~¥5,000.
+
+![Disneyland gift shop](7)
+
+### Food
+
+Every restaurant inside has a wait. Even popcorn takes 5 minutes. Lunch spots: 10+ min minimum.
+
+The Turkey Leg is famous — it's huge but quite tough and messy to eat by hand. That said, one leg keeps you full through the afternoon.
+
+### Disneyland vs DisneySea
+
+- **Rides:** Disneyland = less thrilling (family-oriented). DisneySea = more thrilling (adult-oriented)
+- **Parades:** Disneyland wins — closer, more variety
+- **Wait times:** Generally shorter at Disneyland than DisneySea
+- **Castle:** Only Disneyland has one — great photo spot
+
+![Cinderella Castle at Tokyo Disneyland](8)
+
+- **Recommendation:** Kids/families → Disneyland. Adults/thrill seekers → DisneySea
+
+### Tips From Multiple Visits
+
+- Buy tickets on ==Klook== — cheaper than official site
+- The official app is essential — DPA, Priority Pass, parade times all run through it
+- If buying only one DPA, get **Beauty and the Beast** (saves 2hr+ of waiting)
+- For opening rush, arrive at Maihama Station **before 7am** — actual gate opening ~8:30
+- Grab parade spots **30 min to 1 hour early** — face away from the castle to avoid backlight
+- **Invest time in parades over rides** — higher satisfaction for most visitors
+- Bring a light jacket in winter — lots of outdoor waiting
+- Operating hours vary by season — **check the app on your visit day**
+
+If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disneyland with other Tokyo highlights like Shibuya Sky or Harajuku into a full day-by-day schedule.
+`,
+    },
+    city: "tokyo",
+    coverImage: "/images/posts/Tokyo-Disnesyland-8.jpg",
+    coverGradient: "from-pink-400 to-purple-600",
+    images: [
+      // 0 — 가는 법: 마이하마역
+      { src: "/images/posts/Tokyo-Disnesyland-9.jpg", alt: { en: "JR Maihama Station sign for Tokyo Disneyland", ko: "도쿄 디즈니랜드 마이하마역 표지판" } },
+      // 1 — 입구/정문
+      { src: "/images/posts/Tokyo-Disnesyland-1.jpg", alt: { en: "Tokyo Disneyland main entrance gate", ko: "도쿄 디즈니랜드 정문 입구" } },
+      // 2 — 앱 화면 (DPA/대기시간)
+      { src: "/images/posts/Tokyo-Disnesyland-6.jpg", alt: { en: "Tokyo Disney Resort app showing ride wait times", ko: "디즈니 리조트 앱 대기시간 화면" } },
+      // 3 — 미녀와 야수 성
+      { src: "/images/posts/Tokyo-Disnesyland-5.jpg", alt: { en: "Beauty and the Beast castle entrance at Tokyo Disneyland", ko: "도쿄 디즈니랜드 미녀와 야수 성 입구" } },
+      // 4 — 푸의 허니헌트
+      { src: "/images/posts/Tokyo-Disnesyland-7.jpg", alt: { en: "Pooh's Honey Hunt entrance at Tokyo Disneyland", ko: "도쿄 디즈니랜드 푸의 허니헌트 입구" } },
+      // 5 — 퍼레이드 (토이스토리, 가까이)
+      { src: "/images/posts/Tokyo-Disnesyland-3.jpg", alt: { en: "Toy Story characters in Tokyo Disneyland parade up close", ko: "도쿄 디즈니랜드 퍼레이드 토이스토리 캐릭터" } },
+      // 6 — 퍼레이드 (디즈니 성 배경)
+      { src: "/images/posts/Tokyo-Disnesyland-4.jpg", alt: { en: "Tokyo Disneyland parade with castle in background", ko: "디즈니 성 배경으로 펼쳐지는 퍼레이드" } },
+      // 7 — 기념품 숍
+      { src: "/images/posts/Tokyo-Disnesyland-2.jpg", alt: { en: "Tokyo Disneyland gift shop with character t-shirts", ko: "도쿄 디즈니랜드 기념품 숍 캐릭터 티셔츠" } },
+      // 8 — 디즈니 성 (넓은 앵글)
+      { src: "/images/posts/Tokyo-Disnesyland-8.jpg", alt: { en: "Cinderella Castle at Tokyo Disneyland with visitors", ko: "도쿄 디즈니랜드 신데렐라 성 전경" } },
+    ],
+    tags: ["guide", "complete-guide", "theme-park", "disney", "family", "booking-tips"],
+    categories: ["sightseeing", "complete-guide", "booking", "tips"],
+    faq: [
+      { question: { en: "How much are Tokyo Disneyland tickets?", ko: "도쿄 디즈니랜드 입장료는 얼마인가요?" }, answer: { en: "About 85,000–90,000 KRW on Klook, or ¥9,400 on the official site (2026). Prices vary by date — weekends and peak days cost more.", ko: "클룩 기준 85,000~90,000원, 공식 홈페이지 9,400엔입니다 (2026년 기준). 날짜별로 가격이 다르고, 주말/성수기가 더 비싸요." } },
+      { question: { en: "What's the difference between DPA and Priority Pass?", ko: "DPA와 프라이어티 패스의 차이가 뭔가요?" }, answer: { en: "Priority Pass is free but you can't choose your time — the system assigns it. DPA is paid (¥1,500–2,500) but you pick the exact time slot. Both have limited availability.", ko: "프라이어티 패스는 무료지만 시간을 못 고르고 시스템이 배정합니다. DPA는 유료(1,500~2,500엔)지만 원하는 시간을 직접 선택할 수 있어요. 둘 다 한정 수량입니다." } },
+      { question: { en: "Which DPA should I buy at Tokyo Disneyland?", ko: "디즈니랜드에서 DPA 뭘 사야 하나요?" }, answer: { en: "Beauty and the Beast (¥2,000) is the must-buy. Standard wait is 2+ hours, and it's the park's most popular attraction. If buying only one DPA, choose this.", ko: "미녀와 야수(2,000엔)를 무조건 추천합니다. 일반 대기 2시간 이상이고 파크 내 가장 인기 있는 어트랙션이에요. DPA 1개만 살 거면 이거 사세요." } },
+      { question: { en: "Tokyo Disneyland or DisneySea — which is better?", ko: "디즈니랜드 vs 디즈니씨 어디가 나은가요?" }, answer: { en: "Depends on who's going. Disneyland is better for families, kids, and parade lovers. DisneySea is better for adults and thrill rides. Disneyland has a castle and closer parades; DisneySea has more intense attractions.", ko: "누가 가느냐에 따라 다릅니다. 가족/아이/퍼레이드 → 디즈니랜드. 성인/스릴 놀이기구 → 디즈니씨. 디즈니랜드에는 성이 있고 퍼레이드가 가까워요." } },
+      { question: { en: "What time should I arrive at Tokyo Disneyland?", ko: "디즈니랜드 몇 시에 가야 하나요?" }, answer: { en: "For opening rush, arrive at Maihama Station before 7am. Official opening is 9am but actual entry starts around 8:30. If you're not doing opening rush, arriving by lunch is fine — afternoon crowds are smaller.", ko: "오픈런 하려면 마이하마역 7시 전 도착. 공식 9시 개장이지만 실제로는 8시 30분쯤 입장 시작됩니다. 오픈런 안 하면 점심쯤 도착해도 괜찮아요 — 오후가 오히려 덜 붐빕니다." } },
+    ],
+    cta: {
+      label: { en: "Book Tokyo Disneyland Tickets", ko: "도쿄 디즈니랜드 티켓 예약하기" },
+      url: "https://www.klook.com/ko/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=118462",
+      provider: "Klook",
+      price: { en: "From ¥9,400", ko: "85,000원~" },
+      note: { en: "Klook often cheaper than official site", ko: "클룩이 공식보다 저렴한 경우 많음" },
+    },
+    publishedAt: "2026-04-13",
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

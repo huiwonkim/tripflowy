@@ -65,11 +65,11 @@ function slugify(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9가-힣]+/g, "-").replace(/^-|-$/g, "");
 }
 
-/** Parse inline markdown: **bold**, ==highlight== */
+/** Parse inline markdown: **bold**, ==highlight==, [link](url) */
 function parseInline(text: string): React.ReactNode[] {
   const parts: React.ReactNode[] = [];
-  // Match **bold** and ==highlight==
-  const regex = /\*\*(.+?)\*\*|==(.+?)==/g;
+  // Match **bold**, ==highlight==, and [text](url)
+  const regex = /\*\*(.+?)\*\*|==(.+?)==|\[(.+?)\]\((https?:\/\/.+?)\)/g;
   let lastIndex = 0;
   let match;
 
@@ -84,6 +84,9 @@ function parseInline(text: string): React.ReactNode[] {
     } else if (match[2]) {
       // ==highlight==
       parts.push(<mark key={match.index} className="bg-blue-50 text-blue-700 px-1 py-0.5 rounded font-medium" style={{ textDecoration: "none" }}>{match[2]}</mark>);
+    } else if (match[3] && match[4]) {
+      // [text](url)
+      parts.push(<a key={match.index} href={match[4]} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">{match[3]}</a>);
     }
     lastIndex = match.index + match[0].length;
   }
