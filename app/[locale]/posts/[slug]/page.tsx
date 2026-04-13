@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { ArrowLeft, Calendar, Clock, ChevronRight } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, ChevronRight, ExternalLink } from "lucide-react";
 import { posts, getPostBySlug, getPostsByCity } from "@/data/posts";
 import { tours } from "@/data/tours";
 import { hotels } from "@/data/hotels";
@@ -83,7 +83,7 @@ function parseInline(text: string): React.ReactNode[] {
       parts.push(<strong key={match.index} className="font-bold text-gray-900">{match[1]}</strong>);
     } else if (match[2]) {
       // ==highlight==
-      parts.push(<mark key={match.index} className="bg-blue-50 text-blue-700 px-1 py-0.5 rounded font-medium" style={{ textDecoration: "none" }}>{match[2]}</mark>);
+      parts.push(<mark key={match.index} className="bg-blue-50 text-blue-700 px-0.5 rounded font-medium" style={{ textDecoration: "none" }}>{match[2]}</mark>);
     } else if (match[3] && match[4]) {
       // [text](url)
       parts.push(<a key={match.index} href={match[4]} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">{match[3]}</a>);
@@ -108,6 +108,24 @@ function renderContent(content: string, post: BlogPost, locale: Locale) {
     // CTA placeholder: {{cta}}
     if (trimmed === "{{cta}}" && post.cta) {
       elements.push(<PostCTA key={i} cta={post.cta} locale={locale} variant="inline" />);
+      continue;
+    }
+
+    // Booking button: {{booking:label:url}}
+    const bookingMatch = trimmed.match(/^\{\{booking:(.+?):(.+?)\}\}$/);
+    if (bookingMatch) {
+      const label = bookingMatch[1];
+      const rawUrl = bookingMatch[2];
+      const bookingUrl = locale === "ko"
+        ? rawUrl.replace("klook.com/activity/", "klook.com/ko/activity/")
+        : rawUrl.replace("klook.com/ko/activity/", "klook.com/activity/");
+      elements.push(
+        <a key={i} href={bookingUrl} target="_blank" rel="noopener noreferrer sponsored"
+          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-colors my-4">
+          {label}
+          <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+      );
       continue;
     }
 

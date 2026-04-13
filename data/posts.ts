@@ -1958,6 +1958,247 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
     },
     publishedAt: "2026-04-13",
   },
+  {
+    slug: "tokyo-teamlab-borderless-planets-guide",
+    title: {
+      en: "teamLab Borderless vs Planets Tokyo — Which One to Visit? (2026)",
+      ko: "도쿄 팀랩 보더리스 vs 플래닛 비교 가이드 — 어디를 가야 할까? (2026)",
+    },
+    excerpt: {
+      en: "teamLab Borderless vs Planets in Tokyo — tickets, locations, what's inside, and which one is worth your time. Visited both and compared.",
+      ko: "도쿄 팀랩 보더리스와 플래닛 둘 다 다녀온 비교 후기. 티켓, 위치, 내부 전시, 어디가 더 좋은지 정리.",
+    },
+    content: {
+      ko: `## 도쿄 팀랩 보더리스 vs 플래닛 — 둘 다 가본 비교
+
+도쿄에는 팀랩(teamLab) 전시가 2곳 있습니다. ==팀랩 보더리스==(아자부다이 힐즈)와 ==팀랩 플래닛==(토요스). 팀랩은 2001년 도쿄대 대학원생들이 만든 아트 크리에이티브 그룹으로, 디지털 아트와 몰입형 전시로 세계적으로 유명해요.
+
+저는 마카오, 오사카에서도 팀랩을 다녀왔고, 이번 도쿄 여행에서 팀랩 보더리스와 팀랩 플래닛을 ==둘 다 다녀왔습니다.== 결론부터 말하면 둘 다 좋지만 성격이 다릅니다. 체험을 원하면 팀랩 플래닛, 편한 관람을 원하면 팀랩 보더리스.
+
+### 핵심 비교
+
+- **팀랩 보더리스** — 아자부다이 힐즈, 롯폰기/긴자 근처. 시내 접근성 좋음
+- **팀랩 플래닛** — 토요스. 시내에서 좀 떨어져 있음
+- **입장료:** 둘 다 ==약 43,000~46,000원== (클룩 기준, 2026년)
+- **예약:** 둘 다 시간대별 입장제. ==팀랩 플래닛이 더 빨리 매진됨== (1주일 전 매진 흔함)
+- **소요 시간:** 팀랩 보더리스 1~2시간 / 팀랩 플래닛 1.5~2.5시간
+- **특징:** 팀랩 보더리스 = 자유 관람형 / 팀랩 플래닛 = 체험형 (물에 들어감)
+
+### 팀랩 보더리스 — 아자부다이 힐즈
+
+도쿄 미나토구 아자부다이 힐즈 가든 플라자 B1에 있습니다. 롯폰기, 긴자에서 지하철로 가깝고, 도쿄타워 전망대와 같은 날 묶기 좋은 위치예요. 저는 도쿄타워를 보고 그대로 걸어서 갔습니다.
+
+팀랩 보더리스는 이름 그대로 ==경계가 없는 전시==예요. 정해진 동선이 없고, 발길 가는 대로 돌아다니면 됩니다. 안내판이나 화살표가 따로 없어서 처음에는 어디로 가야 하나 싶은데, 그냥 보이는 문으로 들어가면 됩니다. 동선이 없다 보니 같은 곳을 두 번 지나가기도 하는데, 시간에 따라 영상이 바뀌어서 갈 때마다 다른 느낌이에요. 전시관마다 향기도 달라지는 게 독특합니다.
+
+입구에 무료 락커가 있어서 가방이나 무거운 짐은 맡기고 들어가세요. 한국의 아르떼 뮤지엄과 비슷하다고 생각하면 이해가 쉬운데, 직접 가보면 퀄리티와 규모가 확실히 다릅니다. 저는 오후 5시 입장으로 예약했는데, 앞뒤 1시간 범위에서만 입장 가능했어요.
+
+![보더리스 메인 광장](0)
+
+**메인 광장** — 가장 넓은 공간. 작은 언덕이 있고, 바닥과 벽 전체에 LED 영상이 투사됩니다. 자연, 꽃, 물 같은 테마가 시간에 따라 계속 바뀌어요. 땅바닥에 그냥 앉거나 누워서 보는 사람들이 많았는데, 저도 10~20분 정도 앉아서 봤습니다. 가만히 있으면 영상이 발밑으로 흘러가는 게 진짜 자연 속에 있는 느낌.
+
+![보더리스 LED 줄 조명](1)
+
+==LED 줄 조명 공간== — 팀랩 보더리스에서 가장 인상 깊었던 곳. 수천 개의 LED가 달린 기다란 줄이 천장에서 매달려 있고, 음악에 맞춰 색이 계속 변합니다. 영화 매트릭스의 한 장면 같은 비주얼이에요. 줄을 만지면 안 되는데, 줄 사이를 걸어다니면서 사방이 빛으로 둘러싸이는 경험이 독특합니다. ==사진은 불이 밝아지는 순간에 찍어야== 잘 나와요 — 어두울 때는 거의 안 보입니다.
+
+![보더리스 거울 방](2)
+
+**거울 방** — 조명과 거울로 만든 화려한 공간. 뉴욕 서밋 전망대가 떠오르는 비주얼인데, 실제로 가면 사진이 정말 예쁘게 나옵니다. 다만 ==3분 제한==이라 직원이 나가라고 알려줘요. 들어가자마자 바로 사진부터 찍는 게 좋습니다.
+
+전체적으로 돌아다니면서 편하게 감상하는 스타일이라 체력 소모가 적어요. ==팀랩 플래닛보다 티켓팅이 쉽고==, 위치도 시내 중심이라 급하게 일정에 넣기 좋습니다.
+
+### 팀랩 플래닛 — 토요스
+
+![팀랩 플래닛 외관](3)
+
+도쿄 코토구 토요스 6-1-16에 있습니다. 신토요스역 근처인데, 이 역이 일반 지하철 노선이 아니라서 ==도요스역에서 도보 15분== 걸어가는 게 교통비가 절약돼요. 지하철 패스를 사용 중이라면 도요스역에서 걸어가는 게 맞습니다.
+
+팀랩 플래닛은 팀랩 보더리스와 달리 ==4개 구역==(숲, 물, 정원, Open Air)으로 나뉘어 있고, 하나를 보고 나오면 바로 옆 문으로 다음 구역에 들어가는 순서대로 관람합니다. 팀랩 보더리스처럼 자유롭게 돌아다니는 방식이 아니에요.
+
+여기도 예약 시간에만 입장 가능합니다. 정확한 시간에 가야 하고, 일찍 가도 안 돼요.
+
+**가장 큰 차이: 물에 직접 들어갑니다.** 입구에서 신발과 양말을 벗고 슬리퍼로 갈아신은 뒤 입장합니다. 물 구역에서는 ==무릎 높이까지 물==이 차 있는 공간을 맨발로 걸어다녀요. 솔직히 여러 관광객이 같은 물에 발을 담그는 게 약간 찝찝하긴 했고, 전시관 전체에 수영장 같은 물 비린내가 살짝 있었습니다. 그래도 이런 전시는 다른 곳에서 해볼 수 없는 경험이에요.
+
+![플래닛 물 전시관](4)
+
+==물 전시관== — 팀랩 플래닛의 핵심. 무릎 높이까지 물이 차 있는 어두운 공간인데, 바닥에 LED 영상이 투사돼서 물고기나 꽃이 발밑으로 지나갑니다. 물속을 걸으면서 바닥 영상을 보는 건 정말 신기한 경험이에요. 팀랩 보더리스에도 비슷한 LED 바닥이 있지만, 실제로 물에 들어가는 건 팀랩 플래닛만의 것입니다. ==반바지나 무릎 위로 걷어올릴 수 있는 바지==를 꼭 입고 가세요.
+
+![플래닛 꽃 방](6)
+
+**꽃 방** — 팀랩 플래닛하면 가장 많이 나오는 사진이 여기예요. 실제 꽃 조형물이 센서에 따라 올라갔다 내려가면서 공간 전체가 꽃으로 채워집니다. 메인 포스터에 나오는 깨끗한 사진을 기대하고 가면 좀 실망할 수 있는데, ==실제로는 사람이 많아서 그렇게 깔끔한 사진 찍기가 어렵습니다.== 그래도 직접 보는 경험 자체는 좋아요.
+
+![플래닛 체험형 전시](5)
+
+**체험형 전시** — 벽에 손을 대면 센서가 반응하는 게임, 도화지에 물고기 그림을 그리면 그 물고기가 LED 화면 속으로 들어가서 헤엄치는 액티비티 등이 있었어요. 아이들이 특히 좋아하는 공간입니다.
+
+**숲 구역** — 이 구역만 슬리퍼로 입장이 안 되고, 직원에게 ==운동화를 빌려서== 들어가야 합니다. 좀 더 체험 위주의 공간이에요.
+
+전체적으로 팀랩 보더리스보다 ==체험 요소가 훨씬 많아서== 아이들과 함께 온 가족 관람객이 많았어요. 그만큼 인기도 더 높아서 예약이 빨리 매진됩니다. 팀랩 보더리스에 비해 시간도 30분~1시간 정도 더 필요했어요.
+
+### 어디를 가야 할까?
+
+- ==시간 없고 시내에서 편하게 가고 싶다면== → 팀랩 보더리스 (롯폰기/긴자 근처, 도쿄타워와 묶기 좋아요)
+- ==체험형 전시를 원하고, 시간 여유 있다면== → 팀랩 플래닛 (물 체험, 더 다양한 콘텐츠)
+- ==둘 다 갈 시간 있다면== → 둘 다 가보세요. 가격은 비슷한데 느낌이 꽤 달라요
+
+입장료가 둘 다 4만원대라 하나만 고를 수밖에 없다면, 체험보다 관람 위주로 편하게 보고 싶은 사람은 팀랩 보더리스, 직접 뭔가 하고 싶은 사람은 팀랩 플래닛입니다.
+
+### 티켓 예약
+
+둘 다 ==시간대별 입장제==라 사전 예약이 필수입니다. 예약 시간에만 입장 가능하고, 일찍 가도 안 되고 늦어도 안 돼요.
+
+==팀랩 플래닛이 훨씬 빨리 매진됩니다.== 인기 날짜는 1주일 전에 이미 마감되는 경우가 많아요. 팀랩 보더리스는 비교적 여유롭지만 그래도 미리 예약하는 게 안전합니다.
+
+{{cta}}
+{{booking:팀랩 플래닛 티켓 예약하기:https://www.klook.com/activity/25300-teamlab-planets-toyosu-tokyo-ticket/?aid=118462}}
+
+공식 정보와 전시 내용은 [팀랩 공식 사이트](https://www.teamlab.art)에서 확인할 수 있습니다.
+
+### 다녀온 사람의 꿀팁
+
+- ==팀랩 플래닛은 최소 1주일 전 예약== 필수 — 빨리 매진됨
+- 팀랩 보더리스는 도쿄타워 전망대와 같은 날 동선으로 묶기 좋음
+- 예약 시간 정확히 맞춰서 가기 — 일찍 가도 입장 안 됨
+- 팀랩 플래닛 갈 때 ==반바지 또는 걷어올릴 수 있는 바지== 입고 가기 (무릎까지 물)
+- 팀랩 보더리스 LED 줄 공간에서 사진은 ==불이 밝아지는 순간==에 찍기
+- 팀랩 보더리스 거울 방은 3분 제한 — 빠르게 사진 찍기
+- 팀랩 플래닛은 도요스역에서 걸어가면 교통비 절약 (신토요스역은 별도 노선)
+
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 팀랩과 다른 도쿄 코스를 하루 일정으로 조합해 볼 수 있습니다.
+`,
+      en: `## teamLab Borderless vs Planets Tokyo — Which One Should You Visit?
+
+Tokyo has two teamLab exhibitions: ==teamLab Borderless== (Azabudai Hills) and ==teamLab Planets== (Toyosu). teamLab is a creative art collective started by University of Tokyo graduate students in 2001, known worldwide for immersive digital art installations.
+
+I've been to teamLab in Macau and Osaka before. On this Tokyo trip, I visited ==both Borderless and Planets.== Bottom line: both are worth it, but they're different. Want hands-on experiences? Planets. Want relaxed viewing? Borderless.
+
+### Quick Comparison
+
+- **teamLab Borderless** — Azabudai Hills, near Roppongi/Ginza. Easy access from central Tokyo
+- **teamLab Planets** — Toyosu. Farther from city center
+- **Tickets:** Both ==~$30–33== on Klook (2026)
+- **Booking:** Both timed-entry. ==Planets sells out faster== (often gone 1 week ahead)
+- **Duration:** Borderless 1–2hr / Planets 1.5–2.5hr
+- **Style:** Borderless = free-roam viewing / Planets = interactive (you walk through water)
+
+### teamLab Borderless — Azabudai Hills
+
+==Location:== Azabudai Hills Garden Plaza B1, Minato City, Tokyo, Japan. Close to Roppongi and Ginza by subway. Good to combine with Tokyo Tower on the same day — I walked from Tokyo Tower directly.
+
+teamLab Borderless means ==no fixed path.== There are no arrows, no route markers. You just walk through whatever door catches your eye. It feels disorienting at first, but you end up seeing everything naturally. Visit the same room twice and the projections will have changed — the art literally moves between rooms. Each space also has a distinct scent, which is a subtle but nice touch.
+
+Free lockers at the entrance for bags and heavy items. If you've been to Arte Museum in Korea, it's a similar concept — but the quality and scale here are on another level. I booked the 5pm slot; entry was allowed within a 1-hour window around your time.
+
+![Borderless main hall](0)
+
+**Main hall** — The largest space. A small hill in the center, with LED projections covering every surface — floor, walls, ceiling. Themes cycle through nature, flowers, water. People sit or lie on the floor to watch. I stayed 10–20 minutes. When the projections flow under your feet, it genuinely feels like you're sitting in a moving landscape.
+
+![Borderless LED string lights](1)
+
+==LED string lights room== — The most impressive room at teamLab Borderless. Thousands of LED-tipped strings hang from the ceiling, pulsing and changing color to music. It looks like a scene from The Matrix. You walk between the strings (don't touch them) surrounded by light on all sides. ==Best photos are when the lights brighten== — it's too dark otherwise.
+
+![Borderless mirror room](2)
+
+**Mirror room** — Mirrors and lights create an infinite, sparkling space. Looks like Summit NYC. Only ==3 minutes allowed== — staff will tell you to leave. Start shooting the moment you walk in.
+
+Overall, Borderless is a relaxed, wander-at-your-pace experience. Not physically demanding. ==Easier to get tickets than Planets==, and the central location makes it easy to add last-minute to your itinerary.
+
+### teamLab Planets — Toyosu
+
+![teamLab Planets exterior](3)
+
+==Location:== 6-1-16 Toyosu, Koto City, Tokyo, Japan. Near Shin-Toyosu Station, but that station isn't on regular subway lines. ==Walk 15 minutes from Toyosu Station== to save on transit — worth it if you're using a subway pass.
+
+teamLab Planets has ==4 zones== (Forest, Water, Garden, Open Air) with a set route through each. Unlike Borderless, you follow a path: finish one zone, exit, enter the next through a door right next to it. No free-roaming.
+
+Timed entry here too. Arrive at your exact booking time — early arrival won't get you in.
+
+**The biggest difference: you walk through water.** You take off shoes and socks at the entrance, switch to slippers, and enter. In the Water zone, there's ==knee-deep water== you wade through barefoot. Honestly, sharing the water with dozens of other tourists felt a bit unsanitary, and the whole exhibition space had a faint pool-like chlorine smell. That said, it's unlike anything you'll experience elsewhere.
+
+![Planets water exhibition](4)
+
+==Water exhibition== — The centerpiece of teamLab Planets. A dark room with knee-deep water and LED projections on the floor beneath the surface — fish and flowers drift under your feet as you walk. Borderless has LED floors too, but actually being in the water is a Planets-only experience. ==Wear shorts or pants you can roll above the knee.==
+
+![Planets flower room](6)
+
+**Flower room** — The photo that comes up when you search "teamLab Planets." Real flower sculptures rise and fall on sensors, filling the entire space. Expect it to look like the poster? ==In practice, it's crowded and hard to get a clean shot.== Still beautiful in person.
+
+![Planets interactive exhibit](5)
+
+**Interactive exhibits** — Wall sensors that react to your touch like a game. Draw a fish on paper, scan it, and watch your fish swim into the LED display. Kids love this section.
+
+**Forest zone** — Slippers not allowed here. You ==borrow sneakers from staff== to enter. More physically interactive than other zones.
+
+Overall, Planets is ==much more hands-on than Borderless.== Families with kids were everywhere. The popularity means tickets sell out faster — often a week in advance. Plan on spending 30–60 minutes more here than at Borderless.
+
+### Which One to Pick?
+
+- ==Short on time, want easy access from central Tokyo== → Borderless (Roppongi/Ginza area, pair with Tokyo Tower)
+- ==Want interactive experiences, have more time== → Planets (water walking, more varied content)
+- ==Have time for both== → Do both. Similar price, very different vibe
+
+If you can only pick one: Borderless for relaxed art viewing, Planets for doing things yourself.
+
+### Tickets
+
+Both are ==timed-entry== — advance booking required. You can only enter at your reserved time, not earlier or later.
+
+==Planets sells out much faster.== Popular dates are gone a week ahead. Borderless is more flexible but still worth booking early.
+
+{{cta}}
+{{booking:Book teamLab Planets Tickets:https://www.klook.com/activity/25300-teamlab-planets-toyosu-tokyo-ticket/?aid=118462}}
+
+Check latest exhibitions on the [official teamLab site](https://www.teamlab.art).
+
+### Tips From Visiting Both
+
+- ==Book Planets at least 1 week ahead== — it sells out fast
+- Borderless pairs well with Tokyo Tower on the same day
+- Arrive at your exact booking time — early arrival won't get you in
+- For Planets, ==wear shorts or rollable pants== (knee-deep water)
+- Best photos in Borderless LED room: ==shoot when lights brighten==
+- Borderless mirror room has a 3-minute limit — be quick
+- Walk from Toyosu Station to save transit cost (Shin-Toyosu is a separate line)
+
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine teamLab with other Tokyo highlights in a single day.
+`,
+    },
+    city: "tokyo",
+    coverImage: "/images/posts/Tokyo-TeamLab-Planet-Boderless-3.jpg",
+    coverGradient: "from-purple-600 to-pink-500",
+    images: [
+      // 0 — 보더리스 메인 광장
+      { src: "/images/posts/Tokyo-TeamLab-Planet-Boderless-1.jpg", alt: { en: "teamLab Borderless main hall with LED floor projections", ko: "팀랩 보더리스 메인 광장 LED 바닥 영상" } },
+      // 1 — 보더리스 LED 줄 조명
+      { src: "/images/posts/Tokyo-TeamLab-Planet-Boderless-3.jpg", alt: { en: "teamLab Borderless LED string lights room", ko: "팀랩 보더리스 LED 줄 조명 공간" } },
+      // 2 — 보더리스 거울 방
+      { src: "/images/posts/Tokyo-TeamLab-Planet-Boderless-2.jpg", alt: { en: "teamLab Borderless mirror room with lights", ko: "팀랩 보더리스 거울 방" } },
+      // 3 — 플래닛 외관
+      { src: "/images/posts/Tokyo-TeamLab-Planet-Boderless-4.jpg", alt: { en: "teamLab Planets Tokyo building exterior at night", ko: "팀랩 플래닛 도쿄 외관 (야간)" } },
+      // 4 — 플래닛 물 전시관
+      { src: "/images/posts/Tokyo-TeamLab-Planet-Boderless-5.jpg", alt: { en: "teamLab Planets water exhibition with visitors walking barefoot", ko: "팀랩 플래닛 물 전시관 맨발 체험" } },
+      // 5 — 플래닛 체험형 전시
+      { src: "/images/posts/Tokyo-TeamLab-Planet-Boderless-6.jpg", alt: { en: "teamLab Planets interactive colorful ball exhibition", ko: "팀랩 플래닛 체험형 전시 컬러 공" } },
+      // 6 — 플래닛 꽃 방
+      { src: "/images/posts/Tokyo-TeamLab-Planet-Boderless-7.jpg", alt: { en: "teamLab Planets flower room with hanging gardens", ko: "팀랩 플래닛 꽃 방" } },
+    ],
+    tags: ["guide", "complete-guide", "teamlab", "art", "comparison", "booking-tips"],
+    categories: ["sightseeing", "complete-guide", "comparison", "booking"],
+    faq: [
+      { question: { en: "How much are teamLab tickets in Tokyo?", ko: "도쿄 팀랩 입장료는 얼마인가요?" }, answer: { en: "Both Borderless and Planets cost ~$30–33 on Klook (2026). Prices are similar, so choice depends on which experience you prefer.", ko: "보더리스, 플래닛 둘 다 클룩 기준 약 43,000~46,000원입니다 (2026년). 가격이 비슷하니 어떤 경험을 원하느냐에 따라 선택하면 돼요." } },
+      { question: { en: "teamLab Borderless or Planets — which is better?", ko: "팀랩 보더리스 vs 플래닛 어디가 나은가요?" }, answer: { en: "Different vibes. Borderless is free-roam art viewing, centrally located, easier tickets. Planets is interactive with water walking, more activities, but farther and sells out faster.", ko: "느낌이 다릅니다. 보더리스는 자유 관람형, 시내 중심, 예약 쉬움. 플래닛은 물 체험 등 체험형, 콘텐츠 다양, 대신 위치가 멀고 매진 빠름." } },
+      { question: { en: "Do I need to book teamLab Tokyo in advance?", ko: "팀랩 사전 예약이 필요한가요?" }, answer: { en: "Yes, both require timed-entry booking. Planets sells out about a week ahead. Borderless is more flexible but still book early to secure your preferred time.", ko: "네, 둘 다 시간대별 입장제라 사전 예약 필수입니다. 플래닛은 1주일 전에 매진되는 경우 많고, 보더리스는 비교적 여유롭지만 미리 예약하는 게 안전해요." } },
+      { question: { en: "What should I wear to teamLab Planets Tokyo?", ko: "팀랩 플래닛 갈 때 옷은 어떻게 입어야 하나요?" }, answer: { en: "Wear shorts or pants you can roll up above the knee. The Water zone has knee-deep water you walk through barefoot. Shoes and socks come off at the entrance.", ko: "반바지 또는 무릎 위로 걷을 수 있는 바지를 추천합니다. 물 구역에서 무릎까지 물이 차 있는 곳을 맨발로 걸어야 해요. 신발과 양말은 입구에서 벗습니다." } },
+      { question: { en: "Can I visit both teamLab Borderless and Planets in one day?", ko: "보더리스와 플래닛 하루에 둘 다 갈 수 있나요?" }, answer: { en: "Possible but tight. Each takes 1.5–2.5 hours plus travel time. If you do, visit Borderless first (central location) then travel to Planets in Toyosu.", ko: "가능하지만 빡빡합니다. 각각 1.5~2.5시간 + 이동 시간. 한다면 시내에 있는 보더리스 먼저 보고 토요스 플래닛으로 이동하는 게 동선상 좋아요." } },
+    ],
+    cta: {
+      label: { en: "Book teamLab Borderless Tickets", ko: "팀랩 보더리스 티켓 예약하기" },
+      url: "https://www.klook.com/activity/20707-teamlab-borderless-admission-ticket-tokyo/?aid=118462",
+      provider: "Klook",
+      price: { en: "From ~$30", ko: "43,000원~" },
+      note: { en: "Planets also available on Klook", ko: "플래닛도 클룩에서 예약 가능" },
+    },
+    publishedAt: "2026-04-13",
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
