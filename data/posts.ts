@@ -199,6 +199,8 @@ Can't get evening tickets? Daytime on a clear day still delivers — you see det
 - Lockers are free (no coins needed)
 - Cameras OK with neck strap, but no tripods, backpacks, or selfie sticks
 - Online tickets save ¥300 vs walk-in — always book ahead
+
+Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sky/) for real-time weather closures. If you're building a Tokyo itinerary, try the TripFlowy planner to combine Shibuya Sky with nearby Harajuku or Shibuya shopping into a full day.
 `,
       ko: `## 시부야스카이 — 도쿄 유일의 야외 루프탑 전망대
 
@@ -288,6 +290,8 @@ Can't get evening tickets? Daytime on a clear day still delivers — you see det
 - 락커는 무료 (100엔 동전 불필요)
 - 카메라는 목끈 있으면 OK, 삼각대·배낭·셀카봉은 불가
 - 온라인 예매가 현장보다 300엔 저렴 — 현장 구매할 이유 없음
+
+날씨로 인한 루프탑 폐쇄 여부는 [시부야스카이 공식 사이트](https://www.shibuya-scramble-square.com/sky/)에서 당일 확인하세요. 도쿄 여행 일정을 짜고 있다면 TripFlowy 플래너에서 시부야스카이와 하라주쿠, 시부야 쇼핑을 하루 코스로 조합해 볼 수 있습니다.
 `,
     },
     city: "tokyo",
