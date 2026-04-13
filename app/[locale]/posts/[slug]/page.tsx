@@ -69,7 +69,7 @@ function slugify(text: string): string {
 function parseInline(text: string): React.ReactNode[] {
   const parts: React.ReactNode[] = [];
   // Match **bold**, ==highlight==, and [text](url)
-  const regex = /\*\*(.+?)\*\*|==(.+?)==|\[(.+?)\]\((https?:\/\/.+?)\)/g;
+  const regex = /\*\*(.+?)\*\*|==(.+?)==|\[(.+?)\]\(((?:https?:\/\/|\/)[^\s)]+)\)/g;
   let lastIndex = 0;
   let match;
 
@@ -85,8 +85,11 @@ function parseInline(text: string): React.ReactNode[] {
       // ==highlight==
       parts.push(<mark key={match.index} className="bg-blue-50 text-blue-700 px-0.5 rounded font-medium" style={{ textDecoration: "none" }}>{match[2]}</mark>);
     } else if (match[3] && match[4]) {
-      // [text](url)
-      parts.push(<a key={match.index} href={match[4]} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-800 underline">{match[3]}</a>);
+      // [text](url) — external links open in new tab, internal links same tab
+      const isExternal = match[4].startsWith("http");
+      parts.push(<a key={match.index} href={match[4]}
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="text-blue-600 hover:text-blue-800 underline">{match[3]}</a>);
     }
     lastIndex = match.index + match[0].length;
   }
@@ -135,8 +138,15 @@ function renderContent(content: string, post: BlogPost, locale: Locale) {
       const idx = Number(imgMatch[2]);
       const img = post.images[idx];
       if (img) {
+        // Reduce margins between consecutive images
+        const prevLine = i > 0 ? lines[i - 1]?.trim() : "";
+        const nextLine = i < lines.length - 1 ? lines[i + 1]?.trim() : "";
+        const prevIsImg = prevLine ? /^!\[.+\]\(\d+\)$/.test(prevLine) : false;
+        const nextIsImg = nextLine ? /^!\[.+\]\(\d+\)$/.test(nextLine) : false;
+        const mt = prevIsImg ? "mt-3" : "mt-8";
+        const mb = nextIsImg ? "mb-0" : "mb-8";
         elements.push(
-          <figure key={i} className="my-8 -mx-4 sm:mx-0">
+          <figure key={i} className={`${mt} ${mb} -mx-4 sm:mx-0`}>
             <Image src={img.src} alt={img.alt[locale]} width={800} height={450}
               className="w-full h-auto rounded-2xl" />
             {img.caption && <figcaption className="text-center text-sm text-gray-400 mt-3">{img.caption[locale]}</figcaption>}
@@ -370,7 +380,7 @@ export default async function PostPage({ params }: PageProps) {
       {/* ── Related Posts (Toss style) ── */}
       {relatedPosts.length > 0 && (
         <section className="border-t border-gray-100 py-14">
-          <div className="max-w-[680px] mx-auto px-5">
+          <div className="max-w-[900px] mx-auto px-5 lg:pr-[228px]">
             <h2 className="text-lg font-bold text-gray-900 mb-6">
               {loc === "ko" ? `${countryLabel}의 다른 글` : `More from ${countryLabel}`}
             </h2>

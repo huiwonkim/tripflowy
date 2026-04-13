@@ -200,7 +200,7 @@ Can't get evening tickets? Daytime on a clear day still delivers — you see det
 - Cameras OK with neck strap, but no tripods, backpacks, or selfie sticks
 - Online tickets save ¥300 vs walk-in — always book ahead
 
-Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sky/) for real-time weather closures. If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Shibuya Sky with nearby Harajuku or Shibuya shopping into a full day.
+Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sky/) for real-time weather closures. If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Shibuya Sky with nearby Harajuku or Shibuya shopping into a full day. For an indoor observatory with even higher views, see our [Skytree guide](/posts/tokyo-skytree-observatory-guide).
 `,
       ko: `## 시부야스카이 — 도쿄 유일의 야외 루프탑 전망대
 
@@ -291,7 +291,7 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
 - 카메라는 목끈 있으면 OK, 삼각대·배낭·셀카봉은 불가
 - 온라인 예매가 현장보다 300엔 저렴 — 현장 구매할 이유 없음
 
-날씨로 인한 루프탑 폐쇄 여부는 [시부야스카이 공식 사이트](https://www.shibuya-scramble-square.com/sky/)에서 당일 확인하세요. 도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 시부야스카이와 하라주쿠, 시부야 쇼핑을 하루 코스로 조합해 볼 수 있습니다.
+날씨로 인한 루프탑 폐쇄 여부는 [시부야스카이 공식 사이트](https://www.shibuya-scramble-square.com/sky/)에서 당일 확인하세요. 도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 시부야스카이와 하라주쿠, 시부야 쇼핑을 하루 코스로 조합해 볼 수 있습니다. 실내에서 더 높은 곳을 보고 싶다면 [스카이트리 전망대 가이드](/ko/posts/tokyo-skytree-observatory-guide)도 참고해 보세요.
 `,
     },
     city: "tokyo",
@@ -525,7 +525,7 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
 - 겨울에 가면 얇은 패딩 필수 — 야외 대기 시간이 길어 춥다
 - 운영 시간은 시즌별로 다르니 **앱에서 당일 확인**
 
-도쿄 여행 일정을 짜고 있다면 TripFlowy 플래너에서 도쿄 코스를 자동으로 조합해 보세요. 시부야스카이 같은 전망대와 디즈니를 함께 넣은 일정도 만들 수 있습니다.
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 도쿄 코스를 자동으로 조합해 보세요. 디즈니씨와 고민 중이라면 [디즈니씨 가이드](/ko/posts/tokyo-disneysea-guide)에서 차이점을 비교해 볼 수 있습니다. 마이하마역까지 가는 교통편은 [지하철 타는법 가이드](/ko/posts/tokyo-subway-guide)를 참고하세요.
 `,
       en: `## Tokyo Disneyland — What You Need to Know Before Going
 
@@ -708,7 +708,7 @@ The Turkey Leg is famous — it's huge but quite tough and messy to eat by hand.
 - Bring a light jacket in winter — lots of outdoor waiting
 - Operating hours vary by season — **check the app on your visit day**
 
-If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disneyland with other Tokyo highlights like Shibuya Sky or Harajuku into a full day-by-day schedule.
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to plan your full trip. Deciding between the two parks? See our [DisneySea guide](/posts/tokyo-disneysea-guide) for a comparison. For getting to Maihama Station, check the [subway guide](/posts/tokyo-subway-guide).
 `,
     },
     city: "tokyo",
@@ -930,7 +930,7 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
 - 놀이기구보다 **분위기 즐기기**에 목적을 두면 만족도 높음
 - 운영 시간은 시즌별로 다르니 **앱에서 당일 확인**
 
-도쿄 여행 일정을 짜고 있다면 TripFlowy 플래너에서 디즈니씨와 다른 도쿄 코스를 자동으로 조합해 볼 수 있습니다. 디즈니랜드 가이드도 함께 확인해 보세요.
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 디즈니씨와 다른 도쿄 코스를 조합해 볼 수 있습니다. 디즈니랜드와 비교가 궁금하다면 [디즈니랜드 가이드](/ko/posts/tokyo-disneyland-guide)를 참고하세요. 마이하마역까지의 교통은 [지하철 패스 가이드](/ko/posts/tokyo-subway-guide)에서 확인할 수 있습니다.
 `,
       en: `## Tokyo DisneySea — A Completely Different Disney Park
 
@@ -1099,7 +1099,7 @@ DisneySea souvenirs are sold at character-themed shops next to each attraction, 
 - Enjoy the **atmosphere over rides** — that's where DisneySea wins
 - Operating hours vary by season — **check app on your visit day**
 
-If you're building a Tokyo itinerary, try the TripFlowy planner to combine DisneySea with other Tokyo highlights. Check out our Tokyo Disneyland guide too if you're deciding between the two parks.
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine DisneySea with other Tokyo highlights. Comparing the two parks? See our [Disneyland guide](/posts/tokyo-disneyland-guide). For getting to Maihama, check the [subway guide](/posts/tokyo-subway-guide).
 `,
     },
     city: "tokyo",
@@ -1252,7 +1252,7 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
 - 좌석 자유석이라 일찍 타면 좋은 자리 가능
 - 나리타공항 3→2→1 순 하차 — 본인 터미널 미리 확인
 
-도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 공항 이동까지 포함한 전체 코스를 조합해 볼 수 있습니다.
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 공항 이동까지 포함한 전체 코스를 조합해 볼 수 있습니다. 공항에서 시내로 들어올 때는 [스카이라이너 가이드](/ko/posts/tokyo-skyliner-narita-guide)를, 시내 이동은 [지하철 패스 가이드](/ko/posts/tokyo-subway-guide)를 참고하세요.
 `,
       en: `## Narita Airport Limousine Bus — The Easiest Way From Tokyo to the Airport
 
@@ -1354,7 +1354,7 @@ Approximate times to Narita Airport:
 - Free seating — board early for window seat
 - Narita stops: Terminal 3→2→1 — know your terminal in advance
 
-If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to map out your full trip including airport transfers.
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to map out your full trip. For getting from the airport to the city, see our [Skyliner guide](/posts/tokyo-skyliner-narita-guide). For getting around Tokyo, check the [subway pass guide](/posts/tokyo-subway-guide).
 `,
     },
     city: "tokyo",
@@ -1502,7 +1502,7 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 - 건물 아래에 식당가 있어서 저녁 식사하기도 좋음
 - ==공식 가격이 날짜별로 다르니== [공식 사이트](https://ko.tokyo-skytree.jp/) 확인 추천
 
-도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 스카이트리와 아사쿠사를 하루 코스로 조합해 볼 수 있습니다.
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 스카이트리와 아사쿠사를 하루 코스로 조합해 볼 수 있습니다. 야외 루프탑 전망대가 궁금하다면 [시부야스카이 가이드](/ko/posts/tokyo-shibuya-sky-guide)도 참고하세요.
 `,
       en: `## Tokyo Skytree Observatory — Views From Japan's Tallest Structure
 
@@ -1599,7 +1599,7 @@ If you can, visit both. They feel completely different.
 - Restaurants below the tower are good for dinner after
 - ==Prices vary by date== — check the [official site](https://www.tokyo-skytree.jp/en/)
 
-If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Skytree and Asakusa into a full day.
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Skytree and Asakusa into a full day. For an outdoor rooftop experience, see our [Shibuya Sky guide](/posts/tokyo-shibuya-sky-guide).
 `,
     },
     city: "tokyo",
@@ -1783,7 +1783,7 @@ Backlot Cafe가 버터비어를 파는 곳이에요. 실내/야외 좌석 모두
 - 큰 짐은 야외 코인 락커(무료)나 실내 클로크룸에 보관
 - 해리포터 시리즈를 안 봤으면 재미가 반감 — 가기 전에 영화 복습 추천
 
-도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 해리포터 스튜디오와 이케부쿠로를 하루 코스로 조합해 볼 수 있습니다.
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 해리포터 스튜디오와 이케부쿠로를 하루 코스로 조합해 볼 수 있습니다. 다른 체험형 전시가 궁금하다면 [팀랩 보더리스·플래닛 가이드](/ko/posts/tokyo-teamlab-borderless-planets-guide)도 참고하세요.
 `,
       en: `## Tokyo Harry Potter Studio Tour — Newer and Better Than London
 
@@ -1916,7 +1916,7 @@ Wands cost ==¥4,600 each==. There's a touch-screen display that shows which cha
 - Store large bags in free outdoor coin lockers or the indoor cloakroom
 - If you haven't seen the Harry Potter films, the experience loses a lot — watch them before going
 
-If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Harry Potter Studio Tour with Ikebukuro into a full day.
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Harry Potter Studio Tour with Ikebukuro into a full day. For another immersive experience, check out our [teamLab Borderless & Planets guide](/posts/tokyo-teamlab-borderless-planets-guide).
 `,
     },
     city: "tokyo",
@@ -2063,7 +2063,7 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 - 팀랩 보더리스 거울 방은 3분 제한 — 빠르게 사진 찍기
 - 팀랩 플래닛은 도요스역에서 걸어가면 교통비 절약 (신토요스역은 별도 노선)
 
-도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 팀랩과 다른 도쿄 코스를 하루 일정으로 조합해 볼 수 있습니다.
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 팀랩과 다른 도쿄 코스를 하루 일정으로 조합해 볼 수 있습니다. 보더리스 근처에서 야경도 보고 싶다면 [시부야스카이 가이드](/ko/posts/tokyo-shibuya-sky-guide)를, 또 다른 체험형 시설이 궁금하면 [해리포터 스튜디오 가이드](/ko/posts/tokyo-harry-potter-studio-tour-guide)도 참고하세요.
 `,
       en: `## teamLab Borderless vs Planets Tokyo — Which One Should You Visit?
 
@@ -2159,7 +2159,7 @@ Check latest exhibitions on the [official teamLab site](https://www.teamlab.art)
 - Borderless mirror room has a 3-minute limit — be quick
 - Walk from Toyosu Station to save transit cost (Shin-Toyosu is a separate line)
 
-If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine teamLab with other Tokyo highlights in a single day.
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine teamLab with other Tokyo highlights in a single day. Borderless is near Roppongi — pair it with [Shibuya Sky](/posts/tokyo-shibuya-sky-guide) for a night view. For another immersive experience, see our [Harry Potter Studio guide](/posts/tokyo-harry-potter-studio-tour-guide).
 `,
     },
     city: "tokyo",
@@ -2196,6 +2196,534 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       provider: "Klook",
       price: { en: "From ~$30", ko: "43,000원~" },
       note: { en: "Planets also available on Klook", ko: "플래닛도 클룩에서 예약 가능" },
+    },
+    publishedAt: "2026-04-13",
+  },
+  {
+    slug: "tokyo-subway-guide",
+    title: {
+      en: "Tokyo Subway Guide — How to Ride, Subway Pass & Tips (2026)",
+      ko: "도쿄 지하철 타는법 — 패스 구매, 노선 구분, 꿀팁 총정리 (2026)",
+    },
+    excerpt: {
+      en: "How to ride the Tokyo subway as a tourist. Subway pass prices, JR vs Metro lines, how to transfer, and practical tips from frequent visits.",
+      ko: "도쿄 지하철 패스 가격, JR과 메트로 차이, 환승 방법, 노선 읽는 법까지. 여러 번 도쿄 다녀온 실전 가이드.",
+    },
+    content: {
+      ko: `## 도쿄 지하철 타는법 — 처음이라도 어렵지 않아요
+
+도쿄 지하철(Tokyo Metro + Toei Subway)은 노선도만 보면 세계에서 가장 복잡해 보이지만, 실제로 타보면 생각보다 어렵지 않습니다. 도쿄에는 총 13개 지하철 노선이 있고, 하루 평균 약 800만 명이 이용하는 세계 최대 규모의 지하철 시스템이에요.
+
+![도쿄 지하철 노선도](0)
+
+저는 매년 1~2번 도쿄를 가는데, 처음 갔을 때 가장 걱정했던 게 지하철이었습니다. 그런데 구글 지도만 잘 쓰면 ==노선도를 외울 필요가 전혀 없어요.== 역마다 알파벳+숫자 코드가 있어서 (예: G09 = 긴자선 긴자역) 이것만 매치하면 됩니다.
+
+### 핵심 정보
+
+- **노선 수:** 도쿄 메트로 9개 + 도에이 4개 = 총 13개 노선
+- **운영 시간:** 첫차 약 05:00 / 막차 약 00:00 (한국보다 막차가 빠름)
+- **1회 요금:** 약 ==210엔== (거리에 따라 다름)
+- **지하철 패스:** 24시간 7,100원 / 48시간 10,600원 / 72시간 14,400원 (클룩 기준)
+- **타는 법:** 구글 지도에서 경로 검색 → 역 코드(알파벳+숫자) 확인 → 해당 노선 탑승
+
+### 지하철 패스 — 거의 필수
+
+도쿄에서 지하철을 1번 타면 약 210엔(약 2,000원). 하루에 3~4번만 타도 8,000원이 넘습니다. ==지하철 패스를 사면 하루 7,100원부터== 무제한 이용 가능하니, 2번만 타도 본전이에요.
+
+**패스 종류 (2026년 클룩 기준):**
+- ==24시간권: 7,100원==
+- 48시간권: 10,600원
+- ==72시간권: 14,400원== (3박 4일 여행이면 이거 하나로 충분)
+
+중요한 점: ==날짜 기준이 아니라 시간 기준==입니다. 24시간권을 오후 3시에 처음 사용하면 다음 날 오후 3시까지 유효해요. 그래서 실질적으로 이틀 동안 쓸 수 있습니다.
+
+{{cta}}
+
+### 패스 구매 & 교환 방법
+
+- **Step 1:** 클룩에서 원하는 시간권 구매 → QR코드 바우처 수령
+- **Step 2:** 도쿄 지하철역 내 ==티켓 머신==에서 QR코드 스캔 → 실물 카드형 패스 교환
+
+![티켓 머신](2)
+![QR코드 스캔](3)
+- **Step 3:** 개찰구에서 ==노란색 투입구==가 있는 게이트에 카드를 넣고 통과
+
+![실물 패스 카드](4)
+![노란색 게이트](5)
+
+발권 가능한 역이 따로 정해져 있는 게 아니라 대부분의 도쿄 메트로/도에이 역에서 교환 가능합니다. 다만 ==QR코드 스캔이 되는 전용 기계==를 찾아야 해요 — 일반 매표기와 모양이 살짝 다릅니다. 기계에서 한국어 선택 가능.
+
+교환 시점이 아니라 ==처음 개찰구에 넣는 시점부터== 시간이 카운트됩니다. 미리 교환해두고 나중에 쓰기 시작해도 돼요.
+
+### JR 노선 vs 메트로 노선 — 이게 제일 헷갈리는 부분
+
+도쿄 지하철에서 가장 중요한 건 ==JR 노선과 메트로 노선이 다른 회사==라는 것입니다. 지하철 패스로는 메트로/도에이 노선만 이용 가능하고, JR 노선은 별도 요금을 내야 해요.
+
+**구분하는 법:**
+- 구글 지도에서 노선 이름 옆에 ==동그라미(○)== = 메트로/도에이 → 패스 사용 가능
+- ==네모(□)== 또는 JR 표시 = JR 노선 → 패스 사용 불가, 별도 요금
+
+**실전 예시:**
+- 신주쿠 → 시부야: JR 사이쿄선(네모)을 타라고 나오지만, 10분만 돌아가면 후쿠토신선(동그라미)으로 갈 수 있음
+- 긴자 → 디즈니랜드: JR 게이요선을 타야 해서 별도 요금 필요 (약 410엔)
+
+==구글 지도가 JR 노선을 추천해도, 5~10분만 돌아가면 메트로로 갈 수 있는 경우가 많습니다.== 패스를 쓰고 있다면 메트로 경로를 한번 더 확인해 보세요.
+
+### 역에서 길 찾는 법
+
+각 역에는 ==알파벳+숫자 코드==가 있습니다. 예를 들어:
+- G09 = 긴자선(G) 긴자역(09번째)
+- M25 = 마루노우치선(M) 이케부쿠로역(25번째)
+
+![역 코드 표지판](1)
+
+구글 지도에서 목적지를 검색하면 이 코드가 나옵니다. 역 안에서 이 코드를 따라가면 플랫폼을 쉽게 찾을 수 있어요. 노선도를 외울 필요 없이 ==숫자만 보고 따라가면 됩니다.==
+
+신주쿠역처럼 큰 역은 출구가 수십 개라 헷갈릴 수 있는데, 구글 지도에서 "○번 출구"까지 안내해주니 그대로 따라가면 됩니다.
+
+### 지하철 에티켓
+
+도쿄 지하철은 정말 질서정연합니다. 외국인이라도 기본 에티켓을 알고 있으면 좋아요.
+
+- **줄서기:** 바닥에 탑승 위치가 표시되어 있음. 문 앞이 아니라 ==옆쪽 표시된 곳에서 줄을 서서== 내리는 사람 먼저 내린 후 탑승
+
+![바닥 탑승 위치 표시](6)
+- **계단:** 올라가는 쪽과 내려가는 쪽이 나뉘어 있음
+- **여성 전용 칸:** 일부 노선에서 ==평일 출근 시간(~8:30)==에 운영
+- **통화 금지:** 차내에서 전화 통화는 하지 않는 게 매너
+- **걸으면서 스마트폰:** 역 안에서 걸으면서 스마트폰 보는 건 위험하니 자제
+
+출근 시간(7~9시)에는 정말 사람이 많습니다. 가능하면 이 시간대는 피하거나, 한두 열차 기다렸다가 타는 게 나아요.
+
+### 다녀온 사람의 꿀팁
+
+- ==72시간권 하나==면 3박 4일 도쿄 여행 교통비 해결
+- 시간 기준이라 24시간권도 실질 이틀 사용 가능
+- 구글 지도에서 노선 모양(○/□) 확인 — ==JR(□)은 패스 불가==
+- JR 경로가 나와도 5~10분 돌아가면 메트로로 대체 가능한 경우 많음
+- 역 코드(G09 등)만 보면 노선도 안 외워도 됨
+- 노란색 게이트에 패스 카드 넣기 — 일반 게이트는 안 됨
+- 막차가 자정쯤이라 ==한국보다 빠름== — 밤늦게 이동 시 주의
+- 스이카/이코카 카드 없어도 패스만으로 충분
+- 나리타공항↔시내는 패스 범위 밖 — 스카이라이너나 리무진 별도
+
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 지하철로 이동 가능한 코스를 자동으로 조합해 볼 수 있습니다. 나리타공항에서 시내까지 오는 방법은 [스카이라이너 가이드](/ko/posts/tokyo-skyliner-narita-guide)를, 시내에서 공항으로 돌아가는 방법은 [리무진 버스 가이드](/ko/posts/tokyo-narita-limousine-bus)를 참고하세요.
+`,
+      en: `## How to Ride the Tokyo Subway — A Tourist's Complete Guide
+
+The Tokyo subway system (Tokyo Metro + Toei Subway) looks overwhelmingly complex on a map, but it's actually straightforward once you're in it. Tokyo has 13 subway lines carrying roughly 8 million passengers daily — one of the largest subway systems in the world.
+
+![Tokyo subway route map](0)
+
+I visit Tokyo 1–2 times a year. The subway was my biggest worry on my first trip. Turns out, ==you don't need to memorize any maps.== Every station has an alphabet + number code (e.g., G09 = Ginza Line, Ginza Station). Just match that code on Google Maps and you're set.
+
+### Key Info
+
+- **Lines:** Tokyo Metro (9) + Toei (4) = 13 subway lines
+- **Hours:** First train ~05:00 / last train ~00:00 (last trains are earlier than many cities)
+- **Single ride:** ~==¥210== (varies by distance)
+- **Subway Pass:** 24hr ~$5 / 48hr ~$7.50 / 72hr ~$10 (Klook prices, 2026)
+- **How to ride:** Search route on Google Maps → note station code (letter+number) → board that line
+
+### Subway Pass — Almost Essential
+
+A single Tokyo subway ride costs ~¥210 (~$1.50). Ride 3–4 times a day and you're over $6. ==The 24-hour pass costs ~$5== — unlimited rides. You break even after just 2 trips.
+
+**Pass options (2026 Klook prices):**
+- ==24 hours: ~$5==
+- 48 hours: ~$7.50
+- ==72 hours: ~$10== (covers a 4-day/3-night trip easily)
+
+Key detail: ==it's time-based, not date-based.== Start using a 24-hour pass at 3pm and it's valid until 3pm the next day. Effectively two days of use.
+
+{{cta}}
+
+### How to Buy & Activate the Pass
+
+- **Step 1:** Buy on Klook → receive QR code voucher
+- **Step 2:** At any Tokyo Metro/Toei station, find the ==ticket machine with QR scanner== → scan code → receive physical card pass
+
+![Ticket machines](2)
+![Scanning QR code](3)
+- **Step 3:** Enter through gates with the ==yellow card slot== — insert your pass card
+
+![72-hour pass card](4)
+![Yellow gate](5)
+
+Most Metro/Toei stations have exchange machines. Look for the machine with a QR reader — it looks slightly different from regular ticket machines. Korean/English language option available.
+
+The timer starts ==when you first insert the card at a gate==, not when you exchange it. So you can pick up the card early and start using it later.
+
+### JR Lines vs Metro Lines — The Key Distinction
+
+The most important thing about Tokyo's subway: ==JR and Metro are different companies.== Your subway pass only works on Metro/Toei lines. JR lines require separate payment.
+
+**How to tell them apart:**
+- On Google Maps, look at the line icon: ==circle (○)== = Metro/Toei → pass works
+- ==Square (□)== or "JR" label = JR line → pass doesn't work, pay separately
+
+**Real examples:**
+- Shinjuku → Shibuya: Google Maps suggests JR Saikyo Line (square), but the Fukutoshin Line (circle) takes just 10 minutes longer
+- Ginza → Disneyland: Must use JR Keiyo Line — separate fare (~¥410)
+
+==Even when Google Maps recommends JR, there's often a Metro alternative just 5–10 minutes longer.== If you have a pass, always check for the Metro route.
+
+### Finding Your Way in Stations
+
+Every station has an ==alphabet + number code.== For example:
+- G09 = Ginza Line (G), Ginza Station (stop #9)
+- M25 = Marunouchi Line (M), Ikebukuro Station (stop #25)
+
+![Station code sign](1)
+
+Google Maps shows these codes when you search for directions. Inside the station, follow the code to find your platform. ==No need to memorize the map — just follow the numbers.==
+
+Large stations like Shinjuku have dozens of exits. Google Maps will specify "Exit #X" — follow it exactly.
+
+### Subway Etiquette
+
+Tokyo subway riders are exceptionally orderly. Knowing basic etiquette helps:
+
+- **Queuing:** Floor markings show where to stand. ==Line up at the marked spots==, not in front of the doors. Let passengers exit first
+
+![Floor queue markings](6)
+- **Stairs:** Separate lanes for going up and down
+- **Women-only cars:** Some lines run these during ==weekday rush hours (~until 8:30am)==
+- **No phone calls:** Talking on the phone in the train is considered rude
+- **Don't walk and phone:** Avoid using your phone while walking in stations
+
+Rush hour (7–9am) is extremely crowded. Skip it if possible, or wait for the next train.
+
+### Tips From Frequent Visits
+
+- ==72-hour pass== covers transportation for a 4-day Tokyo trip
+- Time-based system means 24hr pass effectively covers 2 days
+- Check line icons on Google Maps: ==○ = pass works, □ (JR) = pay separately==
+- JR routes often have Metro alternatives just 5–10 min longer
+- Station codes (G09, M25) are all you need — no memorizing maps
+- Use ==yellow gates== for pass cards — regular gates won't work
+- Last trains run around midnight — ==earlier than many cities==
+- No need for Suica/ICOCA cards if you have the subway pass
+- Narita Airport ↔ city is outside pass coverage — use Skyliner or limousine bus separately
+
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to automatically combine subway-accessible spots into a full day. For getting from Narita to the city, see our [Skyliner guide](/posts/tokyo-skyliner-narita-guide). For the return trip, check the [limousine bus guide](/posts/tokyo-narita-limousine-bus).
+`,
+    },
+    city: "tokyo",
+    coverImage: "/images/posts/Tokyo-how-to-use-subway-pass-2.jpg",
+    coverGradient: "from-emerald-500 to-teal-600",
+    images: [
+      // 0 — 노선도
+      { src: "/images/posts/Tokyo-how-to-use-subway-pass-7.jpg", alt: { en: "Tokyo subway route map", ko: "도쿄 지하철 노선도" }, caption: { en: "Source: Tokyo Metro", ko: "출처: 도쿄메트로" } },
+      // 1 — 역 코드 표지판
+      { src: "/images/posts/Tokyo-how-to-use-subway-pass-2.jpg", alt: { en: "Tokyo subway station sign with alphabet and number code E36", ko: "도쿄 지하철역 알파벳+숫자 코드 표지판 (E36)" } },
+      // 2 — 티켓 머신
+      { src: "/images/posts/Tokyo-how-to-use-subway-pass-4.jpg", alt: { en: "Tokyo subway ticket machines for pass exchange", ko: "도쿄 지하철 패스 교환 티켓 머신" } },
+      // 3 — QR코드 스캔
+      { src: "/images/posts/Tokyo-how-to-use-subway-pass-5.jpg", alt: { en: "Scanning QR code to exchange Tokyo subway pass", ko: "QR코드 스캔으로 지하철 패스 교환하는 모습" } },
+      // 4 — 실물 패스 카드
+      { src: "/images/posts/Tokyo-how-to-use-subway-pass-6.jpg", alt: { en: "Tokyo Subway 72-hour Ticket card", ko: "도쿄 지하철 72시간 패스 카드" } },
+      // 5 — 노란색 게이트
+      { src: "/images/posts/Tokyo-how-to-use-subway-pass-1.jpg", alt: { en: "Yellow ticket gate for Tokyo subway pass", ko: "도쿄 지하철 패스용 노란색 게이트 투입구" } },
+      // 6 — 바닥 탑승 위치
+      { src: "/images/posts/Tokyo-how-to-use-subway-pass-3.jpg", alt: { en: "Floor markings showing where to queue at Tokyo subway platform", ko: "도쿄 지하철 플랫폼 바닥 탑승 위치 표시" } },
+    ],
+    tags: ["guide", "complete-guide", "subway", "transport", "pass", "tips"],
+    categories: ["tips", "complete-guide", "booking"],
+    faq: [
+      { question: { en: "How much is the Tokyo subway pass?", ko: "도쿄 지하철 패스 가격은 얼마인가요?" }, answer: { en: "24hr ~$5, 48hr ~$7.50, 72hr ~$10 on Klook (2026). Time-based, not date-based — a 24hr pass started at 3pm lasts until 3pm the next day.", ko: "클룩 기준 24시간 7,100원, 48시간 10,600원, 72시간 14,400원 (2026년). 날짜가 아닌 시간 기준이라 24시간권을 오후 3시에 쓰면 다음 날 오후 3시까지 유효합니다." } },
+      { question: { en: "Can I use the Tokyo subway pass on JR lines?", ko: "지하철 패스로 JR 노선도 탈 수 있나요?" }, answer: { en: "No. The subway pass only covers Tokyo Metro and Toei lines. JR lines (marked with squares on Google Maps) require separate tickets. Most tourist destinations are reachable by Metro though.", ko: "아니요. 지하철 패스는 도쿄 메트로와 도에이 노선만 이용 가능합니다. JR 노선(구글 지도에서 네모 표시)은 별도 요금이에요. 다만 대부분의 관광지는 메트로로 갈 수 있습니다." } },
+      { question: { en: "Where can I exchange the Tokyo subway pass?", ko: "지하철 패스 어디서 교환하나요?" }, answer: { en: "At ticket machines with QR scanners in most Tokyo Metro/Toei stations. The machine looks slightly different from regular ones. Korean and English languages available.", ko: "대부분의 도쿄 메트로/도에이역 티켓 머신에서 교환 가능합니다. QR코드 스캔이 되는 전용 기계를 찾으면 돼요. 한국어 선택 가능합니다." } },
+      { question: { en: "Is the Tokyo subway hard to navigate?", ko: "도쿄 지하철 타기 어렵나요?" }, answer: { en: "Easier than it looks. Use Google Maps for routes — every station has an alphabet+number code (like G09). Match the code at the station and you'll find your platform. No need to memorize the map.", ko: "보기보다 쉽습니다. 구글 지도로 경로 검색하면 역마다 알파벳+숫자 코드(예: G09)가 나와요. 역에서 이 코드만 따라가면 플랫폼을 찾을 수 있습니다. 노선도 외울 필요 없어요." } },
+      { question: { en: "What time is the last train in Tokyo?", ko: "도쿄 지하철 막차가 몇 시인가요?" }, answer: { en: "Around midnight (varies by line). Earlier than many major cities. If you're out late, check the last train time on Google Maps or plan for a taxi.", ko: "노선마다 다르지만 대략 자정쯤입니다. 한국보다 빠른 편이에요. 늦게까지 밖에 있을 계획이면 구글 지도에서 막차 시간을 확인하거나 택시를 고려하세요." } },
+    ],
+    cta: {
+      label: { en: "Buy Tokyo Subway Pass", ko: "도쿄 지하철 패스 구매하기" },
+      url: "https://www.klook.com/activity/1552-subway-ticket-tokyo/?aid=118462",
+      provider: "Klook",
+      price: { en: "From ~$5 (24hr)", ko: "7,100원~ (24시간)" },
+      note: { en: "24hr / 48hr / 72hr options available", ko: "24시간 / 48시간 / 72시간 선택 가능" },
+    },
+    publishedAt: "2026-04-13",
+  },
+  {
+    slug: "tokyo-skyliner-narita-guide",
+    title: {
+      en: "Keisei Skyliner Guide — Narita Airport to Tokyo in 40 Min (2026)",
+      ko: "스카이라이너 가이드 — 나리타공항에서 도쿄 시내 40분 (2026)",
+    },
+    excerpt: {
+      en: "How to book and ride the Keisei Skyliner from Narita Airport to Ueno. Tickets, how to exchange, reserved seats, and comparison with NEX.",
+      ko: "나리타공항에서 우에노까지 스카이라이너 예약, 발권, 탑승 방법. NEX 비교, 지하철 패스 조합 꿀팁까지.",
+    },
+    content: {
+      ko: `## 스카이라이너 — 나리타공항에서 도쿄 시내 가는 가장 빠른 방법
+
+게이세이 스카이라이너(Keisei Skyliner)는 나리타 국제공항(치바현)에서 도쿄 시내 우에노역까지 ==약 40분==에 연결하는 고속 열차입니다. 전석 지정좌석제이고, 최고 시속 160km로 운행해요.
+
+저는 도쿄를 매년 1~2번 가는데, 처음에는 NEX(나리타 익스프레스)를 탔다가 두 번째부터 스카이라이너로 바꿨습니다. ==NEX보다 저렴하고, 우에노역에서 지하철 환승이 편해서== 지금은 매번 스카이라이너만 이용하고 있어요.
+
+리무진 버스와 조합하면 가장 좋습니다. 공항→시내는 스카이라이너, 시내→공항은 리무진 버스 — 이 조합이 가격과 편의성 면에서 최고였어요.
+
+### 핵심 정보
+
+- **노선:** 나리타공항 1터미널 → 2터미널 → 닛포리역 → ==우에노역== (종점)
+- **소요 시간:** 나리타공항 2터미널 → 우에노 ==약 40분==
+- **가격:** 클룩 편도 ==19,400원== / 현장 약 2,520엔
+- **운행 시간:** 첫차 07:23 ~ 막차 23:00 (약 15~30분 간격)
+- **좌석:** ==전석 지정좌석제== — 키오스크에서 직접 자리 선택
+- **편의시설:** 110V 콘센트, Wi-Fi, 화장실(5호차), 짐칸
+
+### 스카이라이너 vs NEX vs 리무진 버스
+
+나리타공항에서 도쿄 시내로 가는 3가지 방법:
+
+**스카이라이너:**
+- 가격: 편도 19,400원 (클룩)
+- 소요: 우에노까지 40분 — ==가장 빠름==
+- 장점: 저렴하고 빠름. 우에노역에서 지하철 환승 편리
+- 단점: 우에노/닛포리만 정차 — 신주쿠/시부야 직행 불가
+
+**NEX (나리타 익스프레스):**
+- 가격: 약 3,250엔 — 스카이라이너보다 비쌈
+- 소요: 도쿄역 60분, 신주쿠 90분
+- 장점: 도쿄역/시부야/신주쿠 직행 가능
+- 단점: 비싸고, 배차 간격 넓음
+
+**리무진 버스:**
+- 가격: 편도 28,000원 (클룩)
+- 소요: 지역별 1시간 20분~1시간 45분
+- 장점: 숙소 근처에서 바로 탑승, 짐 편함
+- 단점: 교통 체증 가능, 시간 예측 어려움
+
+==추천 조합: 공항→시내는 스카이라이너, 시내→공항은 리무진 버스.== 공항 도착 시간은 비행기 지연 때문에 예측이 어렵지만, 돌아갈 때는 미리 시간을 정할 수 있으니까요.
+
+### 티켓 예약
+
+클룩에서 미리 구매하면 현장보다 저렴합니다. ==구매 시 날짜와 시간을 고르는 게 아니라, 현장에서 키오스크로 열차와 좌석을 직접 선택==하는 방식이에요.
+
+{{cta}}
+
+==지하철 패스와 함께 구매하면 더 좋습니다.== 스카이라이너로 우에노에 도착한 뒤 바로 지하철 패스를 교환해서 시내를 돌아다닐 수 있어요.
+
+왕복 티켓은 따로 없습니다. 편도 티켓 2개를 구매하면 돼요.
+
+### 3터미널 도착 시 주의
+
+제주항공, 이스타항공, 피치항공 등 LCC를 이용하면 ==나리타공항 3터미널==에 도착합니다. 3터미널에서는 스카이라이너를 바로 탈 수 없어요. ==셔틀버스를 타고 2터미널로 이동==해야 합니다.
+
+2터미널과 3터미널은 거리가 가까워서 걸어가도 되는 수준이지만, 캐리어가 무겁다면 셔틀버스를 추천합니다.
+
+1터미널이나 2터미널에 도착한 분들은 지하로 바로 내려가면 철도 게이트입니다.
+
+![스카이라이너 안내 표지판](2)
+
+### 발권 방법
+
+클룩에서 구매한 QR코드를 키오스크에서 스캔해 실물 티켓으로 교환합니다. 대인 카운터에 갈 필요 없어요.
+
+![키오스크 발권](0)
+
+- **Step 1:** 2터미널 지하 키오스크에서 ==한국어로 변경== → QR코드 스캔
+- **Step 2:** 원하는 ==열차 시간 선택== (15~30분 간격 운행)
+- **Step 3:** ==좌석 직접 선택== — 옆자리 빈 곳으로 고르면 편함
+- **Step 4:** 실물 티켓 수령
+
+![실물 티켓](1)
+
+게이트 들어가면 바로 플랫폼이니까 ==가장 가까운 시간 열차로 발권==하면 됩니다. 굳이 미리 넉넉하게 잡을 필요 없어요.
+
+### 탑승 방법
+
+발권한 티켓을 ==노란색 게이트에 넣고== 통과합니다. 반대쪽에 티켓이 다시 나오는데 ==반드시 챙겨야 해요.== 우에노역에서 나갈 때 다시 넣어야 합니다.
+
+![플랫폼 호차 표시](3)
+
+같은 플랫폼에서 주황색 쾌속열차도 운행하니 ==스카이라이너 호차 표시를 확인==하고 탑승하세요. 바닥에 한국어로 표시되어 있어서 어렵지 않습니다.
+
+### 열차 내부
+
+- **좌석:** 넓고 쾌적. 앞좌석 테이블 사용 가능
+- **콘센트:** 좌석 아래 ==110V 콘센트== (돼지코 필요)
+- **Wi-Fi:** 무료 제공
+- **화장실:** ==5호차== 근처
+- **짐칸:** 호차 사이에 캐리어 보관 공간 있음. 좌석 위 선반에도 올릴 수 있음
+
+![내부 좌석](5)
+![짐칸](4)
+- **혼잡도:** 1터미널에서 먼저 승객이 타고 오지만, 대부분 절반 정도만 차서 옆자리가 비어있는 경우 많음
+
+### 우에노 도착 후
+
+우에노역은 긴자선, 히비야선, 오오에도선 등 여러 지하철 노선이 지나가서 시내 어디든 환승하기 편합니다. 우에노역 내 키오스크에서 ==지하철 패스도 교환 가능==해요.
+
+우에노역에서 내릴 때 티켓을 게이트에 넣으면 회수됩니다.
+
+### 다녀온 사람의 꿀팁
+
+- ==클룩에서 미리 구매==하면 현장보다 저렴
+- 지하철 패스와 함께 구매하는 조합 추천
+- 왕복 티켓은 없음 — 편도 2개 구매
+- 3터미널 도착 시 ==2터미널로 셔틀버스== 이동 필수
+- 키오스크에서 한국어 사용 가능 — 발권 쉬움
+- ==가장 가까운 시간 열차로 발권== — 게이트 바로 아래가 플랫폼
+- 티켓은 우에노역에서 나갈 때도 필요 — ==반드시 보관==
+- 돼지코 챙기면 열차에서 충전 가능 (110V)
+- ==공항→시내는 스카이라이너, 시내→공항은 리무진 버스== 조합이 최고
+
+도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 도쿄 코스를 자동으로 조합해 볼 수 있습니다. 시내에서 공항으로 돌아갈 때는 [리무진 버스 가이드](/ko/posts/tokyo-narita-limousine-bus)가 편하고, 시내 이동은 [지하철 패스 가이드](/ko/posts/tokyo-subway-guide)를 참고하세요.
+`,
+      en: `## Keisei Skyliner — Fastest Way From Narita Airport to Tokyo
+
+The Keisei Skyliner is a high-speed train connecting Narita International Airport (Chiba Prefecture, Japan) to Ueno Station in central Tokyo in ==about 40 minutes.== All seats are reserved, and it runs at up to 160km/h.
+
+I visit Tokyo 1–2 times a year. I took the NEX (Narita Express) on my first trip, then switched to the Skyliner. ==It's cheaper than NEX, and Ueno Station has great subway connections== — so I've used the Skyliner exclusively since then.
+
+Best combo: Skyliner from airport to city, limousine bus from city back to airport. This gives you speed on arrival and convenience on departure.
+
+### Key Info
+
+- **Route:** Narita Airport T1 → T2 → Nippori → ==Ueno Station== (terminus)
+- **Travel time:** Narita T2 → Ueno ==~40 minutes==
+- **Fare:** ~$14 one-way on Klook / ~¥2,520 at the counter
+- **Hours:** First train 07:23, last train 23:00 (every 15–30 min)
+- **Seats:** ==All reserved== — choose your seat at the kiosk
+- **Amenities:** 110V outlet, Wi-Fi, restroom (car 5), luggage storage
+
+### Skyliner vs NEX vs Limousine Bus
+
+Three ways from Narita Airport to central Tokyo:
+
+**Skyliner:**
+- Fare: ~$14 one-way (Klook)
+- Time: 40 min to Ueno — ==fastest option==
+- Pros: Cheap and fast. Easy subway transfer at Ueno
+- Cons: Stops only at Ueno/Nippori — no direct to Shinjuku/Shibuya
+
+**NEX (Narita Express):**
+- Fare: ~¥3,250 — more expensive than Skyliner
+- Time: 60 min to Tokyo Station, 90 min to Shinjuku
+- Pros: Direct to Tokyo Station/Shibuya/Shinjuku
+- Cons: Pricier, less frequent
+
+**Limousine Bus:**
+- Fare: ~$20 one-way (Klook)
+- Time: 1hr 20min–1hr 45min depending on area
+- Pros: Board near hotel, luggage handled
+- Cons: Traffic delays possible
+
+==Recommended combo: Skyliner to the city, limousine bus back to the airport.== Flight arrival times are unpredictable, but departure day timing is in your control.
+
+### Tickets
+
+Booking on Klook is cheaper than buying at the counter. ==You don't choose the train time when purchasing — you select the train and seat at the kiosk on arrival.==
+
+{{cta}}
+
+==Buying with a subway pass is a great combo.== After arriving at Ueno, exchange your subway pass right away and start exploring.
+
+No round-trip ticket exists. Buy two one-way tickets.
+
+### Terminal 3 Arrivals — Important
+
+Budget airlines (Jeju Air, Peach, etc.) land at ==Narita Terminal 3.== You can't board the Skyliner there — ==take the shuttle bus to Terminal 2== first.
+
+Terminals 2 and 3 are close enough to walk, but the shuttle is easier with heavy luggage.
+
+Terminal 1 and 2 arrivals can go directly downstairs to the train gates.
+
+![Skyliner signage](2)
+
+### How to Exchange Tickets
+
+Scan your Klook QR code at the kiosk to get a physical ticket. No need to visit the staffed counter.
+
+![Ticket kiosk](0)
+
+- **Step 1:** At the T2 kiosk, ==switch to English/Korean== → scan QR code
+- **Step 2:** ==Select your train time== (trains every 15–30 min)
+- **Step 3:** ==Choose your seat== — pick one with an empty neighbor
+- **Step 4:** Collect physical ticket
+
+![Physical ticket](1)
+
+The platform is right past the gate, so ==book the nearest departure.== No need to buffer extra time.
+
+### How to Board
+
+Insert your ticket into the ==yellow gate.== The ticket comes out the other side — ==keep it.== You need it to exit at Ueno Station.
+
+![Platform with car markings](3)
+
+The same platform serves orange rapid trains. ==Check the Skyliner car number markings== on the floor before boarding. Signs are in Korean/English.
+
+### On the Train
+
+- **Seats:** Spacious with fold-down tray tables
+- **Power:** ==110V outlet== under the seat (bring a plug adapter)
+- **Wi-Fi:** Free
+- **Restroom:** Near ==car 5==
+- **Luggage:** Rack between cars + overhead shelf above seats
+
+![Interior seats](5)
+![Luggage rack](4)
+- **Crowding:** T1 passengers board first, but trains are usually half-full. Often an empty seat next to you
+
+### After Arriving at Ueno
+
+Ueno Station connects to the Ginza, Hibiya, and Oedo subway lines — ==easy transfer to anywhere in Tokyo.== You can also exchange your subway pass at the Ueno Station kiosk.
+
+Insert your ticket at the exit gate — it's collected there.
+
+### Tips From Multiple Rides
+
+- ==Book on Klook in advance== — cheaper than counter price
+- Combo with subway pass for best value
+- No round-trip ticket — buy 2 one-way
+- Terminal 3 arrivals: ==shuttle bus to Terminal 2== required
+- Kiosk supports Korean and English — easy to use
+- ==Book the nearest train== — platform is right past the gate
+- ==Keep your ticket== — needed to exit at Ueno
+- Bring a plug adapter for 110V charging on the train
+- ==Skyliner to city + limousine bus back to airport== is the best combo
+
+If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine your Tokyo days into a full schedule. For the return trip to the airport, see our [limousine bus guide](/posts/tokyo-narita-limousine-bus). For getting around Tokyo, check the [subway pass guide](/posts/tokyo-subway-guide).
+`,
+    },
+    city: "tokyo",
+    coverImage: "/images/posts/Tokyo-Skyliner-Train-Ticket-2.jpg",
+    coverGradient: "from-orange-400 to-red-500",
+    images: [
+      // 0 — 키오스크 발권
+      { src: "/images/posts/Tokyo-Skyliner-Train-Ticket-1.jpg", alt: { en: "Skyliner ticket kiosk at Narita Airport", ko: "나리타공항 스카이라이너 키오스크 발권" } },
+      // 1 — 실물 티켓
+      { src: "/images/posts/Tokyo-Skyliner-Train-Ticket-2.jpg", alt: { en: "Keisei Skyliner physical ticket Narita to Ueno", ko: "스카이라이너 실물 티켓 (나리타→우에노)" } },
+      // 2 — 안내 표지판
+      { src: "/images/posts/Tokyo-Skyliner-Train-Ticket-3.jpg", alt: { en: "Skyliner and Access Express signage at Narita Airport station", ko: "나리타공항역 스카이라이너·쾌속특급 안내 표지판" } },
+      // 3 — 플랫폼
+      { src: "/images/posts/Tokyo-Skyliner-Train-Ticket-4.jpg", alt: { en: "Skyliner platform with car number markings at Narita", ko: "나리타공항 스카이라이너 플랫폼 호차 표시" } },
+      // 4 — 짐칸
+      { src: "/images/posts/Tokyo-Skyliner-Train-Ticket-5.jpg", alt: { en: "Luggage storage rack inside Keisei Skyliner", ko: "스카이라이너 내부 캐리어 짐칸" } },
+      // 5 — 내부 좌석 전체
+      { src: "/images/posts/Tokyo-Skyliner-Train-Ticket-6.jpg", alt: { en: "Inside the Keisei Skyliner with empty reserved seats", ko: "스카이라이너 내부 좌석 전경" } },
+      // 6 — 탑승 중
+      { src: "/images/posts/Tokyo-Skyliner-Train-Ticket-7.jpg", alt: { en: "Riding the Skyliner with luggage next to seat", ko: "스카이라이너 탑승 중 좌석 옆 캐리어" } },
+    ],
+    tags: ["guide", "complete-guide", "transport", "airport", "skyliner", "booking-tips"],
+    categories: ["tips", "complete-guide", "booking"],
+    faq: [
+      { question: { en: "How much is the Skyliner from Narita to Tokyo?", ko: "스카이라이너 가격은 얼마인가요?" }, answer: { en: "About $14 one-way on Klook (2026), or ~¥2,520 at the counter. No round-trip ticket — buy two one-way. Combo with subway pass available.", ko: "클룩 편도 19,400원 (2026년), 현장 약 2,520엔. 왕복 티켓은 없어서 편도 2개 구매. 지하철 패스와 함께 구매 가능합니다." } },
+      { question: { en: "How long does the Skyliner take from Narita to Ueno?", ko: "스카이라이너 소요 시간이 얼마나 되나요?" }, answer: { en: "About 40 minutes from Narita Airport Terminal 2 to Ueno Station. Fastest option from Narita to central Tokyo.", ko: "나리타공항 2터미널에서 우에노역까지 약 40분. 나리타에서 도쿄 시내로 가는 가장 빠른 방법입니다." } },
+      { question: { en: "Skyliner or NEX — which should I take?", ko: "스카이라이너 vs NEX 뭐가 나은가요?" }, answer: { en: "Skyliner is cheaper (~$14 vs ~¥3,250) and faster to Ueno (40 min). NEX goes direct to Tokyo Station/Shinjuku but costs more and takes longer. Unless your hotel is in Shinjuku, Skyliner + subway transfer is usually better.", ko: "스카이라이너가 더 저렴하고(19,400원 vs 3,250엔) 우에노까지 빠릅니다(40분). NEX는 도쿄역/신주쿠 직행이지만 비싸고 오래 걸려요. 신주쿠 숙소가 아니라면 스카이라이너 + 지하철 환승이 더 나아요." } },
+      { question: { en: "Can I take the Skyliner from Terminal 3?", ko: "나리타 3터미널에서 스카이라이너 탈 수 있나요?" }, answer: { en: "Not directly. Terminal 3 doesn't have a train station. Take the free shuttle bus to Terminal 2 (very short ride), then board from there.", ko: "바로는 안 됩니다. 3터미널에는 기차역이 없어요. 무료 셔틀버스로 2터미널로 이동한 후(금방) 거기서 탑승하면 됩니다." } },
+      { question: { en: "Do I need to book the Skyliner in advance?", ko: "스카이라이너 미리 예약해야 하나요?" }, answer: { en: "Booking on Klook in advance is cheaper. You don't choose the exact train — just buy the ticket, then pick your train and seat at the kiosk when you arrive.", ko: "클룩에서 미리 사면 더 저렴합니다. 구매 시 열차를 고르는 게 아니라, 도착 후 키오스크에서 시간과 좌석을 직접 선택하는 방식이에요." } },
+    ],
+    cta: {
+      label: { en: "Book Skyliner Tickets", ko: "스카이라이너 티켓 예약하기" },
+      url: "https://www.klook.com/activity/1410-skyliner-tokyo/?aid=118462",
+      provider: "Klook",
+      price: { en: "From ~$14", ko: "19,400원~" },
+      note: { en: "Subway pass combo available", ko: "지하철 패스와 함께 구매 가능" },
     },
     publishedAt: "2026-04-13",
   },
