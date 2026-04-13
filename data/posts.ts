@@ -1141,6 +1141,259 @@ If you're building a Tokyo itinerary, try the TripFlowy planner to combine Disne
     },
     publishedAt: "2026-04-13",
   },
+  {
+    slug: "tokyo-narita-limousine-bus",
+    title: {
+      en: "Narita Airport Limousine Bus Guide — Routes, Booking & Tips (2026)",
+      ko: "나리타공항 리무진 버스 가이드 — 노선, 예약, 이용 꿀팁 총정리 (2026)",
+    },
+    excerpt: {
+      en: "How to book and ride the Narita Airport Limousine Bus. Routes, fares, travel times, and real tips from 3+ rides between Tokyo and Narita.",
+      ko: "나리타공항 리무진 버스 예약법, 노선, 소요 시간, 이용 후기까지. 3번 이상 타본 실전 꿀팁 총정리.",
+    },
+    content: {
+      ko: `## 나리타공항 리무진 버스 — 시내에서 공항 가는 가장 편한 방법
+
+나리타공항 리무진 버스(Airport Limousine Bus)는 도쿄 시내 주요 지역과 나리타 국제공항(Narita International Airport, 치바현)을 연결하는 공항버스입니다. 신주쿠, 시부야, 긴자, 도쿄역, 이케부쿠로, 아사쿠사, 디즈니랜드, 오다이바 등 도쿄 곳곳에 정류장이 있어서 숙소 근처에서 바로 탈 수 있어요.
+
+![리무진 버스 정류장 표지판](0)
+
+저는 도쿄 여행 갈 때마다 이 버스를 이용하는데, 벌써 3번 이상 탔습니다. 공항에서 시내로 올 때는 스카이라이너를 타지만, ==시내에서 공항으로 돌아갈 때는 리무진 버스가 훨씬 편합니다.== 짐 끌고 지하철 환승할 필요 없이 정류장에서 타면 공항 터미널 앞까지 바로 데려다주거든요.
+
+### 핵심 정보
+
+- **노선:** 도쿄 시내 주요 지역 ↔ 나리타공항 (1·2·3터미널)
+- **소요 시간:** 지역별 다름 — 긴자 약 1시간 40분, 신주쿠 약 1시간 45분, 도쿄역 약 1시간 20분
+- **가격:** 클룩 기준 편도 약 34,000원 / 공식 약 3,200엔 (2026년 기준)
+- **예약:** 클룩에서 사전 예약 추천 (현장 구매는 현금만 가능하고 자리 보장 안 됨)
+- **좌석:** 자유석 (선착순)
+- **편의시설:** 무료 Wi-Fi, 110V 콘센트, 화장실 (버스 뒤쪽)
+
+### 리무진 버스 vs 스카이라이너 vs NEX
+
+시내에서 나리타공항까지 가는 방법은 크게 3가지입니다.
+
+**리무진 버스:**
+- 장점: 숙소 근처에서 바로 탑승, 짐 맡기기 편함, 환승 없음
+- 단점: 교통 체증에 따라 10~20분 지연 가능
+- 추천: 짐 많을 때, 숙소 근처에 정류장 있을 때, 부모님/가족과 함께일 때
+
+**스카이라이너:**
+- 장점: 우에노/닛포리에서 36분, 가장 빠름
+- 단점: 역까지 짐 끌고 가야 함
+- 추천: 시간 촉박할 때, 우에노/닛포리 근처 숙소
+
+**나리타 익스프레스(NEX):**
+- 장점: 도쿄역/시부야/신주쿠 직통
+- 단점: 배차 간격 넓음
+- 추천: 도쿄역 근처 숙소
+
+저는 공항→시내는 스카이라이너, 시내→공항은 리무진 버스로 조합하는 게 가장 좋았습니다. 공항 도착 시간은 비행기 지연 때문에 예측이 어렵지만, 돌아갈 때는 시간을 미리 정할 수 있으니까요.
+
+### 예약 방법
+
+클룩에서 미리 예약하는 게 가장 편합니다. 현장에서도 탈 수 있지만 현금만 가능하고, 자리가 보장되지 않아요. 실제로 현금 없는 외국인이 못 타고 돌아가는 걸 본 적도 있습니다.
+
+{{cta}}
+
+**예약 순서:**
+- **Step 1:** 클룩에서 날짜, 출발 정류장, 공항 터미널 선택
+- **Step 2:** 원하는 시간대 선택 → 결제
+- **Step 3:** QR코드 바우처 수령 (즉시 발급)
+- 당일 정류장에서 QR코드만 보여주면 탑승 — 프린트 불필요
+
+정류장별 시간표는 [공식 시간표 페이지](https://www.airport-bus-alliance.com/timetable.html?airport=%E6%88%90%E7%94%B0%E7%A9%BA%E6%B8%AF&pref=%E6%9D%B1%E4%BA%AC&lang=en)에서 확인할 수 있습니다.
+
+### 탑승 방법
+
+정류장에 가면 주황색 리무진 버스 안내판이 있습니다. 시간에 맞춰 버스가 도착하면 기사님이 내려서 터미널별로 짐을 분류해 실어줘요.
+
+![버스 도착 및 짐 싣기](1)
+
+표 검사는 정류장마다 다릅니다. 처음 탑승할 때 하는 곳도 있고, 마지막 정류장(도쿄역 등)에서 직원이 버스에 올라타서 한꺼번에 QR코드를 스캔하는 경우도 있었습니다. 어떤 방식이든 QR코드 캡처 화면만 보여주면 됩니다.
+
+![클룩 QR코드 바우처](2)
+
+나리타공항은 **3터미널 → 2터미널 → 1터미널** 순으로 정차합니다. 내릴 터미널을 기사님에게 미리 말하세요.
+
+### 버스 내부
+
+![버스 내부 좌석](5)
+
+- **좌석:** 자유석. 선착순이라 원하는 자리에 앉으면 됨
+- **혼잡도:** 3번 넘게 탔는데 꽉 찬 적이 한 번도 없음. 혼자 가도 옆자리 비어 있었음
+- **콘센트:** 창가 아래 110V 콘센트 있음
+
+![100V 콘센트](6)
+- **Wi-Fi:** 무료 제공
+- **화장실:** 버스 맨 뒤에 있음 (중간에 휴게소 안 들르기 때문에 유용)
+- **모니터:** 앞쪽 모니터에 정류장 이름이 한글로 표시됨
+
+### 소요 시간 & 주의사항
+
+지역별 대략적인 소요 시간 (나리타공항까지):
+- **도쿄역:** 약 1시간 20분
+- **긴자:** 약 1시간 40분
+- **신주쿠:** 약 1시간 45분
+- **시부야:** 약 1시간 45분
+- **디즈니랜드:** 약 1시간
+
+![나리타공항 터미널3 도착](4)
+
+==교통 체증에 따라 10~20분 늦을 수 있습니다.== 비행기 출발 3시간 전에 도착하는 시간대로 예약하면 여유롭습니다. 실제로는 2시간 전에만 도착해도 체크인에 문제없었어요.
+
+### 여러 번 타본 사람의 꿀팁
+
+- ==시내→공항은 리무진, 공항→시내는 스카이라이너== 조합이 최고
+- 클룩에서 미리 예약 — 현장은 현금만, 자리 보장 안 됨
+- QR코드 바우처 캡처해두면 프린트 불필요
+- 짐 많거나 부모님/가족과 함께라면 지하철보다 훨씬 편함
+- 교통 체증 고려해서 **비행기 3시간 전** 도착 시간으로 예약
+- 좌석 자유석이라 일찍 타면 좋은 자리 가능
+- 나리타공항 3→2→1 순 하차 — 본인 터미널 미리 확인
+
+도쿄 여행 일정을 짜고 있다면 TripFlowy 플래너에서 공항 이동까지 포함한 전체 코스를 조합해 볼 수 있습니다.
+`,
+      en: `## Narita Airport Limousine Bus — The Easiest Way From Tokyo to the Airport
+
+The Narita Airport Limousine Bus connects major areas in central Tokyo with Narita International Airport in Chiba Prefecture, Japan. Stops include Shinjuku, Shibuya, Ginza, Tokyo Station, Ikebukuro, Asakusa, Disneyland, and Odaiba — so there's likely a stop near your hotel.
+
+![Limousine bus stop sign](0)
+
+I've taken this bus 3+ times across multiple Tokyo trips. For getting from the airport to the city, I use the Skyliner. But ==for getting back to the airport, the limousine bus is far more convenient.== No dragging luggage through subway transfers — just board at a stop near your hotel and ride directly to the terminal.
+
+### Key Info
+
+- **Routes:** Major Tokyo areas ↔ Narita Airport (Terminals 1, 2, 3)
+- **Travel time:** Varies by area — Ginza ~1hr 40min, Shinjuku ~1hr 45min, Tokyo Station ~1hr 20min
+- **Fare:** ~$23 on Klook / ~¥3,200 official (2026)
+- **Booking:** Pre-book on Klook recommended (walk-up is cash-only, no seat guarantee)
+- **Seats:** Free seating (first come, first served)
+- **Amenities:** Free Wi-Fi, 110V outlet, restroom (rear of bus)
+
+### Limousine Bus vs Skyliner vs NEX
+
+Three main options from central Tokyo to Narita Airport:
+
+**Limousine Bus:**
+- Pros: Board near your hotel, luggage handled for you, no transfers
+- Cons: Traffic can add 10–20 min
+- Best for: Heavy luggage, hotel near a bus stop, traveling with family
+
+**Skyliner:**
+- Pros: 36 min from Ueno/Nippori — fastest option
+- Cons: Must get to the station with luggage
+- Best for: Tight schedule, staying near Ueno/Nippori
+
+**Narita Express (NEX):**
+- Pros: Direct from Tokyo Station/Shibuya/Shinjuku
+- Cons: Less frequent departures
+- Best for: Staying near Tokyo Station
+
+My go-to combination: Skyliner from airport to city, limousine bus from city back to airport. Arrival time from flights is unpredictable, but departure day timing is in your control.
+
+### How to Book
+
+Pre-booking on Klook is the easiest option. Walk-up boarding exists but is cash-only with no seat guarantee. I've seen tourists turned away because they had no cash.
+
+{{cta}}
+
+**Booking steps:**
+- **Step 1:** On Klook, select date, departure stop, and airport terminal
+- **Step 2:** Choose time slot → pay
+- **Step 3:** Receive QR code voucher (instant)
+- Show QR code at the stop on the day — no printing needed
+
+Check stop-by-stop timetables on the [official timetable page](https://www.airport-bus-alliance.com/timetable.html?airport=%E6%88%90%E7%94%B0%E7%A9%BA%E6%B8%AF&pref=%E6%9D%B1%E4%BA%AC&lang=en).
+
+### How to Board
+
+Look for the orange limousine bus sign at your stop. The bus arrives on schedule, and the driver gets out to load luggage — sorted by terminal.
+
+![Bus loading luggage at stop](1)
+
+Ticket check varies by stop. Sometimes they check when you board, sometimes a staff member boards at the last stop (like Tokyo Station) and scans everyone's QR codes at once. Either way, just show your screenshot.
+
+![Klook QR code voucher](2)
+
+Narita Airport stops go: **Terminal 3 → Terminal 2 → Terminal 1**. Tell the driver your terminal when boarding.
+
+### On the Bus
+
+![Bus interior with orange seats](5)
+
+- **Seats:** Free seating — sit anywhere
+- **Crowding:** Never been full in 3+ rides. Always had an empty seat next to me
+- **Power:** 110V outlet by the window
+
+![100V power outlet](6)
+- **Wi-Fi:** Free
+- **Restroom:** Rear of bus (no rest stops along the way)
+- **Display:** Front monitor shows stop names in Korean/English
+
+### Travel Times & Tips
+
+Approximate times to Narita Airport:
+- **Tokyo Station:** ~1hr 20min
+- **Ginza:** ~1hr 40min
+- **Shinjuku:** ~1hr 45min
+- **Shibuya:** ~1hr 45min
+- **Disneyland:** ~1hr
+
+![Narita Airport Terminal 3 arrival](4)
+
+==Traffic can add 10–20 minutes.== Book a bus that arrives ~3 hours before your flight for comfort. In practice, 2 hours before is usually fine for check-in.
+
+### Tips From 3+ Rides
+
+- ==City→airport: limousine bus. Airport→city: Skyliner.== Best combo
+- Pre-book on Klook — walk-up is cash-only, no guaranteed seat
+- Screenshot QR voucher — no printing needed
+- Much easier than subway with heavy luggage or elderly family
+- Book for **3 hours before flight** to account for traffic
+- Free seating — board early for window seat
+- Narita stops: Terminal 3→2→1 — know your terminal in advance
+
+If you're building a Tokyo itinerary, try the TripFlowy planner to map out your full trip including airport transfers.
+`,
+    },
+    city: "tokyo",
+    coverImage: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-1.jpg",
+    coverGradient: "from-sky-400 to-blue-600",
+    images: [
+      // 0 — 정류장 표지판
+      { src: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-1.jpg", alt: { en: "Narita Airport Limousine Bus stop sign in Tokyo", ko: "나리타공항 리무진 버스 정류장 표지판" } },
+      // 1 — 버스 외관 + 탑승
+      { src: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-2.jpg", alt: { en: "Airport Limousine Bus loading luggage at Tokyo stop", ko: "리무진 버스 정류장에서 짐 싣는 모습" } },
+      // 2 — QR코드 바우처
+      { src: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-3.jpg", alt: { en: "Klook QR code voucher for Narita limousine bus on phone", ko: "클룩 리무진 버스 QR코드 바우처 화면" } },
+      // 3 — 내부 좌석
+      { src: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-4.jpg", alt: { en: "Narita limousine bus interior seats from behind", ko: "나리타 리무진 버스 내부 좌석" } },
+      // 4 — 나리타공항 터미널3
+      { src: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-5.jpg", alt: { en: "Narita Airport Terminal 3 with limousine bus arrival", ko: "나리타공항 터미널3 리무진 버스 도착" } },
+      // 5 — 내부 넓은 앵글
+      { src: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-6.jpg", alt: { en: "Inside the Narita Airport Limousine Bus with orange seats", ko: "나리타 리무진 버스 내부 주황색 좌석" } },
+      // 6 — 콘센트
+      { src: "/images/posts/Tokyo-Narita-Airport-Limousine-Bus-7.jpg", alt: { en: "100V power outlet inside Narita limousine bus", ko: "리무진 버스 내부 100V 콘센트" } },
+    ],
+    tags: ["guide", "transport", "airport", "narita", "bus", "booking-tips"],
+    categories: ["tips", "booking", "complete-guide"],
+    faq: [
+      { question: { en: "How much is the Narita Airport Limousine Bus?", ko: "나리타공항 리무진 버스 가격은 얼마인가요?" }, answer: { en: "About $23 one-way on Klook, or ~¥3,200 at the official rate (2026). Klook is slightly cheaper and easier to book in English.", ko: "클룩 기준 편도 약 34,000원, 공식 약 3,200엔입니다 (2026년 기준). 클룩이 조금 더 저렴하고 예약도 편해요." } },
+      { question: { en: "Do I need to book the limousine bus in advance?", ko: "리무진 버스 미리 예약해야 하나요?" }, answer: { en: "Strongly recommended. Walk-up is cash-only with no seat guarantee. I've seen tourists turned away. Book on Klook for QR code instant entry.", ko: "강력 추천합니다. 현장 구매는 현금만 가능하고 좌석 보장도 안 돼요. 현금 없어서 못 탄 외국인도 봤습니다. 클룩에서 미리 예약하세요." } },
+      { question: { en: "How long does the limousine bus take from Tokyo to Narita?", ko: "리무진 버스 소요 시간이 얼마나 걸리나요?" }, answer: { en: "Depends on your stop. Tokyo Station ~1hr 20min, Ginza ~1hr 40min, Shinjuku ~1hr 45min. Traffic can add 10–20 minutes.", ko: "정류장에 따라 다릅니다. 도쿄역 약 1시간 20분, 긴자 약 1시간 40분, 신주쿠 약 1시간 45분. 교통 체증 시 10~20분 추가될 수 있어요." } },
+      { question: { en: "Limousine bus or Skyliner — which is better for Narita?", ko: "리무진 버스 vs 스카이라이너 뭐가 나은가요?" }, answer: { en: "Skyliner is faster (36 min from Ueno) but you need to get to the station with luggage. Limousine bus is slower but picks up near your hotel with no transfers. Best combo: Skyliner to city, bus back to airport.", ko: "스카이라이너가 빠르지만(우에노에서 36분) 역까지 짐 끌고 가야 합니다. 리무진은 느리지만 숙소 근처에서 바로 탑승. 최고 조합: 공항→시내는 스카이라이너, 시내→공항은 리무진." } },
+      { question: { en: "Is there a restroom on the Narita limousine bus?", ko: "리무진 버스에 화장실이 있나요?" }, answer: { en: "Yes. There's a restroom at the rear of the bus. No rest stops along the way, so it's useful for the 1.5+ hour ride.", ko: "네, 버스 맨 뒤에 있습니다. 중간에 휴게소를 들르지 않기 때문에 1시간 반 이상 탈 때 유용해요." } },
+    ],
+    cta: {
+      label: { en: "Book Narita Limousine Bus", ko: "나리타공항 리무진 버스 예약하기" },
+      url: "https://www.klook.com/ko/activity/2274-narita-airport-limousine-bus-tokyo/?aid=118462",
+      provider: "Klook",
+      price: { en: "From ~$23", ko: "34,000원~" },
+      note: { en: "Pre-booking recommended — walk-up is cash only", ko: "사전 예약 추천 — 현장은 현금만 가능" },
+    },
+    publishedAt: "2026-04-13",
+  },
 ];
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
