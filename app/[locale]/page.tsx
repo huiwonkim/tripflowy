@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { ArrowRight, CheckCircle, Zap, Map, Hotel } from "lucide-react";
+import { ArrowRight, CheckCircle, Zap, Map, Hotel, X, Check } from "lucide-react";
 import { QuickPlanner } from "@/components/planner/QuickPlanner";
 import { posts } from "@/data/posts";
 import { countries, comingSoonCountries } from "@/data/destinations";
@@ -117,6 +117,44 @@ export default async function HomePage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* Compare: AI vs Field-tested */}
+      <section className="bg-white border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">{t("whyDifferent.heading")}</h2>
+            <p className="text-gray-500">{t("whyDifferent.subheading")}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* AI side */}
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
+              <p className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-4">{t("whyDifferent.aiTitle")}</p>
+              <ul className="space-y-3">
+                {[t("whyDifferent.ai1"), t("whyDifferent.ai2"), t("whyDifferent.ai3"), t("whyDifferent.ai4")].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-[15px] text-gray-500">
+                    <X className="w-4 h-4 text-gray-300 mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* TripFlowy side */}
+            <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+              <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-4">{t("whyDifferent.realTitle")}</p>
+              <ul className="space-y-3">
+                {[t("whyDifferent.real1"), t("whyDifferent.real2"), t("whyDifferent.real3"), t("whyDifferent.real4")].map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-[15px] text-gray-700 font-medium">
+                    <Check className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Popular guides */}
       {posts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
@@ -132,7 +170,7 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {posts.map((post) => {
+            {[...posts].sort(() => Math.random() - 0.5).slice(0, 4).map((post) => {
               const cityLabel = allCities.find((c) => c.id === post.city)?.label[loc] ?? post.city;
               return (
                 <Link key={post.slug} href={`/posts/${post.slug}`}

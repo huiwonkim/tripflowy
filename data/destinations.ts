@@ -15,23 +15,6 @@ export const countries: Country[] = [
       { id: "fukuoka", label: { en: "Fukuoka", ko: "후쿠오카" }, countryId: "japan", heroImage: "/images/city-heroes/fukuoka.jpg" },
     ],
   },
-  {
-    id: "vietnam",
-    label: { en: "Vietnam", ko: "베트남" },
-    emoji: "🇻🇳",
-    cities: [
-      { id: "danang", label: { en: "Da Nang", ko: "다낭" }, countryId: "vietnam", heroImage: "/images/city-heroes/danang.jpg" },
-      { id: "nhatrang", label: { en: "Nha Trang", ko: "나트랑" }, countryId: "vietnam", heroImage: "/images/city-heroes/nhatrang.jpg" },
-    ],
-  },
-  {
-    id: "china",
-    label: { en: "China", ko: "중국" },
-    emoji: "🇨🇳",
-    cities: [
-      { id: "shanghai", label: { en: "Shanghai", ko: "상하이" }, countryId: "china", heroImage: "/images/city-heroes/shanghai.jpg" },
-    ],
-  },
 ];
 
 // ── Coming Soon 국가 ─────────────────────────────────
@@ -42,6 +25,8 @@ export type ComingSoonCountry = {
 };
 
 export const comingSoonCountries: ComingSoonCountry[] = [
+  { id: "vietnam", label: { en: "Vietnam", ko: "베트남" }, emoji: "🇻🇳" },
+  { id: "china", label: { en: "China", ko: "중국" }, emoji: "🇨🇳" },
   { id: "thailand", label: { en: "Thailand", ko: "태국" }, emoji: "🇹🇭" },
   { id: "indonesia", label: { en: "Indonesia", ko: "인도네시아" }, emoji: "🇮🇩" },
   { id: "hongkong", label: { en: "Hong Kong", ko: "홍콩" }, emoji: "🇭🇰" },

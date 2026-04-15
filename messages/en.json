@@ -23,6 +23,20 @@
     "dayByDay": "Complete day-by-day plans",
     "affiliate": "Restaurants, tours & bookings included"
   },
+  "whyDifferent": {
+    "heading": "AI-Generated Plans vs Field-Tested Routes",
+    "subheading": "Combining search results is not the same as walking the route yourself.",
+    "aiTitle": "AI Travel Planners",
+    "ai1": "Combines search results and reviews",
+    "ai2": "No real-world route verification",
+    "ai3": "May suggest closed shops or blocked roads",
+    "ai4": "Too many choices, no clear answer",
+    "realTitle": "TripFlowy",
+    "real1": "Routes walked and tested in person",
+    "real2": "Timing, directions, and restaurants verified on-site",
+    "real3": "Knows what to skip because we've been there",
+    "real4": "Ready-to-follow itineraries, no guesswork"
+  },
   "guides": {
     "label": "In-depth guides",
     "heading": "Popular Guides",
