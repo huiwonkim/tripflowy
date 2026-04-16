@@ -23,7 +23,7 @@ I've been three times now. The reason I keep going back is simple: no other obse
 
 - **Location:** Shibuya Scramble Square rooftop (floors 45–46 + SKY STAGE), Shibuya, Tokyo
 - **Hours:** 10:00–22:30, last entry 21:20
-- **Price:** ¥2,200 online / ¥2,500 walk-in (adults, 2026)
+- **Price (adult, tax in):** ¥2,700 for 10:00–14:59 / ¥3,400 for 15:00–21:20 (2026)
 - **Getting there:** JR Shibuya Station exit B6 — directly connected
 - **Booking:** Opens 2 weeks before visit at 00:00 JST — evening slots sell out in minutes
 
@@ -39,17 +39,18 @@ If you arrive early, the 11th-floor Starbucks and Tsutaya bookstore kill time ni
 
 Walk-in tickets are nearly impossible. Shibuya Sky limits entry by time slot, and evening slots sell out the moment they open. Even daytime weekend slots disappear days in advance.
 
-**Prices (April 2026):**
-- Online: ¥2,200 (adults) / ¥1,700 (students) / ¥1,000 (children) / ¥600 (ages 3–5)
-- Walk-in: ¥2,500 / ¥2,000 / ¥1,200 / ¥700
+**Prices (April 2026, tax included):**
+- Adult (12+): ==¥2,700 for 10:00–14:59 / ¥3,400 for 15:00–21:20==
+- Child (6–11): ¥1,200 (==counter-only, same-day purchase==)
+- Age 5 and under: free
 
-Online saves up to ¥300. I've tried the official site, KKday, and Klook across multiple visits. ==Klook was the fastest and most reliable== — checkout is smoother than the official site.
+Shibuya Sky uses ==time-slot dynamic pricing==, so evening costs ¥700 more than daytime. You can pre-book on the official site, Klook, or KKday. Across multiple visits, ==Klook had the fastest, most reliable checkout== in my testing.
 
 {{cta}}
 
 Tickets open ==exactly 2 weeks before your visit at midnight (00:00 JST)==. Sunset and night slots (17:00–20:00) sell out within minutes — set an alarm. Even weekday evenings go fast. Book the day your travel dates are confirmed.
 
-Entry is in 20-minute windows. You can only enter during your assigned slot — arriving early won't get you in sooner. Online is always ¥300 cheaper. There's no reason to buy at the counter.
+Entry is in 20-minute windows. You can only enter during your assigned slot — arriving early won't get you in sooner. If you're budget-conscious, a daytime slot saves ¥700 over evening.
 
 ### What to Expect on the Rooftop
 
@@ -61,7 +62,9 @@ The escalator ride up gives you the first views — this is the classic Shibuya 
 
 The rooftop deck (SKY STAGE) is a wide-open outdoor space.
 
-![Shibuya Sky rooftop deck](2) Compared to Tokyo Skytree (450m, but indoor glass viewing), the difference is obvious. Skytree is higher, but you're looking through windows. Here there's nothing between you and the skyline. A staff photo spot is available but the line is long and photos are paid — skip it unless you really want the branded frame.
+![Shibuya Sky rooftop deck](2)
+
+Compared to Tokyo Skytree (450m, but indoor glass viewing), the difference is obvious. Skytree is higher, but you're looking through windows. Here there's nothing between you and the skyline. A staff photo spot is available but the line is long and photos are paid — skip it unless you really want the branded frame.
 
 On the Tokyo Tower side, there's a sofa lounge. Evening access requires a drink purchase, but this is the most popular spot on the deck — Tokyo Tower directly in front of you. Seats fill fast, so head there first after entering. In the center there's a hammock-net area if you want to lie back.
 
@@ -89,6 +92,10 @@ Tokyo is one of the densest urban skylines in the world. From Shibuya Sky at nig
 
 Can't get evening tickets? Daytime on a clear day still delivers — you see details (Mt. Fuji on good days, individual buildings, parks) that night hides.
 
+### Shibuya Sky vs Tokyo Skytree — Which to Pick
+
+{{compare:0}}
+
 ### Tips From 3+ Visits
 
 - Book on **Klook**, not the official site — faster checkout, same tickets
@@ -98,7 +105,8 @@ Can't get evening tickets? Daytime on a clear day still delivers — you see det
 - Rooftop closes in bad weather, no refunds — **check the forecast**
 - Lockers are free (no coins needed)
 - Cameras OK with neck strap, but no tripods, backpacks, or selfie sticks
-- Online tickets save ¥300 vs walk-in — always book ahead
+- Daytime slots (before 15:00) are ¥700 cheaper than evening if budget matters
+- Children 6–11 can only buy at the counter on the day (¥1,200) — not online
 
 Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sky/) for real-time weather closures. If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine Shibuya Sky with nearby Harajuku or Shibuya shopping into a full day. For an indoor observatory with even higher views, see our [Skytree guide](/posts/tokyo-skytree-observatory-guide).
 `,
@@ -106,15 +114,15 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
 
 시부야스카이는 시부야 스크램블 스퀘어(지상 47층) 옥상에 있는 전망대예요. 2019년 11월에 오픈했고, 높이 230m. 도쿄 전망대 중에서 야외 루프탑에서 360도로 볼 수 있는 곳은 여기뿐이에요. 유리벽 없이 바람 맞으면서 시내를 내려다보는 구조입니다.
 
-3번 이상 다녀왔는데 계속 가게 되는 이유가 있어요. 스카이트리(450m)가 더 높지만 실내 유리 너머로 보는 거라 답답한 반면, 시부야스카이는 진짜 옥상에 서 있는 느낌이거든요. 바람, 소리, 하늘 — 다 느껴집니다.
+3번 이상 다녀왔는데 계속 가게 되는 이유가 있어요. 스카이트리(450m)가 더 높지만 실내 유리 너머로 보는 거라 좀 답답한 반면, 시부야스카이는 진짜 옥상에 서 있는 느낌이거든요. 바람도 소리도 하늘도 다 느껴져요.
 
 ### 시부야스카이 핵심 정보
 
 - **위치:** 시부야 스크램블 스퀘어 45~46층 + 루프탑(SKY STAGE), 도쿄 시부야
 - **운영 시간:** 10:00~22:30 (마지막 입장 21:20)
-- **입장료:** 온라인 2,200엔 / 현장 2,500엔 (성인 기준, 2026년 4월)
+- **입장료(성인, 세금 포함):** 10:00~14:59 2,700엔 / 15:00~21:20 3,400엔 (2026년 4월)
 - **가는 법:** JR 시부야역 B6 출구 직결
-- **예매 오픈:** 방문일 2주 전 자정(00시) — 야경 시간대는 몇 분 만에 매진
+- **예매 오픈:** 방문일 2주 전 자정(00시). 야경 시간대는 몇 분 만에 매진돼요
 
 ### 시부야스카이 위치와 가는 법
 
@@ -128,11 +136,12 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
 
 시부야스카이는 시간대별 인원 제한이 있어서 현장 구매가 거의 불가능해요. 일몰과 야경 시간대는 오픈하자마자 매진되고, 낮 시간대도 주말이면 며칠 전에 다 빠집니다.
 
-**입장료 (2026년 4월 기준):**
-- 온라인 사전 예매: 성인 2,200엔 / 중고생 1,700엔 / 초등생 1,000엔 / 3~5세 600엔
-- 현장 구매: 성인 2,500엔 / 중고생 2,000엔 / 초등생 1,200엔 / 3~5세 700엔
+**입장료 (2026년 4월 기준, 세금 포함):**
+- 성인(12세 이상): 10:00~14:59 ==2,700엔== / 15:00~21:20 ==3,400엔==
+- 어린이(6~11세): 1,200엔 (==당일 창구 구매만 가능==)
+- 5세 이하: 무료
 
-온라인이 최대 300엔 저렴하니 ==사전 예매는 필수==예요. 공식 홈페이지, 클룩, KKday 등 여러 플랫폼이 있는데, 직접 다 써본 결과 ==클룩이 가장 빠르고 안정적==이었습니다.
+==시간대별 변동 가격==이라 저녁이 낮보다 700엔 비싸요. 사전 예매는 공식 홈페이지, 클룩, KKday 등에서 할 수 있는데, 직접 다 써본 결과 ==클룩 체크아웃이 가장 빠르고 안정적==이었습니다.
 
 {{cta}}
 
@@ -140,11 +149,11 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
 
 입장은 20분 단위로 나뉘어요. 정해진 시간에만 들어갈 수 있어서, 일찍 도착해도 먼저 입장은 안 됩니다.
 
-한 줄 요약: 온라인이 300엔 싸고, 현장 구매는 거의 불가능. 무조건 미리 예매하세요.
+정리하자면 성인 낮 시간대 2,700엔·저녁 3,400엔이고, 어린이는 당일 창구 구매만 되니 동반 시 주의하세요.
 
 ### 시부야스카이 루프탑에서 보는 풍경
 
-입장하면 46층에서 짐을 무료 락커에 맡겨야 해요. 셀카봉, 모자, 스카프, 삼각대, 배낭, 음식, 우산 — 전부 반입 불가. 카메라는 목끈이 있으면 가능합니다. 230m 높이에서 바람이 세거든요.
+입장하면 46층에서 짐을 무료 락커에 맡겨야 해요. 셀카봉, 모자, 스카프, 삼각대, 배낭, 음식, 우산 전부 반입 불가예요. 카메라는 목끈이 있으면 가능합니다. 230m 높이에서 바람이 세거든요.
 
 에스컬레이터를 타고 올라가는 순간부터 전망이 펼쳐져요. 이 에스컬레이터 장면 자체가 시부야스카이의 시그니처니까, 사진 꼭 찍어두세요.
 
@@ -152,7 +161,9 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
 
 루프탑(SKY STAGE)은 넓은 야외 공간이에요.
 
-![시부야스카이 루프탑 전경](2) 도쿄 시내가 360도로 펼쳐지는데, 스카이트리 전망대(높이 450m)와 비교하면 확실히 다릅니다. 스카이트리는 높지만 실내 유리 너머로 보는 거라 좀 답답한 반면, 여기는 바람 맞으며 탁 트인 하늘 아래 서 있는 느낌이거든요. 포토존에서 직원이 사진을 찍어주기도 하는데, 줄이 꽤 길고 사진은 유료입니다.
+![시부야스카이 루프탑 전경](2)
+
+도쿄 시내가 360도로 펼쳐지는데, 스카이트리 전망대(높이 450m)와 비교하면 확실히 다릅니다. 스카이트리는 높지만 실내 유리 너머로 보는 거라 좀 답답한 반면, 여기는 바람 맞으며 탁 트인 하늘 아래 서 있는 느낌이거든요. 포토존에서 직원이 사진을 찍어주기도 하는데, 줄이 꽤 길고 사진은 유료입니다.
 
 도쿄타워 방향에는 소파와 테이블이 있는 전용 구역이 있어요. 저녁에는 음료를 사야 들어갈 수 있지만, 도쿄타워를 정면으로 보면서 앉아 있는 이 자리가 시부야스카이에서 가장 인기 있는 곳이에요. 빈자리가 금방 차니까 입장하면 바로 이쪽으로 가세요. 중간에는 그물 해먹에 누워 하늘을 올려다볼 수 있는 공간도 있어서, 여유롭게 쉬어가기 좋습니다.
 
@@ -172,24 +183,29 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
 
 ### 시부야스카이 야경 vs 낮 전망
 
-도쿄는 세계에서 고층 빌딩 밀도가 가장 높은 도시 중 하나예요. 시부야스카이에서 밤에 보면 사방이 빛으로 가득 찹니다. 시부야 번화가 바로 위라 네온, 전광판, 차량 불빛까지 — 낮과는 완전히 다른 풍경이에요.
+도쿄는 세계에서 고층 빌딩 밀도가 가장 높은 도시 중 하나예요. 시부야스카이에서 밤에 보면 사방이 빛으로 가득 찹니다. 시부야 번화가 바로 위라 네온, 전광판, 차량 불빛까지 시야에 들어와서 낮과는 완전히 다른 풍경이에요.
 
 ==가장 좋은 타이밍은 일몰 1시간 전.== 낮 파노라마에서 야경으로 바뀌는 과정을 한 번에 볼 수 있어요. 시간대를 하나만 고를 수 있다면, 여기를 노리세요.
 
 ![시부야스카이에서 본 도쿄타워 야경](7)
 
-야경 예약에 실패했더라도 괜찮아요 — 맑은 날 낮에는 후지산이 보이기도 하고, 야경에서는 안 보이는 디테일이 있거든요.
+야경 예약에 실패했더라도 괜찮아요. 맑은 날 낮에는 후지산이 보이기도 하고, 야경에서는 안 보이는 디테일이 있거든요.
+
+### 시부야스카이 vs 스카이트리, 어디로 갈까
+
+{{compare:0}}
 
 ### 3번 다녀온 사람의 꿀팁
 
 - 예약은 공식 사이트보다 **클룩**이 빠르고 안정적
-- **2주 전 자정(00시)**에 알람 필수 — 야경 티켓은 몇 분 안에 매진
-- 입장하면 **도쿄타워 방향 소파 구역**으로 먼저 이동 — 자리 금방 참
-- **일몰 1시간 전** = 낮+야경 둘 다 볼 수 있는 최적 시간
-- 루프탑은 악천후 시 폐쇄, 환불 불가 — **날씨 확인 필수**
-- 락커는 무료 (100엔 동전 불필요)
+- **2주 전 자정(00시)**에 알람 필수. 야경 티켓은 몇 분 안에 매진돼요
+- 입장하면 **도쿄타워 방향 소파 구역**부터 잡기 (자리가 금방 차요)
+- **일몰 1시간 전**이 낮과 야경을 둘 다 볼 수 있는 최적 시간
+- 루프탑은 악천후 시 폐쇄되고 환불도 안 되니 **날씨 확인 필수**
+- 락커는 무료 (100엔 동전 필요 없음)
 - 카메라는 목끈 있으면 OK, 삼각대·배낭·셀카봉은 불가
-- 온라인 예매가 현장보다 300엔 저렴 — 현장 구매할 이유 없음
+- 저녁 시간대(15시 이후)는 낮보다 700엔 비싸니, 예산만 따진다면 낮 시간대가 유리
+- 6~11세 어린이는 온라인 불가, ==당일 창구 구매==만 가능 (1,200엔)
 
 날씨로 인한 루프탑 폐쇄 여부는 [시부야스카이 공식 사이트](https://www.shibuya-scramble-square.com/sky/)에서 당일 확인하세요. 도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 시부야스카이와 하라주쿠, 시부야 쇼핑을 하루 코스로 조합해 볼 수 있습니다. 실내에서 더 높은 곳을 보고 싶다면 [스카이트리 전망대 가이드](/ko/posts/tokyo-skytree-observatory-guide)도 참고해 보세요.
 `,
@@ -218,21 +234,78 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
     tags: ["guide", "must-read", "observatory", "night-view", "shibuya", "booking-tips"],
     categories: ["nightview", "complete-guide", "booking", "tips"],
     faq: [
-      { question: { en: "How much does Shibuya Sky cost?", ko: "시부야스카이 입장료는 얼마인가요?" }, answer: { en: "¥2,200 for adults when booked online, ¥2,500 at the counter (2026 prices). Students pay ¥1,700 online. Online booking always saves ¥300.", ko: "온라인 예매 시 성인 2,200엔, 현장 구매 시 2,500엔입니다 (2026년 기준). 중고생은 온라인 1,700엔. 온라인이 항상 300엔 저렴해요." } },
+      { question: { en: "How much does Shibuya Sky cost?", ko: "시부야스카이 입장료는 얼마인가요?" }, answer: { en: "Shibuya Sky uses time-slot dynamic pricing (adult, tax in, 2026): ¥2,700 for 10:00–14:59, ¥3,400 for 15:00–21:20. Children 6–11 are ¥1,200, counter-only on the day. Ages 5 and under are free.", ko: "시부야스카이는 시간대별 변동 가격제입니다 (성인·세금 포함, 2026년). 10:00~14:59는 2,700엔, 15:00~21:20는 3,400엔이에요. 6~11세 어린이는 당일 창구 구매만 가능하고 1,200엔, 5세 이하는 무료입니다." } },
       { question: { en: "Can I buy Shibuya Sky tickets on the spot?", ko: "시부야스카이 현장 구매 가능한가요?" }, answer: { en: "Almost never. Evening slots sell out the moment they open, and even daytime weekend slots disappear days in advance. Always book online.", ko: "사실상 불가능합니다. 저녁 시간대는 오픈 즉시 매진되고, 주말 낮 시간대도 며칠 전에 매진됩니다. 무조건 온라인 예매하세요." } },
-      { question: { en: "When do Shibuya Sky tickets go on sale?", ko: "시부야스카이 예약은 언제 열리나요?" }, answer: { en: "Exactly 2 weeks before your visit date at midnight (00:00 JST). Set an alarm — sunset and night slots sell out within minutes.", ko: "방문일 2주 전 자정(00시)에 오픈됩니다. 알람 필수 — 일몰/야경 시간대는 몇 분 안에 매진됩니다." } },
+      { question: { en: "When do Shibuya Sky tickets go on sale?", ko: "시부야스카이 예약은 언제 열리나요?" }, answer: { en: "Exactly 2 weeks before your visit date at midnight (00:00 JST). Set an alarm — sunset and night slots sell out within minutes.", ko: "방문일 2주 전 자정(00시)에 오픈됩니다. 알람 필수예요. 일몰·야경 시간대는 몇 분 안에 매진되거든요." } },
       { question: { en: "What time is best for Shibuya Sky?", ko: "시부야스카이 몇 시에 가는 게 좋나요?" }, answer: { en: "One hour before sunset. You'll catch both the daytime panorama and the night view in a single visit. This is the golden hour slot.", ko: "일몰 1시간 전이 최적입니다. 낮 파노라마와 야경을 한 번에 볼 수 있는 골든 타임이에요." } },
       { question: { en: "Shibuya Sky vs Tokyo Skytree — which is better?", ko: "시부야스카이 vs 스카이트리 어디가 나은가요?" }, answer: { en: "Skytree is taller (450m vs 230m) but indoor with glass walls. Shibuya Sky is outdoor with open air and wind — a completely different feeling. For photos and atmosphere, Shibuya Sky wins.", ko: "스카이트리가 더 높지만(450m vs 230m) 실내 유리 전망입니다. 시부야스카이는 야외 개방형이라 느낌이 완전히 다릅니다. 사진과 분위기는 시부야스카이가 더 좋아요." } },
+      { question: { en: "Can I bring a tripod or selfie stick to Shibuya Sky?", ko: "시부야스카이에 삼각대나 셀카봉 가져가도 되나요?" }, answer: { en: "No. Tripods, selfie sticks, hats, scarves, umbrellas, backpacks, and food are all banned on the rooftop — the wind at 230m is the reason. Cameras are allowed only with a neck strap. Free lockers on floor 46 hold the rest of your gear.", ko: "안 됩니다. 삼각대·셀카봉·모자·스카프·우산·배낭·음식 모두 반입 불가입니다. 230m 높이 바람 때문에 제한이 엄격해요. 카메라는 목끈이 있으면 가능하고, 46층 무료 락커에 나머지 짐을 맡깁니다." } },
+      { question: { en: "What happens if Shibuya Sky closes due to weather?", ko: "날씨 때문에 시부야스카이 루프탑이 닫히면 어떻게 되나요?" }, answer: { en: "The outdoor rooftop closes in heavy rain, strong wind, or lightning, but the indoor observatory on floor 45 stays open so your ticket is still valid. Tickets are non-refundable regardless of weather — check the forecast before your slot.", ko: "비·강풍·번개 등 악천후 시 루프탑은 폐쇄되지만 45층 실내 전망대는 계속 이용 가능해서 티켓은 유효합니다. 단, 날씨 이유로 환불은 안 되니 방문 전 일기예보를 꼭 확인하세요." } },
     ],
     cta: {
       label: { en: "Book Shibuya Sky Tickets", ko: "시부야스카이 입장권 예약하기" },
       url: "https://www.klook.com/activity/70672-shibuya-sky-tokyo/?aid=118462",
       provider: "Klook",
-      price: { en: "From ¥2,200", ko: "2,200엔~" },
-      note: { en: "Online booking saves up to ¥300 vs walk-in", ko: "온라인 예매 시 현장보다 최대 300엔 저렴" },
+      price: { en: "From ¥2,700", ko: "2,700엔~" },
+      note: { en: "Time-slot pricing — evening (15:00+) costs ¥700 more", ko: "시간대별 변동 가격, 저녁(15시 이후)은 700엔 추가" },
     },
+    comparisons: [
+      {
+        title: {
+          en: "Shibuya Sky vs Tokyo Skytree — at a glance",
+          ko: "시부야스카이 vs 스카이트리 — 한눈에 비교",
+        },
+        columns: [
+          { en: "Shibuya Sky", ko: "시부야스카이" },
+          { en: "Tokyo Skytree", ko: "도쿄 스카이트리" },
+        ],
+        rows: [
+          {
+            label: { en: "Height", ko: "높이" },
+            values: [
+              { en: "230m rooftop (open-air)", ko: "230m 옥상 (야외)" },
+              { en: "350m Tembo / 450m Galleria (indoor)", ko: "350m 텐보 / 450m 갈레리아 (실내)" },
+            ],
+          },
+          {
+            label: { en: "Experience", ko: "분위기" },
+            values: [
+              { en: "Wind, open sky, 360° deck", ko: "바람·개방감·360도 루프탑" },
+              { en: "Glass walls, climate-controlled", ko: "유리벽·냉난방 실내" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Adult ticket (tax in)", ko: "성인 입장료 (세금 포함)" },
+            values: [
+              { en: "¥2,700 daytime / ¥3,400 evening", ko: "2,700엔 낮 / 3,400엔 저녁" },
+              { en: "¥2,100 Tembo / ¥3,100 combo", ko: "2,100엔 텐보 / 3,100엔 콤보" },
+            ],
+          },
+          {
+            label: { en: "Booking difficulty", ko: "예매 난이도" },
+            values: [
+              { en: "High — must book 2 weeks ahead", ko: "높음, 2주 전 예매 필수" },
+              { en: "Low — often walk-in", ko: "낮음, 현장 구매도 가능" },
+            ],
+          },
+          {
+            label: { en: "Best for", ko: "추천 대상" },
+            values: [
+              { en: "Atmosphere, social photos, sunset", ko: "분위기·인증샷·일몰" },
+              { en: "Max height, weather-proof visits", ko: "최고 높이·날씨 관계없이" },
+            ],
+            highlight: 0,
+          },
+        ],
+        caption: {
+          en: "Prices as of 2026-04. Shibuya Sky sells out within minutes at sunset slots; Skytree is the safer same-day pick.",
+          ko: "2026년 4월 기준. 시부야스카이는 일몰 시간대가 오픈 즉시 매진되고, 스카이트리는 당일 방문이 상대적으로 안전합니다.",
+        },
+      },
+    ],
     publishedAt: "2026-04-09",
-    updatedAt: "2026-04-13",
+    updatedAt: "2026-04-16",
   },
   {
     slug: "tokyo-disneyland-guide",
@@ -406,13 +479,11 @@ Check the [official Shibuya Sky site](https://www.shibuya-scramble-square.com/sk
 
 ### 디즈니씨와 차이점
 
-- **놀이기구:** 디즈니랜드는 스릴 낮음 (가족 중심), 디즈니씨는 스릴 있는 어트랙션 많음 (성인 중심)
-- **퍼레이드:** 디즈니랜드가 훨씬 가까이서 볼 수 있고, 종류도 많음
-- **대기 시간:** 디즈니씨보다 전체적으로 짧은 편
-- **디즈니 성:** 디즈니랜드에만 있음 — 사진 찍기 좋음
+{{compare:0}}
 
 ![디즈니 성 전경](8)
-- **추천:** 아이들/가족 → 디즈니랜드, 성인/스릴 → 디즈니씨
+
+가족·아이와 가거나 퍼레이드 위주로 즐기고 싶다면 디즈니랜드, 스릴 있는 놀이기구를 원하는 성인 그룹이면 디즈니씨가 맞아요.
 
 ### 여러 번 다녀온 사람의 꿀팁
 
@@ -588,14 +659,11 @@ The Turkey Leg is famous — it's huge but quite tough and messy to eat by hand.
 
 ### Disneyland vs DisneySea
 
-- **Rides:** Disneyland = less thrilling (family-oriented). DisneySea = more thrilling (adult-oriented)
-- **Parades:** Disneyland wins — closer, more variety
-- **Wait times:** Generally shorter at Disneyland than DisneySea
-- **Castle:** Only Disneyland has one — great photo spot
+{{compare:0}}
 
 ![Cinderella Castle at Tokyo Disneyland](8)
 
-- **Recommendation:** Kids/families → Disneyland. Adults/thrill seekers → DisneySea
+Pick Disneyland for families, kids, and parade lovers. Pick DisneySea for adults who want thrill rides and a more unique atmosphere.
 
 ### Tips From Multiple Visits
 
@@ -642,6 +710,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       { question: { en: "Which DPA should I buy at Tokyo Disneyland?", ko: "디즈니랜드에서 DPA 뭘 사야 하나요?" }, answer: { en: "Beauty and the Beast (¥2,000) is the must-buy. Standard wait is 2+ hours, and it's the park's most popular attraction. If buying only one DPA, choose this.", ko: "미녀와 야수(2,000엔)를 무조건 추천합니다. 일반 대기 2시간 이상이고 파크 내 가장 인기 있는 어트랙션이에요. DPA 1개만 살 거면 이거 사세요." } },
       { question: { en: "Tokyo Disneyland or DisneySea — which is better?", ko: "디즈니랜드 vs 디즈니씨 어디가 나은가요?" }, answer: { en: "Depends on who's going. Disneyland is better for families, kids, and parade lovers. DisneySea is better for adults and thrill rides. Disneyland has a castle and closer parades; DisneySea has more intense attractions.", ko: "누가 가느냐에 따라 다릅니다. 가족/아이/퍼레이드 → 디즈니랜드. 성인/스릴 놀이기구 → 디즈니씨. 디즈니랜드에는 성이 있고 퍼레이드가 가까워요." } },
       { question: { en: "What time should I arrive at Tokyo Disneyland?", ko: "디즈니랜드 몇 시에 가야 하나요?" }, answer: { en: "For opening rush, arrive at Maihama Station before 7am. Official opening is 9am but actual entry starts around 8:30. If you're not doing opening rush, arriving by lunch is fine — afternoon crowds are smaller.", ko: "오픈런 하려면 마이하마역 7시 전 도착. 공식 9시 개장이지만 실제로는 8시 30분쯤 입장 시작됩니다. 오픈런 안 하면 점심쯤 도착해도 괜찮아요 — 오후가 오히려 덜 붐빕니다." } },
+      { question: { en: "How do I get to Tokyo Disneyland from central Tokyo?", ko: "도쿄 시내에서 디즈니랜드 어떻게 가나요?" }, answer: { en: "Take the JR Keiyo Line from Tokyo Station to Maihama Station — about 25 minutes. Disneyland is a direct walk from Maihama, no monorail needed. (DisneySea requires the Disney Resort Monorail transfer; Disneyland does not.)", ko: "도쿄역에서 JR 게이요선(京葉線)을 타고 마이하마역까지 약 25분. 마이하마역에서 디즈니랜드는 바로 걸어가면 됩니다. 디즈니씨만 디즈니 리조트 모노레일 환승이 필요하고, 디즈니랜드는 필요 없어요." } },
+      { question: { en: "How much do Tokyo Disneyland plushies and souvenirs cost?", ko: "도쿄 디즈니랜드 기념품 인형 가격은 얼마인가요?" }, answer: { en: "Small plushies run around ¥2,000, large ones around ¥5,000. Each attraction exit has a themed character shop, plus a large general souvenir shop near the entrance.", ko: "작은 인형은 약 2,000엔, 큰 인형은 약 5,000엔대입니다. 각 어트랙션 출구에 캐릭터별 굿즈숍이 있고, 정문 근처에 모든 캐릭터를 모아놓은 대형 기념품 숍도 있어요." } },
     ],
     cta: {
       label: { en: "Book Tokyo Disneyland Tickets", ko: "도쿄 디즈니랜드 티켓 예약하기" },
@@ -650,7 +720,64 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       price: { en: "From ¥9,400", ko: "85,000원~" },
       note: { en: "Klook often cheaper than official site", ko: "클룩이 공식보다 저렴한 경우 많음" },
     },
+    comparisons: [
+      {
+        title: {
+          en: "Tokyo Disneyland vs DisneySea — at a glance",
+          ko: "도쿄 디즈니랜드 vs 디즈니씨 — 한눈에 비교",
+        },
+        columns: [
+          { en: "Tokyo Disneyland", ko: "도쿄 디즈니랜드" },
+          { en: "Tokyo DisneySea", ko: "도쿄 디즈니씨" },
+        ],
+        rows: [
+          {
+            label: { en: "Ride style", ko: "놀이기구 성격" },
+            values: [
+              { en: "Family-friendly, low thrill", ko: "가족 중심·스릴 낮음" },
+              { en: "Adult-oriented, higher thrill", ko: "성인 중심·스릴 높음" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Parades", ko: "퍼레이드" },
+            values: [
+              { en: "Close-up street parades, more variety", ko: "도로에서 가깝게, 종류 많음" },
+              { en: "On-lake water shows", ko: "호수 위 해상 쇼" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Typical wait times", ko: "대기 시간" },
+            values: [
+              { en: "Shorter overall", ko: "전체적으로 짧은 편" },
+              { en: "Longer — 120–180 min common", ko: "더 김 — 120~180분 흔함" },
+            ],
+          },
+          {
+            label: { en: "Landmark", ko: "상징물" },
+            values: [
+              { en: "Cinderella Castle", ko: "신데렐라 성" },
+              { en: "Lake + Mt. Prometheus volcano", ko: "호수 + 프로메테우스 화산" },
+            ],
+          },
+          {
+            label: { en: "Best for", ko: "추천 대상" },
+            values: [
+              { en: "Kids, families, parade fans", ko: "아이·가족·퍼레이드 팬" },
+              { en: "Adults, thrill seekers, couples", ko: "성인·스릴 추구·커플" },
+            ],
+            highlight: 0,
+          },
+        ],
+        caption: {
+          en: "Tickets are sold separately — you can't park-hop between the two. Pick one and commit.",
+          ko: "티켓은 별도 판매되고 파크 이동(파크 호핑)은 안 됩니다. 하루에 하나만 가세요.",
+        },
+      },
+    ],
     publishedAt: "2026-04-13",
+    updatedAt: "2026-04-16",
   },
   {
     slug: "tokyo-disneysea-guide",
@@ -811,12 +938,9 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 
 ### 디즈니랜드와 차이점
 
-- **놀이기구:** 디즈니씨가 더 스릴 있고 성인 취향. 디즈니랜드는 가족/아이 중심
-- **대기 시간:** 디즈니씨가 전반적으로 더 김 (120~180분 흔함)
-- **퍼레이드:** 디즈니랜드는 도로에서 가까이, 디즈니씨는 호수에서 해상 퍼레이드
-- **야간 공연:** 디즈니랜드는 성 일루미네이션, 디즈니씨는 호수 위 빌리브 쇼
-- **상징물:** 디즈니랜드 = 디즈니 성, 디즈니씨 = 호수 + 화산
-- **추천:** 성인/스릴 → 디즈니씨, 아이들/가족 → 디즈니랜드
+{{compare:0}}
+
+성인이나 스릴 있는 놀이기구를 원한다면 디즈니씨가 맞고, 아이·가족 중심이라면 디즈니랜드 쪽이 편해요.
 
 ### 여러 번 다녀온 사람의 꿀팁
 
@@ -980,12 +1104,9 @@ DisneySea souvenirs are sold at character-themed shops next to each attraction, 
 
 ### DisneySea vs Disneyland
 
-- **Rides:** DisneySea is more thrilling, adult-oriented. Disneyland is family/kid-focused
-- **Wait times:** DisneySea is longer overall (120–180 min common)
-- **Parades:** Disneyland has close-up street parades. DisneySea has lake-based shows
-- **Night show:** Disneyland = castle illumination. DisneySea = Believe! lake show
-- **Landmark:** Disneyland = castle. DisneySea = lake + volcano
-- **Recommendation:** Adults/thrill seekers → DisneySea. Kids/families → Disneyland
+{{compare:0}}
+
+Pick DisneySea if you're an adult after thrill rides and the Believe! lake show. Pick Disneyland for kids, families, and close-up street parades.
 
 ### Tips From Multiple Visits
 
@@ -1031,6 +1152,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       { question: { en: "Which DPA should I buy at DisneySea?", ko: "디즈니씨에서 DPA 뭘 사야 하나요?" }, answer: { en: "Frozen Journey (¥2,000) in Fantasy Springs. It's the most popular ride with the longest wait. If buying a second, Soaring or Toy Story Mania.", ko: "판타지 스프링스에 있는 프로즌 저니(2,000엔)를 추천합니다. 가장 인기 많고 대기가 가장 길어요. 두 번째로 산다면 소어링이나 토이 스토리 마니아." } },
       { question: { en: "Tokyo Disneyland or DisneySea — which should I go to?", ko: "디즈니랜드 vs 디즈니씨 어디를 가야 하나요?" }, answer: { en: "DisneySea for adults and thrill rides. Disneyland for families, kids, and parades. DisneySea has longer waits but more intense attractions and the Believe! night show.", ko: "성인/스릴 → 디즈니씨. 가족/아이/퍼레이드 → 디즈니랜드. 디즈니씨가 대기는 더 길지만 어트랙션이 강하고 빌리브 야간 공연이 있습니다." } },
       { question: { en: "Can I visit both Disneyland and DisneySea in one day?", ko: "하루에 디즈니랜드와 디즈니씨 둘 다 갈 수 있나요?" }, answer: { en: "Physically possible but not recommended. Wait times at DisneySea alone take a full day. You'd need separate tickets for each park. If you must do both, focus rides at one park and just walk around the other.", ko: "가능은 하지만 추천하지 않습니다. 디즈니씨만 해도 대기 시간에 하루가 꽉 차요. 티켓도 각각 따로 사야 합니다. 꼭 둘 다 간다면 한 곳에서 놀이기구를 타고, 다른 곳은 분위기만 구경하세요." } },
+      { question: { en: "How do I get to Tokyo DisneySea from Tokyo Station?", ko: "도쿄역에서 디즈니씨 어떻게 가나요?" }, answer: { en: "JR Keiyo Line from Tokyo Station to Maihama (~15 min), then transfer to the Disney Resort Monorail for one stop. The monorail is a separate fare. Tip: buying two one-way monorail tickets is cheaper than a round-trip if you won't re-enter.", ko: "도쿄역에서 JR 게이요선을 타고 마이하마역까지 약 15분, 그 다음 디즈니 리조트 모노레일로 한 정거장 더 갑니다. 모노레일은 별도 요금이에요. 팁: 중간에 나갈 일이 없다면 왕복 티켓보다 편도 2번 구매가 더 저렴합니다." } },
+      { question: { en: "Where's the best spot to watch the Believe! night show?", ko: "빌리브 씨 오브 드림스 명당은 어디인가요?" }, answer: { en: "Arrive at least 1 hour before showtime. The sweet spot is slightly left of the main entrance, just behind the DPA reserved area. DPA (¥2,500) gets you a designated zone, but good positioning without it works fine.", ko: "최소 1시간 전에 자리를 잡으세요. 메인 입구에서 약간 왼쪽, DPA 지정 구역 바로 뒤가 명당입니다. DPA(2,500엔)를 사면 지정석에서 볼 수 있지만, 위치만 잘 잡으면 없어도 충분해요." } },
     ],
     cta: {
       label: { en: "Book Tokyo DisneySea Tickets", ko: "도쿄 디즈니씨 티켓 예약하기" },
@@ -1039,7 +1162,71 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       price: { en: "From ¥9,400", ko: "85,000원~" },
       note: { en: "Klook often cheaper than official site", ko: "클룩이 공식보다 저렴한 경우 많음" },
     },
+    comparisons: [
+      {
+        title: {
+          en: "Tokyo DisneySea vs Disneyland — at a glance",
+          ko: "도쿄 디즈니씨 vs 디즈니랜드 — 한눈에 비교",
+        },
+        columns: [
+          { en: "Tokyo DisneySea", ko: "도쿄 디즈니씨" },
+          { en: "Tokyo Disneyland", ko: "도쿄 디즈니랜드" },
+        ],
+        rows: [
+          {
+            label: { en: "Ride style", ko: "놀이기구 성격" },
+            values: [
+              { en: "Thrill-focused, adult-oriented", ko: "스릴 중심·성인 취향" },
+              { en: "Family-friendly, low thrill", ko: "가족·아이 중심" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Typical wait times", ko: "대기 시간" },
+            values: [
+              { en: "Longer — 120–180 min common", ko: "전체적으로 김 — 120~180분 흔함" },
+              { en: "Shorter overall", ko: "짧은 편" },
+            ],
+          },
+          {
+            label: { en: "Parades", ko: "퍼레이드" },
+            values: [
+              { en: "On-lake water shows", ko: "호수 위 해상 퍼레이드" },
+              { en: "Close-up street parades", ko: "도로에서 가깝게" },
+            ],
+          },
+          {
+            label: { en: "Night show", ko: "야간 공연" },
+            values: [
+              { en: "Believe! Sea of Dreams (lake)", ko: "빌리브 씨 오브 드림스 (호수)" },
+              { en: "Castle illumination", ko: "성 일루미네이션" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Landmark", ko: "상징물" },
+            values: [
+              { en: "Lake + Mt. Prometheus volcano", ko: "호수 + 프로메테우스 화산" },
+              { en: "Cinderella Castle", ko: "신데렐라 성" },
+            ],
+          },
+          {
+            label: { en: "Best for", ko: "추천 대상" },
+            values: [
+              { en: "Adults, thrill seekers, couples", ko: "성인·스릴 추구·커플" },
+              { en: "Kids, families, parade fans", ko: "아이·가족·퍼레이드 팬" },
+            ],
+            highlight: 0,
+          },
+        ],
+        caption: {
+          en: "No park-hopping — pick one park per day. DisneySea has Fantasy Springs since 2024 and is harder to book.",
+          ko: "파크 호핑은 불가하니 하루에 하나만. 디즈니씨는 2024년 판타지 스프링스 오픈 후 예매 난이도가 더 높아졌습니다.",
+        },
+      },
+    ],
     publishedAt: "2026-04-13",
+    updatedAt: "2026-04-16",
   },
   {
     slug: "tokyo-narita-limousine-bus",
@@ -1073,20 +1260,7 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 
 시내에서 나리타공항까지 가는 방법은 크게 3가지입니다.
 
-**리무진 버스:**
-- 장점: 숙소 근처에서 바로 탑승, 짐 맡기기 편함, 환승 없음
-- 단점: 교통 체증에 따라 10~20분 지연 가능
-- 추천: 짐 많을 때, 숙소 근처에 정류장 있을 때, 부모님/가족과 함께일 때
-
-**스카이라이너:**
-- 장점: 우에노/닛포리에서 36분, 가장 빠름
-- 단점: 역까지 짐 끌고 가야 함
-- 추천: 시간 촉박할 때, 우에노/닛포리 근처 숙소
-
-**나리타 익스프레스(NEX):**
-- 장점: 도쿄역/시부야/신주쿠 직통
-- 단점: 배차 간격 넓음
-- 추천: 도쿄역 근처 숙소
+{{compare:0}}
 
 저는 ==공항→시내는 스카이라이너, 시내→공항은 리무진 버스==로 조합하는 게 가장 좋았습니다. 공항 도착 시간은 비행기 지연 때문에 예측이 어렵지만, 돌아갈 때는 시간을 미리 정할 수 있으니까요.
 
@@ -1175,20 +1349,7 @@ I've taken this bus 3+ times across multiple Tokyo trips. For getting from the a
 
 Three main options from central Tokyo to Narita Airport:
 
-**Limousine Bus:**
-- Pros: Board near your hotel, luggage handled for you, no transfers
-- Cons: Traffic can add 10–20 min
-- Best for: Heavy luggage, hotel near a bus stop, traveling with family
-
-**Skyliner:**
-- Pros: 36 min from Ueno/Nippori — fastest option
-- Cons: Must get to the station with luggage
-- Best for: Tight schedule, staying near Ueno/Nippori
-
-**Narita Express (NEX):**
-- Pros: Direct from Tokyo Station/Shibuya/Shinjuku
-- Cons: Less frequent departures
-- Best for: Staying near Tokyo Station
+{{compare:0}}
 
 My go-to combination: ==Skyliner from airport to city, limousine bus from city back to airport.== Arrival time from flights is unpredictable, but departure day timing is in your control.
 
@@ -1284,6 +1445,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       { question: { en: "How long does the limousine bus take from Tokyo to Narita?", ko: "리무진 버스 소요 시간이 얼마나 걸리나요?" }, answer: { en: "Depends on your stop. Tokyo Station ~1hr 20min, Ginza ~1hr 40min, Shinjuku ~1hr 45min. Traffic can add 10–20 minutes.", ko: "정류장에 따라 다릅니다. 도쿄역 약 1시간 20분, 긴자 약 1시간 40분, 신주쿠 약 1시간 45분. 교통 체증 시 10~20분 추가될 수 있어요." } },
       { question: { en: "Limousine bus or Skyliner — which is better for Narita?", ko: "리무진 버스 vs 스카이라이너 뭐가 나은가요?" }, answer: { en: "Skyliner is faster (36 min from Ueno) but you need to get to the station with luggage. Limousine bus is slower but picks up near your hotel with no transfers. Best combo: Skyliner to city, bus back to airport.", ko: "스카이라이너가 빠르지만(우에노에서 36분) 역까지 짐 끌고 가야 합니다. 리무진은 느리지만 숙소 근처에서 바로 탑승. 최고 조합: 공항→시내는 스카이라이너, 시내→공항은 리무진." } },
       { question: { en: "Is there a restroom on the Narita limousine bus?", ko: "리무진 버스에 화장실이 있나요?" }, answer: { en: "Yes. There's a restroom at the rear of the bus. No rest stops along the way, so it's useful for the 1.5+ hour ride.", ko: "네, 버스 맨 뒤에 있습니다. 중간에 휴게소를 들르지 않기 때문에 1시간 반 이상 탈 때 유용해요." } },
+      { question: { en: "Does the Narita limousine bus have Wi-Fi and outlets?", ko: "리무진 버스에 Wi-Fi와 콘센트가 있나요?" }, answer: { en: "Yes. Free Wi-Fi is available, and every seat has a 110V outlet under the window (a standard plug works — no adapter needed). Useful for charging phones on the 1.5-hour ride.", ko: "네. 무료 Wi-Fi가 제공되고, 창가 아래에 110V 콘센트가 있어서 한국 돼지코 없이도 일반 플러그로 충전 가능합니다. 1시간 반 이상 타는 길에 유용해요." } },
+      { question: { en: "Do I need to handle my own luggage on the limousine bus?", ko: "리무진 버스에서 짐은 직접 실어야 하나요?" }, answer: { en: "No. The driver loads your luggage into the bus's luggage hold at the stop. You just get on with your carry-on. This is the main convenience advantage over the Skyliner or NEX.", ko: "아니요. 기사가 정류장에서 짐을 버스 아래 짐칸에 직접 실어줍니다. 승객은 소지품만 들고 타면 돼요. 스카이라이너·NEX 대비 가장 큰 편의점입니다." } },
     ],
     cta: {
       label: { en: "Book Narita Limousine Bus", ko: "나리타공항 리무진 버스 예약하기" },
@@ -1292,7 +1455,69 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       price: { en: "From ~$20", ko: "28,000원~" },
       note: { en: "Pre-booking recommended — walk-up is cash only", ko: "사전 예약 추천 — 현장은 현금만 가능" },
     },
+    comparisons: [
+      {
+        title: {
+          en: "Narita ↔ Tokyo — Limousine Bus vs Skyliner vs NEX",
+          ko: "나리타공항 교통편 — 리무진 버스 vs 스카이라이너 vs NEX",
+        },
+        columns: [
+          { en: "Limousine Bus", ko: "리무진 버스" },
+          { en: "Skyliner", ko: "스카이라이너" },
+          { en: "Narita Express (NEX)", ko: "나리타 익스프레스" },
+        ],
+        rows: [
+          {
+            label: { en: "Travel time", ko: "소요 시간" },
+            values: [
+              { en: "1hr 20min – 1hr 45min by stop", ko: "1시간 20분~1시간 45분 (정류장별)" },
+              { en: "36 min to Ueno / Nippori", ko: "우에노·닛포리 36분" },
+              { en: "~60 min Tokyo Station, ~90 min Shinjuku", ko: "도쿄역 약 60분, 신주쿠 약 90분" },
+            ],
+          },
+          {
+            label: { en: "One-way fare", ko: "편도 가격" },
+            values: [
+              { en: "~$20 Klook / ¥3,200 official", ko: "~28,000원 클룩 / 3,200엔 공식" },
+              { en: "¥2,520 walk-up / cheaper via Klook", ko: "2,520엔 공식 / 클룩 더 저렴" },
+              { en: "¥3,250 reserved seat", ko: "3,250엔 (지정석)" },
+            ],
+          },
+          {
+            label: { en: "Luggage flow", ko: "짐 이동" },
+            values: [
+              { en: "Hotel → bus stop, driver loads bags", ko: "숙소→정류장, 기사가 짐 실어줌" },
+              { en: "Drag to station, self-handled", ko: "역까지 직접 끌고 이동" },
+              { en: "Drag to station, self-handled", ko: "역까지 직접 끌고 이동" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Main downside", ko: "주요 단점" },
+            values: [
+              { en: "Traffic can add 10–20 min", ko: "교통 체증 시 10~20분 지연" },
+              { en: "Only stops at Ueno / Nippori", ko: "우에노·닛포리만 정차" },
+              { en: "Lower frequency than Skyliner", ko: "배차 간격 넓음" },
+            ],
+          },
+          {
+            label: { en: "Best for", ko: "추천 대상" },
+            values: [
+              { en: "Heavy luggage, hotel near a stop, families", ko: "짐 많음·정류장 가까움·가족 동행" },
+              { en: "Tight schedule, Ueno/Nippori hotels", ko: "시간 촉박·우에노/닛포리 숙소" },
+              { en: "Staying near Tokyo Station / Shinjuku", ko: "도쿄역·신주쿠 숙소" },
+            ],
+            highlight: 0,
+          },
+        ],
+        caption: {
+          en: "I pair Skyliner (airport → city) with Limousine Bus (city → airport) — departure timing is predictable, arrival isn't.",
+          ko: "공항→시내는 스카이라이너, 시내→공항은 리무진 버스 조합이 제일 편해요. 돌아갈 땐 출발 시간이 예측 가능하지만 도착 시간은 비행기 지연에 좌우되거든요.",
+        },
+      },
+    ],
     publishedAt: "2026-04-13",
+    updatedAt: "2026-04-16",
   },
   {
     slug: "tokyo-skytree-observatory-guide",
@@ -1383,11 +1608,7 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 
 ### 시부야스카이 vs 스카이트리
 
-- **높이:** 스카이트리 450m > 시부야스카이 230m
-- **형태:** 스카이트리는 ==실내 유리== 전망 / 시부야스카이는 ==야외 루프탑==
-- **예약:** 스카이트리는 당일도 가능 / 시부야스카이는 2주 전 오픈런 필요
-- **분위기:** 스카이트리는 넓은 시야 + 높이감 / 시부야스카이는 바람 + 개방감
-- **추천:** 야외에서 바람 맞으며 보고 싶다면 시부야스카이, 높은 곳에서 넓게 보고 싶다면 스카이트리
+{{compare:0}}
 
 둘 다 가능하면 두 곳 다 가보세요. 느낌이 완전히 다릅니다.
 
@@ -1464,7 +1685,9 @@ From 350m, take another elevator to 445m, then walk up a ramp to the highest poi
 
 Smaller than the deck below, which means fewer people and better views. The railings have cloud-shaped cushions so you can lean forward comfortably.
 
-![Cloud cushions for viewing](5) Free photo spot available.
+![Cloud cushions for viewing](5)
+
+Free photo spot available.
 
 I expected 100m difference to feel similar — ==it's noticeably different.== If it's your first visit, the Galleria ticket is worth it.
 
@@ -1480,11 +1703,7 @@ On clear days, you can see Mt. Fuji. The Sumida River toward Asakusa, high-rises
 
 ### Shibuya Sky vs Skytree
 
-- **Height:** Skytree 450m > Shibuya Sky 230m
-- **Style:** Skytree = ==indoor glass viewing== / Shibuya Sky = ==outdoor rooftop==
-- **Booking:** Skytree takes same-day tickets / Shibuya Sky needs 2-week advance rush
-- **Feel:** Skytree = wider view + height / Shibuya Sky = wind + openness
-- **Recommendation:** Want outdoor wind-in-your-face? Shibuya Sky. Want the highest view in Tokyo? Skytree
+{{compare:0}}
 
 If you can, visit both. They feel completely different.
 
@@ -1531,6 +1750,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       { question: { en: "Tokyo Skytree 350m or 450m — which ticket should I buy?", ko: "스카이트리 350m vs 450m 어떤 티켓을 사야 하나요?" }, answer: { en: "The 450m Galleria ticket. The view difference is bigger than the 100m gap suggests, and there are fewer people up top. Worth the extra cost.", ko: "450m 갤러리아 티켓을 추천합니다. 100m 차이라 비슷할 것 같지만 실제로 시야 차이가 큽니다. 사람도 적어서 추가 비용 가치가 있어요." } },
       { question: { en: "Shibuya Sky or Tokyo Skytree — which is better?", ko: "시부야스카이 vs 스카이트리 어디가 나은가요?" }, answer: { en: "Different experiences. Skytree is taller (450m vs 230m) but indoor glass viewing. Shibuya Sky is outdoor rooftop with wind and open air. Skytree is easier to book; Shibuya Sky needs 2-week advance tickets for night slots.", ko: "느낌이 완전히 다릅니다. 스카이트리가 더 높지만(450m vs 230m) 실내 유리 전망. 시부야스카이는 야외 루프탑. 스카이트리가 예약이 쉽고, 시부야스카이는 야경 예약 2주 전 오픈런 필요." } },
       { question: { en: "What time is best for Tokyo Skytree night view?", ko: "스카이트리 야경 몇 시에 가야 하나요?" }, answer: { en: "Enter 40 minutes to 1 hour before sunset. You'll see both the daytime view and the transition to night lights. Check the sunset time for your visit date.", ko: "일몰 40분~1시간 전에 입장하세요. 낮 전망에서 야경으로 바뀌는 걸 볼 수 있습니다. 방문일 일몰 시간을 미리 검색해두세요." } },
+      { question: { en: "How do I get to Tokyo Skytree?", ko: "도쿄 스카이트리 어떻게 가나요?" }, answer: { en: "Take Tokyo Skytree Station (Tobu Skytree Line) or Oshiage Station (Hanzomon / Asakusa Line). Both stations connect directly to the Skytree Town complex — follow signs for 'Skytree Town.' It's a quick detour from Asakusa.", ko: "도쿄 스카이트리역(토부 스카이트리 라인) 또는 오시아게역(한조몬선·아사쿠사선)에서 내리면 돼요. 두 역 모두 스카이트리 타운과 직접 연결되고, 지하철 출구에서 '스카이트리 타운' 표지판을 따라가면 됩니다. 아사쿠사에서 잠깐 들르기 좋아요." } },
+      { question: { en: "Does Tokyo Skytree have a glass floor?", ko: "스카이트리에 바닥 투명 유리가 있나요?" }, answer: { en: "Yes — on the 340m deck, one floor below the main Tembo Deck. The glass is double-layered with a gap between the panes, so it feels less intense than glass floors at other towers. Worth a quick stop for a photo.", ko: "네, 덴보데크 아래층인 340m 층에 바닥 투명 유리 구간이 있습니다. 안쪽에 공간을 두고 유리가 이중이라 다른 타워의 유리 바닥만큼 무섭지는 않아요. 사진 찍기 좋은 짧은 포인트입니다." } },
     ],
     cta: {
       label: { en: "Book Tokyo Skytree Tickets", ko: "도쿄 스카이트리 티켓 예약하기" },
@@ -1539,7 +1760,65 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       price: { en: "From ~$12", ko: "16,700원~" },
       note: { en: "Early-bird discount available on Klook", ko: "클룩 얼리버드 할인 가능" },
     },
+    comparisons: [
+      {
+        title: {
+          en: "Tokyo Skytree vs Shibuya Sky — at a glance",
+          ko: "도쿄 스카이트리 vs 시부야스카이 — 한눈에 비교",
+        },
+        columns: [
+          { en: "Tokyo Skytree", ko: "도쿄 스카이트리" },
+          { en: "Shibuya Sky", ko: "시부야스카이" },
+        ],
+        rows: [
+          {
+            label: { en: "Height", ko: "높이" },
+            values: [
+              { en: "350m Tembo / 450m Galleria", ko: "350m 텐보 / 450m 갈레리아" },
+              { en: "230m rooftop", ko: "230m 옥상" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Style", ko: "형태" },
+            values: [
+              { en: "Indoor, glass walls, weather-proof", ko: "실내 유리·날씨 영향 없음" },
+              { en: "Outdoor rooftop, open-air", ko: "야외 루프탑·개방형" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Adult ticket (tax in)", ko: "성인 입장료 (세금 포함)" },
+            values: [
+              { en: "~$12 Tembo / ~$20 combo (Klook)", ko: "16,700원 텐보 / 27,900원 콤보 (클룩)" },
+              { en: "¥2,700 daytime / ¥3,400 evening", ko: "2,700엔 낮 / 3,400엔 저녁" },
+            ],
+          },
+          {
+            label: { en: "Booking difficulty", ko: "예매 난이도" },
+            values: [
+              { en: "Low — same-day walk-up OK", ko: "낮음 — 당일 구매 가능" },
+              { en: "High — 2-week advance rush", ko: "높음 — 2주 전 오픈런 필요" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Best for", ko: "추천 대상" },
+            values: [
+              { en: "Highest view, clear-weather days, flexible plans", ko: "최고 높이·맑은 날·유연한 일정" },
+              { en: "Atmosphere, social photos, sunset slot", ko: "분위기·인증샷·일몰" },
+            ],
+            highlight: 0,
+          },
+        ],
+        caption: {
+          en: "Prices as of 2026-04. Skytree is the dependable pick when Shibuya Sky is sold out or the weather is iffy.",
+          ko: "2026년 4월 기준. 시부야스카이 매진이거나 날씨가 애매할 때 스카이트리가 안전한 대안이에요.",
+        },
+      },
+    ],
     publishedAt: "2026-04-13",
+    updatedAt: "2026-04-16",
   },
   {
     slug: "tokyo-harry-potter-studio-tour-guide",
@@ -1848,6 +2127,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       { question: { en: "How do I get to Harry Potter Studio Tour Tokyo?", ko: "해리포터 스튜디오 가는 법이 어떻게 되나요?" }, answer: { en: "Seibu Railway from Ikebukuro Station to Toshimaen Station — 17 minutes. Then a 2-minute walk from the station exit. Clear signage all the way.", ko: "이케부쿠로역에서 세이부 철도로 도시마엔역까지 17분. 역에서 도보 2분. 표지판이 잘 되어 있어서 헤맬 일 없습니다." } },
       { question: { en: "Is Harry Potter Studio Tokyo better than London?", ko: "도쿄 해리포터 스튜디오가 런던보다 나은가요?" }, answer: { en: "Yes, in my experience. Tokyo opened in 2023 so everything is newer. More interactive experiences, shorter queues for photo spots like Platform 9¾. Similar price range.", ko: "직접 둘 다 가본 결과, 도쿄가 더 좋았습니다. 2023년 오픈이라 시설이 새롭고 체험도 더 많아요. 킹스크로스 사진 대기도 훨씬 짧습니다." } },
       { question: { en: "Do I need to book Harry Potter Studio Tokyo in advance?", ko: "해리포터 스튜디오 사전 예약이 필요한가요?" }, answer: { en: "Yes, required. It's a timed-entry system. Popular dates sell out weeks in advance, especially weekends. Book on Klook or the official site as soon as your dates are set.", ko: "네, 필수입니다. 시간대별 입장제라 인기 있는 주말은 몇 주 전에 매진돼요. 일정이 잡히면 클룩이나 공식 사이트에서 바로 예약하세요." } },
+      { question: { en: "How much is butterbeer at Harry Potter Studio Tour Tokyo?", ko: "도쿄 해리포터 스튜디오 버터비어 가격은 얼마인가요?" }, answer: { en: "¥1,250 per cup at the Backlot Cafe butterbeer bar in the outdoor section. It's not alcohol — a sweet cream float on top of a soda-flavored drink. You can rinse and take the cup home as a souvenir.", ko: "야외 구역 Backlot Cafe 버터비어 바에서 1잔 1,250엔입니다. 알코올이 아니라 소다맛 음료 위에 달달한 크림이 올라간 형태예요. 컵은 씻어서 기념품으로 가져갈 수 있어요." } },
+      { question: { en: "Can I store luggage at Harry Potter Studio Tour Tokyo?", ko: "해리포터 스튜디오에 짐 보관이 되나요?" }, answer: { en: "Yes. There are lockers at the entrance — useful if you're visiting on the way to or from the airport. Large suitcases fit. Plan extra time before your timed-entry slot to drop bags.", ko: "네, 입구 쪽에 락커가 있어서 큰 캐리어도 보관 가능합니다. 공항 오가는 길에 들르기도 좋아요. 시간대 입장 전에 짐 맡길 여유 시간을 두세요." } },
     ],
     cta: {
       label: { en: "Book Harry Potter Studio Tour Tokyo", ko: "도쿄 해리포터 스튜디오 예약하기" },
@@ -1877,12 +2158,7 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 
 ### 핵심 비교
 
-- **팀랩 보더리스** — 아자부다이 힐즈, 롯폰기/긴자 근처. 시내 접근성 좋음
-- **팀랩 플래닛** — 토요스. 시내에서 좀 떨어져 있음
-- **입장료:** 둘 다 ==약 43,000~46,000원== (클룩 기준, 2026년)
-- **예약:** 둘 다 시간대별 입장제. ==팀랩 플래닛이 더 빨리 매진됨== (1주일 전 매진 흔함)
-- **소요 시간:** 팀랩 보더리스 1~2시간 / 팀랩 플래닛 1.5~2.5시간
-- **특징:** 팀랩 보더리스 = 자유 관람형 / 팀랩 플래닛 = 체험형 (물에 들어감)
+{{compare:0}}
 
 ### 팀랩 보더리스 — 아자부다이 힐즈
 
@@ -1973,12 +2249,7 @@ I've been to teamLab in Macau and Osaka before. On this Tokyo trip, I visited ==
 
 ### Quick Comparison
 
-- **teamLab Borderless** — Azabudai Hills, near Roppongi/Ginza. Easy access from central Tokyo
-- **teamLab Planets** — Toyosu. Farther from city center
-- **Tickets:** Both ==~$30–33== on Klook (2026)
-- **Booking:** Both timed-entry. ==Planets sells out faster== (often gone 1 week ahead)
-- **Duration:** Borderless 1–2hr / Planets 1.5–2.5hr
-- **Style:** Borderless = free-roam viewing / Planets = interactive (you walk through water)
+{{compare:0}}
 
 ### teamLab Borderless — Azabudai Hills
 
@@ -2089,6 +2360,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       { question: { en: "Do I need to book teamLab Tokyo in advance?", ko: "팀랩 사전 예약이 필요한가요?" }, answer: { en: "Yes, both require timed-entry booking. Planets sells out about a week ahead. Borderless is more flexible but still book early to secure your preferred time.", ko: "네, 둘 다 시간대별 입장제라 사전 예약 필수입니다. 플래닛은 1주일 전에 매진되는 경우 많고, 보더리스는 비교적 여유롭지만 미리 예약하는 게 안전해요." } },
       { question: { en: "What should I wear to teamLab Planets Tokyo?", ko: "팀랩 플래닛 갈 때 옷은 어떻게 입어야 하나요?" }, answer: { en: "Wear shorts or pants you can roll up above the knee. The Water zone has knee-deep water you walk through barefoot. Shoes and socks come off at the entrance.", ko: "반바지 또는 무릎 위로 걷을 수 있는 바지를 추천합니다. 물 구역에서 무릎까지 물이 차 있는 곳을 맨발로 걸어야 해요. 신발과 양말은 입구에서 벗습니다." } },
       { question: { en: "Can I visit both teamLab Borderless and Planets in one day?", ko: "보더리스와 플래닛 하루에 둘 다 갈 수 있나요?" }, answer: { en: "Possible but tight. Each takes 1.5–2.5 hours plus travel time. If you do, visit Borderless first (central location) then travel to Planets in Toyosu.", ko: "가능하지만 빡빡합니다. 각각 1.5~2.5시간 + 이동 시간. 한다면 시내에 있는 보더리스 먼저 보고 토요스 플래닛으로 이동하는 게 동선상 좋아요." } },
+      { question: { en: "How do I get to teamLab Borderless in Azabudai Hills?", ko: "팀랩 보더리스 (아자부다이 힐즈) 가는 법이 어떻게 되나요?" }, answer: { en: "Borderless is at Azabudai Hills Garden Plaza B1, Minato City. Closest stations: Kamiyacho (Hibiya Line) or Roppongi-Itchome (Namboku Line), both a short walk. Easy to pair with Tokyo Tower on the same day — you can walk between them.", ko: "아자부다이 힐즈 가든 플라자 B1층에 있습니다. 가장 가까운 역은 가미야초역(히비야선) 또는 롯폰기잇초메역(난보쿠선), 둘 다 도보 거리예요. 도쿄타워와 같은 날 묶기 좋아요 — 걸어서 이동 가능합니다." } },
+      { question: { en: "How do I get to teamLab Planets in Toyosu?", ko: "팀랩 플래닛 (토요스) 가는 법이 어떻게 되나요?" }, answer: { en: "Planets is at 6-1-16 Toyosu. Shin-Toyosu Station is closest but it's on a separate line. If you're using a subway pass, walk 15 minutes from Toyosu Station (Yurakucho Line) instead — saves the extra fare.", ko: "토요스 6-1-16에 있습니다. 신토요스역이 가장 가깝지만 별도 노선이라서, 지하철 패스를 쓰는 중이면 도요스역(유라쿠초선)에서 도보 15분 걸어가는 게 교통비를 아낍니다." } },
     ],
     cta: {
       label: { en: "Book teamLab Borderless Tickets", ko: "팀랩 보더리스 티켓 예약하기" },
@@ -2097,7 +2370,68 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       price: { en: "From ~$30", ko: "43,000원~" },
       note: { en: "Planets also available on Klook", ko: "플래닛도 클룩에서 예약 가능" },
     },
+    comparisons: [
+      {
+        title: {
+          en: "teamLab Borderless vs teamLab Planets — side-by-side",
+          ko: "팀랩 보더리스 vs 팀랩 플래닛 — 한눈에 비교",
+        },
+        columns: [
+          { en: "teamLab Borderless", ko: "팀랩 보더리스" },
+          { en: "teamLab Planets", ko: "팀랩 플래닛" },
+        ],
+        rows: [
+          {
+            label: { en: "Location", ko: "위치" },
+            values: [
+              { en: "Azabudai Hills (near Roppongi / Ginza)", ko: "아자부다이 힐즈 (롯폰기·긴자 근처)" },
+              { en: "Toyosu — farther from central Tokyo", ko: "토요스 — 시내에서 거리 있음" },
+            ],
+          },
+          {
+            label: { en: "Style", ko: "관람 방식" },
+            values: [
+              { en: "Free-roam, no set route", ko: "자유 관람·동선 없음" },
+              { en: "4-zone walkthrough with water", ko: "4구역 순차·물 체험 포함" },
+            ],
+          },
+          {
+            label: { en: "Duration", ko: "소요 시간" },
+            values: [
+              { en: "1–2 hours", ko: "1~2시간" },
+              { en: "1.5–2.5 hours", ko: "1.5~2.5시간" },
+            ],
+          },
+          {
+            label: { en: "Klook ticket", ko: "입장료 (클룩)" },
+            values: [
+              { en: "~$30–33", ko: "43,000~46,000원" },
+              { en: "~$30–33", ko: "43,000~46,000원" },
+            ],
+          },
+          {
+            label: { en: "Booking urgency", ko: "예매 난이도" },
+            values: [
+              { en: "Relaxed — book a few days ahead", ko: "여유 — 며칠 전 예약 가능" },
+              { en: "Tight — often sold out 1 week out", ko: "빡빡 — 1주일 전 매진 흔함" },
+            ],
+          },
+          {
+            label: { en: "Best for", ko: "추천 대상" },
+            values: [
+              { en: "Relaxed viewing, pair with Tokyo Tower", ko: "편한 관람·도쿄타워와 묶기" },
+              { en: "Hands-on experience, kids, couples", ko: "체험형·아이·커플" },
+            ],
+          },
+        ],
+        caption: {
+          en: "Tickets cost roughly the same — the real question is free-roam viewing vs hands-on water experience.",
+          ko: "입장료는 비슷하니까 '편하게 볼래 vs 직접 체험할래'로 고르면 됩니다.",
+        },
+      },
+    ],
     publishedAt: "2026-04-13",
+    updatedAt: "2026-04-16",
   },
   {
     slug: "tokyo-subway-guide",
@@ -2207,6 +2541,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 - 스이카/이코카 카드 없어도 패스만으로 충분
 - 나리타공항↔시내는 패스 범위 밖 — 스카이라이너나 리무진 별도
 
+운행 시간·요금·노선도 등 공식 정보는 [도쿄 메트로 공식 사이트](https://www.tokyometro.jp/kr/)와 [도쿄 도에이 지하철](https://www.kotsu.metro.tokyo.jp/kor/subway/)에서 확인할 수 있습니다.
+
 도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 지하철로 이동 가능한 코스를 자동으로 조합해 볼 수 있습니다. 나리타공항에서 시내까지 오는 방법은 [스카이라이너 가이드](/ko/posts/tokyo-skyliner-narita-guide)를, 시내에서 공항으로 돌아가는 방법은 [리무진 버스 가이드](/ko/posts/tokyo-narita-limousine-bus)를 참고하세요.
 `,
       en: `## How to Ride the Tokyo Subway — A Tourist's Complete Guide
@@ -2306,6 +2642,8 @@ Rush hour (7–9am) is extremely crowded. Skip it if possible, or wait for the n
 - No need for Suica/ICOCA cards if you have the subway pass
 - Narita Airport ↔ city is outside pass coverage — use Skyliner or limousine bus separately
 
+For official schedules, fares, and route maps, check the [Tokyo Metro official site](https://www.tokyometro.jp/en/) and [Toei Subway](https://www.kotsu.metro.tokyo.jp/eng/services/subway.html).
+
 If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to automatically combine subway-accessible spots into a full day. For getting from Narita to the city, see our [Skyliner guide](/posts/tokyo-skyliner-narita-guide). For the return trip, check the [limousine bus guide](/posts/tokyo-narita-limousine-bus).
 `,
     },
@@ -2336,6 +2674,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       { question: { en: "Where can I exchange the Tokyo subway pass?", ko: "지하철 패스 어디서 교환하나요?" }, answer: { en: "At ticket machines with QR scanners in most Tokyo Metro/Toei stations. The machine looks slightly different from regular ones. Korean and English languages available.", ko: "대부분의 도쿄 메트로/도에이역 티켓 머신에서 교환 가능합니다. QR코드 스캔이 되는 전용 기계를 찾으면 돼요. 한국어 선택 가능합니다." } },
       { question: { en: "Is the Tokyo subway hard to navigate?", ko: "도쿄 지하철 타기 어렵나요?" }, answer: { en: "Easier than it looks. Use Google Maps for routes — every station has an alphabet+number code (like G09). Match the code at the station and you'll find your platform. No need to memorize the map.", ko: "보기보다 쉽습니다. 구글 지도로 경로 검색하면 역마다 알파벳+숫자 코드(예: G09)가 나와요. 역에서 이 코드만 따라가면 플랫폼을 찾을 수 있습니다. 노선도 외울 필요 없어요." } },
       { question: { en: "What time is the last train in Tokyo?", ko: "도쿄 지하철 막차가 몇 시인가요?" }, answer: { en: "Around midnight (varies by line). Earlier than many major cities. If you're out late, check the last train time on Google Maps or plan for a taxi.", ko: "노선마다 다르지만 대략 자정쯤입니다. 한국보다 빠른 편이에요. 늦게까지 밖에 있을 계획이면 구글 지도에서 막차 시간을 확인하거나 택시를 고려하세요." } },
+      { question: { en: "When does the Tokyo subway pass time limit start?", ko: "도쿄 지하철 패스 시간은 언제부터 카운트되나요?" }, answer: { en: "From the first time you tap through a gate — not from when you exchange the voucher. You can pick up the physical pass in advance and start using it later in the day, which gives you flexibility on arrival day.", ko: "교환 시점이 아니라 처음 개찰구에 넣는 시점부터 카운트됩니다. 미리 교환해두고 나중에 쓰기 시작해도 되기 때문에, 도착 당일 일정 짜기가 유연해요." } },
+      { question: { en: "Which gate do I use with the Tokyo subway pass?", ko: "지하철 패스는 어느 게이트에 넣나요?" }, answer: { en: "Use the gate with the yellow slot — it's the one that accepts paper tickets and passes. Regular IC-card gates (tap-to-pay) won't read the pass. You insert the pass at entry and exit, and it pops out the other side each time.", ko: "노란색 투입구가 있는 게이트를 이용하세요 — 종이 티켓·패스를 받는 게이트입니다. 일반 IC카드 터치 게이트는 패스를 읽지 않아요. 입·출차 시 카드를 넣으면 반대쪽으로 다시 나옵니다." } },
     ],
     cta: {
       label: { en: "Buy Tokyo Subway Pass", ko: "도쿄 지하철 패스 구매하기" },
@@ -2378,23 +2718,7 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 
 나리타공항에서 도쿄 시내로 가는 3가지 방법:
 
-**스카이라이너:**
-- 가격: 편도 19,400원 (클룩)
-- 소요: 우에노까지 40분 — ==가장 빠름==
-- 장점: 저렴하고 빠름. 우에노역에서 지하철 환승 편리
-- 단점: 우에노/닛포리만 정차 — 신주쿠/시부야 직행 불가
-
-**NEX (나리타 익스프레스):**
-- 가격: 약 3,250엔 — 스카이라이너보다 비쌈
-- 소요: 도쿄역 60분, 신주쿠 90분
-- 장점: 도쿄역/시부야/신주쿠 직행 가능
-- 단점: 비싸고, 배차 간격 넓음
-
-**리무진 버스:**
-- 가격: 편도 28,000원 (클룩)
-- 소요: 지역별 1시간 20분~1시간 45분
-- 장점: 숙소 근처에서 바로 탑승, 짐 편함
-- 단점: 교통 체증 가능, 시간 예측 어려움
+{{compare:0}}
 
 ==추천 조합: 공항→시내는 스카이라이너, 시내→공항은 리무진 버스.== 공항 도착 시간은 비행기 지연 때문에 예측이 어렵지만, 돌아갈 때는 미리 시간을 정할 수 있으니까요.
 
@@ -2471,6 +2795,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
 - 돼지코 챙기면 열차에서 충전 가능 (110V)
 - ==공항→시내는 스카이라이너, 시내→공항은 리무진 버스== 조합이 최고
 
+시간표·요금·열차 운행 상태는 [게이세이 전철 스카이라이너 공식 사이트](https://www.keisei.co.jp/keisei/tetudou/skyliner/kr/)에서 확인할 수 있습니다.
+
 도쿄 여행 일정을 짜고 있다면 [TripFlowy 플래너](https://www.tripflowy.com/ko/planner?destinations=tokyo)에서 도쿄 코스를 자동으로 조합해 볼 수 있습니다. 시내에서 공항으로 돌아갈 때는 [리무진 버스 가이드](/ko/posts/tokyo-narita-limousine-bus)가 편하고, 시내 이동은 [지하철 패스 가이드](/ko/posts/tokyo-subway-guide)를 참고하세요.
 `,
       en: `## Keisei Skyliner — Fastest Way From Narita Airport to Tokyo
@@ -2494,23 +2820,7 @@ Best combo: Skyliner from airport to city, limousine bus from city back to airpo
 
 Three ways from Narita Airport to central Tokyo:
 
-**Skyliner:**
-- Fare: ~$14 one-way (Klook)
-- Time: 40 min to Ueno — ==fastest option==
-- Pros: Cheap and fast. Easy subway transfer at Ueno
-- Cons: Stops only at Ueno/Nippori — no direct to Shinjuku/Shibuya
-
-**NEX (Narita Express):**
-- Fare: ~¥3,250 — more expensive than Skyliner
-- Time: 60 min to Tokyo Station, 90 min to Shinjuku
-- Pros: Direct to Tokyo Station/Shibuya/Shinjuku
-- Cons: Pricier, less frequent
-
-**Limousine Bus:**
-- Fare: ~$20 one-way (Klook)
-- Time: 1hr 20min–1hr 45min depending on area
-- Pros: Board near hotel, luggage handled
-- Cons: Traffic delays possible
+{{compare:0}}
 
 ==Recommended combo: Skyliner to the city, limousine bus back to the airport.== Flight arrival times are unpredictable, but departure day timing is in your control.
 
@@ -2587,6 +2897,8 @@ Insert your ticket at the exit gate — it's collected there.
 - Bring a plug adapter for 110V charging on the train
 - ==Skyliner to city + limousine bus back to airport== is the best combo
 
+For official timetables, fares, and live operational updates, check the [Keisei Skyliner official site](https://www.keisei.co.jp/keisei/tetudou/skyliner/us/).
+
 If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tripflowy.com/planner?destinations=tokyo) to combine your Tokyo days into a full schedule. For the return trip to the airport, see our [limousine bus guide](/posts/tokyo-narita-limousine-bus). For getting around Tokyo, check the [subway pass guide](/posts/tokyo-subway-guide).
 `,
     },
@@ -2617,6 +2929,8 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       { question: { en: "Skyliner or NEX — which should I take?", ko: "스카이라이너 vs NEX 뭐가 나은가요?" }, answer: { en: "Skyliner is cheaper (~$14 vs ~¥3,250) and faster to Ueno (40 min). NEX goes direct to Tokyo Station/Shinjuku but costs more and takes longer. Unless your hotel is in Shinjuku, Skyliner + subway transfer is usually better.", ko: "스카이라이너가 더 저렴하고(19,400원 vs 3,250엔) 우에노까지 빠릅니다(40분). NEX는 도쿄역/신주쿠 직행이지만 비싸고 오래 걸려요. 신주쿠 숙소가 아니라면 스카이라이너 + 지하철 환승이 더 나아요." } },
       { question: { en: "Can I take the Skyliner from Terminal 3?", ko: "나리타 3터미널에서 스카이라이너 탈 수 있나요?" }, answer: { en: "Not directly. Terminal 3 doesn't have a train station. Take the free shuttle bus to Terminal 2 (very short ride), then board from there.", ko: "바로는 안 됩니다. 3터미널에는 기차역이 없어요. 무료 셔틀버스로 2터미널로 이동한 후(금방) 거기서 탑승하면 됩니다." } },
       { question: { en: "Do I need to book the Skyliner in advance?", ko: "스카이라이너 미리 예약해야 하나요?" }, answer: { en: "Booking on Klook in advance is cheaper. You don't choose the exact train — just buy the ticket, then pick your train and seat at the kiosk when you arrive.", ko: "클룩에서 미리 사면 더 저렴합니다. 구매 시 열차를 고르는 게 아니라, 도착 후 키오스크에서 시간과 좌석을 직접 선택하는 방식이에요." } },
+      { question: { en: "Does the Skyliner have Wi-Fi, outlets, and luggage storage?", ko: "스카이라이너에 Wi-Fi·콘센트·짐칸이 있나요?" }, answer: { en: "Yes to all. Every seat has a 110V outlet (bring a standard adapter — Japan uses flat prongs), free Wi-Fi is available, and there's luggage storage at the end of each car. A restroom is located near car 5.", ko: "다 있습니다. 모든 좌석에 110V 콘센트(돼지코 필요 — 일본은 납작한 플러그), 무료 Wi-Fi, 각 차량 끝에 짐칸이 있어요. 화장실은 5호차 근처에 있습니다." } },
+      { question: { en: "Are Skyliner seats reserved or free seating?", ko: "스카이라이너는 지정좌석제인가요 자유석인가요?" }, answer: { en: "All seats are reserved. At the Narita Airport kiosk, you pick your train time and exact seat before printing the ticket — no random assignment. Window seats on the right side of the train have the longer stretch of scenic rice paddies.", ko: "전석 지정좌석제입니다. 나리타공항 키오스크에서 탑승 시간과 좌석을 직접 고른 뒤 티켓을 출력해요 — 무작위 배정이 아닙니다. 진행 방향 오른쪽 창가가 논밭 풍경이 더 길게 보여요." } },
     ],
     cta: {
       label: { en: "Book Skyliner Tickets", ko: "스카이라이너 티켓 예약하기" },
@@ -2625,7 +2939,70 @@ If you're building a Tokyo itinerary, try the [TripFlowy planner](https://www.tr
       price: { en: "From ~$14", ko: "19,400원~" },
       note: { en: "Subway pass combo available", ko: "지하철 패스와 함께 구매 가능" },
     },
+    comparisons: [
+      {
+        title: {
+          en: "Narita → Tokyo — Skyliner vs NEX vs Limousine Bus",
+          ko: "나리타공항 → 도쿄 시내 — 스카이라이너 vs NEX vs 리무진 버스",
+        },
+        columns: [
+          { en: "Skyliner", ko: "스카이라이너" },
+          { en: "Narita Express (NEX)", ko: "나리타 익스프레스" },
+          { en: "Limousine Bus", ko: "리무진 버스" },
+        ],
+        rows: [
+          {
+            label: { en: "Travel time", ko: "소요 시간" },
+            values: [
+              { en: "40 min to Ueno (fastest)", ko: "우에노 40분 (가장 빠름)" },
+              { en: "~60 min Tokyo Station, ~90 min Shinjuku", ko: "도쿄역 약 60분, 신주쿠 약 90분" },
+              { en: "1hr 20min – 1hr 45min by stop", ko: "1시간 20분~1시간 45분 (정류장별)" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "One-way fare", ko: "편도 가격" },
+            values: [
+              { en: "~$14 Klook / ¥2,520 walk-up", ko: "19,400원 클룩 / 2,520엔 현장" },
+              { en: "¥3,250 reserved", ko: "3,250엔 (지정석)" },
+              { en: "~$20 Klook / ¥3,200 official", ko: "28,000원 클룩 / 3,200엔 공식" },
+            ],
+            highlight: 0,
+          },
+          {
+            label: { en: "Main stop", ko: "주요 정차역" },
+            values: [
+              { en: "Ueno, Nippori only", ko: "우에노·닛포리만" },
+              { en: "Tokyo Station, Shibuya, Shinjuku", ko: "도쿄역·시부야·신주쿠" },
+              { en: "Shinjuku, Ginza, Tokyo Stn, Disneyland 등", ko: "신주쿠·긴자·도쿄역·디즈니랜드 등" },
+            ],
+          },
+          {
+            label: { en: "Luggage flow", ko: "짐 이동" },
+            values: [
+              { en: "Drag to station, self-handled", ko: "역까지 직접 이동" },
+              { en: "Drag to station, self-handled", ko: "역까지 직접 이동" },
+              { en: "Driver loads at hotel-adjacent stop", ko: "정류장에서 기사가 실어줌" },
+            ],
+          },
+          {
+            label: { en: "Best for", ko: "추천 대상" },
+            values: [
+              { en: "Speed, Ueno/Nippori hotels, subway hoppers", ko: "빠름·우에노/닛포리 숙소·지하철 환승" },
+              { en: "Tokyo Station / Shinjuku / Shibuya hotels", ko: "도쿄역·신주쿠·시부야 숙소" },
+              { en: "Heavy luggage, families, return leg", ko: "짐 많음·가족·돌아가는 길" },
+            ],
+            highlight: 0,
+          },
+        ],
+        caption: {
+          en: "Skyliner is my default for airport → city. Pair it with the Limousine Bus on the return leg for the easiest combo.",
+          ko: "공항→시내는 스카이라이너가 기본, 돌아갈 때는 리무진 버스 조합이 제일 편합니다.",
+        },
+      },
+    ],
     publishedAt: "2026-04-13",
+    updatedAt: "2026-04-16",
   },
 ];
 

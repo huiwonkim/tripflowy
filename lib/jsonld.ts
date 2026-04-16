@@ -1,4 +1,5 @@
 import type { DayCourse, FAQ, Locale, GeneratedItinerary, BlogPost, Tour, Hotel } from "@/types";
+import { getAuthor } from "@/lib/authors";
 
 const BASE_URL = "https://www.tripflowy.com";
 
@@ -136,15 +137,27 @@ export function generateCollectionPageJsonLd(params: {
 }
 
 export function generateArticleJsonLd(post: BlogPost, locale: Locale, cityLabel?: string, wordCount?: number) {
+  const author = getAuthor(post.authorId);
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": ["Article", "TravelGuide"],
     headline: post.title[locale],
     description: post.excerpt[locale],
     author: {
-      "@type": "Organization",
-      name: "TripFlowy",
-      url: BASE_URL,
+      "@type": "Person",
+      name: author.name[locale],
+      ...(author.nickname ? { alternateName: author.nickname[locale] } : {}),
+      jobTitle: author.role[locale],
+      description: author.bio[locale],
+      knowsAbout: author.expertise,
+      worksFor: {
+        "@type": "Organization",
+        name: "TripFlowy",
+        url: BASE_URL,
+      },
+      ...(author.url ? { url: author.url } : {}),
+      ...(author.sameAs?.length ? { sameAs: author.sameAs } : {}),
+      ...(author.image ? { image: `${BASE_URL}${author.image}` } : {}),
     },
     publisher: {
       "@type": "Organization",

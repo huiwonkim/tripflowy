@@ -20,5 +20,70 @@ Disallow: /courses/
 Disallow: /ko/courses
 Disallow: /ko/courses/
 
+# AI crawlers (LLM training & retrieval)
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /api/
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
+
+User-agent: Claude-User
+Allow: /
+Disallow: /api/
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /api/
+Disallow: /courses
+Disallow: /courses/
+Disallow: /ko/courses
+Disallow: /ko/courses/
+
 Sitemap: https://www.tripflowy.com/sitemap.xml
 Sitemap: https://www.tripflowy.com/rss.xml

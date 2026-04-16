@@ -2,14 +2,16 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { ArrowLeft, Calendar, Clock, ChevronRight, ExternalLink } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, ChevronRight, ExternalLink, User } from "lucide-react";
 import { posts, getPostBySlug, getPostsByCity } from "@/data/posts";
 import { tours } from "@/data/tours";
 import { hotels } from "@/data/hotels";
 import { ShareButton } from "@/components/ui/ShareButton";
 import { PostCTA } from "@/components/ui/PostCTA";
+import { ComparisonTable } from "@/components/ui/ComparisonTable";
 import { countries } from "@/data/destinations";
 import { generateBreadcrumbJsonLd, generateArticleJsonLd, generateFaqJsonLd } from "@/lib/jsonld";
+import { getAuthor } from "@/lib/authors";
 import type { Metadata } from "next";
 import type { Locale, BlogPost } from "@/types";
 
@@ -114,6 +116,17 @@ function renderContent(content: string, post: BlogPost, locale: Locale) {
       continue;
     }
 
+    // Comparison table: {{compare:N}} — N indexes into post.comparisons
+    const compareMatch = trimmed.match(/^\{\{compare:(\d+)\}\}$/);
+    if (compareMatch && post.comparisons) {
+      const idx = Number(compareMatch[1]);
+      const table = post.comparisons[idx];
+      if (table) {
+        elements.push(<ComparisonTable key={i} table={table} locale={locale} />);
+        continue;
+      }
+    }
+
     // Booking button: {{booking:label:url}}
     const bookingMatch = trimmed.match(/^\{\{booking:(.+?):(.+?)\}\}$/);
     if (bookingMatch) {
@@ -186,6 +199,7 @@ export default async function PostPage({ params }: PageProps) {
   const allCities = countries.flatMap((c) => c.cities);
   const cityLabel = allCities.find((c) => c.id === post.city)?.label[loc] ?? post.city;
   const content = post.content[loc];
+  const author = getAuthor(post.authorId);
 
   const wordCount = content.split(/\s+/).length;
   const readingMin = Math.max(1, Math.ceil(wordCount / 200));
@@ -235,8 +249,9 @@ export default async function PostPage({ params }: PageProps) {
           <Image src={post.coverImage} alt={post.title[loc]} fill className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 max-w-[680px] mx-auto">
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-3 flex-wrap">
               <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{cityLabel}</span>
+              <span className="text-white/70 text-xs flex items-center gap-1"><User className="w-3 h-3" />{author.name[loc]}</span>
               <span className="text-white/60 text-xs flex items-center gap-1"><Calendar className="w-3 h-3" />{post.publishedAt}</span>
               <span className="text-white/60 text-xs flex items-center gap-1"><Clock className="w-3 h-3" />{readingMin}min</span>
             </div>
@@ -246,8 +261,9 @@ export default async function PostPage({ params }: PageProps) {
       ) : (
         <div className={`bg-gradient-to-br ${post.coverGradient} py-16 sm:py-24`}>
           <div className="max-w-[680px] mx-auto px-5">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-4 flex-wrap">
               <span className="bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">{cityLabel}</span>
+              <span className="text-white/70 text-xs flex items-center gap-1"><User className="w-3 h-3" />{author.name[loc]}</span>
               <span className="text-white/60 text-xs">{post.publishedAt}</span>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">{post.title[loc]}</h1>
@@ -285,7 +301,7 @@ export default async function PostPage({ params }: PageProps) {
               <h2 className="text-[22px] font-bold text-gray-900 mb-6">{loc === "ko" ? "자주 묻는 질문" : "FAQ"}</h2>
               <div className="space-y-3">
                 {post.faq.map((item, i) => (
-                  <details key={i} className="bg-gray-50 rounded-xl overflow-hidden group">
+                  <details key={i} open={i < 3} className="bg-gray-50 rounded-xl overflow-hidden group">
                     <summary className="faq-question px-5 py-4 cursor-pointer text-[15px] font-medium text-gray-900 hover:bg-gray-100 transition-colors list-none flex items-center justify-between">
                       {item.question[loc]}
                       <ChevronRight className="w-4 h-4 text-gray-400 group-open:rotate-90 transition-transform" />
@@ -296,6 +312,37 @@ export default async function PostPage({ params }: PageProps) {
               </div>
             </section>
           )}
+
+          {/* Author bio box — E-E-A-T signal */}
+          <section className="mt-14 pt-10 border-t border-gray-100">
+            <div className="bg-gray-50 rounded-2xl p-6">
+              <div className="flex items-start gap-4">
+                {author.image ? (
+                  <Image src={author.image} alt={author.name[loc]} width={56} height={56}
+                    className="w-14 h-14 rounded-full object-cover flex-shrink-0" />
+                ) : (
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
+                    <User className="w-6 h-6 text-white" />
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
+                    {loc === "ko" ? "작성자" : "Written by"}
+                  </p>
+                  <p className="text-[15px] font-bold text-gray-900">
+                    {author.name[loc]}
+                    {author.nickname && (
+                      <span className="text-gray-400 font-normal ml-1.5 text-[13px]">
+                        ({author.nickname[loc]})
+                      </span>
+                    )}
+                  </p>
+                  <p className="text-[13px] text-gray-500 mb-2">{author.role[loc]}</p>
+                  <p className="text-[14px] text-gray-600 leading-[1.7]">{author.bio[loc]}</p>
+                </div>
+              </div>
+            </div>
+          </section>
 
           {/* Related tours & hotels for this city */}
           {(cityTours.length > 0 || cityHotels.length > 0) && (

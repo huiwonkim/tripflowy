@@ -174,6 +174,19 @@ export type Tour = {
   reviewCount: number;
 };
 
+// ── 저자 ───────────────────────────────────────────
+export type Author = {
+  id: string;
+  name: LocaleString;            // "김희원" / "Huiwon Kim"
+  nickname?: LocaleString;        // "책킴" / "Chaek Kim" (optional alias)
+  role: LocaleString;             // "Founder, TripFlowy" etc.
+  bio: LocaleString;              // 2~3 sentence intro for author box
+  expertise: string[];            // ["Japan theme parks", "Airport transit", ...] - schema knowsAbout
+  image?: string;                 // /images/authors/xxx.jpg
+  url?: string;                   // Personal site / social
+  sameAs?: string[];              // Social profiles for schema.org Person.sameAs
+};
+
 // ── 블로그 포스트 (코스 상세 후기) ──────────────────
 export type PostImage = {
   src: string;             // /images/posts/xxx.jpg
@@ -187,6 +200,18 @@ export type PostCTA = {
   provider: string;              // "Klook", "Agoda" 등
   price?: LocaleString;          // "2,200엔~"
   note?: LocaleString;           // "온라인 예매 시 300엔 할인"
+};
+
+/** Comparison table — AI/AEO-friendly structured data. Embedded via {{compare:N}} marker. */
+export type ComparisonTable = {
+  title?: LocaleString;          // optional table heading
+  columns: LocaleString[];       // column headers, 2~4 items
+  rows: {
+    label: LocaleString;          // row label (leftmost column)
+    values: LocaleString[];       // one per column
+    highlight?: number;           // optional column index to emphasize
+  }[];
+  caption?: LocaleString;        // optional footnote
 };
 
 export type BlogPost = {
@@ -205,6 +230,8 @@ export type BlogPost = {
   cta?: PostCTA;           // 어필리에이트 CTA
   publishedAt: string;     // ISO date
   updatedAt?: string;
+  authorId?: string;       // lib/authors.ts의 ID 참조. 없으면 default author 사용
+  comparisons?: ComparisonTable[]; // {{compare:N}} 마커로 본문에 삽입
 };
 
 // ── 플래너 입력 ────────────────────────────────────
