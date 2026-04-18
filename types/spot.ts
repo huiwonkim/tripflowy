@@ -60,10 +60,11 @@ export type Spot = {
   /**
    * Selection weight for the engine.
    *  - 1 = must-see (highest score bonus)
-   *  - 2 = recommended (default)
-   *  - 3 = optional filler
+   *  - 2 = strongly recommended
+   *  - 3 = recommended (default)
+   *  - 4 = optional filler
    */
-  priority: 1 | 2 | 3;
+  priority: 1 | 2 | 3 | 4;
 
   /** Area/neighborhood key for clustering (e.g. "shibuya", "asakusa"). Same-area spots group into one day. */
   area?: string;

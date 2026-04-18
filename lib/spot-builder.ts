@@ -250,8 +250,8 @@ function scoreSpot(
   styles: TravelStyle[] | undefined,
   travelerType: TravelerType | undefined,
 ): number {
-  // priority 1 = must-see (+3), 2 = recommended (+2), 3 = optional (+1)
-  let score = 4 - spot.priority;
+  // priority 1 = must-see (+4), 2 = strong (+3), 3 = recommended (+2), 4 = optional (+1)
+  let score = 5 - spot.priority;
 
   if (styles && styles.length > 0) {
     const overlap = styles.filter((s) => spot.styles.includes(s)).length;
@@ -495,12 +495,21 @@ function buildDayCourse(
     .filter((l): l is Coordinates => Boolean(l));
   const center = centroid(locations);
 
-  // Derive a short day title from the day's highlight spot (first sightseeing-type activity)
-  // so the UI "Day N — {title}" line reads naturally (e.g. "Day 1 — 팀랩 보더리스 외").
-  const headline =
-    activities.find((a) => a.type === "sightseeing" || a.type === "tour") ?? activities[0];
-  const titleKo = headline ? `${headline.title.ko}${activities.length > 1 ? " 외" : ""}` : `Day ${dayNumber}`;
-  const titleEn = headline ? `${headline.title.en}${activities.length > 1 ? " & more" : ""}` : `Day ${dayNumber}`;
+  // Title = top 2 sightseeing-ish spots joined by " & "
+  // (e.g. "Day 1 · 시부야 스카이 & 센소지").
+  // Falls back to any available activities if no sightseeing spots exist.
+  const sightseeing = activities.filter(
+    (a) => a.type === "sightseeing" || a.type === "tour" || a.type === "shopping",
+  );
+  const headlines = (sightseeing.length >= 2 ? sightseeing : activities).slice(0, 2);
+  const titleKo =
+    headlines.length >= 2
+      ? `${headlines[0].title.ko} & ${headlines[1].title.ko}`
+      : headlines[0]?.title.ko ?? `Day ${dayNumber}`;
+  const titleEn =
+    headlines.length >= 2
+      ? `${headlines[0].title.en} & ${headlines[1].title.en}`
+      : headlines[0]?.title.en ?? `Day ${dayNumber}`;
 
   return {
     id: `spot-gen-${city}-day-${dayNumber}`,

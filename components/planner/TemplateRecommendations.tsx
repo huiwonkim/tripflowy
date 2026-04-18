@@ -60,33 +60,42 @@ export function TemplateRecommendations({ input, days, locale, onApply }: Props)
             {locale === "ko" ? "카드를 눌러 Day에 적용" : "Tap a card to apply"}
           </span>
         </div>
-        <div className="-mx-5 overflow-x-auto">
-          <div className="flex gap-3 px-5 pb-1 snap-x snap-mandatory">
-            {picks.map((t) => (
-              <button
-                key={t.id}
-                type="button"
-                onClick={() => setActiveTemplate(t)}
-                className="flex-shrink-0 w-[240px] sm:w-[260px] snap-start text-left group"
-              >
-                <div className={`h-20 rounded-xl bg-gradient-to-br ${t.coverGradient} mb-2 transition-opacity group-hover:opacity-90`} />
-                <p className="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors leading-snug line-clamp-2">
-                  {t.title[locale]}
-                </p>
-                <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{t.summary[locale]}</p>
-                <div className="flex flex-wrap gap-1 mt-1.5">
-                  {t.styles.slice(0, 3).map((s) => (
-                    <span key={s} className="text-[10px] font-medium text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded">
-                      {styleLabel(s as TravelStyle, locale)}
+        <div className="relative -mx-5">
+          <div className="overflow-x-auto">
+            <div className="flex gap-3 px-5 pb-1 snap-x snap-mandatory">
+              {picks.map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  onClick={() => setActiveTemplate(t)}
+                  className="flex-shrink-0 w-[240px] sm:w-[260px] snap-start text-left group"
+                >
+                  <div className={`h-20 rounded-xl bg-gradient-to-br ${t.coverGradient} mb-2 transition-opacity group-hover:opacity-90`} />
+                  <p className="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors leading-snug line-clamp-2">
+                    {t.title[locale]}
+                  </p>
+                  <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{t.summary[locale]}</p>
+                  <div className="flex flex-wrap gap-1 mt-1.5">
+                    {t.styles.slice(0, 3).map((s) => (
+                      <span key={s} className="text-[10px] font-medium text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded">
+                        {styleLabel(s as TravelStyle, locale)}
+                      </span>
+                    ))}
+                    <span className="text-[10px] text-gray-400 ml-auto">
+                      {t.spotIds.length}{locale === "ko" ? "곳" : " spots"}
                     </span>
-                  ))}
-                  <span className="text-[10px] text-gray-400 ml-auto">
-                    {t.spotIds.length}{locale === "ko" ? "곳" : " spots"}
-                  </span>
-                </div>
-              </button>
-            ))}
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
+          {/* Fade overlay on the right edge — signals that more cards scroll. */}
+          {picks.length > 2 && (
+            <div
+              aria-hidden
+              className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-indigo-50/90 via-indigo-50/40 to-transparent pointer-events-none rounded-r-2xl"
+            />
+          )}
         </div>
       </section>
 
