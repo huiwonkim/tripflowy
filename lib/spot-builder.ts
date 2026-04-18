@@ -11,6 +11,7 @@ import type {
   ActivityType,
   Coordinates,
   DayActivity,
+  DayCostBreakdown,
   DayCourse,
   GeneratedDay,
   GeneratedItinerary,
@@ -55,6 +56,10 @@ export interface BuildSpotInput {
   pace?: Pace;                              // default "balanced"
   accommodations?: Record<string, Coordinates>; // city id → hotel coord
   startDate?: string;                       // optional ISO date (used for closedDays check)
+  /** Arrival flight — shrinks day 1 start to arrival.time + 1.5h. */
+  arrival?: { airport?: string; time?: string };
+  /** Departure flight — shrinks last day end to departure.time - 4h. */
+  departure?: { airport?: string; time?: string };
 }
 
 /**
@@ -70,10 +75,24 @@ export function buildSpotItinerary(input: BuildSpotInput): GeneratedItinerary | 
     pace = "balanced",
     accommodations,
     startDate,
+    arrival,
+    departure,
   } = input;
 
   if (!destinations || destinations.length === 0) return null;
   if (!duration || duration <= 0) return null;
+
+  // Derive first/last day time windows from flight info.
+  //   공항→숙소 1h + 체크인/짐풀기 0.5h  → arrival + 1.5h
+  //   숙소→공항 1h + 공항 여유 3h       → departure - 4h
+  // Both are undefined when the user skips the airport UI; in that case the
+  // engine falls back to its default 09:30 start / no end cutoff.
+  const arrivalStart = arrival?.time
+    ? formatTime(parseTime(arrival.time) + 90)
+    : undefined;
+  const departureEnd = departure?.time
+    ? formatTime(Math.max(parseTime(departure.time) - 4 * 60, parseTime("09:00")))
+    : undefined;
 
   // Allocate days per city proportionally
   const allocation = allocateCityDays(destinations, duration, styles, travelerType);
@@ -122,8 +141,15 @@ export function buildSpotItinerary(input: BuildSpotInput): GeneratedItinerary | 
       for (const s of sights) usedIds.add(s.id);
       for (const m of meals) usedIds.add(m.id);
 
-      const activities = scheduleDay(sights, meals, accommodation);
-      const course = buildDayCourse(city, dayNumber, activities);
+      // First day starts later when an arrival time is given; last day ends
+      // earlier when a departure time is given. Middle days get no constraint.
+      const isFirstDay = dayNumber === 1;
+      const isLastDay = dayNumber === duration;
+      const dayStart = isFirstDay ? arrivalStart : undefined;
+      const dayEnd = isLastDay ? departureEnd : undefined;
+
+      const activities = scheduleDay(sights, meals, accommodation, pace, dayStart, dayEnd);
+      const course = buildDayCourse(city, dayNumber, activities, [...sights, ...meals]);
 
       days.push({ dayNumber, course, city });
       dayNumber++;
@@ -154,6 +180,10 @@ export interface RebuildFromSpotIdsInput {
   styles?: TravelStyle[];
   travelerType?: TravelerType;
   accommodations?: Record<string, Coordinates>;
+  pace?: Pace;
+  /** Same arrival/departure constraints as buildSpotItinerary — applied to day 1 and the last day. */
+  arrival?: { airport?: string; time?: string };
+  departure?: { airport?: string; time?: string };
 }
 
 /**
@@ -162,8 +192,19 @@ export interface RebuildFromSpotIdsInput {
  * same spots they shared, just re-scheduled.
  */
 export function buildItineraryFromSpotIds(input: RebuildFromSpotIdsInput): GeneratedItinerary | null {
-  const { spotsPerDay, cityPerDay, styles, travelerType, accommodations } = input;
+  const { spotsPerDay, cityPerDay, styles, travelerType, accommodations, pace = "balanced", arrival, departure } = input;
   if (!spotsPerDay || spotsPerDay.length === 0) return null;
+
+  // Same first/last-day shrink as buildSpotItinerary:
+  //   첫날: arrival + 1.5h 부터
+  //   마지막날: departure - 4h 에 종료
+  const arrivalStart = arrival?.time
+    ? formatTime(parseTime(arrival.time) + 90)
+    : undefined;
+  const departureEnd = departure?.time
+    ? formatTime(Math.max(parseTime(departure.time) - 4 * 60, parseTime("09:00")))
+    : undefined;
+  const totalDays = spotsPerDay.length;
 
   const days: GeneratedDay[] = [];
   for (let i = 0; i < spotsPerDay.length; i++) {
@@ -176,11 +217,16 @@ export function buildItineraryFromSpotIds(input: RebuildFromSpotIdsInput): Gener
     const meals = spots.filter((s) => s.category === "food" || s.category === "cafe");
     const accommodation = accommodations?.[city];
 
-    const activities = scheduleDay(sights, meals, accommodation);
+    const isFirstDay = i === 0;
+    const isLastDay = i === totalDays - 1;
+    const dayStart = isFirstDay ? arrivalStart : undefined;
+    const dayEnd = isLastDay ? departureEnd : undefined;
+
+    const activities = scheduleDay(sights, meals, accommodation, pace, dayStart, dayEnd);
     const dayNumber = days.length + 1;
     days.push({
       dayNumber,
-      course: buildDayCourse(city, dayNumber, activities),
+      course: buildDayCourse(city, dayNumber, activities, spots),
       city,
     });
   }
@@ -359,7 +405,14 @@ function categoryToActivityType(cat: SpotCategory): ActivityType {
   }
 }
 
-function spotToActivity(spot: Spot, time: string): DayActivity {
+/** Pick the appropriate dwell time for the chosen pace. */
+function dwellMinutes(spot: Spot, pace: Pace): number {
+  if (pace === "packed") return spot.duration.min;
+  if (pace === "relaxed") return spot.duration.max;
+  return spot.duration.typical;
+}
+
+function spotToActivity(spot: Spot, time: string, pace: Pace): DayActivity {
   return {
     time,
     title: spot.name,
@@ -367,7 +420,7 @@ function spotToActivity(spot: Spot, time: string): DayActivity {
     ...(spot.tips && spot.tips.length > 0 ? { tips: spot.tips } : {}),
     type: categoryToActivityType(spot.category),
     location: spot.location,
-    duration: spot.duration,
+    duration: dwellMinutes(spot, pace),
     // photo (deprecated) = first photo for legacy compat; photos = full array
     ...(spot.photos && spot.photos[0] ? { photo: spot.photos[0] } : {}),
     ...(spot.photos && spot.photos.length > 0 ? { photos: spot.photos } : {}),
@@ -382,11 +435,17 @@ function spotToActivity(spot: Spot, time: string): DayActivity {
  *  - GPS-sort the sights starting from accommodation (if given)
  *  - Inject lunch around 12:30, dinner at 18:30
  *  - Breakfast (if any food spot has mealSlot=breakfast) goes to 09:00, sights start 09:30
+ *  - `dayStart` overrides the default 09:30 start (first day w/ late arrival)
+ *  - `dayEnd` cuts the day off — any sight that would start past it is dropped
+ *    (last day w/ early departure)
  */
 function scheduleDay(
   sights: Spot[],
   meals: Spot[],
   accommodation: Coordinates | undefined,
+  pace: Pace = "balanced",
+  dayStart?: string,
+  dayEnd?: string,
 ): DayActivity[] {
   // Sort sights by proximity, anchored to accommodation if available
   let sortedSights: Spot[];
@@ -417,12 +476,19 @@ function scheduleDay(
   );
 
   const activities: DayActivity[] = [];
-  let currentMinutes = parseTime("09:30");
+  const defaultStart = parseTime("09:30");
+  const startMinutes = dayStart ? parseTime(dayStart) : defaultStart;
+  const endMinutes = dayEnd ? parseTime(dayEnd) : null;
+  let currentMinutes = startMinutes;
   let lastLocation: Coordinates | undefined = accommodation;
   let lunchInserted = false;
   let dinnerInserted = false;
 
-  const pushSpot = (spot: Spot, forcedMinutes?: number) => {
+  /**
+   * Attempt to push a spot at the computed time.
+   * Returns false (and skips) when the resulting slot would exceed `dayEnd`.
+   */
+  const pushSpot = (spot: Spot, forcedMinutes?: number): boolean => {
     let startMin: number;
     if (forcedMinutes !== undefined) {
       startMin = forcedMinutes;
@@ -432,26 +498,39 @@ function scheduleDay(
         startMin += computeTravelMinutes(lastLocation, spot.location);
       }
     }
+    // Respect arrival-constrained start: nothing can begin before startMinutes.
+    if (startMin < startMinutes) startMin = startMinutes;
+    // Cut off at dayEnd — drop spots that would start past it.
+    if (endMinutes !== null && startMin > endMinutes) return false;
     const timeStr = formatTime(startMin);
-    activities.push(spotToActivity(spot, timeStr));
-    currentMinutes = startMin + spot.duration;
+    activities.push(spotToActivity(spot, timeStr, pace));
+    currentMinutes = startMin + dwellMinutes(spot, pace);
     lastLocation = spot.location;
+    return true;
   };
 
   if (breakfast) {
-    pushSpot(breakfast, parseTime("09:00"));
+    // Breakfast stays at 09:00 only if the day actually starts that early.
+    const breakfastTime = Math.max(parseTime("09:00"), startMinutes);
+    pushSpot(breakfast, breakfastTime);
   }
 
   for (const sight of sortedSights) {
     if (lunch && !lunchInserted && currentMinutes >= parseTime("12:00")) {
-      pushSpot(lunch, Math.max(currentMinutes, parseTime("12:30")));
-      lunchInserted = true;
+      if (pushSpot(lunch, Math.max(currentMinutes, parseTime("12:30")))) {
+        lunchInserted = true;
+      } else {
+        lunchInserted = true; // give up if past cutoff
+      }
     }
     if (dinner && !dinnerInserted && currentMinutes >= parseTime("18:00")) {
-      pushSpot(dinner, parseTime("18:30"));
-      dinnerInserted = true;
+      if (pushSpot(dinner, parseTime("18:30"))) {
+        dinnerInserted = true;
+      } else {
+        dinnerInserted = true;
+      }
     }
-    pushSpot(sight);
+    if (!pushSpot(sight)) break; // day window exhausted
   }
 
   // Ensure lunch and dinner get added even if the sight loop didn't trip the threshold
@@ -464,7 +543,7 @@ function scheduleDay(
 
   // Fill other meals (snack etc.) after the main sequence, time-based
   for (const other of others) {
-    pushSpot(other);
+    if (!pushSpot(other)) break;
   }
 
   // Final sort by time — insertion order may have been slightly off
@@ -485,10 +564,49 @@ function centroid(coords: Coordinates[]): Coordinates {
   return { lat: sum.lat / coords.length, lng: sum.lng / coords.length };
 }
 
+/**
+ * Sum per-spot costEstimate into a DayCostBreakdown, bucketed by category.
+ * Returns undefined when no spot has a costEstimate — so BudgetSection falls
+ * back to the city-level default instead of showing 0s.
+ */
+function computeDayCosts(spots: Spot[]): DayCostBreakdown | undefined {
+  let food = 0;
+  let activity = 0;
+  let etc = 0;
+  let currency = "JPY";
+  let hasAny = false;
+  for (const s of spots) {
+    if (!s.costEstimate) continue;
+    hasAny = true;
+    currency = s.costEstimate.currency;
+    const amount = s.costEstimate.amount;
+    switch (s.category) {
+      case "food":
+      case "cafe":
+        food += amount;
+        break;
+      case "sight":
+      case "park":
+      case "experience":
+        activity += amount;
+        break;
+      case "shopping":
+      case "nightlife":
+      default:
+        etc += amount;
+    }
+  }
+  if (!hasAny) return undefined;
+  // transport is MVP-assumed zero (covered in city-level estimates); V2 may
+  // pull from dedicated transport spots or Directions API.
+  return { food, activity, transport: 0, etc, currency };
+}
+
 function buildDayCourse(
   city: string,
   dayNumber: number,
   activities: DayActivity[],
+  spots: Spot[] = [],
 ): DayCourse {
   const locations = activities
     .map((a) => a.location)
@@ -511,6 +629,8 @@ function buildDayCourse(
       ? `${headlines[0].title.en} & ${headlines[1].title.en}`
       : headlines[0]?.title.en ?? `Day ${dayNumber}`;
 
+  const costs = computeDayCosts(spots);
+
   return {
     id: `spot-gen-${city}-day-${dayNumber}`,
     city,
@@ -522,6 +642,7 @@ function buildDayCourse(
     center,
     tags: [],
     coverGradient: DEFAULT_GRADIENTS[(dayNumber - 1) % DEFAULT_GRADIENTS.length],
+    ...(costs ? { costs } : {}),
   };
 }
 

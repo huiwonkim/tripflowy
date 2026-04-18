@@ -34,6 +34,10 @@ interface BuildInput {
   accommodations?: Record<string, Coordinates>;
   /** ISO yyyy-mm-dd. Spot engine uses this to skip spots closed on that weekday. */
   startDate?: string;
+  /** First-day window shrinks to arrival + 1.5h onwards when provided. */
+  arrival?: { airport?: string; time?: string };
+  /** Last-day window shrinks to ending at departure - 4h when provided. */
+  departure?: { airport?: string; time?: string };
 }
 
 /**
@@ -46,7 +50,7 @@ interface BuildInput {
  * 5. Chain cities in order
  */
 export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
-  const { destinations, duration, styles, travelerType, lockedDays, pace, accommodations, startDate } = input;
+  const { destinations, duration, styles, travelerType, lockedDays, pace, accommodations, startDate, arrival, departure } = input;
 
   if (destinations.length === 0 || duration <= 0) return null;
 
@@ -62,6 +66,8 @@ export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
       pace,
       accommodations,
       startDate,
+      arrival,
+      departure,
     });
   }
 

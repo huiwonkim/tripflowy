@@ -10,7 +10,7 @@ export const dayCourses: DayCourse[] = [
     title: { en: "My Khe Beach & Sunset", ko: "미케 해변 & 선셋" },
     summary: { en: "A relaxed day walking My Khe Beach, sunset cocktails, and fresh seafood dinner.", ko: "미케 해변 산책, 선셋 칵테일, 신선한 해산물 디너." },
     styles: ["relax", "hotel"],
-    travelerTypes: ["couple", "solo", "family"],
+    travelerTypes: ["couple", "solo", "parents", "kids"],
     activities: [
       { time: "15:30", title: { en: "My Khe Beach walk", ko: "미케 해변 산책" }, description: { en: "Stroll along one of Asia's most beautiful beaches. The late afternoon light is perfect for photos.", ko: "아시아에서 가장 아름다운 해변 중 하나를 산책하세요." }, type: "beach", location: { lat: 16.0544, lng: 108.2472 } },
       { time: "18:00", title: { en: "Sunset cocktails by the beach", ko: "해변에서 선셋 칵테일" }, description: { en: "Pick any of the beachfront bars for a relaxed sunset drink together.", ko: "해변 바에서 둘이서 선셋을 즐기세요." }, type: "free", location: { lat: 16.0560, lng: 108.2480 } },
@@ -57,7 +57,7 @@ export const dayCourses: DayCourse[] = [
       { en: "Local food spots", ko: "자타공인 맛집 코스" },
     ],
     styles: ["efficient", "activity"],
-    travelerTypes: ["couple", "family", "friends"],
+    travelerTypes: ["couple", "parents", "kids", "friends"],
     activities: [
       {
         time: "09:00", title: { en: "Travel to Ba Na Hills", ko: "바나힐 이동" },
@@ -159,7 +159,7 @@ export const dayCourses: DayCourse[] = [
     title: { en: "Grand Palace & Riverside", ko: "왕궁 & 짜오프라야강" },
     summary: { en: "Bangkok's iconic core: Grand Palace, Wat Arun, and riverside food stalls.", ko: "방콕 핵심: 왕궁, 왓 아룬, 강변 노점." },
     styles: ["efficient", "relax"],
-    travelerTypes: ["couple", "solo", "family", "friends"],
+    travelerTypes: ["couple", "solo", "parents", "kids", "friends"],
     activities: [
       { time: "09:00", title: { en: "Grand Palace & Wat Phra Kaew", ko: "왕궁 & 에메랄드 사원" }, description: { en: "Arrive early before the crowds. 2 hours. Dress code required.", ko: "혼잡 전 일찍 도착하세요. 복장 규정 필수." }, type: "sightseeing", location: { lat: 13.7500, lng: 100.4914 } },
       { time: "11:30", title: { en: "Wat Arun (Temple of Dawn)", ko: "왓 아룬 (새벽의 사원)" }, description: { en: "Short boat ride across the river. Stunning ceramic mosaic towers.", ko: "강 건너 도착. 화려한 도자기 타일 사원." }, type: "sightseeing", location: { lat: 13.7437, lng: 100.4888 } },
@@ -312,7 +312,7 @@ export const dayCourses: DayCourse[] = [
     title: { en: "Ubud Art & Kecak Dance", ko: "우붓 예술 & 케착 댄스" },
     summary: { en: "Art galleries, Ubud Palace, monkey forest, and traditional Kecak dance at sunset.", ko: "갤러리, 우붓 왕궁, 몽키 포레스트, 선셋 케착 댄스 공연." },
     styles: ["relax", "efficient"],
-    travelerTypes: ["couple", "solo", "family"],
+    travelerTypes: ["couple", "solo", "parents", "kids"],
     activities: [
       { time: "09:00", title: { en: "Ubud Art Market", ko: "우붓 아트 마켓" }, description: { en: "Browse handmade crafts, paintings, and textiles.", ko: "수공예품, 그림, 직물을 구경하세요." }, type: "shopping", location: { lat: -8.5069, lng: 115.2625 } },
       { time: "11:00", title: { en: "Sacred Monkey Forest", ko: "몽키 포레스트" }, description: { en: "Walk through lush jungle with playful macaques. Keep belongings secure.", ko: "장난기 넘치는 원숭이들이 사는 울창한 정글 산책." }, type: "sightseeing", location: { lat: -8.5185, lng: 115.2588 } },
@@ -343,17 +343,17 @@ export const dayCourses: DayCourse[] = [
   // ════════════════════════════════════════════════════
   // NHA TRANG (5 courses)
   // ════════════════════════════════════════════════════
-  { id: "nhatrang-beach-island", city: "nhatrang", title: { en: "Beach Day & Island Hopping", ko: "해변 & 섬 투어" }, summary: { en: "Relax on Nha Trang Beach, then hop to nearby islands by speedboat.", ko: "나트랑 해변에서 휴식 후 스피드보트로 인근 섬 투어." }, styles: ["relax", "activity"], travelerTypes: ["couple", "family", "friends"], activities: [
+  { id: "nhatrang-beach-island", city: "nhatrang", title: { en: "Beach Day & Island Hopping", ko: "해변 & 섬 투어" }, summary: { en: "Relax on Nha Trang Beach, then hop to nearby islands by speedboat.", ko: "나트랑 해변에서 휴식 후 스피드보트로 인근 섬 투어." }, styles: ["relax", "activity"], travelerTypes: ["couple", "parents", "kids", "friends"], activities: [
     { time: "08:00", title: { en: "Nha Trang Beach morning swim", ko: "나트랑 해변 아침 수영" }, description: { en: "Calm morning waters perfect for swimming.", ko: "아침 잔잔한 바다에서 수영." }, type: "beach", location: { lat: 12.2451, lng: 109.1943 } },
     { time: "10:00", title: { en: "Island hopping tour", ko: "섬 투어" }, description: { en: "Visit Mun Island, Mot Island — snorkeling included.", ko: "문 섬, 못 섬 방문. 스노클링 포함." }, type: "tour", location: { lat: 12.1700, lng: 109.2300 } },
     { time: "15:00", title: { en: "Seafood lunch on the island", ko: "섬에서 해산물 점심" }, description: { en: "Fresh grilled seafood at a beachfront restaurant.", ko: "해변 레스토랑에서 신선한 해산물 구이." }, type: "dining", location: { lat: 12.1750, lng: 109.2280 } },
   ], center: { lat: 12.1967, lng: 109.2174 }, tags: ["beach", "island", "snorkeling"], coverGradient: "from-cyan-400 to-blue-600" },
 
-  { id: "nhatrang-vinpearl", city: "nhatrang", title: { en: "VinWonders Theme Park", ko: "빈원더스 테마파크" }, summary: { en: "Full day at Vietnam's largest amusement park on Hon Tre Island.", ko: "혼째 섬의 베트남 최대 놀이공원 종일 코스." }, styles: ["activity"], travelerTypes: ["family", "couple", "friends"], activities: [
+  { id: "nhatrang-vinpearl", city: "nhatrang", title: { en: "VinWonders Theme Park", ko: "빈원더스 테마파크" }, summary: { en: "Full day at Vietnam's largest amusement park on Hon Tre Island.", ko: "혼째 섬의 베트남 최대 놀이공원 종일 코스." }, styles: ["activity"], travelerTypes: ["couple", "parents", "kids", "friends"], activities: [
     { time: "09:00", title: { en: "Cable car to VinWonders", ko: "빈원더스 케이블카" }, description: { en: "3km cable car over the ocean to Hon Tre Island.", ko: "바다 위 3km 케이블카로 혼째 섬 이동." }, type: "transport", location: { lat: 12.2200, lng: 109.2100 } },
     { time: "10:00", title: { en: "Water park & rides", ko: "워터파크 & 놀이기구" }, description: { en: "Slides, wave pool, roller coasters — full day of fun.", ko: "슬라이드, 파도풀, 롤러코스터." }, type: "tour", location: { lat: 12.2100, lng: 109.2400 } },
     { time: "17:00", title: { en: "Sunset from cable car", ko: "케이블카에서 선셋" }, description: { en: "Return ride with stunning sunset views.", ko: "선셋을 보며 돌아오는 케이블카." }, type: "sightseeing", location: { lat: 12.2200, lng: 109.2100 } },
-  ], center: { lat: 12.2167, lng: 109.2200 }, tags: ["theme-park", "cable-car", "family"], coverGradient: "from-pink-400 to-rose-600" },
+  ], center: { lat: 12.2167, lng: 109.2200 }, tags: ["theme-park", "cable-car", "parents", "kids"], coverGradient: "from-pink-400 to-rose-600" },
 
   { id: "nhatrang-mud-bath", city: "nhatrang", title: { en: "Mud Bath & Hot Springs", ko: "머드 배스 & 온천" }, summary: { en: "Mineral mud baths, hot springs, and waterfall pools at Thap Ba.", ko: "탑바에서 머드 배스, 온천, 폭포 풀 체험." }, styles: ["relax", "hotel"], travelerTypes: ["couple", "solo"], activities: [
     { time: "09:00", title: { en: "Thap Ba mud bath", ko: "탑바 머드 배스" }, description: { en: "Soak in warm mineral mud — great for skin.", ko: "따뜻한 미네랄 머드에 몸을 담그세요." }, type: "tour", location: { lat: 12.2650, lng: 109.1870 } },
@@ -382,20 +382,20 @@ export const dayCourses: DayCourse[] = [
     { time: "20:00", title: { en: "Walking Street nightlife", ko: "워킹 스트리트 나이트라이프" }, description: { en: "Pattaya's famous entertainment strip.", ko: "파타야의 유명 유흥가." }, type: "free", location: { lat: 12.9270, lng: 100.8750 } },
   ], center: { lat: 12.9155, lng: 100.8741 }, tags: ["beach", "nightlife", "water-sports"], coverGradient: "from-blue-400 to-indigo-600" },
 
-  { id: "pattaya-sanctuary-truth", city: "pattaya", title: { en: "Sanctuary of Truth & Nong Nooch", ko: "진리의 성전 & 농눅 가든" }, summary: { en: "Giant wooden temple and Thailand's most impressive gardens.", ko: "거대 목조 사원과 태국 최고의 정원." }, styles: ["efficient"], travelerTypes: ["couple", "family"], activities: [
+  { id: "pattaya-sanctuary-truth", city: "pattaya", title: { en: "Sanctuary of Truth & Nong Nooch", ko: "진리의 성전 & 농눅 가든" }, summary: { en: "Giant wooden temple and Thailand's most impressive gardens.", ko: "거대 목조 사원과 태국 최고의 정원." }, styles: ["efficient"], travelerTypes: ["couple", "parents", "kids"], activities: [
     { time: "09:00", title: { en: "Sanctuary of Truth", ko: "진리의 성전" }, description: { en: "All-wood temple covered in intricate carvings. Still under construction since 1981.", ko: "정교한 조각으로 덮인 목조 사원. 1981년부터 건설 중." }, type: "sightseeing", location: { lat: 12.9730, lng: 100.8870 } },
     { time: "12:00", title: { en: "Seafood lunch", ko: "해산물 점심" }, description: { en: "Fresh seafood at Naklua fish market area.", ko: "나클루아 어시장 지역에서 신선한 해산물." }, type: "dining", location: { lat: 12.9660, lng: 100.8840 } },
     { time: "14:00", title: { en: "Nong Nooch Tropical Garden", ko: "농눅 트로피컬 가든" }, description: { en: "600-acre gardens with Thai cultural shows.", ko: "600에이커 정원과 태국 문화 공연." }, type: "sightseeing", location: { lat: 12.7650, lng: 100.9350 } },
   ], center: { lat: 12.9013, lng: 100.9020 }, tags: ["temple", "garden", "cultural"], coverGradient: "from-green-400 to-emerald-600" },
 
-  { id: "pattaya-coral-island", city: "pattaya", title: { en: "Coral Island (Koh Larn)", ko: "꼬란 섬 투어" }, summary: { en: "Speed boat to Koh Larn — crystal clear water and white sand.", ko: "스피드보트로 꼬란 섬 — 맑은 물과 하얀 모래." }, styles: ["relax", "activity"], travelerTypes: ["couple", "family", "friends"], activities: [
+  { id: "pattaya-coral-island", city: "pattaya", title: { en: "Coral Island (Koh Larn)", ko: "꼬란 섬 투어" }, summary: { en: "Speed boat to Koh Larn — crystal clear water and white sand.", ko: "스피드보트로 꼬란 섬 — 맑은 물과 하얀 모래." }, styles: ["relax", "activity"], travelerTypes: ["couple", "parents", "kids", "friends"], activities: [
     { time: "09:00", title: { en: "Speed boat to Koh Larn", ko: "꼬란 섬 스피드보트" }, description: { en: "20-minute ride from Bali Hai Pier.", ko: "발리하이 부두에서 20분." }, type: "transport", location: { lat: 12.9210, lng: 100.8720 } },
     { time: "10:00", title: { en: "Tawaen Beach swim", ko: "타왠 비치 수영" }, description: { en: "Main beach — clear water, water sports available.", ko: "메인 해변 — 맑은 물, 수상 스포츠." }, type: "beach", location: { lat: 12.9180, lng: 100.7880 } },
     { time: "13:00", title: { en: "Seafood lunch on island", ko: "섬에서 해산물 점심" }, description: { en: "Beachfront grilled seafood stalls.", ko: "해변 해산물 구이 노점." }, type: "dining", location: { lat: 12.9175, lng: 100.7875 } },
     { time: "15:00", title: { en: "Snorkeling at Samae Beach", ko: "사매 비치 스노클링" }, description: { en: "Quieter beach with better snorkeling.", ko: "더 조용한 해변에서 스노클링." }, type: "tour", location: { lat: 12.9100, lng: 100.7830 } },
   ], center: { lat: 12.9166, lng: 100.8076 }, tags: ["island", "snorkeling", "beach"], coverGradient: "from-teal-400 to-cyan-600" },
 
-  { id: "pattaya-floating-market", city: "pattaya", title: { en: "Floating Market & Art Village", ko: "수상시장 & 아트 빌리지" }, summary: { en: "Four-region floating market and creative art village.", ko: "4개 지역 수상시장과 아트 빌리지." }, styles: ["efficient", "relax"], travelerTypes: ["family", "couple"], activities: [
+  { id: "pattaya-floating-market", city: "pattaya", title: { en: "Floating Market & Art Village", ko: "수상시장 & 아트 빌리지" }, summary: { en: "Four-region floating market and creative art village.", ko: "4개 지역 수상시장과 아트 빌리지." }, styles: ["efficient", "relax"], travelerTypes: ["couple", "parents", "kids"], activities: [
     { time: "10:00", title: { en: "Pattaya Floating Market", ko: "파타야 수상시장" }, description: { en: "Thai food and crafts from 4 regions. Boat rides available.", ko: "4개 지역 음식과 공예품. 보트 탑승 가능." }, type: "shopping", location: { lat: 12.8960, lng: 100.8980 } },
     { time: "13:00", title: { en: "Art in Paradise", ko: "아트 인 파라다이스" }, description: { en: "3D art museum — interactive photo opportunities.", ko: "3D 미술관 — 인터랙티브 사진 촬영." }, type: "sightseeing", location: { lat: 12.9320, lng: 100.8800 } },
     { time: "15:00", title: { en: "Terminal 21 shopping", ko: "터미널 21 쇼핑" }, description: { en: "Airport-themed mall with affordable shopping.", ko: "공항 테마 몰에서 저렴한 쇼핑." }, type: "shopping", location: { lat: 12.9450, lng: 100.8830 } },
@@ -411,14 +411,14 @@ export const dayCourses: DayCourse[] = [
     { time: "14:00", title: { en: "Wat Chiang Man", ko: "왓 치앙 만" }, description: { en: "Chiang Mai's oldest temple (1296).", ko: "치앙마이에서 가장 오래된 사원(1296년)." }, type: "sightseeing", location: { lat: 18.7935, lng: 98.9885 } },
   ], center: { lat: 18.7896, lng: 98.9848 }, tags: ["temples", "cultural", "old-city"], coverGradient: "from-amber-500 to-yellow-600" },
 
-  { id: "chiangmai-doi-suthep", city: "chiangmai", title: { en: "Doi Suthep Mountain Temple", ko: "도이수텝 산 사원" }, summary: { en: "Golden mountaintop temple with panoramic city views.", ko: "파노라마 도시 전경의 황금 산꼭대기 사원." }, styles: ["efficient", "activity"], travelerTypes: ["solo", "couple", "family"], activities: [
+  { id: "chiangmai-doi-suthep", city: "chiangmai", title: { en: "Doi Suthep Mountain Temple", ko: "도이수텝 산 사원" }, summary: { en: "Golden mountaintop temple with panoramic city views.", ko: "파노라마 도시 전경의 황금 산꼭대기 사원." }, styles: ["efficient", "activity"], travelerTypes: ["solo", "couple", "parents", "kids"], activities: [
     { time: "08:00", title: { en: "Songthaew to Doi Suthep", ko: "쏭태우로 도이수텝 이동" }, description: { en: "Shared red truck up the mountain. 30 minutes.", ko: "공유 빨간 트럭으로 산 위로 30분." }, type: "transport", location: { lat: 18.7884, lng: 98.9815 } },
     { time: "09:00", title: { en: "Wat Phra That Doi Suthep", ko: "왓 프라 탓 도이수텝" }, description: { en: "306 steps up to a golden chedi. Panoramic views of Chiang Mai.", ko: "306계단 올라가면 황금 체디. 치앙마이 전경." }, type: "sightseeing", location: { lat: 18.8048, lng: 98.9216 } },
     { time: "11:00", title: { en: "Hmong hill tribe village", ko: "흐몽 산족 마을" }, description: { en: "Visit a traditional Hmong village near the temple.", ko: "사원 근처 전통 흐몽 마을 방문." }, type: "sightseeing", location: { lat: 18.8100, lng: 98.9180 } },
     { time: "13:00", title: { en: "Nimman Road cafes", ko: "니만 로드 카페" }, description: { en: "Trendy neighborhood with art cafes and boutiques.", ko: "아트 카페와 부티크가 있는 트렌디한 동네." }, type: "dining", location: { lat: 18.7975, lng: 98.9680 } },
   ], center: { lat: 18.8002, lng: 98.9473 }, tags: ["mountain", "temple", "panoramic", "tribe"], coverGradient: "from-yellow-400 to-amber-600" },
 
-  { id: "chiangmai-elephant-sanctuary", city: "chiangmai", title: { en: "Ethical Elephant Sanctuary", ko: "코끼리 보호구역 체험" }, summary: { en: "Spend a morning feeding and bathing rescued elephants.", ko: "구조된 코끼리와 먹이 주기, 목욕 체험." }, styles: ["activity"], travelerTypes: ["couple", "family", "friends"], activities: [
+  { id: "chiangmai-elephant-sanctuary", city: "chiangmai", title: { en: "Ethical Elephant Sanctuary", ko: "코끼리 보호구역 체험" }, summary: { en: "Spend a morning feeding and bathing rescued elephants.", ko: "구조된 코끼리와 먹이 주기, 목욕 체험." }, styles: ["activity"], travelerTypes: ["couple", "parents", "kids", "friends"], activities: [
     { time: "08:00", title: { en: "Pickup & drive to sanctuary", ko: "픽업 & 보호구역 이동" }, description: { en: "1-hour drive from Chiang Mai.", ko: "치앙마이에서 1시간 이동." }, type: "transport", location: { lat: 18.7884, lng: 98.9815 } },
     { time: "09:30", title: { en: "Meet & feed elephants", ko: "코끼리 만나기 & 먹이 주기" }, description: { en: "Learn about each elephant's rescue story. Feed them bananas and sugarcane.", ko: "각 코끼리의 구조 이야기를 듣고 바나나와 사탕수수를 먹여주세요." }, type: "tour", location: { lat: 18.8500, lng: 98.8200 } },
     { time: "11:30", title: { en: "Mud bath with elephants", ko: "코끼리와 머드 배스" }, description: { en: "Get muddy together, then bathe them in the river.", ko: "함께 진흙탕에 들어간 후 강에서 목욕시키기." }, type: "tour", location: { lat: 18.8510, lng: 98.8210 } },
@@ -461,14 +461,14 @@ export const dayCourses: DayCourse[] = [
     { time: "21:00", title: { en: "Bangla Road nightlife", ko: "방라 로드 나이트라이프" }, description: { en: "Neon-lit street with bars, clubs, and street performers.", ko: "네온 불빛 거리에 바, 클럽, 거리 공연." }, type: "free", location: { lat: 7.8940, lng: 98.2980 } },
   ], center: { lat: 7.8940, lng: 98.2978 }, tags: ["beach", "nightlife", "shopping"], coverGradient: "from-indigo-400 to-violet-600" },
 
-  { id: "phuket-james-bond-island", city: "phuket", title: { en: "James Bond Island (Phang Nga Bay)", ko: "제임스 본드 섬 (팡아만)" }, summary: { en: "Longtail boat through limestone karsts to the famous needle rock.", ko: "석회암 카르스트 사이 롱테일 보트로 유명한 바위." }, styles: ["efficient", "activity"], travelerTypes: ["couple", "family", "friends"], activities: [
+  { id: "phuket-james-bond-island", city: "phuket", title: { en: "James Bond Island (Phang Nga Bay)", ko: "제임스 본드 섬 (팡아만)" }, summary: { en: "Longtail boat through limestone karsts to the famous needle rock.", ko: "석회암 카르스트 사이 롱테일 보트로 유명한 바위." }, styles: ["efficient", "activity"], travelerTypes: ["couple", "parents", "kids", "friends"], activities: [
     { time: "08:00", title: { en: "Boat to Phang Nga Bay", ko: "팡아만 보트 출발" }, description: { en: "Longtail or speed boat through the bay.", ko: "만을 가로지르는 롱테일 또는 스피드보트." }, type: "transport", location: { lat: 8.2000, lng: 98.5200 } },
     { time: "09:30", title: { en: "James Bond Island", ko: "제임스 본드 섬" }, description: { en: "Iconic needle rock from 'The Man with the Golden Gun'.", ko: "'황금총을 가진 사나이'의 상징적인 바위." }, type: "sightseeing", location: { lat: 8.2750, lng: 98.5010 } },
     { time: "11:00", title: { en: "Kayak through sea caves", ko: "바다 동굴 카약" }, description: { en: "Paddle through hidden lagoons and sea caves.", ko: "숨겨진 라군과 바다 동굴을 카약으로 탐험." }, type: "tour", location: { lat: 8.2100, lng: 98.4800 } },
     { time: "13:00", title: { en: "Floating village lunch", ko: "수상 마을 점심" }, description: { en: "Lunch at Koh Panyee floating Muslim village.", ko: "꼬 빤이 수상 무슬림 마을에서 점심." }, type: "dining", location: { lat: 8.3350, lng: 98.5100 } },
   ], center: { lat: 8.2550, lng: 98.5028 }, tags: ["kayak", "karst", "movie-location", "boat"], coverGradient: "from-emerald-500 to-teal-700" },
 
-  { id: "phuket-big-buddha-chalong", city: "phuket", title: { en: "Big Buddha & Wat Chalong", ko: "빅 부다 & 왓 찰롱" }, summary: { en: "Phuket's biggest religious sites with hilltop views.", ko: "푸켓 최대 종교 유적지와 언덕 위 전경." }, styles: ["relax", "efficient"], travelerTypes: ["couple", "family", "solo"], activities: [
+  { id: "phuket-big-buddha-chalong", city: "phuket", title: { en: "Big Buddha & Wat Chalong", ko: "빅 부다 & 왓 찰롱" }, summary: { en: "Phuket's biggest religious sites with hilltop views.", ko: "푸켓 최대 종교 유적지와 언덕 위 전경." }, styles: ["relax", "efficient"], travelerTypes: ["couple", "parents", "kids", "solo"], activities: [
     { time: "09:00", title: { en: "Big Buddha statue", ko: "빅 부다 상" }, description: { en: "45m marble Buddha on Nakkerd Hill. 360° views.", ko: "나커드 힐 위 45m 대리석 불상. 360도 전경." }, type: "sightseeing", location: { lat: 7.8280, lng: 98.3130 } },
     { time: "11:00", title: { en: "Wat Chalong temple", ko: "왓 찰롱 사원" }, description: { en: "Phuket's most important Buddhist temple.", ko: "푸켓에서 가장 중요한 불교 사원." }, type: "sightseeing", location: { lat: 7.8430, lng: 98.3380 } },
     { time: "13:00", title: { en: "Local Thai lunch", ko: "현지 태국 점심" }, description: { en: "Authentic Thai food near the temple.", ko: "사원 근처 정통 태국 음식." }, type: "dining", location: { lat: 7.8440, lng: 98.3390 } },
@@ -484,7 +484,7 @@ export const dayCourses: DayCourse[] = [
     { time: "18:00", title: { en: "Shibuya Crossing & Sky", ko: "시부야 스크램블 & 스카이" }, description: { en: "World's busiest crossing. Then Shibuya Sky for sunset views.", ko: "세계에서 가장 바쁜 교차로. 시부야 스카이에서 선셋." }, type: "sightseeing", location: { lat: 35.6595, lng: 139.7004 } },
   ], center: { lat: 35.6682, lng: 139.7031 }, tags: ["fashion", "shrine", "crossing", "urban"], coverGradient: "from-pink-500 to-purple-600" },
 
-  { id: "tokyo-asakusa-akihabara", city: "tokyo", title: { en: "Asakusa & Akihabara", ko: "아사쿠사 & 아키하바라" }, summary: { en: "Traditional temple town and electric otaku district.", ko: "전통 사원 마을과 전자 오타쿠 지구." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "friends", "family"], activities: [
+  { id: "tokyo-asakusa-akihabara", city: "tokyo", title: { en: "Asakusa & Akihabara", ko: "아사쿠사 & 아키하바라" }, summary: { en: "Traditional temple town and electric otaku district.", ko: "전통 사원 마을과 전자 오타쿠 지구." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "friends", "parents", "kids"], activities: [
     { time: "09:00", title: { en: "Senso-ji Temple", ko: "센소지 사원" }, description: { en: "Tokyo's oldest temple. Walk through Kaminarimon gate.", ko: "도쿄에서 가장 오래된 사원. 가미나리몬 통과." }, type: "sightseeing", location: { lat: 35.7148, lng: 139.7967 } },
     { time: "10:30", title: { en: "Nakamise shopping street", ko: "나카미세 쇼핑 거리" }, description: { en: "Traditional snacks and souvenirs.", ko: "전통 간식과 기념품." }, type: "shopping", location: { lat: 35.7130, lng: 139.7960 } },
     { time: "12:00", title: { en: "Tokyo Skytree", ko: "도쿄 스카이트리" }, description: { en: "634m tower observation deck — all of Tokyo visible.", ko: "634m 타워 전망대 — 도쿄 전체 조망." }, type: "sightseeing", location: { lat: 35.7101, lng: 139.8107 } },
@@ -498,20 +498,20 @@ export const dayCourses: DayCourse[] = [
     { time: "20:00", title: { en: "Golden Gai bar hopping", ko: "골든 가이 바 호핑" }, description: { en: "200+ tiny bars in narrow alleys — each seats 6-10 people.", ko: "좁은 골목에 200개 이상 작은 바 — 각각 6~10석." }, type: "free", location: { lat: 35.6935, lng: 139.7037 } },
   ], center: { lat: 35.6909, lng: 139.7053 }, tags: ["garden", "ramen", "nightlife", "bars"], coverGradient: "from-violet-400 to-indigo-600" },
 
-  { id: "tokyo-tsukiji-ginza", city: "tokyo", title: { en: "Tsukiji Outer Market & Ginza", ko: "쓰키지 외부시장 & 긴자" }, summary: { en: "Fresh sushi breakfast, then upscale Ginza shopping.", ko: "신선한 초밥 아침, 고급 긴자 쇼핑." }, styles: ["efficient", "hotel"], travelerTypes: ["couple", "family"], activities: [
+  { id: "tokyo-tsukiji-ginza", city: "tokyo", title: { en: "Tsukiji Outer Market & Ginza", ko: "쓰키지 외부시장 & 긴자" }, summary: { en: "Fresh sushi breakfast, then upscale Ginza shopping.", ko: "신선한 초밥 아침, 고급 긴자 쇼핑." }, styles: ["efficient", "hotel"], travelerTypes: ["couple", "parents", "kids"], activities: [
     { time: "07:00", title: { en: "Tsukiji Outer Market", ko: "쓰키지 외부시장" }, description: { en: "Fresh sushi, tamago, and street food stalls.", ko: "신선한 초밥, 타마고, 길거리 음식." }, type: "dining", location: { lat: 35.6654, lng: 139.7707 } },
     { time: "10:00", title: { en: "TeamLab Planets", ko: "팀랩 플래닛" }, description: { en: "Immersive digital art museum — walk through water and light.", ko: "몰입형 디지털 아트 — 물과 빛 속을 걸어보세요." }, type: "sightseeing", location: { lat: 35.6546, lng: 139.7884 } },
     { time: "13:00", title: { en: "Ginza lunch & shopping", ko: "긴자 점심 & 쇼핑" }, description: { en: "Luxury brands, Uniqlo flagship, and Mitsukoshi.", ko: "명품, 유니클로 플래그십, 미쓰코시." }, type: "shopping", location: { lat: 35.6712, lng: 139.7649 } },
   ], center: { lat: 35.6637, lng: 139.7747 }, tags: ["sushi", "market", "luxury", "art"], coverGradient: "from-amber-400 to-yellow-600" },
 
-  { id: "tokyo-ueno-yanaka", city: "tokyo", title: { en: "Ueno Park & Yanaka Old Town", ko: "우에노 공원 & 야나카" }, summary: { en: "Museums, zoo, and a nostalgic old Tokyo neighborhood.", ko: "박물관, 동물원, 옛 도쿄 느낌의 야나카." }, styles: ["relax"], travelerTypes: ["couple", "family", "solo"], activities: [
+  { id: "tokyo-ueno-yanaka", city: "tokyo", title: { en: "Ueno Park & Yanaka Old Town", ko: "우에노 공원 & 야나카" }, summary: { en: "Museums, zoo, and a nostalgic old Tokyo neighborhood.", ko: "박물관, 동물원, 옛 도쿄 느낌의 야나카." }, styles: ["relax"], travelerTypes: ["couple", "parents", "kids", "solo"], activities: [
     { time: "09:00", title: { en: "Ueno Park & Toshogu Shrine", ko: "우에노 공원 & 도쇼구 신사" }, description: { en: "Green oasis with shrines, ponds, and museums.", ko: "신사, 연못, 박물관이 있는 녹색 오아시스." }, type: "sightseeing", location: { lat: 35.7146, lng: 139.7730 } },
     { time: "11:00", title: { en: "Tokyo National Museum", ko: "도쿄 국립 박물관" }, description: { en: "Japan's oldest and largest museum.", ko: "일본에서 가장 오래되고 큰 박물관." }, type: "sightseeing", location: { lat: 35.7189, lng: 139.7766 } },
     { time: "14:00", title: { en: "Yanaka Ginza shopping street", ko: "야나카 긴자 상가" }, description: { en: "Retro shopping street with local snacks and cat statues.", ko: "현지 간식과 고양이 조각이 있는 레트로 상가." }, type: "shopping", location: { lat: 35.7270, lng: 139.7660 } },
     { time: "16:00", title: { en: "Yanaka Cemetery sunset walk", ko: "야나카 묘지 산책" }, description: { en: "Peaceful cherry-tree-lined paths in old Tokyo.", ko: "옛 도쿄의 벚꽃 가로수 산책." }, type: "free", location: { lat: 35.7250, lng: 139.7700 } },
   ], center: { lat: 35.7214, lng: 139.7714 }, tags: ["museum", "park", "retro", "peaceful"], coverGradient: "from-green-400 to-emerald-500" },
 
-  { id: "tokyo-odaiba-bay", city: "tokyo", title: { en: "Odaiba Bay & Rainbow Bridge", ko: "오다이바 & 레인보우 브릿지" }, summary: { en: "Futuristic waterfront with Gundam, onsen, and bay views.", ko: "건담, 온천, 만 전경의 미래형 해안." }, styles: ["activity", "relax"], travelerTypes: ["couple", "family", "friends"], activities: [
+  { id: "tokyo-odaiba-bay", city: "tokyo", title: { en: "Odaiba Bay & Rainbow Bridge", ko: "오다이바 & 레인보우 브릿지" }, summary: { en: "Futuristic waterfront with Gundam, onsen, and bay views.", ko: "건담, 온천, 만 전경의 미래형 해안." }, styles: ["activity", "relax"], travelerTypes: ["couple", "parents", "kids", "friends"], activities: [
     { time: "11:00", title: { en: "Unicorn Gundam statue", ko: "유니콘 건담 입상" }, description: { en: "Life-size 19.7m Gundam that transforms every few hours.", ko: "19.7m 실물 크기 건담. 매 몇 시간마다 변신." }, type: "sightseeing", location: { lat: 35.6250, lng: 139.7750 } },
     { time: "12:30", title: { en: "Aqua City lunch", ko: "아쿠아시티 점심" }, description: { en: "Mall with ramen stadium and bay view restaurants.", ko: "라멘 스타디움과 만 전경 레스토랑이 있는 몰." }, type: "dining", location: { lat: 35.6268, lng: 139.7750 } },
     { time: "14:30", title: { en: "TeamLab Borderless", ko: "팀랩 보더리스" }, description: { en: "Immersive art museum — no borders between art and visitor.", ko: "몰입형 아트 — 예술과 관람객 사이 경계가 없음." }, type: "sightseeing", location: { lat: 35.6260, lng: 139.7810 } },
@@ -528,13 +528,13 @@ export const dayCourses: DayCourse[] = [
     { time: "17:00", title: { en: "Kushikatsu dinner", ko: "꼬치 튀김 저녁" }, description: { en: "Deep-fried skewers — no double-dipping the sauce!", ko: "꼬치 튀김 — 소스에 두 번 찍기 금지!" }, type: "dining", location: { lat: 34.6520, lng: 135.5060 } },
   ], center: { lat: 34.6605, lng: 135.5042 }, tags: ["food", "neon", "retro", "street-food"], coverGradient: "from-red-500 to-orange-600" },
 
-  { id: "osaka-castle-park", city: "osaka", title: { en: "Osaka Castle & Park", ko: "오사카 성 & 공원" }, summary: { en: "Japan's most famous castle, park, and Osaka Museum of History.", ko: "일본 최고의 성, 공원, 오사카 역사 박물관." }, styles: ["relax", "efficient"], travelerTypes: ["couple", "family", "solo"], activities: [
+  { id: "osaka-castle-park", city: "osaka", title: { en: "Osaka Castle & Park", ko: "오사카 성 & 공원" }, summary: { en: "Japan's most famous castle, park, and Osaka Museum of History.", ko: "일본 최고의 성, 공원, 오사카 역사 박물관." }, styles: ["relax", "efficient"], travelerTypes: ["couple", "parents", "kids", "solo"], activities: [
     { time: "09:00", title: { en: "Osaka Castle", ko: "오사카 성" }, description: { en: "Toyotomi Hideyoshi's castle. 8-floor museum inside.", ko: "도요토미 히데요시의 성. 내부 8층 박물관." }, type: "sightseeing", location: { lat: 34.6873, lng: 135.5262 } },
     { time: "11:30", title: { en: "Castle park walk", ko: "성 공원 산책" }, description: { en: "Moat, plum grove, and cherry blossom trees.", ko: "해자, 매화원, 벚꽃 나무." }, type: "free", location: { lat: 34.6850, lng: 135.5240 } },
     { time: "13:00", title: { en: "Lunch at Tenmabashi", ko: "덴마바시 점심" }, description: { en: "Local udon or curry rice near the castle.", ko: "성 근처 현지 우동 또는 카레라이스." }, type: "dining", location: { lat: 34.6900, lng: 135.5200 } },
   ], center: { lat: 34.6874, lng: 135.5234 }, tags: ["castle", "history", "park", "cherry-blossom"], coverGradient: "from-amber-400 to-yellow-600" },
 
-  { id: "osaka-universal-studios", city: "osaka", title: { en: "Universal Studios Japan", ko: "유니버설 스튜디오 재팬" }, summary: { en: "Full day at USJ — Harry Potter, Nintendo World, rides.", ko: "USJ 종일 — 해리포터, 닌텐도 월드, 놀이기구." }, styles: ["activity"], travelerTypes: ["family", "friends", "couple"], activities: [
+  { id: "osaka-universal-studios", city: "osaka", title: { en: "Universal Studios Japan", ko: "유니버설 스튜디오 재팬" }, summary: { en: "Full day at USJ — Harry Potter, Nintendo World, rides.", ko: "USJ 종일 — 해리포터, 닌텐도 월드, 놀이기구." }, styles: ["activity"], travelerTypes: ["parents", "kids", "friends", "couple"], activities: [
     { time: "08:30", title: { en: "Early entry to USJ", ko: "USJ 조기 입장" }, description: { en: "Get the Express Pass for popular rides.", ko: "인기 놀이기구 익스프레스 패스 구매 추천." }, type: "tour", location: { lat: 34.6654, lng: 135.4323 } },
     { time: "10:00", title: { en: "Super Nintendo World", ko: "슈퍼 닌텐도 월드" }, description: { en: "Mario Kart ride, coin blocks, and Toadstool Cafe.", ko: "마리오 카트, 코인 블록, 버섯 카페." }, type: "tour", location: { lat: 34.6660, lng: 135.4310 } },
     { time: "14:00", title: { en: "Wizarding World of Harry Potter", ko: "해리포터 마법사 세계" }, description: { en: "Hogwarts Castle, butterbeer, and wand shopping.", ko: "호그와트 성, 버터비어, 지팡이 쇼핑." }, type: "tour", location: { lat: 34.6665, lng: 135.4330 } },
@@ -558,7 +558,7 @@ export const dayCourses: DayCourse[] = [
   // ════════════════════════════════════════════════════
   // KYOTO (5 courses)
   // ════════════════════════════════════════════════════
-  { id: "kyoto-kinkakuji-arashiyama", city: "kyoto", title: { en: "Golden Pavilion & Arashiyama Bamboo", ko: "금각사 & 아라시야마 대나무숲" }, summary: { en: "Kyoto's two most iconic sights in one day.", ko: "교토의 가장 상징적인 두 명소를 하루에." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "kyoto-kinkakuji-arashiyama", city: "kyoto", title: { en: "Golden Pavilion & Arashiyama Bamboo", ko: "금각사 & 아라시야마 대나무숲" }, summary: { en: "Kyoto's two most iconic sights in one day.", ko: "교토의 가장 상징적인 두 명소를 하루에." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "08:00", title: { en: "Kinkaku-ji (Golden Pavilion)", ko: "금각사" }, description: { en: "Gold-leafed pavilion reflected in a mirror lake.", ko: "거울 연못에 비치는 금박 사원." }, type: "sightseeing", location: { lat: 35.0394, lng: 135.7292 } },
     { time: "10:30", title: { en: "Arashiyama Bamboo Grove", ko: "아라시야마 대나무숲" }, description: { en: "Walk through towering bamboo — arrive early to avoid crowds.", ko: "우뚝 솟은 대나무 사이를 걸어보세요. 일찍 도착 추천." }, type: "sightseeing", location: { lat: 35.0170, lng: 135.6713 } },
     { time: "12:00", title: { en: "Togetsu-kyo Bridge lunch", ko: "도게쓰쿄 다리 점심" }, description: { en: "Tofu cuisine or soba near the iconic bridge.", ko: "상징적인 다리 근처 두부 요리 또는 소바." }, type: "dining", location: { lat: 35.0094, lng: 135.6780 } },
@@ -578,7 +578,7 @@ export const dayCourses: DayCourse[] = [
     { time: "14:00", title: { en: "Philosopher's Path walk", ko: "철학자의 길 산책" }, description: { en: "2km canal-side path lined with cherry trees.", ko: "벚꽃 가로수가 있는 2km 운하 산책로." }, type: "free", location: { lat: 35.0227, lng: 135.7943 } },
   ], center: { lat: 35.0224, lng: 135.7609 }, tags: ["zen", "tea", "garden", "meditation"], coverGradient: "from-green-400 to-emerald-600" },
 
-  { id: "kyoto-nara-daytrip", city: "kyoto", title: { en: "Nara Day Trip (Deer Park)", ko: "나라 당일 여행 (사슴 공원)" }, summary: { en: "45 minutes from Kyoto — friendly deer, giant Buddha, ancient shrines.", ko: "교토에서 45분 — 사슴, 거대 불상, 고대 신사." }, styles: ["efficient", "activity"], travelerTypes: ["family", "couple", "friends"], activities: [
+  { id: "kyoto-nara-daytrip", city: "kyoto", title: { en: "Nara Day Trip (Deer Park)", ko: "나라 당일 여행 (사슴 공원)" }, summary: { en: "45 minutes from Kyoto — friendly deer, giant Buddha, ancient shrines.", ko: "교토에서 45분 — 사슴, 거대 불상, 고대 신사." }, styles: ["efficient", "activity"], travelerTypes: ["couple", "parents", "kids", "friends"], activities: [
     { time: "09:00", title: { en: "Train to Nara", ko: "나라행 기차" }, description: { en: "45-minute JR train from Kyoto Station.", ko: "교토역에서 JR 기차 45분." }, type: "transport", location: { lat: 34.9858, lng: 135.7588 } },
     { time: "10:00", title: { en: "Nara Park & deer", ko: "나라 공원 & 사슴" }, description: { en: "1,200 free-roaming sacred deer. Buy deer crackers (shika senbei).", ko: "1,200마리 자유 방목 신성한 사슴. 사슴 과자 구매." }, type: "sightseeing", location: { lat: 34.6851, lng: 135.8430 } },
     { time: "11:30", title: { en: "Todai-ji (Great Buddha)", ko: "도다이지 (대불)" }, description: { en: "World's largest wooden building housing a 15m bronze Buddha.", ko: "15m 청동 불상이 있는 세계 최대 목조 건물." }, type: "sightseeing", location: { lat: 34.6890, lng: 135.8399 } },
@@ -601,13 +601,13 @@ export const dayCourses: DayCourse[] = [
     { time: "19:00", title: { en: "Nakasu yatai food stalls", ko: "나카스 야타이 포장마차" }, description: { en: "Open-air ramen, oden, and yakitori stalls along the river.", ko: "강변 야외 라멘, 오뎅, 야키토리." }, type: "dining", location: { lat: 33.5930, lng: 130.4060 } },
   ], center: { lat: 33.5908, lng: 130.4091 }, tags: ["ramen", "yatai", "food", "shopping"], coverGradient: "from-orange-400 to-red-500" },
 
-  { id: "fukuoka-ohori-park-tower", city: "fukuoka", title: { en: "Ohori Park & Fukuoka Tower", ko: "오호리 공원 & 후쿠오카 타워" }, summary: { en: "Lake garden and Japan's tallest seaside tower.", ko: "호수 정원과 일본 최고의 해변 타워." }, styles: ["relax"], travelerTypes: ["couple", "family", "solo"], activities: [
+  { id: "fukuoka-ohori-park-tower", city: "fukuoka", title: { en: "Ohori Park & Fukuoka Tower", ko: "오호리 공원 & 후쿠오카 타워" }, summary: { en: "Lake garden and Japan's tallest seaside tower.", ko: "호수 정원과 일본 최고의 해변 타워." }, styles: ["relax"], travelerTypes: ["couple", "parents", "kids", "solo"], activities: [
     { time: "09:00", title: { en: "Ohori Park walk", ko: "오호리 공원 산책" }, description: { en: "2km loop around the lake, Japanese garden included.", ko: "호수 주변 2km 산책, 일본 정원 포함." }, type: "free", location: { lat: 33.5850, lng: 130.3780 } },
     { time: "11:00", title: { en: "Fukuoka Tower observation", ko: "후쿠오카 타워 전망대" }, description: { en: "234m tower with 360° city and sea views.", ko: "234m 타워에서 360도 도시와 바다 전망." }, type: "sightseeing", location: { lat: 33.5930, lng: 130.3510 } },
     { time: "13:00", title: { en: "Momochi beach lunch", ko: "모모치 해변 점심" }, description: { en: "Beachside cafes near the tower.", ko: "타워 근처 해변 카페." }, type: "dining", location: { lat: 33.5920, lng: 130.3530 } },
   ], center: { lat: 33.5900, lng: 130.3607 }, tags: ["park", "tower", "lake", "beach"], coverGradient: "from-sky-400 to-blue-500" },
 
-  { id: "fukuoka-dazaifu-shrine", city: "fukuoka", title: { en: "Dazaifu Tenmangu Shrine", ko: "다자이후 텐만구 신사" }, summary: { en: "Study god shrine with plum trees and mochi.", ko: "학업의 신 신사, 매화나무와 모치." }, styles: ["efficient"], travelerTypes: ["couple", "family", "solo"], activities: [
+  { id: "fukuoka-dazaifu-shrine", city: "fukuoka", title: { en: "Dazaifu Tenmangu Shrine", ko: "다자이후 텐만구 신사" }, summary: { en: "Study god shrine with plum trees and mochi.", ko: "학업의 신 신사, 매화나무와 모치." }, styles: ["efficient"], travelerTypes: ["couple", "parents", "kids", "solo"], activities: [
     { time: "09:00", title: { en: "Train to Dazaifu", ko: "다자이후행 기차" }, description: { en: "30-minute private railway from Tenjin.", ko: "텐진에서 사철 30분." }, type: "transport", location: { lat: 33.5900, lng: 130.3990 } },
     { time: "10:00", title: { en: "Tenmangu Shrine", ko: "텐만구 신사" }, description: { en: "Shrine to the god of learning — students come for exam success.", ko: "학문의 신 신사 — 시험 성공을 기원하는 학생들." }, type: "sightseeing", location: { lat: 33.5197, lng: 130.5347 } },
     { time: "11:30", title: { en: "Umegae mochi & Starbucks", ko: "우메가에 모치 & 스타벅스" }, description: { en: "Famous plum mochi. Kengo Kuma's unique Starbucks design.", ko: "유명 매화 모치. 쿠마 켄고의 독특한 스타벅스." }, type: "dining", location: { lat: 33.5200, lng: 130.5340 } },
@@ -617,7 +617,7 @@ export const dayCourses: DayCourse[] = [
   // ════════════════════════════════════════════════════
   // PARIS (5 courses)
   // ════════════════════════════════════════════════════
-  { id: "paris-eiffel-seine", city: "paris", title: { en: "Eiffel Tower & Seine Cruise", ko: "에펠탑 & 센강 크루즈" }, summary: { en: "Paris's icon by day, romantic Seine cruise at sunset.", ko: "파리의 상징 에펠탑, 선셋 센강 크루즈." }, styles: ["relax", "efficient"], travelerTypes: ["couple", "family"], activities: [
+  { id: "paris-eiffel-seine", city: "paris", title: { en: "Eiffel Tower & Seine Cruise", ko: "에펠탑 & 센강 크루즈" }, summary: { en: "Paris's icon by day, romantic Seine cruise at sunset.", ko: "파리의 상징 에펠탑, 선셋 센강 크루즈." }, styles: ["relax", "efficient"], travelerTypes: ["couple", "parents", "kids"], activities: [
     { time: "10:00", title: { en: "Eiffel Tower", ko: "에펠탑" }, description: { en: "Book summit tickets online in advance.", ko: "정상 티켓은 온라인 사전 예매 필수." }, type: "sightseeing", location: { lat: 48.8584, lng: 2.2945 } },
     { time: "13:00", title: { en: "Lunch on Rue Cler", ko: "뤼 클레르에서 점심" }, description: { en: "Charming market street near the tower.", ko: "타워 근처 매력적인 시장 거리." }, type: "dining", location: { lat: 48.8570, lng: 2.3060 } },
     { time: "18:00", title: { en: "Seine River sunset cruise", ko: "센강 선셋 크루즈" }, description: { en: "1-hour Bateaux Mouches cruise past Notre-Dame.", ko: "노트르담을 지나는 1시간 바토무슈 크루즈." }, type: "tour", location: { lat: 48.8610, lng: 2.3060 } },
@@ -637,7 +637,7 @@ export const dayCourses: DayCourse[] = [
     { time: "15:00", title: { en: "Moulin Rouge area walk", ko: "물랑 루즈 주변 산책" }, description: { en: "See the famous cabaret and nearby vintage shops.", ko: "유명 카바레와 근처 빈티지 숍 구경." }, type: "sightseeing", location: { lat: 48.8842, lng: 2.3322 } },
   ], center: { lat: 48.8856, lng: 2.3395 }, tags: ["art", "basilica", "artists", "bohemian"], coverGradient: "from-rose-400 to-pink-600" },
 
-  { id: "paris-versailles", city: "paris", title: { en: "Versailles Day Trip", ko: "베르사유 당일 여행" }, summary: { en: "Palace of Versailles, Hall of Mirrors, and vast gardens.", ko: "베르사유 궁전, 거울의 방, 광대한 정원." }, styles: ["efficient", "activity"], travelerTypes: ["couple", "family", "friends"], activities: [
+  { id: "paris-versailles", city: "paris", title: { en: "Versailles Day Trip", ko: "베르사유 당일 여행" }, summary: { en: "Palace of Versailles, Hall of Mirrors, and vast gardens.", ko: "베르사유 궁전, 거울의 방, 광대한 정원." }, styles: ["efficient", "activity"], travelerTypes: ["couple", "parents", "kids", "friends"], activities: [
     { time: "08:30", title: { en: "RER C to Versailles", ko: "RER C로 베르사유 이동" }, description: { en: "40 minutes from central Paris.", ko: "파리 중심에서 40분." }, type: "transport", location: { lat: 48.8566, lng: 2.3522 } },
     { time: "10:00", title: { en: "Palace of Versailles", ko: "베르사유 궁전" }, description: { en: "Hall of Mirrors, King's apartments, Chapel.", ko: "거울의 방, 왕의 아파트먼트, 예배당." }, type: "sightseeing", location: { lat: 48.8049, lng: 2.1204 } },
     { time: "13:00", title: { en: "Garden picnic", ko: "정원 피크닉" }, description: { en: "Buy baguette and cheese for a garden picnic.", ko: "바게트와 치즈를 사서 정원 피크닉." }, type: "dining", location: { lat: 48.8050, lng: 2.1150 } },
@@ -662,13 +662,13 @@ export const dayCourses: DayCourse[] = [
   // For brevity, adding 3-4 courses per city with realistic GPS.
 
   // ROME
-  { id: "rome-colosseum-forum", city: "rome", title: { en: "Colosseum & Roman Forum", ko: "콜로세움 & 로마 포럼" }, summary: { en: "Ancient Rome's greatest hits in one morning.", ko: "고대 로마의 핵심을 한 아침에." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "rome-colosseum-forum", city: "rome", title: { en: "Colosseum & Roman Forum", ko: "콜로세움 & 로마 포럼" }, summary: { en: "Ancient Rome's greatest hits in one morning.", ko: "고대 로마의 핵심을 한 아침에." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "08:30", title: { en: "Colosseum guided tour", ko: "콜로세움 가이드 투어" }, description: { en: "Skip the line with pre-booked tickets.", ko: "사전 예매 티켓으로 줄 건너뛰기." }, type: "sightseeing", location: { lat: 41.8902, lng: 12.4922 } },
     { time: "11:00", title: { en: "Roman Forum & Palatine Hill", ko: "로마 포럼 & 팔라티노 언덕" }, description: { en: "Walk where Caesar walked.", ko: "카이사르가 걸었던 곳을 걸어보세요." }, type: "sightseeing", location: { lat: 41.8925, lng: 12.4853 } },
     { time: "13:30", title: { en: "Pasta lunch at Rione Monti", ko: "리오네 몬티에서 파스타 점심" }, description: { en: "Carbonara or cacio e pepe in Rome's hippest neighborhood.", ko: "로마에서 가장 트렌디한 동네에서 카르보나라." }, type: "dining", location: { lat: 41.8950, lng: 12.4950 } },
   ], center: { lat: 41.8926, lng: 12.4908 }, tags: ["ancient", "colosseum", "history"], coverGradient: "from-amber-500 to-orange-700" },
 
-  { id: "rome-vatican-trastevere", city: "rome", title: { en: "Vatican & Trastevere", ko: "바티칸 & 트라스테베레" }, summary: { en: "Sistine Chapel, St Peter's, then dinner in Trastevere.", ko: "시스티나 예배당, 성 베드로 대성당, 트라스테베레 저녁." }, styles: ["efficient", "relax"], travelerTypes: ["couple", "family", "solo"], activities: [
+  { id: "rome-vatican-trastevere", city: "rome", title: { en: "Vatican & Trastevere", ko: "바티칸 & 트라스테베레" }, summary: { en: "Sistine Chapel, St Peter's, then dinner in Trastevere.", ko: "시스티나 예배당, 성 베드로 대성당, 트라스테베레 저녁." }, styles: ["efficient", "relax"], travelerTypes: ["couple", "parents", "kids", "solo"], activities: [
     { time: "08:00", title: { en: "Vatican Museums & Sistine Chapel", ko: "바티칸 박물관 & 시스티나 예배당" }, description: { en: "Book the first entry slot. Allow 3 hours.", ko: "첫 번째 입장 시간 예약. 3시간 소요." }, type: "sightseeing", location: { lat: 41.9065, lng: 12.4536 } },
     { time: "12:00", title: { en: "St. Peter's Basilica", ko: "성 베드로 대성당" }, description: { en: "Free entry. Climb the dome for city views.", ko: "무료 입장. 돔에 올라가면 도시 전경." }, type: "sightseeing", location: { lat: 41.9022, lng: 12.4539 } },
     { time: "19:00", title: { en: "Trastevere dinner & gelato", ko: "트라스테베레 저녁 & 젤라토" }, description: { en: "Cobblestone streets, trattorias, and the best gelato.", ko: "자갈길, 트라토리아, 최고의 젤라토." }, type: "dining", location: { lat: 41.8899, lng: 12.4700 } },
@@ -708,13 +708,13 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 43.6235, lng: 11.2389 }, tags: ["wine", "countryside", "tuscany", "tasting"], coverGradient: "from-green-400 to-emerald-600" },
 
   // VENICE
-  { id: "venice-san-marco-rialto", city: "venice", title: { en: "San Marco & Rialto Bridge", ko: "산 마르코 & 리알토 다리" }, summary: { en: "St. Mark's Basilica, Doge's Palace, and the iconic bridge.", ko: "성 마르코 대성당, 도제 궁전, 상징적인 다리." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family"], activities: [
+  { id: "venice-san-marco-rialto", city: "venice", title: { en: "San Marco & Rialto Bridge", ko: "산 마르코 & 리알토 다리" }, summary: { en: "St. Mark's Basilica, Doge's Palace, and the iconic bridge.", ko: "성 마르코 대성당, 도제 궁전, 상징적인 다리." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids"], activities: [
     { time: "09:00", title: { en: "St. Mark's Basilica", ko: "성 마르코 대성당" }, description: { en: "Gold mosaic interior. Free entry, skip-line tickets available.", ko: "금 모자이크 내부. 무료 입장, 스킵라인 가능." }, type: "sightseeing", location: { lat: 45.4345, lng: 12.3397 } },
     { time: "10:30", title: { en: "Doge's Palace", ko: "도제 궁전" }, description: { en: "Bridge of Sighs and Gothic architecture.", ko: "탄식의 다리와 고딕 건축." }, type: "sightseeing", location: { lat: 45.4337, lng: 12.3408 } },
     { time: "13:00", title: { en: "Rialto Market lunch", ko: "리알토 시장 점심" }, description: { en: "Fresh cicchetti (Venetian tapas) near Rialto Bridge.", ko: "리알토 다리 근처 치케티(베네치안 타파스)." }, type: "dining", location: { lat: 45.4381, lng: 12.3358 } },
   ], center: { lat: 45.4354, lng: 12.3388 }, tags: ["basilica", "palace", "bridge", "historic"], coverGradient: "from-blue-400 to-cyan-600" },
 
-  { id: "venice-gondola-murano", city: "venice", title: { en: "Gondola Ride & Murano Glass", ko: "곤돌라 & 무라노 유리" }, summary: { en: "Classic gondola through canals, then glass-blowing on Murano.", ko: "운하 곤돌라, 무라노 섬 유리 공예." }, styles: ["relax"], travelerTypes: ["couple", "family"], activities: [
+  { id: "venice-gondola-murano", city: "venice", title: { en: "Gondola Ride & Murano Glass", ko: "곤돌라 & 무라노 유리" }, summary: { en: "Classic gondola through canals, then glass-blowing on Murano.", ko: "운하 곤돌라, 무라노 섬 유리 공예." }, styles: ["relax"], travelerTypes: ["couple", "parents", "kids"], activities: [
     { time: "10:00", title: { en: "Gondola ride", ko: "곤돌라 탑승" }, description: { en: "30-minute ride through hidden canals. Book ahead.", ko: "숨겨진 운하 30분 탑승. 사전 예약." }, type: "tour", location: { lat: 45.4340, lng: 12.3360 } },
     { time: "12:00", title: { en: "Vaporetto to Murano", ko: "바포레토로 무라노 이동" }, description: { en: "Water bus to the glass island.", ko: "수상버스로 유리 섬 이동." }, type: "transport", location: { lat: 45.4400, lng: 12.3350 } },
     { time: "13:00", title: { en: "Glass-blowing demo", ko: "유리 공예 시연" }, description: { en: "Watch master artisans create glass art.", ko: "장인 예술가들의 유리 공예 관람." }, type: "tour", location: { lat: 45.4580, lng: 12.3520 } },
@@ -729,14 +729,14 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 45.4750, lng: 12.3976 }, tags: ["colorful", "lace", "island", "photography"], coverGradient: "from-pink-400 to-yellow-400" },
 
   // LONDON
-  { id: "london-westminster-southbank", city: "london", title: { en: "Westminster & South Bank", ko: "웨스트민스터 & 사우스뱅크" }, summary: { en: "Big Ben, Parliament, London Eye, and Thames walk.", ko: "빅벤, 국회의사당, 런던아이, 템즈강 산책." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "london-westminster-southbank", city: "london", title: { en: "Westminster & South Bank", ko: "웨스트민스터 & 사우스뱅크" }, summary: { en: "Big Ben, Parliament, London Eye, and Thames walk.", ko: "빅벤, 국회의사당, 런던아이, 템즈강 산책." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "09:00", title: { en: "Westminster Abbey & Big Ben", ko: "웨스트민스터 사원 & 빅벤" }, description: { en: "Gothic abbey and the iconic clock tower.", ko: "고딕 사원과 상징적인 시계탑." }, type: "sightseeing", location: { lat: 51.4994, lng: -0.1275 } },
     { time: "11:00", title: { en: "London Eye", ko: "런던 아이" }, description: { en: "30-minute rotation with Thames and city panorama.", ko: "30분 회전, 템즈강과 도시 파노라마." }, type: "sightseeing", location: { lat: 51.5033, lng: -0.1196 } },
     { time: "13:00", title: { en: "South Bank food market", ko: "사우스뱅크 음식 시장" }, description: { en: "Street food stalls along the Thames.", ko: "템즈강변 길거리 음식 노점." }, type: "dining", location: { lat: 51.5055, lng: -0.1150 } },
     { time: "15:00", title: { en: "Tate Modern", ko: "테이트 모던" }, description: { en: "Free modern art museum in a former power station.", ko: "옛 발전소의 무료 현대 미술관." }, type: "sightseeing", location: { lat: 51.5076, lng: -0.0994 } },
   ], center: { lat: 51.5040, lng: -0.1154 }, tags: ["parliament", "eye", "thames", "iconic"], coverGradient: "from-blue-500 to-indigo-700" },
 
-  { id: "london-british-museum-covent", city: "london", title: { en: "British Museum & Covent Garden", ko: "대영박물관 & 코벤트 가든" }, summary: { en: "World's greatest museum and London's liveliest piazza.", ko: "세계 최고의 박물관과 런던에서 가장 활기찬 광장." }, styles: ["efficient", "relax"], travelerTypes: ["solo", "couple", "family"], activities: [
+  { id: "london-british-museum-covent", city: "london", title: { en: "British Museum & Covent Garden", ko: "대영박물관 & 코벤트 가든" }, summary: { en: "World's greatest museum and London's liveliest piazza.", ko: "세계 최고의 박물관과 런던에서 가장 활기찬 광장." }, styles: ["efficient", "relax"], travelerTypes: ["solo", "couple", "parents", "kids"], activities: [
     { time: "10:00", title: { en: "British Museum", ko: "대영박물관" }, description: { en: "Rosetta Stone, Egyptian mummies, Parthenon marbles. Free.", ko: "로제타석, 이집트 미라, 파르테논 대리석. 무료." }, type: "sightseeing", location: { lat: 51.5194, lng: -0.1270 } },
     { time: "13:00", title: { en: "Covent Garden lunch", ko: "코벤트 가든 점심" }, description: { en: "Street performers, market hall, and restaurants.", ko: "거리 공연, 마켓 홀, 레스토랑." }, type: "dining", location: { lat: 51.5117, lng: -0.1223 } },
     { time: "15:00", title: { en: "Seven Dials & Neal's Yard", ko: "세븐 다이얼스 & 닐스 야드" }, description: { en: "Colorful courtyard and indie shops.", ko: "알록달록한 안마당과 인디 숍." }, type: "shopping", location: { lat: 51.5131, lng: -0.1266 } },
@@ -757,7 +757,7 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 51.5097, lng: -0.1885 }, tags: ["pastel", "market", "park", "tea"], coverGradient: "from-pink-300 to-purple-400" },
 
   // BARCELONA
-  { id: "barcelona-sagrada-gothic", city: "barcelona", title: { en: "Sagrada Família & Gothic Quarter", ko: "사그라다 파밀리아 & 고딕 지구" }, summary: { en: "Gaudí's masterpiece and Barcelona's medieval heart.", ko: "가우디의 걸작과 바르셀로나 중세 심장부." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "barcelona-sagrada-gothic", city: "barcelona", title: { en: "Sagrada Família & Gothic Quarter", ko: "사그라다 파밀리아 & 고딕 지구" }, summary: { en: "Gaudí's masterpiece and Barcelona's medieval heart.", ko: "가우디의 걸작과 바르셀로나 중세 심장부." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "09:00", title: { en: "Sagrada Família", ko: "사그라다 파밀리아" }, description: { en: "Book tower access months ahead. Allow 2 hours.", ko: "타워 입장은 몇 달 전에 예약. 2시간 소요." }, type: "sightseeing", location: { lat: 41.4036, lng: 2.1744 } },
     { time: "12:00", title: { en: "Gothic Quarter walk", ko: "고딕 지구 산책" }, description: { en: "2,000 years of history in narrow medieval lanes.", ko: "좁은 중세 골목의 2천 년 역사." }, type: "sightseeing", location: { lat: 41.3833, lng: 2.1761 } },
     { time: "13:30", title: { en: "Tapas lunch on Carrer de Blai", ko: "블라이 거리 타파스 점심" }, description: { en: "Barcelona's best tapas street — pintxos and vermouth.", ko: "바르셀로나 최고 타파스 거리." }, type: "dining", location: { lat: 41.3740, lng: 2.1660 } },
@@ -770,7 +770,7 @@ export const dayCourses: DayCourse[] = [
     { time: "13:00", title: { en: "Lunch at Plaça del Sol", ko: "솔 광장 점심" }, description: { en: "Sunny square with terrace restaurants.", ko: "테라스 레스토랑이 있는 햇살 좋은 광장." }, type: "dining", location: { lat: 41.4028, lng: 2.1570 } },
   ], center: { lat: 41.4065, lng: 2.1555 }, tags: ["gaudi", "mosaic", "local", "park"], coverGradient: "from-green-400 to-teal-500" },
 
-  { id: "barcelona-beach-barceloneta", city: "barcelona", title: { en: "Barceloneta Beach Day", ko: "바르셀로네타 해변" }, summary: { en: "Mediterranean beach, seafood, and waterfront bars.", ko: "지중해 해변, 해산물, 해변 바." }, styles: ["relax"], travelerTypes: ["couple", "friends", "family"], activities: [
+  { id: "barcelona-beach-barceloneta", city: "barcelona", title: { en: "Barceloneta Beach Day", ko: "바르셀로네타 해변" }, summary: { en: "Mediterranean beach, seafood, and waterfront bars.", ko: "지중해 해변, 해산물, 해변 바." }, styles: ["relax"], travelerTypes: ["couple", "friends", "parents", "kids"], activities: [
     { time: "10:00", title: { en: "Barceloneta Beach", ko: "바르셀로네타 해변" }, description: { en: "City beach on the Mediterranean. Swim and sunbathe.", ko: "지중해 도시 해변. 수영과 일광욕." }, type: "beach", location: { lat: 41.3785, lng: 2.1924 } },
     { time: "13:00", title: { en: "Paella lunch", ko: "빠에야 점심" }, description: { en: "Seafood paella at a beachfront restaurant.", ko: "해변 레스토랑에서 해산물 빠에야." }, type: "dining", location: { lat: 41.3790, lng: 2.1930 } },
     { time: "16:00", title: { en: "Port Olímpic walk", ko: "올림픽 항구 산책" }, description: { en: "Marina, Gehry's fish sculpture, and chiringuito bars.", ko: "마리나, 게리의 물고기 조각, 치링기토 바." }, type: "free", location: { lat: 41.3863, lng: 2.1968 } },
@@ -785,14 +785,14 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 41.3713, lng: 2.1629 }, tags: ["castle", "art", "fountain", "flamenco"], coverGradient: "from-red-500 to-purple-600" },
 
   // NEW YORK (4 courses)
-  { id: "newyork-midtown-times-square", city: "newyork", title: { en: "Midtown Manhattan & Times Square", ko: "미드타운 맨해튼 & 타임스 스퀘어" }, summary: { en: "Empire State, Central Park, Broadway, and the bright lights.", ko: "엠파이어 스테이트, 센트럴 파크, 브로드웨이." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "newyork-midtown-times-square", city: "newyork", title: { en: "Midtown Manhattan & Times Square", ko: "미드타운 맨해튼 & 타임스 스퀘어" }, summary: { en: "Empire State, Central Park, Broadway, and the bright lights.", ko: "엠파이어 스테이트, 센트럴 파크, 브로드웨이." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "09:00", title: { en: "Empire State Building", ko: "엠파이어 스테이트 빌딩" }, description: { en: "86th floor observation deck. Go at opening for fewer crowds.", ko: "86층 전망대. 오픈 시간에 가면 혼잡 적음." }, type: "sightseeing", location: { lat: 40.7484, lng: -73.9856 } },
     { time: "11:00", title: { en: "Central Park walk", ko: "센트럴 파크 산책" }, description: { en: "Bethesda Fountain, Bow Bridge, Strawberry Fields.", ko: "베데스다 분수, 보우 브릿지, 스트로베리 필즈." }, type: "free", location: { lat: 40.7829, lng: -73.9654 } },
     { time: "14:00", title: { en: "Times Square & TKTS booth", ko: "타임스 스퀘어 & TKTS 부스" }, description: { en: "Get discounted Broadway tickets for tonight's show.", ko: "오늘 밤 브로드웨이 할인 티켓 구매." }, type: "sightseeing", location: { lat: 40.7580, lng: -73.9855 } },
     { time: "20:00", title: { en: "Broadway show", ko: "브로드웨이 공연" }, description: { en: "World-class theater — Hamilton, Wicked, or Lion King.", ko: "세계적인 공연 — 해밀턴, 위키드, 라이온 킹." }, type: "tour", location: { lat: 40.7590, lng: -73.9845 } },
   ], center: { lat: 40.7621, lng: -73.9803 }, tags: ["skyline", "broadway", "park", "iconic"], coverGradient: "from-blue-500 to-indigo-700" },
 
-  { id: "newyork-downtown-liberty", city: "newyork", title: { en: "Statue of Liberty & Downtown", ko: "자유의 여신상 & 다운타운" }, summary: { en: "Liberty Island, Wall Street, 9/11 Memorial, Brooklyn Bridge.", ko: "리버티 섬, 월스트리트, 9/11 메모리얼, 브루클린 브릿지." }, styles: ["efficient", "activity"], travelerTypes: ["solo", "couple", "family"], activities: [
+  { id: "newyork-downtown-liberty", city: "newyork", title: { en: "Statue of Liberty & Downtown", ko: "자유의 여신상 & 다운타운" }, summary: { en: "Liberty Island, Wall Street, 9/11 Memorial, Brooklyn Bridge.", ko: "리버티 섬, 월스트리트, 9/11 메모리얼, 브루클린 브릿지." }, styles: ["efficient", "activity"], travelerTypes: ["solo", "couple", "parents", "kids"], activities: [
     { time: "08:30", title: { en: "Ferry to Statue of Liberty", ko: "자유의 여신상 페리" }, description: { en: "Book pedestal or crown access weeks ahead.", ko: "기단 또는 왕관 접근은 몇 주 전 예약." }, type: "tour", location: { lat: 40.6892, lng: -74.0445 } },
     { time: "12:00", title: { en: "9/11 Memorial & Museum", ko: "9/11 메모리얼 & 박물관" }, description: { en: "Reflecting pools and underground museum.", ko: "반사 풀과 지하 박물관." }, type: "sightseeing", location: { lat: 40.7115, lng: -74.0134 } },
     { time: "15:00", title: { en: "Walk Brooklyn Bridge", ko: "브루클린 브릿지 걷기" }, description: { en: "1.3-mile walk with Manhattan skyline views.", ko: "맨해튼 스카이라인을 보며 1.3마일 도보." }, type: "sightseeing", location: { lat: 40.7061, lng: -73.9969 } },
@@ -814,14 +814,14 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 40.7954, lng: -73.9561 }, tags: ["museum", "art", "soul-food", "harlem"], coverGradient: "from-amber-400 to-orange-600" },
 
   // ISTANBUL (4 courses)
-  { id: "istanbul-sultanahmet", city: "istanbul", title: { en: "Sultanahmet Historic Center", ko: "술탄아흐메트 역사 지구" }, summary: { en: "Hagia Sophia, Blue Mosque, and Grand Bazaar.", ko: "아야 소피아, 블루 모스크, 그랜드 바자르." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "istanbul-sultanahmet", city: "istanbul", title: { en: "Sultanahmet Historic Center", ko: "술탄아흐메트 역사 지구" }, summary: { en: "Hagia Sophia, Blue Mosque, and Grand Bazaar.", ko: "아야 소피아, 블루 모스크, 그랜드 바자르." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "09:00", title: { en: "Hagia Sophia", ko: "아야 소피아" }, description: { en: "1,500-year-old architectural marvel. Now a mosque again.", ko: "1500년 된 건축 경이. 현재 다시 모스크." }, type: "sightseeing", location: { lat: 41.0086, lng: 28.9802 } },
     { time: "11:00", title: { en: "Blue Mosque", ko: "블루 모스크" }, description: { en: "Six minarets and blue Iznik tiles. Free entry, dress modestly.", ko: "6개 미나렛과 파란 이즈닉 타일. 무료, 복장 주의." }, type: "sightseeing", location: { lat: 41.0055, lng: 28.9769 } },
     { time: "13:00", title: { en: "Turkish lunch", ko: "터키 점심" }, description: { en: "Kebab, pide, and ayran near the Hippodrome.", ko: "히포드롬 근처에서 케밥, 피데, 아이란." }, type: "dining", location: { lat: 41.0070, lng: 28.9760 } },
     { time: "15:00", title: { en: "Grand Bazaar", ko: "그랜드 바자르" }, description: { en: "4,000+ shops. Carpets, ceramics, spices, gold.", ko: "4000개 이상 상점. 카펫, 도자기, 향신료, 금." }, type: "shopping", location: { lat: 41.0107, lng: 28.9682 } },
   ], center: { lat: 41.0080, lng: 28.9753 }, tags: ["mosque", "bazaar", "historic", "iconic"], coverGradient: "from-blue-500 to-indigo-700" },
 
-  { id: "istanbul-bosphorus-cruise", city: "istanbul", title: { en: "Bosphorus Cruise & Asian Side", ko: "보스포러스 크루즈 & 아시아 사이드" }, summary: { en: "Boat between Europe and Asia, then Kadıköy food market.", ko: "유럽과 아시아를 잇는 보트, 카드쿄이 먹거리." }, styles: ["relax"], travelerTypes: ["couple", "family"], activities: [
+  { id: "istanbul-bosphorus-cruise", city: "istanbul", title: { en: "Bosphorus Cruise & Asian Side", ko: "보스포러스 크루즈 & 아시아 사이드" }, summary: { en: "Boat between Europe and Asia, then Kadıköy food market.", ko: "유럽과 아시아를 잇는 보트, 카드쿄이 먹거리." }, styles: ["relax"], travelerTypes: ["couple", "parents", "kids"], activities: [
     { time: "10:00", title: { en: "Bosphorus cruise", ko: "보스포러스 크루즈" }, description: { en: "1.5-hour cruise with palaces, mosques, and bridges.", ko: "궁전, 모스크, 다리를 보며 1.5시간 크루즈." }, type: "tour", location: { lat: 41.0256, lng: 28.9744 } },
     { time: "13:00", title: { en: "Ferry to Kadıköy", ko: "카드쿄이 페리" }, description: { en: "Quick ferry to Istanbul's Asian side.", ko: "이스탄불 아시아 쪽 페리로 빠르게 이동." }, type: "transport", location: { lat: 41.0230, lng: 28.9780 } },
     { time: "14:00", title: { en: "Kadıköy market & fish sandwiches", ko: "카드쿄이 시장 & 고등어 샌드위치" }, description: { en: "Local market, balik ekmek, and Turkish tea.", ko: "현지 시장, 발릭 에크멕, 터키 차." }, type: "dining", location: { lat: 40.9909, lng: 29.0250 } },
@@ -862,13 +862,13 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 38.6467, lng: 34.8233 }, tags: ["horseback", "sunset", "valley", "cave-hotel"], coverGradient: "from-rose-400 to-orange-500" },
 
   // ANTALYA (3 courses)
-  { id: "antalya-old-town-waterfall", city: "antalya", title: { en: "Old Town & Düden Waterfalls", ko: "올드타운 & 뒤든 폭포" }, summary: { en: "Roman-era old town and waterfalls dropping into the sea.", ko: "로마 시대 구시가지와 바다로 떨어지는 폭포." }, styles: ["efficient", "relax"], travelerTypes: ["solo", "couple", "family"], activities: [
+  { id: "antalya-old-town-waterfall", city: "antalya", title: { en: "Old Town & Düden Waterfalls", ko: "올드타운 & 뒤든 폭포" }, summary: { en: "Roman-era old town and waterfalls dropping into the sea.", ko: "로마 시대 구시가지와 바다로 떨어지는 폭포." }, styles: ["efficient", "relax"], travelerTypes: ["solo", "couple", "parents", "kids"], activities: [
     { time: "09:00", title: { en: "Kaleiçi Old Town", ko: "칼레이치 올드타운" }, description: { en: "Ottoman houses, Roman gate, and narrow alleys.", ko: "오스만 가옥, 로마 문, 좁은 골목." }, type: "sightseeing", location: { lat: 36.8841, lng: 30.7056 } },
     { time: "11:00", title: { en: "Antalya Museum", ko: "안탈리아 박물관" }, description: { en: "One of Turkey's best archaeological museums.", ko: "터키 최고의 고고학 박물관 중 하나." }, type: "sightseeing", location: { lat: 36.8850, lng: 30.6830 } },
     { time: "14:00", title: { en: "Lower Düden Waterfall", ko: "하부 뒤든 폭포" }, description: { en: "40m waterfall cascading directly into the Mediterranean.", ko: "지중해로 직접 떨어지는 40m 폭포." }, type: "sightseeing", location: { lat: 36.8510, lng: 30.7870 } },
   ], center: { lat: 36.8734, lng: 30.7252 }, tags: ["old-town", "waterfall", "roman", "museum"], coverGradient: "from-teal-400 to-cyan-600" },
 
-  { id: "antalya-beach-resort", city: "antalya", title: { en: "Konyaaltı Beach & Resort Day", ko: "코냘르 해변 & 리조트" }, summary: { en: "Blue-flag beach, mountain backdrop, and resort relaxation.", ko: "블루 플래그 해변, 산 배경, 리조트 휴식." }, styles: ["relax", "hotel"], travelerTypes: ["couple", "family"], activities: [
+  { id: "antalya-beach-resort", city: "antalya", title: { en: "Konyaaltı Beach & Resort Day", ko: "코냘르 해변 & 리조트" }, summary: { en: "Blue-flag beach, mountain backdrop, and resort relaxation.", ko: "블루 플래그 해변, 산 배경, 리조트 휴식." }, styles: ["relax", "hotel"], travelerTypes: ["couple", "parents", "kids"], activities: [
     { time: "09:00", title: { en: "Konyaaltı Beach morning", ko: "코냘르 해변 아침" }, description: { en: "Pebble beach with stunning Taurus mountain backdrop.", ko: "타우러스 산을 배경으로 한 자갈 해변." }, type: "beach", location: { lat: 36.8680, lng: 30.6340 } },
     { time: "12:00", title: { en: "Beach club lunch", ko: "비치 클럽 점심" }, description: { en: "Mediterranean cuisine with sea views.", ko: "바다 전망의 지중해 요리." }, type: "dining", location: { lat: 36.8685, lng: 30.6350 } },
     { time: "15:00", title: { en: "Antalya Aquarium", ko: "안탈리아 수족관" }, description: { en: "World's longest tunnel aquarium. Great for families.", ko: "세계에서 가장 긴 터널 수족관." }, type: "sightseeing", location: { lat: 36.8670, lng: 30.6530 } },
@@ -881,7 +881,7 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 36.9533, lng: 31.0271 }, tags: ["roman", "theater", "ancient", "ruins"], coverGradient: "from-amber-400 to-orange-600" },
 
   // LA (3 courses)
-  { id: "la-hollywood-beverly-hills", city: "la", title: { en: "Hollywood & Beverly Hills", ko: "할리우드 & 비벌리 힐스" }, summary: { en: "Walk of Fame, Griffith Observatory, and Rodeo Drive.", ko: "명예의 거리, 그리피스 천문대, 로데오 드라이브." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "friends", "family"], activities: [
+  { id: "la-hollywood-beverly-hills", city: "la", title: { en: "Hollywood & Beverly Hills", ko: "할리우드 & 비벌리 힐스" }, summary: { en: "Walk of Fame, Griffith Observatory, and Rodeo Drive.", ko: "명예의 거리, 그리피스 천문대, 로데오 드라이브." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "friends", "parents", "kids"], activities: [
     { time: "09:00", title: { en: "Hollywood Walk of Fame", ko: "할리우드 명예의 거리" }, description: { en: "2,700+ stars on the sidewalk. TCL Chinese Theatre.", ko: "인도 위 2700개 이상의 별. TCL 차이니스 시어터." }, type: "sightseeing", location: { lat: 34.1017, lng: -118.3408 } },
     { time: "11:00", title: { en: "Griffith Observatory", ko: "그리피스 천문대" }, description: { en: "Free entry. Hollywood Sign views and city panorama.", ko: "무료 입장. 할리우드 사인과 도시 파노라마." }, type: "sightseeing", location: { lat: 34.1184, lng: -118.3004 } },
     { time: "14:00", title: { en: "Rodeo Drive window shopping", ko: "로데오 드라이브 윈도우 쇼핑" }, description: { en: "Beverly Hills' famous luxury shopping street.", ko: "비벌리 힐스의 유명 럭셔리 쇼핑 거리." }, type: "shopping", location: { lat: 34.0675, lng: -118.4005 } },
@@ -909,7 +909,7 @@ export const dayCourses: DayCourse[] = [
     { time: "21:30", title: { en: "Cirque du Soleil show", ko: "태양의 서커스 공연" }, description: { en: "O, Mystère, or KÀ — world-class performances.", ko: "오, 미스테르, 카 — 세계적인 공연." }, type: "tour", location: { lat: 36.1130, lng: -115.1750 } },
   ], center: { lat: 36.1141, lng: -115.1748 }, tags: ["casino", "show", "fountain", "neon"], coverGradient: "from-yellow-400 to-red-500" },
 
-  { id: "lasvegas-grand-canyon-daytrip", city: "lasvegas", title: { en: "Grand Canyon Day Trip", ko: "그랜드 캐년 당일 투어" }, summary: { en: "Helicopter or bus to the Grand Canyon West Rim.", ko: "헬리콥터 또는 버스로 그랜드 캐년 웨스트 림." }, styles: ["activity"], travelerTypes: ["couple", "family", "friends"], activities: [
+  { id: "lasvegas-grand-canyon-daytrip", city: "lasvegas", title: { en: "Grand Canyon Day Trip", ko: "그랜드 캐년 당일 투어" }, summary: { en: "Helicopter or bus to the Grand Canyon West Rim.", ko: "헬리콥터 또는 버스로 그랜드 캐년 웨스트 림." }, styles: ["activity"], travelerTypes: ["couple", "parents", "kids", "friends"], activities: [
     { time: "07:00", title: { en: "Depart Las Vegas", ko: "라스베가스 출발" }, description: { en: "2.5-hour drive or 45-minute helicopter flight.", ko: "2시간 30분 운전 또는 45분 헬리콥터." }, type: "transport", location: { lat: 36.1699, lng: -115.1398 } },
     { time: "10:00", title: { en: "Grand Canyon Skywalk", ko: "그랜드 캐년 스카이워크" }, description: { en: "Glass-bottom walkway 4,000ft above the canyon floor.", ko: "협곡 바닥 4000피트 위 유리 바닥 산책로." }, type: "sightseeing", location: { lat: 36.0126, lng: -113.8109 } },
     { time: "13:00", title: { en: "Rim viewpoints", ko: "림 전망대" }, description: { en: "Eagle Point, Guano Point — stunning canyon views.", ko: "이글 포인트, 구아노 포인트 — 장엄한 협곡." }, type: "sightseeing", location: { lat: 36.0100, lng: -113.8100 } },
@@ -922,14 +922,14 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 36.1701, lng: -115.1404 }, tags: ["neon", "old-vegas", "nightlife", "museum"], coverGradient: "from-purple-500 to-indigo-600" },
 
   // SEATTLE (3 courses)
-  { id: "seattle-pike-space-needle", city: "seattle", title: { en: "Pike Place Market & Space Needle", ko: "파이크 플레이스 마켓 & 스페이스 니들" }, summary: { en: "Seattle's iconic market, original Starbucks, and the Needle.", ko: "시애틀 상징 시장, 오리지널 스타벅스, 스페이스 니들." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "seattle-pike-space-needle", city: "seattle", title: { en: "Pike Place Market & Space Needle", ko: "파이크 플레이스 마켓 & 스페이스 니들" }, summary: { en: "Seattle's iconic market, original Starbucks, and the Needle.", ko: "시애틀 상징 시장, 오리지널 스타벅스, 스페이스 니들." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "08:00", title: { en: "Pike Place Market", ko: "파이크 플레이스 마켓" }, description: { en: "Fish throwing, flowers, craft stalls. Original Starbucks.", ko: "생선 던지기, 꽃, 공예 노점. 오리지널 스타벅스." }, type: "shopping", location: { lat: 47.6097, lng: -122.3425 } },
     { time: "11:00", title: { en: "Chowder & coffee", ko: "차우더 & 커피" }, description: { en: "Clam chowder bread bowl and artisan coffee.", ko: "클램 차우더 브레드 볼과 수제 커피." }, type: "dining", location: { lat: 47.6090, lng: -122.3420 } },
     { time: "14:00", title: { en: "Space Needle", ko: "스페이스 니들" }, description: { en: "Rotating glass floor at 500ft. Mt. Rainier views on clear days.", ko: "500피트 회전 유리 바닥. 맑은 날 레이니어 산 조망." }, type: "sightseeing", location: { lat: 47.6205, lng: -122.3493 } },
     { time: "16:00", title: { en: "Chihuly Garden & Glass", ko: "치훌리 가든 & 글라스" }, description: { en: "Stunning blown glass art installation next to the Needle.", ko: "스페이스 니들 옆 유리 공예 설치 미술." }, type: "sightseeing", location: { lat: 47.6206, lng: -122.3509 } },
   ], center: { lat: 47.6150, lng: -122.3462 }, tags: ["market", "needle", "starbucks", "glass"], coverGradient: "from-emerald-400 to-teal-600" },
 
-  { id: "seattle-waterfront-ferry", city: "seattle", title: { en: "Waterfront & Bainbridge Ferry", ko: "워터프론트 & 베인브리지 페리" }, summary: { en: "Seattle's waterfront, aquarium, and scenic ferry ride.", ko: "시애틀 워터프론트, 수족관, 경치 좋은 페리." }, styles: ["relax"], travelerTypes: ["couple", "family"], activities: [
+  { id: "seattle-waterfront-ferry", city: "seattle", title: { en: "Waterfront & Bainbridge Ferry", ko: "워터프론트 & 베인브리지 페리" }, summary: { en: "Seattle's waterfront, aquarium, and scenic ferry ride.", ko: "시애틀 워터프론트, 수족관, 경치 좋은 페리." }, styles: ["relax"], travelerTypes: ["couple", "parents", "kids"], activities: [
     { time: "10:00", title: { en: "Seattle Aquarium", ko: "시애틀 수족관" }, description: { en: "Pacific Northwest marine life on the waterfront.", ko: "태평양 북서부 해양 생물." }, type: "sightseeing", location: { lat: 47.6076, lng: -122.3432 } },
     { time: "12:30", title: { en: "Ferry to Bainbridge Island", ko: "베인브리지 섬 페리" }, description: { en: "35-minute scenic ferry with Seattle skyline views.", ko: "시애틀 스카이라인을 보며 35분 페리." }, type: "transport", location: { lat: 47.6024, lng: -122.3382 } },
     { time: "14:00", title: { en: "Bainbridge Island walk", ko: "베인브리지 섬 산책" }, description: { en: "Cute town, bakeries, and waterfront park.", ko: "예쁜 마을, 베이커리, 워터프론트 파크." }, type: "free", location: { lat: 47.6257, lng: -122.5107 } },
@@ -942,7 +942,7 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 47.6203, lng: -122.3190 }, tags: ["coffee", "indie", "hipster", "art"], coverGradient: "from-amber-400 to-brown-500" },
 
   // BOSTON (3 courses)
-  { id: "boston-freedom-trail", city: "boston", title: { en: "Freedom Trail Walk", ko: "프리덤 트레일 산책" }, summary: { en: "2.5-mile walk through 16 historic Revolutionary War sites.", ko: "16개 독립 전쟁 유적지를 잇는 4km 도보." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family"], activities: [
+  { id: "boston-freedom-trail", city: "boston", title: { en: "Freedom Trail Walk", ko: "프리덤 트레일 산책" }, summary: { en: "2.5-mile walk through 16 historic Revolutionary War sites.", ko: "16개 독립 전쟁 유적지를 잇는 4km 도보." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids"], activities: [
     { time: "09:00", title: { en: "Boston Common start", ko: "보스턴 커먼 출발" }, description: { en: "America's oldest public park. Follow the red line.", ko: "미국에서 가장 오래된 공공 공원. 빨간 선을 따라가세요." }, type: "sightseeing", location: { lat: 42.3551, lng: -71.0656 } },
     { time: "11:00", title: { en: "Faneuil Hall & Quincy Market", ko: "패뉴얼 홀 & 퀸시 마켓" }, description: { en: "Historic market hall — clam chowder and lobster rolls.", ko: "역사적 시장 — 클램 차우더와 랍스터 롤." }, type: "dining", location: { lat: 42.3600, lng: -71.0550 } },
     { time: "13:00", title: { en: "Paul Revere House & Old North Church", ko: "폴 리비어 하우스 & 올드 노스 교회" }, description: { en: "Where the American Revolution began.", ko: "미국 독립 전쟁이 시작된 곳." }, type: "sightseeing", location: { lat: 42.3637, lng: -71.0536 } },
@@ -956,7 +956,7 @@ export const dayCourses: DayCourse[] = [
     { time: "15:00", title: { en: "MIT campus & Stata Center", ko: "MIT 캠퍼스 & 스타타 센터" }, description: { en: "Frank Gehry's wild building and tech culture.", ko: "프랭크 게리의 기발한 건물과 기술 문화." }, type: "sightseeing", location: { lat: 42.3616, lng: -71.0909 } },
   ], center: { lat: 42.3674, lng: -71.1053 }, tags: ["university", "harvard", "MIT", "academic"], coverGradient: "from-red-600 to-rose-800" },
 
-  { id: "boston-waterfront-seaport", city: "boston", title: { en: "Waterfront & Seaport District", ko: "워터프론트 & 시포트 지구" }, summary: { en: "New England Aquarium, harbor walk, and seafood feast.", ko: "뉴잉글랜드 수족관, 항구 산책, 해산물 잔치." }, styles: ["relax"], travelerTypes: ["couple", "family"], activities: [
+  { id: "boston-waterfront-seaport", city: "boston", title: { en: "Waterfront & Seaport District", ko: "워터프론트 & 시포트 지구" }, summary: { en: "New England Aquarium, harbor walk, and seafood feast.", ko: "뉴잉글랜드 수족관, 항구 산책, 해산물 잔치." }, styles: ["relax"], travelerTypes: ["couple", "parents", "kids"], activities: [
     { time: "10:00", title: { en: "New England Aquarium", ko: "뉴잉글랜드 수족관" }, description: { en: "Giant ocean tank, penguins, and sea turtle rehab.", ko: "거대 해양 수조, 펭귄, 바다 거북 재활." }, type: "sightseeing", location: { lat: 42.3592, lng: -71.0497 } },
     { time: "12:30", title: { en: "Lobster roll lunch", ko: "랍스터 롤 점심" }, description: { en: "Legal Sea Foods or Row 34 — fresh New England lobster.", ko: "리갈 시푸드 또는 로우 34 — 신선한 랍스터." }, type: "dining", location: { lat: 42.3530, lng: -71.0430 } },
     { time: "14:00", title: { en: "Seaport District walk", ko: "시포트 지구 산책" }, description: { en: "Boston's newest neighborhood — galleries, bars, harbor views.", ko: "보스턴 최신 동네 — 갤러리, 바, 항구 전경." }, type: "free", location: { lat: 42.3481, lng: -71.0440 } },
@@ -964,7 +964,7 @@ export const dayCourses: DayCourse[] = [
   ], center: { lat: 42.3542, lng: -71.0463 }, tags: ["aquarium", "lobster", "harbor", "seaport"], coverGradient: "from-blue-400 to-cyan-500" },
 
   // SHANGHAI (3 courses)
-  { id: "shanghai-bund-pudong", city: "shanghai", title: { en: "The Bund & Pudong Skyline", ko: "와이탄 & 푸동 스카이라인" }, summary: { en: "Colonial-era waterfront facing the futuristic Pudong towers.", ko: "미래형 푸동 타워를 마주한 식민지 시대 해안." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "shanghai-bund-pudong", city: "shanghai", title: { en: "The Bund & Pudong Skyline", ko: "와이탄 & 푸동 스카이라인" }, summary: { en: "Colonial-era waterfront facing the futuristic Pudong towers.", ko: "미래형 푸동 타워를 마주한 식민지 시대 해안." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "10:00", title: { en: "The Bund walk", ko: "와이탄 산책" }, description: { en: "1.5km waterfront promenade with 52 heritage buildings.", ko: "52개 유산 건물이 있는 1.5km 해안 산책로." }, type: "sightseeing", location: { lat: 31.2400, lng: 121.4900 } },
     { time: "12:00", title: { en: "Xiaolongbao lunch", ko: "샤오롱바오 점심" }, description: { en: "Shanghai's famous soup dumplings at Jia Jia Tang Bao.", ko: "가가탕바오에서 상하이 유명 소룡포." }, type: "dining", location: { lat: 31.2350, lng: 121.4800 } },
     { time: "14:00", title: { en: "Shanghai Tower observation", ko: "상하이 타워 전망대" }, description: { en: "World's 2nd tallest building — 632m. 118th floor observatory.", ko: "세계 2위 높이 건물 — 632m. 118층 전망대." }, type: "sightseeing", location: { lat: 31.2355, lng: 121.5055 } },
@@ -977,28 +977,28 @@ export const dayCourses: DayCourse[] = [
     { time: "14:00", title: { en: "Tianzifang art lanes", ko: "톈쯔팡 아트 골목" }, description: { en: "Narrow shikumen lanes converted into galleries and shops.", ko: "갤러리와 상점으로 바뀐 좁은 석고문 골목." }, type: "shopping", location: { lat: 31.2093, lng: 121.4685 } },
   ], center: { lat: 31.2094, lng: 121.4578 }, tags: ["colonial", "art", "cafe", "concession"], coverGradient: "from-green-400 to-emerald-500" },
 
-  { id: "shanghai-yuyuan-nanjing", city: "shanghai", title: { en: "Yu Garden & Nanjing Road", ko: "위위안 정원 & 난징로" }, summary: { en: "Classical Chinese garden, bazaar, and main shopping street.", ko: "중국 고전 정원, 시장, 메인 쇼핑 거리." }, styles: ["efficient"], travelerTypes: ["family", "solo", "friends"], activities: [
+  { id: "shanghai-yuyuan-nanjing", city: "shanghai", title: { en: "Yu Garden & Nanjing Road", ko: "위위안 정원 & 난징로" }, summary: { en: "Classical Chinese garden, bazaar, and main shopping street.", ko: "중국 고전 정원, 시장, 메인 쇼핑 거리." }, styles: ["efficient"], travelerTypes: ["parents", "kids", "solo", "friends"], activities: [
     { time: "09:00", title: { en: "Yu Garden", ko: "위위안 정원" }, description: { en: "400-year-old classical Chinese garden.", ko: "400년 된 중국 고전 정원." }, type: "sightseeing", location: { lat: 31.2274, lng: 121.4926 } },
     { time: "11:00", title: { en: "Yuyuan Bazaar", ko: "위위안 시장" }, description: { en: "Traditional market selling snacks, tea, and souvenirs.", ko: "간식, 차, 기념품을 파는 전통 시장." }, type: "shopping", location: { lat: 31.2280, lng: 121.4930 } },
     { time: "13:00", title: { en: "Nanjing Road pedestrian street", ko: "난징로 보행자 거리" }, description: { en: "Shanghai's busiest shopping street.", ko: "상하이에서 가장 바쁜 쇼핑 거리." }, type: "shopping", location: { lat: 31.2352, lng: 121.4737 } },
   ], center: { lat: 31.2302, lng: 121.4864 }, tags: ["garden", "bazaar", "shopping", "traditional"], coverGradient: "from-red-400 to-orange-500" },
 
   // BEIJING (3 courses)
-  { id: "beijing-forbidden-city-tiananmen", city: "beijing", title: { en: "Forbidden City & Tiananmen", ko: "자금성 & 천안문" }, summary: { en: "Imperial palace complex and China's most famous square.", ko: "황궁 단지와 중국 최대 광장." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "beijing-forbidden-city-tiananmen", city: "beijing", title: { en: "Forbidden City & Tiananmen", ko: "자금성 & 천안문" }, summary: { en: "Imperial palace complex and China's most famous square.", ko: "황궁 단지와 중국 최대 광장." }, styles: ["efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "08:00", title: { en: "Tiananmen Square", ko: "천안문 광장" }, description: { en: "World's largest public square. Flag ceremony at sunrise.", ko: "세계 최대 공공 광장. 일출 국기 게양식." }, type: "sightseeing", location: { lat: 39.9042, lng: 116.3974 } },
     { time: "09:00", title: { en: "Forbidden City", ko: "자금성" }, description: { en: "980 buildings, 9,999 rooms. Allow 3-4 hours.", ko: "980개 건물, 9999개 방. 3~4시간 소요." }, type: "sightseeing", location: { lat: 39.9163, lng: 116.3972 } },
     { time: "13:00", title: { en: "Peking duck lunch", ko: "베이징 덕 점심" }, description: { en: "Quanjude or Da Dong — Beijing's signature dish.", ko: "취안쥐더 또는 다동 — 베이징 명물 오리구이." }, type: "dining", location: { lat: 39.9120, lng: 116.4030 } },
     { time: "15:00", title: { en: "Jingshan Park viewpoint", ko: "경산 공원 전망대" }, description: { en: "Climb the hill for perfect Forbidden City aerial views.", ko: "언덕에 올라 자금성 조감도." }, type: "sightseeing", location: { lat: 39.9250, lng: 116.3960 } },
   ], center: { lat: 39.9144, lng: 116.3984 }, tags: ["imperial", "palace", "square", "history"], coverGradient: "from-red-600 to-orange-600" },
 
-  { id: "beijing-great-wall", city: "beijing", title: { en: "Great Wall Day Trip (Mutianyu)", ko: "만리장성 당일 (무티엔위)" }, summary: { en: "Mutianyu section — less crowded, cable car, toboggan ride.", ko: "무티엔위 구간 — 덜 혼잡, 케이블카, 터보건 슬라이드." }, styles: ["activity", "efficient"], travelerTypes: ["solo", "couple", "family", "friends"], activities: [
+  { id: "beijing-great-wall", city: "beijing", title: { en: "Great Wall Day Trip (Mutianyu)", ko: "만리장성 당일 (무티엔위)" }, summary: { en: "Mutianyu section — less crowded, cable car, toboggan ride.", ko: "무티엔위 구간 — 덜 혼잡, 케이블카, 터보건 슬라이드." }, styles: ["activity", "efficient"], travelerTypes: ["solo", "couple", "parents", "kids", "friends"], activities: [
     { time: "07:00", title: { en: "Drive to Mutianyu", ko: "무티엔위로 이동" }, description: { en: "1.5-hour drive north from Beijing.", ko: "베이징에서 북쪽으로 1시간 30분." }, type: "transport", location: { lat: 39.9042, lng: 116.4074 } },
     { time: "09:00", title: { en: "Cable car up", ko: "케이블카 탑승" }, description: { en: "Skip the 4,000 steps — take the cable car up.", ko: "4000계단 건너뛰기 — 케이블카로 올라가세요." }, type: "transport", location: { lat: 40.4319, lng: 116.5704 } },
     { time: "09:30", title: { en: "Walk the Wall", ko: "만리장성 걷기" }, description: { en: "2-3 hours walking the restored wall with mountain views.", ko: "산 전경을 보며 복원된 성벽 2~3시간 도보." }, type: "sightseeing", location: { lat: 40.4319, lng: 116.5704 } },
     { time: "12:30", title: { en: "Toboggan slide down", ko: "터보건 슬라이드 하산" }, description: { en: "Fun alternative descent — metal slide down the mountain.", ko: "재미있는 하산 — 금속 슬라이드로 산 아래로." }, type: "tour", location: { lat: 40.4310, lng: 116.5700 } },
   ], center: { lat: 40.4312, lng: 116.5703 }, tags: ["great-wall", "hiking", "cable-car", "day-trip"], coverGradient: "from-gray-500 to-slate-700" },
 
-  { id: "beijing-temple-hutong", city: "beijing", title: { en: "Temple of Heaven & Hutong Rickshaw", ko: "천단 & 후통 릭샤" }, summary: { en: "Ming dynasty temple and traditional alley rickshaw tour.", ko: "명나라 사원과 전통 골목 릭샤 투어." }, styles: ["relax", "efficient"], travelerTypes: ["couple", "family", "solo"], activities: [
+  { id: "beijing-temple-hutong", city: "beijing", title: { en: "Temple of Heaven & Hutong Rickshaw", ko: "천단 & 후통 릭샤" }, summary: { en: "Ming dynasty temple and traditional alley rickshaw tour.", ko: "명나라 사원과 전통 골목 릭샤 투어." }, styles: ["relax", "efficient"], travelerTypes: ["couple", "parents", "kids", "solo"], activities: [
     { time: "08:00", title: { en: "Temple of Heaven", ko: "천단" }, description: { en: "Where emperors prayed for harvests. Tai chi in the park.", ko: "황제가 풍년을 기원한 곳. 공원에서 태극권." }, type: "sightseeing", location: { lat: 39.8822, lng: 116.4066 } },
     { time: "11:00", title: { en: "Hutong rickshaw tour", ko: "후통 릭샤 투어" }, description: { en: "Traditional alley tour by pedicab through old Beijing.", ko: "옛 베이징 전통 골목 삼륜차 투어." }, type: "tour", location: { lat: 39.9370, lng: 116.3900 } },
     { time: "13:00", title: { en: "Hutong home-style lunch", ko: "후통 가정식 점심" }, description: { en: "Jianbing (Chinese crepe), dumplings, and noodles.", ko: "젠빙(중국 크레이프), 만두, 국수." }, type: "dining", location: { lat: 39.9380, lng: 116.3910 } },

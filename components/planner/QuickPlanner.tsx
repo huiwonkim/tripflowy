@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
-import { Search, X } from "lucide-react";
+import { Search, X, ChevronDown } from "lucide-react";
 import type { PlannerInput, Locale, TravelStyle, TravelerType } from "@/types";
 import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 
@@ -55,39 +55,58 @@ export function QuickPlanner() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
-      {/* Destination — inline country + city chips */}
-      <div>
-        <p className="text-xs text-gray-400 mb-2.5">{t("destination")}</p>
-        <div className="space-y-2">
-          {countries.map((c) => (
-            <div key={c.id} className="flex gap-2">
-              <span className="text-sm flex-shrink-0 w-20 pt-1.5 whitespace-nowrap">{c.emoji} {c.label[locale]}</span>
-              <div className="flex flex-wrap gap-1.5">
-                {c.cities.map((city) => {
-                  const selected = input.destinations.includes(city.id);
-                  return (
-                    <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
-                      className={`${chipBase} ${selected ? chipSelected : chipDefault}`}>
-                      {city.label[locale]}
-                    </button>
-                  );
-                })}
+      {/* Destination + Duration — stacked on mobile, side-by-side on desktop.
+          Uses the same 1fr/1fr grid as the Traveler + Style row below so
+          every column's right edge lines up across the form. */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
+        <div>
+          <p className="text-xs text-gray-400 mb-2.5">{t("destination")}</p>
+          <div className="space-y-2">
+            {countries.map((c) => (
+              <div key={c.id} className="flex gap-2">
+                <span className="text-sm flex-shrink-0 w-20 pt-1.5 whitespace-nowrap">{c.emoji} {c.label[locale]}</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {c.cities.map((city) => {
+                    const selected = input.destinations.includes(city.id);
+                    return (
+                      <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
+                        className={`${chipBase} ${selected ? chipSelected : chipDefault}`}>
+                        {city.label[locale]}
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
 
-      {/* Duration */}
-      <div>
-        <p className="text-xs text-gray-400 mb-2">{t("duration")}</p>
-        <div className="flex flex-wrap gap-1.5">
-          {durationOptions.map((d) => (
-            <button key={d.value} type="button" onClick={() => setInput((p) => ({ ...p, duration: d.value }))}
-              className={`${chipBase} ${input.duration === d.value ? chipSelected : chipDefault}`}>
-              {locale === "ko" ? `${d.value}박${Number(d.value)+1}일` : `${Number(d.value)+1} days`}
-            </button>
-          ))}
+        <div>
+          <p className="text-xs text-gray-400 mb-2">{t("duration")}</p>
+          <div className="relative w-full">
+            <select
+              value={input.duration}
+              onChange={(e) => setInput((p) => ({ ...p, duration: e.target.value }))}
+              className={`w-full appearance-none px-3 py-2 pr-9 rounded-lg text-sm font-medium border transition-colors cursor-pointer focus:outline-none ${
+                input.duration
+                  ? "border-blue-500 bg-blue-500/10 text-white"
+                  : "border-white/20 bg-white/5 text-gray-300 hover:border-white/40"
+              }`}
+            >
+              <option value="" className="bg-gray-900 text-gray-300">
+                {locale === "ko" ? "기간 선택" : "Select duration"}
+              </option>
+              {durationOptions.map((d) => (
+                <option key={d.value} value={d.value} className="bg-gray-900 text-white">
+                  {d.label[locale]}
+                  {d.minCities > 1
+                    ? locale === "ko" ? ` · 도시 ${d.minCities}개+` : ` · ${d.minCities}+ cities`
+                    : ""}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+          </div>
         </div>
       </div>
 

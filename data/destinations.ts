@@ -28,6 +28,21 @@ export type ComingSoonCountry = {
   emoji: string;
 };
 
+// ── Airports (for arrival/departure UI) ────────────────
+export type Airport = {
+  code: string;
+  label: LocaleString;
+  cityId: string; // optional association for sanity hints
+};
+
+export const airports: Airport[] = [
+  { code: "HND", label: { en: "Haneda (HND)", ko: "하네다 (HND)" }, cityId: "tokyo" },
+  { code: "NRT", label: { en: "Narita (NRT)", ko: "나리타 (NRT)" }, cityId: "tokyo" },
+  { code: "KIX", label: { en: "Kansai (KIX)", ko: "간사이 (KIX)" }, cityId: "osaka" },
+  { code: "ITM", label: { en: "Itami (ITM)", ko: "이타미 (ITM)" }, cityId: "osaka" },
+  { code: "FUK", label: { en: "Fukuoka (FUK)", ko: "후쿠오카 (FUK)" }, cityId: "fukuoka" },
+];
+
 export const comingSoonCountries: ComingSoonCountry[] = [
   { id: "vietnam", label: { en: "Vietnam", ko: "베트남" }, emoji: "🇻🇳" },
   { id: "china", label: { en: "China", ko: "중국" }, emoji: "🇨🇳" },
@@ -54,31 +69,37 @@ export function getCountryByCity(cityId: string): Country | undefined {
 }
 
 export const durationOptions = [
+  { value: "2", label: { en: "2 nights / 3 days", ko: "2박 3일" }, minCities: 1 },
   { value: "3", label: { en: "3 nights / 4 days", ko: "3박 4일" }, minCities: 1 },
   { value: "4", label: { en: "4 nights / 5 days", ko: "4박 5일" }, minCities: 1 },
+  { value: "5", label: { en: "5 nights / 6 days", ko: "5박 6일" }, minCities: 1 },
   { value: "6", label: { en: "6 nights / 7 days", ko: "6박 7일" }, minCities: 1 },
   { value: "7", label: { en: "7 nights / 8 days", ko: "7박 8일" }, minCities: 2 },
+  { value: "8", label: { en: "8 nights / 9 days", ko: "8박 9일" }, minCities: 2 },
   { value: "9", label: { en: "9 nights / 10 days", ko: "9박 10일" }, minCities: 2 },
 ];
 
 export const travelerTypeOptions = [
   { value: "solo", label: { en: "Solo", ko: "혼자" }, emoji: "🧳" },
-  { value: "friends", label: { en: "Friends", ko: "친구" }, emoji: "👯" },
   { value: "couple", label: { en: "Couple", ko: "커플" }, emoji: "💑" },
-  { value: "family", label: { en: "Family", ko: "가족" }, emoji: "👨‍👩‍👧‍👦" },
+  { value: "friends", label: { en: "Friends", ko: "친구" }, emoji: "👯" },
+  { value: "parents", label: { en: "With parents", ko: "부모님과" }, emoji: "👨‍👩" },
+  { value: "kids", label: { en: "With kids", ko: "아이와" }, emoji: "👨‍👧‍👦" },
 ];
 
+// relax/efficient are covered by the "하루 페이스" pace selector, and hotel is
+// redundant with the dedicated accommodation picker — so they're hidden from
+// the user-facing style grid. The TravelStyle type keeps them so legacy spots,
+// templates, and shared URLs still parse cleanly.
 export const styleOptions = [
-  { value: "relax", label: { en: "Relaxed", ko: "여유롭게" } },
-  { value: "efficient", label: { en: "Efficient", ko: "알차게" } },
-  { value: "activity", label: { en: "Activity", ko: "액티비티" } },
-  { value: "hotel", label: { en: "Hotel", ko: "숙소 중심" } },
-  { value: "food", label: { en: "Foodie", ko: "맛집 중심" } },
-  { value: "photo", label: { en: "Photo Spots", ko: "포토스팟" } },
-  { value: "budget", label: { en: "Budget", ko: "가성비" } },
+  { value: "popular", label: { en: "Popular", ko: "인기 코스" } },
   { value: "culture", label: { en: "Culture", ko: "문화/역사" } },
   { value: "nature", label: { en: "Nature", ko: "자연/힐링" } },
-  { value: "nightlife", label: { en: "Nightlife", ko: "나이트라이프" } },
+  { value: "food", label: { en: "Foodie", ko: "맛집" } },
   { value: "shopping", label: { en: "Shopping", ko: "쇼핑" } },
+  { value: "photo", label: { en: "Photo Spots", ko: "포토스팟" } },
+  { value: "activity", label: { en: "Activity", ko: "액티비티" } },
+  { value: "budget", label: { en: "Budget", ko: "가성비" } },
+  { value: "nightlife", label: { en: "Nightlife", ko: "나이트라이프" } },
   { value: "local", label: { en: "Like a Local", ko: "현지인 코스" } },
 ];

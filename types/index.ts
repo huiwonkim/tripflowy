@@ -7,8 +7,8 @@ export type LocaleString = {
   ko: string;
 };
 
-export type TravelerType = "couple" | "solo" | "family" | "friends";
-export type TravelStyle = "relax" | "efficient" | "activity" | "hotel" | "food" | "photo" | "budget" | "culture" | "nature" | "nightlife" | "shopping" | "local";
+export type TravelerType = "solo" | "parents" | "kids" | "couple" | "friends";
+export type TravelStyle = "relax" | "efficient" | "activity" | "hotel" | "food" | "photo" | "budget" | "culture" | "nature" | "nightlife" | "shopping" | "local" | "popular";
 export type ActivityType =
   | "transport"
   | "sightseeing"
@@ -264,6 +264,9 @@ export type PlannerInput = {
   accommodations?: Record<string, AccommodationInput>;
   /** ISO yyyy-mm-dd — optional. Used for opening-hours / closedDays checks. */
   startDate?: string;
+  /** Optional arrival/departure flight info for first/last-day time planning. */
+  arrival?: { airport?: string; time?: string };
+  departure?: { airport?: string; time?: string };
 };
 
 // ── 여행지 구조 ────────────────────────────────────

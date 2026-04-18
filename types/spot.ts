@@ -54,8 +54,14 @@ export type Spot = {
   /** GPS position — required, the engine uses it for route sorting. */
   location: Coordinates;
 
-  /** Average dwell time in minutes. */
-  duration: number;
+  /**
+   * Dwell time in minutes, min/typical/max for different paces.
+   *  - `min`: quick pass (packed itineraries) — e.g. 30 min at a landmark
+   *  - `typical`: average visit (balanced) — e.g. 60 min
+   *  - `max`: relaxed lingering — e.g. 90 min
+   * The spot engine picks min/typical/max based on the user's selected `Pace`.
+   */
+  duration: { min: number; typical: number; max: number };
 
   /**
    * Selection weight for the engine.

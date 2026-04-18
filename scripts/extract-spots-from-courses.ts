@@ -150,7 +150,10 @@ for (const course of dayCourses as DayCourse[]) {
       styles: [...course.styles],
       travelerTypes: [...course.travelerTypes],
       location: activity.location,
-      duration: activity.duration ?? 60,
+      duration: (() => {
+        const t = activity.duration ?? 60;
+        return { min: Math.max(15, Math.round(t * 0.7)), typical: t, max: Math.round(t * 1.3) };
+      })(),
       priority: 2,
       description: activity.description,
       ...(activity.tips && activity.tips.length > 0 ? { tips: activity.tips } : {}),
@@ -201,7 +204,7 @@ function formatSpot(spot: Spot): string {
   lines.push(`    styles: ${JSON.stringify(spot.styles)},`);
   lines.push(`    travelerTypes: ${JSON.stringify(spot.travelerTypes)},`);
   lines.push(`    location: { lat: ${spot.location.lat}, lng: ${spot.location.lng} },`);
-  lines.push(`    duration: ${spot.duration},`);
+  lines.push(`    duration: { min: ${spot.duration.min}, typical: ${spot.duration.typical}, max: ${spot.duration.max} },`);
   lines.push(`    priority: ${spot.priority},`);
   lines.push(`    description: ${formatLocaleString(spot.description)},`);
   if (spot.tips && spot.tips.length > 0) {

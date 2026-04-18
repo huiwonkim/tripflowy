@@ -9,16 +9,16 @@
 
 import type { Spot } from "@/types/spot";
 
-import { tokyoSpots } from "./tokyo";
-import { osakaSpots } from "./osaka";
-import { kyotoSpots } from "./kyoto";
 import { fukuokaSpots } from "./fukuoka";
+import { kyotoSpots } from "./kyoto";
+import { osakaSpots } from "./osaka";
+import { tokyoSpots } from "./tokyo";
 
 export const allSpots: Spot[] = [
-  ...tokyoSpots,
-  ...osakaSpots,
-  ...kyotoSpots,
   ...fukuokaSpots,
+  ...kyotoSpots,
+  ...osakaSpots,
+  ...tokyoSpots,
 ];
 
 export function getSpotsByCity(city: string): Spot[] {

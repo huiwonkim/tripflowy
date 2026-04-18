@@ -5,8 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw, ArrowUp, ArrowDown, Map as MapIcon, Calendar, Gauge } from "lucide-react";
-import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
+import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw, ArrowUp, ArrowDown, Map as MapIcon, Calendar, Gauge, Plane } from "lucide-react";
+import { countries, durationOptions, travelerTypeOptions, styleOptions, airports } from "@/data/destinations";
 import { buildItinerary, getMatchedTours, getMatchedHotels } from "@/lib/itinerary-builder";
 import { buildItineraryFromSpotIds } from "@/lib/spot-builder";
 import { decodeItinerary } from "@/lib/itinerary-encoding";
@@ -114,8 +114,17 @@ function PlannerContent() {
       ? paceParam
       : "balanced";
     const startDate = searchParams.get("startDate") ?? undefined;
+    const arrAirport = searchParams.get("arrAirport") ?? undefined;
+    const arrTime = searchParams.get("arrTime") ?? undefined;
+    const depAirport = searchParams.get("depAirport") ?? undefined;
+    const depTime = searchParams.get("depTime") ?? undefined;
     if (destinations.length > 0 || duration) {
-      const next: PlannerInput = { destinations, duration, travelerType, styles, pace, ...(startDate ? { startDate } : {}) };
+      const next: PlannerInput = {
+        destinations, duration, travelerType, styles, pace,
+        ...(startDate ? { startDate } : {}),
+        ...(arrAirport || arrTime ? { arrival: { airport: arrAirport, time: arrTime } } : {}),
+        ...(depAirport || depTime ? { departure: { airport: depAirport, time: depTime } } : {}),
+      };
       setInput(next);
       setCommittedInput(next);
       setSearched(true);
@@ -133,6 +142,53 @@ function PlannerContent() {
         : [...p.destinations, cityId],
     }));
   }
+
+  // Airports limited to cities the traveler has actually selected.
+  // Empty until at least one city is picked — avoids dumping every JP airport
+  // in the dropdown up front.
+  const relevantAirports = useMemo(
+    () => airports.filter((a) => input.destinations.includes(a.cityId)),
+    [input.destinations],
+  );
+
+  // Split flight time into hour + minute selects. Each dropdown stays
+  // short (24 / 4 items) so users don't have to scroll through a 48-item
+  // list. Stored value is combined as "HH:MM" — same format the engine parses.
+  const flightHourOptions = useMemo(
+    () => Array.from({ length: 24 }, (_, h) => String(h).padStart(2, "0")),
+    [],
+  );
+  const flightMinuteOptions = useMemo(() => ["00", "15", "30", "45"], []);
+
+  function parseHHMM(t: string | undefined): { h: string; m: string } {
+    if (!t) return { h: "", m: "" };
+    const [h, m] = t.split(":");
+    return { h: h ?? "", m: m ?? "" };
+  }
+  function joinHHMM(h: string, m: string): string | undefined {
+    if (!h && !m) return undefined;
+    // Fill the missing half with "00" so the select sticks immediately after
+    // the user's first pick. Previously we required both parts which caused
+    // the dropdown to visually reset (no commit → next render read h="" back).
+    return `${h || "00"}:${m || "00"}`;
+  }
+
+  // If the user deselects a city and the previously-chosen airport belonged
+  // to it, clear the stale selection so the form doesn't silently carry a
+  // now-invalid airport code into the engine.
+  useEffect(() => {
+    const validCodes = new Set(relevantAirports.map((a) => a.code));
+    setInput((p) => {
+      let next = p;
+      if (p.arrival?.airport && !validCodes.has(p.arrival.airport)) {
+        next = { ...next, arrival: { ...next.arrival, airport: undefined } };
+      }
+      if (p.departure?.airport && !validCodes.has(p.departure.airport)) {
+        next = { ...next, departure: { ...next.departure, airport: undefined } };
+      }
+      return next;
+    });
+  }, [relevantAirports]);
 
   const itinerary = useMemo<GeneratedItinerary | null>(() => {
     if (!searched || !committedInput.destinations.length || !committedInput.duration) return null;
@@ -164,6 +220,9 @@ function PlannerContent() {
         styles: committedInput.styles.length > 0 ? committedInput.styles : undefined,
         travelerType: committedInput.travelerType || undefined,
         accommodations: Object.keys(accommodationCoordsShared).length > 0 ? accommodationCoordsShared : undefined,
+        pace: committedInput.pace,
+        arrival: committedInput.arrival,
+        departure: committedInput.departure,
       });
     }
     return buildItinerary({
@@ -175,6 +234,8 @@ function PlannerContent() {
       pace: committedInput.pace,
       accommodations: Object.keys(accommodationCoordsShared).length > 0 ? accommodationCoordsShared : undefined,
       startDate: committedInput.startDate,
+      arrival: committedInput.arrival,
+      departure: committedInput.departure,
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searched, committedInput, refreshKey, forcedSpots, lockedDays]);
@@ -293,6 +354,10 @@ function PlannerContent() {
     if (input.styles.length) params.set("styles", input.styles.join(","));
     if (input.pace && input.pace !== "balanced") params.set("pace", input.pace);
     if (input.startDate) params.set("startDate", input.startDate);
+    if (input.arrival?.airport) params.set("arrAirport", input.arrival.airport);
+    if (input.arrival?.time) params.set("arrTime", input.arrival.time);
+    if (input.departure?.airport) params.set("depAirport", input.departure.airport);
+    if (input.departure?.time) params.set("depTime", input.departure.time);
     window.history.replaceState(null, "", `?${params.toString()}`);
     setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
   }
@@ -395,20 +460,30 @@ function PlannerContent() {
           )}
         </div>
 
-        {/* Duration */}
+        {/* Duration — dropdown for 2~9 nights */}
         <div className="flex flex-col gap-3">
           <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
             <Clock className="w-4 h-4 text-blue-600" />{t("howLong")}
           </label>
-          <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
-            {durationOptions.map((d) => (
-              <button key={d.value} type="button" onClick={() => setInput((p) => ({ ...p, duration: d.value }))}
-                className={`flex flex-col items-center gap-1 p-3 rounded-xl border-2 cursor-pointer transition-all ${input.duration === d.value ? optionSelected : optionDefault}`}>
-                <span className="text-base font-bold text-gray-900">
-                  {locale === "ko" ? `${d.value}박 ${Number(d.value) + 1}일` : `${Number(d.value) + 1} days`}
-                </span>
-              </button>
-            ))}
+          <div className="relative w-full sm:max-w-xs">
+            <select
+              value={input.duration}
+              onChange={(e) => setInput((p) => ({ ...p, duration: e.target.value }))}
+              className={`w-full appearance-none px-4 py-3 pr-10 rounded-xl border-2 bg-white text-sm font-medium text-gray-900 focus:border-blue-500 focus:outline-none cursor-pointer transition-colors ${
+                input.duration ? "border-blue-600" : "border-gray-200 hover:border-gray-300"
+              }`}
+            >
+              <option value="">{locale === "ko" ? "기간 선택" : "Select duration"}</option>
+              {durationOptions.map((d) => (
+                <option key={d.value} value={d.value}>
+                  {d.label[locale]}
+                  {d.minCities > 1
+                    ? locale === "ko" ? ` · 도시 ${d.minCities}개+` : ` · ${d.minCities}+ cities`
+                    : ""}
+                </option>
+              ))}
+            </select>
+            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
           </div>
         </div>
 
@@ -427,6 +502,107 @@ function PlannerContent() {
             onChange={(e) => setInput((p) => ({ ...p, startDate: e.target.value || undefined }))}
             className="w-full sm:w-60 px-4 py-3 rounded-xl border-2 border-gray-200 bg-white text-sm text-gray-900 focus:border-blue-500 focus:outline-none transition-colors"
           />
+        </div>
+
+        {/* Arrival / Departure flight info (optional)
+            Two rows, each: [direction label] [airport select (flex-grow)] [time input].
+            Much less visual weight than the previous two-card grid. */}
+        <div className="flex flex-col gap-3">
+          <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
+            <Plane className="w-4 h-4 text-blue-600" />
+            {locale === "ko" ? "입·출국 정보 (선택)" : "Arrival / Departure (optional)"}
+            <span className="text-xs font-normal text-gray-400 ml-2">
+              {locale === "ko" ? "첫·마지막 날 시간 계산용" : "Adjusts first/last day"}
+            </span>
+          </label>
+
+          {([
+            {
+              kind: "arrival" as const,
+              label: locale === "ko" ? "입국" : "Arrival",
+              airport: input.arrival?.airport ?? "",
+              time: input.arrival?.time ?? "",
+            },
+            {
+              kind: "departure" as const,
+              label: locale === "ko" ? "출국" : "Departure",
+              airport: input.departure?.airport ?? "",
+              time: input.departure?.time ?? "",
+            },
+          ]).map((row) => (
+            <div key={row.kind} className="flex items-center gap-2">
+              <span className="w-12 text-xs font-semibold text-gray-600 flex-shrink-0">
+                {row.label}
+              </span>
+              <div className="relative flex-1 min-w-0">
+                <select
+                  value={row.airport}
+                  onChange={(e) => {
+                    const val = e.target.value || undefined;
+                    setInput((p) =>
+                      row.kind === "arrival"
+                        ? { ...p, arrival: { ...p.arrival, airport: val } }
+                        : { ...p, departure: { ...p.departure, airport: val } },
+                    );
+                  }}
+                  disabled={relevantAirports.length === 0}
+                  className="w-full appearance-none px-3 py-2 pr-8 rounded-lg border-2 border-gray-200 bg-white text-sm text-gray-900 focus:border-blue-500 focus:outline-none disabled:bg-gray-50 disabled:text-gray-400 transition-colors"
+                >
+                  <option value="">
+                    {relevantAirports.length === 0
+                      ? locale === "ko" ? "도시 먼저" : "Pick a city"
+                      : locale === "ko" ? "공항" : "Airport"}
+                  </option>
+                  {relevantAirports.map((a) => (
+                    <option key={a.code} value={a.code}>{a.label[locale]}</option>
+                  ))}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+              </div>
+              {(() => {
+                const { h, m } = parseHHMM(row.time || undefined);
+                const updateTime = (nextH: string, nextM: string) => {
+                  const val = joinHHMM(nextH, nextM);
+                  setInput((p) =>
+                    row.kind === "arrival"
+                      ? { ...p, arrival: { ...p.arrival, time: val } }
+                      : { ...p, departure: { ...p.departure, time: val } },
+                  );
+                };
+                return (
+                  <div className="flex items-center gap-1 flex-shrink-0">
+                    <div className="relative w-[72px]">
+                      <select
+                        value={h}
+                        onChange={(e) => updateTime(e.target.value, m)}
+                        className="w-full appearance-none px-2.5 py-2 pr-6 rounded-lg border-2 border-gray-200 bg-white text-sm text-gray-900 focus:border-blue-500 focus:outline-none transition-colors"
+                      >
+                        <option value="">{locale === "ko" ? "시" : "HH"}</option>
+                        {flightHourOptions.map((v) => (
+                          <option key={v} value={v}>{v}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 text-gray-400" />
+                    </div>
+                    <span className="text-gray-400 text-sm">:</span>
+                    <div className="relative w-[72px]">
+                      <select
+                        value={m}
+                        onChange={(e) => updateTime(h, e.target.value)}
+                        className="w-full appearance-none px-2.5 py-2 pr-6 rounded-lg border-2 border-gray-200 bg-white text-sm text-gray-900 focus:border-blue-500 focus:outline-none transition-colors"
+                      >
+                        <option value="">{locale === "ko" ? "분" : "MM"}</option>
+                        {flightMinuteOptions.map((v) => (
+                          <option key={v} value={v}>{v}</option>
+                        ))}
+                      </select>
+                      <ChevronDown className="pointer-events-none absolute right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 text-gray-400" />
+                    </div>
+                  </div>
+                );
+              })()}
+            </div>
+          ))}
         </div>
 
         {/* Traveler type */}
