@@ -9,10 +9,14 @@ export const countries: Country[] = [
     label: { en: "Japan", ko: "일본" },
     emoji: "🇯🇵",
     cities: [
-      { id: "tokyo", label: { en: "Tokyo", ko: "도쿄" }, countryId: "japan", heroImage: "/images/city-heroes/tokyo.jpg" },
-      { id: "osaka", label: { en: "Osaka", ko: "오사카" }, countryId: "japan", heroImage: "/images/city-heroes/osaka.jpg" },
-      { id: "kyoto", label: { en: "Kyoto", ko: "교토" }, countryId: "japan", heroImage: "/images/city-heroes/kyoto.jpg" },
-      { id: "fukuoka", label: { en: "Fukuoka", ko: "후쿠오카" }, countryId: "japan", heroImage: "/images/city-heroes/fukuoka.jpg" },
+      { id: "tokyo", label: { en: "Tokyo", ko: "도쿄" }, countryId: "japan", heroImage: "/images/city-heroes/tokyo.jpg",
+        defaultAccommodation: { label: { en: "Shinjuku Station (default)", ko: "신주쿠역 (기본값)" }, location: { lat: 35.6896, lng: 139.7006 } } },
+      { id: "osaka", label: { en: "Osaka", ko: "오사카" }, countryId: "japan", heroImage: "/images/city-heroes/osaka.jpg",
+        defaultAccommodation: { label: { en: "Umeda Station (default)", ko: "우메다역 (기본값)" }, location: { lat: 34.7024, lng: 135.4959 } } },
+      { id: "kyoto", label: { en: "Kyoto", ko: "교토" }, countryId: "japan", heroImage: "/images/city-heroes/kyoto.jpg",
+        defaultAccommodation: { label: { en: "Kyoto Station (default)", ko: "교토역 (기본값)" }, location: { lat: 34.9859, lng: 135.7585 } } },
+      { id: "fukuoka", label: { en: "Fukuoka", ko: "후쿠오카" }, countryId: "japan", heroImage: "/images/city-heroes/fukuoka.jpg",
+        defaultAccommodation: { label: { en: "Hakata Station (default)", ko: "하카타역 (기본값)" }, location: { lat: 33.5902, lng: 130.4207 } } },
     ],
   },
 ];

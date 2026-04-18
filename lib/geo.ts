@@ -16,10 +16,15 @@ function toRad(deg: number): number {
 }
 
 /**
- * Sort courses by proximity using a greedy nearest-neighbor approach.
+ * Sort items by proximity using a greedy nearest-neighbor approach.
  * Starts from the first item and always picks the nearest unvisited next.
+ *
+ * Pass a getter to support any shape — e.g. DayCourse uses `center`, Spot uses `location`.
  */
-export function sortByProximity<T extends { center: Coordinates }>(items: T[]): T[] {
+export function sortByProximity<T>(
+  items: T[],
+  getCoord: (item: T) => Coordinates,
+): T[] {
   if (items.length <= 1) return items;
 
   const remaining = [...items];
@@ -27,11 +32,12 @@ export function sortByProximity<T extends { center: Coordinates }>(items: T[]): 
 
   while (remaining.length > 0) {
     const last = sorted[sorted.length - 1];
+    const lastCoord = getCoord(last);
     let nearestIdx = 0;
     let nearestDist = Infinity;
 
     for (let i = 0; i < remaining.length; i++) {
-      const d = haversineKm(last.center, remaining[i].center);
+      const d = haversineKm(lastCoord, getCoord(remaining[i]));
       if (d < nearestDist) {
         nearestDist = d;
         nearestIdx = i;

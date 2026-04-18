@@ -5,9 +5,14 @@ import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw, ArrowUp, ArrowDown, Map as MapIcon } from "lucide-react";
+import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw, ArrowUp, ArrowDown, Map as MapIcon, Calendar, Gauge } from "lucide-react";
 import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 import { buildItinerary, getMatchedTours, getMatchedHotels } from "@/lib/itinerary-builder";
+import { buildItineraryFromSpotIds } from "@/lib/spot-builder";
+import { decodeItinerary } from "@/lib/itinerary-encoding";
+import { AccommodationPicker } from "@/components/planner/AccommodationPicker";
+import { TemplateRecommendations, type TemplateApplyTarget } from "@/components/planner/TemplateRecommendations";
+import type { DayTemplate } from "@/types/spot";
 import { dayCourses } from "@/data/day-courses";
 import { getCityInfo } from "@/data/city-info";
 import { styleLabel, travelerLabel } from "@/lib/utils";
@@ -20,10 +25,18 @@ import { BookingChecklist } from "@/components/itinerary/BookingChecklist";
 import { CityInfoCard } from "@/components/itinerary/CityInfoCard";
 import { SaveItineraryDropdown } from "@/components/ui/SaveItineraryDropdown";
 import { OverviewMap } from "@/components/map/OverviewMap";
+import { DayRouteMap } from "@/components/map/DayRouteMap";
 import { generateTripJsonLd } from "@/lib/jsonld";
-import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary, GeneratedDay } from "@/types";
+import type { PlannerInput, TravelerType, TravelStyle, Locale, GeneratedItinerary, GeneratedDay, AccommodationInput } from "@/types";
+import type { Pace } from "@/types/spot";
 
-const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", styles: [] };
+const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", styles: [], pace: "balanced" };
+
+const paceOptions: { value: Pace; emoji: string; label: { en: string; ko: string }; sub: { en: string; ko: string } }[] = [
+  { value: "relaxed", emoji: "🌿", label: { en: "Relaxed", ko: "여유롭게" }, sub: { en: "3 sights/day", ko: "하루 3곳" } },
+  { value: "balanced", emoji: "⚖️", label: { en: "Balanced", ko: "적당히" }, sub: { en: "4 sights/day", ko: "하루 4곳" } },
+  { value: "packed", emoji: "⚡", label: { en: "Packed", ko: "알차게" }, sub: { en: "6 sights/day", ko: "하루 6곳" } },
+];
 
 export default function PlannerPage() {
   return (
@@ -51,16 +64,58 @@ function PlannerContent() {
   const [dayOrder, setDayOrder] = useState<GeneratedDay[]>([]);
   const resultRef = useRef<HTMLDivElement>(null);
 
-  const [initialCoursesParam] = useState(() => searchParams.get("courses"));
+  // `forcedSpots` is set when the user arrives via a v2 share URL. In that case
+  // we bypass the engine's random scoring and rebuild the itinerary from the
+  // exact spot ids the sharer saw.
+  const [forcedSpots, setForcedSpots] = useState<{ spots: string[][]; cities: string[] } | null>(null);
 
-  // Read URL params on mount (from homepage QuickPlanner redirect)
+  // Read URL params on mount. Supports two shapes:
+  //   1) v2 shared URL: `?v=2&s=<base64>` — restores exact itinerary + input
+  //   2) Legacy QuickPlanner redirect: `?destinations=tokyo&duration=2&…`
+  // The old `?courses=...` URL is intentionally unsupported (see plan §6).
   useEffect(() => {
+    // v2 shared URL first
+    const version = searchParams.get("v");
+    const encoded = searchParams.get("s");
+    if (version === "2" && encoded) {
+      const payload = decodeItinerary(encoded);
+      if (payload) {
+        const accommodations: Record<string, { label: string; location: { lat: number; lng: number }; source: "manual" }> = {};
+        if (payload.ac) {
+          for (const [city, [lat, lng]] of Object.entries(payload.ac)) {
+            accommodations[city] = { label: "", location: { lat, lng }, source: "manual" };
+          }
+        }
+        const next: PlannerInput = {
+          destinations: payload.d,
+          duration: String(payload.n),
+          travelerType: (payload.t as TravelerType) ?? "",
+          styles: payload.st ?? [],
+          pace: payload.p ?? "balanced",
+          ...(payload.sd ? { startDate: payload.sd } : {}),
+          ...(Object.keys(accommodations).length > 0 ? { accommodations } : {}),
+        };
+        setInput(next);
+        setCommittedInput(next);
+        setForcedSpots({ spots: payload.sp, cities: payload.cp ?? [] });
+        setSearched(true);
+        setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 300);
+        return;
+      }
+    }
+
+    // Legacy params (homepage redirect etc.)
     const destinations = searchParams.get("destinations")?.split(",").filter(Boolean) ?? [];
     const duration = searchParams.get("duration") ?? "";
     const travelerType = (searchParams.get("travelerType") as TravelerType) ?? "";
     const styles = searchParams.get("styles")?.split(",").filter(Boolean) as TravelStyle[] ?? [];
+    const paceParam = searchParams.get("pace") as Pace | null;
+    const pace: Pace = paceParam === "relaxed" || paceParam === "balanced" || paceParam === "packed"
+      ? paceParam
+      : "balanced";
+    const startDate = searchParams.get("startDate") ?? undefined;
     if (destinations.length > 0 || duration) {
-      const next = { destinations, duration, travelerType, styles };
+      const next: PlannerInput = { destinations, duration, travelerType, styles, pace, ...(startDate ? { startDate } : {}) };
       setInput(next);
       setCommittedInput(next);
       setSearched(true);
@@ -84,30 +139,49 @@ function PlannerContent() {
     const locked = lockedDays.size > 0
       ? Array.from(lockedDays.entries()).map(([dayNumber, { courseId, city }]) => ({ dayNumber, courseId, city }))
       : undefined;
+
+    // Build accommodations once — reused whether the itinerary is forced (shared URL)
+    // or freshly generated by the engine.
+    const citiesFlatEarly = countries.flatMap((c) => c.cities);
+    const accommodationCoordsShared: Record<string, { lat: number; lng: number }> = {};
+    for (const cityId of committedInput.destinations) {
+      const acc = committedInput.accommodations?.[cityId];
+      if (acc?.location) {
+        accommodationCoordsShared[cityId] = acc.location;
+      } else {
+        const city = citiesFlatEarly.find((c) => c.id === cityId);
+        if (city?.defaultAccommodation) {
+          accommodationCoordsShared[cityId] = city.defaultAccommodation.location;
+        }
+      }
+    }
+
+    // v2 share URL path — reconstruct the exact shared itinerary from spot IDs
+    if (forcedSpots && forcedSpots.spots.length > 0) {
+      return buildItineraryFromSpotIds({
+        spotsPerDay: forcedSpots.spots,
+        cityPerDay: forcedSpots.cities.length > 0 ? forcedSpots.cities : undefined,
+        styles: committedInput.styles.length > 0 ? committedInput.styles : undefined,
+        travelerType: committedInput.travelerType || undefined,
+        accommodations: Object.keys(accommodationCoordsShared).length > 0 ? accommodationCoordsShared : undefined,
+      });
+    }
     return buildItinerary({
       destinations: committedInput.destinations,
       duration: Number(committedInput.duration) + 1,
       styles: committedInput.styles.length > 0 ? committedInput.styles : undefined,
       travelerType: committedInput.travelerType || undefined,
       lockedDays: locked,
+      pace: committedInput.pace,
+      accommodations: Object.keys(accommodationCoordsShared).length > 0 ? accommodationCoordsShared : undefined,
+      startDate: committedInput.startDate,
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searched, committedInput, refreshKey]);
+  }, [searched, committedInput, refreshKey, forcedSpots, lockedDays]);
 
-  // Sync dayOrder when itinerary changes, or restore from URL (once)
+  // Sync dayOrder whenever the itinerary is (re)built.
   useEffect(() => {
     if (!itinerary) return;
-    if (initialCoursesParam) {
-      const courseIds = initialCoursesParam.split(",").filter(Boolean);
-      const restored = courseIds.map((id, i) => {
-        const course = dayCourses.find((c) => c.id === id);
-        return course ? { dayNumber: i + 1, course, city: course.city } as GeneratedDay : null;
-      }).filter((d): d is GeneratedDay => d !== null);
-      if (restored.length > 0) {
-        setDayOrder(restored);
-        return;
-      }
-    }
     setDayOrder(itinerary.days.map((d, i) => ({ ...d, dayNumber: i + 1 })));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itinerary]);
@@ -119,6 +193,40 @@ function PlannerContent() {
       return next.map((d, i) => ({ ...d, dayNumber: i + 1 }));
     });
     setLockedDays(new Map());
+  }
+
+  /**
+   * Apply a recommended template to either an existing Day (overwrite) or append
+   * it as a new Day (duration +1). Snapshots the current spots/cities from
+   * displayDays and patches just the targeted day — the rest of the itinerary
+   * stays intact.
+   */
+  function applyTemplate(template: DayTemplate, target: TemplateApplyTarget) {
+    const baseDays = dayOrder.length > 0 ? dayOrder : (itinerary?.days ?? []);
+    if (baseDays.length === 0) return;
+
+    const currentSpots: string[][] = baseDays.map((d) =>
+      d.course.activities
+        .map((a) => a.spotId)
+        .filter((x): x is string => !!x),
+    );
+    const currentCities: string[] = baseDays.map((d) => d.city);
+
+    if (target === "new") {
+      currentSpots.push(template.spotIds);
+      currentCities.push(template.city);
+      // duration stores nights, so +1 day = +1 night
+      setCommittedInput((p) => ({ ...p, duration: String(Number(p.duration || "0") + 1) }));
+      setInput((p) => ({ ...p, duration: String(Number(p.duration || "0") + 1) }));
+    } else {
+      const idx = target - 1; // dayNumber → array index
+      if (idx < 0 || idx >= currentSpots.length) return;
+      currentSpots[idx] = template.spotIds;
+      currentCities[idx] = template.city;
+    }
+
+    setForcedSpots({ spots: currentSpots, cities: currentCities });
+    setLockedDays(new Map()); // dayNumber renumbering would invalidate locks
   }
 
   const displayDays = dayOrder.length > 0 ? dayOrder : (itinerary?.days ?? []);
@@ -176,12 +284,15 @@ function PlannerContent() {
     setSearched(true);
     setLockedDays(new Map());
     setDayOrder([]); // clear prior day ordering so the new committed input rebuilds freshly
+    setForcedSpots(null); // discard any shared-URL restore so the engine picks fresh spots
     // Update URL so back button preserves results
     const params = new URLSearchParams();
     if (input.destinations.length) params.set("destinations", input.destinations.join(","));
     if (input.duration) params.set("duration", input.duration);
     if (input.travelerType) params.set("travelerType", input.travelerType);
     if (input.styles.length) params.set("styles", input.styles.join(","));
+    if (input.pace && input.pace !== "balanced") params.set("pace", input.pace);
+    if (input.startDate) params.set("startDate", input.startDate);
     window.history.replaceState(null, "", `?${params.toString()}`);
     setTimeout(() => resultRef.current?.scrollIntoView({ behavior: "smooth" }), 100);
   }
@@ -301,6 +412,23 @@ function PlannerContent() {
           </div>
         </div>
 
+        {/* Start date (optional) */}
+        <div className="flex flex-col gap-3">
+          <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
+            <Calendar className="w-4 h-4 text-blue-600" />
+            {locale === "ko" ? "출발일 (선택)" : "Start date (optional)"}
+            <span className="text-xs font-normal text-gray-400 ml-2">
+              {locale === "ko" ? "정기휴무일 스팟 자동 제외" : "Skips spots closed on your visit day"}
+            </span>
+          </label>
+          <input
+            type="date"
+            value={input.startDate ?? ""}
+            onChange={(e) => setInput((p) => ({ ...p, startDate: e.target.value || undefined }))}
+            className="w-full sm:w-60 px-4 py-3 rounded-xl border-2 border-gray-200 bg-white text-sm text-gray-900 focus:border-blue-500 focus:outline-none transition-colors"
+          />
+        </div>
+
         {/* Traveler type */}
         <div className="flex flex-col gap-3">
           <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
@@ -316,6 +444,38 @@ function PlannerContent() {
             ))}
           </div>
         </div>
+
+        {/* Pace — how packed the day is */}
+        <div className="flex flex-col gap-3">
+          <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
+            <Gauge className="w-4 h-4 text-blue-600" />
+            {locale === "ko" ? "하루 페이스" : "Daily pace"}
+          </label>
+          <div className="grid grid-cols-3 gap-2">
+            {paceOptions.map((p) => {
+              const selected = (input.pace ?? "balanced") === p.value;
+              return (
+                <button key={p.value} type="button"
+                  onClick={() => setInput((prev) => ({ ...prev, pace: p.value }))}
+                  className={`flex flex-col items-center gap-1 p-3 rounded-xl border-2 cursor-pointer transition-all ${selected ? optionSelected : optionDefault}`}>
+                  <span className="text-lg">{p.emoji}</span>
+                  <span className="text-sm font-semibold text-gray-900">{p.label[locale]}</span>
+                  <span className="text-xs text-gray-400">{p.sub[locale]}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Accommodation per city */}
+        {input.destinations.length > 0 && (
+          <AccommodationPicker
+            destinations={input.destinations}
+            accommodations={input.accommodations}
+            onChange={(acc) => setInput((p) => ({ ...p, accommodations: acc }))}
+            locale={locale}
+          />
+        )}
 
         {/* Style — multi select 2~4 */}
         <div className="flex flex-col gap-3">
@@ -466,6 +626,14 @@ function PlannerContent() {
             {/* Overview map — day zones */}
             <OverviewMap days={displayDays} locale={locale} />
 
+            {/* Recommended day templates for the current cities */}
+            <TemplateRecommendations
+              input={committedInput}
+              days={displayDays}
+              locale={locale}
+              onApply={applyTemplate}
+            />
+
             {/* Itinerary overview */}
             <section className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
               <div className="px-5 py-4 bg-gray-50 border-b border-gray-100">
@@ -531,7 +699,7 @@ function PlannerContent() {
               {lockedDays.size < displayDays.length && (
                 <div className="px-5 py-3 border-t border-gray-100">
                   <button
-                    onClick={() => setRefreshKey((k) => k + 1)}
+                    onClick={() => { setForcedSpots(null); setRefreshKey((k) => k + 1); }}
                     className="w-full flex items-center justify-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium py-2.5 px-4 rounded-xl transition-colors"
                   >
                     <RefreshCw className="w-4 h-4" />
@@ -547,7 +715,7 @@ function PlannerContent() {
               )}
 
               {/* Save itinerary */}
-              <SaveItineraryDropdown locale={locale} days={displayDays} duration={committedInput.duration} itinerary={itinerary} />
+              <SaveItineraryDropdown locale={locale} days={displayDays} duration={committedInput.duration} itinerary={itinerary} input={committedInput} />
             </section>
 
             {/* Day-by-day with per-day maps */}
@@ -568,27 +736,48 @@ function PlannerContent() {
                           </span>
                         </div>
                       )}
-                      {/* Per-day map (user-uploaded, locale-specific). Falls back to a placeholder. */}
-                      {day.course.mapImage?.[locale] ? (
-                        <div className="relative w-full rounded-xl overflow-hidden border border-gray-100" style={{ aspectRatio: "800 / 280" }}>
-                          <Image
-                            src={day.course.mapImage[locale]}
-                            alt={locale === "ko" ? `Day ${day.dayNumber} ${day.course.title.ko} 지도` : `Day ${day.dayNumber} ${day.course.title.en} map`}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 800px"
-                            className="object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="h-[200px] rounded-xl bg-gray-50 border border-dashed border-gray-200 flex items-center justify-center">
-                          <div className="text-center px-4">
-                            <MapIcon className="w-7 h-7 text-gray-300 mx-auto mb-1.5" />
-                            <p className="text-sm text-gray-400">
-                              {locale === "ko" ? "일자별 지도 준비 중" : "Day map coming soon"}
-                            </p>
+                      {/* Per-day map:
+                          1) static mapImage (legacy hand-curated DayCourse)
+                          2) interactive DayRouteMap (spots with GPS coordinates)
+                          3) placeholder (neither) */}
+                      {(() => {
+                        if (day.course.mapImage?.[locale]) {
+                          return (
+                            <div className="relative w-full rounded-xl overflow-hidden border border-gray-100" style={{ aspectRatio: "800 / 280" }}>
+                              <Image
+                                src={day.course.mapImage[locale]}
+                                alt={locale === "ko" ? `Day ${day.dayNumber} ${day.course.title.ko} 지도` : `Day ${day.dayNumber} ${day.course.title.en} map`}
+                                fill
+                                sizes="(max-width: 768px) 100vw, 800px"
+                                className="object-cover"
+                              />
+                            </div>
+                          );
+                        }
+                        const hasCoords = day.course.activities.some((a) => a.location);
+                        if (hasCoords) {
+                          const accCoord = committedInput.accommodations?.[day.city]?.location
+                            ?? allCities.find((c) => c.id === day.city)?.defaultAccommodation?.location;
+                          return (
+                            <DayRouteMap
+                              activities={day.course.activities}
+                              accommodation={accCoord}
+                              locale={locale}
+                              dayIndex={day.dayNumber - 1}
+                            />
+                          );
+                        }
+                        return (
+                          <div className="h-[200px] rounded-xl bg-gray-50 border border-dashed border-gray-200 flex items-center justify-center">
+                            <div className="text-center px-4">
+                              <MapIcon className="w-7 h-7 text-gray-300 mx-auto mb-1.5" />
+                              <p className="text-sm text-gray-400">
+                                {locale === "ko" ? "일자별 지도 준비 중" : "Day map coming soon"}
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        );
+                      })()}
                       <div className="mt-3">
                         <DayPlanSection
                           day={{

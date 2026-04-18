@@ -61,12 +61,31 @@ function ActivityItem({ activity, locale, index }: { activity: DayActivity; loca
           </div>
         )}
 
-        {/* Photo */}
-        {activity.photo && (
-          <div className="mt-3 rounded-xl overflow-hidden border border-gray-100">
-            <Image src={activity.photo} alt={activity.title[locale]} width={600} height={340} className="w-full h-auto object-cover" />
-          </div>
-        )}
+        {/* Photos — shows a carousel when multiple, single image otherwise */}
+        {(() => {
+          const photos = activity.photos && activity.photos.length > 0
+            ? activity.photos
+            : activity.photo ? [activity.photo] : [];
+          if (photos.length === 0) return null;
+          if (photos.length === 1) {
+            return (
+              <div className="mt-3 rounded-xl overflow-hidden border border-gray-100">
+                <Image src={photos[0]} alt={activity.title[locale]} width={600} height={340} className="w-full h-auto object-cover" />
+              </div>
+            );
+          }
+          return (
+            <div className="mt-3 -mx-4 sm:mx-0 overflow-x-auto">
+              <div className="flex gap-2 px-4 sm:px-0 snap-x snap-mandatory">
+                {photos.map((src, i) => (
+                  <div key={i} className="flex-shrink-0 w-[80%] sm:w-[60%] rounded-xl overflow-hidden border border-gray-100 snap-start">
+                    <Image src={src} alt={`${activity.title[locale]} ${i + 1}`} width={600} height={340} className="w-full h-auto object-cover" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
 
         {/* Buttons: booking links + guide post */}
         {(activity.bookingLinks || activity.postSlug) && (

@@ -41,9 +41,14 @@ export type DayActivity = {
   type: ActivityType;
   location?: Coordinates;
   duration?: number;              // 체류 시간 (분)
-  photo?: string;                 // /images/courses/xxx.jpg
+  /** @deprecated prefer `photos` — kept for legacy DayCourse data. */
+  photo?: string;
+  /** Multiple photos, shown as a horizontal carousel in the day card. */
+  photos?: string[];
   postSlug?: string;              // 가이드 포스트 연결
   bookingLinks?: BookingLinks;    // 어필리에이트 링크
+  /** Present when the activity came from the spot engine — used for URL encoding and swap UI. */
+  spotId?: string;
 };
 
 export type DayCostBreakdown = {
@@ -235,11 +240,30 @@ export type BlogPost = {
 };
 
 // ── 플래너 입력 ────────────────────────────────────
+import type { Pace } from "@/types/spot";
+
+/**
+ * User-entered accommodation for a city.
+ * MVP: label is free-text; location falls back to the city's defaultAccommodation
+ * when the user hasn't picked a specific address. V2 will add Places Autocomplete.
+ */
+export type AccommodationInput = {
+  label: string;
+  location: Coordinates;
+  source: "default" | "manual" | "places";
+};
+
 export type PlannerInput = {
   destinations: string[];
   duration: string;
   travelerType: TravelerType | "";
   styles: TravelStyle[];
+  /** Day-level spot density. Default "balanced" when not set. */
+  pace?: Pace;
+  /** city id → accommodation. Populated per selected destination. */
+  accommodations?: Record<string, AccommodationInput>;
+  /** ISO yyyy-mm-dd — optional. Used for opening-hours / closedDays checks. */
+  startDate?: string;
 };
 
 // ── 여행지 구조 ────────────────────────────────────
@@ -249,6 +273,15 @@ export type Destination = {
   countryId: string;
   /** Hero/banner image shown behind the summary banner on the planner. */
   heroImage?: string;
+  /**
+   * Default accommodation coordinates when the traveler hasn't picked a hotel yet.
+   * Typically the city's main station (e.g. Shinjuku for Tokyo).
+   * Used by the spot engine as day start/end anchor for route optimization.
+   */
+  defaultAccommodation?: {
+    label: LocaleString;
+    location: Coordinates;
+  };
 };
 
 export type Country = {

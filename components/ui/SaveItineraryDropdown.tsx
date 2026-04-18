@@ -1,29 +1,74 @@
 "use client";
 
-import { useState } from "react";
-import { Bookmark, Link2, FileDown, Check, ChevronDown } from "lucide-react";
-import type { Locale, GeneratedDay, GeneratedItinerary, FlightEstimate, HotelEstimate } from "@/types";
+import { useEffect, useState } from "react";
+import { Bookmark, Link2, FileDown, Check, ChevronDown, Save, List, Trash2 } from "lucide-react";
+import type { Locale, GeneratedDay, GeneratedItinerary, FlightEstimate, HotelEstimate, PlannerInput } from "@/types";
 import { countries } from "@/data/destinations";
 import { getCityInfo } from "@/data/city-info";
 import { getFlightEstimate, getHotelEstimate, fetchLivePrices } from "@/lib/price-api";
 import { sumLocalCosts } from "@/lib/itinerary-builder";
 import { formatCurrency, convertToDisplay } from "@/lib/currency";
+import { buildShareableUrl } from "@/lib/itinerary-encoding";
+import {
+  listStoredItineraries,
+  saveItinerary,
+  removeStoredItinerary,
+  buildUrlForStored,
+  type StoredItinerary,
+} from "@/lib/itinerary-storage";
 
 interface Props {
   locale: Locale;
   days: GeneratedDay[];
   duration: string;
   itinerary: GeneratedItinerary;
+  /** Needed for v2 URL encoding. Optional for backward compat with places that
+   *  haven't been updated; in that case we fall back to a minimal encoding. */
+  input?: PlannerInput;
 }
 
-export function SaveItineraryDropdown({ locale, days, duration, itinerary }: Props) {
+export function SaveItineraryDropdown({ locale, days, duration, itinerary, input }: Props) {
   const [open, setOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [savedItems, setSavedItems] = useState<StoredItinerary[]>([]);
+  const [saveStatus, setSaveStatus] = useState<"idle" | "saved">("idle");
+
+  // Refresh the stored list whenever the dropdown opens so users see fresh data.
+  useEffect(() => {
+    if (open) setSavedItems(listStoredItineraries());
+  }, [open]);
+
+  function handleSaveLocal() {
+    if (!input) return;
+    const allCities = countries.flatMap((c) => c.cities);
+    const cityLabel = input.destinations
+      .map((id) => allCities.find((c) => c.id === id)?.label[locale] ?? id)
+      .join(" + ");
+    const defaultName = locale === "ko"
+      ? `${cityLabel} ${Number(duration)}박${Number(duration) + 1}일`
+      : `${cityLabel} ${Number(duration) + 1} days`;
+    saveItinerary(defaultName, itinerary, input);
+    setSavedItems(listStoredItineraries());
+    setSaveStatus("saved");
+    setTimeout(() => setSaveStatus("idle"), 1500);
+  }
+
+  function handleRemove(id: string) {
+    removeStoredItinerary(id);
+    setSavedItems(listStoredItineraries());
+  }
 
   function handleCopyLink() {
-    const params = new URLSearchParams(window.location.search);
-    params.set("courses", days.map((d) => d.course.id).join(","));
-    const url = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
+    // v2: encode the exact spot set + all user input so the sharer and receiver
+    // see the same result. Old `?courses=` links are intentionally no longer
+    // produced (see plan §6).
+    const effectiveInput: PlannerInput = input ?? {
+      destinations: itinerary.cities,
+      duration,
+      travelerType: itinerary.travelerType,
+      styles: [itinerary.style],
+    };
+    const url = buildShareableUrl(itinerary, effectiveInput);
     navigator.clipboard.writeText(url);
     setCopied(true);
     setTimeout(() => { setCopied(false); setOpen(false); }, 1500);
@@ -135,6 +180,26 @@ export function SaveItineraryDropdown({ locale, days, duration, itinerary }: Pro
               {!copied && <p className="text-xs text-gray-400">{locale === "ko" ? "이 링크로 같은 일정을 다시 볼 수 있어요" : "Revisit this exact itinerary later"}</p>}
             </div>
           </button>
+
+          {input && (
+            <button onClick={handleSaveLocal}
+              className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-left border-t border-gray-100">
+              {saveStatus === "saved" ? <Check className="w-4 h-4 text-green-500" /> : <Save className="w-4 h-4 text-gray-400" />}
+              <div>
+                <p className="text-sm font-medium text-gray-900">
+                  {saveStatus === "saved"
+                    ? (locale === "ko" ? "이 브라우저에 저장됨" : "Saved to this browser")
+                    : (locale === "ko" ? "이 브라우저에 저장" : "Save to this browser")}
+                </p>
+                {saveStatus === "idle" && (
+                  <p className="text-xs text-gray-400">
+                    {locale === "ko" ? "계정 없이 최대 20개까지 저장 (이 브라우저 전용)" : "Up to 20 itineraries, this browser only"}
+                  </p>
+                )}
+              </div>
+            </button>
+          )}
+
           <button onClick={handlePDF}
             className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-left border-t border-gray-100">
             <FileDown className="w-4 h-4 text-gray-400" />
@@ -143,6 +208,40 @@ export function SaveItineraryDropdown({ locale, days, duration, itinerary }: Pro
               <p className="text-xs text-gray-400">{locale === "ko" ? "오프라인에서도 일정을 확인할 수 있어요" : "View your itinerary offline"}</p>
             </div>
           </button>
+
+          {savedItems.length > 0 && (
+            <div className="border-t border-gray-100">
+              <div className="px-4 pt-3 pb-1 flex items-center gap-2">
+                <List className="w-3.5 h-3.5 text-gray-400" />
+                <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                  {locale === "ko" ? "저장된 일정" : "Saved"} ({savedItems.length})
+                </p>
+              </div>
+              <div className="max-h-64 overflow-y-auto">
+                {savedItems.map((it) => (
+                  <div key={it.id} className="flex items-center gap-2 px-4 py-2 hover:bg-gray-50">
+                    <a href={buildUrlForStored(it)}
+                      className="flex-1 min-w-0 text-left">
+                      <p className="text-sm font-medium text-gray-900 truncate">{it.name}</p>
+                      <p className="text-xs text-gray-400">
+                        {new Date(it.updatedAt).toLocaleDateString(locale === "ko" ? "ko-KR" : "en-US")}
+                        {" · "}
+                        {it.preview.destinations.join(", ")}
+                        {" · "}
+                        {it.preview.dayCount}{locale === "ko" ? "일" : "d"}
+                      </p>
+                    </a>
+                    <button onClick={() => handleRemove(it.id)}
+                      className="p-1.5 text-gray-300 hover:text-red-500 transition-colors"
+                      title={locale === "ko" ? "삭제" : "Remove"}
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

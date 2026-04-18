@@ -1,9 +1,20 @@
-import type { DayCourse, DayCostBreakdown, GeneratedItinerary, TravelStyle, TravelerType, GeneratedDay, Locale } from "@/types";
+import type { Coordinates, DayCourse, DayCostBreakdown, GeneratedItinerary, TravelStyle, TravelerType, GeneratedDay, Locale } from "@/types";
+import type { Pace } from "@/types/spot";
 import { dayCourses } from "@/data/day-courses";
 import { tours } from "@/data/tours";
 import { hotels } from "@/data/hotels";
 import { sortByProximity } from "./geo";
 import { getDefaultCosts } from "@/data/course-costs";
+import { buildSpotItinerary } from "./spot-builder";
+
+/**
+ * Feature flag — when `true`, `buildItinerary()` delegates to the new spot-based
+ * engine (`lib/spot-builder.ts`). When `false`, uses the legacy DayCourse logic.
+ *
+ * Set via `NEXT_PUBLIC_USE_SPOT_ENGINE=true` in .env.local during migration.
+ * Once stable, flip this default to true and remove the legacy path.
+ */
+const USE_SPOT_ENGINE = process.env.NEXT_PUBLIC_USE_SPOT_ENGINE === "true";
 
 interface LockedDay {
   dayNumber: number;
@@ -17,6 +28,12 @@ interface BuildInput {
   styles?: TravelStyle[];
   travelerType?: TravelerType;
   lockedDays?: LockedDay[];
+  /** Day-level density for the spot engine. Ignored by the legacy path. */
+  pace?: Pace;
+  /** city → hotel coordinates. Spot engine uses this to anchor day start/end. */
+  accommodations?: Record<string, Coordinates>;
+  /** ISO yyyy-mm-dd. Spot engine uses this to skip spots closed on that weekday. */
+  startDate?: string;
 }
 
 /**
@@ -29,9 +46,24 @@ interface BuildInput {
  * 5. Chain cities in order
  */
 export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
-  const { destinations, duration, styles, travelerType, lockedDays } = input;
+  const { destinations, duration, styles, travelerType, lockedDays, pace, accommodations, startDate } = input;
 
   if (destinations.length === 0 || duration <= 0) return null;
+
+  // Spot-based engine path — used when feature flag is on.
+  // Locked-days are not yet supported in the spot engine, so falls back to legacy
+  // when locks are present to preserve existing reshuffle/lock UX.
+  if (USE_SPOT_ENGINE && (!lockedDays || lockedDays.length === 0)) {
+    return buildSpotItinerary({
+      destinations,
+      duration,
+      styles,
+      travelerType,
+      pace,
+      accommodations,
+      startDate,
+    });
+  }
 
   // If we have locked days, fill only the unlocked slots
   if (lockedDays && lockedDays.length > 0) {
@@ -170,7 +202,7 @@ export function buildItinerary(input: BuildInput): GeneratedItinerary | null {
     }
 
     // Step 4: Sort by GPS proximity within city
-    picked = sortByProximity(picked);
+    picked = sortByProximity(picked, (c) => c.center);
 
     for (const course of picked) {
       days.push({ dayNumber, course, city });
