@@ -96,18 +96,18 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
 
   return (
     <section className="mt-10">
-      <div className="mb-4">
-        <p className="text-sm font-medium text-emerald-600 mb-1">{t("label")}</p>
-        <h2 className="text-xl font-bold text-gray-900">{t("heading")}</h2>
+      <div className="mb-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-emerald-600 mb-1.5">{t("label")}</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">{t("heading")}</h2>
       </div>
 
-      <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm divide-y divide-gray-100">
+      <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-card divide-y divide-gray-100">
         {/* Flights */}
         {flight && (
           <div className="p-5">
             <div className="flex items-center gap-2 mb-3">
               <Plane className="w-4 h-4 text-blue-500" />
-              <h3 className="text-sm font-semibold text-gray-900">{t("flights")}</h3>
+              <h3 className="text-base font-semibold text-gray-900">{t("flights")}</h3>
               <span className="text-xs text-gray-400 ml-auto">{t("flightsNote")}</span>
             </div>
             <div className="space-y-2">
@@ -148,7 +148,7 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
           <div className="p-5">
             <div className="flex items-center gap-2 mb-3">
               <Building2 className="w-4 h-4 text-purple-500" />
-              <h3 className="text-sm font-semibold text-gray-900">{t("hotels")}</h3>
+              <h3 className="text-base font-semibold text-gray-900">{t("hotels")}</h3>
               <span className="text-xs text-gray-400 ml-auto">{t("perNight")}</span>
             </div>
             <div className="space-y-2">
@@ -183,7 +183,7 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
           <div className="p-5">
             <div className="flex items-center gap-2 mb-3">
               <MapPinned className="w-4 h-4 text-emerald-500" />
-              <h3 className="text-sm font-semibold text-gray-900">{t("localCosts")}</h3>
+              <h3 className="text-base font-semibold text-gray-900">{t("localCosts")}</h3>
               <span className="text-xs text-gray-400 ml-auto">{itinerary.duration}{locale === "ko" ? "일 합산" : "-day total"}</span>
             </div>
             <div className="space-y-2">
@@ -209,24 +209,24 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
 
         {/* Grand total */}
         {(totalBudget || totalLuxury) && (
-          <div className="p-5 bg-emerald-50">
+          <div className="p-5 bg-gradient-to-br from-emerald-50 to-emerald-100/50">
             <div className="flex items-center gap-2 mb-3">
               <DollarSign className="w-4 h-4 text-emerald-600" />
-              <h3 className="text-sm font-bold text-emerald-800">{t("grandTotal")}</h3>
+              <h3 className="text-base font-bold text-emerald-900">{t("grandTotal")}</h3>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               {totalBudget && (
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-baseline">
                   <span className="text-sm text-emerald-700">{t("budgetTier")}</span>
-                  <span className="text-sm font-bold text-emerald-800">
+                  <span className="text-lg font-bold text-emerald-900 tracking-tight">
                     {formatCurrency(totalBudget.min, locale)} ~ {formatCurrency(totalBudget.max, locale)}
                   </span>
                 </div>
               )}
               {totalLuxury && (
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-baseline">
                   <span className="text-sm text-emerald-700">{t("luxuryTier")}</span>
-                  <span className="text-sm font-bold text-emerald-800">
+                  <span className="text-lg font-bold text-emerald-900 tracking-tight">
                     {formatCurrency(totalLuxury.min, locale)} ~ {formatCurrency(totalLuxury.max, locale)}
                   </span>
                 </div>

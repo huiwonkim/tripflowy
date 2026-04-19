@@ -28,12 +28,12 @@ export function CityInfoCard({ info, cityName, locale }: CityInfoCardProps) {
 
   return (
     <section className="mt-10">
-      <div className="mb-4">
-        <p className="text-sm font-medium text-sky-600 mb-1">{locale === "ko" ? "여행 기본 정보" : "Travel Essentials"}</p>
-        <h2 className="text-xl font-bold text-gray-900">{cityName}</h2>
+      <div className="mb-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-sky-600 mb-1.5">{locale === "ko" ? "여행 기본 정보" : "Travel Essentials"}</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">{cityName}</h2>
       </div>
 
-      <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-card">
         {/* Info rows */}
         <div className="divide-y divide-gray-100">
           {rows.map(({ icon: Icon, label, value }) => (

@@ -156,13 +156,13 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
 
   return (
     <section className="mt-10">
-      <div className="mb-4">
-        <p className="text-sm font-medium text-orange-600 mb-1">{t("label")}</p>
-        <h2 className="text-xl font-bold text-gray-900">{t("heading")}</h2>
-        <p className="text-sm text-gray-500 mt-1">{t("subheading")}</p>
+      <div className="mb-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-orange-600 mb-1.5">{t("label")}</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">{t("heading")}</h2>
+        <p className="text-sm text-gray-500 mt-2">{t("subheading")}</p>
       </div>
 
-      <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+      <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-card">
         <div className="divide-y divide-gray-100">
           {items.map((item) => {
             const Icon = categoryIcons[item.category];
@@ -201,7 +201,7 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
           <button
             onClick={openAll}
             disabled={selectedCount === 0}
-            className="w-full bg-orange-500 hover:bg-orange-600 disabled:bg-gray-200 disabled:text-gray-400 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
+            className="w-full bg-gray-900 hover:bg-gray-800 disabled:bg-gray-200 disabled:text-gray-400 text-white font-semibold py-3 px-4 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
           >
             <ExternalLink className="w-4 h-4" />
             {selectedCount > 0
