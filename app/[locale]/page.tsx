@@ -141,33 +141,37 @@ export default async function HomePage({ params }: PageProps) {
 
       {/* Compare: AI vs Field-tested */}
       <section className="bg-white border-y border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">{t("whyDifferent.heading")}</h2>
-            <p className="text-gray-500">{t("whyDifferent.subheading")}</p>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-20">
+          <div className="text-center mb-12 max-w-2xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-3">{t("whyDifferent.heading")}</h2>
+            <p className="text-gray-500 text-lg">{t("whyDifferent.subheading")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {/* AI side */}
-            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
-              <p className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-4">{t("whyDifferent.aiTitle")}</p>
-              <ul className="space-y-3">
+            {/* AI side — muted, negative framing */}
+            <div className="relative bg-gray-50 rounded-2xl p-7 border border-gray-100">
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-[0.15em] mb-5">{t("whyDifferent.aiTitle")}</p>
+              <ul className="space-y-3.5">
                 {[t("whyDifferent.ai1"), t("whyDifferent.ai2"), t("whyDifferent.ai3"), t("whyDifferent.ai4")].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-[15px] text-gray-500">
-                    <X className="w-4 h-4 text-gray-300 mt-0.5 flex-shrink-0" />
+                  <li key={item} className="flex items-start gap-3 text-[15px] text-gray-500 leading-relaxed">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-gray-200 flex items-center justify-center">
+                      <X className="w-3 h-3 text-gray-400" strokeWidth={3} />
+                    </span>
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
 
-            {/* TripFlowy side */}
-            <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
-              <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-4">{t("whyDifferent.realTitle")}</p>
-              <ul className="space-y-3">
+            {/* TripFlowy side — accented, positive framing */}
+            <div className="relative bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-7 border border-blue-200/50 shadow-card">
+              <p className="text-xs font-semibold text-blue-600 uppercase tracking-[0.15em] mb-5">{t("whyDifferent.realTitle")}</p>
+              <ul className="space-y-3.5">
                 {[t("whyDifferent.real1"), t("whyDifferent.real2"), t("whyDifferent.real3"), t("whyDifferent.real4")].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-[15px] text-gray-700 font-medium">
-                    <Check className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <li key={item} className="flex items-start gap-3 text-[15px] text-gray-800 leading-relaxed font-medium">
+                    <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-blue-600 flex items-center justify-center">
+                      <Check className="w-3 h-3 text-white" strokeWidth={3} />
+                    </span>
                     {item}
                   </li>
                 ))}
@@ -180,10 +184,10 @@ export default async function HomePage({ params }: PageProps) {
       {/* Popular guides */}
       {posts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-          <div className="flex items-end justify-between mb-8">
+          <div className="flex items-end justify-between mb-10">
             <div>
               <p className="text-sm font-medium text-blue-600 mb-1">{t("guides.label")}</p>
-              <h2 className="text-2xl font-bold text-gray-900">{t("guides.heading")}</h2>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">{t("guides.heading")}</h2>
             </div>
             <Link href="/posts"
               className="flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors">
@@ -230,10 +234,10 @@ export default async function HomePage({ params }: PageProps) {
 
       {/* How it works */}
       <section className="bg-white border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-3">{t("howItWorks.heading")}</h2>
-            <p className="text-gray-500 max-w-lg mx-auto">{t("howItWorks.subheading")}</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-3">{t("howItWorks.heading")}</h2>
+            <p className="text-gray-500 text-lg max-w-lg mx-auto">{t("howItWorks.subheading")}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -261,46 +265,53 @@ export default async function HomePage({ params }: PageProps) {
 
       {/* Browse by destination */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">{t("browseByDestination")}</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-8">{t("browseByDestination")}</h2>
 
-        {/* Active destinations */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-          {countries.map((c) => (
-            <Link key={c.id} href={`/planner`}
-              className="bg-gradient-to-br from-slate-700 to-slate-900 rounded-2xl p-5 text-white flex flex-col items-center gap-2 hover:opacity-90 transition-opacity">
-              <span className="text-2xl">{c.emoji}</span>
-              <span className="text-sm font-semibold">{c.label[loc]}</span>
-              <span className="text-xs text-slate-400">{c.cities.length} {loc === "ko" ? "도시" : `cit${c.cities.length === 1 ? "y" : "ies"}`}</span>
+        {/* Active destinations — cities (more useful than single-country card) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {allCities.map((city) => (
+            <Link key={city.id} href={`/planner?destinations=${city.id}`}
+              className="group relative overflow-hidden bg-gradient-to-br from-slate-800 to-slate-950 rounded-2xl p-6 text-white flex flex-col items-start gap-1 hover:shadow-card-hover transition-all">
+              <span
+                aria-hidden
+                className="pointer-events-none absolute -right-4 -bottom-8 text-[7rem] font-black leading-none tracking-tight text-white/[0.07] select-none"
+              >
+                {city.label[loc].charAt(0)}
+              </span>
+              <span className="text-xs font-medium text-blue-300 mb-1">🇯🇵 {loc === "ko" ? "일본" : "Japan"}</span>
+              <span className="relative text-xl font-bold tracking-tight">{city.label[loc]}</span>
+              <span className="relative text-xs text-slate-400 group-hover:text-slate-300 transition-colors">
+                {loc === "ko" ? "일정 만들기" : "Plan a trip"} →
+              </span>
             </Link>
           ))}
         </div>
 
-        {/* Coming Soon */}
+        {/* Coming Soon — one-line, subdued */}
         {comingSoonCountries.length > 0 && (
-          <div className="mt-6">
-            <p className="text-sm font-medium text-gray-400 mb-3">{loc === "ko" ? "오픈 예정" : "Coming Soon"}</p>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2">
-              {comingSoonCountries.map((c) => (
-                <div key={c.id}
-                  className="bg-gray-100 rounded-xl p-3 flex flex-col items-center gap-1.5 opacity-60">
-                  <span className="text-lg">{c.emoji}</span>
-                  <span className="text-xs font-medium text-gray-500">{c.label[loc]}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="mt-6 text-sm text-gray-400 flex flex-wrap items-center gap-2">
+            <span className="font-medium text-gray-500">{loc === "ko" ? "곧 확장:" : "Coming soon:"}</span>
+            {comingSoonCountries.map((c) => (
+              <span key={c.id} className="inline-flex items-center gap-1">
+                <span>{c.emoji}</span>
+                <span>{c.label[loc]}</span>
+              </span>
+            ))}
+          </p>
         )}
       </section>
 
       {/* CTA */}
-      <section className="bg-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14 flex flex-col md:flex-row items-center justify-between gap-6">
+      <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white">
+        <span aria-hidden className="pointer-events-none absolute -left-16 -top-16 w-64 h-64 rounded-full bg-white/10 blur-3xl" />
+        <span aria-hidden className="pointer-events-none absolute -right-20 -bottom-20 w-72 h-72 rounded-full bg-indigo-400/20 blur-3xl" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
-            <h2 className="text-2xl font-bold mb-2">{t("cta.heading")}</h2>
-            <p className="text-blue-100">{t("cta.subheading")}</p>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">{t("cta.heading")}</h2>
+            <p className="text-blue-100 text-lg">{t("cta.subheading")}</p>
           </div>
           <Link href="/planner"
-            className="flex-shrink-0 bg-white text-blue-700 font-semibold px-6 py-3 rounded-xl hover:bg-blue-50 transition-colors flex items-center gap-2">
+            className="flex-shrink-0 bg-white text-blue-700 font-semibold px-7 py-3.5 rounded-xl hover:bg-blue-50 transition-colors flex items-center gap-2 shadow-card">
             {t("cta.button")} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
