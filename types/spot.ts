@@ -103,6 +103,14 @@ export type Spot = {
   };
 
   tags?: string[];
+
+  /**
+   * Chain / brand key for cross-day deduplication. When set, the spot engine
+   * picks at most one spot with a given `chain` per itinerary — so Don
+   * Quijote appears once, not in every shopping area. Leave unset for
+   * one-of-a-kind places.
+   */
+  chain?: string;
 };
 
 /**
