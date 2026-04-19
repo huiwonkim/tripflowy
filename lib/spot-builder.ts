@@ -26,11 +26,15 @@ import { haversineKm, sortByProximity } from "./geo";
 // Config
 // ────────────────────────────────────────────────────────
 
-/** Per-day counts keyed by pace. */
+/**
+ * Per-day counts keyed by pace. `sights` is the count of non-food activities
+ * — meals are added on top and aren't considered part of the pace. A
+ * "balanced" day should feel like ~6 things to do plus lunch and dinner.
+ */
 const PACE_CONFIG: Record<Pace, { sights: number; meals: number }> = {
-  relaxed: { sights: 3, meals: 2 },
-  balanced: { sights: 4, meals: 2 },
-  packed: { sights: 6, meals: 2 },
+  relaxed: { sights: 4, meals: 2 },
+  balanced: { sights: 6, meals: 2 },
+  packed: { sights: 8, meals: 2 },
 };
 
 /** Rotating gradient palette for generated DayCourse banners. */
@@ -108,38 +112,55 @@ export function buildSpotItinerary(input: BuildSpotInput): GeneratedItinerary | 
     if (cityPool.length === 0) continue;
 
     const usedIds = new Set<string>();
+    const usedAreas = new Map<string, number>();
+    const usedChains = new Set<string>();
     const accommodation = accommodations?.[city];
+
+    // Derive the accommodation-nearest area by finding the area whose spots
+    // have the closest centroid to the accommodation coordinate. Used as a
+    // day-1 preference so the first day doesn't start in a distant district.
+    const accommodationArea = accommodation
+      ? findClosestArea(cityPool, accommodation)
+      : undefined;
 
     for (let d = 0; d < cityDays; d++) {
       const visitDate = dateForDay(startDate, dayNumber);
       const closedDayOfWeek = visitDate ? visitDate.getDay() : null;
 
+      // Day 1 prefers the accommodation area; later days pick by fresh-area score
+      const preferredArea = d === 0 ? accommodationArea : undefined;
+
       // Pick sights + meals for the day
-      let { sights, meals } = pickDaySpots(
+      let { sights, meals, primaryArea } = pickDaySpots(
         cityPool,
         pace,
         styles,
         travelerType,
         usedIds,
+        usedAreas,
+        usedChains,
         closedDayOfWeek,
+        preferredArea,
       );
 
       // Pool exhausted — allow reuse once to avoid empty days
       if (sights.length === 0 && meals.length === 0) {
         usedIds.clear();
-        ({ sights, meals } = pickDaySpots(
+        usedAreas.clear();
+        usedChains.clear();
+        ({ sights, meals, primaryArea } = pickDaySpots(
           cityPool,
           pace,
           styles,
           travelerType,
           usedIds,
+          usedAreas,
+          usedChains,
           closedDayOfWeek,
+          preferredArea,
         ));
         if (sights.length === 0 && meals.length === 0) break;
       }
-
-      for (const s of sights) usedIds.add(s.id);
-      for (const m of meals) usedIds.add(m.id);
 
       // First day starts later when an arrival time is given; last day ends
       // earlier when a departure time is given. Middle days get no constraint.
@@ -149,7 +170,42 @@ export function buildSpotItinerary(input: BuildSpotInput): GeneratedItinerary | 
       const dayEnd = isLastDay ? departureEnd : undefined;
 
       const activities = scheduleDay(sights, meals, accommodation, pace, dayStart, dayEnd);
-      const course = buildDayCourse(city, dayNumber, activities, [...sights, ...meals]);
+
+      // Only mark spots that actually made it onto the schedule as "used" —
+      // scheduleDay drops spots that don't fit the day window (late arrival,
+      // openHours constraints, early departure). Picked-but-dropped spots
+      // stay in the pool for subsequent days.
+      const scheduledSpotIds = new Set(
+        activities.map((a) => a.spotId).filter((id): id is string => !!id),
+      );
+      const byId = new Map<string, Spot>();
+      for (const s of [...sights, ...meals]) byId.set(s.id, s);
+      const scheduledSpots: Spot[] = [];
+      for (const id of scheduledSpotIds) {
+        const sp = byId.get(id);
+        if (sp) scheduledSpots.push(sp);
+      }
+
+      for (const id of scheduledSpotIds) usedIds.add(id);
+
+      // Lock chain brands — one Don Quijote / one Ichiran per itinerary
+      for (const sp of scheduledSpots) {
+        if (sp.chain) usedChains.add(sp.chain);
+      }
+
+      // Count an area as "used" only when multiple spots from it landed on
+      // the day. A short day 1 with a single spot from the accommodation
+      // area shouldn't block day 2 from finishing that area.
+      if (primaryArea) {
+        const scheduledInPrimary = scheduledSpots.filter(
+          (s) => s.area === primaryArea,
+        ).length;
+        if (scheduledInPrimary >= 2) {
+          usedAreas.set(primaryArea, (usedAreas.get(primaryArea) ?? 0) + 1);
+        }
+      }
+
+      const course = buildDayCourse(city, dayNumber, activities, scheduledSpots);
 
       days.push({ dayNumber, course, city });
       dayNumber++;
@@ -296,8 +352,13 @@ function scoreSpot(
   styles: TravelStyle[] | undefined,
   travelerType: TravelerType | undefined,
 ): number {
-  // priority 1 = must-see (+4), 2 = strong (+3), 3 = recommended (+2), 4 = optional (+1)
-  let score = 5 - spot.priority;
+  // Priority is the dominant signal — priority-1 "must-see" spots should
+  // make it into the plan even when style overlap is poor. Weights are
+  // tuned so a priority-1 spot with no style match still outranks a
+  // priority-3 spot with 1 style match.
+  //   priority 1 → 8, 2 → 5, 3 → 3, 4 → 1
+  const PRIORITY_SCORE: Record<1 | 2 | 3 | 4, number> = { 1: 8, 2: 5, 3: 3, 4: 1 };
+  let score = PRIORITY_SCORE[spot.priority] ?? 1;
 
   if (styles && styles.length > 0) {
     const overlap = styles.filter((s) => spot.styles.includes(s)).length;
@@ -311,55 +372,217 @@ function scoreSpot(
   return score;
 }
 
+/**
+ * Pick one primary area and fill the day with its spots (sights + meals).
+ * Area clustering keeps a single day geographically coherent — Shibuya day
+ * stays in Shibuya instead of hopping to Ueno then back. Rotation across
+ * days is encouraged by penalising previously-used areas.
+ *
+ * Flow:
+ *  1. Group available spots by `area`.
+ *  2. Score each area = sum of its top-N sight scores, minus reuse penalty,
+ *     plus a large bonus when it matches the accommodation area (day 1).
+ *  3. Take sights from the winning area. If it's short on sights, supplement
+ *     from the geographically nearest adjacent area by centroid distance.
+ *  4. Take meals from the same area first; if lunch/dinner slots are missing,
+ *     pull the closest food spot from any area.
+ */
 function pickDaySpots(
   pool: Spot[],
   pace: Pace,
   styles: TravelStyle[] | undefined,
   travelerType: TravelerType | undefined,
   usedIds: Set<string>,
+  usedAreas: Map<string, number>,
+  usedChains: Set<string>,
   closedDayOfWeek: number | null,
-): { sights: Spot[]; meals: Spot[] } {
+  preferredArea?: string,
+): { sights: Spot[]; meals: Spot[]; primaryArea: string | undefined } {
   const config = PACE_CONFIG[pace];
 
   const available = pool.filter((s) => {
     if (usedIds.has(s.id)) return false;
-    // Opening-hours check: skip if the visit day is a closed day
     if (closedDayOfWeek !== null && s.openHours?.closedDays?.includes(closedDayOfWeek)) return false;
+    // Chain dedupe — once a Don Quijote has been scheduled, skip the others.
+    if (s.chain && usedChains.has(s.chain)) return false;
     return true;
   });
 
-  const sightCandidates = available.filter(
-    (s) => s.category !== "food" && s.category !== "cafe",
-  );
-  const foodCandidates = available.filter(
-    (s) => s.category === "food" || s.category === "cafe",
-  );
+  const isSight = (s: Spot) => s.category !== "food" && s.category !== "cafe";
+  const isFood = (s: Spot) => s.category === "food" || s.category === "cafe";
 
-  const scoredSights = sightCandidates
-    .map((s) => ({ spot: s, score: scoreSpot(s, styles, travelerType) }))
-    .sort((a, b) => b.score - a.score);
-
-  const scoredFoods = foodCandidates
-    .map((s) => ({ spot: s, score: scoreSpot(s, styles, travelerType) }))
-    .sort((a, b) => b.score - a.score);
-
-  const sights = scoredSights.slice(0, config.sights).map((x) => x.spot);
-
-  // Meal injection: prefer one mealSlot=lunch + one mealSlot=dinner,
-  // then fill any remaining slots with any food candidate
-  const meals: Spot[] = [];
-  const lunchPick = scoredFoods.find((sf) => sf.spot.mealSlot === "lunch");
-  if (lunchPick) meals.push(lunchPick.spot);
-  const dinnerPick = scoredFoods.find(
-    (sf) => sf.spot.mealSlot === "dinner" && !meals.includes(sf.spot),
-  );
-  if (dinnerPick) meals.push(dinnerPick.spot);
-  for (const sf of scoredFoods) {
-    if (meals.length >= config.meals) break;
-    if (!meals.includes(sf.spot)) meals.push(sf.spot);
+  // Group by area — spots without an area go into a "_none" wildcard bucket
+  // and are only used to top up when a chosen area runs short.
+  const byArea = new Map<string, Spot[]>();
+  for (const s of available) {
+    const key = s.area ?? "_none";
+    const bucket = byArea.get(key) ?? [];
+    bucket.push(s);
+    byArea.set(key, bucket);
   }
 
-  return { sights, meals };
+  type AreaCand = {
+    area: string;
+    score: number;
+    sights: Spot[];
+    foods: Spot[];
+    centroid: Coordinates;
+  };
+
+  const candidates: AreaCand[] = [];
+  for (const [area, spots] of byArea) {
+    if (area === "_none") continue;
+    const scoredSights = spots
+      .filter(isSight)
+      .map((s) => ({ spot: s, score: scoreSpot(s, styles, travelerType) }))
+      .sort((a, b) => b.score - a.score);
+    if (scoredSights.length === 0) continue;
+    const scoredFoods = spots
+      .filter(isFood)
+      .map((s) => ({ spot: s, score: scoreSpot(s, styles, travelerType) }))
+      .sort((a, b) => b.score - a.score);
+
+    const topSightsScore = scoredSights
+      .slice(0, config.sights)
+      .reduce((sum, x) => sum + x.score, 0);
+    const reuseCount = usedAreas.get(area) ?? 0;
+
+    // Reuse penalty: scales with how much of the area is LEFT after previous
+    // visits. Big areas (Shibuya/Shinjuku with 15+ spots) keep getting picked
+    // on day 2 because there's still a full day of content. Small areas are
+    // blocked from re-use. Also: if day 1 only managed to fit one spot due
+    // to a late arrival, the remaining-count logic still makes the area
+    // easily re-pickable on day 2.
+    const remainingSightsHere = scoredSights.length;
+    const hasMultipleDaysOfContent = remainingSightsHere >= config.sights * 1.5;
+    let reusePenalty: number;
+    if (reuseCount === 0) {
+      reusePenalty = 0;
+    } else if (hasMultipleDaysOfContent) {
+      reusePenalty = 10; // soft nudge toward diversification, but don't block
+    } else {
+      reusePenalty = 80; // strong block once the area is mostly drained
+    }
+
+    const prefBonus = area === preferredArea ? 40 : 0;
+    const score = topSightsScore - reusePenalty + prefBonus;
+
+    candidates.push({
+      area,
+      score,
+      sights: scoredSights.map((x) => x.spot),
+      foods: scoredFoods.map((x) => x.spot),
+      centroid: centroid(spots.map((s) => s.location)),
+    });
+  }
+
+  if (candidates.length === 0) {
+    // No areas at all — fall back to flat score-based picking over the whole pool
+    const scoredSights = available
+      .filter(isSight)
+      .map((s) => ({ spot: s, score: scoreSpot(s, styles, travelerType) }))
+      .sort((a, b) => b.score - a.score);
+    const scoredFoods = available
+      .filter(isFood)
+      .map((s) => ({ spot: s, score: scoreSpot(s, styles, travelerType) }))
+      .sort((a, b) => b.score - a.score);
+    const sights = scoredSights.slice(0, config.sights).map((x) => x.spot);
+    const meals: Spot[] = [];
+    const l = scoredFoods.find((sf) => sf.spot.mealSlot === "lunch");
+    if (l) meals.push(l.spot);
+    const dn = scoredFoods.find((sf) => sf.spot.mealSlot === "dinner" && !meals.includes(sf.spot));
+    if (dn) meals.push(dn.spot);
+    for (const sf of scoredFoods) {
+      if (meals.length >= config.meals) break;
+      if (!meals.includes(sf.spot)) meals.push(sf.spot);
+    }
+    return { sights, meals, primaryArea: undefined };
+  }
+
+  candidates.sort((a, b) => b.score - a.score);
+  const chosen = candidates[0];
+
+  // Sights: start with primary area
+  const sights = chosen.sights.slice(0, config.sights);
+
+  // Supplement from the nearest other area if short on sights
+  if (sights.length < config.sights) {
+    const missing = config.sights - sights.length;
+    const others = candidates
+      .filter((c) => c.area !== chosen.area)
+      .map((c) => ({
+        cand: c,
+        dist: haversineKm(chosen.centroid, c.centroid),
+      }))
+      .sort((a, b) => a.dist - b.dist);
+    const topUp: Spot[] = [];
+    for (const { cand } of others) {
+      for (const s of cand.sights) {
+        if (topUp.length >= missing) break;
+        topUp.push(s);
+      }
+      if (topUp.length >= missing) break;
+    }
+    sights.push(...topUp);
+  }
+
+  // Meals from same area first
+  const meals: Spot[] = [];
+  const lunch = chosen.foods.find((s) => s.mealSlot === "lunch");
+  if (lunch) meals.push(lunch);
+  const dinner = chosen.foods.find((s) => s.mealSlot === "dinner" && !meals.includes(s));
+  if (dinner) meals.push(dinner);
+  for (const f of chosen.foods) {
+    if (meals.length >= config.meals) break;
+    if (!meals.includes(f)) meals.push(f);
+  }
+
+  // Fall back to nearest-area foods if meals are missing
+  if (meals.length < config.meals) {
+    const crossAreaFoods = available
+      .filter((s) => isFood(s) && s.area !== chosen.area && !meals.includes(s))
+      .map((s) => ({
+        spot: s,
+        dist: haversineKm(chosen.centroid, s.location),
+      }))
+      .sort((a, b) => a.dist - b.dist);
+    for (const { spot } of crossAreaFoods) {
+      if (meals.length >= config.meals) break;
+      // Prefer missing slot (lunch or dinner) when still uncovered
+      const needLunch = !meals.some((m) => m.mealSlot === "lunch");
+      const needDinner = !meals.some((m) => m.mealSlot === "dinner");
+      if (
+        (needLunch && spot.mealSlot === "lunch") ||
+        (needDinner && spot.mealSlot === "dinner") ||
+        (!needLunch && !needDinner)
+      ) {
+        meals.push(spot);
+      }
+    }
+    // Still short? Fill with any remaining food regardless of slot
+    for (const { spot } of crossAreaFoods) {
+      if (meals.length >= config.meals) break;
+      if (!meals.includes(spot)) meals.push(spot);
+    }
+  }
+
+  // Within-day chain dedupe — in case supplement/fallback pulled in another
+  // spot of a chain that wasn't locked yet at filter time.
+  const dayChains = new Set<string>();
+  const dedupedSights = sights.filter((s) => {
+    if (!s.chain) return true;
+    if (dayChains.has(s.chain)) return false;
+    dayChains.add(s.chain);
+    return true;
+  });
+  const dedupedMeals = meals.filter((s) => {
+    if (!s.chain) return true;
+    if (dayChains.has(s.chain)) return false;
+    dayChains.add(s.chain);
+    return true;
+  });
+
+  return { sights: dedupedSights, meals: dedupedMeals, primaryArea: chosen.area };
 }
 
 // ────────────────────────────────────────────────────────
@@ -447,26 +670,41 @@ function scheduleDay(
   dayStart?: string,
   dayEnd?: string,
 ): DayActivity[] {
-  // Sort sights by proximity, anchored to accommodation if available
-  let sortedSights: Spot[];
-  if (sights.length === 0) {
-    sortedSights = [];
+  // Split sights into daytime vs evening (opens at 16:00 or later) so that
+  // evening-only spots — golden gai, omoide yokocho, night markets — land
+  // at the end of the day instead of being scheduled at 10am.
+  const isEveningOnly = (s: Spot): boolean => {
+    if (!s.openHours?.open) return false;
+    return parseTime(s.openHours.open) >= parseTime("16:00");
+  };
+  const daytimeSights = sights.filter((s) => !isEveningOnly(s));
+  const eveningSights = sights.filter(isEveningOnly);
+
+  // Sort daytime sights by proximity, anchored to accommodation if available
+  let sortedDaytime: Spot[];
+  if (daytimeSights.length === 0) {
+    sortedDaytime = [];
   } else if (accommodation) {
     let startIdx = 0;
     let startDist = Infinity;
-    for (let i = 0; i < sights.length; i++) {
-      const d = haversineKm(accommodation, sights[i].location);
+    for (let i = 0; i < daytimeSights.length; i++) {
+      const d = haversineKm(accommodation, daytimeSights[i].location);
       if (d < startDist) {
         startDist = d;
         startIdx = i;
       }
     }
-    const head = sights[startIdx];
-    const rest = sights.filter((_, i) => i !== startIdx);
-    sortedSights = [head, ...sortByProximity(rest, (s) => s.location)];
+    const head = daytimeSights[startIdx];
+    const rest = daytimeSights.filter((_, i) => i !== startIdx);
+    sortedDaytime = [head, ...sortByProximity(rest, (s) => s.location)];
   } else {
-    sortedSights = sortByProximity(sights, (s) => s.location);
+    sortedDaytime = sortByProximity(daytimeSights, (s) => s.location);
   }
+  // Evening-only spots: sort among themselves by proximity but append last
+  const sortedEvening = eveningSights.length > 1
+    ? sortByProximity(eveningSights, (s) => s.location)
+    : eveningSights;
+  const sortedSights = [...sortedDaytime, ...sortedEvening];
 
   const breakfast = meals.find((m) => m.mealSlot === "breakfast");
   const lunch = meals.find((m) => m.mealSlot === "lunch");
@@ -486,7 +724,12 @@ function scheduleDay(
 
   /**
    * Attempt to push a spot at the computed time.
-   * Returns false (and skips) when the resulting slot would exceed `dayEnd`.
+   * Returns false (and skips) when:
+   *  - The slot would exceed `dayEnd`
+   *  - The spot's open hours can't accommodate its typical dwell
+   * If the computed start is before the spot's `openHours.open`, the start is
+   * delayed to the opening time (so a 17:00-opens spot gets scheduled at 17:00
+   * even if our proximity cursor reached it at 15:45).
    */
   const pushSpot = (spot: Spot, forcedMinutes?: number): boolean => {
     let startMin: number;
@@ -498,10 +741,24 @@ function scheduleDay(
         startMin += computeTravelMinutes(lastLocation, spot.location);
       }
     }
-    // Respect arrival-constrained start: nothing can begin before startMinutes.
+    // Respect arrival-constrained start
     if (startMin < startMinutes) startMin = startMinutes;
-    // Cut off at dayEnd — drop spots that would start past it.
+
+    // Respect the spot's own opening hours
+    if (spot.openHours?.open) {
+      const openMin = parseTime(spot.openHours.open);
+      if (startMin < openMin) startMin = openMin;
+    }
+    if (spot.openHours?.close) {
+      const closeMin = parseTime(spot.openHours.close);
+      const dwell = dwellMinutes(spot, pace);
+      // Skip if we can't finish the minimum visit before it closes
+      if (startMin + Math.min(dwell, 30) > closeMin) return false;
+    }
+
+    // Cut off at dayEnd — drop spots that would start past it
     if (endMinutes !== null && startMin > endMinutes) return false;
+
     const timeStr = formatTime(startMin);
     activities.push(spotToActivity(spot, timeStr, pace));
     currentMinutes = startMin + dwellMinutes(spot, pace);
@@ -524,7 +781,9 @@ function scheduleDay(
       }
     }
     if (dinner && !dinnerInserted && currentMinutes >= parseTime("18:00")) {
-      if (pushSpot(dinner, parseTime("18:30"))) {
+      // Use max(currentMinutes, 18:30) — mirrors lunch. Prior bug forced 18:30
+      // regardless, so a sight ending at 19:00 would overlap dinner at 18:30.
+      if (pushSpot(dinner, Math.max(currentMinutes, parseTime("18:30")))) {
         dinnerInserted = true;
       } else {
         dinnerInserted = true;
@@ -554,6 +813,27 @@ function scheduleDay(
 // ────────────────────────────────────────────────────────
 // Step 4: virtual DayCourse wrapper
 // ────────────────────────────────────────────────────────
+
+/**
+ * Returns the area key whose spot centroid is closest to the given coordinate.
+ * Used to snap accommodation location to a known area for day-1 preference.
+ */
+function findClosestArea(pool: Spot[], accommodation: Coordinates): string | undefined {
+  const byArea = new Map<string, Coordinates[]>();
+  for (const s of pool) {
+    if (!s.area) continue;
+    const bucket = byArea.get(s.area) ?? [];
+    bucket.push(s.location);
+    byArea.set(s.area, bucket);
+  }
+  let best: { area: string; dist: number } | undefined;
+  for (const [area, coords] of byArea) {
+    const c = centroid(coords);
+    const d = haversineKm(c, accommodation);
+    if (!best || d < best.dist) best = { area, dist: d };
+  }
+  return best?.area;
+}
 
 function centroid(coords: Coordinates[]): Coordinates {
   if (coords.length === 0) return { lat: 0, lng: 0 };
