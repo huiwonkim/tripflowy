@@ -1,10 +1,10 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import Image from "next/image";
 import { posts } from "@/data/posts";
 import { countries } from "@/data/destinations";
-import { ArrowRight, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { CategoryBadge } from "@/components/ui/CategoryBadge";
+import { CoverImage } from "@/components/ui/CoverImage";
 import { generateCollectionPageJsonLd, generateBreadcrumbJsonLd } from "@/lib/jsonld";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
@@ -70,48 +70,49 @@ export default async function PostsPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <div className="mb-8">
-        <p className="text-sm font-medium text-violet-600 mb-1">
+      <div className="mb-10">
+        <p className="text-sm font-medium text-violet-600 mb-2">
           {loc === "ko" ? "깊이 있는 정보" : "In-depth info"}
         </p>
-        <h1 className="text-3xl font-bold text-gray-900">
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
           {loc === "ko" ? "여행 가이드 & 후기" : "Travel Guides & Reviews"}
         </h1>
-        <p className="text-gray-500 mt-2">
+        <p className="text-gray-500 text-lg mt-3 max-w-2xl">
           {loc === "ko" ? "인기 여행지의 상세 가이드와 방문 후기를 확인하세요." : "Detailed guides and reviews for popular destinations."}
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {posts.map((post) => {
           const cityLabel = allCities.find((c) => c.id === post.city)?.label[loc] ?? post.city;
           return (
             <Link key={post.slug} href={`/posts/${post.slug}`}
-              className="group flex flex-col sm:flex-row bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-md transition-all">
-              <div className={`sm:w-48 h-32 sm:h-auto ${!post.coverImage ? `bg-gradient-to-br ${post.coverGradient}` : ""} relative flex-shrink-0`}>
-                {post.coverImage && (
-                  <Image src={post.coverImage} alt={post.title[loc]} fill className="object-cover" />
-                )}
-                <div className="absolute inset-0 bg-black/15" />
+              className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-card-hover transition-all">
+              <CoverImage
+                src={post.coverImage}
+                alt={post.title[loc]}
+                gradient={post.coverGradient}
+                heightClass="h-52"
+                initial={post.city.charAt(0).toUpperCase()}
+              >
                 <div className="absolute bottom-3 left-3">
                   <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2.5 py-1 rounded-full">{cityLabel}</span>
                 </div>
-              </div>
-              <div className="flex-1 p-5">
-                <h2 className="font-semibold text-gray-900 text-base leading-snug group-hover:text-blue-700 transition-colors mb-2">
+              </CoverImage>
+              <div className="flex-1 flex flex-col p-5">
+                <h2 className="font-semibold text-gray-900 text-[17px] leading-snug group-hover:text-blue-700 transition-colors mb-2 line-clamp-2">
                   {post.title[loc]}
                 </h2>
-                <p className="text-sm text-gray-500 leading-relaxed mb-3 line-clamp-2">{post.excerpt[loc]}</p>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-3.5 h-3.5 text-gray-400" />
-                    <span className="text-xs text-gray-400">{post.publishedAt}</span>
+                <p className="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2 flex-1">{post.excerpt[loc]}</p>
+                <div className="flex items-center justify-between gap-2 mt-auto">
+                  <div className="flex items-center gap-1.5 flex-wrap">
                     {post.categories?.slice(0, 2).map((catId) => (
                       <CategoryBadge key={catId} id={catId} locale={loc} />
                     ))}
                   </div>
-                  <span className="flex items-center gap-1 text-blue-600 text-xs font-medium group-hover:gap-2 transition-all">
-                    {loc === "ko" ? "읽기" : "Read"} <ArrowRight className="w-3.5 h-3.5" />
+                  <span className="flex items-center gap-1 text-gray-400 text-xs whitespace-nowrap">
+                    <Calendar className="w-3.5 h-3.5" />
+                    {post.publishedAt}
                   </span>
                 </div>
               </div>

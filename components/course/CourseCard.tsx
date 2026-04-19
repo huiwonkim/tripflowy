@@ -2,9 +2,10 @@
 
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Clock, MapPin, ArrowRight } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 import type { DayCourse, Locale } from "@/types";
 import { Badge } from "@/components/ui/Badge";
+import { CoverImage } from "@/components/ui/CoverImage";
 import { styleLabel, travelerLabel } from "@/lib/utils";
 
 interface CourseCardProps {
@@ -19,16 +20,21 @@ export function CourseCard({ course }: CourseCardProps) {
       href={`/courses/${course.id}`}
       className="group flex flex-col bg-white rounded-2xl overflow-hidden border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all duration-200"
     >
-      <div className={`h-36 bg-gradient-to-br ${course.coverGradient} relative flex items-end p-4`}>
-        <div className="absolute inset-0 bg-black/20" />
-        <div className="relative z-10 flex flex-wrap gap-1.5">
+      <CoverImage
+        alt={course.title[locale]}
+        gradient={course.coverGradient}
+        heightClass="h-36"
+        initial={course.city.charAt(0).toUpperCase()}
+        overlayClass="bg-black/20"
+      >
+        <div className="absolute bottom-4 left-4 z-10 flex flex-wrap gap-1.5">
           {course.tags.slice(0, 3).map((tag) => (
             <span key={tag} className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-2 py-0.5 rounded-full">
               {tag}
             </span>
           ))}
         </div>
-      </div>
+      </CoverImage>
 
       <div className="flex flex-col flex-1 p-4">
         <h3 className="font-semibold text-gray-900 text-sm leading-snug group-hover:text-blue-700 transition-colors mb-1.5">

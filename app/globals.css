@@ -1,5 +1,56 @@
 @import "tailwindcss";
 
+/* ──────────────────────────────────────────────────────────
+   Design tokens — premium travel brand
+   Added incrementally; existing `gray-*` / `blue-*` Tailwind
+   utilities still work. New tokens unlock `bg-brand-600`,
+   `text-ink-700`, `rounded-card`, etc.
+   ────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Brand (accent) — anchors the planner/CTA blue ramp */
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-900: #1e3a8a;
+
+  /* Ink — text ramp used across body copy */
+  --color-ink-900: #0f172a; /* Primary text */
+  --color-ink-800: #1e293b;
+  --color-ink-700: #334155; /* Body text */
+  --color-ink-500: #64748b; /* Captions / muted */
+  --color-ink-400: #94a3b8;
+  --color-ink-300: #cbd5e1; /* Disabled / hints */
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc; /* Page bg */
+  --color-surface-sunken: #f1f5f9; /* Input / subtle containers */
+  --color-surface-dark: #0b1220; /* Dark hero base */
+
+  /* Category accents — for spot type bars in Day cards */
+  --color-cat-sight: #0891b2;
+  --color-cat-food: #ea580c;
+  --color-cat-experience: #7c3aed;
+  --color-cat-shopping: #db2777;
+  --color-cat-nightlife: #4338ca;
+  --color-cat-park: #059669;
+
+  /* Radius */
+  --radius-input: 0.75rem; /* 12px, form fields */
+  --radius-card: 1rem; /* 16px, default card */
+  --radius-card-lg: 1.5rem; /* 24px, hero/feature card */
+
+  /* Shadow — soft card lifts */
+  --shadow-card: 0 1px 3px rgb(15 23 42 / 0.06), 0 1px 2px rgb(15 23 42 / 0.03);
+  --shadow-card-hover: 0 10px 30px -10px rgb(15 23 42 / 0.15),
+    0 4px 8px -4px rgb(15 23 42 / 0.08);
+  --shadow-hero: 0 20px 60px -20px rgb(15 23 42 / 0.35),
+    0 8px 24px -8px rgb(15 23 42 / 0.2);
+}
+
 :root {
   --background: #f8fafc;
   --foreground: #0f172a;
@@ -9,6 +60,41 @@ body {
   background-color: var(--background);
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ──────────────────────────────────────────────────────────
+   Shared utilities
+   ────────────────────────────────────────────────────────── */
+
+@utility card-base {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border, #e2e8f0);
+  box-shadow: var(--shadow-card);
+}
+
+@utility card-hover {
+  transition-property: box-shadow, border-color, transform;
+  transition-duration: 200ms;
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: #cbd5e1;
+  }
+}
+
+/* Display type — reserved for hero headlines */
+@utility text-display-1 {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+@utility text-display-2 {
+  font-size: clamp(1.75rem, 3vw + 0.5rem, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  font-weight: 700;
 }
 
 @layer utilities {

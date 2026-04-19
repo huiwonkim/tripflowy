@@ -1,6 +1,7 @@
 import type { Tour } from "@/types";
 import { Clock, Star, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { CoverImage } from "@/components/ui/CoverImage";
 import { styleLabel } from "@/lib/utils";
 
 interface TourCardProps {
@@ -12,8 +13,11 @@ export function TourCard({ tour, locale = "en" }: TourCardProps) {
   return (
     <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-md hover:border-gray-200 transition-all group">
       {/* Cover */}
-      <div className={`h-40 bg-gradient-to-br ${tour.coverGradient} relative`}>
-        <div className="absolute inset-0 bg-black/15" />
+      <CoverImage
+        alt={tour.title[locale]}
+        gradient={tour.coverGradient}
+        initial={tour.destination.charAt(0).toUpperCase()}
+      >
         <div className="absolute bottom-3 left-3">
           <span className="bg-white/25 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-full">
             {tour.destinationLabel[locale]}
@@ -24,7 +28,7 @@ export function TourCard({ tour, locale = "en" }: TourCardProps) {
             from ${tour.price}
           </span>
         </div>
-      </div>
+      </CoverImage>
 
       {/* Content */}
       <div className="p-5">
@@ -59,7 +63,7 @@ export function TourCard({ tour, locale = "en" }: TourCardProps) {
           href={tour.affiliateUrl}
           target="_blank"
           rel="noopener noreferrer sponsored"
-          className="w-full flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold py-2.5 px-4 rounded-xl transition-colors"
+          className="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold py-2.5 px-4 rounded-xl transition-colors"
         >
           Book This Tour
           <ExternalLink className="w-3.5 h-3.5" />

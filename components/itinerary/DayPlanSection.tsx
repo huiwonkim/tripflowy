@@ -37,16 +37,21 @@ function ActivityItem({ activity, locale, index }: { activity: DayActivity; loca
     <div className="flex gap-4">
       {/* Number + line */}
       <div className="flex flex-col items-center">
-        <div className={cn("w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold", colorClass)}>
+        <div className={cn("w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold ring-4 ring-white", colorClass)}>
           {index}
         </div>
-        <div className="w-px flex-1 bg-gray-100 mt-1" />
+        <div className="w-0.5 flex-1 bg-gray-200 mt-1" />
       </div>
 
       {/* Content */}
       <div className="pb-6 flex-1 min-w-0">
-        <p className="text-xs text-gray-400 font-medium mb-0.5">{activity.time}</p>
-        <h4 className="text-sm font-semibold text-gray-900 mb-1">{activity.title[locale]}</h4>
+        <div className="flex items-center gap-2 mb-1 flex-wrap">
+          <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-700 text-xs font-semibold px-2 py-0.5 rounded-md">
+            <Icon className="w-3 h-3" />
+            {activity.time}
+          </span>
+          <h4 className="text-base font-semibold text-gray-900 leading-snug">{activity.title[locale]}</h4>
+        </div>
         <p className="text-sm text-gray-500 leading-relaxed">{activity.description[locale]}</p>
 
         {/* Tips */}
@@ -147,18 +152,25 @@ interface DayPlanSectionProps {
 
 export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
   return (
-    <div className="border border-gray-100 rounded-2xl overflow-hidden">
+    <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-card">
       {/* Day header */}
-      <div className="bg-gray-50 px-5 py-4 flex items-center gap-4">
-        <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-          <span className="text-white text-sm font-bold">{day.day}</span>
+      <div className="relative bg-gradient-to-br from-blue-600 to-blue-700 text-white px-6 py-5 flex items-center gap-4">
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -right-6 -bottom-8 text-[7rem] font-black leading-none tracking-tight text-white/10 select-none"
+        >
+          {day.day}
+        </span>
+        <div className="relative w-12 h-12 bg-white/15 backdrop-blur-sm rounded-xl flex flex-col items-center justify-center flex-shrink-0 ring-1 ring-white/20">
+          <span className="text-[10px] font-semibold uppercase tracking-wider text-white/70 leading-none">Day</span>
+          <span className="text-white text-lg font-bold leading-none mt-0.5">{day.day}</span>
         </div>
-        <div>
-          <h3 className="font-semibold text-gray-900 text-[15px]">
-            Day {day.day} — {day.title[locale]}
+        <div className="relative min-w-0">
+          <h3 className="font-bold text-white text-lg leading-snug truncate">
+            {day.title[locale]}
           </h3>
           {day.subtitle && (
-            <p className="text-xs text-gray-500 mt-0.5">{day.subtitle[locale]}</p>
+            <p className="text-xs text-white/75 mt-0.5">{day.subtitle[locale]}</p>
           )}
         </div>
       </div>
@@ -216,26 +228,26 @@ export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
 
       {/* Per-day cost summary */}
       {day.costs && (
-        <div className="mx-5 mb-5 bg-gray-50 rounded-xl px-4 py-3">
-          <p className="text-xs font-semibold text-gray-500 mb-2">
-            {locale === "ko" ? "오늘의 예상 경비 (1인)" : "Today's estimated cost (per person)"}
+        <div className="mx-5 mb-5 bg-white border border-gray-100 rounded-xl px-4 py-3.5">
+          <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-2.5">
+            {locale === "ko" ? "오늘의 예상 경비 · 1인" : "Today's estimated cost · per person"}
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
-            <div>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-2 gap-x-4 text-xs">
+            <div className="flex flex-col border-l-2 border-orange-300 pl-2.5">
               <span className="text-gray-400">{locale === "ko" ? "식비" : "Food"}</span>
-              <p className="font-semibold text-gray-800">{displayPrice(day.costs.food, day.costs.currency, locale)}</p>
+              <span className="font-semibold text-gray-900 text-sm">{displayPrice(day.costs.food, day.costs.currency, locale)}</span>
             </div>
-            <div>
+            <div className="flex flex-col border-l-2 border-green-300 pl-2.5">
               <span className="text-gray-400">{locale === "ko" ? "투어" : "Tour"}</span>
-              <p className="font-semibold text-gray-800">{displayPrice(day.costs.activity, day.costs.currency, locale)}</p>
+              <span className="font-semibold text-gray-900 text-sm">{displayPrice(day.costs.activity, day.costs.currency, locale)}</span>
             </div>
-            <div>
+            <div className="flex flex-col border-l-2 border-gray-300 pl-2.5">
               <span className="text-gray-400">{locale === "ko" ? "교통" : "Transport"}</span>
-              <p className="font-semibold text-gray-800">{displayPrice(day.costs.transport, day.costs.currency, locale)}</p>
+              <span className="font-semibold text-gray-900 text-sm">{displayPrice(day.costs.transport, day.costs.currency, locale)}</span>
             </div>
-            <div>
+            <div className="flex flex-col border-l-2 border-purple-300 pl-2.5">
               <span className="text-gray-400">{locale === "ko" ? "기타" : "Etc"}</span>
-              <p className="font-semibold text-gray-800">{displayPrice(day.costs.etc, day.costs.currency, locale)}</p>
+              <span className="font-semibold text-gray-900 text-sm">{displayPrice(day.costs.etc, day.costs.currency, locale)}</span>
             </div>
           </div>
         </div>

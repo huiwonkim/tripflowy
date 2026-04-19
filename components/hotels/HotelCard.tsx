@@ -1,6 +1,7 @@
 import type { Hotel } from "@/types";
 import { Star, MapPin, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { CoverImage } from "@/components/ui/CoverImage";
 import { priceRangeLabel, styleLabel } from "@/lib/utils";
 
 interface HotelCardProps {
@@ -13,8 +14,11 @@ export function HotelCard({ hotel, locale = "en", context }: HotelCardProps) {
   return (
     <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-md hover:border-gray-200 transition-all">
       {/* Cover */}
-      <div className={`h-40 bg-gradient-to-br ${hotel.coverGradient} relative`}>
-        <div className="absolute inset-0 bg-black/15" />
+      <CoverImage
+        alt={hotel.name}
+        gradient={hotel.coverGradient}
+        initial={hotel.destination.charAt(0).toUpperCase()}
+      >
         <div className="absolute bottom-3 left-3">
           <span className="bg-white/25 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 rounded-full">
             {hotel.destinationLabel[locale]}
@@ -25,7 +29,7 @@ export function HotelCard({ hotel, locale = "en", context }: HotelCardProps) {
             {hotel.priceRange} · {priceRangeLabel(hotel.priceRange)}
           </span>
         </div>
-      </div>
+      </CoverImage>
 
       {/* Content */}
       <div className="p-5">

@@ -707,7 +707,7 @@ function PlannerContent() {
         {itinerary && (
           <div className="mt-12 space-y-8">
             {/* Summary banner */}
-            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 via-blue-700 to-violet-800 text-white px-5 py-5 sm:px-7 sm:py-6">
+            <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 via-blue-700 to-violet-800 text-white px-6 py-8 sm:px-10 sm:py-12 shadow-hero">
               {/* Hero city image (primary city). Silently falls back to the
                   gradient-only design when the image file is missing.
                   Uses a plain <img> instead of next/image so that onError
@@ -753,34 +753,36 @@ function PlannerContent() {
                 }}
               />
 
-              <div className="relative z-10">
+              <div className="relative z-10 max-w-2xl">
                 {/* Small top label */}
-                <div className="inline-flex items-center gap-1 bg-white/15 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-[0.12em] px-2.5 py-1 rounded-full border border-white/15 mb-3">
+                <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-sm text-[11px] font-semibold uppercase tracking-[0.12em] px-3 py-1 rounded-full border border-white/15 mb-4">
                   <Zap className="w-3 h-3" />
                   {locale === "ko" ? "나만의 여행 일정" : "Your Itinerary"}
                 </div>
 
-                {/* Title + duration inline (cities first, duration after) */}
-                <h2 className="text-2xl sm:text-3xl font-bold leading-tight tracking-tight mb-2">
+                {/* Title — cities prominent */}
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-2">
                   {itinerary.cities.map((c) => allCities.find((ci) => ci.id === c)?.label[locale] ?? c).join(" + ")}
-                  <span className="text-blue-100 font-semibold ml-2">
-                    {locale === "ko"
-                      ? `${committedInput.duration}박 ${Number(committedInput.duration) + 1}일`
-                      : `· ${itinerary.duration}-Day Trip`}
-                  </span>
                 </h2>
 
+                {/* Duration subtitle */}
+                <p className="text-lg sm:text-xl font-semibold text-blue-100 mb-5">
+                  {locale === "ko"
+                    ? `${committedInput.duration}박 ${Number(committedInput.duration) + 1}일 여행`
+                    : `${itinerary.duration}-Day Trip`}
+                </p>
+
                 {/* Metadata icon row */}
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs sm:text-sm text-blue-100/90 mb-3">
-                  <span className="flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5" />
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-blue-100/90 mb-4">
+                  <span className="flex items-center gap-1.5">
+                    <MapPin className="w-4 h-4" />
                     {locale === "ko"
                       ? `${itinerary.cities.length}개 도시`
                       : `${itinerary.cities.length} ${itinerary.cities.length === 1 ? "city" : "cities"}`}
                   </span>
                   {committedInput.travelerType && (
-                    <span className="flex items-center gap-1">
-                      <Users className="w-3.5 h-3.5" />
+                    <span className="flex items-center gap-1.5">
+                      <Users className="w-4 h-4" />
                       {travelerLabel(committedInput.travelerType as TravelerType, locale)}
                     </span>
                   )}
@@ -788,9 +790,9 @@ function PlannerContent() {
 
                 {/* Style chips */}
                 {committedInput.styles.length > 0 && (
-                  <div className="flex flex-wrap gap-1">
+                  <div className="flex flex-wrap gap-1.5">
                     {committedInput.styles.map((s) => (
-                      <span key={s} className="bg-white/15 backdrop-blur-sm border border-white/15 text-white text-[11px] font-medium px-2.5 py-0.5 rounded-full">
+                      <span key={s} className="bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
                         {styleLabel(s, locale)}
                       </span>
                     ))}

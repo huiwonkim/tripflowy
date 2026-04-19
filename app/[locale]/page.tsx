@@ -80,42 +80,67 @@ export default async function HomePage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(destinationJsonLd) }}
       />
 
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-12 md:pt-24 md:pb-16">
-          <div className="max-w-2xl mb-10">
-            <div className="inline-flex items-center gap-2 bg-white/10 text-blue-200 text-xs font-medium px-3 py-1.5 rounded-full mb-6">
+      {/* Hero — premium editorial: full-bleed photo + large display type,
+          QuickPlanner floats over the hero's bottom edge on desktop. */}
+      <section className="relative isolate overflow-hidden bg-slate-950 text-white">
+        {/* Background photo — Tokyo cityscape as anchor */}
+        <Image
+          src="/images/city-heroes/tokyo.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+          aria-hidden="true"
+        />
+        {/* Dark gradient overlay — just enough to make white text readable
+            over the night-Tokyo image. Keeps the skyline visible. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/40 to-transparent"
+        />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 pt-20 sm:pt-28 md:pt-36 pb-16 md:pb-28">
+          <div className="max-w-3xl">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/15 text-blue-100 text-xs font-medium px-3 py-1.5 rounded-full mb-6 sm:mb-8">
               <Zap className="w-3.5 h-3.5" />
               {t("hero.badge")}
             </div>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4 whitespace-pre-line">
+            <h1 className="text-display-1 whitespace-pre-line mb-4 sm:mb-5">
               {t("hero.heading")}
             </h1>
-            <p className="text-blue-400 text-2xl sm:text-3xl font-bold mb-4">
+            <p className="text-blue-300 text-display-2 mb-5 sm:mb-6">
               {t("hero.headingHighlight")}
             </p>
-            <p className="text-slate-400 text-lg leading-relaxed">
+            <p className="text-slate-200 text-base sm:text-lg leading-relaxed max-w-xl">
               {t("hero.subheading")}
             </p>
-          </div>
 
-          <div className="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-5 max-w-3xl">
+            <div className="flex flex-wrap gap-x-6 gap-y-2 mt-6 sm:mt-8 text-sm text-slate-300">
+              {[t("hero.destinations"), t("hero.dayByDay"), t("hero.affiliate")].map((s) => (
+                <span key={s} className="flex items-center gap-1.5">
+                  <CheckCircle className="w-4 h-4 text-blue-300 flex-shrink-0" />
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* QuickPlanner — translucent dark card anchored to hero bottom; on
+            larger screens it overlaps the next section for a floating feel. */}
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 pb-10 md:pb-0 md:-mb-24 z-10">
+          <div className="bg-slate-900/80 backdrop-blur-md border border-white/15 rounded-2xl p-5 sm:p-6 shadow-[var(--shadow-hero)]">
             <p className="text-sm font-medium text-slate-300 mb-4">
               {t("hero.findItinerary")}
             </p>
             <QuickPlanner />
           </div>
-
-          <div className="flex flex-wrap gap-x-6 gap-y-2 mt-8 text-sm text-slate-400">
-            {[t("hero.destinations"), t("hero.dayByDay"), t("hero.affiliate")].map((s) => (
-              <span key={s} className="flex items-center gap-1.5">
-                <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0" />
-                {s}
-              </span>
-            ))}
-          </div>
         </div>
       </section>
+
+      {/* Spacer so the compare section clears the floating QuickPlanner card on desktop */}
+      <div aria-hidden="true" className="hidden md:block h-24" />
 
       {/* Compare: AI vs Field-tested */}
       <section className="bg-white border-y border-gray-100">

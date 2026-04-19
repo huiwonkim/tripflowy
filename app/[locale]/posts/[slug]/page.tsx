@@ -171,10 +171,10 @@ function renderContent(content: string, post: BlogPost, locale: Locale) {
 
     if (trimmed.startsWith("## ")) {
       const text = trimmed.slice(3);
-      elements.push(<h2 key={i} id={slugify(text)} className="text-[22px] sm:text-[26px] font-bold text-gray-900 mt-14 mb-5 scroll-mt-24">{text}</h2>);
+      elements.push(<h2 key={i} id={slugify(text)} className="text-[24px] sm:text-[30px] font-bold text-gray-900 tracking-tight mt-14 mb-5 scroll-mt-24">{text}</h2>);
     } else if (trimmed.startsWith("### ")) {
       const text = trimmed.slice(4);
-      elements.push(<h3 key={i} id={slugify(text)} className="text-[18px] sm:text-[20px] font-bold text-gray-900 mt-10 mb-4 scroll-mt-24">{text}</h3>);
+      elements.push(<h3 key={i} id={slugify(text)} className="text-[19px] sm:text-[22px] font-bold text-gray-900 mt-10 mb-4 scroll-mt-24">{text}</h3>);
     } else if (trimmed.startsWith("- ")) {
       const content = trimmed.slice(2);
       elements.push(<li key={i} className="list-disc ml-5 text-[17px] text-gray-600 leading-[1.8] mb-1">{parseInline(content)}</li>);
@@ -255,18 +255,28 @@ export default async function PostPage({ params }: PageProps) {
               <span className="text-white/60 text-xs flex items-center gap-1"><Calendar className="w-3 h-3" />{post.publishedAt}</span>
               <span className="text-white/60 text-xs flex items-center gap-1"><Clock className="w-3 h-3" />{readingMin}min</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">{post.title[loc]}</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight">{post.title[loc]}</h1>
           </div>
         </div>
       ) : (
-        <div className={`bg-gradient-to-br ${post.coverGradient} py-16 sm:py-24`}>
-          <div className="max-w-[680px] mx-auto px-5">
+        <div className={`relative overflow-hidden bg-gradient-to-br ${post.coverGradient} py-16 sm:py-24`}>
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -right-12 -bottom-20 text-[18rem] font-black leading-none tracking-tight text-white/15 select-none"
+          >
+            {post.city.charAt(0).toUpperCase()}
+          </span>
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -left-16 -top-16 w-80 h-80 rounded-full bg-white/15 blur-3xl"
+          />
+          <div className="relative max-w-[680px] mx-auto px-5">
             <div className="flex items-center gap-2 mb-4 flex-wrap">
               <span className="bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">{cityLabel}</span>
               <span className="text-white/70 text-xs flex items-center gap-1"><User className="w-3 h-3" />{author.name[loc]}</span>
               <span className="text-white/60 text-xs">{post.publishedAt}</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight">{post.title[loc]}</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight">{post.title[loc]}</h1>
           </div>
         </div>
       )}

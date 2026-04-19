@@ -5,6 +5,7 @@ import { createPortal } from "react-dom";
 import { Sparkles, Plus, Replace, X } from "lucide-react";
 import { recommendTemplates } from "@/lib/templates";
 import { styleLabel } from "@/lib/utils";
+import { CoverImage } from "@/components/ui/CoverImage";
 import type { DayTemplate } from "@/types/spot";
 import type { GeneratedDay, Locale, PlannerInput, TravelStyle } from "@/types";
 
@@ -50,13 +51,15 @@ export function TemplateRecommendations({ input, days, locale, onApply }: Props)
 
   return (
     <>
-      <section className="rounded-2xl border border-indigo-100 bg-indigo-50/40 px-5 py-4">
-        <div className="flex items-center gap-2 mb-3">
-          <Sparkles className="w-4 h-4 text-indigo-600" />
-          <h2 className="text-sm font-semibold text-gray-900">
-            {locale === "ko" ? "💡 비슷한 추천 코스" : "💡 Recommended day courses"}
-          </h2>
-          <span className="text-xs text-gray-400 ml-1">
+      <section className="rounded-2xl border border-gray-100 bg-white px-5 py-5 shadow-card">
+        <div className="flex items-baseline justify-between gap-3 mb-4">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-indigo-600" />
+            <h2 className="text-base font-semibold text-gray-900">
+              {locale === "ko" ? "추천 하루 코스" : "Recommended day courses"}
+            </h2>
+          </div>
+          <span className="text-xs text-gray-400">
             {locale === "ko" ? "카드를 눌러 Day에 적용" : "Tap a card to apply"}
           </span>
         </div>
@@ -68,22 +71,29 @@ export function TemplateRecommendations({ input, days, locale, onApply }: Props)
                   key={t.id}
                   type="button"
                   onClick={() => setActiveTemplate(t)}
-                  className="flex-shrink-0 w-[240px] sm:w-[260px] snap-start text-left group"
+                  className="flex-shrink-0 w-[240px] sm:w-[260px] snap-start text-left group overflow-hidden rounded-xl border border-gray-100 bg-white hover:border-gray-200 hover:shadow-card transition-all"
                 >
-                  <div className={`h-20 rounded-xl bg-gradient-to-br ${t.coverGradient} mb-2 transition-opacity group-hover:opacity-90`} />
-                  <p className="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors leading-snug line-clamp-2">
-                    {t.title[locale]}
-                  </p>
-                  <p className="text-xs text-gray-500 mt-0.5 line-clamp-2">{t.summary[locale]}</p>
-                  <div className="flex flex-wrap gap-1 mt-1.5">
-                    {t.styles.slice(0, 3).map((s) => (
-                      <span key={s} className="text-[10px] font-medium text-indigo-700 bg-indigo-100 px-1.5 py-0.5 rounded">
-                        {styleLabel(s as TravelStyle, locale)}
+                  <CoverImage
+                    alt={t.title[locale]}
+                    gradient={t.coverGradient}
+                    heightClass="h-28"
+                    initial={t.city.charAt(0).toUpperCase()}
+                  />
+                  <div className="p-3">
+                    <p className="text-sm font-semibold text-gray-900 group-hover:text-indigo-600 transition-colors leading-snug line-clamp-2">
+                      {t.title[locale]}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1 line-clamp-2">{t.summary[locale]}</p>
+                    <div className="flex flex-wrap items-center gap-1 mt-2">
+                      {t.styles.slice(0, 3).map((s) => (
+                        <span key={s} className="text-[10px] font-medium text-indigo-700 bg-indigo-50 px-1.5 py-0.5 rounded">
+                          {styleLabel(s as TravelStyle, locale)}
+                        </span>
+                      ))}
+                      <span className="text-[10px] text-gray-400 ml-auto">
+                        {t.spotIds.length}{locale === "ko" ? "곳" : " spots"}
                       </span>
-                    ))}
-                    <span className="text-[10px] text-gray-400 ml-auto">
-                      {t.spotIds.length}{locale === "ko" ? "곳" : " spots"}
-                    </span>
+                    </div>
                   </div>
                 </button>
               ))}
