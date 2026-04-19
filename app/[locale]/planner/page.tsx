@@ -371,18 +371,21 @@ function PlannerContent() {
   const inputComplete = input.destinations.length > 0 && input.duration && input.travelerType && input.styles.length >= 2 && input.styles.length <= 4 && !needMoreCities;
 
   const optionBase = "flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all text-left";
-  const optionSelected = "border-blue-600 bg-blue-50";
+  const optionSelected = "border-blue-600 bg-blue-50 ring-4 ring-blue-500/10";
   const optionDefault = "border-gray-200 bg-white hover:border-gray-300";
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
-      {/* Header */}
-      <div className="text-center mb-10">
-        <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-full mb-4">
-          <Zap className="w-3.5 h-3.5" />{t("badge")}
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-14">
+      {/* Header — soft brand hero */}
+      <div className="relative text-center mb-14">
+        <span aria-hidden className="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-8 w-[32rem] h-[32rem] max-w-[90vw] rounded-full bg-gradient-to-br from-blue-100/70 via-indigo-100/40 to-transparent blur-3xl" />
+        <div className="relative">
+          <div className="inline-flex items-center gap-2 bg-white border border-blue-100 text-blue-700 text-xs font-semibold uppercase tracking-[0.12em] px-3.5 py-1.5 rounded-full mb-5 shadow-card">
+            <Zap className="w-3.5 h-3.5" />{t("badge")}
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight leading-[1.1] mb-4">{t("heading")}</h1>
+          <p className="text-gray-500 text-lg max-w-xl mx-auto">{t("subheading")}</p>
         </div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-3">{t("heading")}</h1>
-        <p className="text-gray-500">{t("subheading")}</p>
       </div>
 
       <form onSubmit={handleSearch} className="space-y-8">
@@ -434,7 +437,7 @@ function PlannerContent() {
                   return (
                     <button key={city.id} type="button" onClick={() => toggleCity(city.id)}
                       className={`px-4 py-2 rounded-xl text-sm font-medium border-2 transition-all ${
-                        selected ? "border-blue-600 bg-blue-50 text-blue-700" : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
+                        selected ? "border-blue-600 bg-blue-50 text-blue-700 ring-4 ring-blue-500/10" : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
                       }`}>
                       {city.label[locale]}
                     </button>
@@ -674,7 +677,7 @@ function PlannerContent() {
                       : [...p.styles, s.value as TravelStyle],
                   }))}
                   className={`px-3.5 py-2 rounded-full text-sm font-medium border-2 transition-all ${
-                    selected ? "border-blue-600 bg-blue-50 text-blue-700" : disabled ? "border-gray-100 bg-gray-50 text-gray-300 cursor-not-allowed" : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
+                    selected ? "border-blue-600 bg-blue-50 text-blue-700 ring-4 ring-blue-500/10" : disabled ? "border-gray-100 bg-gray-50 text-gray-300 cursor-not-allowed" : "border-gray-200 bg-white text-gray-700 hover:border-gray-300"
                   }`}>
                   {s.label[locale]}
                 </button>
