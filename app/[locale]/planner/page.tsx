@@ -463,48 +463,51 @@ function PlannerContent() {
           )}
         </div>
 
-        {/* Duration — dropdown for 2~9 nights */}
-        <div className="flex flex-col gap-3">
-          <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
-            <Clock className="w-4 h-4 text-blue-600" />{t("howLong")}
-          </label>
-          <div className="relative w-full sm:max-w-xs">
-            <select
-              value={input.duration}
-              onChange={(e) => setInput((p) => ({ ...p, duration: e.target.value }))}
-              className={`w-full appearance-none px-4 py-3 pr-10 rounded-xl border-2 bg-white text-sm font-medium text-gray-900 focus:border-blue-500 focus:outline-none cursor-pointer transition-colors ${
-                input.duration ? "border-blue-600" : "border-gray-200 hover:border-gray-300"
-              }`}
-            >
-              <option value="">{locale === "ko" ? "기간 선택" : "Select duration"}</option>
-              {durationOptions.map((d) => (
-                <option key={d.value} value={d.value}>
-                  {d.label[locale]}
-                  {d.minCities > 1
-                    ? locale === "ko" ? ` · 도시 ${d.minCities}개+` : ` · ${d.minCities}+ cities`
-                    : ""}
-                </option>
-              ))}
-            </select>
-            <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+        {/* Duration + Start date — side-by-side on md+, stacked on mobile */}
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* Duration — dropdown for 2~9 nights */}
+          <div className="flex flex-col gap-3">
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
+              <Clock className="w-4 h-4 text-blue-600" />{t("howLong")}
+            </label>
+            <div className="relative w-full">
+              <select
+                value={input.duration}
+                onChange={(e) => setInput((p) => ({ ...p, duration: e.target.value }))}
+                className={`w-full appearance-none px-4 py-3 pr-10 rounded-xl border-2 bg-white text-sm font-medium text-gray-900 focus:border-blue-500 focus:outline-none cursor-pointer transition-colors ${
+                  input.duration ? "border-blue-600" : "border-gray-200 hover:border-gray-300"
+                }`}
+              >
+                <option value="">{locale === "ko" ? "기간 선택" : "Select duration"}</option>
+                {durationOptions.map((d) => (
+                  <option key={d.value} value={d.value}>
+                    {d.label[locale]}
+                    {d.minCities > 1
+                      ? locale === "ko" ? ` · 도시 ${d.minCities}개+` : ` · ${d.minCities}+ cities`
+                      : ""}
+                  </option>
+                ))}
+              </select>
+              <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            </div>
           </div>
-        </div>
 
-        {/* Start date (optional) */}
-        <div className="flex flex-col gap-3">
-          <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
-            <Calendar className="w-4 h-4 text-blue-600" />
-            {locale === "ko" ? "출발일 (선택)" : "Start date (optional)"}
-            <span className="text-xs font-normal text-gray-400 ml-2">
-              {locale === "ko" ? "정기휴무일 스팟 자동 제외" : "Skips spots closed on your visit day"}
-            </span>
-          </label>
-          <input
-            type="date"
-            value={input.startDate ?? ""}
-            onChange={(e) => setInput((p) => ({ ...p, startDate: e.target.value || undefined }))}
-            className="w-full sm:w-60 px-4 py-3 rounded-xl border-2 border-gray-200 bg-white text-sm text-gray-900 focus:border-blue-500 focus:outline-none transition-colors"
-          />
+          {/* Start date (optional) */}
+          <div className="flex flex-col gap-3">
+            <label className="flex items-center gap-2 text-sm font-semibold text-gray-900">
+              <Calendar className="w-4 h-4 text-blue-600" />
+              {locale === "ko" ? "출발일 (선택)" : "Start date (optional)"}
+              <span className="text-xs font-normal text-gray-400 ml-2 hidden lg:inline">
+                {locale === "ko" ? "정기휴무일 자동 제외" : "Skips closed days"}
+              </span>
+            </label>
+            <input
+              type="date"
+              value={input.startDate ?? ""}
+              onChange={(e) => setInput((p) => ({ ...p, startDate: e.target.value || undefined }))}
+              className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 bg-white text-sm text-gray-900 focus:border-blue-500 focus:outline-none transition-colors"
+            />
+          </div>
         </div>
 
         {/* Arrival / Departure flight info (optional)
