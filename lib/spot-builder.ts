@@ -21,6 +21,7 @@ import type {
 import type { Pace, Spot, SpotCategory } from "@/types/spot";
 import { getSpotsByCity, getSpotById } from "@/data/spots";
 import { airports as AIRPORTS } from "@/data/destinations";
+import { getAreaById } from "@/data/areas";
 import { haversineKm, sortByProximity } from "./geo";
 
 // ────────────────────────────────────────────────────────
@@ -554,10 +555,18 @@ function pickDaySpots(
   const chosen = candidates[0];
 
   // Sights: start with primary area
-  const sights = chosen.sights.slice(0, config.sights);
+  let sights = chosen.sights.slice(0, config.sights);
 
-  // Supplement from the nearest other area if short on sights
-  if (sights.length < config.sights) {
+  // Full-day anchor: if a fullDay spot (Disneyland, Harry Potter studio,
+  // Fuji tour) ends up in the selection, shrink the day to just that spot
+  // + at most one short supporting spot in the same area. Round-trip travel
+  // makes adding more impractical, and the experience itself fills the day.
+  const fullDayAnchor = sights.find((s) => s.fullDay);
+  if (fullDayAnchor) {
+    const supporting = sights.find((s) => !s.fullDay && s.area === fullDayAnchor.area);
+    sights = supporting ? [fullDayAnchor, supporting] : [fullDayAnchor];
+  } else if (sights.length < config.sights) {
+    // Supplement from the nearest other area if short on sights
     const missing = config.sights - sights.length;
     const others = candidates
       .filter((c) => c.area !== chosen.area)
@@ -959,21 +968,42 @@ function buildDayCourse(
     .filter((l): l is Coordinates => Boolean(l));
   const center = centroid(locations);
 
-  // Title = top 2 sightseeing-ish spots joined by " & "
-  // (e.g. "Day 1 · 시부야 스카이 & 센소지").
-  // Falls back to any available activities if no sightseeing spots exist.
-  const sightseeing = activities.filter(
-    (a) => a.type === "sightseeing" || a.type === "tour" || a.type === "shopping",
-  );
-  const headlines = (sightseeing.length >= 2 ? sightseeing : activities).slice(0, 2);
-  const titleKo =
-    headlines.length >= 2
-      ? `${headlines[0].title.ko} & ${headlines[1].title.ko}`
-      : headlines[0]?.title.ko ?? `Day ${dayNumber}`;
-  const titleEn =
-    headlines.length >= 2
-      ? `${headlines[0].title.en} & ${headlines[1].title.en}`
-      : headlines[0]?.title.en ?? `Day ${dayNumber}`;
+  // Title = the day's area labels joined by " & " (e.g. "시부야 & 하라주쿠").
+  // Uses up to the top 2 areas by spot count so one-off supplement spots from
+  // a neighboring area don't dominate. If no area is assigned (rare daytrip
+  // case), falls back to the top-2 sightseeing spots as before.
+  const areaCounts = new Map<string, number>();
+  for (const s of spots) {
+    if (!s.area) continue;
+    areaCounts.set(s.area, (areaCounts.get(s.area) ?? 0) + 1);
+  }
+  const topAreas = [...areaCounts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 2)
+    .map(([area]) => area);
+
+  let titleKo: string;
+  let titleEn: string;
+  if (topAreas.length > 0) {
+    const labels = topAreas
+      .map((a) => getAreaById(a))
+      .filter((a): a is NonNullable<ReturnType<typeof getAreaById>> => Boolean(a));
+    titleKo = labels.map((a) => a.label.ko).join(" & ") || `Day ${dayNumber}`;
+    titleEn = labels.map((a) => a.label.en).join(" & ") || `Day ${dayNumber}`;
+  } else {
+    const sightseeing = activities.filter(
+      (a) => a.type === "sightseeing" || a.type === "tour" || a.type === "shopping",
+    );
+    const headlines = (sightseeing.length >= 2 ? sightseeing : activities).slice(0, 2);
+    titleKo =
+      headlines.length >= 2
+        ? `${headlines[0].title.ko} & ${headlines[1].title.ko}`
+        : headlines[0]?.title.ko ?? `Day ${dayNumber}`;
+    titleEn =
+      headlines.length >= 2
+        ? `${headlines[0].title.en} & ${headlines[1].title.en}`
+        : headlines[0]?.title.en ?? `Day ${dayNumber}`;
+  }
 
   const costs = computeDayCosts(spots);
 

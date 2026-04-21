@@ -111,6 +111,14 @@ export type Spot = {
    * one-of-a-kind places.
    */
   chain?: string;
+
+  /**
+   * Full-day / out-of-town experience (Harry Potter Studio Tour, Disneyland,
+   * Fuji day trip, etc). When true, the engine treats this as the day's
+   * anchor — skips adjacent-area supplementation and fills the remaining
+   * slots sparingly, accounting for round-trip travel from the city center.
+   */
+  fullDay?: boolean;
 };
 
 /**

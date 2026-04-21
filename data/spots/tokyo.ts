@@ -699,6 +699,7 @@ export const tokyoSpots: Spot[] = [
     postSlug: "tokyo-disneyland-guide",
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%EC%BF%84+%EB%94%94%EC%A6%88%EB%8B%88%EB%9E%9C%EB%93%9C/@35.6295548,139.8817799,15.99z/data=!4m6!3m5!1s0x60187d03114737b3:0xe4d93636d509d3cb!8m2!3d35.6328964!4d139.8803943!16zL20vMDQ0ejFu?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 15000, currency: "JPY" },
+    fullDay: true,
     bookingLinks: {"klook":"https://www.klook.com/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=118462"},
   },
   {
@@ -718,6 +719,7 @@ export const tokyoSpots: Spot[] = [
     postSlug: "tokyo-disneysea-guide",
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%EC%BF%84+%EB%94%94%EC%A6%88%EB%8B%88%EC%94%A8/@35.6295548,139.8817799,15.99z/data=!4m6!3m5!1s0x60187d03114737b3:0x41471d704ab72d25!8m2!3d35.6267108!4d139.8850779!16zL20vMDRjN3R0?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 15000, currency: "JPY" },
+    fullDay: true,
     bookingLinks: {"klook":"https://www.klook.com/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=118462"},
   },
   {
@@ -1551,6 +1553,7 @@ export const tokyoSpots: Spot[] = [
     postSlug: "tokyo-harry-potter-studio-tour-guide",
     googleMapsUrl: "https://www.google.com/maps/place/%ED%9E%88%EB%85%B8%ED%86%A0%EB%A6%AC/@35.6925093,139.6955526,16.17z/data=!3m1!5s0x60188d2a104622ff:0x58190dfd53335315!4m6!3m5!1s0x60188d2a11ae884d:0x8fffe5b1202bdbd3!8m2!3d35.6949791!4d139.6956065!16s%2Fg%2F11c0rny309?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
+    fullDay: true,
     bookingLinks: {"klook":"https://www.klook.com/activity/84374-warner-bros-studio-tour-tokyo-making-harry-potter/?aid=118462"},
   },
   {

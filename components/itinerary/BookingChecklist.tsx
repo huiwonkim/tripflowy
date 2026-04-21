@@ -6,6 +6,7 @@ import { ExternalLink, Check, Plane, Building2, Compass, ShoppingBag, AlertTrian
 import type { Locale, GeneratedItinerary } from "@/types";
 import { countries } from "@/data/destinations";
 import { fetchLivePrices, type LivePriceData } from "@/lib/price-api";
+import { localizeKlookUrl } from "@/lib/klook";
 
 interface BookingItem {
   id: string;
@@ -103,22 +104,24 @@ export function BookingChecklist({ itinerary, locale }: BookingChecklistProps) {
     });
   }
 
-  // Tours — unique activities from courses
-  const seenTours = new Set<string>();
+  // Tickets — only activities with an actual Klook / MRT booking URL.
+  // Hotel Agoda links and official-site "direct" links are excluded here
+  // since the user asked for the checklist to cover ticketable items only.
+  const seenTicket = new Set<string>();
   for (const day of itinerary.days) {
     for (const act of day.course.activities) {
-      if ((act.type === "tour" || act.type === "sightseeing") && !seenTours.has(act.title[locale])) {
-        seenTours.add(act.title[locale]);
-        if (seenTours.size <= 5) {
-          items.push({
-            id: `tour-${seenTours.size}`,
-            category: "tour",
-            label: `🎟️ ${act.title[locale]}`,
-            url: `https://www.klook.com/search?query=${encodeURIComponent(act.title.en)}`,
-            provider: "Klook",
-          });
-        }
-      }
+      const ticketUrl = act.bookingLinks?.klook ?? act.bookingLinks?.mrt;
+      if (!ticketUrl) continue;
+      const titleKey = act.title[locale];
+      if (seenTicket.has(titleKey)) continue;
+      seenTicket.add(titleKey);
+      items.push({
+        id: `ticket-${seenTicket.size}`,
+        category: "tour",
+        label: `🎟️ ${titleKey}`,
+        url: act.bookingLinks?.klook ? localizeKlookUrl(ticketUrl, locale) : ticketUrl,
+        provider: act.bookingLinks?.klook ? "Klook" : "MyRealTrip",
+      });
     }
   }
 

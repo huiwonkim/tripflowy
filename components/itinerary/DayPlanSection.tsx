@@ -6,6 +6,7 @@ import { Link } from "@/i18n/navigation";
 import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map } from "lucide-react";
 import type { DayActivity, ActivityType, Locale, LocaleString, DayCostBreakdown } from "@/types";
 import { cn } from "@/lib/utils";
+import { localizeKlookUrl } from "@/lib/klook";
 
 // ── Icons & Colors ──────────────────────────────────
 
@@ -95,7 +96,7 @@ function ActivityItem({ activity, locale, index }: { activity: DayActivity; loca
         {(activity.bookingLinks || activity.postSlug) && (
           <div className="flex flex-wrap gap-2 mt-3">
             {activity.bookingLinks?.klook && (
-              <a href={activity.bookingLinks.klook} target="_blank" rel="noopener noreferrer sponsored"
+              <a href={localizeKlookUrl(activity.bookingLinks.klook, locale)} target="_blank" rel="noopener noreferrer sponsored"
                 className="inline-flex items-center gap-1.5 bg-orange-50 hover:bg-orange-100 text-orange-700 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
                 <ExternalLink className="w-3 h-3" />
                 {locale === "ko" ? "티켓 예약" : "Book Ticket"}

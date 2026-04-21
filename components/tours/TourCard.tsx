@@ -3,6 +3,7 @@ import { Clock, Star, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { CoverImage } from "@/components/ui/CoverImage";
 import { styleLabel } from "@/lib/utils";
+import { localizeKlookUrl } from "@/lib/klook";
 
 interface TourCardProps {
   tour: Tour;
@@ -60,7 +61,7 @@ export function TourCard({ tour, locale = "en" }: TourCardProps) {
         </div>
 
         <a
-          href={tour.affiliateUrl}
+          href={localizeKlookUrl(tour.affiliateUrl, locale)}
           target="_blank"
           rel="noopener noreferrer sponsored"
           className="w-full flex items-center justify-center gap-2 bg-gray-900 hover:bg-gray-800 text-white text-sm font-semibold py-2.5 px-4 rounded-xl transition-colors"

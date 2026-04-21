@@ -87,6 +87,9 @@ function formatSpot(spot: Spot): string {
   if (spot.chain) {
     lines.push(`    chain: ${JSON.stringify(spot.chain)},`);
   }
+  if (spot.fullDay) {
+    lines.push(`    fullDay: true,`);
+  }
   if (spot.bookingLinks) {
     lines.push(`    bookingLinks: ${JSON.stringify(spot.bookingLinks)},`);
   }

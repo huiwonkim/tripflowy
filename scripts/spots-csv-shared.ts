@@ -108,6 +108,7 @@ export const CSV_COLUMNS = [
   "costCurrency",
   "tags",
   "chain",
+  "fullDay",
   "booking_klook",
   "booking_agoda",
   "booking_mrt",
@@ -218,6 +219,7 @@ export function spotToRow(s: Spot): (string | number | undefined)[] {
     s.costEstimate?.currency ?? "",
     (s.tags ?? []).join(ARRAY_SEP),
     s.chain ?? "",
+    s.fullDay ? "true" : "",
     s.bookingLinks?.klook ?? "",
     s.bookingLinks?.agoda ?? "",
     s.bookingLinks?.mrt ?? "",
@@ -373,6 +375,8 @@ export function rowToSpot(
 
   const tags = arr(g("tags"));
   const chain = g("chain");
+  const fullDayRaw = g("fullDay").toLowerCase();
+  const fullDay = fullDayRaw === "true" || fullDayRaw === "1" || fullDayRaw === "yes";
 
   const bookingLinks: Spot["bookingLinks"] = {};
   const bk = g("booking_klook");
@@ -417,6 +421,7 @@ export function rowToSpot(
     ...(costEstimate ? { costEstimate } : {}),
     ...(tags.length > 0 ? { tags } : {}),
     ...(chain ? { chain } : {}),
+    ...(fullDay ? { fullDay: true } : {}),
     ...(bookingLinksFinal ? { bookingLinks: bookingLinksFinal } : {}),
   };
 
