@@ -968,6 +968,19 @@ function PlannerContent() {
                             googleMapsUrl: day.course.googleMapsUrl,
                           }}
                           locale={locale}
+                          onReorder={(activities) => {
+                            // Replace this day's activities in dayOrder so the
+                            // edit persists until a full re-search. Share URLs
+                            // then encode this new order via spotIds.
+                            setDayOrder((prev) => {
+                              const base = prev.length > 0 ? prev : displayDays;
+                              return base.map((d) =>
+                                d.dayNumber === day.dayNumber
+                                  ? { ...d, course: { ...d.course, activities } }
+                                  : d,
+                              );
+                            });
+                          }}
                         />
                       </div>
                     </div>

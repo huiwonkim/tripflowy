@@ -3,11 +3,88 @@
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map, Train, Footprints } from "lucide-react";
+import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map, Train, Footprints, GripVertical, AlertTriangle } from "lucide-react";
 import type { DayActivity, ActivityType, Locale, LocaleString, DayCostBreakdown } from "@/types";
 import { cn } from "@/lib/utils";
 import { localizeKlookUrl } from "@/lib/klook";
 import { estimateTravel, type TravelEstimate } from "@/lib/travel-estimate";
+import { getSpotById } from "@/data/spots";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  sortableKeyboardCoordinates,
+  verticalListSortingStrategy,
+  useSortable,
+  arrayMove,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
+function parseHm(s: string): number {
+  const [h, m] = s.split(":").map(Number);
+  return h * 60 + (m || 0);
+}
+function formatHm(total: number): string {
+  const h = Math.floor(total / 60);
+  const m = total % 60;
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+}
+
+/**
+ * Rewalk the activity list starting at `startTime`, computing each entry's
+ * start from the previous one's start + dwell + travel. Used after a drag
+ * reorder so the visible timeline stays consistent.
+ */
+function rescheduleActivities(activities: DayActivity[], startTime: string): DayActivity[] {
+  if (activities.length === 0) return activities;
+  const out: DayActivity[] = [];
+  let cursor = parseHm(startTime);
+  let lastLoc: DayActivity["location"] = undefined;
+  for (let i = 0; i < activities.length; i++) {
+    const a = activities[i];
+    if (i > 0 && lastLoc && a.location) {
+      cursor += estimateTravel(lastLoc, a.location).minutes;
+    }
+    out.push({ ...a, time: formatHm(cursor) });
+    cursor += a.duration ?? 60;
+    lastLoc = a.location ?? lastLoc;
+  }
+  return out;
+}
+
+/**
+ * Returns a warning message if the activity's scheduled time falls outside
+ * the underlying spot's open hours. Null when fine or when we can't verify
+ * (no spotId / no openHours data).
+ */
+function openHoursWarning(activity: DayActivity, locale: Locale): string | null {
+  if (!activity.spotId) return null;
+  const spot = getSpotById(activity.spotId);
+  if (!spot?.openHours?.open || !spot.openHours.close) return null;
+  const start = parseHm(activity.time);
+  const end = start + (activity.duration ?? 60);
+  const open = parseHm(spot.openHours.open);
+  let close = parseHm(spot.openHours.close);
+  if (close === 0 || close < open) close = 24 * 60; // past-midnight close
+  if (start < open) {
+    return locale === "ko"
+      ? `${spot.openHours.open}부터 영업 — 조금 기다려야 합니다`
+      : `Opens at ${spot.openHours.open}`;
+  }
+  if (end > close) {
+    return locale === "ko"
+      ? `${spot.openHours.close}에 마감 — 이 시간엔 방문 어려움`
+      : `Closes at ${spot.openHours.close}`;
+  }
+  return null;
+}
 
 function TravelLabel({ travel, locale }: { travel: TravelEstimate; locale: Locale }) {
   const Icon = travel.mode === "walking" ? Footprints : Train;
@@ -40,11 +117,53 @@ const activityColors: Record<ActivityType, string> = {
   shopping: "bg-pink-100 text-pink-600",
 };
 
+// ── Sortable wrapper ────────────────────────────────
+
+/**
+ * Sortable wrapper used when editing is enabled. Provides the drag handle
+ * and the dnd-kit transform styles. Read-only renders use plain ActivityItem.
+ */
+function SortableActivityItem({
+  id,
+  activity,
+  locale,
+  index,
+}: {
+  id: string;
+  activity: DayActivity;
+  locale: Locale;
+  index: number;
+}) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.4 : 1,
+  };
+  return (
+    <div ref={setNodeRef} style={style} className="group flex items-start gap-1 pr-1">
+      <div className="flex-1 min-w-0">
+        <ActivityItem activity={activity} locale={locale} index={index} />
+      </div>
+      <button
+        type="button"
+        aria-label={locale === "ko" ? "드래그해서 순서 변경" : "Drag to reorder"}
+        className="mt-3 flex-shrink-0 p-1.5 rounded-lg text-gray-300 hover:text-gray-600 hover:bg-gray-100 cursor-grab active:cursor-grabbing touch-none opacity-50 group-hover:opacity-100 transition-opacity"
+        {...attributes}
+        {...listeners}
+      >
+        <GripVertical className="w-4 h-4" />
+      </button>
+    </div>
+  );
+}
+
 // ── Activity Item ───────────────────────────────────
 
 function ActivityItem({ activity, locale, index }: { activity: DayActivity; locale: Locale; index: number }) {
   const Icon = activityIcons[activity.type] ?? MapPin;
   const colorClass = activityColors[activity.type] ?? "bg-gray-100 text-gray-500";
+  const hoursWarning = openHoursWarning(activity, locale);
 
   return (
     <div className="flex gap-4">
@@ -59,12 +178,21 @@ function ActivityItem({ activity, locale, index }: { activity: DayActivity; loca
       {/* Content */}
       <div className="pb-6 flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1 flex-wrap">
-          <span className="inline-flex items-center gap-1 bg-gray-100 text-gray-700 text-xs font-semibold px-2 py-0.5 rounded-md">
+          <span className={cn(
+            "inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-md",
+            hoursWarning ? "bg-rose-50 text-rose-700" : "bg-gray-100 text-gray-700",
+          )}>
             <Icon className="w-3 h-3" />
             {activity.time}
           </span>
           <h4 className="text-base font-semibold text-gray-900 leading-snug">{activity.title[locale]}</h4>
         </div>
+        {hoursWarning && (
+          <div className="mt-1 mb-2 flex items-start gap-1.5 text-xs text-rose-700 bg-rose-50 border border-rose-200 rounded-lg px-2.5 py-1.5 max-w-lg">
+            <AlertTriangle className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-rose-500" />
+            <span>{hoursWarning}</span>
+          </div>
+        )}
         <p className="text-sm text-gray-500 leading-relaxed">{activity.description[locale]}</p>
 
         {/* Tips */}
@@ -161,13 +289,17 @@ interface DayPlanSectionProps {
   day: DayPlanCompat;
   locale: Locale;
   defaultOpen?: boolean;
+  /**
+   * When provided, the day plan becomes editable: activities can be reordered
+   * via drag-and-drop and this callback is invoked with the new ordered list
+   * of activities. Parent is responsible for persisting the result.
+   */
+  onReorder?: (activities: DayActivity[]) => void;
 }
 
-export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
+export function DayPlanSection({ day, locale, onReorder }: DayPlanSectionProps) {
   // Pre-compute haversine-based travel estimates between consecutive
-  // activities. Pure math — no network, no cost. Result is good enough
-  // for a "🚂 20분" label; travelers double-check real routes in Google
-  // Maps before departure.
+  // activities. Pure math — no network, no cost.
   const travelTimes: (TravelEstimate | null)[] = day.activities.map((_, i) => {
     if (i >= day.activities.length - 1) return null;
     const a = day.activities[i];
@@ -175,6 +307,33 @@ export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
     if (!a.location || !b.location) return null;
     return estimateTravel(a.location, b.location);
   });
+
+  // Stable ids for dnd-kit. Prefer spotId when available; fall back to the
+  // activity's title + time hash so meals / injected transport rows also
+  // get a unique key.
+  const activityIds = day.activities.map(
+    (a, i) => a.spotId ?? `activity-${i}-${a.time}-${a.title.en || a.title.ko}`,
+  );
+
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+  );
+
+  function handleDragEnd(e: DragEndEvent) {
+    if (!onReorder) return;
+    const { active, over } = e;
+    if (!over || active.id === over.id) return;
+    const from = activityIds.indexOf(String(active.id));
+    const to = activityIds.indexOf(String(over.id));
+    if (from < 0 || to < 0) return;
+
+    // Reorder, then re-time sequentially so the timeline still reads in
+    // order — moving 14:00 to slot 1 shouldn't leave slot 2 labelled 09:30.
+    const reordered = arrayMove(day.activities, from, to);
+    const dayStart = day.activities[0]?.time ?? "09:30";
+    onReorder(rescheduleActivities(reordered, dayStart));
+  }
 
   return (
     <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-card">
@@ -235,14 +394,34 @@ export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
 
       {/* Activities timeline */}
       <div className="px-5 pt-5">
-        {day.activities.map((activity, i) => (
-          <div key={i}>
-            <ActivityItem activity={activity} locale={locale} index={i + 1} />
-            {i < day.activities.length - 1 && travelTimes[i] && (
-              <TravelLabel travel={travelTimes[i]!} locale={locale} />
-            )}
-          </div>
-        ))}
+        {onReorder ? (
+          <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+            <SortableContext items={activityIds} strategy={verticalListSortingStrategy}>
+              {day.activities.map((activity, i) => (
+                <div key={activityIds[i]}>
+                  <SortableActivityItem
+                    id={activityIds[i]}
+                    activity={activity}
+                    locale={locale}
+                    index={i + 1}
+                  />
+                  {i < day.activities.length - 1 && travelTimes[i] && (
+                    <TravelLabel travel={travelTimes[i]!} locale={locale} />
+                  )}
+                </div>
+              ))}
+            </SortableContext>
+          </DndContext>
+        ) : (
+          day.activities.map((activity, i) => (
+            <div key={activityIds[i]}>
+              <ActivityItem activity={activity} locale={locale} index={i + 1} />
+              {i < day.activities.length - 1 && travelTimes[i] && (
+                <TravelLabel travel={travelTimes[i]!} locale={locale} />
+              )}
+            </div>
+          ))
+        )}
       </div>
 
       {/* Google Maps button */}
