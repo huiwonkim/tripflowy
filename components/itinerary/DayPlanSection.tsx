@@ -6,7 +6,6 @@ import { Link } from "@/i18n/navigation";
 import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map } from "lucide-react";
 import type { DayActivity, ActivityType, Locale, LocaleString, DayCostBreakdown } from "@/types";
 import { cn } from "@/lib/utils";
-import { displayPrice } from "@/lib/currency";
 
 // ── Icons & Colors ──────────────────────────────────
 
@@ -99,7 +98,7 @@ function ActivityItem({ activity, locale, index }: { activity: DayActivity; loca
               <a href={activity.bookingLinks.klook} target="_blank" rel="noopener noreferrer sponsored"
                 className="inline-flex items-center gap-1.5 bg-orange-50 hover:bg-orange-100 text-orange-700 text-xs font-medium px-3 py-1.5 rounded-lg transition-colors">
                 <ExternalLink className="w-3 h-3" />
-                {locale === "ko" ? "입장권 예약" : "Book Tickets"}
+                {locale === "ko" ? "티켓 예약" : "Book Ticket"}
               </a>
             )}
             {activity.bookingLinks?.agoda && (
@@ -226,32 +225,8 @@ export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
         </div>
       )}
 
-      {/* Per-day cost summary */}
-      {day.costs && (
-        <div className="mx-5 mb-5 bg-white border border-gray-100 rounded-xl px-4 py-3.5">
-          <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-2.5">
-            {locale === "ko" ? "오늘의 예상 경비 · 1인" : "Today's estimated cost · per person"}
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-2 gap-x-4 text-xs">
-            <div className="flex flex-col border-l-2 border-orange-300 pl-2.5">
-              <span className="text-gray-400">{locale === "ko" ? "식비" : "Food"}</span>
-              <span className="font-semibold text-gray-900 text-sm">{displayPrice(day.costs.food, day.costs.currency, locale)}</span>
-            </div>
-            <div className="flex flex-col border-l-2 border-green-300 pl-2.5">
-              <span className="text-gray-400">{locale === "ko" ? "투어" : "Tour"}</span>
-              <span className="font-semibold text-gray-900 text-sm">{displayPrice(day.costs.activity, day.costs.currency, locale)}</span>
-            </div>
-            <div className="flex flex-col border-l-2 border-gray-300 pl-2.5">
-              <span className="text-gray-400">{locale === "ko" ? "교통" : "Transport"}</span>
-              <span className="font-semibold text-gray-900 text-sm">{displayPrice(day.costs.transport, day.costs.currency, locale)}</span>
-            </div>
-            <div className="flex flex-col border-l-2 border-purple-300 pl-2.5">
-              <span className="text-gray-400">{locale === "ko" ? "기타" : "Etc"}</span>
-              <span className="font-semibold text-gray-900 text-sm">{displayPrice(day.costs.etc, day.costs.currency, locale)}</span>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* Per-day cost breakdown intentionally removed — budget is now summarized
+          once at the trip level in BudgetSection. */}
     </div>
   );
 }

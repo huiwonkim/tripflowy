@@ -20,6 +20,7 @@ import type {
 } from "@/types";
 import type { Pace, Spot, SpotCategory } from "@/types/spot";
 import { getSpotsByCity, getSpotById } from "@/data/spots";
+import { airports as AIRPORTS } from "@/data/destinations";
 import { haversineKm, sortByProximity } from "./geo";
 
 // ────────────────────────────────────────────────────────
@@ -170,6 +171,56 @@ export function buildSpotItinerary(input: BuildSpotInput): GeneratedItinerary | 
       const dayEnd = isLastDay ? departureEnd : undefined;
 
       const activities = scheduleDay(sights, meals, accommodation, pace, dayStart, dayEnd);
+
+      // Inject airport ↔ city transport on the first and last day. Uses the
+      // airport's `recommendedTransport` (Skyliner for NRT, Limousine Bus for
+      // HND, etc). Silently skipped when arrival/departure airport info is
+      // missing or the airport has no recommendation.
+      if (isFirstDay && arrival?.airport && arrival.time) {
+        const a = AIRPORTS.find((x) => x.code === arrival.airport);
+        const rt = a?.recommendedTransport;
+        if (rt) {
+          activities.unshift({
+            time: arrival.time,
+            type: "transport",
+            title: {
+              en: `Airport transfer (${rt.name.en})`,
+              ko: `공항 이동 (${rt.name.ko})`,
+            },
+            description: {
+              en: `Land at ${a.label.en} and take the ${rt.name.en} into the city (~${rt.durationMin} min).`,
+              ko: `${a.label.ko}에 도착 후 ${rt.name.ko}로 시내 이동 (약 ${rt.durationMin}분).`,
+            },
+            duration: rt.durationMin,
+            postSlug: rt.postSlug,
+            ...(rt.klookUrl ? { bookingLinks: { klook: rt.klookUrl } } : {}),
+          });
+        }
+      }
+      if (isLastDay && departure?.airport && departure.time) {
+        const a = AIRPORTS.find((x) => x.code === departure.airport);
+        const rt = a?.recommendedTransport;
+        if (rt) {
+          // Suggest leaving the city ~3h before flight time.
+          const depMin = parseTime(departure.time);
+          const leaveMin = Math.max(parseTime("05:00"), depMin - 3 * 60 - rt.durationMin);
+          activities.push({
+            time: formatTime(leaveMin),
+            type: "transport",
+            title: {
+              en: `To airport (${rt.name.en})`,
+              ko: `공항 이동 (${rt.name.ko})`,
+            },
+            description: {
+              en: `Head to ${a.label.en} via ${rt.name.en} (~${rt.durationMin} min). Aim to land at the airport ~3h before departure.`,
+              ko: `${rt.name.ko}로 ${a.label.ko}까지 약 ${rt.durationMin}분. 출발 3시간 전 공항 도착이 안전합니다.`,
+            },
+            duration: rt.durationMin,
+            postSlug: rt.postSlug,
+            ...(rt.klookUrl ? { bookingLinks: { klook: rt.klookUrl } } : {}),
+          });
+        }
+      }
 
       // Only mark spots that actually made it onto the schedule as "used" —
       // scheduleDay drops spots that don't fit the day window (late arrival,
@@ -849,37 +900,52 @@ function centroid(coords: Coordinates[]): Coordinates {
  * Returns undefined when no spot has a costEstimate — so BudgetSection falls
  * back to the city-level default instead of showing 0s.
  */
+/** Local transport cost per scheduled stop, keyed by local currency. */
+const TRANSPORT_PER_STOP: Record<string, number> = {
+  JPY: 300,
+  THB: 70,
+  VND: 20000,
+  IDR: 15000,
+  EUR: 5,
+  USD: 5,
+  KRW: 4500,
+};
+
+/** Flat "기타 / misc" allowance per day, keyed by local currency. */
+const ETC_PER_DAY: Record<string, number> = {
+  JPY: 1000,
+  THB: 200,
+  VND: 100000,
+  IDR: 50000,
+  EUR: 15,
+  USD: 15,
+  KRW: 15000,
+};
+
 function computeDayCosts(spots: Spot[]): DayCostBreakdown | undefined {
   let food = 0;
   let activity = 0;
-  let etc = 0;
-  let currency = "JPY";
-  let hasAny = false;
+  let currency: string | undefined;
   for (const s of spots) {
     if (!s.costEstimate) continue;
-    hasAny = true;
     currency = s.costEstimate.currency;
     const amount = s.costEstimate.amount;
-    switch (s.category) {
-      case "food":
-      case "cafe":
-        food += amount;
-        break;
-      case "sight":
-      case "park":
-      case "experience":
-        activity += amount;
-        break;
-      case "shopping":
-      case "nightlife":
-      default:
-        etc += amount;
+    if (s.category === "food" || s.category === "cafe") {
+      food += amount;
+    } else {
+      // sight / park / experience / shopping / nightlife all roll into 관광 (activity)
+      activity += amount;
     }
   }
-  if (!hasAny) return undefined;
-  // transport is MVP-assumed zero (covered in city-level estimates); V2 may
-  // pull from dedicated transport spots or Directions API.
-  return { food, activity, transport: 0, etc, currency };
+
+  if (spots.length === 0 && food === 0 && activity === 0) return undefined;
+
+  // Default to JPY when no spot carries a costEstimate (rare edge case).
+  const cur = currency ?? "JPY";
+  const transport = spots.length * (TRANSPORT_PER_STOP[cur] ?? 300);
+  const etc = ETC_PER_DAY[cur] ?? 1000;
+
+  return { food, activity, transport, etc, currency: cur };
 }
 
 function buildDayCourse(

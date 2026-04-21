@@ -32,12 +32,42 @@ export type ComingSoonCountry = {
 export type Airport = {
   code: string;
   label: LocaleString;
-  cityId: string; // optional association for sanity hints
+  cityId: string;
+  /**
+   * Recommended airport ↔ city transport. Used by the planner to auto-insert
+   * a transport activity at the start of day 1 and end of the last day.
+   */
+  recommendedTransport?: {
+    name: LocaleString;
+    durationMin: number;
+    postSlug: string;
+    klookUrl?: string;
+  };
 };
 
 export const airports: Airport[] = [
-  { code: "HND", label: { en: "Haneda (HND)", ko: "하네다 (HND)" }, cityId: "tokyo" },
-  { code: "NRT", label: { en: "Narita (NRT)", ko: "나리타 (NRT)" }, cityId: "tokyo" },
+  {
+    code: "HND",
+    label: { en: "Haneda (HND)", ko: "하네다 (HND)" },
+    cityId: "tokyo",
+    recommendedTransport: {
+      name: { en: "Tokyo Limousine Bus", ko: "도쿄 리무진 버스" },
+      durationMin: 50,
+      postSlug: "tokyo-narita-limousine-bus",
+      klookUrl: "https://www.klook.com/activity/2274-narita-airport-limousine-bus-tokyo/?aid=118462",
+    },
+  },
+  {
+    code: "NRT",
+    label: { en: "Narita (NRT)", ko: "나리타 (NRT)" },
+    cityId: "tokyo",
+    recommendedTransport: {
+      name: { en: "Skyliner", ko: "스카이라이너" },
+      durationMin: 50,
+      postSlug: "tokyo-skyliner-narita-guide",
+      klookUrl: "https://www.klook.com/activity/1410-skyliner-tokyo/?aid=118462",
+    },
+  },
   { code: "KIX", label: { en: "Kansai (KIX)", ko: "간사이 (KIX)" }, cityId: "osaka" },
   { code: "ITM", label: { en: "Itami (ITM)", ko: "이타미 (ITM)" }, cityId: "osaka" },
   { code: "FUK", label: { en: "Fukuoka (FUK)", ko: "후쿠오카 (FUK)" }, cityId: "fukuoka" },
