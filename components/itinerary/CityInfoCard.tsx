@@ -1,8 +1,41 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Globe, Clock, Coins, Languages, Zap, Sun } from "lucide-react";
 import type { CityBasicInfo, Locale } from "@/types";
+
+/** Extract ISO 4217 code embedded in e.g. "Japanese Yen (JPY)" → "JPY". */
+function extractCurrencyCode(label: string): string | null {
+  const m = label.match(/\(([A-Z]{3})\)/);
+  return m ? m[1] : null;
+}
+
+// Nicely formatted sample amounts per currency. Picks a round number
+// that's recognizable locally — ¥1,000 for JPY, ฿100 for THB, etc.
+const SAMPLE_AMOUNT: Record<string, { amount: number; prefix: string }> = {
+  JPY: { amount: 1000, prefix: "¥" },
+  THB: { amount: 100, prefix: "฿" },
+  VND: { amount: 100000, prefix: "₫" },
+  IDR: { amount: 100000, prefix: "Rp" },
+  EUR: { amount: 10, prefix: "€" },
+  USD: { amount: 10, prefix: "$" },
+  GBP: { amount: 10, prefix: "£" },
+  HKD: { amount: 100, prefix: "HK$" },
+  TRY: { amount: 100, prefix: "₺" },
+  CNY: { amount: 100, prefix: "¥" },
+};
+
+const TARGET_PREFIX: Record<string, string> = {
+  KRW: "₩",
+  USD: "$",
+};
+
+function formatTarget(amount: number, code: string): string {
+  const prefix = TARGET_PREFIX[code] ?? "";
+  const rounded = Math.round(amount);
+  return `${prefix}${rounded.toLocaleString()}`;
+}
 
 interface CityInfoCardProps {
   info: CityBasicInfo;
@@ -18,10 +51,42 @@ export function CityInfoCard({ info, cityName, locale }: CityInfoCardProps) {
   const maxRain = Math.max(...info.climate.rain, 1);
   const maxTemp = Math.max(...info.climate.tempHigh, 1);
 
+  // Exchange rate — local currency → KRW (ko) or USD (en). Parsed once
+  // from the existing currency label so we didn't need a new data field.
+  const fromCode = extractCurrencyCode(info.currency.en) ?? extractCurrencyCode(info.currency.ko);
+  const toCode = locale === "ko" ? "KRW" : "USD";
+  const [rate, setRate] = useState<{ rate: number; date: string } | null>(null);
+  useEffect(() => {
+    if (!fromCode || fromCode === toCode) return;
+    let cancelled = false;
+    fetch(`/api/exchange-rate?from=${fromCode}&to=${toCode}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (cancelled || !d || typeof d.rate !== "number") return;
+        setRate({ rate: d.rate, date: d.date });
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [fromCode, toCode]);
+
+  const sample = fromCode ? SAMPLE_AMOUNT[fromCode] : undefined;
+  const currencyValue = (() => {
+    if (!rate || !sample || !fromCode) return info.currency[locale];
+    const converted = sample.amount * rate.rate;
+    const sampleStr = `${sample.prefix}${sample.amount.toLocaleString()}`;
+    const targetStr = formatTarget(converted, toCode);
+    const suffix = locale === "ko"
+      ? ` · ${sampleStr} ≈ ${targetStr} (${rate.date} 기준)`
+      : ` · ${sampleStr} ≈ ${targetStr} (as of ${rate.date})`;
+    return info.currency[locale] + suffix;
+  })();
+
   const rows = [
     { icon: Globe, label: locale === "ko" ? "비자" : "Visa", value: info.visa[locale] },
     { icon: Clock, label: locale === "ko" ? "시차" : "Timezone", value: info.timezone[locale] },
-    { icon: Coins, label: locale === "ko" ? "통화" : "Currency", value: info.currency[locale] },
+    { icon: Coins, label: locale === "ko" ? "통화" : "Currency", value: currencyValue },
     { icon: Languages, label: locale === "ko" ? "언어" : "Language", value: info.language[locale] },
     { icon: Zap, label: locale === "ko" ? "전압" : "Voltage", value: info.voltage[locale] },
   ];
