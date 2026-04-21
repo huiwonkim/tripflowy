@@ -716,6 +716,15 @@ function dwellMinutes(spot: Spot, pace: Pace): number {
   return spot.duration.typical;
 }
 
+/**
+ * Convert a Spot into a scheduled DayActivity with the given time + pace.
+ * Exported so UI code (planner replace flow) can build an activity without
+ * re-running the full scheduler.
+ */
+export function spotToDayActivity(spot: Spot, time: string, pace: Pace): DayActivity {
+  return spotToActivity(spot, time, pace);
+}
+
 function spotToActivity(spot: Spot, time: string, pace: Pace): DayActivity {
   return {
     time,

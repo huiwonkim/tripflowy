@@ -3,12 +3,14 @@
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map, Train, Footprints, GripVertical, AlertTriangle } from "lucide-react";
+import { useMemo, useState } from "react";
+import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map, Train, Footprints, GripVertical, AlertTriangle, X, Shuffle } from "lucide-react";
 import type { DayActivity, ActivityType, Locale, LocaleString, DayCostBreakdown } from "@/types";
+import type { Spot } from "@/types/spot";
 import { cn } from "@/lib/utils";
 import { localizeKlookUrl } from "@/lib/klook";
 import { estimateTravel, type TravelEstimate } from "@/lib/travel-estimate";
-import { getSpotById } from "@/data/spots";
+import { getSpotById, getSpotsByCity } from "@/data/spots";
 import {
   DndContext,
   closestCenter,
@@ -128,11 +130,23 @@ function SortableActivityItem({
   activity,
   locale,
   index,
+  onRemove,
+  onReplaceOpen,
+  isReplaceOpen,
+  canReorder,
+  canRemove,
+  canReplace,
 }: {
   id: string;
   activity: DayActivity;
   locale: Locale;
   index: number;
+  onRemove?: () => void;
+  onReplaceOpen?: () => void;
+  isReplaceOpen?: boolean;
+  canReorder: boolean;
+  canRemove: boolean;
+  canReplace: boolean;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
   const style = {
@@ -145,15 +159,129 @@ function SortableActivityItem({
       <div className="flex-1 min-w-0">
         <ActivityItem activity={activity} locale={locale} index={index} />
       </div>
-      <button
-        type="button"
-        aria-label={locale === "ko" ? "드래그해서 순서 변경" : "Drag to reorder"}
-        className="mt-3 flex-shrink-0 p-1.5 rounded-lg text-gray-300 hover:text-gray-600 hover:bg-gray-100 cursor-grab active:cursor-grabbing touch-none opacity-50 group-hover:opacity-100 transition-opacity"
-        {...attributes}
-        {...listeners}
-      >
-        <GripVertical className="w-4 h-4" />
-      </button>
+      <div className="flex flex-col gap-0.5 opacity-50 group-hover:opacity-100 transition-opacity mt-3 flex-shrink-0">
+        {canReorder && (
+          <button
+            type="button"
+            aria-label={locale === "ko" ? "드래그해서 순서 변경" : "Drag to reorder"}
+            className="p-1.5 rounded-lg text-gray-300 hover:text-gray-600 hover:bg-gray-100 cursor-grab active:cursor-grabbing touch-none"
+            {...attributes}
+            {...listeners}
+          >
+            <GripVertical className="w-4 h-4" />
+          </button>
+        )}
+        {canReplace && (
+          <button
+            type="button"
+            aria-label={locale === "ko" ? "다른 스팟으로 교체" : "Swap with another spot"}
+            aria-pressed={isReplaceOpen}
+            className={cn(
+              "p-1.5 rounded-lg hover:bg-gray-100 transition-colors",
+              isReplaceOpen ? "text-blue-600 bg-blue-50" : "text-gray-300 hover:text-gray-600",
+            )}
+            onClick={onReplaceOpen}
+          >
+            <Shuffle className="w-4 h-4" />
+          </button>
+        )}
+        {canRemove && (
+          <button
+            type="button"
+            aria-label={locale === "ko" ? "이 스팟 제거" : "Remove this spot"}
+            className="p-1.5 rounded-lg text-gray-300 hover:text-rose-600 hover:bg-rose-50 transition-colors"
+            onClick={onRemove}
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function ReplacePicker({
+  current,
+  cityId,
+  usedSpotIds,
+  locale,
+  onPick,
+  onClose,
+}: {
+  current: DayActivity;
+  cityId: string;
+  usedSpotIds: Set<string>;
+  locale: Locale;
+  onPick: (spot: Spot) => void;
+  onClose: () => void;
+}) {
+  const currentSpot = current.spotId ? getSpotById(current.spotId) : undefined;
+  const targetArea = currentSpot?.area;
+  const targetCategory = currentSpot?.category;
+
+  const pool = getSpotsByCity(cityId).filter((s) => {
+    if (usedSpotIds.has(s.id)) return false;
+    if (current.spotId && s.id === current.spotId) return false;
+    // Prefer same area first; we'll fall back to other areas if we don't hit 3.
+    return true;
+  });
+
+  // Score: same area > same category > priority (1 best). Fix the top-10
+  // pool once per mount, then random-sample 3 — reopening the picker
+  // remounts this component so each open surfaces different candidates.
+  const candidates = useMemo(() => {
+    const scored = pool.map((s) => {
+      let score = 0;
+      if (targetArea && s.area === targetArea) score += 10;
+      if (targetCategory && s.category === targetCategory) score += 5;
+      score += 5 - s.priority;
+      return { spot: s, score };
+    });
+    scored.sort((a, b) => b.score - a.score);
+    const topPool = scored.slice(0, 10).map((x) => x.spot);
+    const shuffled = [...topPool];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled.slice(0, 3);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div className="ml-12 mb-4 border border-gray-200 rounded-xl bg-gray-50 p-3">
+      <div className="flex items-center justify-between mb-2">
+        <p className="text-xs font-semibold text-gray-700">
+          {locale === "ko" ? "바꿔 넣을 스팟 고르기" : "Pick a replacement"}
+        </p>
+        <button
+          type="button"
+          onClick={onClose}
+          className="p-1 rounded text-gray-400 hover:text-gray-700 hover:bg-gray-200"
+          aria-label={locale === "ko" ? "닫기" : "Close"}
+        >
+          <X className="w-3.5 h-3.5" />
+        </button>
+      </div>
+      {candidates.length === 0 ? (
+        <p className="text-xs text-gray-500 py-2">
+          {locale === "ko" ? "추천할 만한 미사용 스팟이 없습니다." : "No unused alternatives."}
+        </p>
+      ) : (
+        <div className="flex flex-col gap-1.5">
+          {candidates.map((s) => (
+            <button
+              key={s.id}
+              type="button"
+              onClick={() => onPick(s)}
+              className="text-left bg-white border border-gray-200 hover:border-blue-400 hover:bg-blue-50 rounded-lg px-3 py-2 transition-colors"
+            >
+              <div className="text-sm font-semibold text-gray-900">{s.name[locale]}</div>
+              <div className="text-xs text-gray-500 mt-0.5 line-clamp-2">{s.description[locale]}</div>
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
@@ -295,9 +423,34 @@ interface DayPlanSectionProps {
    * of activities. Parent is responsible for persisting the result.
    */
   onReorder?: (activities: DayActivity[]) => void;
+  /**
+   * Remove an activity from the day. Called with the index (0-based) so the
+   * parent can splice without ambiguity when two activities share a title.
+   */
+  onRemove?: (index: number) => void;
+  /**
+   * Replace an activity with a different spot. Parent receives the index and
+   * the new Spot chosen by the user. Required together with `cityId` /
+   * `usedSpotIds` for the replace-picker to compute candidates.
+   */
+  onReplace?: (index: number, newSpot: Spot) => void;
+  /** City id for replace-candidate lookup (e.g. "tokyo"). */
+  cityId?: string;
+  /** Spot ids already used across the whole itinerary — excluded from suggestions. */
+  usedSpotIds?: Set<string>;
 }
 
-export function DayPlanSection({ day, locale, onReorder }: DayPlanSectionProps) {
+export function DayPlanSection({
+  day,
+  locale,
+  onReorder,
+  onRemove,
+  onReplace,
+  cityId,
+  usedSpotIds,
+}: DayPlanSectionProps) {
+  const [replaceOpenIdx, setReplaceOpenIdx] = useState<number | null>(null);
+  const editable = Boolean(onReorder || onRemove || onReplace);
   // Pre-compute haversine-based travel estimates between consecutive
   // activities. Pure math — no network, no cost.
   const travelTimes: (TravelEstimate | null)[] = day.activities.map((_, i) => {
@@ -394,7 +547,7 @@ export function DayPlanSection({ day, locale, onReorder }: DayPlanSectionProps) 
 
       {/* Activities timeline */}
       <div className="px-5 pt-5">
-        {onReorder ? (
+        {editable ? (
           <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
             <SortableContext items={activityIds} strategy={verticalListSortingStrategy}>
               {day.activities.map((activity, i) => (
@@ -404,7 +557,30 @@ export function DayPlanSection({ day, locale, onReorder }: DayPlanSectionProps) 
                     activity={activity}
                     locale={locale}
                     index={i + 1}
+                    canReorder={Boolean(onReorder)}
+                    canRemove={Boolean(onRemove)}
+                    canReplace={Boolean(onReplace && cityId && activity.spotId)}
+                    onRemove={onRemove ? () => onRemove(i) : undefined}
+                    onReplaceOpen={
+                      onReplace
+                        ? () => setReplaceOpenIdx(replaceOpenIdx === i ? null : i)
+                        : undefined
+                    }
+                    isReplaceOpen={replaceOpenIdx === i}
                   />
+                  {replaceOpenIdx === i && onReplace && cityId && (
+                    <ReplacePicker
+                      current={activity}
+                      cityId={cityId}
+                      usedSpotIds={usedSpotIds ?? new Set()}
+                      locale={locale}
+                      onPick={(spot) => {
+                        onReplace(i, spot);
+                        setReplaceOpenIdx(null);
+                      }}
+                      onClose={() => setReplaceOpenIdx(null)}
+                    />
+                  )}
                   {i < day.activities.length - 1 && travelTimes[i] && (
                     <TravelLabel travel={travelTimes[i]!} locale={locale} />
                   )}

@@ -8,7 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { MapPin, Clock, Users, Zap, Search, Check, ChevronDown, X, ExternalLink, Lock, Unlock, RefreshCw, ArrowUp, ArrowDown, Map as MapIcon, Calendar, Gauge, Plane } from "lucide-react";
 import { countries, durationOptions, travelerTypeOptions, styleOptions, airports } from "@/data/destinations";
 import { buildItinerary, getMatchedTours, getMatchedHotels } from "@/lib/itinerary-builder";
-import { buildItineraryFromSpotIds } from "@/lib/spot-builder";
+import { buildItineraryFromSpotIds, spotToDayActivity } from "@/lib/spot-builder";
 import { decodeItinerary } from "@/lib/itinerary-encoding";
 import { AccommodationPicker } from "@/components/planner/AccommodationPicker";
 import { TemplateRecommendations, type TemplateApplyTarget } from "@/components/planner/TemplateRecommendations";
@@ -968,10 +968,17 @@ function PlannerContent() {
                             googleMapsUrl: day.course.googleMapsUrl,
                           }}
                           locale={locale}
+                          cityId={day.city}
+                          usedSpotIds={(() => {
+                            const ids = new Set<string>();
+                            for (const d of displayDays) {
+                              for (const a of d.course.activities) {
+                                if (a.spotId) ids.add(a.spotId);
+                              }
+                            }
+                            return ids;
+                          })()}
                           onReorder={(activities) => {
-                            // Replace this day's activities in dayOrder so the
-                            // edit persists until a full re-search. Share URLs
-                            // then encode this new order via spotIds.
                             setDayOrder((prev) => {
                               const base = prev.length > 0 ? prev : displayDays;
                               return base.map((d) =>
@@ -979,6 +986,33 @@ function PlannerContent() {
                                   ? { ...d, course: { ...d.course, activities } }
                                   : d,
                               );
+                            });
+                          }}
+                          onRemove={(index) => {
+                            setDayOrder((prev) => {
+                              const base = prev.length > 0 ? prev : displayDays;
+                              return base.map((d) => {
+                                if (d.dayNumber !== day.dayNumber) return d;
+                                const acts = d.course.activities.filter((_, i) => i !== index);
+                                return { ...d, course: { ...d.course, activities: acts } };
+                              });
+                            });
+                          }}
+                          onReplace={(index, newSpot) => {
+                            setDayOrder((prev) => {
+                              const base = prev.length > 0 ? prev : displayDays;
+                              return base.map((d) => {
+                                if (d.dayNumber !== day.dayNumber) return d;
+                                const current = d.course.activities[index];
+                                const replacement = spotToDayActivity(
+                                  newSpot,
+                                  current.time,
+                                  committedInput.pace ?? "balanced",
+                                );
+                                const acts = [...d.course.activities];
+                                acts[index] = replacement;
+                                return { ...d, course: { ...d.course, activities: acts } };
+                              });
                             });
                           }}
                         />
