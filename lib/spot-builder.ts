@@ -23,6 +23,7 @@ import { getSpotsByCity, getSpotById } from "@/data/spots";
 import { airports as AIRPORTS } from "@/data/destinations";
 import { getAreaById } from "@/data/areas";
 import { haversineKm, sortByProximity } from "./geo";
+import { estimateTravel } from "./travel-estimate";
 
 // ────────────────────────────────────────────────────────
 // Config
@@ -460,8 +461,11 @@ function pickDaySpots(
     return true;
   });
 
-  const isSight = (s: Spot) => s.category !== "food" && s.category !== "cafe";
-  const isFood = (s: Spot) => s.category === "food" || s.category === "cafe";
+  // Cafes are treated like sights (anytime filler), NOT meals — coffee at
+  // 10:30 or 16:00 is fine, but cafes shouldn't crowd out actual lunch /
+  // dinner picks. Only `food` counts as a meal for lunch / dinner slotting.
+  const isSight = (s: Spot) => s.category !== "food";
+  const isFood = (s: Spot) => s.category === "food";
 
   // Group by area — spots without an area go into a "_none" wildcard bucket
   // and are only used to top up when a chosen area runs short.
@@ -506,14 +510,25 @@ function pickDaySpots(
     // to a late arrival, the remaining-count logic still makes the area
     // easily re-pickable on day 2.
     const remainingSightsHere = scoredSights.length;
-    const hasMultipleDaysOfContent = remainingSightsHere >= config.sights * 1.5;
+    // Graduated reuse penalty. Previously a single 80-point wall made small
+    // areas (harajuku, ginza) completely unpickable after one visit, which
+    // meant on long trips we couldn't revisit those areas even when they
+    // still had a few untapped spots. New curve:
+    //   full-day still left   → soft nudge (still good to diversify)
+    //   half-day still left   → moderate penalty
+    //   few spots left        → heavier, but pickable
+    //   1 or 0 spots left     → effectively blocked
     let reusePenalty: number;
     if (reuseCount === 0) {
       reusePenalty = 0;
-    } else if (hasMultipleDaysOfContent) {
-      reusePenalty = 10; // soft nudge toward diversification, but don't block
+    } else if (remainingSightsHere >= config.sights) {
+      reusePenalty = 10;
+    } else if (remainingSightsHere >= Math.ceil(config.sights / 2)) {
+      reusePenalty = 30;
+    } else if (remainingSightsHere >= 2) {
+      reusePenalty = 60;
     } else {
-      reusePenalty = 80; // strong block once the area is mostly drained
+      reusePenalty = 150;
     }
 
     const prefBonus = area === preferredArea ? 40 : 0;
@@ -557,15 +572,13 @@ function pickDaySpots(
   // Sights: start with primary area
   let sights = chosen.sights.slice(0, config.sights);
 
-  // Full-day anchor: if a fullDay spot (Disneyland, Harry Potter studio,
-  // Fuji tour) ends up in the selection, shrink the day to just that spot
-  // + at most one short supporting spot in the same area. Round-trip travel
-  // makes adding more impractical, and the experience itself fills the day.
+  // Full-day anchor detection — used later to skip lunch on these days
+  // (the venue covers it) and to tune meal insertion. We intentionally no
+  // longer shrink the sight list: the spot's long dwell + the scheduler's
+  // dayEnd cut-off naturally limits what fits after Disneyland/HP, but
+  // half-day anchors (HP is ~3h) still have room for 4-5 more city stops.
   const fullDayAnchor = sights.find((s) => s.fullDay);
-  if (fullDayAnchor) {
-    const supporting = sights.find((s) => !s.fullDay && s.area === fullDayAnchor.area);
-    sights = supporting ? [fullDayAnchor, supporting] : [fullDayAnchor];
-  } else if (sights.length < config.sights) {
+  if (sights.length < config.sights) {
     // Supplement from the nearest other area if short on sights
     const missing = config.sights - sights.length;
     const others = candidates
@@ -586,19 +599,29 @@ function pickDaySpots(
     sights.push(...topUp);
   }
 
-  // Meals from same area first
+  // Meals. On a full-day anchor day, the venue (Disneyland / Harry Potter
+  // studio / Fuji tour) covers the lunch slot — the traveler eats there.
+  // Dinner still lands in the plan because they return in time for one.
+  const skipLunch = Boolean(fullDayAnchor);
+
   const meals: Spot[] = [];
-  const lunch = chosen.foods.find((s) => s.mealSlot === "lunch");
-  if (lunch) meals.push(lunch);
+  if (!skipLunch) {
+    const lunch = chosen.foods.find((s) => s.mealSlot === "lunch");
+    if (lunch) meals.push(lunch);
+  }
   const dinner = chosen.foods.find((s) => s.mealSlot === "dinner" && !meals.includes(s));
   if (dinner) meals.push(dinner);
-  for (const f of chosen.foods) {
-    if (meals.length >= config.meals) break;
-    if (!meals.includes(f)) meals.push(f);
+  // Backfill remaining meal slots with any food — but only on non-fullDay
+  // days, since we never want lunch-ish foods interrupting the main venue.
+  if (!fullDayAnchor) {
+    for (const f of chosen.foods) {
+      if (meals.length >= config.meals) break;
+      if (!meals.includes(f)) meals.push(f);
+    }
   }
 
-  // Fall back to nearest-area foods if meals are missing
-  if (meals.length < config.meals) {
+  // Fall back to nearest-area foods if meals are missing (non-fullDay days).
+  if (!fullDayAnchor && meals.length < config.meals) {
     const crossAreaFoods = available
       .filter((s) => isFood(s) && s.area !== chosen.area && !meals.includes(s))
       .map((s) => ({
@@ -608,7 +631,6 @@ function pickDaySpots(
       .sort((a, b) => a.dist - b.dist);
     for (const { spot } of crossAreaFoods) {
       if (meals.length >= config.meals) break;
-      // Prefer missing slot (lunch or dinner) when still uncovered
       const needLunch = !meals.some((m) => m.mealSlot === "lunch");
       const needDinner = !meals.some((m) => m.mealSlot === "dinner");
       if (
@@ -619,7 +641,6 @@ function pickDaySpots(
         meals.push(spot);
       }
     }
-    // Still short? Fill with any remaining food regardless of slot
     for (const { spot } of crossAreaFoods) {
       if (meals.length >= config.meals) break;
       if (!meals.includes(spot)) meals.push(spot);
@@ -650,14 +671,14 @@ function pickDaySpots(
 // ────────────────────────────────────────────────────────
 
 /**
- * Travel minutes estimate between two coordinates — kept simple on purpose.
- * V2 may swap this for Google Directions API.
+ * Travel minutes estimate between two coordinates. Delegates to the shared
+ * `estimateTravel` helper so the scheduler and the UI "🚂 20분 이동" label
+ * use the exact same number — otherwise the label and the actual gap
+ * between activity start times disagree (e.g. label 20 min, scheduler 15 min
+ * silently makes a 60-min visit look like 55 min on screen).
  */
 function computeTravelMinutes(from: Coordinates, to: Coordinates): number {
-  const km = haversineKm(from, to);
-  if (km < 3) return 15;
-  if (km < 10) return 25;
-  return 40;
+  return estimateTravel(from, to).minutes;
 }
 
 function parseTime(t: string): number {
@@ -740,35 +761,132 @@ function scheduleDay(
   const daytimeSights = sights.filter((s) => !isEveningOnly(s));
   const eveningSights = sights.filter(isEveningOnly);
 
-  // Sort daytime sights by proximity, anchored to accommodation if available
+  // Area-first chain builder.
+  //
+  // Previously we ran greedy nearest-neighbor across all daytime spots.
+  // That caused zigzagging whenever two separate areas had a spot within
+  // "closer-than-the-far-end-of-current-area" distance — e.g. finishing
+  // Ueno, jumping to Asakusa for one stop, coming back to Ueno.
+  //
+  // New approach: group spots by area, visit every spot inside an area
+  // contiguously, then move to the next area (chosen by centroid distance
+  // from the last-visited point). Within each area, greedy nearest-neighbor
+  // seeded from whichever spot is closest to the previous area's exit.
   let sortedDaytime: Spot[];
   if (daytimeSights.length === 0) {
     sortedDaytime = [];
-  } else if (accommodation) {
-    let startIdx = 0;
-    let startDist = Infinity;
-    for (let i = 0; i < daytimeSights.length; i++) {
-      const d = haversineKm(accommodation, daytimeSights[i].location);
-      if (d < startDist) {
-        startDist = d;
-        startIdx = i;
+  } else {
+    const byArea = new Map<string, Spot[]>();
+    for (const s of daytimeSights) {
+      const key = s.area ?? "_noarea";
+      const bucket = byArea.get(key) ?? [];
+      bucket.push(s);
+      byArea.set(key, bucket);
+    }
+
+    const areaCentroid = (area: string) =>
+      centroid(byArea.get(area)!.map((s) => s.location));
+
+    // Seed with the area closest to the accommodation; fall back to any area.
+    const remainingAreas = new Set(byArea.keys());
+    let seedArea: string;
+    if (accommodation) {
+      let bestDist = Infinity;
+      let bestArea = [...remainingAreas][0];
+      for (const a of remainingAreas) {
+        const d = haversineKm(accommodation, areaCentroid(a));
+        if (d < bestDist) {
+          bestDist = d;
+          bestArea = a;
+        }
+      }
+      seedArea = bestArea;
+    } else {
+      seedArea = [...remainingAreas][0];
+    }
+
+    const areaOrder: string[] = [seedArea];
+    remainingAreas.delete(seedArea);
+    while (remainingAreas.size > 0) {
+      const lastC = areaCentroid(areaOrder[areaOrder.length - 1]);
+      let nearestArea = [...remainingAreas][0];
+      let nearestDist = Infinity;
+      for (const a of remainingAreas) {
+        const d = haversineKm(lastC, areaCentroid(a));
+        if (d < nearestDist) {
+          nearestDist = d;
+          nearestArea = a;
+        }
+      }
+      areaOrder.push(nearestArea);
+      remainingAreas.delete(nearestArea);
+    }
+
+    // Build the spot chain area by area, nearest-neighbor inside each.
+    const chain: Spot[] = [];
+    let lastExit: Coordinates = accommodation ?? byArea.get(seedArea)![0].location;
+    for (const area of areaOrder) {
+      const remaining = [...byArea.get(area)!];
+      while (remaining.length > 0) {
+        let nearestIdx = 0;
+        let nearestD = Infinity;
+        for (let i = 0; i < remaining.length; i++) {
+          const d = haversineKm(lastExit, remaining[i].location);
+          if (d < nearestD) {
+            nearestD = d;
+            nearestIdx = i;
+          }
+        }
+        const pick = remaining.splice(nearestIdx, 1)[0];
+        chain.push(pick);
+        lastExit = pick.location;
       }
     }
-    const head = daytimeSights[startIdx];
-    const rest = daytimeSights.filter((_, i) => i !== startIdx);
-    sortedDaytime = [head, ...sortByProximity(rest, (s) => s.location)];
-  } else {
-    sortedDaytime = sortByProximity(daytimeSights, (s) => s.location);
+    sortedDaytime = chain;
   }
+  const breakfast = meals.find((m) => m.mealSlot === "breakfast");
+  const lunch = meals.find((m) => m.mealSlot === "lunch");
+  const dinner = meals.find((m) => m.mealSlot === "dinner");
+
+  const effectiveStart = dayStart ? parseTime(dayStart) : parseTime("09:30");
+
+  // Find the chain index where the natural traversal clock crosses
+  // `targetTime`. A meal inserted at this index lands inside its real-world
+  // meal window — lunch in 12-14 range, dinner in 18-20 range — no matter
+  // how proximity-based reasoning would have placed it.
+  const findTimeInsertionIndex = (chain: Spot[], targetTime: number): number => {
+    let t = effectiveStart;
+    let lastLoc: Coordinates | undefined = accommodation;
+    for (let i = 0; i < chain.length; i++) {
+      const spot = chain[i];
+      let arrival = t;
+      if (lastLoc) arrival += computeTravelMinutes(lastLoc, spot.location);
+      if (spot.openHours?.open) {
+        const openMin = parseTime(spot.openHours.open);
+        if (arrival < openMin) arrival = openMin;
+      }
+      if (arrival >= targetTime) return i;
+      t = arrival + dwellMinutes(spot, pace);
+      lastLoc = spot.location;
+    }
+    return chain.length;
+  };
+
+  let chainWithMeals: Spot[] = [...sortedDaytime];
+  if (lunch) {
+    const idx = findTimeInsertionIndex(chainWithMeals, parseTime("12:30"));
+    chainWithMeals.splice(idx, 0, lunch);
+  }
+  if (dinner) {
+    const idx = findTimeInsertionIndex(chainWithMeals, parseTime("18:30"));
+    chainWithMeals.splice(idx, 0, dinner);
+  }
+
   // Evening-only spots: sort among themselves by proximity but append last
   const sortedEvening = eveningSights.length > 1
     ? sortByProximity(eveningSights, (s) => s.location)
     : eveningSights;
-  const sortedSights = [...sortedDaytime, ...sortedEvening];
-
-  const breakfast = meals.find((m) => m.mealSlot === "breakfast");
-  const lunch = meals.find((m) => m.mealSlot === "lunch");
-  const dinner = meals.find((m) => m.mealSlot === "dinner");
+  const sortedSights = [...chainWithMeals, ...sortedEvening];
   const others = meals.filter(
     (m) => m !== breakfast && m !== lunch && m !== dinner,
   );
@@ -779,8 +897,6 @@ function scheduleDay(
   const endMinutes = dayEnd ? parseTime(dayEnd) : null;
   let currentMinutes = startMinutes;
   let lastLocation: Coordinates | undefined = accommodation;
-  let lunchInserted = false;
-  let dinnerInserted = false;
 
   /**
    * Attempt to push a spot at the computed time.
@@ -810,7 +926,12 @@ function scheduleDay(
       if (startMin < openMin) startMin = openMin;
     }
     if (spot.openHours?.close) {
-      const closeMin = parseTime(spot.openHours.close);
+      let closeMin = parseTime(spot.openHours.close);
+      // "0:00" / "00:00" / "24:00" / "23:59" all effectively mean "open past
+      // midnight" — treat as no same-day close. Also treat any close time
+      // earlier than open as past-midnight (e.g. bar open 18:00 close 02:00).
+      const openMin = spot.openHours.open ? parseTime(spot.openHours.open) : 0;
+      if (closeMin === 0 || closeMin < openMin) closeMin = 24 * 60;
       const dwell = dwellMinutes(spot, pace);
       // Skip if we can't finish the minimum visit before it closes
       if (startMin + Math.min(dwell, 30) > closeMin) return false;
@@ -832,32 +953,27 @@ function scheduleDay(
     pushSpot(breakfast, breakfastTime);
   }
 
-  for (const sight of sortedSights) {
-    if (lunch && !lunchInserted && currentMinutes >= parseTime("12:00")) {
-      if (pushSpot(lunch, Math.max(currentMinutes, parseTime("12:30")))) {
-        lunchInserted = true;
-      } else {
-        lunchInserted = true; // give up if past cutoff
-      }
-    }
-    if (dinner && !dinnerInserted && currentMinutes >= parseTime("18:00")) {
-      // Use max(currentMinutes, 18:30) — mirrors lunch. Prior bug forced 18:30
-      // regardless, so a sight ending at 19:00 would overlap dinner at 18:30.
-      if (pushSpot(dinner, Math.max(currentMinutes, parseTime("18:30")))) {
-        dinnerInserted = true;
-      } else {
-        dinnerInserted = true;
-      }
-    }
-    if (!pushSpot(sight)) break; // day window exhausted
-  }
+  // Meals are already spliced into `sortedSights` at the position of their
+  // nearest sight, so the main loop is just a sequential walk. For lunch /
+  // dinner we still apply a soft time floor so a fast-moving chain doesn't
+  // schedule lunch at 10:30 — shifts the start up to 12:30 / 18:30 when the
+  // chain reaches the meal earlier than that.
+  // Push each spot in chain order. If one fails (e.g. a spot we'd reach
+  // past its close time), skip it and keep going — earlier logic broke the
+  // whole loop, causing one early-closing spot to silently truncate the
+  // rest of the day.
+  for (const spot of sortedSights) {
+    let floor: number | undefined;
+    if (spot === lunch) floor = parseTime("12:30");
+    else if (spot === dinner) floor = parseTime("18:30");
 
-  // Ensure lunch and dinner get added even if the sight loop didn't trip the threshold
-  if (lunch && !lunchInserted) {
-    pushSpot(lunch, parseTime("12:30"));
-  }
-  if (dinner && !dinnerInserted) {
-    pushSpot(dinner, parseTime("18:30"));
+    if (floor !== undefined) {
+      let naturalStart = currentMinutes;
+      if (lastLocation) naturalStart += computeTravelMinutes(lastLocation, spot.location);
+      pushSpot(spot, Math.max(naturalStart, floor));
+    } else {
+      pushSpot(spot);
+    }
   }
 
   // Fill other meals (snack etc.) after the main sequence, time-based

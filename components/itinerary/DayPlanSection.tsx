@@ -3,10 +3,23 @@
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map } from "lucide-react";
+import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map, Train, Footprints } from "lucide-react";
 import type { DayActivity, ActivityType, Locale, LocaleString, DayCostBreakdown } from "@/types";
 import { cn } from "@/lib/utils";
 import { localizeKlookUrl } from "@/lib/klook";
+import { estimateTravel, type TravelEstimate } from "@/lib/travel-estimate";
+
+function TravelLabel({ travel, locale }: { travel: TravelEstimate; locale: Locale }) {
+  const Icon = travel.mode === "walking" ? Footprints : Train;
+  const label = locale === "ko" ? `${travel.minutes}분 이동` : `${travel.minutes} min`;
+  return (
+    <div className="flex items-center gap-2 pl-12 py-1.5 text-xs text-gray-400">
+      <div className="w-0.5 h-4 bg-gray-200" />
+      <Icon className="w-3.5 h-3.5" />
+      <span>{label}</span>
+    </div>
+  );
+}
 
 // ── Icons & Colors ──────────────────────────────────
 
@@ -151,6 +164,18 @@ interface DayPlanSectionProps {
 }
 
 export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
+  // Pre-compute haversine-based travel estimates between consecutive
+  // activities. Pure math — no network, no cost. Result is good enough
+  // for a "🚂 20분" label; travelers double-check real routes in Google
+  // Maps before departure.
+  const travelTimes: (TravelEstimate | null)[] = day.activities.map((_, i) => {
+    if (i >= day.activities.length - 1) return null;
+    const a = day.activities[i];
+    const b = day.activities[i + 1];
+    if (!a.location || !b.location) return null;
+    return estimateTravel(a.location, b.location);
+  });
+
   return (
     <div className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-card">
       {/* Day header */}
@@ -211,7 +236,12 @@ export function DayPlanSection({ day, locale }: DayPlanSectionProps) {
       {/* Activities timeline */}
       <div className="px-5 pt-5">
         {day.activities.map((activity, i) => (
-          <ActivityItem key={i} activity={activity} locale={locale} index={i + 1} />
+          <div key={i}>
+            <ActivityItem activity={activity} locale={locale} index={i + 1} />
+            {i < day.activities.length - 1 && travelTimes[i] && (
+              <TravelLabel travel={travelTimes[i]!} locale={locale} />
+            )}
+          </div>
         ))}
       </div>
 

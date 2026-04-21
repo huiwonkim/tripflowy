@@ -8,12 +8,16 @@ import type { Spot } from "../types/spot";
 // Google Maps URL → { lat, lng } extraction
 // ────────────────────────────────────────────────────────
 
+// Pattern priority matters — the first pattern that matches wins.
+// `!3d!4d` is the canonical place coordinate Google embeds in /place/ URLs;
+// it takes precedence over `@lat,lng` (which is only the map view center
+// at time of copy, often zoomed out and far from the actual place).
 const LATLNG_PATTERNS = [
-  /@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/,        // /maps/@lat,lng  or  /place/…/@lat,lng
-  /!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/,    // !3dLAT!4dLNG (long place URLs)
+  /!3d(-?\d+(?:\.\d+)?)!4d(-?\d+(?:\.\d+)?)/,    // !3dLAT!4dLNG — real place coord
   /[?&]q=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/,   // ?q=lat,lng
   /[?&]ll=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/,  // ?ll=lat,lng
   /[?&]destination=(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/, // directions URLs
+  /@(-?\d+(?:\.\d+)?),(-?\d+(?:\.\d+)?)/,        // /maps/@lat,lng — fallback view center
 ];
 
 function matchLatLng(text: string): { lat: number; lng: number } | null {
