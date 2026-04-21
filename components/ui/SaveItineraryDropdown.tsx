@@ -13,7 +13,6 @@ import {
   listStoredItineraries,
   saveItinerary,
   removeStoredItinerary,
-  buildUrlForStored,
   type StoredItinerary,
 } from "@/lib/itinerary-storage";
 
@@ -218,27 +217,32 @@ export function SaveItineraryDropdown({ locale, days, duration, itinerary, input
                 </p>
               </div>
               <div className="max-h-64 overflow-y-auto">
-                {savedItems.map((it) => (
-                  <div key={it.id} className="flex items-center gap-2 px-4 py-2 hover:bg-gray-50">
-                    <a href={buildUrlForStored(it)}
-                      className="flex-1 min-w-0 text-left">
-                      <p className="text-sm font-medium text-gray-900 truncate">{it.name}</p>
-                      <p className="text-xs text-gray-400">
-                        {new Date(it.updatedAt).toLocaleDateString(locale === "ko" ? "ko-KR" : "en-US")}
-                        {" · "}
-                        {it.preview.destinations.join(", ")}
-                        {" · "}
-                        {it.preview.dayCount}{locale === "ko" ? "일" : "d"}
-                      </p>
-                    </a>
-                    <button onClick={() => handleRemove(it.id)}
-                      className="p-1.5 text-gray-300 hover:text-red-500 transition-colors"
-                      title={locale === "ko" ? "삭제" : "Remove"}
-                    >
-                      <Trash2 className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-                ))}
+                {savedItems.map((it) => {
+                  // Route saved items to the detail/edit page — "링크 복사"
+                  // there produces the shareable planner URL if the user
+                  // wants to pass the exact itinerary to someone else.
+                  const detailHref = `${locale === "ko" ? "/ko" : ""}/itineraries/${it.id}`;
+                  return (
+                    <div key={it.id} className="flex items-center gap-2 px-4 py-2 hover:bg-gray-50">
+                      <a href={detailHref} className="flex-1 min-w-0 text-left">
+                        <p className="text-sm font-medium text-gray-900 truncate">{it.name}</p>
+                        <p className="text-xs text-gray-400">
+                          {new Date(it.updatedAt).toLocaleDateString(locale === "ko" ? "ko-KR" : "en-US")}
+                          {" · "}
+                          {it.preview.destinations.join(", ")}
+                          {" · "}
+                          {it.preview.dayCount}{locale === "ko" ? "일" : "d"}
+                        </p>
+                      </a>
+                      <button onClick={() => handleRemove(it.id)}
+                        className="p-1.5 text-gray-300 hover:text-red-500 transition-colors"
+                        title={locale === "ko" ? "삭제" : "Remove"}
+                      >
+                        <Trash2 className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           )}

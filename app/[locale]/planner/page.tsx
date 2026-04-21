@@ -16,7 +16,7 @@ import type { DayTemplate } from "@/types/spot";
 import { dayCourses } from "@/data/day-courses";
 import { getCityInfo } from "@/data/city-info";
 import { styleLabel, travelerLabel } from "@/lib/utils";
-import { DayPlanSection } from "@/components/itinerary/DayPlanSection";
+import { DayPlanSection, rescheduleActivities } from "@/components/itinerary/DayPlanSection";
 import { BudgetSection } from "@/components/itinerary/BudgetSection";
 import { FAQSection } from "@/components/itinerary/FAQSection";
 import { TourCard } from "@/components/tours/TourCard";
@@ -979,11 +979,17 @@ function PlannerContent() {
                             return ids;
                           })()}
                           onReorder={(activities) => {
+                            // Planner-level reorder re-times the chain so the
+                            // engine-suggested day keeps a readable timeline.
+                            // Saved-itinerary editing uses its own onReorder
+                            // that leaves the times alone (user-owned plan).
+                            const dayStart = day.course.activities[0]?.time ?? "09:30";
+                            const retimed = rescheduleActivities(activities, dayStart);
                             setDayOrder((prev) => {
                               const base = prev.length > 0 ? prev : displayDays;
                               return base.map((d) =>
                                 d.dayNumber === day.dayNumber
-                                  ? { ...d, course: { ...d.course, activities } }
+                                  ? { ...d, course: { ...d.course, activities: retimed } }
                                   : d,
                               );
                             });

@@ -44,7 +44,7 @@ function formatHm(total: number): string {
  * start from the previous one's start + dwell + travel. Used after a drag
  * reorder so the visible timeline stays consistent.
  */
-function rescheduleActivities(activities: DayActivity[], startTime: string): DayActivity[] {
+export function rescheduleActivities(activities: DayActivity[], startTime: string): DayActivity[] {
   if (activities.length === 0) return activities;
   const out: DayActivity[] = [];
   let cursor = parseHm(startTime);
@@ -136,6 +136,8 @@ function SortableActivityItem({
   canReorder,
   canRemove,
   canReplace,
+  onTimeChange,
+  suppressWarnings,
 }: {
   id: string;
   activity: DayActivity;
@@ -147,6 +149,8 @@ function SortableActivityItem({
   canReorder: boolean;
   canRemove: boolean;
   canReplace: boolean;
+  onTimeChange?: (newTime: string) => void;
+  suppressWarnings?: boolean;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id });
   const style = {
@@ -157,7 +161,13 @@ function SortableActivityItem({
   return (
     <div ref={setNodeRef} style={style} className="group flex items-start gap-1 pr-1">
       <div className="flex-1 min-w-0">
-        <ActivityItem activity={activity} locale={locale} index={index} />
+        <ActivityItem
+          activity={activity}
+          locale={locale}
+          index={index}
+          onTimeChange={onTimeChange}
+          suppressWarnings={suppressWarnings}
+        />
       </div>
       <div className="flex flex-col gap-0.5 opacity-50 group-hover:opacity-100 transition-opacity mt-3 flex-shrink-0">
         {canReorder && (
@@ -288,10 +298,22 @@ function ReplacePicker({
 
 // ── Activity Item ───────────────────────────────────
 
-function ActivityItem({ activity, locale, index }: { activity: DayActivity; locale: Locale; index: number }) {
+function ActivityItem({
+  activity,
+  locale,
+  index,
+  onTimeChange,
+  suppressWarnings,
+}: {
+  activity: DayActivity;
+  locale: Locale;
+  index: number;
+  onTimeChange?: (newTime: string) => void;
+  suppressWarnings?: boolean;
+}) {
   const Icon = activityIcons[activity.type] ?? MapPin;
   const colorClass = activityColors[activity.type] ?? "bg-gray-100 text-gray-500";
-  const hoursWarning = openHoursWarning(activity, locale);
+  const hoursWarning = !suppressWarnings ? openHoursWarning(activity, locale) : null;
 
   return (
     <div className="flex gap-4">
@@ -306,13 +328,31 @@ function ActivityItem({ activity, locale, index }: { activity: DayActivity; loca
       {/* Content */}
       <div className="pb-6 flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-1 flex-wrap">
-          <span className={cn(
-            "inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-md",
-            hoursWarning ? "bg-rose-50 text-rose-700" : "bg-gray-100 text-gray-700",
-          )}>
-            <Icon className="w-3 h-3" />
-            {activity.time}
-          </span>
+          {onTimeChange ? (
+            <label
+              className={cn(
+                "inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-md cursor-text",
+                hoursWarning ? "bg-rose-50 text-rose-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200",
+              )}
+            >
+              <Icon className="w-3 h-3" />
+              <input
+                type="time"
+                value={activity.time.slice(0, 5)}
+                onChange={(e) => onTimeChange(e.target.value)}
+                className="bg-transparent outline-none font-semibold tabular-nums w-[4.5rem]"
+                aria-label={locale === "ko" ? "시간 수정" : "Edit time"}
+              />
+            </label>
+          ) : (
+            <span className={cn(
+              "inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-md",
+              hoursWarning ? "bg-rose-50 text-rose-700" : "bg-gray-100 text-gray-700",
+            )}>
+              <Icon className="w-3 h-3" />
+              {activity.time}
+            </span>
+          )}
           <h4 className="text-base font-semibold text-gray-900 leading-snug">{activity.title[locale]}</h4>
         </div>
         {hoursWarning && (
@@ -418,26 +458,25 @@ interface DayPlanSectionProps {
   locale: Locale;
   defaultOpen?: boolean;
   /**
-   * When provided, the day plan becomes editable: activities can be reordered
-   * via drag-and-drop and this callback is invoked with the new ordered list
-   * of activities. Parent is responsible for persisting the result.
+   * When provided, activities can be reordered via drag-and-drop. Receives
+   * the new order as-is — any time rescheduling is the parent's choice.
    */
   onReorder?: (activities: DayActivity[]) => void;
-  /**
-   * Remove an activity from the day. Called with the index (0-based) so the
-   * parent can splice without ambiguity when two activities share a title.
-   */
+  /** Remove an activity from the day at the given index. */
   onRemove?: (index: number) => void;
-  /**
-   * Replace an activity with a different spot. Parent receives the index and
-   * the new Spot chosen by the user. Required together with `cityId` /
-   * `usedSpotIds` for the replace-picker to compute candidates.
-   */
+  /** Replace the activity at `index` with a different spot. */
   onReplace?: (index: number, newSpot: Spot) => void;
   /** City id for replace-candidate lookup (e.g. "tokyo"). */
   cityId?: string;
   /** Spot ids already used across the whole itinerary — excluded from suggestions. */
   usedSpotIds?: Set<string>;
+  /**
+   * Edit a single activity's start time manually. When provided the time
+   * badge becomes an inline `<input type="time">`. Also suppresses the
+   * open-hours warning — the user controls their plan without engine
+   * second-guessing.
+   */
+  onTimeChange?: (index: number, newTime: string) => void;
 }
 
 export function DayPlanSection({
@@ -448,9 +487,11 @@ export function DayPlanSection({
   onReplace,
   cityId,
   usedSpotIds,
+  onTimeChange,
 }: DayPlanSectionProps) {
   const [replaceOpenIdx, setReplaceOpenIdx] = useState<number | null>(null);
-  const editable = Boolean(onReorder || onRemove || onReplace);
+  const editable = Boolean(onReorder || onRemove || onReplace || onTimeChange);
+  const suppressWarnings = Boolean(onTimeChange);
   // Pre-compute haversine-based travel estimates between consecutive
   // activities. Pure math — no network, no cost.
   const travelTimes: (TravelEstimate | null)[] = day.activities.map((_, i) => {
@@ -480,12 +521,9 @@ export function DayPlanSection({
     const from = activityIds.indexOf(String(active.id));
     const to = activityIds.indexOf(String(over.id));
     if (from < 0 || to < 0) return;
-
-    // Reorder, then re-time sequentially so the timeline still reads in
-    // order — moving 14:00 to slot 1 shouldn't leave slot 2 labelled 09:30.
-    const reordered = arrayMove(day.activities, from, to);
-    const dayStart = day.activities[0]?.time ?? "09:30";
-    onReorder(rescheduleActivities(reordered, dayStart));
+    // Hand the raw reorder to the parent. Planner re-times it; saved-itinerary
+    // edit mode leaves times alone so the user stays in control.
+    onReorder(arrayMove(day.activities, from, to));
   }
 
   return (
@@ -567,6 +605,8 @@ export function DayPlanSection({
                         : undefined
                     }
                     isReplaceOpen={replaceOpenIdx === i}
+                    onTimeChange={onTimeChange ? (v) => onTimeChange(i, v) : undefined}
+                    suppressWarnings={suppressWarnings}
                   />
                   {replaceOpenIdx === i && onReplace && cityId && (
                     <ReplacePicker

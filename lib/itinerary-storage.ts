@@ -24,6 +24,16 @@ export interface StoredItinerary {
     nights: number;
     dayCount: number;
   };
+  /**
+   * User-edited start times per activity, keyed by dayNumber → array indexed
+   * by activity position. When absent, the engine-computed times are shown.
+   */
+  customTimes?: Record<number, string[]>;
+  /**
+   * User-edited activity order per day, keyed by dayNumber → array of
+   * spot ids in visit order. When absent, the encoded order is used.
+   */
+  customOrder?: Record<number, string[]>;
 }
 
 interface Store {
@@ -93,6 +103,31 @@ export function saveItinerary(
   while (store.items.length > MAX_ITEMS) store.items.pop();
   writeStore(store);
   return record;
+}
+
+export function getStoredItinerary(id: string): StoredItinerary | null {
+  return readStore().items.find((it) => it.id === id) ?? null;
+}
+
+/**
+ * Merge a partial patch into an existing stored itinerary (by id). Updates
+ * `updatedAt` automatically. No-ops when the id isn't found.
+ */
+export function updateStoredItinerary(
+  id: string,
+  patch: Partial<Pick<StoredItinerary, "name" | "customTimes" | "customOrder">>,
+): StoredItinerary | null {
+  const store = readStore();
+  const idx = store.items.findIndex((it) => it.id === id);
+  if (idx < 0) return null;
+  const next: StoredItinerary = {
+    ...store.items[idx],
+    ...patch,
+    updatedAt: new Date().toISOString(),
+  };
+  store.items[idx] = next;
+  writeStore(store);
+  return next;
 }
 
 export function removeStoredItinerary(id: string) {
