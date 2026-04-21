@@ -56,6 +56,10 @@
   --foreground: #0f172a;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);

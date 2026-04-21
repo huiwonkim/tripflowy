@@ -137,7 +137,7 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
                 rel="noopener sponsored"
                 className="mt-4 flex items-center justify-center gap-1.5 w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
               >
-                마이리얼트립에서 항공권 보기 <ExternalLink className="w-3.5 h-3.5" />
+                항공권 가격 보기 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}
           </div>
@@ -172,7 +172,7 @@ export function BudgetSection({ itinerary, locale, nights }: BudgetSectionProps)
                 rel="noopener sponsored"
                 className="mt-4 flex items-center justify-center gap-1.5 w-full py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors"
               >
-                마이리얼트립에서 숙소 보기 <ExternalLink className="w-3.5 h-3.5" />
+                숙소 가격 보기 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             )}
           </div>

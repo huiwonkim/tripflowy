@@ -810,14 +810,6 @@ function PlannerContent() {
             {/* Overview map — day zones */}
             <OverviewMap days={displayDays} locale={locale} />
 
-            {/* Recommended day templates for the current cities */}
-            <TemplateRecommendations
-              input={committedInput}
-              days={displayDays}
-              locale={locale}
-              onApply={applyTemplate}
-            />
-
             {/* Itinerary overview */}
             <section className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
               <div className="px-5 py-4 bg-gray-50 border-b border-gray-100">
@@ -988,6 +980,14 @@ function PlannerContent() {
             {itinerary && (
               <BudgetSection itinerary={itinerary} locale={locale} nights={Number(committedInput.duration)} />
             )}
+
+            {/* Recommended day templates for the current cities — below budget */}
+            <TemplateRecommendations
+              input={committedInput}
+              days={displayDays}
+              locale={locale}
+              onApply={applyTemplate}
+            />
 
             {/* City Info */}
             {cityInfos.map((ci) => {
