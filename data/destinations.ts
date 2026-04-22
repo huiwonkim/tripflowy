@@ -1,4 +1,5 @@
 import type { Country, Destination, LocaleString } from "@/types";
+import { PUBLIC_MODE, isPublicCity } from "@/lib/public-mode";
 
 // ── MVP 활성 도시 (7개) ──────────────────────────────
 // heroImage points to public/images/city-heroes/{cityId}.jpg. If the file
@@ -72,6 +73,23 @@ export const airports: Airport[] = [
   { code: "ITM", label: { en: "Itami (ITM)", ko: "이타미 (ITM)" }, cityId: "osaka" },
   { code: "FUK", label: { en: "Fukuoka (FUK)", ko: "후쿠오카 (FUK)" }, cityId: "fukuoka" },
 ];
+
+export function publicCountries(): Country[] {
+  if (!PUBLIC_MODE) return countries;
+  return countries
+    .map((c) => ({ ...c, cities: c.cities.filter((city) => isPublicCity(city.id)) }))
+    .filter((c) => c.cities.length > 0);
+}
+
+export function publicComingSoon(): ComingSoonCountry[] {
+  if (!PUBLIC_MODE) return comingSoonCountries;
+  const hiddenJapan: ComingSoonCountry[] = countries.flatMap((c) =>
+    c.cities
+      .filter((city) => !isPublicCity(city.id))
+      .map((city) => ({ id: city.id, label: city.label, emoji: c.emoji })),
+  );
+  return [...hiddenJapan, ...comingSoonCountries];
+}
 
 export const comingSoonCountries: ComingSoonCountry[] = [
   { id: "vietnam", label: { en: "Vietnam", ko: "베트남" }, emoji: "🇻🇳" },

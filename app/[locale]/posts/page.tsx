@@ -1,7 +1,8 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { posts } from "@/data/posts";
+import { posts as allPosts } from "@/data/posts";
 import { countries } from "@/data/destinations";
+import { isPublicCity } from "@/lib/public-mode";
 import { Calendar } from "lucide-react";
 import { CategoryBadge } from "@/components/ui/CategoryBadge";
 import { CoverImage } from "@/components/ui/CoverImage";
@@ -39,6 +40,7 @@ export default async function PostsPage({ params }: PageProps) {
   setRequestLocale(locale);
   const loc = locale as Locale;
   const allCities = countries.flatMap((c) => c.cities);
+  const posts = allPosts.filter((p) => isPublicCity(p.city));
 
   const pageUrl = `${BASE_URL}${loc === "ko" ? "/ko" : ""}/posts`;
   const pageName = loc === "ko" ? "여행 가이드 & 후기" : "Travel Guides & Reviews";

@@ -5,7 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Search, X, ChevronDown } from "lucide-react";
 import type { PlannerInput, Locale, TravelStyle, TravelerType } from "@/types";
-import { countries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
+import { publicCountries, durationOptions, travelerTypeOptions, styleOptions } from "@/data/destinations";
 
 const emptyInput: PlannerInput = { destinations: [], duration: "", travelerType: "", styles: [] };
 
@@ -15,6 +15,7 @@ export function QuickPlanner() {
   const t = useTranslations("planner");
   const [input, setInput] = useState<PlannerInput>(emptyInput);
 
+  const countries = publicCountries();
   const allCities = countries.flatMap((c) => c.cities);
 
   function toggleCity(cityId: string) {

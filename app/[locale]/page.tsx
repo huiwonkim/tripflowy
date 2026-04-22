@@ -4,7 +4,8 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle, Zap, Map, Hotel, X, Check } from "lucide-react";
 import { QuickPlanner } from "@/components/planner/QuickPlanner";
 import { posts } from "@/data/posts";
-import { countries, comingSoonCountries } from "@/data/destinations";
+import { publicCountries, publicComingSoon } from "@/data/destinations";
+import { isPublicCity } from "@/lib/public-mode";
 import { getCategoryById } from "@/data/categories";
 import { generateOrganizationJsonLd, generateWebSiteJsonLd, generateHowToJsonLd, generateDestinationItemListJsonLd } from "@/lib/jsonld";
 import type { Locale } from "@/types";
@@ -44,7 +45,10 @@ export default async function HomePage({ params }: PageProps) {
   const t = await getTranslations();
   const loc = locale as Locale;
 
+  const countries = publicCountries();
+  const comingSoonCountries = publicComingSoon();
   const allCities = countries.flatMap((c) => c.cities);
+  const visiblePosts = posts.filter((p) => isPublicCity(p.city));
 
   const organizationJsonLd = generateOrganizationJsonLd();
   const websiteJsonLd = generateWebSiteJsonLd(loc);
@@ -182,7 +186,7 @@ export default async function HomePage({ params }: PageProps) {
       </section>
 
       {/* Popular guides */}
-      {posts.length > 0 && (
+      {visiblePosts.length > 0 && (
         <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
           <div className="flex items-end justify-between mb-10">
             <div>
@@ -196,7 +200,7 @@ export default async function HomePage({ params }: PageProps) {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {[...posts].sort(() => Math.random() - 0.5).slice(0, 4).map((post) => {
+            {[...visiblePosts].sort(() => Math.random() - 0.5).slice(0, 4).map((post) => {
               const cityLabel = allCities.find((c) => c.id === post.city)?.label[loc] ?? post.city;
               return (
                 <Link key={post.slug} href={`/posts/${post.slug}`}
