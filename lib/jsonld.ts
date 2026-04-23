@@ -1,5 +1,6 @@
 import type { DayCourse, FAQ, Locale, GeneratedItinerary, BlogPost, Tour, Hotel } from "@/types";
 import { getAuthor } from "@/lib/authors";
+import { META_DESCRIPTIONS } from "@/content/brand";
 
 const BASE_URL = "https://www.tripflowy.com";
 
@@ -42,7 +43,7 @@ export function generateWebSiteJsonLd(locale: Locale) {
     url: BASE_URL,
     inLanguage: locale === "ko" ? "ko-KR" : "en-US",
     description: locale === "ko"
-      ? "도시, 기간, 스타일만 선택하면 자동으로 여행 일정을 만들어주는 여행 플래너"
+      ? META_DESCRIPTIONS.homeKo
       : "Auto-generate day-by-day travel itineraries by choosing your destination, duration, and travel style",
     publisher: { "@type": "Organization", name: "TripFlowy", url: BASE_URL },
     potentialAction: {
