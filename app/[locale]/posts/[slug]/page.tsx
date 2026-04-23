@@ -340,7 +340,7 @@ export default async function PostPage({ params }: PageProps) {
                   <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
                     {loc === "ko" ? "작성자" : "Written by"}
                   </p>
-                  <p className="text-[15px] font-bold text-gray-900">{identity.name}</p>
+                  <p className="text-[15px] font-bold text-gray-900">{identity.displayName}</p>
                   <p className="text-[13px] text-gray-500 mb-2">{identity.jobTitle}</p>
                   <p className="text-[14px] text-gray-600 leading-[1.7]">{identity.bio}</p>
                 </div>

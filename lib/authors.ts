@@ -28,12 +28,19 @@ export function getAuthor(authorId?: string): Author {
  */
 export function getAuthorIdentity(author: Author, locale: "ko" | "en") {
   const isKo = locale === "ko";
+  const { brand } = author;
+  // Bilingual display for author-box credit lines. JSON-LD Person.name stays
+  // locale-primary (책킴 / Check Kim) — displayName is UI-only.
+  const displayName = isKo
+    ? `${brand.nameKo} (${brand.nameEn})`        // "책킴 (Check Kim)"
+    : `${brand.legalName} (${brand.nameEn})`;    // "Huiwon Kim (Check Kim)"
   return {
-    name: isKo ? author.brand.nameKo : author.brand.nameEn,
-    bio: isKo ? author.brand.bioKo : author.brand.bioEn,
-    jobTitle: isKo ? author.brand.jobTitleKo : author.brand.jobTitleEn,
-    alternateName: author.brand.alternateName,
-    knowsAbout: author.brand.knowsAbout,
-    sameAs: Object.values(author.brand.profiles).filter((u) => !u.includes("[TODO]")),
+    name: isKo ? brand.nameKo : brand.nameEn,
+    displayName,
+    bio: isKo ? brand.bioKo : brand.bioEn,
+    jobTitle: isKo ? brand.jobTitleKo : brand.jobTitleEn,
+    alternateName: brand.alternateName,
+    knowsAbout: brand.knowsAbout,
+    sameAs: Object.values(brand.profiles).filter((u) => !u.includes("[TODO]")),
   };
 }
