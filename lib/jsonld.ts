@@ -210,9 +210,7 @@ export function generateHowToJsonLd(locale: Locale, steps: { name: string; text:
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: locale === "ko" ? "TripFlowy로 여행 일정 만드는 법" : "How to plan a trip with TripFlowy",
-    description: locale === "ko"
-      ? "도시, 기간, 스타일을 선택하면 자동으로 하루 코스 기반 여행 일정을 만들어줍니다."
-      : "Choose your destination, duration, and travel style to auto-generate a day-by-day itinerary.",
+    description: locale === "ko" ? META_DESCRIPTIONS.howToKo : META_DESCRIPTIONS.howToEn,
     step: steps.map((s, i) => ({
       "@type": "HowToStep",
       position: i + 1,

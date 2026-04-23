@@ -8,6 +8,7 @@ import { publicCountries, publicComingSoon } from "@/data/destinations";
 import { isPublicCity } from "@/lib/public-mode";
 import { getCategoryById } from "@/data/categories";
 import { generateOrganizationJsonLd, generateWebSiteJsonLd, generateHowToJsonLd, generateDestinationItemListJsonLd } from "@/lib/jsonld";
+import { META_DESCRIPTIONS } from "@/content/brand";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
 
@@ -22,9 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: isKo
       ? "TripFlowy | 트플 — 검증된 여행 일정 템플릿"
       : "TripFlowy — Verified Travel Itinerary Templates",
-    description: isKo
-      ? "출발 도시, 기간, 여행 스타일만 선택하면 자동으로 맞춤 여행 일정을 만들어드립니다. 직접 걸어보고 만든 하루 코스와 상세 가이드까지 — 블로그 검색 그만, Tripflowy 하나로 끝."
-      : "Plan your perfect trip in seconds. Tell us your destination, duration, and style — we auto-generate day-by-day itineraries with curated courses for 30+ cities in Asia and Europe.",
+    description: isKo ? META_DESCRIPTIONS.homeKo : META_DESCRIPTIONS.homeEn,
     keywords: isKo
       ? "여행 일정, 여행 플래너, 여행 루트, 트플, TripFlowy, 여행 템플릿, 여행 코스"
       : "travel itinerary, trip planner, travel route, TripFlowy, itinerary template, travel planner",
@@ -120,6 +119,9 @@ export default async function HomePage({ params }: PageProps) {
               </p>
               <p className="text-slate-200 text-base sm:text-lg leading-relaxed max-w-xl">
                 {t("hero.subheading")}
+              </p>
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mt-2">
+                {t("hero.subTagline")}
               </p>
 
               <div className="hidden sm:flex flex-wrap gap-x-5 gap-y-2 mt-5 text-sm text-slate-300">

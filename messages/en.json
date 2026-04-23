@@ -15,9 +15,10 @@
   },
   "hero": {
     "badge": "Built by real travelers, not algorithms",
-    "heading": "Stop scrolling blogs,\nYouTube, and guidebooks.",
+    "heading": "Blogs, YouTube, guidebooks —\nsorted into one route.",
     "headingHighlight": "Plan your trip right here.",
     "subheading": "Every route was walked and tested in person. Just follow along.",
+    "subTagline": "Skip the 10-tab research. Get the route.",
     "findItinerary": "Build My Route",
     "destinations": "Field-tested routes",
     "dayByDay": "Complete day-by-day plans",
@@ -26,7 +27,7 @@
   "whyDifferent": {
     "heading": "AI-Generated Plans vs Field-Tested Routes",
     "subheading": "Combining search results is not the same as walking the route yourself.",
-    "aiTitle": "AI Travel Planners",
+    "aiTitle": "AI-Generated Plans",
     "ai1": "Combines search results and reviews",
     "ai2": "No real-world route verification",
     "ai3": "May suggest closed shops or blocked roads",
@@ -45,12 +46,12 @@
   "howItWorks": {
     "heading": "How Tripflowy works",
     "subheading": "From choice to full itinerary in three steps. No accounts, no forms, no waiting.",
-    "step1Title": "Set your parameters",
-    "step1Desc": "Pick destination, duration, who you're traveling with, and your travel style.",
-    "step2Title": "Get matched itineraries",
-    "step2Desc": "We instantly show itineraries that fit your inputs — no generic blog posts.",
-    "step3Title": "Book tours & hotels in context",
-    "step3Desc": "Each itinerary links to the right tours and hotels for that specific route."
+    "step1Title": "Set your conditions",
+    "step1Desc": "Enter destination, duration, travel companions, and travel style.",
+    "step2Title": "Match with field-tested routes",
+    "step2Desc": "Instantly get a day-by-day itinerary built from spots Check Kim has personally walked and tested.",
+    "step3Title": "Connect tours and hotels",
+    "step3Desc": "Each stop links to tours and hotels that fit the route."
   },
   "browseByDestination": "Browse by destination",
   "cta": {

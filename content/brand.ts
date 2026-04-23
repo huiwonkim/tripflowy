@@ -103,6 +103,10 @@ export const META_DESCRIPTIONS = {
 
   dayTripsKo: "도시 근교로 떠나는 당일치기 여행 코스. 실제 동선, 이동 시간, 시즌별 추천, 교통 패스까지 책킴이 직접 다녀와 정리한 1일 루트.",
   dayTripsEn: "Day trips from major Asian cities. Real routes, travel times, seasonal recommendations, and transit passes — all walked and tested by Check Kim.",
+
+  // HowTo schema description — used in homepage HowTo JSON-LD
+  howToKo: "책킴이 직접 다녀온 아시아 50+ 도시의 검증된 스팟으로 맞춤 여행 일정을 만드는 법. 조건 선택 → 검증된 코스 매칭 → 투어·숙소 연결.",
+  howToEn: "How TripFlowy builds a custom itinerary from Check Kim's field-tested spots across 50+ Asian cities. Set your conditions → match with verified routes → connect tours and hotels.",
 } as const;
 
 // Hero copy — respects bloggers/YouTubers as fellow creators
