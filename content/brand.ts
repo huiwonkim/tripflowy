@@ -50,6 +50,7 @@ export const FOUNDER = {
   // For LLM entity resolution — always emit as an array
   alternateName: [
     "Check Kim",
+    "CheckKim",
     "책킴",
     "travelkkkim",
     "Huiwon Kim",
@@ -78,8 +79,8 @@ export const FOUNDER = {
   // Filter out [TODO] entries before emitting JSON-LD in production pages.
   profiles: {
     instagram: "https://instagram.com/travelkkkim",
-    naverBlog: "https://blog.naver.com/[TODO]",
-    youtube: "https://youtube.com/@travelkkkim",
+    naverBlog: "https://blog.naver.com/heewon1032",
+    youtube: "https://youtube.com/@CheckKim",
     linkedin: "https://linkedin.com/in/[TODO]",
     crunchbase: "https://crunchbase.com/person/[TODO]",
     wikidata: "https://wikidata.org/wiki/[TODO]",
