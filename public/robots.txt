@@ -1,89 +1,45 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 User-agent: Googlebot
 Allow: /
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 User-agent: Yeti
 Allow: /
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 # AI crawlers (LLM training & retrieval)
 User-agent: GPTBot
 Allow: /
 Disallow: /api/
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /api/
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /api/
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /api/
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /api/
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /api/
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 User-agent: Claude-User
 Allow: /
 Disallow: /api/
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /api/
-Disallow: /courses
-Disallow: /courses/
-Disallow: /ko/courses
-Disallow: /ko/courses/
 
 # LLM-friendly index
 # https://www.tripflowy.com/llms.txt

@@ -7,7 +7,9 @@ Rules that apply **only to files under `/app`**. Root rules in `/AGENTS.md` stil
 - App Router only (Next.js 16.2). No `pages/` directory.
 - Locale-scoped routes live under `/app/[locale]/...` with `next-intl`. Default locale is `en` (no prefix); Korean uses `/ko/...`.
 - Dynamic itinerary results (`/planner?destinations=...`) must **not** appear in the sitemap — URL combinations are unbounded.
-- `/courses/*` pages are indexable (LLM/Google) but must **not** appear in header/footer navigation.
+- `/courses/[id]` (legacy, ID-based day-course catalog in `data/day-courses.ts`) is **noindex/nofollow** and excluded from the sitemap — treat this catalog as proprietary, placeholder-quality content until Sprint 7 replaces it.
+- **New** `/courses/[city]/[slug]` pages (Sprint 7 day trips like `/courses/tokyo/kawagoe`) are the indexable route shape: `robots: { index: true, follow: true }`, self-referential absolute canonical, included in `app/sitemap.ts`, bidirectional hreflang + `x-default`, Article + TravelGuide dual JSON-LD, `visitedAt` + `lastVerified` required, only cover places `FOUNDER` personally visited.
+- Neither route shape appears in header/footer navigation.
 
 ## Metadata & i18n
 
