@@ -18,25 +18,30 @@ const SITE_FRESHNESS: Date = (() => {
 })();
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // /courses and /courses/[id] are intentionally excluded from the sitemap
-  // because the day-course catalog is proprietary content; we don't want
-  // search engines indexing or browsing it.
+  // Exclusions:
+  // - /courses and /courses/[id]: legacy noindex catalog (A.2). Sprint 7
+  //   will add /courses/[city]/[slug] with index:true; include those then.
+  // - /planner: form page + unbounded /planner?destinations=... query
+  //   combinations. Low SEO value; discovered via internal links instead.
   const staticPages = [
     { path: "", priority: 1.0 },
-    { path: "/planner", priority: 0.9 },
     { path: "/posts", priority: 0.8 },
     { path: "/tours", priority: 0.7 },
     { path: "/hotels", priority: 0.7 },
   ];
+
+  const hreflang = (path: string) => ({
+    en: `${BASE_URL}${path}`,
+    ko: `${BASE_URL}/ko${path}`,
+    "x-default": `${BASE_URL}${path}`,
+  });
 
   const staticEntries: MetadataRoute.Sitemap = staticPages.map(({ path, priority }) => ({
     url: `${BASE_URL}${path}`,
     lastModified: SITE_FRESHNESS,
     changeFrequency: "weekly" as const,
     priority,
-    alternates: {
-      languages: { en: `${BASE_URL}${path}`, ko: `${BASE_URL}/ko${path}` },
-    },
+    alternates: { languages: hreflang(path) },
   }));
 
   const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
@@ -44,12 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(post.updatedAt ?? post.publishedAt),
     changeFrequency: "monthly" as const,
     priority: 0.8,
-    alternates: {
-      languages: {
-        en: `${BASE_URL}/posts/${post.slug}`,
-        ko: `${BASE_URL}/ko/posts/${post.slug}`,
-      },
-    },
+    alternates: { languages: hreflang(`/posts/${post.slug}`) },
   }));
 
   return [...staticEntries, ...postEntries];
