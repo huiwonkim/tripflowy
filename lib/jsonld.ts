@@ -1,6 +1,6 @@
 import type { DayCourse, FAQ, Locale, GeneratedItinerary, BlogPost, Tour, Hotel } from "@/types";
 import { getAuthor } from "@/lib/authors";
-import { META_DESCRIPTIONS } from "@/content/brand";
+import { META_DESCRIPTIONS, FOUNDER } from "@/content/brand";
 
 const BASE_URL = "https://www.tripflowy.com";
 
@@ -145,7 +145,7 @@ export function generateArticleJsonLd(post: BlogPost, locale: Locale, cityLabel?
     author: {
       "@type": "Person",
       name: author.name[locale],
-      ...(author.nickname ? { alternateName: author.nickname[locale] } : {}),
+      alternateName: FOUNDER.alternateName,
       jobTitle: author.role[locale],
       description: author.bio[locale],
       knowsAbout: author.expertise,

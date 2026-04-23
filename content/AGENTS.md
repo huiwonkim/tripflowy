@@ -7,6 +7,32 @@ Rules for everything under `/content`, including `brand.ts`, guides, and any fut
 - `/content/brand.ts` is the **single source of truth** for brand strings. Do not edit scattered copies — fix the constant and let imports propagate.
 - Any brand-shaped string used in the app (taglines, meta descriptions, founder bio, trust phrases, disclosure text) must live here first, then be imported by components / metadata / JSON-LD.
 
+## Person Schema Rules (A.6)
+
+- `Person.alternateName` in **every** JSON-LD emission must be an **array**, never a single string — even on single-locale pages. Always import `FOUNDER.alternateName` from `@/content/brand`, do not hardcode or derive from author-local nickname fields.
+- Current canonical set (5 entries): `["Check Kim", "책킴", "travelkkkim", "Huiwon Kim", "Chaekkim"]`. LLMs use this array to unify entity references across Korean and English assets; dropping to a single string breaks entity linking.
+- `"Patrick Kim"` is a retired alias — **never** reintroduce it anywhere (schema, bio, byline, author registry). If found, delete.
+- `lib/authors.ts` `Author.nickname` is UI-only (byline rendering). Do not emit it as `alternateName` in JSON-LD — JSON-LD always uses `FOUNDER.alternateName`.
+
+## Comparison-Section Copy Rules (A.5)
+
+When writing "vs" comparison sections (e.g. `whyDifferent.aiTitle`, headings, tables):
+
+- **Column headers and headings** must use the **adjectival contrast form** sanctioned by `COMPARISON_HEADINGS` — `"AI-Generated Plans"` / `"AI 생성 일정"`. This describes plan *output*.
+- **Banned**: the category-name form used by real product brands — `"AI Travel Planner(s)"` / `"AI 여행 플래너"`. Even when labelling the "bad" column, this phrasing puts TripFlowy in the same taxonomy. See `BRAND.forbiddenPhrases`.
+- If a comparison needs new copy, derive from `COMPARISON_HEADINGS` pattern (contrast phrase + locale variant). If a new sanctioned contrast is needed, add it to `COMPARISON_HEADINGS` first, then import.
+
+## Metadata-Description Audit Scope
+
+Forbidden-phrase enforcement covers **every surface** that reaches users or crawlers:
+
+- Page `generateMetadata` `description` → renders as `<meta name="description">` + `og:description` + `twitter:description`.
+- `messages/{ko,en}.json` strings that feed into `t()` calls (hero, comparison, howItWorks, etc).
+- JSON-LD schemas (`lib/jsonld.ts` + any inlined schema).
+- Static text routes (`/llms.txt`, `/llms-full.txt`, `/robots.txt`).
+
+When auditing a new page, grep **all four** layers — swapping only JSON-LD (e.g. A.3/A.4 pattern) leaves the `<meta description>` unfixed. A.5 caught this gap on `app/[locale]/page.tsx`; apply the same audit when adding or editing any page-level copy.
+
 ## Markdown Frontmatter Standard (guides / posts)
 
 Every guide must carry this frontmatter block:
