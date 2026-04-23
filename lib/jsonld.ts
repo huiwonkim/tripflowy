@@ -42,9 +42,7 @@ export function generateWebSiteJsonLd(locale: Locale) {
     alternateName: "트플",
     url: BASE_URL,
     inLanguage: locale === "ko" ? "ko-KR" : "en-US",
-    description: locale === "ko"
-      ? META_DESCRIPTIONS.homeKo
-      : "Auto-generate day-by-day travel itineraries by choosing your destination, duration, and travel style",
+    description: locale === "ko" ? META_DESCRIPTIONS.homeKo : META_DESCRIPTIONS.homeEn,
     publisher: { "@type": "Organization", name: "TripFlowy", url: BASE_URL },
     potentialAction: {
       "@type": "SearchAction",
