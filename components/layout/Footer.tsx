@@ -68,7 +68,7 @@ export async function Footer() {
         {/* Bottom row */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
           <p>{t("copyright", { year: new Date().getFullYear() })}</p>
-          <p className="text-gray-500 max-w-xl text-right">{AFFILIATE_DISCLOSURE[locale]}</p>
+          <p className="text-gray-500 max-w-xl text-left">{AFFILIATE_DISCLOSURE[locale]}</p>
         </div>
       </div>
     </footer>
