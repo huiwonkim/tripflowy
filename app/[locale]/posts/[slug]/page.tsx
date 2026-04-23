@@ -11,7 +11,7 @@ import { PostCTA } from "@/components/ui/PostCTA";
 import { ComparisonTable } from "@/components/ui/ComparisonTable";
 import { countries } from "@/data/destinations";
 import { generateBreadcrumbJsonLd, generateArticleJsonLd, generateFaqJsonLd } from "@/lib/jsonld";
-import { getAuthor } from "@/lib/authors";
+import { getAuthor, getAuthorIdentity } from "@/lib/authors";
 import type { Metadata } from "next";
 import type { Locale, BlogPost } from "@/types";
 
@@ -200,6 +200,7 @@ export default async function PostPage({ params }: PageProps) {
   const cityLabel = allCities.find((c) => c.id === post.city)?.label[loc] ?? post.city;
   const content = post.content[loc];
   const author = getAuthor(post.authorId);
+  const identity = getAuthorIdentity(author, loc);
 
   const wordCount = content.split(/\s+/).length;
   const readingMin = Math.max(1, Math.ceil(wordCount / 200));
@@ -251,7 +252,7 @@ export default async function PostPage({ params }: PageProps) {
           <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-10 max-w-[680px] mx-auto">
             <div className="flex items-center gap-2 mb-3 flex-wrap">
               <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-medium px-3 py-1 rounded-full">{cityLabel}</span>
-              <span className="text-white/70 text-xs flex items-center gap-1"><User className="w-3 h-3" />{author.name[loc]}</span>
+              <span className="text-white/70 text-xs flex items-center gap-1"><User className="w-3 h-3" />{identity.name}</span>
               <span className="text-white/60 text-xs flex items-center gap-1"><Calendar className="w-3 h-3" />{post.publishedAt}</span>
               <span className="text-white/60 text-xs flex items-center gap-1"><Clock className="w-3 h-3" />{readingMin}min</span>
             </div>
@@ -273,7 +274,7 @@ export default async function PostPage({ params }: PageProps) {
           <div className="relative max-w-[680px] mx-auto px-5">
             <div className="flex items-center gap-2 mb-4 flex-wrap">
               <span className="bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">{cityLabel}</span>
-              <span className="text-white/70 text-xs flex items-center gap-1"><User className="w-3 h-3" />{author.name[loc]}</span>
+              <span className="text-white/70 text-xs flex items-center gap-1"><User className="w-3 h-3" />{identity.name}</span>
               <span className="text-white/60 text-xs">{post.publishedAt}</span>
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-[1.1] tracking-tight">{post.title[loc]}</h1>
@@ -328,7 +329,7 @@ export default async function PostPage({ params }: PageProps) {
             <div className="bg-gray-50 rounded-2xl p-6">
               <div className="flex items-start gap-4">
                 {author.image ? (
-                  <Image src={author.image} alt={author.name[loc]} width={56} height={56}
+                  <Image src={author.image} alt={identity.name} width={56} height={56}
                     className="w-14 h-14 rounded-full object-cover flex-shrink-0" />
                 ) : (
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
@@ -339,16 +340,9 @@ export default async function PostPage({ params }: PageProps) {
                   <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">
                     {loc === "ko" ? "작성자" : "Written by"}
                   </p>
-                  <p className="text-[15px] font-bold text-gray-900">
-                    {author.name[loc]}
-                    {author.nickname && (
-                      <span className="text-gray-400 font-normal ml-1.5 text-[13px]">
-                        ({author.nickname[loc]})
-                      </span>
-                    )}
-                  </p>
-                  <p className="text-[13px] text-gray-500 mb-2">{author.role[loc]}</p>
-                  <p className="text-[14px] text-gray-600 leading-[1.7]">{author.bio[loc]}</p>
+                  <p className="text-[15px] font-bold text-gray-900">{identity.name}</p>
+                  <p className="text-[13px] text-gray-500 mb-2">{identity.jobTitle}</p>
+                  <p className="text-[14px] text-gray-600 leading-[1.7]">{identity.bio}</p>
                 </div>
               </div>
             </div>

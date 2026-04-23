@@ -180,16 +180,17 @@ export type Tour = {
 };
 
 // ── 저자 ───────────────────────────────────────────
+// Author is a thin adapter over FOUNDER in /content/brand.ts.
+// Brand-level fields (name, bio, jobTitle, alternateName, knowsAbout, profiles)
+// all resolve through `brand`. UI-only affordances (image, optional url) stay
+// on the Author record. Any author added later should follow the same shape.
+import type { FOUNDER } from "@/content/brand";
+
 export type Author = {
   id: string;
-  name: LocaleString;            // "김희원" / "Huiwon Kim"
-  nickname?: LocaleString;        // "책킴" / "Chaek Kim" (optional alias)
-  role: LocaleString;             // "Founder, TripFlowy" etc.
-  bio: LocaleString;              // 2~3 sentence intro for author box
-  expertise: string[];            // ["Japan theme parks", "Airport transit", ...] - schema knowsAbout
-  image?: string;                 // /images/authors/xxx.jpg
-  url?: string;                   // Personal site / social
-  sameAs?: string[];              // Social profiles for schema.org Person.sameAs
+  brand: typeof FOUNDER;          // single source of truth for identity strings
+  image?: string;                 // /images/authors/xxx.jpg (UI author-box)
+  url?: string;                   // Optional personal site / bio page override
 };
 
 // ── 블로그 포스트 (코스 상세 후기) ──────────────────

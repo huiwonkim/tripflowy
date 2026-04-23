@@ -1,6 +1,6 @@
 import type { DayCourse, FAQ, Locale, GeneratedItinerary, BlogPost, Tour, Hotel } from "@/types";
-import { getAuthor } from "@/lib/authors";
-import { META_DESCRIPTIONS, FOUNDER } from "@/content/brand";
+import { getAuthor, getAuthorIdentity } from "@/lib/authors";
+import { META_DESCRIPTIONS } from "@/content/brand";
 
 const BASE_URL = "https://www.tripflowy.com";
 
@@ -137,6 +137,7 @@ export function generateCollectionPageJsonLd(params: {
 
 export function generateArticleJsonLd(post: BlogPost, locale: Locale, cityLabel?: string, wordCount?: number) {
   const author = getAuthor(post.authorId);
+  const identity = getAuthorIdentity(author, locale);
   return {
     "@context": "https://schema.org",
     "@type": ["Article", "TravelGuide"],
@@ -144,18 +145,18 @@ export function generateArticleJsonLd(post: BlogPost, locale: Locale, cityLabel?
     description: post.excerpt[locale],
     author: {
       "@type": "Person",
-      name: author.name[locale],
-      alternateName: FOUNDER.alternateName,
-      jobTitle: author.role[locale],
-      description: author.bio[locale],
-      knowsAbout: author.expertise,
+      name: identity.name,
+      alternateName: identity.alternateName,
+      jobTitle: identity.jobTitle,
+      description: identity.bio,
+      knowsAbout: identity.knowsAbout,
       worksFor: {
         "@type": "Organization",
         name: "TripFlowy",
         url: BASE_URL,
       },
       ...(author.url ? { url: author.url } : {}),
-      ...(author.sameAs?.length ? { sameAs: author.sameAs } : {}),
+      ...(identity.sameAs.length ? { sameAs: identity.sameAs } : {}),
       ...(author.image ? { image: `${BASE_URL}${author.image}` } : {}),
     },
     publisher: {
