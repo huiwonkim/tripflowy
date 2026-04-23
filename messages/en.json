@@ -195,7 +195,6 @@
   "footer": {
     "tagline": "Itinerary-first travel planning. Tell us your style, we'll build your route.",
     "popularDestinations": "Popular Destinations",
-    "copyright": "© {year} Tripflowy. All rights reserved.",
-    "affiliateDisclosure": "Affiliate disclosure: some links earn a small commission at no extra cost to you."
+    "copyright": "© {year} Tripflowy. All rights reserved."
   }
 }

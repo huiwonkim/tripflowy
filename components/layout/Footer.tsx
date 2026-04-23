@@ -2,6 +2,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Mail } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { countries } from "@/data/destinations";
+import { AFFILIATE_DISCLOSURE } from "@/content/brand";
 import type { Locale } from "@/types";
 
 export async function Footer() {
@@ -67,7 +68,7 @@ export async function Footer() {
         {/* Bottom row */}
         <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm">
           <p>{t("copyright", { year: new Date().getFullYear() })}</p>
-          <p className="text-gray-500">{t("affiliateDisclosure")}</p>
+          <p className="text-gray-500 max-w-xl text-right">{AFFILIATE_DISCLOSURE[locale]}</p>
         </div>
       </div>
     </footer>
