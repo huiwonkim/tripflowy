@@ -85,5 +85,9 @@ Disallow: /courses/
 Disallow: /ko/courses
 Disallow: /ko/courses/
 
+# LLM-friendly index
+# https://www.tripflowy.com/llms.txt
+# https://www.tripflowy.com/llms-full.txt
+
 Sitemap: https://www.tripflowy.com/sitemap.xml
 Sitemap: https://www.tripflowy.com/rss.xml
