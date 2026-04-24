@@ -86,11 +86,20 @@ export const FOUNDER = {
     wikidata: "https://wikidata.org/wiki/[TODO]",
   },
 
-  // Trust stats (used in home hero and author boxes)
+  // Canonical founder photo (50×50 avatar slot in hero + author boxes).
+  // Set to null when no image is available — consumers must render an
+  // initials fallback ("CK") in that case.
+  photo: "/images/founder/check-kim.jpeg",
+
+  // Trust stats (used in home hero).
+  // Split into `value` (headline number) + `label` (trust-phrase qualifier)
+  // so the hero can render as: [200+ 스팟] \n [에디터 검증].
+  // Intentionally Asia-wide (no Japan-specific numbers) — Japan authority
+  // signals live in bio + JSON-LD knowsAbout + Tokyo guide content.
   stats: [
-    { ko: "일본 20+ 방문 · 아시아 15개국 50+ 도시", en: "20+ trips to Japan · 15+ countries, 50+ cities in Asia" },
-    { ko: "2025년 비행기 64회", en: "64 flights in 2025" },
-    { ko: "검증 스팟 200+", en: "200+ verified spots" },
+    { valueKo: "아시아 15개국", valueEn: "15+ countries in Asia", labelKo: "직접 방문", labelEn: "personally visited" },
+    { valueKo: "50+ 도시", valueEn: "50+ cities", labelKo: "검증된 동선", labelEn: "field-tested routes" },
+    { valueKo: "200+ 스팟", valueEn: "200+ spots", labelKo: "에디터 검증", labelEn: "editor verified" },
   ],
 } as const;
 
@@ -126,6 +135,12 @@ export const HERO = {
 
   subTaglineKo: "블로그 탭 10개 대신, 완성된 루트 1개.",
   subTaglineEn: "Skip the 10-tab research. Get the route.",
+
+  // Authority caption — sits above/beside the stat chips in the hero.
+  // Uses primary public names (책킴 / Check Kim), paired cross-locale so
+  // entity-resolution LLMs see the 한·영 mapping in the first viewport.
+  authorityKo: "책킴(Check Kim)이 직접 다녀와 검증한 스팟",
+  authorityEn: "Spots personally visited and verified by Check Kim",
 } as const;
 
 // Comparison section H2 (English pattern retro-applied to Korean)

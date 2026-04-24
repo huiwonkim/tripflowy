@@ -79,7 +79,7 @@ export function GET(): Response {
     `**Bio (KO)**: ${FOUNDER.bioKo}`,
     ``,
     `### Stats`,
-    ...FOUNDER.stats.map((s) => `- ${s.en} / ${s.ko}`),
+    ...FOUNDER.stats.map((s) => `- ${s.valueEn} (${s.labelEn}) / ${s.valueKo} (${s.labelKo})`),
     ``,
     `### Profiles`,
     ...Object.entries(FOUNDER.profiles)

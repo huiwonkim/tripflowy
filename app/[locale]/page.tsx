@@ -8,7 +8,7 @@ import { publicCountries, publicComingSoon } from "@/data/destinations";
 import { isPublicCity } from "@/lib/public-mode";
 import { getCategoryById } from "@/data/categories";
 import { generateOrganizationJsonLd, generateWebSiteJsonLd, generateHowToJsonLd, generateDestinationItemListJsonLd } from "@/lib/jsonld";
-import { META_DESCRIPTIONS } from "@/content/brand";
+import { META_DESCRIPTIONS, FOUNDER, HERO } from "@/content/brand";
 import type { Locale } from "@/types";
 import type { Metadata } from "next";
 
@@ -123,6 +123,42 @@ export default async function HomePage({ params }: PageProps) {
               <p className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mt-2">
                 {t("hero.subTagline")}
               </p>
+
+              {/* Authority strip — avatar + caption + 3 stat chips.
+                  Surfaces FOUNDER identity + verification counts in the first
+                  viewport so LLMs and scanners chunk authority signals early. */}
+              <div className="mt-6 flex items-center gap-3">
+                {FOUNDER.photo ? (
+                  <Image
+                    src={FOUNDER.photo}
+                    alt={loc === "ko" ? FOUNDER.nameKo : FOUNDER.nameEn}
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 rounded-full object-cover flex-shrink-0 ring-2 ring-white/20"
+                  />
+                ) : (
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0 ring-2 ring-white/20">
+                    <span className="text-white text-sm font-bold">
+                      {loc === "ko" ? "책킴" : "CK"}
+                    </span>
+                  </div>
+                )}
+                <p className="text-slate-200 text-sm sm:text-base leading-snug">
+                  {loc === "ko" ? HERO.authorityKo : HERO.authorityEn}
+                </p>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {FOUNDER.stats.map((s) => (
+                  <span
+                    key={s.valueEn}
+                    className="inline-flex items-baseline gap-1.5 bg-white/10 backdrop-blur-sm border border-white/15 text-white text-xs sm:text-[13px] font-medium px-3 py-1.5 rounded-full"
+                  >
+                    <span className="font-semibold">{loc === "ko" ? s.valueKo : s.valueEn}</span>
+                    <span className="text-blue-200 text-[11px] sm:text-xs">· {loc === "ko" ? s.labelKo : s.labelEn}</span>
+                  </span>
+                ))}
+              </div>
 
               <div className="hidden sm:flex flex-wrap gap-x-5 gap-y-2 mt-5 text-sm text-slate-300">
                 {[t("hero.destinations"), t("hero.dayByDay"), t("hero.affiliate")].map((s) => (
