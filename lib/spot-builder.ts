@@ -739,6 +739,7 @@ function spotToActivity(spot: Spot, time: string, pace: Pace): DayActivity {
     ...(spot.photos && spot.photos.length > 0 ? { photos: spot.photos } : {}),
     ...(spot.postSlug ? { postSlug: spot.postSlug } : {}),
     ...(spot.bookingLinks ? { bookingLinks: spot.bookingLinks } : {}),
+    ...(spot.lastVerified ? { lastVerified: spot.lastVerified } : {}),
     spotId: spot.id,
   };
 }

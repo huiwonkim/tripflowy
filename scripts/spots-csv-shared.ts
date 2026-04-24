@@ -117,6 +117,7 @@ export const CSV_COLUMNS = [
   "booking_agoda",
   "booking_mrt",
   "booking_direct",
+  "lastVerified",
 ] as const;
 
 export type CsvColumn = (typeof CSV_COLUMNS)[number];
@@ -228,6 +229,7 @@ export function spotToRow(s: Spot): (string | number | undefined)[] {
     s.bookingLinks?.agoda ?? "",
     s.bookingLinks?.mrt ?? "",
     s.bookingLinks?.direct ?? "",
+    s.lastVerified ?? "",
   ];
 }
 
@@ -394,6 +396,16 @@ export function rowToSpot(
   const bookingLinksFinal =
     Object.keys(bookingLinks).length > 0 ? bookingLinks : undefined;
 
+  const lastVerifiedRaw = g("lastVerified");
+  let lastVerified: string | undefined;
+  if (lastVerifiedRaw) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(lastVerifiedRaw)) {
+      errors.push(`${where}: invalid lastVerified "${lastVerifiedRaw}" (expected YYYY-MM-DD)`);
+    } else {
+      lastVerified = lastVerifiedRaw;
+    }
+  }
+
   if (errors.length > 0) return { errors, warnings };
 
   const spot: Spot = {
@@ -427,6 +439,7 @@ export function rowToSpot(
     ...(chain ? { chain } : {}),
     ...(fullDay ? { fullDay: true } : {}),
     ...(bookingLinksFinal ? { bookingLinks: bookingLinksFinal } : {}),
+    ...(lastVerified ? { lastVerified } : {}),
   };
 
   return { spot, errors, warnings };

@@ -49,6 +49,8 @@ export type DayActivity = {
   bookingLinks?: BookingLinks;    // 어필리에이트 링크
   /** Present when the activity came from the spot engine — used for URL encoding and swap UI. */
   spotId?: string;
+  /** ISO date (YYYY-MM-DD) of the editor's last field verification, piped through from Spot.lastVerified. */
+  lastVerified?: string;
 };
 
 export type DayCostBreakdown = {

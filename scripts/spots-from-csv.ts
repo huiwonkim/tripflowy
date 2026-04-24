@@ -93,6 +93,9 @@ function formatSpot(spot: Spot): string {
   if (spot.bookingLinks) {
     lines.push(`    bookingLinks: ${JSON.stringify(spot.bookingLinks)},`);
   }
+  if (spot.lastVerified) {
+    lines.push(`    lastVerified: ${JSON.stringify(spot.lastVerified)},`);
+  }
   lines.push(`  }`);
   return lines.join("\n");
 }

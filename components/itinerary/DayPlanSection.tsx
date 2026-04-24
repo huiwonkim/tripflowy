@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useMemo, useState } from "react";
-import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map, Train, Footprints, GripVertical, AlertTriangle, X, Shuffle } from "lucide-react";
+import { Lightbulb, ExternalLink, BookOpen, Utensils, MapPin, Bus, Waves, ShoppingBag, Compass, Star, Coffee, Map, Train, Footprints, GripVertical, AlertTriangle, X, Shuffle, BadgeCheck } from "lucide-react";
+import { FOUNDER } from "@/content/brand";
 import type { DayActivity, ActivityType, Locale, LocaleString, DayCostBreakdown } from "@/types";
 import type { Spot } from "@/types/spot";
 import { cn } from "@/lib/utils";
@@ -434,9 +435,33 @@ function ActivityItem({
             )}
           </div>
         )}
+
+        {/* Verification badge — "Check Kim · verified YYYY-MM" / "책킴 · 정보 확인 YYYY-MM".
+            E-E-A-T signal on the decision surface. Quietly omitted when the
+            spot lacks a lastVerified date (engine data only, not legacy courses). */}
+        {activity.lastVerified && (
+          <p className="mt-3 flex items-center gap-1.5 text-xs text-gray-500">
+            <BadgeCheck className="w-3.5 h-3.5 text-blue-500 flex-shrink-0" />
+            <span>{formatVerification(activity.lastVerified, locale)}</span>
+          </p>
+        )}
       </div>
     </div>
   );
+}
+
+/** Format "2026-04-24" → "책킴 · 정보 확인 2026-04" (ko) / "Check Kim · verified Apr 2026" (en). */
+function formatVerification(iso: string, locale: Locale): string {
+  const m = iso.match(/^(\d{4})-(\d{2})/);
+  if (!m) return iso;
+  const year = m[1];
+  const monthNum = Number(m[2]);
+  if (locale === "ko") {
+    return `✓ ${FOUNDER.nameKo} · 정보 확인 ${year}-${m[2]}`;
+  }
+  const EN_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const mon = EN_MONTHS[monthNum - 1] ?? m[2];
+  return `✓ ${FOUNDER.nameEn} · verified ${mon} ${year}`;
 }
 
 // ── Day Plan Section ────────────────────────────────

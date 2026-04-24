@@ -119,6 +119,14 @@ export type Spot = {
    * slots sparingly, accounting for round-trip travel from the city center.
    */
   fullDay?: boolean;
+
+  /**
+   * Date the spot was last field-verified by the editor (책킴/Check Kim).
+   * ISO date string (YYYY-MM-DD). Surfaces on planner result cards as
+   * "✓ Check Kim · verified Mon YYYY" to distinguish curation from AI slop.
+   * Full Spot provenance schema (visitedAt, verifiedBy, etc.) lands in Sprint 3.
+   */
+  lastVerified?: string;
 };
 
 /**
