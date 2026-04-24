@@ -16,6 +16,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Istanbul's highest point — panoramic city views.", ko: "이스탄불 최고점 — 파노라마 도시 전경." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-blue-mosque",
@@ -28,6 +29,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Six minarets and blue Iznik tiles. Free entry, dress modestly.", ko: "6개 미나렛과 파란 이즈닉 타일. 무료, 복장 주의." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-bosphorus-cruise",
@@ -40,6 +42,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1.5-hour cruise with palaces, mosques, and bridges.", ko: "궁전, 모스크, 다리를 보며 1.5시간 크루즈." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-galata-tower",
@@ -52,6 +55,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Medieval stone tower with 360° city views.", ko: "360도 도시 전경의 중세 석탑." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-grand-bazaar",
@@ -64,6 +68,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "4,000+ shops. Carpets, ceramics, spices, gold.", ko: "4000개 이상 상점. 카펫, 도자기, 향신료, 금." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-hagia-sophia",
@@ -76,6 +81,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1,500-year-old architectural marvel. Now a mosque again.", ko: "1500년 된 건축 경이. 현재 다시 모스크." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-istiklal-avenue-walk",
@@ -88,6 +94,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Istanbul's main pedestrian street with nostalgic tram.", ko: "노스탤지 트램이 다니는 이스탄불 메인 보행자 거리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-kad-k-y-market-fish-sandwiches",
@@ -101,6 +108,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Local market, balik ekmek, and Turkish tea.", ko: "현지 시장, 발릭 에크멕, 터키 차." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-meyhane-lunch-on-nevizade",
@@ -114,6 +122,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Traditional Turkish tavern — meze and raki.", ko: "전통 터키 선술집 — 메제와 라키." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-ottoman-lunch",
@@ -127,6 +136,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Try Ottoman-era recipes at Asitane restaurant.", ko: "아시타네 레스토랑에서 오스만 시대 요리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-spice-bazaar-egyptian-bazaar",
@@ -139,6 +149,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Turkish delight, saffron, dried fruits, teas.", ko: "터키 딜라이트, 사프란, 건과일, 차." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-topkapi-palace",
@@ -151,6 +162,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Harem, treasury, and Bosphorus views. Allow 3 hours.", ko: "하렘, 보물관, 보스포러스 전경. 3시간 소요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-traditional-turkish-hammam",
@@ -163,6 +175,7 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Çemberlitaş or Kılıç Ali Paşa hammam. Full scrub and massage.", ko: "쳄베를리타시 또는 클르츠 알리 파샤 하맘." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "istanbul-turkish-lunch",
@@ -176,5 +189,6 @@ export const istanbulSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Kebab, pide, and ayran near the Hippodrome.", ko: "히포드롬 근처에서 케밥, 피데, 아이란." },
+    lastVerified: "2026-04-24",
   }
 ];

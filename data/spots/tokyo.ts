@@ -22,6 +22,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "A pint of Asahi at the top-floor lookout is the move", ko: "전망대에서 아사히 맥주를 먹는 게 핵심 코스" }, { en: "Queue for the lookout is long — the in-building restaurants work too", ko: "웨이팅이 길어 오히려 내부 식당에서 식사하는 걸 추천" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%95%84%EC%82%AC%ED%9E%88+%EA%B7%B8%EB%A3%B9+%EB%B3%B8%EC%82%AC/@35.7121987,139.8035792,16.3z/data=!3m1!5s0x60188ec59a056e13:0x3260aa2b77b05d8f!4m6!3m5!1s0x60188ec597400001:0xed63aa75e03d5f0f!8m2!3d35.7099095!4d139.8002747!16s%2Fm%2F03cqpd5?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-asakusa-gyukatsu",
@@ -40,6 +41,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "The main branch is actually in Kyoto", ko: "교토에 본점이 유명" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%95%84%EC%82%AC%EC%BF%A0%EC%82%AC+%EA%B7%9C%EC%B9%B4%EC%B8%A0/@35.7123338,139.7970103,17.9z/data=!3m1!5s0x60188ec74eef50d9:0xca11d238751f82c4!4m6!3m5!1s0x60188ec6df6c0001:0xd205e882474ee0a0!8m2!3d35.7107673!4d139.7959519!16s%2Fg%2F11b6trhbg9?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-asakusamenchi",
@@ -58,6 +60,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "The queue looks long but moves fast", ko: "웨이팅이 조금 있으나 생각보다 빠르게 줄이 빠짐" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%95%84%EC%82%AC%EC%BF%A0%EC%82%AC+%EB%A9%98%EC%B9%98/@35.7130743,139.7974184,17.27z/data=!4m6!3m5!1s0x60188ec121f3c5d5:0x9fe1c9087625b6c6!8m2!3d35.7129114!4d139.7960553!16s%2Fg%2F1tgdcdnb?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-jenya",
@@ -76,6 +79,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Expect a wait — go off-peak", ko: "웨이팅이 있는 편이라 애매한 시간대에 가는 걸 추천" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%95%84%EC%82%AC%EC%BF%A0%EC%82%AC%EB%AA%AC%EC%9F%88+%EC%A0%A0%EC%95%BC/@35.7123338,139.7970103,17.9z/data=!4m6!3m5!1s0x60188f94214a97d1:0x3c076a3a331db8c9!8m2!3d35.7119523!4d139.7952496!16s%2Fg%2F11f6drv_hz?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-kobebeefwagyu-kanana",
@@ -93,6 +97,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Quality wagyu steak in Asakusa.", ko: "퀄리티 좋은 와규 스테이크륾 먹기 좋은 맛집" },
     googleMapsUrl: "https://www.google.com/maps/place/Kobe+Beef+Wagyu+Katana+Asakusa+No.+2+Branch/@35.7123338,139.7970103,17.9z/data=!4m6!3m5!1s0x60188fcb90588395:0x31112875e51d0a0a!8m2!3d35.7121756!4d139.7945351!16s%2Fg%2F11wn42_1nx?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 10000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-kyotogatzuku",
@@ -111,6 +116,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Late evening is the easy entry window", ko: "늦은 저녁에 가면 웨이팅이 없음" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EA%B7%9C%EC%B9%B4%EC%B8%A0+%EA%B5%90%ED%86%A0%EA%B0%80%EC%B8%A0%EA%B7%9C+%EC%95%84%EC%82%AC%EC%BF%A0%EC%82%AC+%EC%98%A4%EB%A0%8C%EC%A7%80%EC%8A%A4%ED%8A%B8%EB%A6%AC%ED%8A%B8%EC%A0%90/@35.7123338,139.7970103,17.9z/data=!4m6!3m5!1s0x60188fe7c650ca47:0x513ba5c11498ece6!8m2!3d35.7115624!4d139.7946334!16s%2Fg%2F11wwpj_fp0?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-monjakato",
@@ -128,6 +134,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Another of Asakusa's signature monjayaki spots.", ko: "아사쿠사 대표 몬자야키 맛집 중 하나" },
     googleMapsUrl: "https://www.google.com/maps/place/Monja+Kat%C5%8D/@35.7123338,139.7970103,17.9z/data=!4m6!3m5!1s0x60188f006a3cc7dd:0x79d24f279f5ae91!8m2!3d35.7115998!4d139.7953079!16s%2Fg%2F11y5ffxgg1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-nadai-unatoto",
@@ -147,6 +154,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%82%98%EB%8B%A4%EC%9D%B4+%EC%9A%B0%EB%82%98%ED%86%A0%ED%86%A0+%EC%95%84%EC%82%AC%EC%BF%A0%EC%82%AC%EC%A0%90/@35.7116367,139.7958004,18.88z/data=!3m1!5s0x60188ec6af987ac5:0x150810baf6c165da!4m14!1m7!3m6!1s0x60188ec0da0d936b:0x7da921915f4c57e4!2z7L2U7JW864KY6riw!8m2!3d35.7122038!4d139.7955239!16s%2Fg%2F1tdh3w88!3m5!1s0x60188ec6af08142b:0xacb913594c4f2e02!8m2!3d35.712015!4d139.797945!16s%2Fg%2F1tgdcdnd?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
     chain: "unatoto",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-nakamisetori",
@@ -163,6 +171,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Packed all day — arrive early morning for a calm walk", ko: "오전부터 오후까지 관광객이 많아 이른 아침에 가면 여유로움" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%82%98%EC%B9%B4%EB%AF%B8%EC%84%B8%EB%8F%84%EB%A6%AC/@35.7130743,139.7974184,17.27z/data=!4m6!3m5!1s0x60188ec130fbdd3d:0x5135221a7fa19dbc!8m2!3d35.7118413!4d139.7964542!16s%2Fg%2F11rg73mbfv?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-okonomiyaki-monzasiraiwa",
@@ -181,6 +190,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Takes cards and welcomes solo diners", ko: "카드 결제도 가능하고 혼자 오는 여행객도 가능" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%98%A4%EC%BD%94%EB%85%B8%EB%AF%B8%EC%95%BC%ED%82%A4+%EB%AA%AC%EC%9E%90%EC%8B%9C%EB%9D%BC%EC%9D%B4%EC%99%80/@35.7123338,139.7970103,17.9z/data=!4m6!3m5!1s0x60188f24f7f3cd9f:0x4c727d0a1a3ad8ec!8m2!3d35.7120013!4d139.795855!16s%2Fg%2F11strc12zk?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-richshaw",
@@ -197,6 +207,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Around ¥10,000 for two people, 30 minutes", ko: "2명이 이용하면 30분에 10,000엔" }, { en: "Pick the route yourself", ko: "코스는 직접 선택 가능" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%B9%B4%EB%AF%B8%EB%82%98%EB%A6%AC%EB%AA%AC/@35.7123338,139.7970103,17.9z/data=!3m1!5s0x60188ec7317b39ad:0x328c7121f66ac5b5!4m6!3m5!1s0x60188ec6db068cd1:0xd9a856805c8012bd!8m2!3d35.7111163!4d139.7963656!16s%2Fm%2F03wc6qd?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 5000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-sensoji",
@@ -213,6 +224,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Early morning is quiet — main hall opens 06:00 (06:30 in winter)", ko: "이른 아침이 한적 — 6시부터 본당 개방 (겨울 6:30)" }, { en: "Free entry — main hall closes at 17:00", ko: "입장료 무료 — 본당 마감은 오후 5시" }, { en: "Grab snacks and souvenirs along Nakamise-dori on the way in", ko: "나카미세에서 길거리 간식·기념품 쇼핑" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%84%BC%EC%86%8C%EC%A7%80/@35.7130743,139.7974184,17.27z/data=!4m6!3m5!1s0x60188ec1a4463df1:0x6c0d289a8292810d!8m2!3d35.7147651!4d139.7966553!16zL20vMDNrOTg3?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-skytree-tower",
@@ -232,6 +244,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%EC%BF%84+%EC%8A%A4%EC%B9%B4%EC%9D%B4%ED%8A%B8%EB%A6%AC/@35.7121987,139.8035792,16.3z/data=!3m1!5s0x60188ed65efdab8f:0x73c3daecfb7877f2!4m6!3m5!1s0x60188ed0d12f9adf:0x7d1d4fb31f43f72a!8m2!3d35.7100627!4d139.8107004!16zL20vMDd0aGty?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/41352-tokyo-skytree/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-asakusa-tonkatsu-toyama",
@@ -249,6 +262,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Quick tonkatsu stop.", ko: "간단히 돈까스 먹고 싶을 때 가기 좋은 맛집" },
     googleMapsUrl: "https://www.google.com/maps/place/Tonkatsu+Toyama/@35.712392,139.7958347,18.59z/data=!4m6!3m5!1s0x60188ec6aa15b325:0xca6a08c18b213327!8m2!3d35.7125072!4d139.7984392!16s%2Fg%2F11b7ld44wb?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ginza-donkihote-ginza",
@@ -266,6 +280,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%88%ED%82%A4%ED%98%B8%ED%85%8C+%EA%B8%B4%EC%9E%90%EB%B3%B8%EA%B4%80/@35.6719274,139.7626302,16.83z/data=!3m1!5s0x60188be85a0f05ad:0x4ceb5b0529abbdf0!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188be80f065c13:0x5f71c9a560322bca!8m2!3d35.667122!4d139.7618936!16s%2Fg%2F1tf5dr0l?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     chain: "donki",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ginza-ginza-six",
@@ -282,6 +297,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Ginza's biggest shopping complex.", ko: "긴자에서 가장 유명한 쇼핑몰" },
     googleMapsUrl: "https://www.google.com/maps/place/%EA%B8%B4%EC%9E%90+%EC%8B%9D%EC%8A%A4/@35.6719274,139.7626302,16.83z/data=!3m1!5s0x60188be649ab2755:0x641a401ce3acec60!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188bef472c0001:0xcfcb0363f18109fc!8m2!3d35.6697688!4d139.7641762!16s%2Fg%2F11c5fl50j6?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ginza-kyoto-ramen-moriginza",
@@ -300,6 +316,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Afternoon break 15:30-17:30", ko: "오후 3시 30분부터 5시 30분까지 브레이크 타임" }, { en: "Expect a wait", ko: "웨이팅 있음" }],
     googleMapsUrl: "https://www.google.com/maps/place/Kyoto+Ramen+MORRY+Ginza/@35.6719274,139.7626302,16.83z/data=!3m1!5s0x60188be7a1c45d37:0x486cece4772068e0!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188b0015148dfd:0xc3d02a687b44920f!8m2!3d35.6685238!4d139.7647652!16s%2Fg%2F11vqdn6m01?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ginza-tendon-tenya-ginza",
@@ -319,6 +336,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%ED%85%90%EB%8F%99+%ED%85%90%EC%95%BC+%EA%B8%B4%EC%9E%90%EC%A0%90/@35.6718587,139.7657456,17.83z/data=!3m1!5s0x60188be137c93579:0x8b1f9e787ee1dbcf!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188be13611626d:0x6a5aa276bcfec624!8m2!3d35.6718709!4d139.7682582!16s%2Fg%2F1tdc56g1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
     chain: "tendon-tenya",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ginza-uniqlo",
@@ -336,6 +354,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EC%9C%A0%EB%8B%88%ED%81%B4%EB%A1%9C+%EA%B8%B4%EC%9E%90%EC%A0%90/@35.6719274,139.7626302,16.83z/data=!3m1!5s0x60188be616e4127b:0xb343ddf465dffb5!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188be66e07d36f:0x45e536859ebe18d3!8m2!3d35.6702448!4d139.7634686!16s%2Fg%2F1th8736p?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     chain: "uniqlo",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ginza-waco",
@@ -352,6 +371,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Ginza's clock-tower landmark — the building you see in every postcard.", ko: "시계로 유명한 긴자의 대표 랜드마크" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%99%80%EC%BD%94+%EB%B3%B8%EA%B4%80/@35.6719274,139.7626302,16.83z/data=!3m1!5s0x60188be67efdb0dd:0x4ceb5b050615cf6b!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188be67f079b9d:0x65bf40986312de69!8m2!3d35.671735!4d139.7650442!16s%2Fg%2F1td69w38?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-harajuku-cantera",
@@ -370,6 +390,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Afternoon break 15:00-17:00", ko: "오후 3시부터 5시까지는 브레이크 타임" }],
     googleMapsUrl: "https://www.google.com/maps/place/CANTERA+HARAJUKU/@35.6691362,139.7055359,17.94z/data=!3m1!5s0x60188ca5b33d3fdf:0xf98da4a38a298867!4m6!3m5!1s0x60188ca44a5b9503:0x745776856cd06a53!8m2!3d35.667082!4d139.703967!16s%2Fg%2F11b7q7ldhd?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-harajuku-dacci-pasta-labo",
@@ -387,6 +408,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Pasta and salad sets at a decent price.", ko: "파스타와 샐러드 세트를 함께 가성비있게 먹을 수 있는 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/Harajuku+Dacci+Pasta+Labo/@35.6691362,139.7055359,17.94z/data=!3m1!5s0x60188ca52ad087c1:0x37f24651e0ddd7cf!4m6!3m5!1s0x60188ca52a81375d:0xe0cdef92580535d6!8m2!3d35.6699821!4d139.7038861!16s%2Fg%2F11bwpz8pr7?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-harajuku-meiji-palace",
@@ -404,6 +426,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "The approach path is unusually beautiful", ko: "들어가는 산책길이 다른 곳보다 아름다운 편" }, { en: "You might catch a traditional wedding on the way in", ko: "가는 길에 일본 전통 결혼식을 볼 수도 있음" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%A9%94%EC%9D%B4%EC%A7%80+%EC%8B%A0%EA%B6%81/@35.6761448,139.692683,16.03z/data=!4m6!3m5!1s0x60188cb79a4c26e5:0x8fca893849103f73!8m2!3d35.6763976!4d139.6993259!16zL20vMDFxX2s5?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-harajuku-men-chirashi",
@@ -421,6 +444,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Spot near Harajuku known for its carbonara udon.", ko: "까르보나라 우동이 유명한 하라주쿠 근처 맛집" },
     googleMapsUrl: "https://www.google.com/maps/place/%EB%A9%98+%EC%B9%98%EB%9D%BC%EC%8B%9C/@35.6691362,139.7055359,17.94z/data=!3m1!5s0x60188ca4226c1279:0x316b16f40c7c6a4e!4m6!3m5!1s0x60188d6ff9699deb:0x5fda2231d05d8d8b!8m2!3d35.6664994!4d139.7050912!16s%2Fg%2F11f9zp3z58?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-harajuku-omotesando-ukaitei",
@@ -439,6 +463,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Lunch sets are the affordable way in", ko: "런치 세트가 비교적 저렴" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%98%A4%EB%AA%A8%ED%85%8C%EC%82%B0%EB%8F%84+%EC%9A%B0%EC%B9%B4%EC%9D%B4%ED%85%8C%EC%9D%B4/@35.6691552,139.7055224,17.92z/data=!3m1!5s0x60188ca3fa71814b:0x4331daedd7431bb9!4m6!3m5!1s0x60188ca3fa7bb73f:0x5a0c19ac3a13ab24!8m2!3d35.6673882!4d139.7067871!16s%2Fg%2F1tggnmzc?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 15000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-harajuku-omotesandohills",
@@ -455,6 +480,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Triangular high-end shopping complex on Omotesando.", ko: "삼각형 구조의 대표 하이엔드 쇼핑몰" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%98%A4%EB%AA%A8%ED%85%8C%EC%82%B0%EB%8F%84+%ED%9E%90%EC%A6%88/@35.6691362,139.7055359,17.94z/data=!4m6!3m5!1s0x60188ca182a31e0b:0x99d7a9865079f0a5!8m2!3d35.6672869!4d139.7086162!16zL20vMGJtcno3?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-harajuku-takeshitadori",
@@ -471,6 +497,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Gacha shops, animal cafes, and streetwear all crammed in", ko: "가챠샵, 동물 체험, 옷가게들이 많은 곳" }],
     googleMapsUrl: "https://www.google.com/maps/place/%ED%95%98%EB%9D%BC%EC%A3%BC%EC%BF%A0+%ED%83%80%EC%BC%80%EC%8B%9C%ED%83%80+%EB%8F%84%EB%A6%AC/@35.6717778,139.7017926,17.94z/data=!3m1!5s0x60188cbb3bb7b913:0xcc966d511f88ffb3!4m6!3m5!1s0x60188d795a699d2f:0x3499ed0ca0a1edf9!8m2!3d35.6712601!4d139.7046761!16s%2Fg%2F11t_jz6vdv?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-animate",
@@ -488,6 +515,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "A whole building of manga and anime merch.", ko: "만화와 애니메이션 관련 굿즈와 상품들을 한눈에 볼 수 있는 건물" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%ED%8A%B8+%EC%9D%B4%EC%BC%80%EB%B6%80%EC%BF%A0%EB%A1%9C%EB%B3%B8%EC%A0%90/@35.7292022,139.7133729,17z/data=!3m1!5s0x60188d6f1705cd87:0x5fb9b0e67c243e4!4m6!3m5!1s0x60188d6f4361458b:0x503df2e68ddac61a!8m2!3d35.7311443!4d139.7154592!16s%2Fg%2F1tf70y9x?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-ciwicawa-park",
@@ -506,6 +534,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/@35.7312663,139.7137806,16z/data=!4m14!1m7!3m6!1s0x60188d6f134fd653:0x51eb1d42c77222c2!2z7ISg7IOk7J247Iuc7Yuw!8m2!3d35.7289709!4d139.7195415!16zL20vMGRzM3lj!3m5!1s0x60188d006f3d976b:0xc471e5c44aa64c5a!8m2!3d35.7298877!4d139.7173039!16s%2Fg%2F11ydqt0hl4?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3500, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/171099-chiikawa-park/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-iroha",
@@ -524,6 +553,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Drink sets cheaper than the competing chains", ko: "드링크 세트가 다른 곳에 비해 저렴한 편" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EA%B7%9C%EC%B9%B4%EC%B8%A0+%EC%9D%B4%EB%A1%9C%ED%95%98/@35.7292022,139.7133729,17z/data=!3m1!5s0x60188d6652779049:0x12025a14d221114e!4m6!3m5!1s0x60188d6669e322b9:0x5184c453c1695e16!8m2!3d35.7311781!4d139.7143173!16s%2Fg%2F11b75qmgxy?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-junku-bookstore",
@@ -542,6 +572,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EC%A4%80%EC%BF%A0%EB%8F%84%EC%84%9C%EC%A0%90+%EC%9D%B4%EC%BC%80%EB%B6%80%EC%BF%A0%EB%A1%9C+%EB%B3%B8%EC%A0%90/@35.7292022,139.7133729,17z/data=!3m1!5s0x60188d6830f8d211:0x3d501361bbef99c4!4m6!3m5!1s0x60188d6830033bfb:0x95a8ebaa5d4ac31d!8m2!3d35.72684!4d139.712244!16s%2Fg%2F1tj89f2p?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     chain: "junkudo",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-motomura-kyuaksu",
@@ -560,6 +591,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Free rice refills — finish the meal as ochazuke", ko: "밥 리필도 가능하고, 오차즈케도 만들어 먹을 수 있음" }, { en: "Expect a queue at most hours", ko: "보통 대부분의 시간대에 웨이팅 있음" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EA%B7%9C%EC%B9%B4%EC%B8%A0+%EB%AA%A8%ED%86%A0%EB%AC%B4%EB%9D%BC+%EC%9D%B4%EC%BC%80%EB%B6%80%EC%BF%A0%EB%A1%9C%EC%A0%90/@35.7281898,139.7132371,17.21z/data=!3m1!5s0x60188d682933d227:0x660157cd61439851!4m6!3m5!1s0x60188d682dbbb4f7:0xa96ea78d1ec02a40!8m2!3d35.7265638!4d139.7119006!16s%2Fg%2F11g8cr2xzy?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-mutakiya",
@@ -578,6 +610,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "The foreign-language menu is marked up — order off the Japanese one", ko: "외국어 메뉴판이 더 비싸니 일본어 메뉴판으로 주문" }, { en: "Skip peak hours and aim for 15:00-16:00", ko: "메인 식사 시간대 피해서 오후 3~4시 방문 추천" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%AC%B4%ED%85%8C%ED%82%A4%EC%95%BC/@35.7292022,139.7133729,17z/data=!3m1!5s0x60188d68274d3f27:0xfdca62b758dfd24!4m6!3m5!1s0x60188d682708f977:0x829333b0d73eb2cd!8m2!3d35.7269046!4d139.7116557!16s%2Fg%2F11b72mlbrk?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-photin",
@@ -596,6 +629,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Pick size and cilantro-yes/no when ordering", ko: "사이즈, 고수 유무도 미리 선택 가능" }],
     googleMapsUrl: "https://www.google.com/maps/place/%ED%8D%BC+%ED%8B%B4+%EB%8F%84%EC%BF%84/@35.7292022,139.7133729,17z/data=!3m1!5s0x60188d68833bb9e1:0x1459a0151a897cf0!4m6!3m5!1s0x60188da5fe7e3d7f:0xf20a15c8046bc55e!8m2!3d35.7294032!4d139.7146096!16s%2Fg%2F11fk1dkp68?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-seibu-departmentstore",
@@ -613,6 +647,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Less crowded than most Tokyo department stores", ko: "다른 도쿄 백화점에 비해 여유로운 편" }, { en: "Bring your passport for the tax-free counter", ko: "외국인은 여권 지참시 면세 혜택도 받을 수 있음" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%84%B8%EC%9D%B4%EB%B6%80%EB%B0%B1%ED%99%94%EC%A0%90+%EC%9D%B4%EC%BC%80%EB%B6%80%EC%BF%A0%EB%A1%9C+%EB%B3%B8%EC%A0%90/@35.7312663,139.7137806,16z/data=!3m1!5s0x60188d678b3c0589:0x284357a67c387abe!4m14!1m7!3m6!1s0x60188d6f134fd653:0x51eb1d42c77222c2!2z7ISg7IOk7J247Iuc7Yuw!8m2!3d35.7289709!4d139.7195415!16zL20vMGRzM3lj!3m5!1s0x60188d67fef93b19:0xcd9ac1373273ee1e!8m2!3d35.7287031!4d139.7118073!16s%2Fg%2F11b7cmjhhv?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-sunshine-city",
@@ -631,6 +666,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/@35.7312663,139.7137806,16.59z/data=!4m6!3m5!1s0x60188d6f134fd653:0x51eb1d42c77222c2!8m2!3d35.7289709!4d139.7195415!16zL20vMGRzM3lj?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/14533-sky-circus-sunshine-sixty-observatory-experience-tokyo/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ikebukuro-yakiniku-hormon-hutago",
@@ -648,6 +684,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Easygoing yakiniku — the staff do the grilling.", ko: "종업원이 직접 구워주는 편안한 야키니쿠 맛집" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%98%A4%EC%82%AC%EC%B9%B4+%EC%95%BC%ED%82%A4%EB%8B%88%EC%BF%A0%E3%83%BB%ED%98%B8%EB%A5%B4%EB%AA%AC+%ED%9B%84%ED%83%80%EA%B3%A0+%EC%9D%B4%EC%BC%80%EB%B6%80%EC%BF%A0%EB%A1%9C+%EC%84%9C%EC%AA%BD+%EC%B6%9C%EA%B5%AC/@35.7305561,139.7122864,17.72z/data=!4m6!3m5!1s0x60188d5def19eb91:0xff7c4a3dbb1f57cb!8m2!3d35.7319349!4d139.7106326!16s%2Fg%2F11cs1sgl5y?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 4000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-odaiba-beach-park",
@@ -664,6 +701,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Go after sunset for the night view", ko: "저녁에 야경 보러 가는 것을 추천" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%98%A4%EB%8B%A4%EC%9D%B4%EB%B0%94+%ED%95%B4%EB%B3%80+%EA%B3%B5%EC%9B%90/@35.6274509,139.7750562,16.94z/data=!4m6!3m5!1s0x601889f608caf315:0x205d22764d0e744f!8m2!3d35.6288912!4d139.7736832!16s%2Fg%2F11c0xqfq3j?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-odaiba-dipgarden-teraace",
@@ -681,6 +719,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Indian and Nepalese food in an Odaiba garden terrace.", ko: "일본에서 인도와 네팔 요리를 즐길 수 있는 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/Dipgarden+TERRACE+Ariake+Garden/@35.6456344,139.7842253,15.59z/data=!3m1!5s0x601889c1df84d3b5:0x3257cebb6c84d60!4m6!3m5!1s0x601889c5fe211aff:0xbf4972f8dce4dd9f!8m2!3d35.6384963!4d139.7930083!16s%2Fg%2F11j8qnms9t?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-odaiba-disneyland",
@@ -701,6 +740,7 @@ export const tokyoSpots: Spot[] = [
     costEstimate: { amount: 15000, currency: "JPY" },
     fullDay: true,
     bookingLinks: {"klook":"https://www.klook.com/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-odaiba-disneysea",
@@ -721,6 +761,7 @@ export const tokyoSpots: Spot[] = [
     costEstimate: { amount: 15000, currency: "JPY" },
     fullDay: true,
     bookingLinks: {"klook":"https://www.klook.com/activity/695-tokyo-disney-resort-1-day-pass-tokyo/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-odaiba-gundambase",
@@ -738,6 +779,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Don't skip a photo with the life-size Gundam out front", ko: "외부에 있는 거댛나 건담 피규어와 사진 찍는 게 필수 코스" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EA%B1%B4%EB%8B%B4%EB%B2%A0%EC%9D%B4%EC%8A%A4+%EB%8F%84%EC%BF%84/@35.6310174,139.7869674,15.54z/data=!3m1!5s0x601889f9d3afd357:0x4ceb5b05cd94f9fd!4m6!3m5!1s0x601889f9d3522d23:0xf850caf38214ddd9!8m2!3d35.6254768!4d139.7761383!16s%2Fg%2F11b76cg4_j?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-odaiba-statueofliverty",
@@ -753,6 +795,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Odaiba's replica Statue of Liberty — the classic photo angle with Tokyo's skyline behind.", ko: "도쿄 시내를 배경으로 자유의 여신상 사진을 찍을 수 있는 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%9E%90%EC%9C%A0%EC%9D%98+%EC%97%AC%EC%8B%A0%EC%83%81/@35.6310174,139.7869674,15.54z/data=!3m1!5s0x60188a1dec01238b:0xd6b1486c9dbf4159!4m6!3m5!1s0x60188be32451f7a7:0xbc7e67300e8691a3!8m2!3d35.6278727!4d139.7718346!16s%2Fg%2F11r8wpcq09?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-odaiba-teamlabplanet",
@@ -772,6 +815,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%ED%8C%80%EB%9E%A9+%ED%94%8C%EB%9E%98%EB%8B%9B+%EB%8F%84%EC%BF%84/@35.6452231,139.7809887,15.87z/data=!4m6!3m5!1s0x60188908e728e749:0x6de450c94bd3d622!8m2!3d35.6491207!4d139.7897739!16s%2Fg%2F11ghxr0p5m?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3600, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/25300-teamlab-planets-toyosu-tokyo-ticket/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-roppongi-chrudongtan",
@@ -790,6 +834,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Expect a wait — avoid peak meal hours", ko: "웨이팅 필수라 피크 식사 시간대 피하기" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%B8%A0%EB%A3%A8%EB%8F%99%ED%83%84+%EB%A1%AF%ED%8F%B0%EA%B8%B0%EC%A0%90/@35.6645225,139.7312163,17.85z/data=!3m1!5s0x60188b78fbe99851:0xe0cebff88c5e0346!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188b9b01869971:0x58c5b9221e6a7f14!8m2!3d35.6649932!4d139.7298282!16s%2Fg%2F1tcw84wy?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-roppongi-cityview-skydeck",
@@ -808,6 +853,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%EC%BF%84+%EC%8B%9C%ED%8B%B0%EB%B7%B0+%26+%EC%8A%A4%EC%B9%B4%EC%9D%B4%EB%8D%B1/@35.6606345,139.7291026,19.23z/data=!3m1!5s0x60188b770968fbdd:0xade6fa826b6e383d!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188b770edd442b:0x667ab47030771257!8m2!3d35.6600712!4d139.7292907!16s%2Fg%2F11bccll_jd?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2100, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/15762-roppongi-hills-observatory-deck-tokyo/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-roppongi-donkihote-roppongi",
@@ -825,6 +871,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%88%ED%82%A4%ED%98%B8%ED%85%8C+%EB%A1%AF%ED%8F%B0%EA%B8%B0%EC%A0%90/@35.6625129,139.7311972,17.86z/data=!3m1!5s0x60188b57c56e558b:0xdb78b1ec2546ac0!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188b9cfd2a5677:0x5c1c96cbbf2985b7!8m2!3d35.6624288!4d139.7346473!16s%2Fg%2F1w6_ntnx?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     chain: "donki",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-roppongi-morri-museum",
@@ -842,6 +889,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Check what's showing before you go", ko: "현재 전시 현황 확인 필요" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%AA%A8%EB%A6%AC+%EB%AF%B8%EC%88%A0%EA%B4%80/@35.6606443,139.728899,19.3z/data=!3m1!5s0x60188b770968fbdd:0xade6fa826b6e383d!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188b770f429483:0xff33d131dc8d6e9!8m2!3d35.6604621!4d139.7292785!16s%2Fm%2F0g5t56r?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-roppongi-roppongi-hills",
@@ -860,6 +908,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%A1%AF%ED%8F%B0%EA%B8%B0+%ED%9E%90%EC%8A%A4/@35.6606443,139.728899,19.3z/data=!3m1!5s0x60188b57c56e558b:0xdb78b1ec2546ac0!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188b771049dc33:0x5bfe0248594cc802!8m2!3d35.6607397!4d139.7292319!16zL20vMDFyMl9r?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/15762-roppongi-hills-observatory-deck-tokyo/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-roppongi-teamlab-boderless",
@@ -879,6 +928,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/teamLab+Borderless:+MORI+Building+DIGITAL+ART+MUSEUM/@35.6591502,139.7407576,17.09z/data=!3m1!5s0x60188b9741cfc0d3:0xc91c5c5975739ded!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x601889fad49a9443:0x5831aba3288d2651!8m2!3d35.6620689!4d139.7432671!16s%2Fg%2F11ggvtjmjl?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3600, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/20707-teamlab-borderless-admission-ticket-tokyo/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-roppongi-tokyo-tower",
@@ -897,6 +947,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%EC%BF%84+%ED%83%80%EC%9B%8C/@35.6591502,139.7407576,17.09z/data=!3m1!5s0x60188b57c56e558b:0xdb78b1ec2546ac0!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188bbd9009ec09:0x481a93f0d2a409dd!8m2!3d35.6585805!4d139.7454329!16zL20vMDEzMl94?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/4911-tokyo-tower-main-observatory-ticket-tokyo/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-roppongi-tokyomidtown",
@@ -913,6 +964,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Mixed-use complex — restaurants, a museum, and shopping under one roof.", ko: "레스토랑, 미술관, 쇼핑몰이 모두 들어가 있는 복합 단지" },
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%EC%BF%84+%EB%AF%B8%EB%93%9C%ED%83%80%EC%9A%B4/@35.6645225,139.7312163,17.85z/data=!3m1!5s0x60188b78945432c1:0x7acbd95657b55136!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188b78922e6353:0xeb3e39dbe18da4d6!8m2!3d35.6659803!4d139.7308747!16zL20vMDd3N3Zs?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-roppongi-tszihan",
@@ -931,6 +983,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Expect a wait — avoid peak meal hours", ko: "웨이팅 필수라 피크 식사 시간대 피하기" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%B8%A0%EC%A7%80%ED%95%9C+%EB%8F%84%EC%BF%84+%EB%AF%B8%EB%93%9C%ED%83%80%EC%9A%B4%EC%A0%90/@35.6645225,139.7312163,17.85z/data=!3m1!5s0x60188b78945432c1:0xf060e0ac4f89e3d7!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188b49c5451d59:0x5e165b72c29d872b!8m2!3d35.6656151!4d139.7307312!16s%2Fg%2F11lpfmq1gn?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-abiento-restaurant",
@@ -949,6 +1002,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Book ahead", ko: "미리 예약 필수" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%95%84+%EB%B9%84%EC%97%94%ED%86%A0+%EC%8B%9C%EB%B6%80%EC%95%BC+%EC%95%BC%EC%BC%80+%EB%A0%88%EC%8A%A4%ED%86%A0%EB%9E%91/@35.6585979,139.6983549,18z/data=!3m2!4b1!5s0x60188b57c56e558b:0xdb78b1ec2546ac0!4m6!3m5!1s0x60188b57c35f334f:0xe7014f98b83994d!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 5000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-bigcamera",
@@ -967,6 +1021,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%B9%85+%EC%B9%B4%EB%A9%94%EB%9D%BC+%EC%8B%9C%EB%B6%80%EC%95%BC%ED%9E%88%EA%B0%80%EC%8B%9C%EA%B5%AC%EC%B9%98%EC%A0%90+%EB%B3%B8%EA%B4%80/@35.6613346,139.7009742,17.75z/data=!3m1!5s0x60188b580f640a3f:0xa34ef12c62d12f1c!4m6!3m5!1s0x60188b58066cacf7:0x88c2f0d079fb136d!8m2!3d35.6599174!4d139.7020684!16s%2Fg%2F1tdd9v9t?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     chain: "bic-camera",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-donkihote",
@@ -984,6 +1039,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%A9%94%EA%B0%80+%EB%8F%88%ED%82%A4%ED%98%B8%ED%85%8C+%EC%8B%9C%EB%B6%80%EC%95%BC+%EB%B3%B8%EC%A0%90/@35.6613346,139.7009742,17.75z/data=!3m1!5s0x60188ca9c8b3120b:0x74d825b099817117!4m6!3m5!1s0x60188ca9a47a82af:0x7ea0d3bc82ce0275!8m2!3d35.6603873!4d139.6978172!16s%2Fg%2F11ddz9mtzk?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     chain: "donki",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-hachiko",
@@ -1000,6 +1056,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Photo queue during the day", ko: "낮에 가면 사진 줄이 긴 편" }],
     googleMapsUrl: "https://www.google.com/maps/place/%ED%95%98%EC%B9%98%EC%BD%94+%EB%8F%99%EC%83%81/@35.6590353,139.7006085,20.31z/data=!4m6!3m5!1s0x60188b57efbd57c7:0x217e9d9fe306fba!8m2!3d35.6590579!4d139.7006293!16s%2Fg%2F122cnh70?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-ichiran-spainjaka",
@@ -1018,6 +1075,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EC%9D%B4%EC%B9%98%EB%9E%80+%EC%8B%9C%EB%B6%80%EC%95%BC+%EC%8A%A4%ED%8E%98%EC%9D%B8%EC%9E%90%EC%B9%B4%EC%A0%90/@35.660419,139.6982047,18.78z/data=!3m1!5s0x60188ca9ab7a4a09:0x475d075cc6600b2b!4m6!3m5!1s0x60188ca9ab71057d:0x3cf8b41707c84c2b!8m2!3d35.6609856!4d139.6987137!16s%2Fg%2F1q62crr8w?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
     chain: "ichiran",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-jauo",
@@ -1036,6 +1094,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Choose how your catch is prepared", ko: "잡은 고기는 원하는 조리법에 따라 만들어 먹을 수 있음" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%9E%90%EC%9A%B0%EC%98%A4+%EC%8B%9C%EB%B6%80%EC%95%BC%EC%A0%90/@35.6618699,139.6989946,19.09z/data=!4m6!3m5!1s0x60188ca8ed2c776b:0x9168eacedb9807f3!8m2!3d35.6624737!4d139.6998545!16s%2Fg%2F11btvwrpz6?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-jikasei-mensho",
@@ -1054,6 +1113,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Vegan ramen also on the menu", ko: "비건 라멘도 있는 곳" }],
     googleMapsUrl: "https://www.google.com/maps/place/Jikasei+MENSHO/@35.6618699,139.6989946,19.09z/data=!3m1!5s0x60188ca91d999a73:0x2b0020417147c9a8!4m6!3m5!1s0x60188d1665913a2d:0x1c5a02959036d3fb!8m2!3d35.6620648!4d139.698835!16s%2Fg%2F11fq8nv6hm?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-keika-ramen",
@@ -1071,6 +1131,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Ramen with a flavor that sits between Japanese and Chinese.", ko: "일본과 중국 사이에 있는 라멘 맛이 느껴지는 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%BC%80%EC%9D%B4%EC%B9%B4+%EB%9D%BC%EB%A9%98+%EC%8B%9C%EB%B6%80%EC%95%BC%EC%84%BC%ED%84%B0%EA%B1%B0%EB%A6%AC%EC%A0%90/@35.660419,139.6982047,18.78z/data=!4m6!3m5!1s0x60188d7b931a3215:0xe20acde08e314fda!8m2!3d35.6602051!4d139.6987123!16s%2Fg%2F1tpf73fr?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-matuya-shibuyacenter",
@@ -1089,6 +1150,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%A7%88%EC%B8%A0%EC%95%BC+%EC%8B%9C%EB%B6%80%EC%95%BC%EC%84%BC%ED%84%B0%EC%A0%90/@35.660419,139.6982047,18.78z/data=!3m1!5s0x60188ca8357b9da5:0x8c6405da8c46adbf!4m6!3m5!1s0x60188ca84a9b0405:0x59deb4f682fe865!8m2!3d35.660171!4d139.698908!16s%2Fg%2F1vf9cbzr?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
     chain: "matsuya",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-matze",
@@ -1107,6 +1169,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Book ahead", ko: "미리 예약하는 걸 추천" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%A7%88%EC%B8%A0%EC%97%90+%EC%8B%9C%EB%B6%80%EC%95%BC+%EC%8A%A4%ED%81%AC%EB%9E%A8%EB%B8%94%EC%8A%A4%ED%80%98%EC%96%B4%EC%A0%90/@35.659047,139.6974068,18.09z/data=!3m1!5s0x60188b7b9c819b61:0xc83b5e6b26751d60!4m6!3m5!1s0x60188b78f26a7357:0x15ec7c200a23c52a!8m2!3d35.6583364!4d139.7020523!16s%2Fg%2F11h7q3pn7p?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 5000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-moheji",
@@ -1125,6 +1188,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Arrive at opening or you're waiting", ko: "오픈런 하지 않으면 웨이팅 필수" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%AA%A8%ED%97%A4%EC%A7%80+%EC%8B%9C%EB%B6%80%EC%95%BC+%EC%8A%A4%ED%81%AC%EB%9E%A8%EB%B8%94+%EC%8A%A4%ED%80%98%EC%96%B4%EC%A0%90/@35.658231,139.7009959,18.95z/data=!3m1!5s0x60188b7b9c819b61:0xc83b5e6b26751d60!4m6!3m5!1s0x60188bb6c5af379f:0x39c35ba5b90103a8!8m2!3d35.6583189!4d139.7022323!16s%2Fg%2F11j0pvppyw?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-niigata-katsdong",
@@ -1142,6 +1206,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Shibuya's go-to katsudon.", ko: "시부야에서 유명한 카츠동 맛집" },
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8B%88%EC%9D%B4%EA%B0%80%ED%83%80+%EC%B9%B4%EC%B8%A0%EB%8F%99+%ED%83%80%EB%A0%88%EC%B9%B4%EC%B8%A0+%EC%8B%9C%EB%B6%80%EC%95%BC%EC%A0%90/@35.659047,139.6974068,18.09z/data=!4m6!3m5!1s0x60188b57c8684045:0x7869a0bfbc459282!8m2!3d35.6580557!4d139.6992802!16s%2Fg%2F11bxc5rsnl?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-nonbei-yokocho",
@@ -1159,6 +1224,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Pricier than average Tokyo bars", ko: "다른 곳보다 가격이 비싼 편" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8B%9C%EB%B6%80%EC%95%BC+%EB%85%BC%EB%B2%A0%EC%9D%B4+%EC%9A%94%EC%BD%94%EC%B4%88/@35.6599499,139.7006843,18z/data=!3m1!4b1!4m6!3m5!1s0x60188b5801d200a7:0xdfae104c597fa255!8m2!3d35.6599499!4d139.701533!16s%2Fg%2F11bx1ycsvz?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-parco",
@@ -1175,6 +1241,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Shibuya shopping complex.", ko: "시부야에서 쇼핑몰 가고 싶을 때 들리기 좋은 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/%ED%8C%8C%EB%A5%B4%EC%BD%94+%EC%8B%9C%EB%B6%80%EC%95%BC/@35.6609952,139.6986614,18.7z/data=!3m1!5s0x60188ca91d999a73:0x2b00204170d72ef0!4m6!3m5!1s0x60188ca8e2fe2173:0x1adbb1909538391b!8m2!3d35.6620484!4d139.6987767!16s%2Fg%2F11b5v5txkb?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-raikyo",
@@ -1192,6 +1259,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Real-deal Taiwanese-style Chinese food in Shibuya.", ko: "대만식 중화요리를 제대로 하는 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/%EB%A0%88%EC%9D%B4%EC%BF%84+%EC%8B%9C%EB%B6%80%EC%95%BC%EC%A0%90/@35.6601654,139.6981274,18.3z/data=!3m1!5s0x60188ca9c19fe379:0x4eac8c524a4c9a5e!4m6!3m5!1s0x60188ca9c1a1bb7b:0xf4f9be0dae96bfde!8m2!3d35.659469!4d139.697681!16s%2Fg%2F1tcz89k7?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-scramble-crossing",
@@ -1208,6 +1276,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Looking down from the Starbucks across the street is the classic angle", ko: "근처 스타벅스에서 내려다 보는 전망이 예쁨" }],
     googleMapsUrl: "https://www.google.com/maps/place/Shibuya+Crossing/@35.6590193,139.70085,18.68z/data=!3m1!5s0x60188b57f546295f:0x486cece41a7b21b0!4m6!3m5!1s0x60188bcaeb0cd12b:0x20e563a2e0aec969!8m2!3d35.659482!4d139.7005596!16s%2Fg%2F11shy4scrj?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-shibuya109",
@@ -1224,6 +1293,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Shibuya shopping mall classic.", ko: "시부야에서 쇼핑몰 가고 싶을 때 들리기 좋은 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8B%9C%EB%B6%80%EC%95%BC109/@35.660419,139.6982047,18.78z/data=!3m1!5s0x60188ca9cd4c44b5:0xc538795a27b68b27!4m6!3m5!1s0x60188ca9cd6c1c87:0x55a2a75ba417e072!8m2!3d35.6595771!4d139.698728!16s%2Fm%2F03m78kc?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-shibuyasky",
@@ -1243,6 +1313,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8B%9C%EB%B6%80%EC%95%BC+%EC%8A%A4%EC%B9%B4%EC%9D%B4/@35.6600905,139.7013766,17.64z/data=!3m1!5s0x60188b7b9c819b61:0x92144cdf397130f5!4m6!3m5!1s0x60188b6825f61ae1:0x6ff47ee61e522473!8m2!3d35.6586719!4d139.7019848!16s%2Fg%2F11hdvt_gp9?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/70672-shibuya-sky-tokyo/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-streamer-coffee-company",
@@ -1261,6 +1332,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Order the Revolver Coffee", ko: "리볼버 커피 추천" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8A%A4%ED%8A%B8%EB%A6%AC%EB%A8%B8+%EC%BB%A4%ED%94%BC+%EC%BB%B4%ED%8D%BC%EB%8B%88+%EC%8B%9C%EB%B6%80%EC%95%BC/@35.6613346,139.7009742,17.75z/data=!4m6!3m5!1s0x60188ca6ff85e627:0xe542e1ed245eb17d!8m2!3d35.6634544!4d139.7039301!16s%2Fg%2F1tg7r_xy?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-sushimidori",
@@ -1279,6 +1351,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Reserve via Google ahead of time", ko: "구글에서 미리 예약 추천" }, { en: "No reservation? Line up 20 minutes before opening", ko: "예약하지 않았다면 오픈 20분 전 대기 추천" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8A%A4%EC%8B%9C%EB%85%B8%EB%AF%B8%EB%8F%84%EB%A6%AC+%EC%8B%9C%EB%B6%80%EC%95%BC%EC%A0%90/@35.6598317,139.6978978,18.61z/data=!3m1!5s0x60188b5631f5f4af:0xf2c804907c6b11f9!4m6!3m5!1s0x60188b57cdb8d5bb:0x5f3488310a317d5e!8m2!3d35.6583453!4d139.6989875!16s%2Fg%2F1tf6xbh5?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-takibiya",
@@ -1296,6 +1369,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Yakiniku option in Shibuya.", ko: "시부야에서 야키니쿠 먹기 좋은 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/%ED%83%80%ED%82%A4%EB%B9%84%EC%95%BC/@35.6602773,139.7009022,18.7z/data=!3m1!5s0x60188b580aa46f99:0x691d17779c5d8ebb!4m6!3m5!1s0x354fef7311cfc6d1:0x185a959e076079bb!8m2!3d35.6604814!4d139.7026099!16s%2Fg%2F1ptyk0n1p?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-tskimonza",
@@ -1314,6 +1388,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "No foreign-language menu", ko: "외국어 메뉴판은 없음" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%B8%A0%ED%82%A4%EC%8B%9C%EB%A7%88%EB%AA%AC%EC%9E%90+%EC%98%A4%EC%BD%94%EA%B2%8C+%EC%8B%9C%EB%B6%80%EC%95%BC/@35.6604493,139.6980795,18z/data=!3m2!4b1!5s0x60188ca847fcadcd:0xb4a91f6034bd5610!4m6!3m5!1s0x60188d5cd4b42aa1:0x1b75d283cc22eeba!8m2!3d35.6604493!4d139.699402!16s%2Fg%2F11j21yn8t3?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-uobei",
@@ -1332,6 +1407,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Short waits at peak hours", ko: "약간의 웨이팅 있을 수 있음" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%9A%B0%EC%98%A4%EB%B2%A0%EC%9D%B4+%EC%8B%9C%EB%B6%80%EC%95%BC+%EB%8F%84%EA%B2%90%EC%9E%90%EC%B9%B4%EC%A0%90/@35.6609952,139.6986614,18.7z/data=!4m6!3m5!1s0x60188ca9c3e93569:0x51b1ecd6fe7ee73f!8m2!3d35.6594349!4d139.6979207!16s%2Fg%2F11cn8s0vv1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-uogashinihonichi",
@@ -1350,6 +1426,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Pieces made to order and passed over the counter", ko: "주문하면 바로 만들어서 올려주는 식당" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8A%A4%EC%8B%9C+%EC%9A%B0%EC%98%A4%EA%B0%80%EC%8B%9C%EB%8B%88%ED%98%BC%EC%9D%B4%EC%B9%98+%EC%8B%9C%EB%B6%80%EC%95%BC+%EB%8F%84%EA%B2%90%EC%9E%90%EC%B9%B4%EC%A0%90/@35.6597257,139.6980926,18.78z/data=!4m6!3m5!1s0x60188ca9d762bf87:0x50712f246ece5137!8m2!3d35.6589379!4d139.6981904!16s%2Fg%2F1tfd6zh7?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shibuya-wagyu-haral-ramen",
@@ -1368,6 +1445,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Halal — no alcohol served", ko: "할랄 식당이라 술은 없는 곳" }, { en: "On the pricier side", ko: "가격은 다소 비싼 편" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%99%80%EA%B7%9C+%ED%95%A0%EB%9E%84+%EB%9D%BC%EB%A9%98+%EC%8B%9C%EB%B6%80%EC%95%BC/@35.6618699,139.6989946,19.09z/data=!3m1!5s0x60188b58f93e91ad:0x816b0cea94d07d82!4m6!3m5!1s0x60188d3b79af2c79:0x27d70794daee2cba!8m2!3d35.6618266!4d139.6999647!16s%2Fg%2F11x807s1zy?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-acacia",
@@ -1385,6 +1463,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Old-school yoshoku (Japanese takes on Western classics) in Shinjuku.", ko: "도쿄에서 경양식을 먹고 싶을 때 가보기 좋은 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/Shinjuku+acacia/@35.692322,139.7023024,17.93z/data=!3m1!5s0x60188cd9e143d9f5:0x73fe61983aedcaad!4m6!3m5!1s0x60188cd9e161d85b:0x7860270716ee5ea2!8m2!3d35.6931547!4d139.7016053!16s%2Fg%2F1tjz3c44?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-buchiuyama",
@@ -1403,6 +1482,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Cash only — withdraw before you go", ko: "현금 결제만 가능 — 미리 현금 준비" }, { en: "Tables turn over slowly — arrive at opening or expect a long wait", ko: "오픈런 하지 않으면 회전율이 낮아 웨이팅이 긴 편" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%B6%80%EC%B9%98%EC%9A%B0%EB%A7%88%EC%95%BC/@35.6945824,139.6958376,16.77z/data=!3m1!5s0x60188d2985c5cbcb:0x3cb44786d004bce1!4m6!3m5!1s0x60188d2985da4f8f:0x7b48eedd8c21f605!8m2!3d35.6966278!4d139.6966217!16s%2Fg%2F11fyln4y_v?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-disneystore",
@@ -1419,6 +1499,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Disney flagship store — a decent plan B if you're skipping the parks.", ko: "디즈니랜드를 갈 수 없으면 디즈니 굿즈 사기 좋은 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/%EB%94%94%EC%A6%88%EB%8B%88+%ED%94%8C%EB%9E%98%EA%B7%B8%EC%8B%AD+%EC%8A%A4%ED%86%A0%EC%96%B4+%EB%8F%84%EC%BF%84/@35.6928689,139.699732,17.87z/data=!4m6!3m5!1s0x60188d4ca91dcd4d:0x1690197cf0618eb2!8m2!3d35.692049!4d139.7031204!16s%2Fg%2F11pd2zm3hv?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-ditaipung",
@@ -1438,6 +1519,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%94%98%ED%83%80%EC%9D%B4%ED%8E%91+%EC%8B%A0%EC%A3%BC%EC%BF%A0+%ED%83%80%EC%B9%B4%EC%8B%9C%EB%A7%88%EC%95%BC+%ED%83%80%EC%9E%84%EC%A6%88+%EC%8A%A4%ED%80%98%EC%96%B4%EC%A0%90/@35.6887462,139.7008138,17.13z/data=!3m1!5s0x60188cc5494439c7:0x7c6a63a30f12954e!4m6!3m5!1s0x60188cc57488394b:0x4d7072ef8a63d3ae!8m2!3d35.687434!4d139.7024396!16s%2Fg%2F1td2tx2q?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 3000, currency: "JPY" },
     chain: "dintaifung",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-donkihote-donangochi",
@@ -1455,6 +1537,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%88%ED%82%A4%ED%98%B8%ED%85%8C+%EC%8B%A0%EC%A3%BC%EC%BF%A0+%EB%8F%84%EB%82%9C%EA%B5%AC%EC%B9%98%EC%A0%90/@35.6932749,139.7012157,17.6z/data=!4m6!3m5!1s0x60188cda8816c3d7:0xd7380245bcb993b1!8m2!3d35.6900987!4d139.7019999!16s%2Fg%2F11dfld7g0t?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     chain: "donki",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-donkihote-gabukicho",
@@ -1472,6 +1555,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%88%ED%82%A4%ED%98%B8%ED%85%8C+%EC%8B%A0%EC%A3%BC%EC%BF%A0%EA%B0%80%EB%B6%80%ED%82%A4%EC%B4%88%EC%A0%90/@35.6932749,139.7012157,17.6z/data=!3m1!5s0x60188cd9dbc2163f:0x54a22900434443d1!4m6!3m5!1s0x60188cd9dbeab93d:0x8583055007d02928!8m2!3d35.6937755!4d139.7017873!16s%2Fg%2F1tftr247?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     chain: "donki",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-food-quwanne",
@@ -1489,6 +1573,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Pick-your-own-dishes setup covering the main Japanese food styles.", ko: "여러 일본 음식들을 취향에 맞게 골라서 먹을 수 있는 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/Miyazaki+Food+Quwanne/@35.6887462,139.7008138,17.13z/data=!3m1!5s0x60188cd0402d9c2b:0x85ce34da1388936e!4m6!3m5!1s0x60188cd0402158af:0x2f0b16bec52e42a1!8m2!3d35.6883129!4d139.7000473!16s%2Fg%2F11gh057tsh?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-gabukicho",
@@ -1504,6 +1589,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "The landmark tower over Kabukicho — Shinjuku nightlife's centerpiece.", ko: "도쿄 나이트라이프를 한눈에 볼 수 있는 가부키초의 대표 빌딩" },
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%ED%81%90+%EA%B0%80%EB%B6%80%ED%82%A4%EC%B4%88+%ED%83%80%EC%9B%8C/@35.6946565,139.6963843,16.89z/data=!4m6!3m5!1s0x60188dfd822aaa3f:0xd47e0ccc16555ea9!8m2!3d35.6957513!4d139.7005894!16s%2Fg%2F11s18b39qm?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-goldenguy",
@@ -1520,6 +1606,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Dense maze of tiny postwar bars — Shinjuku's classic nightlife stop alongside Omoide Yokocho.", ko: "오모이데요코초와 함께 신주쿠 대표 선술집 거리" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8B%A0%EC%A3%BC%EC%BF%A0+%EA%B3%A8%EB%93%A0%EA%B0%80%EC%9D%B4/@35.6936134,139.7025578,17.6z/data=!3m1!5s0x60188cd96fa71f47:0x17cc5dd6e0009ca!4m6!3m5!1s0x60188cd96586b9af:0x71a5c0e1150c1a8f!8m2!3d35.6941118!4d139.7047611!16s%2Fm%2F02vr6_3?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-hananojo-shrine",
@@ -1535,6 +1622,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "A small shrine on the walk from Shinjuku Station to Gyoen — easy five-minute stop.", ko: "신주쿠역에서 교엔 가는 길에 잠깐 들리면 좋은 신사" },
     googleMapsUrl: "https://www.google.com/maps/place/%ED%95%98%EB%82%98%EC%A1%B0%EB%85%B8+%EC%8B%A0%EC%82%AC/@35.6932749,139.7012157,17.6z/data=!3m1!5s0x60188cdbe581170f:0xffce7e6d8fd5f9fa!4m6!3m5!1s0x60188cdbe07cde2b:0x3b4028968ed9a754!8m2!3d35.6935311!4d139.7053279!16s%2Fm%2F0k54d7q?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-harrypotter",
@@ -1555,6 +1643,7 @@ export const tokyoSpots: Spot[] = [
     costEstimate: { amount: 6000, currency: "JPY" },
     fullDay: true,
     bookingLinks: {"klook":"https://www.klook.com/activity/84374-warner-bros-studio-tour-tokyo-making-harry-potter/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-hinotori",
@@ -1572,6 +1661,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Shinjuku yakitori spot for a quick skewer fix.", ko: "신주쿠에서 꼬치구이 먹고 싶을 때 가기 좋은 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/%ED%9E%88%EB%85%B8%ED%86%A0%EB%A6%AC/@35.6925093,139.6955526,16.17z/data=!3m1!5s0x60188d2a104622ff:0x58190dfd53335315!4m6!3m5!1s0x60188d2a11ae884d:0x8fffe5b1202bdbd3!8m2!3d35.6949791!4d139.6956065!16s%2Fg%2F11c0rny309?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-ichiran-ramen-juohigashi",
@@ -1590,6 +1680,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EC%9D%B4%EC%B9%98%EB%9E%80+%EC%8B%A0%EC%A3%BC%EC%BF%A0+%EC%A3%BC%EC%98%A4%ED%9E%88%EA%B0%80%EC%8B%9C%EA%B5%AC%EC%B9%98%EC%A0%90/@35.6909958,139.7028973,17.75z/data=!4m6!3m5!1s0x60188cda5f050cf1:0x397988c6d1296d56!8m2!3d35.690612!4d139.702817!16s%2Fg%2F1tf15wjg?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
     chain: "ichiran",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-isetan-department-store",
@@ -1606,6 +1697,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Japan's oldest department store still operating, founded in 1886.", ko: "1886년부터 시작된 일본의 대표적인 백화점" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%9D%B4%EC%84%B8%ED%83%84+%EC%8B%A0%EC%A3%BC%EC%BF%A0/@35.6928689,139.699732,17.87z/data=!3m1!5s0x60188cdbba93fca1:0x6a4d3d03b715d740!4m6!3m5!1s0x60188cdba56b3bf7:0x8b741cc73341edb5!8m2!3d35.691574!4d139.7046466!16s%2Fg%2F11cjk548y6?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-kinokuniya-bookstore",
@@ -1623,6 +1715,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EA%B8%B0%EB%85%B8%EC%BF%A0%EB%8B%88%EC%95%BC+%EC%8B%A0%EC%A3%BC%EC%BF%A0+%EB%B3%B8%EC%A0%90/@35.6928689,139.699732,17.87z/data=!4m6!3m5!1s0x60186092cf48325d:0x24ac346bd72018a3!8m2!3d35.6919678!4d139.7028227!16s%2Fg%2F1tg7r_bb?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
     chain: "kinokuniya",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-kyoen",
@@ -1641,6 +1734,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8B%A0%EC%A3%BC%EC%BF%A0+%EA%B5%90%EC%97%94/@35.6881119,139.7043134,17.07z/data=!4m6!3m5!1s0x60188cc21b93233f:0x6a1eb1b5a117f287!8m2!3d35.6851763!4d139.7100517!16zL20vMDdkM24x?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 500, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/174227-shinjuku-gyoen/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-momo-paradise",
@@ -1659,6 +1753,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Reserve via Google", ko: "구글에서 미리 예약 가능" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%AA%A8%EB%AA%A8+%ED%8C%8C%EB%9D%BC%EB%8B%A4%EC%9D%B4%EC%8A%A4+%EC%8B%A0%EC%A3%BC%EC%BF%A0+%EB%A9%94%EC%9D%B4%EC%A7%80%EB%8F%84%EB%A6%AC%EC%A0%90/@35.6913331,139.7027503,17.75z/data=!3m1!5s0x60188cdb75d3a84d:0xb4c8e4be99dc0fb9!4m6!3m5!1s0x60188cdb74f93039:0xf15f467cdfd7d7ea!8m2!3d35.6913247!4d139.7053734!16s%2Fg%2F11b6p2xx6y?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 5000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-okonomiyaki-rush",
@@ -1676,6 +1771,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Budget okonomiyaki in Shinjuku.", ko: "신주쿠에서 가성비 오코노미야키 먹고 싶을 때 가기 좋은 맛집" },
     googleMapsUrl: "https://www.google.com/maps/place/%EC%98%A4%EC%BD%94%EB%85%B8%EB%AF%B8%EC%95%BC%ED%82%A4+%EC%B2%A0%ED%8C%90%EA%B5%AC%EC%9D%B4+%EC%B2%A0%ED%8C%90+%EB%9F%AC%EC%89%AC/@35.6909958,139.7028973,17.75z/data=!3m1!5s0x60188cda59ec008b:0x4f7994c758b6aef0!4m6!3m5!1s0x60188d0bebc96045:0x9ac5d4f172cb82d7!8m2!3d35.6908298!4d139.7032434!16s%2Fg%2F11tn_b78jl?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-omoideyokocho",
@@ -1693,6 +1789,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Most places charge a seating fee (otoshi)", ko: "자릿세(오토시)가 대부분 있는 곳" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%98%A4%EB%AA%A8%EC%9D%B4%EB%8D%B0%EC%9A%94%EC%BD%94%EC%B4%88(%EC%95%BC%ED%82%A4%ED%86%A0%EB%A6%AC+%EA%B1%B0%EB%A6%AC)/@35.6932749,139.7012157,17.6z/data=!4m6!3m5!1s0x60188cd7058ad73f:0x908f55935cc13cd3!8m2!3d35.6927011!4d139.6995778!16s%2Fg%2F120m1bbf?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 2000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-tenkichiya",
@@ -1711,6 +1808,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Peak hours have a line — go at opening or after 2pm", ko: "피크 시간대 웨이팅 — 오픈 직후나 2시 이후 추천" }, { en: "Set menus beat à la carte on value", ko: "세트 메뉴가 단품보다 가성비 좋음" }, { en: "Good breakfast or early-lunch if you're based in Shinjuku", ko: "신주쿠에 숙소가 있다면 아침·이른 점심 옵션" }],
     googleMapsUrl: "https://www.google.com/maps/place/%ED%85%90%ED%82%A4%EC%B9%98%EC%95%BC/@35.6919819,139.6945813,17.08z/data=!3m1!5s0x60188cd5c180ca6b:0x1308381aa401cea6!4m6!3m5!1s0x60188cd5c3b59cc3:0xd1a3290620d22c83!8m2!3d35.6929623!4d139.6954179!16s%2Fg%2F1hd_3pxpt?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-shinjuku-tokyo-metropolitan",
@@ -1728,6 +1826,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Two decks — north and south", ko: "북측과 남측으로 2곳이 운영중" }, { en: "North closes earlier — only south stays open for night views", ko: "북측은 빠르게 마감되어 야경 시간대에는 남측만 이용 가능" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%EC%BF%84%EB%8F%84%EC%B2%AD+%EB%B6%81%EC%AA%BD+%EC%A0%84%EB%A7%9D%EB%8C%80/@35.6919819,139.6945813,17.08z/data=!3m1!5s0x60188cd498eb5371:0x46cb7b987c5bc5b7!4m6!3m5!1s0x60188cd4c86bcb9d:0xe5b1c573920cfe2e!8m2!3d35.689733!4d139.6916563!16s%2Fg%2F1tgz5gx6?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-tokyo-station-gokyo",
@@ -1744,6 +1843,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Book the interior tour online in advance", ko: "내부 투어는 미리 인터넷으로 예약 필요" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EA%B3%A0%EC%BF%84/@35.6832497,139.7585658,16.73z/data=!3m1!5s0x60188b57c56e558b:0xdb78b1ec2546ac0!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188c0d02d8064d:0xd11a5f0b379e6db7!8m2!3d35.685175!4d139.7527995!16zL20vMDFuZjI5?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-tokyo-station-hichmabushi-nagoya",
@@ -1762,6 +1862,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Afternoon break 14:30-17:00", ko: "오후 2시 30분부터 5시까지 브레이크 타임" }],
     googleMapsUrl: "https://www.google.com/maps/place/%ED%9E%88%EC%B8%A0%EB%A7%88%EB%B6%80%EC%8B%9C+%EB%82%98%EA%B3%A0%EC%95%BC+%EB%B9%88%EC%B5%B8+%EB%A7%88%EB%A3%A8%EB%85%B8%EC%9A%B0%EC%B9%98%EB%B9%8C%EB%94%A9%EC%A0%90/@35.6813871,139.7641144,17.5z/data=!3m1!5s0x60188bf9ed64a86d:0x2370f67f71bdf831!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188bd1aeaa95bd:0xb2651a0edf684184!8m2!3d35.6809522!4d139.7638136!16s%2Fg%2F11fd8gqvtr?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 5000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-tokyo-station-kitte",
@@ -1779,6 +1880,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "The rooftop garden is free", ko: "6층 루프탑 가든에서 야경 관람" }, { en: "Weekday evenings run calmer than weekends", ko: "평일 저녁이 주말보다 한산하고 뷰 좋음" }, { en: "Easy to slot into a Tokyo Station or Ginza evening", ko: "도쿄역·긴자 동선에 끼워넣기 좋음" }],
     googleMapsUrl: "https://www.google.com/maps/place/%ED%82%B7%ED%85%8C+%EB%A7%88%EB%A3%A8%EB%85%B8%EC%9A%B0%EC%B9%98/@35.6813871,139.7641144,17.5z/data=!3m1!5s0x60188bfa360075d5:0xa230d50ac263a5b0!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188bfa4ae94675:0x9f64e11ee9dc660a!8m2!3d35.6797983!4d139.764865!16s%2Fg%2F12q4vbg3q?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-tokyo-station-nihonbashi-michcoshi",
@@ -1795,6 +1897,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Japan's first department store, still operating.", ko: "일본 최초의 백화점으로 유명한 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8B%88%ED%98%BC%EB%B0%94%EC%8B%9C+%EB%AF%B8%EC%B8%A0%EC%BD%94%EC%8B%9C+%EB%B3%B8%EC%A0%90/@35.6856331,139.7685587,17z/data=!3m1!4b1!4m6!3m5!1s0x601889558bea7489:0xb736a8620645c5d3!8m2!3d35.6856332!4d139.7734296!16s%2Fg%2F11btrr6g36?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-tokyo-station-starbuscks-gokyo",
@@ -1813,6 +1916,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4+%EC%BB%A4%ED%94%BC+%EA%B3%A0%EC%BF%84%EA%B0%80%EC%9D%B4%EC%97%94+%EC%99%80%EB%8B%A4%EC%BF%A0%EB%9D%BC+%EB%B6%84%EC%88%98%EA%B3%B5%EC%9B%90%EC%A0%90/@35.6832497,139.7585658,16.73z/data=!3m1!5s0x60188b57c56e558b:0xdb78b1ec2546ac0!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188b8cc54bda67:0x7546edc6b42a084c!8m2!3d35.6830391!4d139.7614181!16s%2Fg%2F11nxr5z76s?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
     chain: "starbucks",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-tokyo-station-station",
@@ -1829,6 +1933,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Marunouchi Plaza out front is the signature photo angle", ko: "바로 앞 마루노우치 광장에서 사진 촬영" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%EC%BF%84%EC%97%AD+%EB%A7%88%EB%A3%A8%EB%85%B8%EC%9A%B0%EC%B9%98+%EA%B4%91%EC%9E%A5/@35.6813871,139.7641144,17.5z/data=!3m1!5s0x60188b57c56e558b:0xdb78b1ec2546ac0!4m14!1m7!3m6!1s0x60188b57c35f334f:0xe7014f98b83994d!2z7JWEIOu5hOyXlO2GoCDsi5zrtoDslbwg7JW87LyAIOugiOyKpO2GoOuekQ!8m2!3d35.6585979!4d139.6996424!16s%2Fg%2F1tkrlsv8!3m5!1s0x60188bf979712903:0x710fa891148d8b9a!8m2!3d35.6815604!4d139.7654768!16s%2Fg%2F11d_8_2sv4?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ueno-mori-sakura-terrace",
@@ -1846,6 +1951,7 @@ export const tokyoSpots: Spot[] = [
     description: { en: "Quick and fairly priced — a decent fast-lunch stop.", ko: "적당한 가격에 빠르게 식사하기 좋은 곳" },
     googleMapsUrl: "https://www.google.com/maps/place/Ueno+no+Mori+Sakura+Terrace/@35.7091807,139.7728802,16.67z/data=!3m1!5s0x60188e9e769898bb:0xb3ed2c8154da1634!4m6!3m5!1s0x60188e9e76c00001:0xb0af7dad81f82978!8m2!3d35.7121356!4d139.7745258!16s%2Fg%2F11bwn3rkpx?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ueno-national-museum",
@@ -1864,6 +1970,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EB%8F%84%EC%BF%84+%EA%B5%AD%EB%A6%BD%EB%B0%95%EB%AC%BC%EA%B4%80/@35.7146278,139.7761821,16.32z/data=!3m1!5s0x60188e83526c6cb9:0x4efc1e737b7cad1a!4m6!3m5!1s0x60188e8314d77d11:0x232fd618bd4977dd!8m2!3d35.7188351!4d139.7765215!16zL20vMDVzazVn?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1000, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/115796-tokyo-national-museum/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ueno-park",
@@ -1880,6 +1987,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Cherry blossoms in spring", ko: "봄에 가면 벚꽃을 보는 것으로 유명" }, { en: "Pair with the museums and zoo for a full Ueno day", ko: "박물관, 미술관, 동물원을 함께 가면 좋은 코스" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%9A%B0%EC%97%90%EB%85%B8+%EA%B3%B5%EC%9B%90/@35.7146278,139.7761821,16.32z/data=!4m6!3m5!1s0x60188e9b45906ac3:0xb1cb3623124e645a!8m2!3d35.7147557!4d139.7734312!16zL20vMDJ5NWdk?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 0, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ueno-park-starkbucks",
@@ -1898,6 +2006,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EC%8A%A4%ED%83%80%EB%B2%85%EC%8A%A4+%EC%9A%B0%EC%97%90%EB%85%B8+%EA%B3%B5%EC%9B%90%EC%A0%90/@35.7153683,139.774536,17.94z/data=!4m6!3m5!1s0x60188e9d4d0d5655:0x92ab8269cc00ebb8!8m2!3d35.7161992!4d139.7740332!16s%2Fg%2F1hf4bzdy2?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 500, currency: "JPY" },
     chain: "starbucks",
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ueno-ramen-butayama",
@@ -1916,6 +2025,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Portions run big — order smaller than usual", ko: "양이 많은 편이라 평소 먹는 것보다 작게 시키는 걸 추천" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EB%9D%BC%EB%A9%98+%EB%B6%80%ED%83%80%EC%95%BC%EB%A7%88+%EC%9A%B0%EC%97%90%EB%85%B8%EC%A0%90/@35.7091807,139.7728802,16.67z/data=!4m6!3m5!1s0x60188d6d27f9a165:0x5212857d183ebdba!8m2!3d35.7062026!4d139.7724991!16s%2Fg%2F11h10vv5fm?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ueno-science-museum",
@@ -1934,6 +2044,7 @@ export const tokyoSpots: Spot[] = [
     googleMapsUrl: "https://www.google.com/maps/place/%EA%B5%AD%EB%A6%BD%EA%B3%BC%ED%95%99%EB%B0%95%EB%AC%BC%EA%B4%80/@35.7146278,139.7761821,16.32z/data=!3m1!5s0x60188e9c60202303:0x62418cdaee37d8df!4m6!3m5!1s0x60188e9ceba15bf1:0x89884580e40b3eca!8m2!3d35.7164273!4d139.7763336!16zL20vMDd2M3Zk?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 630, currency: "JPY" },
     bookingLinks: {"klook":"https://www.klook.com/activity/38549-national-museum-nature-science-ticket-tokyo/?aid=118462"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ueno-toritsune-sizsendow",
@@ -1952,6 +2063,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Order the large", ko: "큰 사이즈로 시키는 게 좋음" }],
     googleMapsUrl: "https://www.google.com/maps/place/%ED%86%A0%EB%A6%AC%EC%B8%A0%EB%84%A4+%EC%8B%9C%EC%A0%A0%EB%8F%84%EC%9A%B0/@35.7068402,139.7731765,16.67z/data=!4m6!3m5!1s0x60188c1e2658e363:0x1a76be856febb17b!8m2!3d35.7039784!4d139.7726986!16s%2Fg%2F11b6_cq5cw?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 1500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ueno-western-museum",
@@ -1969,6 +2081,7 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "Closed Mondays — plan around it", ko: "월요일은 휴무이기 때문에 일정 짤 때 유의" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EA%B5%AD%EB%A6%BD%EC%84%9C%EC%96%91%EB%AF%B8%EC%88%A0%EA%B4%80/@35.7155297,139.7743114,17.41z/data=!3m1!5s0x60188e9cf96abff7:0x12d37b64563b39f3!4m6!3m5!1s0x60188e9cfa41cc7f:0xbb23dcd494e13c8b!8m2!3d35.7153869!4d139.7758138!16s%2Fm%2F026r6hv?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "tokyo-ueno-zoo",
@@ -1986,5 +2099,6 @@ export const tokyoSpots: Spot[] = [
     tips: [{ en: "The giant pandas are the draw", ko: "자이언트 판다가 유명" }, { en: "Buy tickets on Klook ahead of time", ko: "클룩에서 미리 편하게 티켓 구매 가능" }],
     googleMapsUrl: "https://www.google.com/maps/place/%EC%9A%B0%EC%97%90%EB%85%B8+%EB%8F%99%EB%AC%BC%EC%9B%90/@35.7146278,139.7761821,16.32z/data=!4m6!3m5!1s0x60188c28f7766d7f:0x76b8b5efa1988ef4!8m2!3d35.7160153!4d139.772882!16zL20vMDN6Zm5t?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D",
     costEstimate: { amount: 500, currency: "JPY" },
+    lastVerified: "2026-04-24",
   }
 ];

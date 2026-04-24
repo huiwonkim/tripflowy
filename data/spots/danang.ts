@@ -20,6 +20,7 @@ export const danangSpots: Spot[] = [
     photos: ["/images/courses/danang-bana-cable-car.jpg"],
     postSlug: "danang-bana-hills-complete-guide",
     bookingLinks: {"klook":"https://www.klook.com/activity/1818-ba-na-hills-ticket-da-nang/"},
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-boat-ride-on-thu-bon-river",
@@ -32,6 +33,7 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "45-minute river ride. Relaxing and scenic.", ko: "45분간 강에서 여유로운 보트 투어를 즐기세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-dinner-at-a-local-seafood-restaurant",
@@ -45,6 +47,7 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Try fresh grilled fish and Vietnamese BBQ near the beach.", ko: "신선한 해산물 BBQ를 즐기세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-explore-hoi-an-ancient-town",
@@ -57,6 +60,7 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Walk through the UNESCO World Heritage old town. Visit the Japanese Covered Bridge.", ko: "유네스코 세계유산 구시가지를 여유롭게 걸어보세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-golden-bridge-french-village",
@@ -71,6 +75,7 @@ export const danangSpots: Spot[] = [
     description: { en: "The iconic Golden Bridge held by giant stone hands, and the French alpine village.", ko: "거대한 손 모양으로 된 암벽이 다리를 받치고 있는 골든브릿지." },
     tips: [{ en: "The opposite side of the bridge entrance has fewer people — better photos!", ko: "처음 보이는 다리 입구보다 반대쪽이 사람이 없어서 사진이 잘 나와요." }, { en: "Try the Alpine Coaster at French Village too.", ko: "프렌치 빌리지에서는 알파인코스터도 타 보세요." }, { en: "Just follow this Ba Na Hills course as-is.", ko: "바나힐 코스는 이대로만 따라가세요." }],
     photos: ["/images/courses/danang-golden-bridge.jpg"],
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-lady-buddha-at-linh-ung-pagoda",
@@ -83,6 +88,7 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "67m tall Lady Buddha statue on Son Tra Peninsula. Stunning coastal views.", ko: "선짜 반도 위 67m 해수관음상. 해안 경치가 장관입니다." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-lantern-buying-evening-stroll",
@@ -95,6 +101,7 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Buy a paper lantern as a souvenir. The old town glows at night.", ko: "종이 랜턴을 기념품으로 구입하고 야경을 즐기세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-lunch-at-a-local-pho-restaurant",
@@ -108,6 +115,7 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Try Da Nang-style pho — lighter and more fragrant than Hanoi.", ko: "다낭 스타일 쌀국수를 맛보세요. 하노이보다 가볍고 향긋합니다." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-lunch-at-morning-glory",
@@ -121,6 +129,7 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "One of Hoi An's iconic restaurants. Reserve ahead if possible.", ko: "호이안의 유명 레스토랑에서 점심을 즐기세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-marble-mountains-exploration",
@@ -133,6 +142,7 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Climb stone steps, explore caves and pagodas with panoramic city views.", ko: "석조 계단을 오르고, 동굴과 탑을 둘러보며 시내 전경을 감상하세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-my-khe-beach-walk",
@@ -145,6 +155,7 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Stroll along one of Asia's most beautiful beaches. The late afternoon light is perfect for photos.", ko: "아시아에서 가장 아름다운 해변 중 하나를 산책하세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "danang-som-moi-garden",
@@ -158,5 +169,6 @@ export const danangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Famous for bánh xèo and pho — a must-try local restaurant.", ko: "반쎄오, 쌀국수가 유명한 썸모이가든에서 저녁 드셔보세요!" },
+    lastVerified: "2026-04-24",
   }
 ];

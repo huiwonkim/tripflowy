@@ -16,6 +16,7 @@ export const veniceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Traditional lace-making and handmade souvenirs.", ko: "전통 레이스 공예와 수제 기념품." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "venice-doge-s-palace",
@@ -28,6 +29,7 @@ export const veniceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Bridge of Sighs and Gothic architecture.", ko: "탄식의 다리와 고딕 건축." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "venice-fresh-seafood-risotto-lunch",
@@ -41,6 +43,7 @@ export const veniceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Burano is famous for its fresh seafood risotto.", ko: "부라노는 신선한 해산물 리조또로 유명." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "venice-glass-blowing-demo",
@@ -53,6 +56,7 @@ export const veniceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Watch master artisans create glass art.", ko: "장인 예술가들의 유리 공예 관람." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "venice-gondola-ride",
@@ -65,6 +69,7 @@ export const veniceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "30-minute ride through hidden canals. Book ahead.", ko: "숨겨진 운하 30분 탑승. 사전 예약." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "venice-murano-shopping-gelato",
@@ -77,6 +82,7 @@ export const veniceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Buy glass souvenirs and enjoy island gelato.", ko: "유리 기념품 구매와 섬 젤라토." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "venice-rainbow-houses-walk",
@@ -89,6 +95,7 @@ export const veniceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Every house is painted a different color. Photographer's paradise.", ko: "모든 집이 다른 색. 사진 작가의 천국." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "venice-rialto-market-lunch",
@@ -102,6 +109,7 @@ export const veniceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Fresh cicchetti (Venetian tapas) near Rialto Bridge.", ko: "리알토 다리 근처 치케티(베네치안 타파스)." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "venice-st-mark-s-basilica",
@@ -114,5 +122,6 @@ export const veniceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Gold mosaic interior. Free entry, skip-line tickets available.", ko: "금 모자이크 내부. 무료 입장, 스킵라인 가능." },
+    lastVerified: "2026-04-24",
   }
 ];

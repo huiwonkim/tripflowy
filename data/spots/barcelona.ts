@@ -16,6 +16,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "City beach on the Mediterranean. Swim and sunbathe.", ko: "지중해 도시 해변. 수영과 일광욕." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-flamenco-show",
@@ -28,6 +29,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Authentic flamenco at Tablao Cordobes or Tarantos.", ko: "타블라오 코르도베스에서 정통 플라멩코." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-gothic-quarter-walk",
@@ -40,6 +42,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "2,000 years of history in narrow medieval lanes.", ko: "좁은 중세 골목의 2천 년 역사." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-joan-mir-foundation",
@@ -52,6 +55,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Catalan artist's colorful works in a modernist building.", ko: "모더니스트 건물에 있는 카탈루냐 작가의 작품." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-la-rambla-boqueria-market",
@@ -64,6 +68,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Famous boulevard and the best food market in Spain.", ko: "유명 대로와 스페인 최고 식품 시장." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-lunch-at-pla-a-del-sol",
@@ -77,6 +82,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Sunny square with terrace restaurants.", ko: "테라스 레스토랑이 있는 햇살 좋은 광장." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-magic-fountain-light-show",
@@ -89,6 +95,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Free water, light, and music show (check schedule).", ko: "무료 물, 빛, 음악 쇼 (일정 확인)." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-montju-c-castle",
@@ -101,6 +108,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "17th-century fortress with harbor views.", ko: "항구 전경의 17세기 요새." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-paella-lunch",
@@ -114,6 +122,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Seafood paella at a beachfront restaurant.", ko: "해변 레스토랑에서 해산물 빠에야." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-park-g-ell-early-entry",
@@ -126,6 +135,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Mosaic terraces, dragon fountain, city views. Book first slot.", ko: "모자이크 테라스, 도마뱀 분수, 도시 전경." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-sagrada-fam-lia",
@@ -138,6 +148,7 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Book tower access months ahead. Allow 2 hours.", ko: "타워 입장은 몇 달 전에 예약. 2시간 소요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "barcelona-tapas-lunch-on-carrer-de-blai",
@@ -151,5 +162,6 @@ export const barcelonaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Barcelona's best tapas street — pintxos and vermouth.", ko: "바르셀로나 최고 타파스 거리." },
+    lastVerified: "2026-04-24",
   }
 ];

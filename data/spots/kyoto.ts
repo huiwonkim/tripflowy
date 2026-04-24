@@ -16,6 +16,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Walk through towering bamboo — arrive early to avoid crowds.", ko: "우뚝 솟은 대나무 사이를 걸어보세요. 일찍 도착 추천." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-fushimi-inari-early-morning",
@@ -28,6 +29,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "10,000 vermillion torii gates up the mountain. Go at dawn.", ko: "산 위로 이어지는 1만 개 주홍색 도리이. 새벽에 방문." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-gion-geisha-walk",
@@ -40,6 +42,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Spot geiko (geisha) heading to evening appointments.", ko: "저녁 약속으로 향하는 게이코(게이샤)를 찾아보세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-gojo-zaka-pottery-street",
@@ -52,6 +55,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Browse and buy Kiyomizu-yaki ceramics.", ko: "기요미즈야키 도자기 감상과 구매." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-kinkaku-ji-golden-pavilion",
@@ -64,6 +68,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Gold-leafed pavilion reflected in a mirror lake.", ko: "거울 연못에 비치는 금박 사원." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-kiyomizu-dera-temple",
@@ -76,6 +81,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Wooden stage temple with panoramic views of Kyoto.", ko: "교토 전경의 목조 무대 사원." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-kodai-ji-temple-evening",
@@ -88,6 +94,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Zen temple with beautiful moss garden.", ko: "아름다운 이끼 정원이 있는 선 사원." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-matcha-parfait-lunch",
@@ -101,6 +108,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Kyoto's matcha desserts are legendary.", ko: "교토의 말차 디저트는 전설적." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-mochi-return-to-kyoto",
@@ -114,6 +122,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Try Nara's famous yomogi mochi before heading back.", ko: "귀환 전 나라 명물 쑥 모치를 맛보세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-monkey-park-iwatayama",
@@ -126,6 +135,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Hilltop monkey park with city views.", ko: "도시 전경이 보이는 언덕 위 원숭이 공원." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-nara-park-deer",
@@ -138,6 +148,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1,200 free-roaming sacred deer. Buy deer crackers (shika senbei).", ko: "1,200마리 자유 방목 신성한 사슴. 사슴 과자 구매." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-ninenzaka-sannenzaka",
@@ -150,6 +161,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Beautifully preserved stone-paved lanes with traditional shops.", ko: "전통 가게가 있는 아름다운 돌길." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-nishiki-market-lunch",
@@ -163,6 +175,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "'Kyoto's Kitchen' — pickles, matcha, and street food.", ko: "'교토의 부엌' — 절임, 말차, 길거리 음식." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-ryoan-ji-zen-rock-garden",
@@ -175,6 +188,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Japan's most famous rock garden — 15 stones, infinite meaning.", ko: "일본에서 가장 유명한 돌 정원 — 15개 돌, 무한한 의미." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-tea-ceremony-experience",
@@ -187,6 +201,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Private matcha ceremony in a traditional tea house.", ko: "전통 찻집에서 프라이빗 말차 다도." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-todai-ji-great-buddha",
@@ -199,6 +214,7 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "World's largest wooden building housing a 15m bronze Buddha.", ko: "15m 청동 불상이 있는 세계 최대 목조 건물." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "kyoto-togetsu-kyo-bridge-lunch",
@@ -212,5 +228,6 @@ export const kyotoSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Tofu cuisine or soba near the iconic bridge.", ko: "상징적인 다리 근처 두부 요리 또는 소바." },
+    lastVerified: "2026-04-24",
   }
 ];

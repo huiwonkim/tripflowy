@@ -16,6 +16,7 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "America's oldest public park. Follow the red line.", ko: "미국에서 가장 오래된 공공 공원. 빨간 선을 따라가세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "boston-faneuil-hall-quincy-market",
@@ -29,6 +30,7 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Historic market hall — clam chowder and lobster rolls.", ko: "역사적 시장 — 클램 차우더와 랍스터 롤." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "boston-harbor-sunset-cruise",
@@ -41,6 +43,7 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1-hour harbor cruise with skyline views.", ko: "스카이라인을 보며 1시간 항구 크루즈." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "boston-harvard-square-shops-cafes",
@@ -53,6 +56,7 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "The Coop bookstore, indie shops, and street performers.", ko: "쿱 서점, 인디 숍, 거리 공연." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "boston-harvard-yard-tour",
@@ -65,6 +69,7 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Student-led tour of America's oldest university.", ko: "미국에서 가장 오래된 대학교 학생 가이드 투어." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "boston-lobster-roll-lunch",
@@ -78,6 +83,7 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Legal Sea Foods or Row 34 — fresh New England lobster.", ko: "리갈 시푸드 또는 로우 34 — 신선한 랍스터." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "boston-mit-campus-stata-center",
@@ -90,6 +96,7 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Frank Gehry's wild building and tech culture.", ko: "프랭크 게리의 기발한 건물과 기술 문화." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "boston-new-england-aquarium",
@@ -102,6 +109,7 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Giant ocean tank, penguins, and sea turtle rehab.", ko: "거대 해양 수조, 펭귄, 바다 거북 재활." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "boston-paul-revere-house-old-north-church",
@@ -114,6 +122,7 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Where the American Revolution began.", ko: "미국 독립 전쟁이 시작된 곳." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "boston-uss-constitution",
@@ -126,5 +135,6 @@ export const bostonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "World's oldest commissioned naval vessel (1797).", ko: "세계에서 가장 오래된 현역 군함(1797년)." },
+    lastVerified: "2026-04-24",
   }
 ];

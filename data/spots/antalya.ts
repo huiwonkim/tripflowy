@@ -16,6 +16,7 @@ export const antalyaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "World's longest tunnel aquarium. Great for families.", ko: "세계에서 가장 긴 터널 수족관." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "antalya-antalya-museum",
@@ -28,6 +29,7 @@ export const antalyaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "One of Turkey's best archaeological museums.", ko: "터키 최고의 고고학 박물관 중 하나." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "antalya-aspendos-theater",
@@ -40,6 +42,7 @@ export const antalyaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "2nd-century Roman theater seating 15,000. Still used for concerts.", ko: "15,000석 2세기 로마 극장. 아직 콘서트에 사용." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "antalya-beach-club-lunch",
@@ -53,6 +56,7 @@ export const antalyaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Mediterranean cuisine with sea views.", ko: "바다 전망의 지중해 요리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "antalya-kalei-i-old-town",
@@ -65,6 +69,7 @@ export const antalyaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Ottoman houses, Roman gate, and narrow alleys.", ko: "오스만 가옥, 로마 문, 좁은 골목." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "antalya-konyaalt-beach-morning",
@@ -77,6 +82,7 @@ export const antalyaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Pebble beach with stunning Taurus mountain backdrop.", ko: "타우러스 산을 배경으로 한 자갈 해변." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "antalya-local-g-zleme-lunch",
@@ -90,6 +96,7 @@ export const antalyaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Handmade Turkish flatbread with cheese and spinach.", ko: "수제 터키 플랫브레드와 치즈, 시금치." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "antalya-lower-d-den-waterfall",
@@ -102,6 +109,7 @@ export const antalyaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "40m waterfall cascading directly into the Mediterranean.", ko: "지중해로 직접 떨어지는 40m 폭포." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "antalya-perge-ancient-city",
@@ -114,5 +122,6 @@ export const antalyaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Hellenistic gate, Roman baths, and colonnaded street.", ko: "헬레니즘 문, 로마 욕장, 주랑 거리." },
+    lastVerified: "2026-04-24",
   }
 ];

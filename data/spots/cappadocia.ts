@@ -17,6 +17,7 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Testi kebab (pottery kebab) in a cave restaurant.", ko: "동굴 레스토랑에서 테스티 케밥 (항아리 케밥)." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "cappadocia-derinkuyu-underground-city",
@@ -29,6 +30,7 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "8 levels deep — housed 20,000 people in ancient times.", ko: "8층 깊이 — 고대에 2만 명 수용." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "cappadocia-g-reme-open-air-museum",
@@ -41,6 +43,7 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Cave churches with Byzantine frescoes.", ko: "비잔틴 프레스코화가 있는 동굴 교회." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "cappadocia-hot-air-balloon-flight",
@@ -53,6 +56,7 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1-hour sunrise flight over Göreme. Book weeks ahead.", ko: "괴레메 위 1시간 선라이즈 비행. 몇 주 전 예약." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "cappadocia-ihlara-valley-hike",
@@ -65,6 +69,7 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "3.5km canyon walk with rock-cut churches.", ko: "3.5km 협곡 하이킹과 바위 교회." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "cappadocia-love-valley-walk",
@@ -77,6 +82,7 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Phallic-shaped rock formations. Easy hiking trail.", ko: "독특한 모양의 바위 지형. 쉬운 하이킹." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "cappadocia-pasabag-fairy-chimneys",
@@ -89,6 +95,7 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Multi-headed fairy chimneys — most dramatic in Cappadocia.", ko: "카파도키아에서 가장 극적인 다두 요정 굴뚝." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "cappadocia-pottery-lunch-in-avanos",
@@ -102,6 +109,7 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Pottery town — try making your own.", ko: "도자기 마을 — 직접 만들어보세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "cappadocia-selime-monastery",
@@ -114,6 +122,7 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Cathedral-sized cave monastery carved into rock.", ko: "바위에 깎아 만든 대성당 크기의 동굴 수도원." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "cappadocia-sunset-horseback-ride",
@@ -126,5 +135,6 @@ export const cappadociaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "2-hour ride through Red and Rose Valleys at golden hour.", ko: "레드 & 로즈 밸리에서 2시간 골든 아워 승마." },
+    lastVerified: "2026-04-24",
   }
 ];

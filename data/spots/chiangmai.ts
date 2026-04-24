@@ -16,6 +16,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Tom yum, pad thai, green curry, papaya salad, mango sticky rice.", ko: "똠얌, 팟타이, 그린 커리, 파파야 샐러드, 망고 찹쌀밥." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-eat-everything-you-cooked",
@@ -29,6 +30,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Sit down and enjoy your own creations with the group.", ko: "그룹과 함께 자신이 만든 음식을 즐기세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-handicraft-shopping",
@@ -41,6 +43,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Hand-painted umbrellas, wood carvings, hill-tribe textiles.", ko: "수공예 우산, 목각, 산족 직물." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-hmong-hill-tribe-village",
@@ -53,6 +56,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Visit a traditional Hmong village near the temple.", ko: "사원 근처 전통 흐몽 마을 방문." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-khao-soi-lunch",
@@ -66,6 +70,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Northern Thai curry noodle soup — Chiang Mai's signature dish.", ko: "치앙마이 대표 음식 — 북부 태국 커리 국수." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-meet-feed-elephants",
@@ -78,6 +83,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Learn about each elephant's rescue story. Feed them bananas and sugarcane.", ko: "각 코끼리의 구조 이야기를 듣고 바나나와 사탕수수를 먹여주세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-mud-bath-with-elephants",
@@ -90,6 +96,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Get muddy together, then bathe them in the river.", ko: "함께 진흙탕에 들어간 후 강에서 목욕시키기." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-nimman-road-cafes",
@@ -103,6 +110,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Trendy neighborhood with art cafes and boutiques.", ko: "아트 카페와 부티크가 있는 트렌디한 동네." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-street-food-crawl",
@@ -116,6 +124,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Sai ua (sausage), mango sticky rice, fried insects.", ko: "싸이 우아(소시지), 망고 찹쌀밥, 곤충 튀김." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-tha-phae-gate-area",
@@ -128,6 +137,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Start at the iconic gate — the market runs from here.", ko: "상징적인 문에서 시작 — 시장이 여기서 이어집니다." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-thai-lunch-at-sanctuary",
@@ -141,6 +151,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Traditional Thai lunch prepared by staff.", ko: "스태프가 준비한 전통 태국 점심." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-warorot-market-visit",
@@ -153,6 +164,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Shop for ingredients with your chef guide.", ko: "셰프 가이드와 함께 재료 쇼핑." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-wat-chedi-luang",
@@ -165,6 +177,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "14th-century temple with a massive ruined chedi.", ko: "14세기 사원과 거대한 체디 유적." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-wat-chiang-man",
@@ -177,6 +190,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Chiang Mai's oldest temple (1296).", ko: "치앙마이에서 가장 오래된 사원(1296년)." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-wat-phra-singh",
@@ -189,6 +203,7 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Chiang Mai's most revered temple. Lanna architecture.", ko: "치앙마이에서 가장 숭배받는 사원. 란나 건축." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "chiangmai-wat-phra-that-doi-suthep",
@@ -201,5 +216,6 @@ export const chiangmaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "306 steps up to a golden chedi. Panoramic views of Chiang Mai.", ko: "306계단 올라가면 황금 체디. 치앙마이 전경." },
+    lastVerified: "2026-04-24",
   }
 ];

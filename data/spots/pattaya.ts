@@ -16,6 +16,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "3D art museum — interactive photo opportunities.", ko: "3D 미술관 — 인터랙티브 사진 촬영." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-lunch-at-jomtien-beach",
@@ -29,6 +30,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Quieter beach with great seafood restaurants.", ko: "조용한 해변에 좋은 해산물 식당." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-nong-nooch-tropical-garden",
@@ -41,6 +43,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "600-acre gardens with Thai cultural shows.", ko: "600에이커 정원과 태국 문화 공연." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-pattaya-beach",
@@ -53,6 +56,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Jet ski, parasailing, or just relax on the sand.", ko: "제트스키, 패러세일링 또는 모래 위에서 휴식." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-pattaya-floating-market",
@@ -65,6 +69,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Thai food and crafts from 4 regions. Boat rides available.", ko: "4개 지역 음식과 공예품. 보트 탑승 가능." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-sanctuary-of-truth",
@@ -77,6 +82,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "All-wood temple covered in intricate carvings. Still under construction since 1981.", ko: "정교한 조각으로 덮인 목조 사원. 1981년부터 건설 중." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-seafood-lunch",
@@ -90,6 +96,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Fresh seafood at Naklua fish market area.", ko: "나클루아 어시장 지역에서 신선한 해산물." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-seafood-lunch-on-island",
@@ -103,6 +110,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Beachfront grilled seafood stalls.", ko: "해변 해산물 구이 노점." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-snorkeling-at-samae-beach",
@@ -115,6 +123,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Quieter beach with better snorkeling.", ko: "더 조용한 해변에서 스노클링." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-tawaen-beach-swim",
@@ -127,6 +136,7 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Main beach — clear water, water sports available.", ko: "메인 해변 — 맑은 물, 수상 스포츠." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "pattaya-terminal-21-shopping",
@@ -139,5 +149,6 @@ export const pattayaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Airport-themed mall with affordable shopping.", ko: "공항 테마 몰에서 저렴한 쇼핑." },
+    lastVerified: "2026-04-24",
   }
 ];

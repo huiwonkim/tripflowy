@@ -16,6 +16,7 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "980 buildings, 9,999 rooms. Allow 3-4 hours.", ko: "980개 건물, 9999개 방. 3~4시간 소요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "beijing-hutong-home-style-lunch",
@@ -29,6 +30,7 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Jianbing (Chinese crepe), dumplings, and noodles.", ko: "젠빙(중국 크레이프), 만두, 국수." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "beijing-hutong-rickshaw-tour",
@@ -41,6 +43,7 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Traditional alley tour by pedicab through old Beijing.", ko: "옛 베이징 전통 골목 삼륜차 투어." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "beijing-jingshan-park-viewpoint",
@@ -53,6 +56,7 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Climb the hill for perfect Forbidden City aerial views.", ko: "언덕에 올라 자금성 조감도." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "beijing-nanluoguxiang-lane",
@@ -65,6 +69,7 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Trendy hutong with cafes, shops, and street food.", ko: "카페, 상점, 길거리 음식이 있는 트렌디 후통." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "beijing-peking-duck-lunch",
@@ -78,6 +83,7 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Quanjude or Da Dong — Beijing's signature dish.", ko: "취안쥐더 또는 다동 — 베이징 명물 오리구이." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "beijing-temple-of-heaven",
@@ -90,6 +96,7 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Where emperors prayed for harvests. Tai chi in the park.", ko: "황제가 풍년을 기원한 곳. 공원에서 태극권." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "beijing-tiananmen-square",
@@ -102,6 +109,7 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "World's largest public square. Flag ceremony at sunrise.", ko: "세계 최대 공공 광장. 일출 국기 게양식." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "beijing-toboggan-slide-down",
@@ -114,6 +122,7 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Fun alternative descent — metal slide down the mountain.", ko: "재미있는 하산 — 금속 슬라이드로 산 아래로." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "beijing-walk-the-wall",
@@ -126,5 +135,6 @@ export const beijingSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "2-3 hours walking the restored wall with mountain views.", ko: "산 전경을 보며 복원된 성벽 2~3시간 도보." },
+    lastVerified: "2026-04-24",
   }
 ];

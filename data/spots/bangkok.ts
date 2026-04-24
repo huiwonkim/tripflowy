@@ -16,6 +16,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Rent a bicycle and explore the ancient temple ruins.", ko: "자전거를 빌려 고대 사원 유적을 탐방하세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-chao-phraya-evening-cruise",
@@ -28,6 +29,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1-hour dinner cruise or hop-on hop-off river boat.", ko: "1시간 저녁 크루즈 또는 수상버스를 이용하세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-chatuchak-weekend-market",
@@ -40,6 +42,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "15,000 stalls. Go before noon for the best experience.", ko: "세계 최대 규모 주말 시장. 오전에 방문하세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-chinatown-lunch",
@@ -53,6 +56,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Dim sum, roast duck, and street noodles.", ko: "딤섬, 오리구이, 길거리 국수." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-explore-yaowarat",
@@ -65,6 +69,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Gold shops, herb markets, shrines hidden in alleys.", ko: "금 상점, 약재 시장, 골목 사원들." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-grand-palace-wat-phra-kaew",
@@ -77,6 +82,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Arrive early before the crowds. 2 hours. Dress code required.", ko: "혼잡 전 일찍 도착하세요. 복장 규정 필수." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-khao-san-road-breakfast-walk",
@@ -89,6 +95,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Famous backpacker street — quieter and more authentic in the morning.", ko: "유명한 배낭여행자 거리를 오전에 여유있게 구경하세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-lunch-at-tha-tien-market",
@@ -102,6 +109,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Local riverside food stalls. Try pad kra pao and mango sticky rice.", ko: "현지 강변 노점에서 팟끄라파오와 망고 찰밥을 드세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-lunch-boat-noodles",
@@ -115,6 +123,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "The region is famous for boat noodles.", ko: "아유타야 명물 보트 누들을 꼭 드세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-lunch-near-jj-market",
@@ -128,6 +137,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Plenty of Thai and international food stalls around the market.", ko: "시장 주변에 다양한 식당이 있습니다." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-wat-arun-temple-of-dawn",
@@ -140,6 +150,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Short boat ride across the river. Stunning ceramic mosaic towers.", ko: "강 건너 도착. 화려한 도자기 타일 사원." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-wat-pho-reclining-buddha",
@@ -152,6 +163,7 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "46-meter gold reclining Buddha. One of the best temple experiences.", ko: "46미터 황금 와불 사원. 방콕 최고의 사원 중 하나." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bangkok-yaowarat-night-street-food",
@@ -165,5 +177,6 @@ export const bangkokSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Come back after dark for seafood, durian, and lobster.", ko: "밤에 돌아와 해산물, 두리안, 랍스터를 즐기세요." },
+    lastVerified: "2026-04-24",
   }
 ];

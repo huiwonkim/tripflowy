@@ -17,6 +17,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Classic English afternoon tea near Kensington.", ko: "켄싱턴 근처 클래식 영국 애프터눈 티." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-british-museum",
@@ -29,6 +30,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Rosetta Stone, Egyptian mummies, Parthenon marbles. Free.", ko: "로제타석, 이집트 미라, 파르테논 대리석. 무료." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-covent-garden-lunch",
@@ -42,6 +44,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Street performers, market hall, and restaurants.", ko: "거리 공연, 마켓 홀, 레스토랑." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-curry-on-brick-lane",
@@ -55,6 +58,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "London's best curry street — Bangladeshi and Indian.", ko: "런던 최고의 커리 거리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-london-eye",
@@ -67,6 +71,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "30-minute rotation with Thames and city panorama.", ko: "30분 회전, 템즈강과 도시 파노라마." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-notting-hill-pastel-houses",
@@ -79,6 +84,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Instagram-famous pastel-colored terraces.", ko: "인스타그램에서 유명한 파스텔 테라스 하우스." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-portobello-road-market",
@@ -91,6 +97,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Antiques, vintage, and street food. Best on Saturday.", ko: "골동품, 빈티지, 길거리 음식. 토요일이 최고." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-seven-dials-neal-s-yard",
@@ -103,6 +110,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Colorful courtyard and indie shops.", ko: "알록달록한 안마당과 인디 숍." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-shoreditch-street-art",
@@ -115,6 +123,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Brick Lane, Banksy murals, and vintage markets.", ko: "브릭 레인, 뱅크시 벽화, 빈티지 마켓." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-south-bank-food-market",
@@ -128,6 +137,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Street food stalls along the Thames.", ko: "템즈강변 길거리 음식 노점." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-tate-modern",
@@ -140,6 +150,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Free modern art museum in a former power station.", ko: "옛 발전소의 무료 현대 미술관." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-tower-bridge-walk",
@@ -152,6 +163,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Walk across the glass floor high above the Thames.", ko: "템즈강 위 유리 바닥을 걸어보세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-tower-of-london",
@@ -164,6 +176,7 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Crown Jewels, Beefeaters, 1,000 years of history.", ko: "왕관 보석, 비프이터, 1000년 역사." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "london-westminster-abbey-big-ben",
@@ -176,5 +189,6 @@ export const londonSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Gothic abbey and the iconic clock tower.", ko: "고딕 사원과 상징적인 시계탑." },
+    lastVerified: "2026-04-24",
   }
 ];

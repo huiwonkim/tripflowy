@@ -17,6 +17,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Sweet and savory crêpes in the Latin Quarter.", ko: "라탱 지구에서 달콤한 크레이프와 짭조름한 크레이프." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-eiffel-tower",
@@ -29,6 +30,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Book summit tickets online in advance.", ko: "정상 티켓은 온라인 사전 예매 필수." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-falafel-lunch-on-rue-des-rosiers",
@@ -42,6 +44,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "L'As du Fallafel — best falafel in Paris.", ko: "라스 뒤 팔라펠 — 파리 최고의 팔라펠." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-french-bistro-lunch",
@@ -55,6 +58,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Classic French onion soup and croque monsieur.", ko: "프랑스 양파 수프와 크로크 무슈." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-garden-picnic",
@@ -68,6 +72,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Buy baguette and cheese for a garden picnic.", ko: "바게트와 치즈를 사서 정원 피크닉." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-grand-trianon-marie-antoinette-s-estate",
@@ -80,6 +85,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Queen's private hamlet and gardens.", ko: "왕비의 사적 마을과 정원." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-le-marais-galleries-vintage",
@@ -92,6 +98,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Art galleries, vintage shops, and trendy cafes.", ko: "갤러리, 빈티지 숍, 트렌디한 카페." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-louvre-museum",
@@ -104,6 +111,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Mona Lisa, Venus de Milo — allow 3 hours minimum.", ko: "모나리자, 밀로의 비너스 — 최소 3시간 필요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-lunch-on-rue-cler",
@@ -117,6 +125,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Charming market street near the tower.", ko: "타워 근처 매력적인 시장 거리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-moulin-rouge-area-walk",
@@ -129,6 +138,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "See the famous cabaret and nearby vintage shops.", ko: "유명 카바레와 근처 빈티지 숍 구경." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-notre-dame-cathedral-exterior",
@@ -141,6 +151,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Under restoration — still stunning from outside.", ko: "복원 중이지만 외부에서도 여전히 장관." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-palace-of-versailles",
@@ -153,6 +164,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Hall of Mirrors, King's apartments, Chapel.", ko: "거울의 방, 왕의 아파트먼트, 예배당." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-sacr-c-ur-basilica",
@@ -165,6 +177,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "White-domed basilica on the highest point in Paris.", ko: "파리 최고 높은 지점의 하얀 돔 성당." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-seine-river-sunset-cruise",
@@ -177,6 +190,7 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1-hour Bateaux Mouches cruise past Notre-Dame.", ko: "노트르담을 지나는 1시간 바토무슈 크루즈." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "paris-shakespeare-company-bookshop",
@@ -189,5 +203,6 @@ export const parisSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Legendary English-language bookshop since 1919.", ko: "1919년부터의 전설적인 영어 서점." },
+    lastVerified: "2026-04-24",
   }
 ];

@@ -17,6 +17,7 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Many excellent cafes along Yongkang Road.", ko: "용강 로드의 훌륭한 카페들." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "shanghai-bund-night-views",
@@ -29,6 +30,7 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Pudong skyline lit up — best views from the Bund.", ko: "푸동 스카이라인 조명 — 와이탄에서 최고 야경." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "shanghai-french-concession-walk",
@@ -41,6 +43,7 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Plane tree-lined streets, colonial villas, boutiques.", ko: "플라타너스 가로수, 식민지 빌라, 부티크." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "shanghai-nanjing-road-pedestrian-street",
@@ -53,6 +56,7 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Shanghai's busiest shopping street.", ko: "상하이에서 가장 바쁜 쇼핑 거리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "shanghai-shanghai-tower-observation",
@@ -65,6 +69,7 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "World's 2nd tallest building — 632m. 118th floor observatory.", ko: "세계 2위 높이 건물 — 632m. 118층 전망대." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "shanghai-the-bund-walk",
@@ -77,6 +82,7 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1.5km waterfront promenade with 52 heritage buildings.", ko: "52개 유산 건물이 있는 1.5km 해안 산책로." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "shanghai-tianzifang-art-lanes",
@@ -89,6 +95,7 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Narrow shikumen lanes converted into galleries and shops.", ko: "갤러리와 상점으로 바뀐 좁은 석고문 골목." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "shanghai-xiaolongbao-lunch",
@@ -102,6 +109,7 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Shanghai's famous soup dumplings at Jia Jia Tang Bao.", ko: "가가탕바오에서 상하이 유명 소룡포." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "shanghai-yu-garden",
@@ -114,6 +122,7 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "400-year-old classical Chinese garden.", ko: "400년 된 중국 고전 정원." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "shanghai-yuyuan-bazaar",
@@ -126,5 +135,6 @@ export const shanghaiSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Traditional market selling snacks, tea, and souvenirs.", ko: "간식, 차, 기념품을 파는 전통 시장." },
+    lastVerified: "2026-04-24",
   }
 ];

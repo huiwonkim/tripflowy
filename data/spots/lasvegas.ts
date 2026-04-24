@@ -16,6 +16,7 @@ export const lasvegasSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Free water and light show every 15 minutes after dark.", ko: "어둠 후 15분마다 무료 분수 쇼." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "lasvegas-buffet-lunch",
@@ -29,6 +30,7 @@ export const lasvegasSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Bacchanal (Caesars) or Wicked Spoon (Cosmopolitan).", ko: "바카날(시저스) 또는 위키드 스푼(코스모폴리탄)." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "lasvegas-cirque-du-soleil-show",
@@ -41,6 +43,7 @@ export const lasvegasSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "O, Mystère, or KÀ — world-class performances.", ko: "오, 미스테르, 카 — 세계적인 공연." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "lasvegas-downtown-container-park",
@@ -53,6 +56,7 @@ export const lasvegasSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Shops and restaurants in repurposed shipping containers.", ko: "재활용 선박 컨테이너의 상점과 레스토랑." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "lasvegas-fremont-street-experience",
@@ -65,6 +69,7 @@ export const lasvegasSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "LED canopy light show, live music, zip line.", ko: "LED 캐노피 라이트 쇼, 라이브 음악, 짚라인." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "lasvegas-grand-canyon-skywalk",
@@ -77,6 +82,7 @@ export const lasvegasSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Glass-bottom walkway 4,000ft above the canyon floor.", ko: "협곡 바닥 4000피트 위 유리 바닥 산책로." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "lasvegas-mob-museum",
@@ -89,6 +95,7 @@ export const lasvegasSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "History of organized crime and law enforcement.", ko: "조직 범죄와 법 집행의 역사." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "lasvegas-rim-viewpoints",
@@ -101,6 +108,7 @@ export const lasvegasSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Eagle Point, Guano Point — stunning canyon views.", ko: "이글 포인트, 구아노 포인트 — 장엄한 협곡." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "lasvegas-walk-the-strip",
@@ -113,5 +121,6 @@ export const lasvegasSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Bellagio, Venetian, Caesars — world-famous casino boulevard.", ko: "벨라지오, 베네시안, 시저스 — 세계적인 카지노 대로." },
+    lastVerified: "2026-04-24",
   }
 ];

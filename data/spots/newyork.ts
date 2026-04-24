@@ -16,6 +16,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Reflecting pools and underground museum.", ko: "반사 풀과 지하 박물관." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-broadway-show",
@@ -28,6 +29,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "World-class theater — Hamilton, Wicked, or Lion King.", ko: "세계적인 공연 — 해밀턴, 위키드, 라이온 킹." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-chelsea-galleries",
@@ -40,6 +42,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Free contemporary art galleries — dozens to choose from.", ko: "무료 현대 미술 갤러리 — 수십 곳." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-chelsea-market",
@@ -53,6 +56,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Food hall in a former Nabisco factory.", ko: "옛 나비스코 공장의 푸드 홀." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-dumbo-sunset-pizza",
@@ -66,6 +70,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Best skyline views from Brooklyn. Grimaldi's pizza.", ko: "브루클린에서 최고의 스카이라인. 그리말디 피자." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-empire-state-building",
@@ -78,6 +83,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "86th floor observation deck. Go at opening for fewer crowds.", ko: "86층 전망대. 오픈 시간에 가면 혼잡 적음." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-ferry-to-statue-of-liberty",
@@ -90,6 +96,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Book pedestal or crown access weeks ahead.", ko: "기단 또는 왕관 접근은 몇 주 전 예약." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-guggenheim-museum",
@@ -102,6 +109,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Frank Lloyd Wright's spiral building.", ko: "프랭크 로이드 라이트의 나선형 건물." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-harlem-walk",
@@ -114,6 +122,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Apollo Theater, brownstones, and street culture.", ko: "아폴로 극장, 브라운스톤, 거리 문화." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-metropolitan-museum-of-art",
@@ -126,6 +135,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "One of the world's greatest museums. Allow 3+ hours.", ko: "세계 최고의 미술관 중 하나. 3시간 이상." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-soho-shopping-brunch",
@@ -138,6 +148,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Designer boutiques and trendy brunch spots.", ko: "디자이너 부티크와 트렌디한 브런치." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-soul-food-dinner",
@@ -151,6 +162,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Sylvia's or Red Rooster — fried chicken and waffles.", ko: "실비아스 또는 레드 루스터 — 프라이드 치킨." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-times-square-tkts-booth",
@@ -163,6 +175,7 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Get discounted Broadway tickets for tonight's show.", ko: "오늘 밤 브로드웨이 할인 티켓 구매." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "newyork-walk-brooklyn-bridge",
@@ -175,5 +188,6 @@ export const newyorkSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1.3-mile walk with Manhattan skyline views.", ko: "맨해튼 스카이라인을 보며 1.3마일 도보." },
+    lastVerified: "2026-04-24",
   }
 ];

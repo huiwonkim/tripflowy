@@ -16,6 +16,7 @@ export const fukuokaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Unique canal-themed shopping complex.", ko: "독특한 운하 테마 쇼핑 단지." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "fukuoka-fukuoka-tower-observation",
@@ -28,6 +29,7 @@ export const fukuokaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "234m tower with 360° city and sea views.", ko: "234m 타워에서 360도 도시와 바다 전망." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "fukuoka-hakata-ramen-lunch",
@@ -41,6 +43,7 @@ export const fukuokaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Ichiran or Shin Shin — milky pork bone broth.", ko: "이치란 또는 신신 — 유백색 돼지뼈 국물." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "fukuoka-kyushu-national-museum",
@@ -53,6 +56,7 @@ export const fukuokaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Modern museum behind the shrine.", ko: "신사 뒤편 현대적 박물관." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "fukuoka-momochi-beach-lunch",
@@ -66,6 +70,7 @@ export const fukuokaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Beachside cafes near the tower.", ko: "타워 근처 해변 카페." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "fukuoka-nakasu-yatai-food-stalls",
@@ -79,6 +84,7 @@ export const fukuokaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Open-air ramen, oden, and yakitori stalls along the river.", ko: "강변 야외 라멘, 오뎅, 야키토리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "fukuoka-tenmangu-shrine",
@@ -91,6 +97,7 @@ export const fukuokaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Shrine to the god of learning — students come for exam success.", ko: "학문의 신 신사 — 시험 성공을 기원하는 학생들." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "fukuoka-umegae-mochi-starbucks",
@@ -104,5 +111,6 @@ export const fukuokaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Famous plum mochi. Kengo Kuma's unique Starbucks design.", ko: "유명 매화 모치. 쿠마 켄고의 독특한 스타벅스." },
+    lastVerified: "2026-04-24",
   }
 ];

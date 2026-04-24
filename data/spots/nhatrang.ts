@@ -17,6 +17,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Lunch on the boat, back to Nha Trang by 2pm.", ko: "보트에서 점심 후 오후 2시 귀환." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-dive-briefing-boat",
@@ -29,6 +30,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Morning briefing then boat to dive site.", ko: "오전 브리핑 후 다이빙 포인트로 보트 이동." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-island-hopping-tour",
@@ -41,6 +43,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Visit Mun Island, Mot Island — snorkeling included.", ko: "문 섬, 못 섬 방문. 스노클링 포함." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-nha-trang-beach-morning-swim",
@@ -53,6 +56,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Calm morning waters perfect for swimming.", ko: "아침 잔잔한 바다에서 수영." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-nha-trang-cathedral",
@@ -65,6 +69,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "French Gothic cathedral on a hilltop.", ko: "언덕 위 프랑스 고딕 성당." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-night-market-street-food",
@@ -78,6 +83,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Grilled squid, banh xeo, and local beer.", ko: "오징어 구이, 반쎄오, 현지 맥주." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-po-nagar-cham-towers",
@@ -90,6 +96,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "8th-century Hindu temple complex on a hill.", ko: "8세기 힌두 사원 단지." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-seafood-lunch-on-the-island",
@@ -103,6 +110,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Fresh grilled seafood at a beachfront restaurant.", ko: "해변 레스토랑에서 신선한 해산물 구이." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-sunset-from-cable-car",
@@ -115,6 +123,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Return ride with stunning sunset views.", ko: "선셋을 보며 돌아오는 케이블카." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-thap-ba-mud-bath",
@@ -127,6 +136,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Soak in warm mineral mud — great for skin.", ko: "따뜻한 미네랄 머드에 몸을 담그세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-two-dives-at-hon-mun",
@@ -139,6 +149,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "See coral reefs, tropical fish. Equipment provided.", ko: "산호초와 열대어 관찰. 장비 제공." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-vietnamese-coffee-rest",
@@ -152,6 +163,7 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Ca phe sua da at a local cafe.", ko: "현지 카페에서 까페쓰어다." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "nhatrang-water-park-rides",
@@ -164,5 +176,6 @@ export const nhatrangSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Slides, wave pool, roller coasters — full day of fun.", ko: "슬라이드, 파도풀, 롤러코스터." },
+    lastVerified: "2026-04-24",
   }
 ];

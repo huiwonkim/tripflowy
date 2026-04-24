@@ -16,6 +16,7 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "LA's coolest street — boutiques, cafes, galleries.", ko: "LA에서 가장 핫한 거리 — 부티크, 카페, 갤러리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "la-arts-district-walk",
@@ -28,6 +29,7 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Murals, craft breweries, and converted warehouse galleries.", ko: "벽화, 수제 양조장, 창고 개조 갤러리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "la-grand-central-market-lunch",
@@ -41,6 +43,7 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Historic food hall — tacos, Thai, ramen, egg sandwiches.", ko: "역사적 푸드 홀 — 타코, 태국, 라멘, 에그 샌드위치." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "la-griffith-observatory",
@@ -53,6 +56,7 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Free entry. Hollywood Sign views and city panorama.", ko: "무료 입장. 할리우드 사인과 도시 파노라마." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "la-hollywood-walk-of-fame",
@@ -65,6 +69,7 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "2,700+ stars on the sidewalk. TCL Chinese Theatre.", ko: "인도 위 2700개 이상의 별. TCL 차이니스 시어터." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "la-malibu-beach-walk",
@@ -77,6 +82,7 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "El Matador Beach — dramatic cliff beach.", ko: "엘 마타도르 비치 — 극적인 절벽 해변." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "la-rodeo-drive-window-shopping",
@@ -89,6 +95,7 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Beverly Hills' famous luxury shopping street.", ko: "비벌리 힐스의 유명 럭셔리 쇼핑 거리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "la-sunset-at-santa-monica-pier",
@@ -101,6 +108,7 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Pacific Park Ferris wheel and Route 66 endpoint.", ko: "태평양 공원 관람차와 루트 66 종점." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "la-the-broad-museum",
@@ -113,6 +121,7 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Free contemporary art museum — book timed entry.", ko: "무료 현대 미술관 — 시간제 입장 예약." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "la-venice-beach-boardwalk",
@@ -125,5 +134,6 @@ export const laSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Street performers, skate park, Muscle Beach.", ko: "거리 공연, 스케이트 파크, 머슬 비치." },
+    lastVerified: "2026-04-24",
   }
 ];

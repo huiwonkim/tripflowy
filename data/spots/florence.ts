@@ -17,6 +17,7 @@ export const florenceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Florence's famous T-bone steak.", ko: "피렌체 명물 티본 스테이크." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "florence-climb-the-duomo-dome",
@@ -29,6 +30,7 @@ export const florenceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "463 steps to the top. Pre-book required.", ko: "463계단. 사전 예약 필수." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "florence-oltrarno-artisan-workshops",
@@ -41,6 +43,7 @@ export const florenceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Leather craftsmen, bookbinders, and framers.", ko: "가죽 장인, 제본공, 액자 장인." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "florence-palazzo-pitti",
@@ -53,6 +56,7 @@ export const florenceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Medici palace with vast Boboli Gardens behind.", ko: "뒤에 보볼리 정원이 있는 메디치 궁전." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "florence-ponte-vecchio-walk",
@@ -65,6 +69,7 @@ export const florenceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Medieval bridge with goldsmith and jewelry shops.", ko: "금세공과 보석 가게가 있는 중세 다리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "florence-tuscan-farm-lunch",
@@ -78,6 +83,7 @@ export const florenceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Bruschetta, pasta, olive oil — all from the estate.", ko: "브루스케타, 파스타, 올리브 오일 — 모두 농장산." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "florence-uffizi-gallery",
@@ -90,6 +96,7 @@ export const florenceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Botticelli, Da Vinci, Raphael. Allow 2-3 hours.", ko: "보티첼리, 다빈치, 라파엘. 2~3시간 소요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "florence-wine-estate-tour",
@@ -102,5 +109,6 @@ export const florenceSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Tour vineyards and cellars, taste 4-5 wines.", ko: "포도원과 셀러 투어, 4~5종 와인 시음." },
+    lastVerified: "2026-04-24",
   }
 ];

@@ -17,6 +17,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Grilled prawns and Thai beer by the beach.", ko: "해변에서 구운 새우와 태국 맥주." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-big-buddha-statue",
@@ -29,6 +30,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "45m marble Buddha on Nakkerd Hill. 360° views.", ko: "나커드 힐 위 45m 대리석 불상. 360도 전경." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-dim-sum-lunch",
@@ -42,6 +44,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Old Town is known for Hokkien-style dim sum.", ko: "올드타운은 호킨 스타일 딤섬으로 유명." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-floating-village-lunch",
@@ -55,6 +58,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Lunch at Koh Panyee floating Muslim village.", ko: "꼬 빤이 수상 무슬림 마을에서 점심." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-james-bond-island",
@@ -67,6 +71,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Iconic needle rock from 'The Man with the Golden Gun'.", ko: "'황금총을 가진 사나이'의 상징적인 바위." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-jungceylon-mall-shopping",
@@ -79,6 +84,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Air-conditioned mall with international brands.", ko: "에어컨 완비 국제 브랜드 몰." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-kayak-through-sea-caves",
@@ -91,6 +97,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Paddle through hidden lagoons and sea caves.", ko: "숨겨진 라군과 바다 동굴을 카약으로 탐험." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-local-thai-lunch",
@@ -104,6 +111,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Authentic Thai food near the temple.", ko: "사원 근처 정통 태국 음식." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-maya-bay",
@@ -116,6 +124,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "The beach from 'The Beach' movie. Limited daily visitors.", ko: "'더 비치' 영화 촬영지. 일일 방문자 제한." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-patong-beach-morning",
@@ -128,6 +137,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Water sports, sunbathing, or just swim.", ko: "수상 스포츠, 일광욕 또는 수영." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-phi-phi-viewpoint-hike",
@@ -140,6 +150,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "30-minute hike to a stunning double-bay viewpoint.", ko: "30분 하이킹으로 쌍만 전망대." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-phuket-old-town-walk",
@@ -152,6 +163,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Colorful Sino-Portuguese buildings, cafes, and murals.", ko: "알록달록한 시노포르투갈 건물, 카페, 벽화." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-promthep-cape-sunset",
@@ -164,6 +176,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Phuket's most famous sunset spot on the southern tip.", ko: "푸켓 남단의 가장 유명한 선셋 포인트." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-snorkeling-at-pileh-lagoon",
@@ -176,6 +189,7 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Crystal clear lagoon surrounded by cliffs.", ko: "절벽으로 둘러싸인 맑은 라군." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "phuket-wat-chalong-temple",
@@ -188,5 +202,6 @@ export const phuketSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Phuket's most important Buddhist temple.", ko: "푸켓에서 가장 중요한 불교 사원." },
+    lastVerified: "2026-04-24",
   }
 ];

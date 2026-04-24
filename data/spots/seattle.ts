@@ -16,6 +16,7 @@ export const seattleSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Indie shops, bookstores, and vinyl record stores.", ko: "인디 숍, 서점, 바이닐 레코드 상점." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "seattle-chihuly-garden-glass",
@@ -28,6 +29,7 @@ export const seattleSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Stunning blown glass art installation next to the Needle.", ko: "스페이스 니들 옆 유리 공예 설치 미술." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "seattle-chowder-coffee",
@@ -41,6 +43,7 @@ export const seattleSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Clam chowder bread bowl and artisan coffee.", ko: "클램 차우더 브레드 볼과 수제 커피." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "seattle-pike-place-market",
@@ -53,6 +56,7 @@ export const seattleSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Fish throwing, flowers, craft stalls. Original Starbucks.", ko: "생선 던지기, 꽃, 공예 노점. 오리지널 스타벅스." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "seattle-seattle-aquarium",
@@ -65,6 +69,7 @@ export const seattleSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Pacific Northwest marine life on the waterfront.", ko: "태평양 북서부 해양 생물." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "seattle-space-needle",
@@ -77,6 +82,7 @@ export const seattleSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Rotating glass floor at 500ft. Mt. Rainier views on clear days.", ko: "500피트 회전 유리 바닥. 맑은 날 레이니어 산 조망." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "seattle-specialty-coffee-crawl",
@@ -90,6 +96,7 @@ export const seattleSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Victrola, Elm, Storyville — Seattle's best roasters.", ko: "빅트롤라, 엘름, 스토리빌 — 시애틀 최고 로스터." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "seattle-volunteer-park-asian-art-museum",
@@ -102,5 +109,6 @@ export const seattleSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Beautiful park with conservatory and art museum.", ko: "온실과 미술관이 있는 아름다운 공원." },
+    lastVerified: "2026-04-24",
   }
 ];

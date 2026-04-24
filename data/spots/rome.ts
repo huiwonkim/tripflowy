@@ -17,6 +17,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Sunset cocktails overlooking Piazza del Popolo.", ko: "포폴로 광장을 내려다보며 선셋 칵테일." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-colosseum-guided-tour",
@@ -29,6 +30,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Skip the line with pre-booked tickets.", ko: "사전 예매 티켓으로 줄 건너뛰기." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-galleria-borghese",
@@ -41,6 +43,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Bernini and Caravaggio masterpieces. Must pre-book.", ko: "베르니니와 카라바조 걸작. 사전 예약 필수." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-pantheon",
@@ -53,6 +56,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "2,000-year-old temple with the world's largest unreinforced dome.", ko: "2천 년 된 신전. 세계 최대 비보강 돔." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-pasta-lunch-at-rione-monti",
@@ -66,6 +70,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Carbonara or cacio e pepe in Rome's hippest neighborhood.", ko: "로마에서 가장 트렌디한 동네에서 카르보나라." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-piazza-navona-lunch",
@@ -79,6 +84,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Beautiful baroque square with fountain sculptures.", ko: "분수 조각이 있는 바로크 광장." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-roman-forum-palatine-hill",
@@ -91,6 +97,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Walk where Caesar walked.", ko: "카이사르가 걸었던 곳을 걸어보세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-spanish-steps-via-condotti",
@@ -103,6 +110,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Famous staircase and luxury shopping street.", ko: "유명 계단과 럭셔리 쇼핑 거리." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-st-peter-s-basilica",
@@ -115,6 +123,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Free entry. Climb the dome for city views.", ko: "무료 입장. 돔에 올라가면 도시 전경." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-trastevere-dinner-gelato",
@@ -128,6 +137,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Cobblestone streets, trattorias, and the best gelato.", ko: "자갈길, 트라토리아, 최고의 젤라토." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-trevi-fountain-early",
@@ -140,6 +150,7 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Go at 7am for no crowds. Throw a coin.", ko: "새벽 7시에 가면 혼잡하지 않음. 동전 던지기." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "rome-vatican-museums-sistine-chapel",
@@ -152,5 +163,6 @@ export const romeSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Book the first entry slot. Allow 3 hours.", ko: "첫 번째 입장 시간 예약. 3시간 소요." },
+    lastVerified: "2026-04-24",
   }
 ];

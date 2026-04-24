@@ -16,6 +16,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Osaka's Harajuku — secondhand fashion and indie stores.", ko: "오사카의 하라주쿠 — 중고 패션과 인디 상점." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-dotonbori-food-crawl",
@@ -29,6 +30,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Takoyaki, okonomiyaki, gyoza — Osaka is Japan's kitchen.", ko: "타코야키, 오코노미야키, 교자 — 오사카는 일본의 부엌." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-early-entry-to-usj",
@@ -41,6 +43,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Get the Express Pass for popular rides.", ko: "인기 놀이기구 익스프레스 패스 구매 추천." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-flat-white-coffee",
@@ -54,6 +57,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Specialty coffee in Amemura's hip cafes.", ko: "아메무라 힙한 카페에서 스페셜티 커피." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-glico-sign-canal-walk",
@@ -66,6 +70,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Take a photo with the famous running man sign.", ko: "유명한 달리기 남자 간판과 사진 촬영." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-hozenji-yokocho-alley",
@@ -78,6 +83,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Atmospheric stone-paved alley near Dotonbori.", ko: "도톤보리 근처 분위기 있는 돌길 골목." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-kuromon-market",
@@ -91,6 +97,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "'Osaka's Kitchen' — fresh sashimi, sea urchin, wagyu on a stick.", ko: "'오사카의 부엌' — 회, 성게, 꼬치 와규." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-kushikatsu-dinner",
@@ -104,6 +111,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Deep-fried skewers — no double-dipping the sauce!", ko: "꼬치 튀김 — 소스에 두 번 찍기 금지!" },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-lunch-at-tenmabashi",
@@ -117,6 +125,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Local udon or curry rice near the castle.", ko: "성 근처 현지 우동 또는 카레라이스." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-namba-area-izakaya",
@@ -130,6 +139,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Traditional Japanese pub — order yakitori and highball.", ko: "전통 일본 술집 — 야키토리와 하이볼 주문." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-namba-parks-shopping",
@@ -142,6 +152,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Terraced garden mall with unique architecture.", ko: "계단식 정원이 있는 독특한 건축의 몰." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-night-parade-dinner",
@@ -154,6 +165,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Evening spectacular with character dinner.", ko: "캐릭터 디너와 함께하는 야간 공연." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-osaka-castle",
@@ -166,6 +178,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Toyotomi Hideyoshi's castle. 8-floor museum inside.", ko: "도요토미 히데요시의 성. 내부 8층 박물관." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-shinsekai-tsutenkaku-tower",
@@ -178,6 +191,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Retro neighborhood with kushikatsu (fried skewers).", ko: "꼬치 튀김이 유명한 레트로 동네." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-super-nintendo-world",
@@ -190,6 +204,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Mario Kart ride, coin blocks, and Toadstool Cafe.", ko: "마리오 카트, 코인 블록, 버섯 카페." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-tenjinbashisuji-shopping-arcade",
@@ -202,6 +217,7 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Japan's longest shopping street — 2.6km.", ko: "일본에서 가장 긴 상가 — 2.6km." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "osaka-wizarding-world-of-harry-potter",
@@ -214,5 +230,6 @@ export const osakaSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Hogwarts Castle, butterbeer, and wand shopping.", ko: "호그와트 성, 버터비어, 지팡이 쇼핑." },
+    lastVerified: "2026-04-24",
   }
 ];

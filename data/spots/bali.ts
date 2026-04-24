@@ -17,6 +17,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Smoothie bowls and avocado toast at a Canggu cafe.", ko: "창구 카페에서 스무디 볼과 아보카도 토스트." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-dinner-at-merah-putih",
@@ -30,6 +31,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "One of Bali's best restaurants for a special dinner.", ko: "발리 최고 레스토랑에서 특별한 저녁." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-dinner-at-the-lawn",
@@ -43,6 +45,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Beachside restaurant with ocean views and great cocktails.", ko: "칵테일과 오션뷰를 즐길 수 있는 해변 레스토랑." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-kanto-lampo-waterfall",
@@ -55,6 +58,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "One of Bali's most photogenic waterfalls. Bring swimwear.", ko: "수영복을 꼭 챙기세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-kecak-dance-at-ubud-palace",
@@ -67,6 +71,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Traditional fire dance performance at sunset.", ko: "일몰 시간 전통 불춤 공연." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-lunch-at-clear-cafe",
@@ -80,6 +85,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Iconic healthy-food cafe in the heart of Ubud.", ko: "우붓 중심의 상징적인 건강식 카페." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-padang-padang-beach",
@@ -92,6 +98,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "One of Bali's best surf beaches. Watch pro surfers or take a dip.", ko: "발리 최고의 서핑 해변." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-sacred-monkey-forest",
@@ -104,6 +111,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Walk through lush jungle with playful macaques. Keep belongings secure.", ko: "장난기 넘치는 원숭이들이 사는 울창한 정글 산책." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-seminyak-beach-sunset",
@@ -116,6 +124,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Walk to the beach for the iconic Bali sunset.", ko: "상징적인 발리 선셋을 보러 해변으로 가세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-summit-sunrise",
@@ -128,6 +137,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "1,717m active volcano. 2-hour guided hike. Breakfast at the top.", ko: "1717m 활화산. 2시간 가이드 하이킹. 정상에서 아침 식사." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-sunset-dinner-at-single-fin",
@@ -141,6 +151,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Clifftop bar overlooking a world-class surf break.", ko: "세계적 서핑 포인트를 내려다보는 절벽 레스토랑." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-surf-lesson-at-kuta-beach",
@@ -153,6 +164,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "2-hour beginner surf lesson with certified instructor.", ko: "공인 강사와 함께하는 2시간 서핑 레슨." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-tegallalang-rice-terraces",
@@ -165,6 +177,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Walk through the iconic UNESCO rice terraces.", ko: "유네스코 논 계단식 논을 걸어보세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-ubud-art-market",
@@ -177,6 +190,7 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Browse handmade crafts, paintings, and textiles.", ko: "수공예품, 그림, 직물을 구경하세요." },
+    lastVerified: "2026-04-24",
   },
   {
     id: "bali-uluwatu-temple",
@@ -189,5 +203,6 @@ export const baliSpots: Spot[] = [
     duration: { min: 42, typical: 60, max: 78 },
     priority: 2,
     description: { en: "Cliffside Hindu temple 70m above the Indian Ocean.", ko: "인도양 위 70m 절벽의 힌두 사원." },
+    lastVerified: "2026-04-24",
   }
 ];
