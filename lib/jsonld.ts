@@ -76,12 +76,18 @@ export function generateCourseJsonLd(course: DayCourse, locale: Locale) {
 }
 
 export function generateItineraryJsonLd(itinerary: GeneratedItinerary, locale: Locale, cityNames: string[]) {
+  const isKo = locale === "ko";
+  const cityList = cityNames.join(isKo ? ", " : ", ");
   return {
     "@context": "https://schema.org",
     "@type": "TravelAction",
-    name: `${cityNames.join(" + ")} ${itinerary.duration}-Day Itinerary`,
-    description: `Auto-generated ${itinerary.duration}-day itinerary for ${cityNames.join(", ")}`,
-    inLanguage: locale === "ko" ? "ko-KR" : "en-US",
+    name: isKo
+      ? `${cityNames.join(" + ")} ${itinerary.duration}일 여행 일정`
+      : `${cityNames.join(" + ")} ${itinerary.duration}-Day Itinerary`,
+    description: isKo
+      ? `${cityList}에서 책킴이 직접 검증한 스팟으로 구성한 ${itinerary.duration}일 일정`
+      : `${itinerary.duration}-day field-tested itinerary for ${cityList}, built from spots Check Kim has personally walked and verified`,
+    inLanguage: isKo ? "ko-KR" : "en-US",
     location: cityNames.map((name) => ({
       "@type": "Place",
       name,
@@ -260,8 +266,8 @@ export function generateWebApplicationJsonLd(locale: Locale) {
       priceCurrency: "USD",
     },
     description: locale === "ko"
-      ? "도시, 기간, 여행 스타일을 선택하면 자동으로 맞춤 일정을 생성합니다. 항공·숙소·현지 비용 견적까지 한 번에."
-      : "Select your destination, duration, and travel style to auto-generate a personalized day-by-day itinerary with flight, hotel, and local cost estimates.",
+      ? "도시, 기간, 여행 스타일을 입력하면 책킴이 직접 검증한 스팟으로 구성한 하루 코스 기반 일정을 짜드립니다. 항공·숙소·현지 비용 견적까지 한 번에."
+      : "Enter your destination, duration, and travel style to get a day-by-day itinerary built from spots Check Kim has personally walked and verified — with flight, hotel, and local cost estimates included.",
     inLanguage: locale === "ko" ? "ko-KR" : "en-US",
     provider: { "@type": "Organization", name: "TripFlowy", url: BASE_URL },
   };

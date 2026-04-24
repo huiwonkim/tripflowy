@@ -103,6 +103,20 @@ export const FOUNDER = {
   ],
 } as const;
 
+// Page titles — each page exports its canonical ko/en pair here so layouts
+// never hardcode brand-shaped strings. Add a new entry when a new route needs
+// metadata so the forbiddenPhrases grep stays clean.
+export const PAGE_TITLES = {
+  // Bare titles — the root layout applies a "%s | TripFlowy" template so
+  // no suffix here. OG variants keep the brand spelled out for crawlers
+  // that read og:title independently of the <title> template chain.
+  plannerKo: "여행 플래너 — 검증된 루트로 일정 만들기",
+  plannerEn: "Trip Planner — Build a Field-Tested Route",
+
+  plannerOgKo: "여행 플래너 — 트플이 검증한 루트로 일정 만들기",
+  plannerOgEn: "Trip Planner — Build a Field-Tested Route with TripFlowy",
+} as const;
+
 // Meta descriptions (40–80 word extraction chunks)
 export const META_DESCRIPTIONS = {
   homeKo: "직접 다녀온 사람이 검증한 여행 일정 템플릿. 도시·기간·스타일을 입력하면 실제로 걸어보고 검증된 하루 코스로 맞춤 일정을 만들어드립니다.",

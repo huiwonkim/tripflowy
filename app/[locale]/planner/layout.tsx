@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { generateBreadcrumbJsonLd, generateWebApplicationJsonLd } from "@/lib/jsonld";
+import { PAGE_TITLES, META_DESCRIPTIONS } from "@/content/brand";
 import type { Locale } from "@/types";
 
 const BASE_URL = "https://www.tripflowy.com";
@@ -13,20 +14,14 @@ export async function generateMetadata({ params }: LayoutProps): Promise<Metadat
   const { locale } = await params;
   const isKo = locale === "ko";
   return {
-    title: isKo
-      ? "여행 플래너 — 자동 일정 생성"
-      : "Trip Planner — Auto-Generate Itineraries",
-    description: isKo
-      ? "출발 도시, 여행 기간, 선호 스타일을 선택하면 자동으로 일정이 만들어집니다. 일본, 베트남, 유럽, 미국 등 30+ 도시 지원. 항공·숙소·현지 비용까지 한 번에 확인."
-      : "Pick your destination, trip duration, and travel style — get a personalized day-by-day itinerary instantly. Supports 30+ cities across Asia, Europe, and the US with flight, hotel, and local cost estimates.",
+    title: isKo ? PAGE_TITLES.plannerKo : PAGE_TITLES.plannerEn,
+    description: isKo ? META_DESCRIPTIONS.plannerKo : META_DESCRIPTIONS.plannerEn,
     keywords: isKo
-      ? "여행 플래너, 일정 자동 생성, 여행 일정 만들기, 트플, TripFlowy"
-      : "trip planner, auto itinerary, travel planner, TripFlowy",
+      ? "여행 플래너, 검증된 여행 일정, 현장 검증 루트, 트플, TripFlowy"
+      : "trip planner, field-tested itinerary, verified travel route, TripFlowy",
     openGraph: {
-      title: isKo ? "여행 플래너 — 자동 일정 생성 | TripFlowy" : "Trip Planner — Auto-Generate Itineraries | TripFlowy",
-      description: isKo
-        ? "도시, 기간, 스타일만 선택하면 검증된 여행 일정이 자동으로 만들어집니다."
-        : "Select destination, duration, and style to auto-generate verified travel itineraries.",
+      title: isKo ? PAGE_TITLES.plannerOgKo : PAGE_TITLES.plannerOgEn,
+      description: isKo ? META_DESCRIPTIONS.plannerKo : META_DESCRIPTIONS.plannerEn,
     },
     alternates: {
       canonical: isKo ? "/ko/planner" : "/planner",

@@ -23,7 +23,7 @@ export function GET(): Response {
     `> a Korean travel creator covering Asia since 2007.`,
     ``,
     `## Cities`,
-    `- [Tokyo](${SITE}/planner?destinations=tokyo): Auto-generated itinerary from spots personally tested`,
+    `- [Tokyo](${SITE}/planner?destinations=tokyo): Field-tested itinerary built from spots ${FOUNDER.nameEn} has personally walked and verified`,
     ``,
     `## Day Trips`,
     `- Kawagoe, Chichibu, Mt. Fuji day trips from Tokyo`,
