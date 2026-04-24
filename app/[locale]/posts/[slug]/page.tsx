@@ -328,12 +328,12 @@ export default async function PostPage({ params }: PageProps) {
           <section className="mt-14 pt-10 border-t border-gray-100">
             <div className="bg-gray-50 rounded-2xl p-6">
               <div className="flex items-start gap-4">
-                {author.image ? (
-                  <Image src={author.image} alt={identity.name} width={56} height={56}
-                    className="w-14 h-14 rounded-full object-cover flex-shrink-0" />
+                {identity.photo ? (
+                  <Image src={identity.photo} alt={identity.name} width={64} height={64}
+                    className="w-16 h-16 rounded-full object-cover flex-shrink-0 ring-2 ring-gray-200" />
                 ) : (
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0">
-                    <User className="w-6 h-6 text-white" />
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center flex-shrink-0 ring-2 ring-gray-200">
+                    <span className="text-white text-base font-bold">{identity.initials}</span>
                   </div>
                 )}
                 <div className="flex-1 min-w-0">

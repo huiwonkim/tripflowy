@@ -34,6 +34,9 @@ export function getAuthorIdentity(author: Author, locale: "ko" | "en") {
   const displayName = isKo
     ? `${brand.nameKo} (${brand.nameEn})`        // "책킴 (Check Kim)"
     : `${brand.legalName} (${brand.nameEn})`;    // "Huiwon Kim (Check Kim)"
+  // Initials for avatar fallback — ko shows "책킴" (nameKo as-is, short),
+  // en shows "CK" (first letters of Check Kim). Matches hero strip convention.
+  const initials = isKo ? brand.nameKo : "CK";
   return {
     name: isKo ? brand.nameKo : brand.nameEn,
     displayName,
@@ -42,5 +45,9 @@ export function getAuthorIdentity(author: Author, locale: "ko" | "en") {
     alternateName: brand.alternateName,
     knowsAbout: brand.knowsAbout,
     sameAs: Object.values(brand.profiles).filter((u) => !u.includes("[TODO]")),
+    // Per-author `image` override wins over brand default so future authors
+    // (non-founder) can ship their own headshot without editing brand.ts.
+    photo: author.image ?? brand.photo ?? null,
+    initials,
   };
 }
