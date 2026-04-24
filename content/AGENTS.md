@@ -78,16 +78,40 @@ Don't bolt them on — work them into a sentence where the signal is earned.
 
 ## Forbidden Phrases (hard-blocked)
 
-Before publishing any guide or component copy, grep against `BRAND.forbiddenPhrases`:
+Before publishing any guide or component copy, grep against `BRAND.forbiddenPhrases` **plus** the auto-generate family swept in Sprint A.12a:
 
 ```bash
 # en
-grep -nE "AI travel planner|AI-powered planner|GPT-based|auto-generates plans|Stop scrolling blogs" <file>
+grep -nE "AI travel planner|AI-powered planner|GPT-based|auto-generates plans|Auto-Generate|auto-generate|Auto-generated|auto-generated|Stop scrolling blogs" <file>
 # ko
-grep -nE "AI가 짜주는|AI 자동 추천 플래너|GPT 기반|자동 생성 플래너|블로그 그만 보세요|유튜브 그만 보세요" <file>
+grep -nE "AI가 짜주는|AI 자동 추천 플래너|GPT 기반|자동 생성 플래너|자동 일정|자동으로 여행 일정|자동으로 일정|자동 생성|일정 자동|블로그 그만 보세요|유튜브 그만 보세요" <file>
 ```
 
-If any match → rewrite. The engine may be described as `smart matching` / `스마트 매칭` / `preference-matching` (see `BRAND.allowedEngineDescription`), but the headline never positions the product as AI-first.
+If any match → rewrite. The engine may be described as `smart matching` / `스마트 매칭` / `preference-matching` (see `BRAND.allowedEngineDescription`), but the headline never positions the product as AI-first or auto-anything. Use `field-tested` / `현장 검증` / `책킴이 직접 검증한` framing instead.
+
+## Page-Title Source of Truth (PAGE_TITLES, A.12a)
+
+Page-level `<title>` / og:title strings live in `PAGE_TITLES` inside `/content/brand.ts`, not hardcoded in `generateMetadata`. When shipping a new route:
+
+1. Add `{route}Ko` / `{route}En` entries to `PAGE_TITLES` (+ `{route}OgKo` / `{route}OgEn` if og:title differs from `<title>`).
+2. Import and use from the route's `layout.tsx` or `page.tsx`.
+3. Keep `<title>` entries **bare** — the root layout applies the `"%s | TripFlowy"` template. OG variants keep the brand spelled out inline (crawlers read og:title independently).
+
+Never repeat `| TripFlowy` inside `PAGE_TITLES` values — it compounds to `"… | TripFlowy | TripFlowy"`.
+
+## Spot Data Curation Policy (post Sprint A cleanup)
+
+`data/spots/` contains **only Check Kim-verified cities**. As of 2026-04-24 the aggregator (`data/spots/index.ts`) re-exports Tokyo alone (114 spots). 26 pre-existing placeholder city files from a prior Claude session were deleted because they were not field-verified — the curated-platform positioning requires we never ship unverified spots.
+
+Rules when adding a new city:
+
+- **Source**: CSV at `data/sheets/<city>-spots.csv`. Generate `data/spots/<city>.ts` via `npx tsx scripts/spots-from-csv.ts <city>` — never hand-write the `.ts`.
+- **Required per spot**: `lastVerified` (ISO `YYYY-MM-DD`) — planner UI renders the "✓ Check Kim · verified Mon YYYY" / "✓ 책킴 · 정보 확인 YYYY-MM" badge from this field. Missing `lastVerified` → badge silently omitted, which undermines the E-E-A-T signal. The CSV pipeline validates the YYYY-MM-DD format.
+- **Verification bar**: 책킴 must have personally walked the spot. Placeholder data, AI-extracted spots from search results, or unverified Naver-scraped entries are **not** allowed in `data/spots/`.
+- **Sprint 7 queue**: Osaka · Kyoto · Fukuoka · Bangkok · Da Nang will be rebuilt from Naver source material via `scripts/extract-spots.ts` → CSV authoring → `spots-from-csv.ts`. Don't pre-seed empty files.
+- **`lib/public-mode.ts`** `PUBLIC_CITY_IDS` gates which cities surface in production. Keep it in sync with the aggregator.
+
+If you are tempted to re-add a city file quickly "just to unblock something," stop. The curated positioning is the product — placeholder spots are a regression. Ship Tokyo-only until Sprint 7 ships real content per city.
 
 ## Writing Style (CLAUDE.md "Blog Guide Writing Rules" applies)
 

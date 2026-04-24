@@ -59,7 +59,7 @@ Bug fixes should be bug fixes — don't refactor surrounding code, don't introdu
 ## 7. Key Workflows
 
 - **Blog guides**: user provides Korean guide → produce BOTH ko + en per `/content/AGENTS.md` writing rules. Ask before writing if prices/hours/how-to are missing.
-- **Spots**: user edits Google Sheets → Claude translates → `scripts/spots-from-csv.ts` regenerates `data/spots/<city>.ts`. Feature flag `NEXT_PUBLIC_USE_SPOT_ENGINE=true` in `.env.local` is required for new spots to appear.
+- **Spots**: user edits Google Sheets → Claude translates → `scripts/spots-from-csv.ts` regenerates `data/spots/<city>.ts`. Feature flag `NEXT_PUBLIC_USE_SPOT_ENGINE=true` in `.env.local` is required for new spots to appear. **Tokyo-only in V1** — `/data/spots/index.ts` aggregates tokyo alone; adding a city requires the full CSV pipeline + 책킴 field-verification + `lastVerified` per spot. See `/content/AGENTS.md` → "Spot Data Curation Policy".
 - **Batches**: group related changes into numbered batches, commit per batch at the user's checkpoint ("커밋하고 다음으로 가자").
 - **Deploy**: build first (`npm run build`), do **not** push until the user says "배포해".
 
