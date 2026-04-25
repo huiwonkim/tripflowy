@@ -20,12 +20,18 @@ const PROFILE_LABELS: Record<string, string> = {
   producthunt: "Product Hunt",
 };
 
+// Keys hidden from the Footer "Find us on" row — they still flow into
+// JSON-LD sameAs (Person / Organization) for entity resolution, but
+// aren't useful as user-visible footer links.
+const FOOTER_HIDDEN_KEYS = new Set(["wikidata", "wikidataOrg"]);
+
 function collectLiveProfiles(): ProfileLink[] {
   const seen = new Set<string>();
   const out: ProfileLink[] = [];
   const sources: Array<Record<string, string>> = [FOUNDER.profiles, BRAND.profiles];
   for (const source of sources) {
     for (const [key, href] of Object.entries(source)) {
+      if (FOOTER_HIDDEN_KEYS.has(key)) continue;
       if (href.includes("[TODO]") || seen.has(href)) continue;
       seen.add(href);
       out.push({ href, label: PROFILE_LABELS[key] ?? key });
