@@ -42,7 +42,7 @@ export const BRAND = {
   // Person-level profiles live on FOUNDER.profiles (instagram/youtube/naverBlog/linkedin/crunchbase as Person/wikidata as Person).
   // Filter out [TODO] entries before emitting in production.
   profiles: {
-    wikidata: "https://wikidata.org/wiki/[TODO]",
+    wikidataOrg: "https://www.wikidata.org/wiki/Q139555506",
     crunchbase: "https://crunchbase.com/organization/[TODO]",
     alternativeto: "https://alternativeto.net/software/[TODO]",
     g2: "https://g2.com/products/[TODO]",
@@ -94,7 +94,7 @@ export const FOUNDER = {
     youtube: "https://youtube.com/@CheckKim",
     linkedin: "https://linkedin.com/in/[TODO]",
     crunchbase: "https://crunchbase.com/person/[TODO]",
-    wikidata: "https://wikidata.org/wiki/[TODO]",
+    wikidata: "https://www.wikidata.org/wiki/Q139555483",
   },
 
   // Canonical founder photo (50×50 avatar slot in hero + author boxes).
