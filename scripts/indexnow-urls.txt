@@ -1,0 +1,37 @@
+# IndexNow URL list — submit with `npm run indexnow:list`
+# One URL per line. Blank lines and `#` comments are ignored.
+# Host must be www.tripflowy.com (script enforces).
+
+# Home + locale roots
+https://www.tripflowy.com/
+https://www.tripflowy.com/ko
+https://www.tripflowy.com/posts
+https://www.tripflowy.com/ko/posts
+
+# Tokyo guides (current 9 posts × 2 locales = 18)
+https://www.tripflowy.com/posts/tokyo-shibuya-sky-guide
+https://www.tripflowy.com/ko/posts/tokyo-shibuya-sky-guide
+https://www.tripflowy.com/posts/tokyo-disneyland-guide
+https://www.tripflowy.com/ko/posts/tokyo-disneyland-guide
+https://www.tripflowy.com/posts/tokyo-disneysea-guide
+https://www.tripflowy.com/ko/posts/tokyo-disneysea-guide
+https://www.tripflowy.com/posts/tokyo-narita-limousine-bus
+https://www.tripflowy.com/ko/posts/tokyo-narita-limousine-bus
+https://www.tripflowy.com/posts/tokyo-skytree-observatory-guide
+https://www.tripflowy.com/ko/posts/tokyo-skytree-observatory-guide
+https://www.tripflowy.com/posts/tokyo-harry-potter-studio-tour-guide
+https://www.tripflowy.com/ko/posts/tokyo-harry-potter-studio-tour-guide
+https://www.tripflowy.com/posts/tokyo-teamlab-borderless-planets-guide
+https://www.tripflowy.com/ko/posts/tokyo-teamlab-borderless-planets-guide
+https://www.tripflowy.com/posts/tokyo-subway-guide
+https://www.tripflowy.com/ko/posts/tokyo-subway-guide
+https://www.tripflowy.com/posts/tokyo-skyliner-narita-guide
+https://www.tripflowy.com/ko/posts/tokyo-skyliner-narita-guide
+
+# Planner
+https://www.tripflowy.com/planner
+https://www.tripflowy.com/ko/planner
+
+# Add Sprint 7 day-trip routes here as they ship:
+# https://www.tripflowy.com/courses/tokyo/kawagoe
+# https://www.tripflowy.com/ko/courses/tokyo/kawagoe
