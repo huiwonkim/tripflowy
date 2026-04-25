@@ -92,7 +92,7 @@ export const FOUNDER = {
     instagram: "https://instagram.com/travelkkkim",
     naverBlog: "https://blog.naver.com/heewon1032",
     youtube: "https://youtube.com/@CheckKim",
-    linkedin: "https://linkedin.com/in/[TODO]",
+    linkedin: "https://www.linkedin.com/in/huiwonpatrickkim",
     crunchbase: "https://crunchbase.com/person/[TODO]",
     wikidata: "https://www.wikidata.org/wiki/Q139555483",
   },
