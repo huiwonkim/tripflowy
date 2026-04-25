@@ -22,7 +22,7 @@ TripFlowy (tripflowy.com) is a **human-curated travel itinerary platform**. Foun
 - **Language**: TypeScript 5.9 strict, React 19.2
 - **i18n**: `next-intl` with `/app/[locale]/...`, locales `en` (default) and `ko`
 - **Styling**: Tailwind v4 (PostCSS plugin), `.tf-serif` class for English serif headings only
-- **Data/storage**: `@vercel/kv` for shared state; static spot data lives in `/data/spots/<city>.ts`
+- **Data/storage**: Upstash Redis via Vercel Marketplace (Vercel KV deprecated 2024). Analytics writes use `@upstash/redis` directly (`/lib/analytics/*`); legacy price-cache routes still use `@vercel/kv` — both share env vars `KV_REST_API_URL` + `KV_REST_API_TOKEN` against the same Upstash instance. New code: prefer `@upstash/redis`. Static spot data lives in `/data/spots/<city>.ts`.
 - **Maps**: `@vis.gl/react-google-maps` (awareness: each `<Map>` = 1 billable Load — avoid Directions API)
 - **Path alias**: `@/*` → repo root
 

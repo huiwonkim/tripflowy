@@ -4,7 +4,7 @@
 > Sign-off 받으면 middleware → 대시보드 → docs → smoke test 순으로 구현.
 >
 > **Storage**: Upstash Redis (Vercel Marketplace 통합) via `@upstash/redis`.
-> Vercel KV는 2024년 단종 — 마스터 플랜 Sprint 1 섹션의 "Vercel KV" 표기는 Sprint 1 종료 시 minor edit 예정.
+> Vercel KV는 2024년 단종 — 마스터 플랜 Sprint 1 섹션은 2026-04-25 minor edit 완료 (Upstash Redis + `proxy.ts` 명시).
 >
 > **Runtime**: Edge runtime (`middleware.ts`). `@upstash/redis`는 REST 기반이라 Edge 호환.
 >

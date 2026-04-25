@@ -663,7 +663,11 @@ AI 슬롭과 진짜 큐레이션을 구분하는 가장 강력한 시각 신호.
 ```
 Sprint 1: 분석 인프라 세팅.
 
-1. Vercel 미들웨어 /middleware.ts 생성:
+⚠️ 2026-04-25 minor edit: 본 프롬프트는 sprint 진행 중 다음 두 항목이 실측에서 갱신됐음 — Claude Code는 두 변경을 인지하고 진행할 것.
+  (a) `/middleware.ts` → `/proxy.ts` (Next.js 16에서 middleware → proxy로 명명 변경. 기존 next-intl proxy에 `event.waitUntil(logRequest)` 형태로 통합).
+  (b) Vercel KV 단종(2024). Vercel Marketplace의 Upstash Redis로 대체 (`@upstash/redis` SDK, Edge runtime 호환). 환경변수는 legacy `KV_REST_API_URL` + `KV_REST_API_TOKEN` 그대로 (Vercel이 alias 주입).
+
+1. Edge 미들웨어 /proxy.ts 확장 (next-intl proxy + analytics 통합):
    - 모든 요청의 레퍼러 + User-Agent 로깅
    - AI 크롤러 UA: GPTBot, OAI-SearchBot, ClaudeBot, 
      Claude-SearchBot, PerplexityBot, Perplexity-User,
@@ -673,8 +677,9 @@ Sprint 1: 분석 인프라 세팅.
      copilot.microsoft.com 등
    - UTM 파싱 (utm_source, utm_medium, utm_campaign, utm_content)
    - regex는 /docs/analytics-regex.md에 문서화
+   - 비차단: `event.waitUntil(logRequest(request).catch(() => {}))`
 
-2. 로그는 Vercel KV에 저장:
+2. 로그는 Upstash Redis(@upstash/redis)에 저장:
    스키마: { 
      timestamp, path, referer, ua, 
      is_ai_crawler, ai_assistant_source,
