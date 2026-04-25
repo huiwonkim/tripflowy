@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { BRAND } from "@/content/brand";
 
 const GA_MEASUREMENT_ID = "G-3Y0XB545M3";
 const ADSENSE_CLIENT_ID = "ca-pub-1445087798097280";
@@ -88,7 +89,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className={`${geist.variable} h-full`}>
       <head>
-        <link rel="alternate" type="application/rss+xml" title="Tripflowy" href="/rss.xml" />
+        <link rel="alternate" type="application/rss+xml" title={BRAND.name} href="/rss.xml" />
       </head>
       <body className="min-h-full flex flex-col font-[family-name:var(--font-geist)] antialiased bg-[#f8fafc] text-[#0f172a]">
         {/* Google Analytics 4 (gtag.js) */}

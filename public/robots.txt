@@ -1,45 +1,56 @@
 User-agent: *
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 User-agent: Googlebot
 Allow: /
+Disallow: /admin/
 
 User-agent: Yeti
 Allow: /
+Disallow: /admin/
 
 # AI crawlers (LLM training & retrieval)
 User-agent: GPTBot
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 User-agent: Claude-User
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /api/
+Disallow: /admin/
 
 # LLM-friendly index
 # https://www.tripflowy.com/llms.txt
