@@ -37,6 +37,17 @@ export const BRAND = {
     en: ["smart matching", "intelligent matching", "preference-matching engine"],
     ko: ["스마트 매칭", "조건 매칭", "맞춤 매칭"],
   },
+
+  // Organization-level external authority listings — drives Organization JSON-LD `sameAs`.
+  // Person-level profiles live on FOUNDER.profiles (instagram/youtube/naverBlog/linkedin/crunchbase as Person/wikidata as Person).
+  // Filter out [TODO] entries before emitting in production.
+  profiles: {
+    wikidata: "https://wikidata.org/wiki/[TODO]",
+    crunchbase: "https://crunchbase.com/organization/[TODO]",
+    alternativeto: "https://alternativeto.net/software/[TODO]",
+    g2: "https://g2.com/products/[TODO]",
+    producthunt: "https://producthunt.com/products/[TODO]",
+  },
 } as const;
 
 export const FOUNDER = {

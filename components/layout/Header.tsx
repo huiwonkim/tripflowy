@@ -35,7 +35,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
-            <Image src="/logo-full.png" alt="Tripflowy" width={200} height={48} className="h-12 w-auto" priority />
+            <Image src="/logo-full.png" alt="TripFlowy" width={200} height={48} className="h-12 w-auto" priority />
           </Link>
 
           <nav className="hidden md:flex items-center gap-1">

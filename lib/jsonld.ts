@@ -1,6 +1,6 @@
 import type { DayCourse, FAQ, Locale, GeneratedItinerary, BlogPost, Tour, Hotel } from "@/types";
 import { getAuthor, getAuthorIdentity } from "@/lib/authors";
-import { META_DESCRIPTIONS } from "@/content/brand";
+import { BRAND, META_DESCRIPTIONS } from "@/content/brand";
 
 const BASE_URL = "https://www.tripflowy.com";
 
@@ -25,7 +25,8 @@ export function generateOrganizationJsonLd() {
       availableLanguage: ["English", "Korean"],
     },
     sameAs: [
-      "https://www.tripflowy.com",
+      BASE_URL,
+      ...Object.values(BRAND.profiles).filter((u) => !u.includes("[TODO]")),
     ],
   };
 }

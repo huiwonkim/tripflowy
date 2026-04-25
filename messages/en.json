@@ -44,7 +44,7 @@
     "seeAll": "See all"
   },
   "howItWorks": {
-    "heading": "How Tripflowy works",
+    "heading": "How TripFlowy works",
     "subheading": "From choice to full itinerary in three steps. No accounts, no forms, no waiting.",
     "step1Title": "Set your conditions",
     "step1Desc": "Enter destination, duration, travel companions, and travel style.",
@@ -195,6 +195,6 @@
   "footer": {
     "tagline": "Itinerary-first travel planning. Tell us your style, we'll build your route.",
     "popularDestinations": "Popular Destinations",
-    "copyright": "© {year} Tripflowy. All rights reserved."
+    "copyright": "© {year} TripFlowy. All rights reserved."
   }
 }
